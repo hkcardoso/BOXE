@@ -8,7 +8,8 @@
           "settings": {
             "title": "BOXE",
             "subtitle": "Luvas e proteção",
-            "search_term": "boxe"
+            "search_term": "boxe",
+            "image": "shopify://shop_images/boxeup-boxe.jpg"
           }
         },
         "muaythai": {
@@ -16,7 +17,8 @@
           "settings": {
             "title": "MUAY THAI",
             "subtitle": "Treino e combate",
-            "search_term": "muay thai"
+            "search_term": "muay thai",
+            "image": "shopify://shop_images/boxeup-muay-thai.jpg"
           }
         },
         "mma": {
@@ -24,7 +26,8 @@
           "settings": {
             "title": "MMA",
             "subtitle": "Equipamento técnico",
-            "search_term": "mma"
+            "search_term": "mma",
+            "image": "shopify://shop_images/boxeup-mma.jpg"
           }
         },
         "jiujitsu": {
@@ -32,7 +35,8 @@
           "settings": {
             "title": "JIU-JITSU",
             "subtitle": "Tatami e treino",
-            "search_term": "jiu jitsu"
+            "search_term": "jiu jitsu",
+            "image": "shopify://shop_images/boxeup-jiu-jitsu.jpg"
           }
         }
       },

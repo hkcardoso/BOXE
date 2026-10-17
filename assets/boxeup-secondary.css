@@ -11,7 +11,7 @@
 .boxeup-breadcrumb a:hover{color:var(--bx-ink);text-decoration:underline;text-underline-offset:3px}
 .boxeup-breadcrumb [aria-current="page"]{max-width:45ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#282828}
 .boxeup-breadcrumb--product{padding-top:1.8rem;margin-bottom:2rem}
-.boxeup-collection-kicker{font-size:1.15rem;letter-spacing:.18em;font-weight:800;color:var(--bx-accent);margin:0 0:1.3rem}
+.boxeup-collection-kicker{font-size:1.15rem;letter-spacing:.18em;font-weight:800;color:var(--bx-accent);margin:0 0 1.3rem}
 .boxeup-collection-kicker span{color:#c5bdba;margin:0 .6rem}
 .collection-hero{background:#fff}
 .collection-hero__inner.page-width{padding-top:4.2rem;padding-bottom:3.5rem;border-bottom:1px solid var(--bx-border)}

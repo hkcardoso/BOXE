@@ -132,3 +132,41 @@
   .boxeup-contact__submit-row button{width:100%}
 }
 @media(prefers-reduced-motion:reduce){.boxeup-shop-categories__link,.boxeup-contact__submit-row button{transition:none}}
+
+/* BOXEUP — compact, properly aligned product description lists.
+   Shopify and Printful may supply <li><p>content</p></li>; Dawn's
+   inside markers + block paragraphs put bullets on isolated lines. */
+.product .product__description.rte ul,
+.product .product__description.rte ol {
+  list-style-position: outside;
+  padding-left: 2.4rem;
+  margin: 1.6rem 0 2.2rem;
+}
+
+.product .product__description.rte li {
+  display: list-item;
+  padding-left: .25rem;
+  margin: 0 0 .75rem;
+  line-height: 1.65;
+}
+
+.product .product__description.rte li > p {
+  display: inline;
+  margin: 0;
+}
+
+.product .product__description.rte li > p + p {
+  display: block;
+  margin-top: .4rem;
+}
+
+.product .product__description.rte li::marker {
+  color: #945057;
+  font-size: .9em;
+}
+
+.product .product__description.rte ul ul,
+.product .product__description.rte ol ol {
+  margin-top: .6rem;
+  margin-bottom: .8rem;
+}

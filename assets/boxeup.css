@@ -46,3 +46,24 @@ main .collection-hero__title,.main-page-title,.title-wrapper-with-link .title,.c
  .boxeup-footer-brand p { margin:13px 0 0; text-align:left; }
  .card-wrapper .card__heading { font-size:12px; }
 }
+
+/* BOXEUP — wider usable canvas on desktop, without scaling individual elements.
+   Reduce empty side gutters while retaining comfortable horizontal breathing room. */
+@media screen and (min-width: 990px) {
+  .page-width,
+  .page-width-desktop {
+    width: 100%;
+    max-width: 200rem;
+    padding-left: clamp(3rem, 4.5vw, 9rem);
+    padding-right: clamp(3rem, 4.5vw, 9rem);
+  }
+
+  /* Dawn gives the desktop header a more specific padding rule. */
+  .header:not(.drawer-menu).page-width,
+  .header.page-width,
+  .utility-bar__grid.page-width {
+    max-width: 200rem;
+    padding-left: clamp(3rem, 4.5vw, 9rem);
+    padding-right: clamp(3rem, 4.5vw, 9rem);
+  }
+}

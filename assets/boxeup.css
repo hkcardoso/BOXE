@@ -52,6 +52,7 @@ main .collection-hero__title,.main-page-title,.title-wrapper-with-link .title,.c
 @media screen and (min-width: 990px) {
   .page-width,
   .page-width-desktop {
+    max-width: 180rem;
     padding-left: clamp(3.2rem, 3.5vw, 6rem);
     padding-right: clamp(3.2rem, 3.5vw, 6rem);
   }

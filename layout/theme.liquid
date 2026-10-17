@@ -9,7 +9,11 @@
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- else -%}
+      <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-favicon-32.png?v=1792198331">
+      <link rel="icon" type="image/png" sizes="512x512" href="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-favicon-512.png?v=1792198344">
     {%- endif -%}
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-favicon-180.png?v=1792198338">
 
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>

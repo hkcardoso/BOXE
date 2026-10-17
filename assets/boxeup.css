@@ -46,3 +46,19 @@ main .collection-hero__title,.main-page-title,.title-wrapper-with-link .title,.c
  .boxeup-footer-brand p { margin:13px 0 0; text-align:left; }
  .card-wrapper .card__heading { font-size:12px; }
 }
+
+
+/* BOXEUP WIDE LAYOUT — consistent content alignment on desktop. */
+@media screen and (min-width: 990px) {
+  .page-width,
+  .page-width-desktop {
+    padding-left: clamp(3.2rem, 3.5vw, 6rem);
+    padding-right: clamp(3.2rem, 3.5vw, 6rem);
+  }
+  .header:not(.drawer-menu).page-width,
+  .utility-bar__grid.page-width {
+    padding-left: clamp(3.2rem, 3.5vw, 6rem);
+    padding-right: clamp(3.2rem, 3.5vw, 6rem);
+  }
+  .grid.product-grid { column-gap: 20px; }
+}

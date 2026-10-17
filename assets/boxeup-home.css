@@ -85,3 +85,16 @@
  .boxeup-category__glyph { font-size:36vw; }
 }
 @media (prefers-reduced-motion:reduce) { .boxeup-category__glyph,.boxeup-category__image,.boxeup-btn { transition:none; } }
+
+
+/* More spacious desktop presentation without stretching mobile components. */
+@media screen and (min-width: 990px) {
+  .boxeup-hero { min-height: clamp(555px, 37vw, 685px); }
+  .boxeup-hero__copy { padding: clamp(44px, 4.25vw, 92px); }
+  .boxeup-hero__heading { font-size: clamp(56px, 4.8vw, 92px); max-width: 770px; }
+  .boxeup-hero__description { max-width: 520px; }
+  .boxeup-category-grid { gap: clamp(14px, 1.2vw, 24px); }
+  .boxeup-categories { padding-top: clamp(74px, 5.2vw, 106px); }
+  .boxeup-section-heading { margin-bottom: 34px; }
+  .boxeup-benefits { padding-top: 25px; padding-bottom: 25px; }
+}

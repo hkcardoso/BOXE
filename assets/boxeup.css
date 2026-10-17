@@ -67,3 +67,15 @@ main .collection-hero__title,.main-page-title,.title-wrapper-with-link .title,.c
     padding-right: clamp(3rem, 4.5vw, 9rem);
   }
 }
+
+/* BOXEUP — 4 product cards per row on the homepage and catalog.
+   Apply from 850px so wide Shopify editor previews also show four;
+   keep two cards on smaller tablets/mobile. The selected sections
+   already specify four desktop columns in their template settings. */
+@media screen and (min-width: 850px) {
+  #MainContent .collection .grid.product-grid.grid--4-col-desktop:not(.slider) > .grid__item {
+    flex: 0 0 calc((100% - 42px) / 4);
+    width: calc((100% - 42px) / 4);
+    max-width: calc((100% - 42px) / 4);
+  }
+}

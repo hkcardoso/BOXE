@@ -1,0 +1,109 @@
+{{ 'boxeup-home.css' | asset_url | stylesheet_tag }}
+
+<section class="boxeup-home" aria-label="BOXEUP — Desportos de combate">
+  <div class="page-width">
+    <div class="boxeup-hero">
+      <div class="boxeup-hero__copy">
+        <p class="boxeup-eyebrow"><span class="boxeup-eyebrow__line"></span>{{ section.settings.eyebrow | escape }}</p>
+        <h2 class="boxeup-hero__heading">{{ section.settings.heading | escape }}<span>{{ section.settings.heading_accent | escape }}</span></h2>
+        <p class="boxeup-hero__description">{{ section.settings.description | escape }}</p>
+        <div class="boxeup-hero__actions">
+          <a class="boxeup-btn boxeup-btn--light" href="{{ routes.all_products_collection_url }}">
+            Explorar equipamento
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a class="boxeup-btn boxeup-btn--outline" href="#boxeup-modalidades">Ver modalidades <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="boxeup-hero__micro">BOXE <span>/</span> MUAY THAI <span>/</span> MMA <span>/</span> JIU-JITSU</div>
+      </div>
+      <div class="boxeup-hero__visual{% if section.settings.hero_image != blank %} boxeup-hero__visual--image{% endif %}">
+        {% if section.settings.hero_image != blank %}
+          {{ section.settings.hero_image | image_url: width: 1600 | image_tag: loading: 'eager', sizes: '(min-width: 990px) 46vw, 100vw', class: 'boxeup-hero__image', alt: section.settings.hero_image.alt }}
+        {% else %}
+          <span class="boxeup-hero__ring boxeup-hero__ring--one" aria-hidden="true"></span>
+          <span class="boxeup-hero__ring boxeup-hero__ring--two" aria-hidden="true"></span>
+          <span class="boxeup-hero__graphic" aria-hidden="true">FIGHT<br>READY<span>.</span></span>
+        {% endif %}
+        <span class="boxeup-hero__side-label">FOR THE WORK. FOR THE FIGHT.</span>
+        <span class="boxeup-hero__edition">BX / 001</span>
+      </div>
+    </div>
+
+    <div class="boxeup-benefits" aria-label="Áreas da loja">
+      <span><i aria-hidden="true">✦</i> FOCO NO COMBATE</span>
+      <span><i aria-hidden="true">✦</i> EQUIPAMENTO PARA TREINAR</span>
+      <span><i aria-hidden="true">✦</i> ESCOLHE A TUA MODALIDADE</span>
+    </div>
+
+    <div class="boxeup-categories" id="boxeup-modalidades">
+      <div class="boxeup-section-heading">
+        <div>
+          <p class="boxeup-kicker">01 / MODALIDADES</p>
+          <h2>{{ section.settings.categories_heading | escape }}</h2>
+          <p>Encontra o que precisas para o teu próximo treino.</p>
+        </div>
+        <a href="{{ routes.all_products_collection_url }}" class="boxeup-text-link">Ver todo o catálogo <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="boxeup-category-grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'category' %}
+            {% assign category_query = block.settings.search_term | default: block.settings.title | url_encode %}
+            <a class="boxeup-category" href="{{ routes.search_url }}?q={{ category_query }}&type=product" {{ block.shopify_attributes }}>
+              <div class="boxeup-category__visual">
+                {% if block.settings.image != blank %}
+                  {{ block.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', class: 'boxeup-category__image', sizes: '(min-width: 990px) 24vw, (min-width: 750px) 50vw, 80vw', alt: block.settings.title }}
+                {% else %}
+                  <span class="boxeup-category__glyph" aria-hidden="true">{{ block.settings.title | slice: 0, 1 }}</span>
+                  <span class="boxeup-category__ring" aria-hidden="true"></span>
+                {% endif %}
+                <span class="boxeup-category__number">0{{ forloop.index }}</span>
+              </div>
+              <div class="boxeup-category__details">
+                <span><strong>{{ block.settings.title | escape }}</strong><small>{{ block.settings.subtitle | escape }}</small></span>
+                <span class="boxeup-category__arrow" aria-hidden="true">↗</span>
+              </div>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "BOXEUP | Início",
+  "tag": "section",
+  "class": "section-boxeup-home",
+  "settings": [
+    {"type":"text","id":"eyebrow","label":"Texto de topo","default":"EQUIPAMENTO DE COMBATE / EST. 2026"},
+    {"type":"text","id":"heading","label":"Título principal","default":"PREPARA-TE"},
+    {"type":"text","id":"heading_accent","label":"Segunda linha","default":"PARA O PRÓXIMO ROUND."},
+    {"type":"text","id":"description","label":"Descrição","default":"Boxe, Muay Thai, MMA e Jiu-Jitsu. O teu espaço para encontrar equipamento à altura do teu treino."},
+    {"type":"image_picker","id":"hero_image","label":"Imagem do destaque (opcional)","info":"Sem imagem, o tema apresenta um grafismo tipográfico premium."},
+    {"type":"text","id":"categories_heading","label":"Título de categorias","default":"A TUA MODALIDADE. O TEU EQUIPAMENTO."}
+  ],
+  "blocks": [
+    {
+      "type":"category",
+      "name":"Modalidade",
+      "limit":6,
+      "settings":[
+        {"type":"text","id":"title","label":"Modalidade","default":"BOXE"},
+        {"type":"text","id":"subtitle","label":"Descrição breve","default":"Luvas e proteção"},
+        {"type":"text","id":"search_term","label":"Pesquisa do catálogo","default":"boxe"},
+        {"type":"image_picker","id":"image","label":"Fotografia (opcional)"}
+      ]
+    }
+  ],
+  "max_blocks":6,
+  "presets":[
+    {"name":"BOXEUP | Início","blocks":[
+      {"type":"category","settings":{"title":"BOXE","subtitle":"Luvas e proteção","search_term":"boxe"}},
+      {"type":"category","settings":{"title":"MUAY THAI","subtitle":"Treino e combate","search_term":"muay thai"}},
+      {"type":"category","settings":{"title":"MMA","subtitle":"Equipamento técnico","search_term":"mma"}},
+      {"type":"category","settings":{"title":"JIU-JITSU","subtitle":"Tatami e treino","search_term":"jiu jitsu"}}
+    ]}
+  ]
+}
+{% endschema %}

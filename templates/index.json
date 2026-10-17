@@ -1,48 +1,59 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "boxeup_home": {
+      "type": "boxeup-home",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "boxe": {
+          "type": "category",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "title": "BOXE",
+            "subtitle": "Luvas e proteção",
+            "search_term": "boxe"
           }
         },
-        "button": {
-          "type": "buttons",
+        "muaythai": {
+          "type": "category",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "title": "MUAY THAI",
+            "subtitle": "Treino e combate",
+            "search_term": "muay thai"
+          }
+        },
+        "mma": {
+          "type": "category",
+          "settings": {
+            "title": "MMA",
+            "subtitle": "Equipamento técnico",
+            "search_term": "mma"
+          }
+        },
+        "jiujitsu": {
+          "type": "category",
+          "settings": {
+            "title": "JIU-JITSU",
+            "subtitle": "Tatami e treino",
+            "search_term": "jiu jitsu"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "boxe",
+        "muaythai",
+        "mma",
+        "jiujitsu"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "eyebrow": "EQUIPAMENTO DE COMBATE / BOXEUP",
+        "heading": "PREPARA-TE",
+        "heading_accent": "PARA O PRÓXIMO ROUND.",
+        "description": "Boxe, Muay Thai, MMA e Jiu-Jitsu. O teu espaço para encontrar equipamento à altura do teu treino.",
+        "categories_heading": "A TUA MODALIDADE. O TEU EQUIPAMENTO."
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
+        "title": "A EQUIPAR O PRÓXIMO TREINO",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
@@ -56,20 +67,20 @@
         "view_all_style": "solid",
         "enable_desktop_slider": false,
         "swipe_on_mobile": false,
-        "image_ratio": "adapt",
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "padding_top": 32,
+        "padding_bottom": 72
       }
     }
   },
   "order": [
-    "image_banner",
+    "boxeup_home",
     "featured_collection"
   ]
 }

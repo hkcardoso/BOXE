@@ -1,0 +1,87 @@
+/* BOXEUP — homepage, editable Shopify section */
+.section-boxeup-home { background: #fff; }
+.boxeup-home { color: #171717; padding: 24px 0 20px; }
+.boxeup-hero { position:relative; min-height:500px; display:grid; grid-template-columns: 53% 47%; overflow:hidden; background:#151515; color:#fff; border-radius:5px; }
+.boxeup-hero__copy { position:relative; z-index:2; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; padding: clamp(32px,5vw,88px); }
+.boxeup-eyebrow,.boxeup-kicker { margin:0 0 28px; font: 700 11px/1.4 var(--font-body-family); letter-spacing:.2em; }
+.boxeup-eyebrow { display:flex; align-items:center; gap:12px; color:#ecebea; }
+.boxeup-eyebrow__line { height:1px; width:27px; background:#b87177; }
+.boxeup-hero__heading { margin:0; max-width:720px; font-weight:800; font-size:clamp(42px,5vw,78px); line-height: .98; letter-spacing:-.07em; color:#fff; }
+.boxeup-hero__heading span { display:block; color:#c3aaa9; }
+.boxeup-hero__description { max-width:480px; font-size:16px; line-height:1.6; color:#c7c7c7; margin:25px 0 28px; }
+.boxeup-hero__actions { display:flex; align-items:center; flex-wrap:wrap; gap:10px; }
+.boxeup-btn { display:inline-flex; justify-content:space-between; gap:28px; align-items:center; min-height:46px; padding:13px 19px; text-decoration:none; font-size:12px; letter-spacing:.02em; font-weight:700; transition: background .2s,color .2s,border-color .2s; border:1px solid rgba(255,255,255,.55); border-radius:3px; }
+.boxeup-btn--light { background:#fff; color:#101010; border-color:#fff; }
+.boxeup-btn--light:hover { background:#e3d7d6; color:#101010; }
+.boxeup-btn--outline { color:#fff; background:transparent; }
+.boxeup-btn--outline:hover { background:rgba(255,255,255,.12); }
+.boxeup-hero__micro { margin-top:44px; font-size:10px; letter-spacing:.15em; color:#a8a8a8; }
+.boxeup-hero__micro span { color:#a5686e; margin:0 8px; }
+.boxeup-hero__visual { position:relative; min-height:440px; isolation:isolate; overflow:hidden; background:radial-gradient(ellipse at 70% 42%,rgba(158,82,89,.37),transparent 56%), linear-gradient(145deg,#262123 0%,#3d3031 48%,#121212 100%); }
+.boxeup-hero__visual::before { content:""; position:absolute; top:-24%; bottom:-32%; left:-16%; width:40%; z-index:2; background:linear-gradient(90deg,#151515,transparent); pointer-events:none; }
+.boxeup-hero__visual--image::before { width:100%; left:0; top:0; bottom:0; background:linear-gradient(90deg,#151515 0,rgba(21,21,21,.1) 50%,rgba(0,0,0,.23)); }
+.boxeup-hero__image { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+.boxeup-hero__ring { position:absolute; border:1px solid rgba(255,255,255,.13); border-radius:50%; width:550px; aspect-ratio:1; transform:rotate(-22deg); }
+.boxeup-hero__ring--one { left:12%; top:-10%; }
+.boxeup-hero__ring--two { left:28%; top:-18%; width:650px; border-color:rgba(255,255,255,.075); }
+.boxeup-hero__graphic { font-family:var(--font-heading-family); font-weight:900; position:absolute; right:-5%; top:50%; transform:translateY(-50%) rotate(-8deg); font-size:clamp(86px,10vw,180px); letter-spacing:-.1em; line-height:.77; color:rgba(245,239,235,.82); text-shadow:0 25px 55px rgba(0,0,0,.2); }
+.boxeup-hero__graphic span { color:#bc7278; }
+.boxeup-hero__side-label { position:absolute; right:21px; top:25px; writing-mode:vertical-rl; font-size:10px; letter-spacing:.22em; color:#ddd; }
+.boxeup-hero__edition { position:absolute; right:30px; bottom:25px; font-size:11px; font-weight:700; letter-spacing:.14em; color:#dad5d4; }
+.boxeup-benefits { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; padding:21px 2px; border-bottom:1px solid #e7e7e7; gap:12px; }
+.boxeup-benefits span { font-size:10px; letter-spacing:.15em; font-weight:800; color:#676767; }
+.boxeup-benefits i { font-size:13px; font-style:normal; color:#934f55; margin-right:6px; }
+.boxeup-categories { padding:77px 0 32px; scroll-margin-top:110px; }
+.boxeup-section-heading { display:flex; justify-content:space-between; align-items:flex-end; gap:20px; margin-bottom:30px; }
+.boxeup-kicker { color:#945459; margin-bottom:13px; }
+.boxeup-section-heading h2 { margin:0; font-size:clamp(26px,2.6vw,42px); font-weight:800; letter-spacing:-.055em; line-height:1.05; }
+.boxeup-section-heading p:not(.boxeup-kicker) { margin:12px 0 0; color:#737373; font-size:14px; }
+.boxeup-text-link { white-space:nowrap; text-decoration:none; border-bottom:1px solid #131313; color:#131313; font-size:12px; font-weight:700; padding-bottom:6px; }
+.boxeup-text-link span { margin-left:18px; }
+.boxeup-category-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+.boxeup-category { min-width:0; display:block; text-decoration:none; color:#111; }
+.boxeup-category__visual { height:auto; aspect-ratio: 1 / .94; display:grid; place-items:center; position:relative; overflow:hidden; background:linear-gradient(140deg,#ebebea,#dcdad7); }
+.boxeup-category:nth-child(2) .boxeup-category__visual { background:linear-gradient(140deg,#ded7d4,#cac2c0); }
+.boxeup-category:nth-child(3) .boxeup-category__visual { background:linear-gradient(140deg,#d5d7d7,#bfc5c4); }
+.boxeup-category:nth-child(4) .boxeup-category__visual { background:linear-gradient(140deg,#e4e0d8,#d1c9bf); }
+.boxeup-category__glyph { color:rgba(16,16,16,.1); font-weight:900; font-size:clamp(125px,15vw,255px); line-height:1; transition:transform .35s; letter-spacing:-.1em; }
+.boxeup-category__ring { width:50%; aspect-ratio:1; position:absolute; border:1px solid rgba(0,0,0,.12); border-radius:50%; transform:rotate(35deg) scale(1.4); }
+.boxeup-category__image { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .35s; }
+.boxeup-category__number { position:absolute; top:19px; left:19px; font-size:11px; letter-spacing:.16em; font-weight:700; z-index:1; }
+.boxeup-category__details { display:flex; justify-content:space-between; align-items:center; padding:19px 3px 5px; gap:10px; }
+.boxeup-category__details strong { display:block; font-size:15px; line-height:1.2; font-weight:800; letter-spacing:.02em; }
+.boxeup-category__details small { display:block; color:#777; margin-top:6px; font-size:12px; }
+.boxeup-category__arrow { display:grid; place-items:center; width:30px; height:30px; border:1px solid #d8d8d8; border-radius:50%; transition:background .2s; }
+.boxeup-category:hover .boxeup-category__glyph,.boxeup-category:hover .boxeup-category__image { transform:scale(1.06); }
+.boxeup-category:hover .boxeup-category__arrow { background:#eaeaea; }
+@media (max-width:989px) {
+ .boxeup-hero { grid-template-columns:1fr; }
+ .boxeup-hero__copy { padding:45px 36px; }
+ .boxeup-hero__visual { min-height:280px; }
+ .boxeup-hero__visual::before { width:100%; height:40%; left:0; top:-1%; bottom:auto; background:linear-gradient(#151515,transparent); }
+ .boxeup-hero__graphic { right:12%; font-size:clamp(100px,20vw,220px); }
+ .boxeup-benefits { justify-content:center; gap:12px 24px; }
+ .boxeup-category-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:749px) {
+ .boxeup-home { padding-top:8px; }
+ .boxeup-hero__copy { padding:42px 24px 22px; }
+ .boxeup-hero__heading { font-size:clamp(40px,10vw,62px); }
+ .boxeup-hero__description { margin:20px 0 23px; font-size:14px; }
+ .boxeup-hero__micro { margin-top:33px; line-height:1.8; }
+ .boxeup-hero__visual { min-height:235px; }
+ .boxeup-hero__graphic { font-size:24vw; right:10%; }
+ .boxeup-hero__side-label { top:14px; right:12px; }
+ .boxeup-benefits { justify-content:flex-start; padding:16px 0; gap:12px 14px; }
+ .boxeup-benefits span { font-size:9px; }
+ .boxeup-categories { padding:48px 0 22px; }
+ .boxeup-section-heading { display:block; }
+ .boxeup-section-heading h2 { font-size:30px; }
+ .boxeup-text-link { display:inline-block; margin-top:18px; }
+ .boxeup-category-grid { gap:18px 10px; }
+ .boxeup-category__details { padding-top:13px; }
+ .boxeup-category__details strong { font-size:12px; }
+ .boxeup-category__details small { font-size:11px; }
+ .boxeup-category__glyph { font-size:36vw; }
+}
+@media (prefers-reduced-motion:reduce) { .boxeup-category__glyph,.boxeup-category__image,.boxeup-btn { transition:none; } }

@@ -1,0 +1,21 @@
+<section class="boxeup-shop-categories page-width" aria-label="Explorar modalidades">
+  <div class="boxeup-shop-categories__intro">
+    <span>EXPLORAR POR MODALIDADE</span>
+    <a href="{{ routes.all_products_collection_url }}">Ver tudo <span aria-hidden="true">↗</span></a>
+  </div>
+  <nav class="boxeup-shop-categories__links" aria-label="Modalidades">
+    <a class="boxeup-shop-categories__link" href="{{ routes.search_url }}?q=boxe&type=product">Boxe <span aria-hidden="true">↗</span></a>
+    <a class="boxeup-shop-categories__link" href="{{ routes.search_url }}?q=muay%20thai&type=product">Muay Thai <span aria-hidden="true">↗</span></a>
+    <a class="boxeup-shop-categories__link" href="{{ routes.search_url }}?q=mma&type=product">MMA <span aria-hidden="true">↗</span></a>
+    <a class="boxeup-shop-categories__link" href="{{ routes.search_url }}?q=jiu%20jitsu&type=product">Jiu-Jitsu <span aria-hidden="true">↗</span></a>
+  </nav>
+</section>
+{% schema %}
+{
+  "name": "BOXEUP | Modalidades",
+  "tag": "section",
+  "class": "section-boxeup-shop-categories",
+  "settings": [],
+  "presets": [{"name": "BOXEUP | Modalidades"}]
+}
+{% endschema %}

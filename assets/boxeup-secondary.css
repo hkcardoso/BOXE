@@ -1,0 +1,134 @@
+/* BOXEUP | Secondary pages — Shopify Dawn, October 2026 */
+:root {
+  --bx-border: #e8e8e6;
+  --bx-muted: #74716f;
+  --bx-ink: #161616;
+  --bx-bg: #f5f5f3;
+  --bx-accent: #945057;
+}
+.boxeup-breadcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin:0 0 2.8rem;font-size:1.15rem;color:#85817e;line-height:1.4}
+.boxeup-breadcrumb a{text-decoration:none;color:#585452}
+.boxeup-breadcrumb a:hover{color:var(--bx-ink);text-decoration:underline;text-underline-offset:3px}
+.boxeup-breadcrumb [aria-current="page"]{max-width:45ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#282828}
+.boxeup-breadcrumb--product{padding-top:1.8rem;margin-bottom:2rem}
+.boxeup-collection-kicker{font-size:1.15rem;letter-spacing:.18em;font-weight:800;color:var(--bx-accent);margin:0 0:1.3rem}
+.boxeup-collection-kicker span{color:#c5bdba;margin:0 .6rem}
+.collection-hero{background:#fff}
+.collection-hero__inner.page-width{padding-top:4.2rem;padding-bottom:3.5rem;border-bottom:1px solid var(--bx-border)}
+.collection-hero__title{font-size:clamp(3.6rem,4vw,6rem)!important;line-height:1.05!important;letter-spacing:-.065em!important;font-weight:850!important;text-transform:uppercase}
+.collection-hero__description{max-width:70rem;font-size:1.48rem;line-height:1.65;color:#706e6b}
+.collection-hero .boxeup-breadcrumb{margin-bottom:3.2rem}
+.section-boxeup-shop-categories{background:#fff}
+.boxeup-shop-categories{padding-top:2.8rem;padding-bottom:2.8rem;border-bottom:1px solid var(--bx-border)}
+.boxeup-shop-categories__intro{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.8rem}
+.boxeup-shop-categories__intro>span{font-size:1.12rem;font-weight:800;letter-spacing:.17em;color:#777}
+.boxeup-shop-categories__intro>a{font-size:1.16rem;text-decoration:none;color:#444;border-bottom:1px solid #999;padding-bottom:.3rem}
+.boxeup-shop-categories__links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem}
+.boxeup-shop-categories__link{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.7rem 2rem;background:var(--bx-bg);color:#262626;text-decoration:none;font-size:1.35rem;letter-spacing:.02em;font-weight:800;transition:background .2s ease}
+.boxeup-shop-categories__link:hover{background:#e9e5e3;color:var(--bx-ink)}
+.boxeup-shop-categories__link span{font-size:1.5rem;font-weight:400;color:#846367}
+.collection #product-grid,.template-search #product-grid{row-gap:3.6rem}
+#ProductGridContainer{padding-top:1.4rem}
+#ProductGridContainer .card-wrapper .card__inner,
+.template-search .card-wrapper .card__inner{background:var(--bx-bg);border-radius:2px}
+#ProductGridContainer .card__information,
+.template-search .card__information{padding-top:1.45rem}
+#ProductGridContainer .card__heading,.template-search .card__heading{font-size:1.35rem!important;font-weight:650;line-height:1.42}
+#ProductGridContainer .caption-with-letter-spacing,
+.template-search .caption-with-letter-spacing{letter-spacing:.09em;font-size:1.06rem;color:#7d7a77;text-transform:uppercase}
+.facets__form,.facets-vertical-form{padding-bottom:1rem;border-bottom:1px solid var(--bx-border)}
+.template-search__header .h2{font-size:clamp(3.5rem,3.6vw,5.6rem);letter-spacing:-.055em;font-weight:800}
+.template-search__search{max-width:78rem}
+.template-search .search__input{border:1px solid #d5d5d4}
+.main-list-collections .title,.title--primary{font-weight:850;letter-spacing:-.05em}
+.main-page-title{font-size:clamp(3.8rem,4vw,6rem);line-height:1.05;margin-bottom:3rem!important}
+.main-page-title + .rte{font-size:1.55rem;line-height:1.8}
+/* Product details: compact purchasing panel, gallery, labels and related items. */
+.product .product__media-wrapper{min-width:0}
+.product .product__media-list .product__media-item .product__media{background:var(--bx-bg)}
+.product .product__info-wrapper{min-width:0}
+.product .product__info-container{max-width:59rem}
+.product .product__title h1{font-size:clamp(3rem,3vw,4.7rem)!important;font-weight:800;letter-spacing:-.055em;line-height:1.1}
+.product .product__info-container .price{font-size:2.2rem;font-weight:800;letter-spacing:-.035em}
+.product .product__info-container .price-item{font-weight:800}
+.product .product__info-container .product__text{font-size:1.12rem;letter-spacing:.12em;font-weight:800;color:var(--bx-muted)}
+.product .product-form__input .form__label{font-size:1.2rem;font-weight:750;letter-spacing:.04em;margin-bottom:1rem}
+.product .product-form__input input[type=radio]+label{border:1px solid #dadada;border-radius:2px;font-weight:650;min-width:4.4rem;padding:1rem 1.4rem;transition:border-color .2s ease,background .2s ease}
+.product .product-form__input input[type=radio]:checked+label{background:var(--bx-ink);color:#fff;border-color:var(--bx-ink)}
+.product .product-form__submit{min-height:5.6rem;font-size:1.28rem;text-transform:uppercase;letter-spacing:.07em;font-weight:800}
+.product .product-form__buttons{max-width:none}
+.product .product__description{font-size:1.45rem;line-height:1.75;border-top:1px solid var(--bx-border);padding-top:2.4rem;margin-top:2.6rem}
+.product .product__description h2,.product .product__description h3{letter-spacing:-.035em;font-weight:800}
+.product .product__tax{font-size:1.12rem;color:#757575}
+.product .thumbnail{border-radius:2px;border-color:#e7e7e6}
+.product .thumbnail[aria-current=true]{border-color:#181818}
+.related-products__heading{font-size:clamp(2.6rem,2.5vw,3.9rem);font-weight:800;letter-spacing:-.055em;text-transform:uppercase}
+.related-products .card-wrapper .card__inner{background:var(--bx-bg)}
+/* BOXEUP contact page — content and form genuinely native to Shopify. */
+.section-boxeup-contact{background:#fff}
+.boxeup-contact{padding-top:4.8rem;padding-bottom:10rem;color:var(--bx-ink)}
+.boxeup-contact>.boxeup-breadcrumb{margin-bottom:4.5rem}
+.boxeup-contact__heading{max-width:88rem;margin-bottom:5.2rem}
+.boxeup-contact__eyebrow{font-size:1.1rem;font-weight:800;letter-spacing:.2em;color:var(--bx-accent);margin:0 0 1.7rem}
+.boxeup-contact__heading h1{font-size:clamp(4.7rem,5.5vw,8rem);line-height:.98;letter-spacing:-.068em;font-weight:900;margin:0 0 2.5rem}
+.boxeup-contact__heading>p:not(.boxeup-contact__eyebrow){max-width:68rem;font-size:1.65rem;line-height:1.7;color:#6e6e6c;margin:0}
+.boxeup-contact__grid{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(4rem,8vw,14rem);align-items:start;border-top:1px solid var(--bx-border);padding-top:5rem}
+.boxeup-contact__details{display:flex;flex-direction:column;gap:4.5rem}
+.boxeup-contact__detail{padding:0 0 3.8rem;border-bottom:1px solid var(--bx-border)}
+.boxeup-contact__detail-number{display:block;color:var(--bx-accent);font-size:1.1rem;letter-spacing:.17em;font-weight:800;margin-bottom:2rem}
+.boxeup-contact__detail h2{font-size:clamp(2rem,2vw,2.8rem);font-weight:800;letter-spacing:-.04em;line-height:1.15;margin:0 0 1.4rem}
+.boxeup-contact__detail p{font-size:1.42rem;line-height:1.75;color:#71716f;margin:0;max-width:44rem}
+.boxeup-contact__link{margin-top:2rem;display:inline-flex;gap:2.5rem;color:#171717;font-weight:800;font-size:1.22rem;text-decoration:none;border-bottom:1px solid #111;padding-bottom:.6rem}
+.boxeup-contact__extra{font-size:1.4rem;line-height:1.7;max-width:46rem}
+.boxeup-contact__form-wrap{padding:4.4rem 5rem 5rem;background:#f6f6f4}
+.boxeup-contact__form-overline{display:flex;justify-content:space-between;color:var(--bx-accent);font-weight:800;letter-spacing:.16em;font-size:1.12rem}
+.boxeup-contact__form-wrap h2{font-size:clamp(2.7rem,2.5vw,3.8rem);letter-spacing:-.05em;font-weight:800;line-height:1.1;margin:1.6rem 0 1rem}
+.boxeup-contact__form-intro{font-size:1.38rem;color:#777;margin:0 0 3.6rem;line-height:1.65}
+.boxeup-contact__fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5rem 1.6rem}
+.boxeup-contact__field{min-width:0;display:flex;flex-direction:column}
+.boxeup-contact__field--full{grid-column:1/-1}
+.boxeup-contact__field label{font-size:1.15rem;font-weight:750;letter-spacing:.035em;margin-bottom:.95rem}
+.boxeup-contact__field label>span:not(.boxeup-contact__optional){color:var(--bx-accent)}
+.boxeup-contact__optional{font-weight:400;color:#858585;letter-spacing:0}
+.boxeup-contact__field input,.boxeup-contact__field textarea{appearance:none;border:1px solid #dadad7;background:#fff;border-radius:2px;max-width:100%;width:100%;font:inherit;color:#161616;font-size:1.32rem;line-height:1.5;padding:1.4rem 1.5rem}
+.boxeup-contact__field input::placeholder,.boxeup-contact__field textarea::placeholder{color:#92918f}
+.boxeup-contact__field input:focus-visible,.boxeup-contact__field textarea:focus-visible{outline:2px solid var(--bx-ink);outline-offset:2px}
+.boxeup-contact__field textarea{resize:vertical;min-height:16rem}
+.boxeup-contact__field-error{font-size:1.15rem;margin-top:.4rem;color:#9e3434}
+.boxeup-contact__submit-row{display:flex;justify-content:space-between;align-items:center;gap:1.4rem;margin-top:2.6rem;flex-wrap:wrap}
+.boxeup-contact__submit-row button{border:1px solid #161616;min-height:5.2rem;background:#161616;color:#fff;padding:1.4rem 2rem;display:inline-flex;align-items:center;justify-content:space-between;gap:5rem;font:inherit;font-size:1.25rem;font-weight:800;cursor:pointer;transition:background .2s}
+.boxeup-contact__submit-row button:hover{background:#444}
+.boxeup-contact__submit-row>span,.boxeup-contact__privacy{font-size:1.12rem;color:#777}
+.boxeup-contact__privacy a{color:#333;text-underline-offset:3px}
+.boxeup-contact__success,.boxeup-contact__error{margin-bottom:2.5rem;padding:1.7rem;background:#fff;border:1px solid #d2d2ce;font-size:1.35rem}
+.boxeup-contact__success strong,.boxeup-contact__error strong{font-weight:800}
+.boxeup-contact__success p{margin:1rem 0 0}
+@media(max-width:989px){
+  .boxeup-shop-categories__links{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .boxeup-contact__grid{grid-template-columns:1fr;gap:4rem}
+  .boxeup-contact__details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5rem}
+  .boxeup-contact__form-wrap{padding:3.5rem}
+}
+@media(max-width:749px){
+  .boxeup-breadcrumb{gap:.7rem;font-size:1.1rem;margin-bottom:2rem}
+  .collection-hero__inner.page-width{padding-top:3.2rem;padding-bottom:2.6rem}
+  .collection-hero__title{font-size:3.8rem!important}
+  .boxeup-shop-categories{padding-top:2rem;padding-bottom:2rem}
+  .boxeup-shop-categories__links{gap:.9rem}
+  .boxeup-shop-categories__link{padding:1.3rem 1.4rem;font-size:1.22rem}
+  .product .product__title h1{font-size:3.2rem!important}
+  .boxeup-contact{padding-top:2.8rem;padding-bottom:6rem}
+  .boxeup-contact>.boxeup-breadcrumb{margin-bottom:3.2rem}
+  .boxeup-contact__heading{margin-bottom:3.2rem}
+  .boxeup-contact__heading h1{font-size:4.8rem}
+  .boxeup-contact__heading>p:not(.boxeup-contact__eyebrow){font-size:1.45rem}
+  .boxeup-contact__grid{padding-top:3.2rem}
+  .boxeup-contact__details{grid-template-columns:1fr;gap:2.5rem}
+  .boxeup-contact__detail{padding-bottom:2.5rem}
+  .boxeup-contact__form-wrap{padding:2.6rem 2rem}
+  .boxeup-contact__fields{grid-template-columns:1fr;gap:1.8rem}
+  .boxeup-contact__field--full{grid-column:auto}
+  .boxeup-contact__submit-row{align-items:stretch}
+  .boxeup-contact__submit-row button{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.boxeup-shop-categories__link,.boxeup-contact__submit-row button{transition:none}}

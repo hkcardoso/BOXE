@@ -1,25 +1,19 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "boxeup_contact": {
+      "type": "boxeup-contact",
       "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "form": {
-      "type": "contact-form",
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "eyebrow": "ESTAMOS AQUI PARA AJUDAR",
+        "heading": "FALA CONNOSCO.",
+        "description": "Precisas de ajuda a escolher equipamento, tens uma dúvida sobre um produto ou queres apresentar uma proposta de parceria? Envia-nos uma mensagem.",
+        "details_heading": "COMO PODEMOS AJUDAR?",
+        "details_text": "Dúvidas sobre produtos, encomendas e colaborações. Explica-nos o que precisas e responderemos através do contacto que indicares.",
+        "form_heading": "Envia-nos uma mensagem",
+        "form_intro": "Preenche os campos abaixo para entrar em contacto com a BOXEUP."
       }
     }
   },
   "order": [
-    "main",
-    "form"
+    "boxeup_contact"
   ]
 }

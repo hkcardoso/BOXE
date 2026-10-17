@@ -1,0 +1,42 @@
+name: Import Shopify Dawn theme
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-dawn:
+    name: Create shopify-dawn branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out BOXE repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify target branch does not already exist
+        run: |
+          if git ls-remote --exit-code --heads origin shopify-dawn >/dev/null 2>&1; then
+            echo "The shopify-dawn branch already exists. No files were changed."
+            exit 1
+          fi
+
+      - name: Download stable Shopify Dawn v16.0.0
+        run: |
+          git clone --depth 1 --branch v16.0.0 https://github.com/Shopify/dawn.git /tmp/shopify-dawn
+
+      - name: Create unpublished theme branch
+        run: |
+          git switch -c shopify-dawn
+          tar -C /tmp/shopify-dawn --exclude='./.git' --exclude='./.github' -cf - . | tar -xf -
+          git add -A
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Import Shopify Dawn v16.0.0 theme"
+          git push origin shopify-dawn
+
+      - name: Next step
+        run: |
+          echo "Theme is now in the shopify-dawn branch."
+          echo "In Shopify: Online Store > Themes > Add theme > Connect from GitHub."
+          echo "Choose hkcardoso/BOXE and branch shopify-dawn; keep it unpublished."

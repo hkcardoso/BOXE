@@ -64,12 +64,30 @@
         <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">Ver todo o catálogo <span aria-hidden="true">↗</span></a>
       </div>
       <div class="bxv2-cat-grid">
-        <a href="{{ routes.search_url }}?q=luvas&type=product" class="bxv2-cat bxv2-cat--1">{% render 'boxeup-category-photo', products: bx_products, keyword: 'luvas', alt: 'Luvas de combate' %}<span class="bxv2-cat__num">01 / EQUIPAMENTO</span><strong>Luvas</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
-        <a href="{{ routes.search_url }}?q=caneleiras&type=product" class="bxv2-cat bxv2-cat--2">{% render 'boxeup-category-photo', products: bx_products, keyword: 'caneleiras', alt: 'Caneleiras de combate' %}<span class="bxv2-cat__num">02 / PROTEÇÃO</span><strong>Caneleiras</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
-        <a href="{{ routes.search_url }}?q=boqueira&type=product" class="bxv2-cat bxv2-cat--3">{% render 'boxeup-category-photo', products: bx_products, keyword: 'boqueira', alt: 'Boqueiras de proteção' %}<span class="bxv2-cat__num">03 / PROTEÇÃO</span><strong>Boqueiras</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
-        <a href="{{ routes.search_url }}?q=cal%C3%A7%C3%B5es&type=product" class="bxv2-cat bxv2-cat--4">{% render 'boxeup-category-photo', products: bx_products, keyword: 'calções', alt: 'Calções de combate' %}<span class="bxv2-cat__num">04 / VESTUÁRIO</span><strong>Calções e roupa</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
-        <a href="{{ routes.search_url }}?q=mochila&type=product" class="bxv2-cat bxv2-cat--5">{% render 'boxeup-category-photo', products: bx_products, keyword: 'mochila', alt: 'Mochilas de treino' %}<span class="bxv2-cat__num">05 / ACESSÓRIOS</span><strong>Mochilas e sacos</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
-        <a href="{{ routes.search_url }}?q=treino&type=product" class="bxv2-cat bxv2-cat--6">{% render 'boxeup-category-photo', products: bx_products, keyword: 'treino', alt: 'Equipamento de treino' %}<span class="bxv2-cat__num">06 / PERFORMANCE</span><strong>Equipamento de treino</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
+        <a href="{{ routes.search_url }}?q=luvas&type=product" class="bxv2-cat bxv2-cat--1" aria-label="Explorar Luvas">
+          {% render 'boxeup-category-product', product_handle: 'charlie-bat-x-luvas-de-treino', alt: 'Luvas Charlie Bat-X vermelhas' %}
+          <span class="bxv2-cat__label"><strong>Luvas</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></span>
+        </a>
+        <a href="{{ routes.search_url }}?q=caneleiras&type=product" class="bxv2-cat bxv2-cat--2" aria-label="Explorar Caneleiras">
+          {% render 'boxeup-category-product', product_handle: 'fairtex-sp5-caneleiras-de-competicao', alt: 'Caneleiras Fairtex SP5' %}
+          <span class="bxv2-cat__label"><strong>Caneleiras</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></span>
+        </a>
+        <a href="{{ routes.search_url }}?q=boqueira&type=product" class="bxv2-cat bxv2-cat--3" aria-label="Explorar Boqueiras">
+          {% render 'boxeup-category-product', product_handle: 'venum-challenger-boqueira-com-caixa', alt: 'Boqueira Venum Challenger' %}
+          <span class="bxv2-cat__label"><strong>Boqueiras</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></span>
+        </a>
+        <a href="{{ routes.search_url }}?q=cal%C3%A7%C3%B5es&type=product" class="bxv2-cat bxv2-cat--4" aria-label="Explorar Calções e roupa">
+          {% render 'boxeup-category-product', product_handle: 'fluory-calcoes-de-muay-thai-vermelho-e-preto', alt: 'Calções FLUORY de Muay Thai' %}
+          <span class="bxv2-cat__label"><strong>Calções e roupa</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></span>
+        </a>
+        <a href="{{ routes.search_url }}?q=mochila&type=product" class="bxv2-cat bxv2-cat--5" aria-label="Explorar Mochilas e sacos">
+          {% render 'boxeup-category-product', product_handle: 'venum-challenger-pro-evo-mochila-22-5-l', alt: 'Mochila Venum Challenger Pro Evo' %}
+          <span class="bxv2-cat__label"><strong>Mochilas e sacos</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></span>
+        </a>
+        <a href="{{ routes.search_url }}?q=treino&type=product" class="bxv2-cat bxv2-cat--6" aria-label="Explorar Equipamento de treino">
+          {% render 'boxeup-category-product', product_handle: 'rival-rhg2-capacete-hibrido', alt: 'Capacete Rival RHG2 de treino' %}
+          <span class="bxv2-cat__label"><strong>Equipamento de treino</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></span>
+        </a>
       </div>
     </div>
 

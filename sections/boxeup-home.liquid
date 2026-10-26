@@ -197,19 +197,14 @@
     <div class="bxv2-block bxv2-block--brands">
       <div class="bxv2-heading"><div><p class="bxv2-kicker">AS MARCAS DO COMBATE</p><h2>Encontra a tua marca<span class="bxv2-red">.</span></h2></div><a class="bxv2-more" href="{{ routes.all_products_collection_url }}">Ver catálogo <span aria-hidden="true">↗</span></a></div>
       <div class="bxv2-brand-grid">
-        {% assign bx_brand_names = 'Fairtex|Charlie|Buddha|Venum|Cleto Reyes|Rival|Twins|Everlast' | split: '|' %}
-        {% for brand in bx_brand_names %}
-          {%- liquid
-            assign bx_brand_slug = brand | handleize
-            if bx_brand_slug == 'cleto-reyes'
-              assign bx_brand_slug = 'reyes'
-            endif
-            assign bx_brand_logo_file = 'boxeup-brand-' | append: bx_brand_slug | append: '.svg'
-          -%}
-          <a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.search_url }}?q={{ brand | url_encode }}&type=product" aria-label="Ver produtos {{ brand | escape }}">
-            <img class="bxv2-brand__logo" src="{{ bx_brand_logo_file | asset_url }}" alt="{{ brand | escape }}" loading="lazy" width="140" height="72">
-          </a>
-        {% endfor %}
+        <a class="bxv2-brand bxv2-brand--with-logo" href="/collections/fairtex" aria-label="Ver produtos Fairtex"><img class="bxv2-brand__logo" src="{{ 'boxeup-brand-fairtex.svg' | asset_url }}" alt="Fairtex" width="140" height="72" loading="lazy"></a>
+        <a class="bxv2-brand bxv2-brand--with-logo" href="/collections/charlie" aria-label="Ver produtos Charlie"><img class="bxv2-brand__logo" src="{{ 'boxeup-brand-charlie.svg' | asset_url }}" alt="Charlie" width="140" height="72" loading="lazy"></a>
+        <a class="bxv2-brand bxv2-brand--with-logo" href="/collections/buddha" aria-label="Ver produtos Buddha"><img class="bxv2-brand__logo" src="{{ 'boxeup-brand-buddha.svg' | asset_url }}" alt="Buddha" width="140" height="72" loading="lazy"></a>
+        <a class="bxv2-brand bxv2-brand--with-logo" href="/collections/venum" aria-label="Ver produtos Venum"><img class="bxv2-brand__logo" src="{{ 'boxeup-brand-venum.svg' | asset_url }}" alt="Venum" width="140" height="72" loading="lazy"></a>
+        <a class="bxv2-brand bxv2-brand--with-logo" href="/collections/cleto-reyes" aria-label="Ver produtos Cleto Reyes"><img class="bxv2-brand__logo" src="{{ 'boxeup-brand-reyes.svg' | asset_url }}" alt="Cleto Reyes" width="140" height="72" loading="lazy"></a>
+        <a class="bxv2-brand bxv2-brand--with-logo" href="/collections/rival" aria-label="Ver produtos Rival"><img class="bxv2-brand__logo" src="{{ 'boxeup-brand-rival.svg' | asset_url }}" alt="Rival" width="140" height="72" loading="lazy"></a>
+        <a class="bxv2-brand bxv2-brand--with-logo" href="/collections/twins" aria-label="Ver produtos Twins"><img class="bxv2-brand__logo" src="{{ 'boxeup-brand-twins.svg' | asset_url }}" alt="Twins" width="140" height="72" loading="lazy"></a>
+        <a class="bxv2-brand bxv2-brand--with-logo" href="/collections/everlast" aria-label="Ver produtos Everlast"><img class="bxv2-brand__logo" src="{{ 'boxeup-brand-everlast.svg' | asset_url }}" alt="Everlast" width="140" height="72" loading="lazy"></a>
       </div>
     </div>
   </div>

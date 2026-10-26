@@ -297,3 +297,64 @@ body.boxeup-page-home .header-wrapper .header__icon{color:#fff!important}
   opacity: 1 !important;
   transform: none !important;
 }
+
+
+/* BOXEUP | Catalogue media fix (2026-10-26)
+   Keep the image stage from collapsing inside compact flex product cards. */
+#MainContent .product-card-wrapper .card--media > .card__inner {
+  display:block!important;
+  position:relative!important;
+  flex:0 0 auto!important;
+  flex-shrink:0!important;
+  width:100%!important;
+  aspect-ratio:1/1!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  background:#1b1c1f!important;
+}
+#MainContent .product-card-wrapper .card--media > .card__inner > .card__media {
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  margin:0!important;
+  overflow:hidden!important;
+}
+#MainContent .product-card-wrapper .card--media > .card__inner > .card__media > .media {
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+}
+#MainContent .product-card-wrapper .card--media > .card__inner .card__media img {
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  opacity:1!important;
+  visibility:visible!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  z-index:1!important;
+}
+#MainContent .product-card-wrapper .card--media > .card__inner .card__media img + img {
+  opacity:0!important;
+}
+#MainContent .product-card-wrapper .card--media:hover > .card__inner .card__media img + img {
+  opacity:1!important;
+}
+#MainContent .product-card-wrapper .card--media > .card__inner > .card__content {
+  position:absolute!important;
+  inset:0!important;
+  z-index:2!important;
+  pointer-events:none;
+}
+#MainContent .product-card-wrapper .card--media > .card__inner > .card__content .card__heading {
+  opacity:0!important;
+}
+#MainContent .product-card-wrapper .card--media > .card__inner > .card__content .card__heading a {
+  pointer-events:auto;
+}

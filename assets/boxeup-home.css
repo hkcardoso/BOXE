@@ -200,7 +200,7 @@
 .section-boxeup-home .bxv2 .bxv2-hero__motion,
 .section-boxeup-home .bxv2 .bxv2-hero__still{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
 .section-boxeup-home .bxv2 .bxv2-hero__still{display:none}
-.section-boxeup-home .bxv2 .bxv2-hero__shade{background:linear-gradient(90deg,rgba(5,6,8,.97) 0%,rgba(6,7,9,.92) 24%,rgba(6,7,9,.58) 50%,rgba(6,7,9,.15) 80%),linear-gradient(0deg,rgba(5,5,8,.66),transparent 35%);z-index:1}
+.section-boxeup-home .bxv2 .bxv2-hero__shade{background:linear-gradient(90deg,rgba(3,4,6,.99) 0%,rgba(3,4,6,.97) 19%,rgba(4,5,7,.91) 34%,rgba(4,5,7,.74) 48%,rgba(4,5,7,.36) 66%,rgba(4,5,7,.06) 88%),linear-gradient(0deg,rgba(3,4,6,.50),transparent 37%);z-index:1}
 .section-boxeup-home .bxv2 .bxv2-hero__inner{width:min(760px,65%);padding-left:clamp(25px,4vw,78px);padding-right:10px;padding-bottom:88px;padding-top:32px}
 .section-boxeup-home .bxv2 .bxv2-hero h1{font-size:clamp(52px,5.2vw,87px);line-height:.97;letter-spacing:-.066em;font-weight:900;max-width:800px;text-wrap:balance}
 .section-boxeup-home .bxv2 .bxv2-hero h1 em{color:#ed2437}

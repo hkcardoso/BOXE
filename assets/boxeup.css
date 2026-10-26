@@ -1,0 +1,102 @@
+/* BOXEUP premium commerce skin — Dawn 16, deliberately scoped to theme UI */
+:root { --boxeup-ink:#151515; --boxeup-muted:#686868; --boxeup-accent:#945057; --boxeup-warm:#f5f5f3; }
+body { -webkit-font-smoothing:antialiased; }
+.header-wrapper { box-shadow:none; }
+.header-wrapper--border-bottom { border-bottom-color:#e9e9e7; }
+.header { column-gap:26px; }
+.header__heading-link { padding:0; }
+.boxeup-wordmark { display:inline-flex; align-items:baseline; font-size:clamp(23px,2.1vw,32px); font-family:var(--font-heading-family); font-weight:900; letter-spacing:-.09em; line-height:1; color:#141414; white-space:nowrap; }
+.boxeup-wordmark strong { font-weight:900; letter-spacing:-.095em; }
+.boxeup-wordmark i { font-style:normal; color:var(--boxeup-accent); font-size:1.45em; margin-left:1px; line-height:.5; }
+.header__menu-item span,.header__menu-item { font-size:12px; font-weight:700; letter-spacing:.055em; }
+.header__inline-menu .list-menu--inline { gap:clamp(3px,1vw,22px); }
+.header__inline-menu .list-menu--inline>li>a,.header__inline-menu .list-menu--inline>li>details>summary { text-transform:uppercase; }
+.header__icon .svg-wrapper { width:19px; height:19px; }
+.utility-bar { min-height:28px; }
+.announcement-bar__message.h5,.announcement-bar__message { font-size:10px; letter-spacing:.19em; font-weight:700; padding:8px 0; }
+main .collection-hero__title,.main-page-title,.title-wrapper-with-link .title,.collection .title { font-weight:800; letter-spacing:-.045em; }
+.collection-hero__title { font-size:clamp(30px,3.5vw,55px); }
+.grid.product-grid { column-gap:14px; row-gap:30px; }
+.card-wrapper .card__inner { background:#f5f5f3; overflow:hidden; }
+.card-wrapper .card__media img { object-fit:contain; mix-blend-mode:multiply; }
+.card-wrapper .card__heading { font-size:13px; line-height:1.35; font-weight:650; letter-spacing:-.012em; }
+.card-wrapper .card__heading a:hover { text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:2px; }
+.card-wrapper .card__information { padding:12px 2px 8px; }
+.card-wrapper .price { font-size:14px; font-weight:750; letter-spacing:-.01em; }
+.card-wrapper .card__badge .badge { font-size:10px; letter-spacing:.04em; border-radius:2px; }
+.facets__heading,.facet-filters__label,.facet-filters__sort,.product-count__text { font-size:12px; }
+.facets__form { border-top:1px solid #eaeaea; padding-top:14px; }
+.button,.shopify-payment-button__button--unbranded { font-weight:750; letter-spacing:.015em; }
+.button--primary:not(:disabled):hover { opacity:.91; }
+.footer { background:#141414; color:#efefef; border:0; }
+.footer .footer-block__heading,.footer .footer-block__details-content,.footer .footer__copyright,.footer .footer__copyright a { color:#ddd; }
+.footer .footer__content-bottom { border-top:1px solid rgba(255,255,255,.15); }
+.footer a,.footer .list-menu__item--link { color:#bbb; }
+.footer .footer__content-bottom-wrapper { padding-top:20px; }
+.boxeup-footer-brand { padding-top:10px; padding-bottom:36px; display:flex; justify-content:space-between; align-items:end; gap:24px; }
+.boxeup-footer-brand__wordmark { font-size:clamp(32px,4vw,56px); letter-spacing:-.09em; font-weight:900; line-height:1; color:#fff; }
+.boxeup-footer-brand__wordmark span { color:#fff; }
+.boxeup-footer-brand__wordmark b { color:#b8757a; }
+.boxeup-footer-brand p { max-width:280px; font-size:13px; line-height:1.6; color:#acacac; margin:0; text-align:right; }
+@media (min-width:990px) { .header { min-height:76px; } }
+@media (max-width:749px) {
+ .boxeup-wordmark { font-size:25px; }
+ .grid.product-grid { column-gap:10px; row-gap:22px; }
+ .boxeup-footer-brand { display:block; }
+ .boxeup-footer-brand p { margin:13px 0 0; text-align:left; }
+ .card-wrapper .card__heading { font-size:12px; }
+}
+
+/* BOXEUP — wider usable canvas on desktop, without scaling individual elements.
+   Reduce empty side gutters while retaining comfortable horizontal breathing room. */
+@media screen and (min-width: 990px) {
+  .page-width,
+  .page-width-desktop {
+    width: 100%;
+    max-width: 200rem;
+    padding-left: clamp(3rem, 4.5vw, 9rem);
+    padding-right: clamp(3rem, 4.5vw, 9rem);
+  }
+
+  /* Dawn gives the desktop header a more specific padding rule. */
+  .header:not(.drawer-menu).page-width,
+  .header.page-width,
+  .utility-bar__grid.page-width {
+    max-width: 200rem;
+    padding-left: clamp(3rem, 4.5vw, 9rem);
+    padding-right: clamp(3rem, 4.5vw, 9rem);
+  }
+}
+
+/* BOXEUP — 4 product cards per row on the homepage and catalog.
+   Apply from 850px so wide Shopify editor previews also show four;
+   keep two cards on smaller tablets/mobile. The selected sections
+   already specify four desktop columns in their template settings. */
+@media screen and (min-width: 850px) {
+  #MainContent .collection .grid.product-grid.grid--4-col-desktop:not(.slider) > .grid__item {
+    flex: 0 0 calc((100% - 42px) / 4);
+    width: calc((100% - 42px) / 4);
+    max-width: calc((100% - 42px) / 4);
+  }
+}
+
+/* BOXEUP — ensure two product cards per row on mobile.
+   Match card widths to the custom column gap to prevent wrapping. */
+@media screen and (max-width: 749px) {
+  #MainContent .grid.product-grid.grid--2-col-tablet-down:not(.slider) > .grid__item {
+    flex: 0 0 calc((100% - 10px) / 2);
+    width: calc((100% - 10px) / 2);
+    max-width: calc((100% - 10px) / 2);
+  }
+}
+@media screen and (min-width: 750px) and (max-width: 849px) {
+  #MainContent .grid.product-grid.grid--2-col-tablet-down:not(.slider) > .grid__item {
+    flex: 0 0 calc((100% - 14px) / 2);
+    width: calc((100% - 14px) / 2);
+    max-width: calc((100% - 14px) / 2);
+  }
+}
+
+/* Uniformização visual dos menus desktop e mobile, sem maiúsculas forçadas */
+.header__inline-menu .header__menu-item,.header__submenu .header__menu-item,.menu-drawer__menu-item{ text-transform:none !important; font-variant:normal; letter-spacing:.01em;}
+.boxeup-catalog-quicklink{text-decoration:none}

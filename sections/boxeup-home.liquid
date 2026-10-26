@@ -1,0 +1,262 @@
+{{ 'boxeup-home.css' | asset_url | stylesheet_tag }}
+{% assign bx_products = collections['all'].products %}
+
+<section class="bxv2" aria-label="BOXEUP — equipamento para desportos de combate">
+  <div class="bxv2-wrap">
+    <div class="bxv2-hero">
+      <div class="bxv2-hero__media">
+        {%- liquid
+          assign boxeup_video_hd = blank
+          assign boxeup_video_fallback = blank
+          if section.settings.hero_video != blank
+            for source in section.settings.hero_video.sources
+              if source.format == 'mp4'
+                if boxeup_video_fallback == blank
+                  assign boxeup_video_fallback = source.url
+                endif
+                if source.height >= 1080
+                  assign boxeup_video_hd = source.url
+                  break
+                endif
+              endif
+            endfor
+          endif
+          if boxeup_video_hd == blank
+            assign boxeup_video_hd = boxeup_video_fallback
+          endif
+        -%}
+        {% if boxeup_video_hd != blank %}
+          <video class="bxv2-hero__motion bxv2-hero__motion--video" autoplay muted loop playsinline preload="metadata" poster="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+            <source src="{{ boxeup_video_hd | escape }}" type="video/mp4">
+          </video>
+        {% elsif section.settings.hero_video != blank %}
+          {{ section.settings.hero_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, preload: 'metadata', class: 'bxv2-hero__motion bxv2-hero__motion--video' }}
+        {% else %}
+          <img class="bxv2-hero__motion" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1600" height="900" fetchpriority="high">
+        {% endif %}
+        <img class="bxv2-hero__still" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1600" height="900" loading="eager" decoding="async">
+      </div>
+      <div class="bxv2-hero__shade"></div>
+      <div class="bxv2-hero__inner">
+        <p class="bxv2-overline"><span class="bxv2-dot"></span> MAIS QUE EQUIPAMENTO</p>
+        <h1>Prepara-te para<br>o próximo <em>round.</em></h1>
+        <p class="bxv2-hero__desc">Equipamento de combate para Boxe, Muay Thai, MMA e Jiu-Jitsu. As melhores marcas, num só lugar.</p>
+        <div class="bxv2-actions">
+          <a class="bxv2-btn bxv2-btn--red" href="{{ routes.all_products_collection_url }}">Ver catálogo <span aria-hidden="true">↗</span></a>
+          <a class="bxv2-btn bxv2-btn--glass" href="#bxv2-modalidades">Explorar modalidades <span aria-hidden="true">↗</span></a>
+        </div>
+        <span class="bxv2-hero__index">BOXE <b>/</b> MUAY THAI <b>/</b> MMA <b>/</b> JIU-JITSU</span>
+      </div>
+      <div class="bxv2-hero__stamp" aria-hidden="true">DISCIPLINA<br>FOCO<br>PROGRESSO<span>.</span></div>
+      <div class="bxv2-trust" aria-label="Vantagens BOXEUP">
+        <span><i aria-hidden="true">✦</i> Loja portuguesa</span>
+        <span><i aria-hidden="true">✦</i> Várias marcas de combate</span>
+        <span><i aria-hidden="true">✦</i> Compra segura</span>
+      </div>
+    </div>
+
+    <div class="bxv2-block bxv2-block--categories">
+      <div class="bxv2-heading">
+        <div>
+          <p class="bxv2-kicker">ENCONTRA O TEU EQUIPAMENTO</p>
+          <h2>Começa por aqui<span class="bxv2-red">.</span></h2>
+        </div>
+        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">Ver todo o catálogo <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="bxv2-cat-grid">
+        <a href="{{ routes.search_url }}?q=luvas&type=product" class="bxv2-cat bxv2-cat--1" aria-label="Explorar Luvas">
+          {% render 'boxeup-category-product', product_handle: 'charlie-bat-x-luvas-de-treino', alt: 'Luvas Charlie Bat-X vermelhas' %}
+          <span class="bxv2-cat__label"><strong>Luvas</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></span>
+        </a>
+        <a href="{{ routes.search_url }}?q=caneleiras&type=product" class="bxv2-cat bxv2-cat--2" aria-label="Explorar Caneleiras">
+          {% render 'boxeup-category-product', product_handle: 'fairtex-sp5-caneleiras-de-competicao', alt: 'Caneleiras Fairtex SP5' %}
+          <span class="bxv2-cat__label"><strong>Caneleiras</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></span>
+        </a>
+        <a href="{{ routes.search_url }}?q=boqueira&type=product" class="bxv2-cat bxv2-cat--3" aria-label="Explorar Boqueiras">
+          {% render 'boxeup-category-product', product_handle: 'venum-challenger-boqueira-com-caixa', alt: 'Boqueira Venum Challenger' %}
+          <span class="bxv2-cat__label"><strong>Boqueiras</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></span>
+        </a>
+        <a href="{{ routes.search_url }}?q=cal%C3%A7%C3%B5es&type=product" class="bxv2-cat bxv2-cat--4" aria-label="Explorar Calções e roupa">
+          {% render 'boxeup-category-product', product_handle: 'fluory-calcoes-de-muay-thai-vermelho-e-preto', alt: 'Calções FLUORY de Muay Thai' %}
+          <span class="bxv2-cat__label"><strong>Calções e roupa</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></span>
+        </a>
+        <a href="{{ routes.search_url }}?q=mochila&type=product" class="bxv2-cat bxv2-cat--5" aria-label="Explorar Mochilas e sacos">
+          {% render 'boxeup-category-product', product_handle: 'venum-challenger-pro-evo-mochila-22-5-l', alt: 'Mochila Venum Challenger Pro Evo' %}
+          <span class="bxv2-cat__label"><strong>Mochilas e sacos</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></span>
+        </a>
+        <a href="{{ routes.search_url }}?q=treino&type=product" class="bxv2-cat bxv2-cat--6" aria-label="Explorar Equipamento de treino">
+          {% render 'boxeup-category-product', product_handle: 'rival-rhg2-capacete-hibrido', alt: 'Capacete Rival RHG2 de treino' %}
+          <span class="bxv2-cat__label"><strong>Equipamento de treino</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="bxv2-block bxv2-block--products" id="bxv2-destaques">
+      <div class="bxv2-heading">
+        <div><p class="bxv2-kicker">PRODUTOS EM DESTAQUE</p><h2>Escolhidos para o teu treino<span class="bxv2-red">.</span></h2><p>Descobre o equipamento disponível na BOXEUP.</p></div>
+        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">Ver todos os produtos <span aria-hidden="true">↗</span></a>
+      </div>
+      {% if bx_products.size > 0 %}
+        <div class="bxv2-product-grid">
+          {% for product in bx_products limit: 8 %}
+            <article class="bxv2-product">
+              <a class="bxv2-product__image" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+                {% if product.featured_image %}
+                  {{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '300,450,600,700', sizes: '(min-width:1100px) 23vw, (min-width:750px) 31vw, 47vw', alt: product.title }}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'bxv2-product__placeholder' }}
+                {% endif %}
+                {% if product.compare_at_price > product.price %}<span class="bxv2-product__badge">Promoção</span>{% elsif product.available == false %}<span class="bxv2-product__badge bxv2-product__badge--neutral">Esgotado</span>{% endif %}
+              </a>
+              <div class="bxv2-product__info">
+                {%- assign bx_home_parts = product.title | split: ' — ' -%}
+                {%- if bx_home_parts.size == 1 -%}{%- assign bx_home_parts = product.title | split: ' | ' -%}{%- endif -%}
+                <a href="{{ product.url }}" class="bxv2-product__title" aria-label="{{ product.title | escape }}">{% if bx_home_parts.size > 1 %}{{ bx_home_parts.first | escape }}{% else %}{{ product.title | escape }}{% endif %}</a>
+                {% if bx_home_parts.size > 1 %}
+                  <p class="bxv2-product__subtitle">{{ bx_home_parts[1] | strip | escape }}</p>
+                {% elsif product.vendor != blank %}
+                  <p class="bxv2-product__subtitle">{{ product.vendor | escape }}</p>
+                {% endif %}
+                {% render 'boxeup-real-swatches', product: product %}
+                <div class="bxv2-product__bottom">
+                  <div class="bxv2-product__prices">
+                    <strong>{{ product.price | money }}</strong>
+                    {% if product.compare_at_price > product.price %}<del>{{ product.compare_at_price | money }}</del>{% endif %}
+                  </div>
+                  <div class="boxeup-home-card-actions">
+                    <a class="bxv2-product__view" href="{{ product.url }}" aria-label="Ver {{ product.title | escape }}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></a>
+                    {% if product.available and product.has_only_default_variant %}
+                      {% form 'product', product, class: 'bxv2-product__form' %}
+                        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                        <button class="bxv2-product__add" type="submit" name="add" aria-label="Adicionar {{ product.title | escape }} ao carrinho"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3.5h2.8l2.2 11.3h11.6l2-8.2H6.2"/><circle cx="9.2" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg></button>
+                      {% endform %}
+                    {% elsif product.available %}
+                      <a class="bxv2-product__add" href="{{ product.url }}" aria-label="Escolher variante de {{ product.title | escape }}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3.5h2.8l2.2 11.3h11.6l2-8.2H6.2"/><circle cx="9.2" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg></a>
+                    {% else %}
+                      <span class="bxv2-product__add bxv2-product__add--disabled" role="img" aria-label="Produto esgotado"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3.5h2.8l2.2 11.3h11.6l2-8.2H6.2"/><circle cx="9.2" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg></span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="bxv2-empty">Explora todos os produtos disponíveis no <a href="{{ routes.all_products_collection_url }}">catálogo BOXEUP</a>.</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="bxv2-editorial">
+    <div class="bxv2-editorial__photo">
+      {% if section.settings.editorial_image != blank %}
+        {{ section.settings.editorial_image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '650,950,1400', sizes: '(min-width:990px) 50vw, 100vw', alt: 'Treino de boxe' }}
+      {% else %}
+        <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-training-editorial-2026.jpg?v=1793013824" alt="Atleta durante uma sessão de boxe" width="1600" height="1000" loading="lazy">
+      {% endif %}
+    </div>
+    <div class="bxv2-editorial__content">
+      <p class="bxv2-kicker">MAIS DO QUE EQUIPAMENTO</p>
+      <h2>Disciplina.<br>Todos os dias<span class="bxv2-red">.</span></h2>
+      <p>Do primeiro treino ao próximo combate. Encontra o que precisas para treinar com confiança, dentro e fora do ringue.</p>
+      <a class="bxv2-btn bxv2-btn--white" href="{{ routes.all_products_collection_url }}">Ver equipamento <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="bxv2-editorial__side">
+      <span><b>01</b><strong>Escolha multimarca</strong><small>Marcas reconhecidas no combate.</small></span>
+      <span><b>02</b><strong>Compra online</strong><small>Produtos e preços reais da loja.</small></span>
+      <span><b>03</b><strong>Contacto direto</strong><small>business@boxeup.com</small></span>
+    </div>
+  </div>
+
+  <div class="bxv2-wrap">
+    <div class="bxv2-block bxv2-block--modalities" id="bxv2-modalidades">
+      <div class="bxv2-heading">
+        <div><p class="bxv2-kicker">ESCOLHE A TUA MODALIDADE</p><h2>Equipamento para cada disciplina<span class="bxv2-red">.</span></h2></div>
+        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">Explorar catálogo <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="bxv2-mod-grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'category' %}
+            {% assign bx_search = block.settings.search_term | default: block.settings.title | url_encode %}
+            <a class="bxv2-mod" href="{{ routes.search_url }}?q={{ bx_search }}&type=product" {{ block.shopify_attributes }}>
+              <div class="bxv2-mod__image">
+                {% if block.settings.image != blank %}
+                  {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400,600,800,1000', sizes: '(min-width:990px) 25vw, (min-width:750px) 50vw, 90vw', alt: block.settings.title }}
+                {% else %}
+                  <span class="bxv2-mod__fallback" aria-hidden="true">{{ block.settings.title | slice: 0, 1 }}</span>
+                {% endif %}
+              </div>
+              <span class="bxv2-mod__body"><strong>{{ block.settings.title | escape }}</strong><small>{{ block.settings.subtitle | escape }}</small></span>
+              <span class="bxv2-mod__arrow" aria-hidden="true">↗</span>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="bxv2-block bxv2-block--brands">
+      <div class="bxv2-heading"><div><p class="bxv2-kicker">AS MARCAS DO COMBATE</p><h2>Encontra a tua marca<span class="bxv2-red">.</span></h2></div><a class="bxv2-more" href="{{ routes.all_products_collection_url }}">Ver catálogo <span aria-hidden="true">↗</span></a></div>
+      <div class="bxv2-brand-grid">
+        {% assign bx_brand_names = 'Fairtex|Charlie|Buddha|Venum|Cleto Reyes|Rival|Twins|Everlast' | split: '|' %}
+        {% for brand in bx_brand_names %}
+          <a class="bxv2-brand" href="{{ routes.search_url }}?q={{ brand | url_encode }}&type=product" aria-label="Ver produtos {{ brand | escape }}"><strong>{{ brand | escape }}</strong><span aria-hidden="true">↗</span></a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="bxv2-story">
+    <div class="bxv2-story__art" aria-hidden="true"><span>BOXEUP<span>.</span></span><b>EST. 2026</b></div>
+    <div class="bxv2-story__copy">
+      <p class="bxv2-kicker">A NOSSA HISTÓRIA</p>
+      <h2>Mais que uma loja.<br><em>Uma comunidade.</em></h2>
+      <p>A BOXEUP é uma loja portuguesa dedicada aos desportos de combate. Reunimos equipamento de diferentes marcas para quem treina Boxe, Muay Thai, MMA e Jiu-Jitsu.</p>
+      <a class="bxv2-more bxv2-more--light" href="/pages/sobre-nos">Conhecer a BOXEUP <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+
+  <div class="bxv2-wrap bxv2-wrap--newsletter">
+    <div class="bxv2-news">
+      <div><p class="bxv2-kicker">JUNTA-TE À COMUNIDADE</p><h2>Não percas o próximo round.</h2><p>Recebe novidades e lançamentos da BOXEUP.</p></div>
+      {% form 'customer', class: 'bxv2-news__form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label class="visually-hidden" for="bxv2-email-{{ section.id }}">O teu email</label>
+        <input id="bxv2-email-{{ section.id }}" type="email" name="contact[email]" autocomplete="email" placeholder="O teu email" required aria-required="true" value="{{ form.email | escape }}">
+        <button type="submit" aria-label="Subscrever newsletter">Subscrever <span aria-hidden="true">↗</span></button>
+        {% if form.posted_successfully? %}<p class="bxv2-news__feedback" role="status">Inscrição recebida. Obrigado!</p>{% elsif form.errors %}<p class="bxv2-news__feedback" role="alert">{{ form.errors | default_errors }}</p>{% endif %}
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "BOXEUP | Homepage premium",
+  "tag": "section",
+  "class": "section-boxeup-home",
+  "settings": [
+    {"type":"video","id":"hero_video","label":"Vídeo do destaque (Shopify)","info":"Opcional. Por defeito, é apresentada uma animação otimizada do vídeo enviado."},
+    {"type":"image_picker","id":"editorial_image","label":"Fotografia da secção Disciplina","info":"Opcional: substitui a fotografia editorial da BOXEUP."}
+  ],
+  "blocks": [
+    {
+      "type":"category",
+      "name":"Modalidade",
+      "limit":4,
+      "settings":[
+        {"type":"text","id":"title","label":"Nome","default":"Boxe"},
+        {"type":"text","id":"subtitle","label":"Descrição","default":"Descobre o equipamento"},
+        {"type":"text","id":"search_term","label":"Termo de pesquisa","default":"boxe"},
+        {"type":"image_picker","id":"image","label":"Fotografia"}
+      ]
+    }
+  ],
+  "max_blocks":4,
+  "presets":[{"name":"BOXEUP | Homepage premium","blocks":[
+    {"type":"category","settings":{"title":"Boxe","subtitle":"Luvas, proteção e treino","search_term":"boxe"}},
+    {"type":"category","settings":{"title":"Muay Thai","subtitle":"Técnica e potência","search_term":"muay thai"}},
+    {"type":"category","settings":{"title":"MMA","subtitle":"Preparação e combate","search_term":"mma"}},
+    {"type":"category","settings":{"title":"Jiu-Jitsu","subtitle":"Equipamento de tatami","search_term":"jiu jitsu"}}
+  ]}]
+}
+{% endschema %}

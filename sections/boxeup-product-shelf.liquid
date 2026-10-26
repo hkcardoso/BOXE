@@ -1,0 +1,29 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+<section class="boxeup-shelf page-width" data-boxeup-shelf aria-labelledby="ShelfTitle-{{ section.id }}">
+  <div class="boxeup-section-heading">
+    <div><p class="boxeup-kicker">{{ section.settings.eyebrow | escape }}</p><h2 id="ShelfTitle-{{ section.id }}">{{ section.settings.title | escape }}</h2></div>
+    <a class="boxeup-text-link" href="{{ section.settings.collection.url | default: routes.all_products_collection_url }}">{{ 'boxeup_v4.view_all' | t }} <span aria-hidden="true">↗</span></a>
+  </div>
+  {% if section.settings.filters %}
+    <div class="boxeup-shelf-filters boxeup-chip-list" aria-label="{{ 'boxeup_navigation.categories' | t }}" hidden>
+      <button class="boxeup-chip" type="button" data-shelf-filter="all" aria-pressed="true">{{ 'boxeup_navigation.all' | t }}</button>
+      {% assign filters = 'luvas,caneleiras,boqueiras,vestuario,mochilas,treino' | split: ',' %}
+      {% assign labels = 'luvas,caneleiras,boqueiras,roupa,mochilas,treino' | split: ',' %}
+      {% for filter in filters %}{% assign label = 'boxeup_navigation.' | append: labels[forloop.index0] %}<button class="boxeup-chip" type="button" data-shelf-filter="{{ filter }}" aria-pressed="false">{{ label | t }}</button>{% endfor %}
+    </div>
+  {% endif %}
+  <ul class="boxeup-shelf-grid" role="list">
+    {% for product in section.settings.collection.products offset: section.settings.offset limit: 8 %}
+      {% assign display_vendor = true %}
+      {% if product.vendor == 'My Store' or product.vendor == 'Printify' %}{% assign display_vendor = false %}{% endif %}
+      <li class="boxeup-shelf-item" data-shelf-tags="{{ product.tags | join: ',' | escape }}">
+        {% render 'card-product', card_product: product, media_aspect_ratio: 'square', show_vendor: display_vendor, show_secondary_image: false, lazy_load: true, quick_add: 'none', section_id: section.id %}
+      </li>
+    {% endfor %}
+  </ul>
+  <p class="visually-hidden" data-shelf-status role="status" aria-live="polite" data-label="{{ 'boxeup_v4.results' | t }}"></p>
+</section>
+{% schema %}
+{"name":"BOXEUP | Produtos","settings":[{"type":"text","id":"title","label":"Título","default":"Destaques BOXEUP"},{"type":"text","id":"eyebrow","label":"Texto de topo","default":"A tua próxima escolha"},{"type":"collection","id":"collection","label":"Coleção"},{"type":"range","id":"offset","label":"Saltar os primeiros produtos","min":0,"max":24,"step":1,"default":0},{"type":"checkbox","id":"filters","label":"Botões de filtro","default":true}],"presets":[{"name":"BOXEUP | Produtos"}]}
+{% endschema %}

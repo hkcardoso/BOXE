@@ -1,0 +1,25 @@
+<section class="boxeup-discover page-width" id="boxeup-modalidades">
+  <div class="boxeup-section-heading"><div><p class="boxeup-kicker">{{ 'boxeup_v4.your_training' | t }}</p><h2>{{ section.settings.title | escape }}</h2></div></div>
+  <div class="boxeup-sport-grid">
+    {% for block in section.blocks %}
+      <a class="boxeup-sport" href="{{ block.settings.url }}" {{ block.shopify_attributes }}>
+        {% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 800 | image_tag: widths: '320, 500, 800', sizes: '(min-width: 990px) 25vw, 50vw', loading: 'lazy', alt: block.settings.title }}{% endif %}
+        <span class="boxeup-sport-label">{{ block.settings.title | escape }} <span aria-hidden="true">↗</span></span>
+      </a>
+    {% endfor %}
+  </div>
+  <div class="boxeup-brands-home">
+    <h2>{{ 'boxeup_v4.brands' | t }}</h2>
+    <div class="boxeup-brand-grid">
+      {% assign handles = 'fairtex,charlie,buddha,venum,cleto-reyes,rival,twins,everlast' | split: ',' %}
+      {% for handle in handles %}{% assign brand = collections[handle] %}{% if brand != blank %}<a href="{{ brand.url }}">{{ brand.title | escape }}</a>{% endif %}{% endfor %}
+    </div>
+  </div>
+  <div class="boxeup-home-about">
+    <div><p class="boxeup-kicker">BOXEUP</p><h2>{{ 'boxeup_v4.about_title' | t }}</h2><p>{{ 'boxeup_v4.about_text' | t }}</p></div>
+    <div class="boxeup-about-actions"><a class="button" href="/pages/sobre-a-boxeup">{{ 'boxeup_v4.about_link' | t }}</a><a class="boxeup-text-link" href="mailto:business@boxeup.com">business@boxeup.com</a></div>
+  </div>
+</section>
+{% schema %}
+{"name":"BOXEUP | Descobrir","settings":[{"type":"text","id":"title","label":"Título","default":"Compra por modalidade"}],"blocks":[{"type":"sport","name":"Modalidade","settings":[{"type":"text","id":"title","label":"Nome"},{"type":"image_picker","id":"image","label":"Fotografia"},{"type":"url","id":"url","label":"Ligação"}]}],"max_blocks":4,"presets":[{"name":"BOXEUP | Descobrir"}]}
+{% endschema %}

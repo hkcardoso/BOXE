@@ -1,0 +1,49 @@
+.boxeup-home .boxeup-hero{min-height:360px;grid-template-columns:52% 48%}
+.boxeup-home .boxeup-hero__copy{padding:38px 48px}
+.boxeup-home .boxeup-hero__visual{min-height:360px}
+.boxeup-home .boxeup-hero__heading{font-size:clamp(38px,4vw,60px);letter-spacing:-.055em;text-transform:none}
+.boxeup-home .boxeup-hero__description{font-size:15px;max-width:390px;margin:20px 0}
+.boxeup-home .boxeup-hero__micro{margin-top:24px}
+.boxeup-home-shortcuts{display:flex;gap:10px;padding:25px 0 4px;overflow-x:auto;scrollbar-width:thin}
+.boxeup-home-shortcuts .boxeup-chip{white-space:nowrap;gap:22px;flex:1;justify-content:space-between}
+.boxeup-shelf{padding-top:36px;padding-bottom:30px}
+.boxeup-shelf .boxeup-section-heading{margin-bottom:22px}
+.boxeup-shelf .boxeup-section-heading h2,.boxeup-discover h2{font-size:clamp(25px,2.5vw,36px);letter-spacing:-.04em;text-transform:none}
+.boxeup-shelf .boxeup-kicker,.boxeup-discover .boxeup-kicker{letter-spacing:.07em;font-size:11px;text-transform:none}
+.boxeup-shelf-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 20px;list-style:none;padding:0;margin:25px 0 0;align-items:start}
+.boxeup-shelf-item{min-width:0}
+.boxeup-shelf-item[hidden],.boxeup-chip[hidden],.boxeup-shelf-filters[hidden]{display:none!important}
+.boxeup-shelf .card__heading{font-size:14px!important}
+.boxeup-shelf .price{font-size:17px;font-weight:700}
+.boxeup-shelf .card__information{padding-top:15px}
+.boxeup-chip{cursor:pointer}
+.boxeup-chip[aria-pressed=true]{background:#171717;color:#fff;border-color:#171717}
+.boxeup-discover{padding-top:50px;padding-bottom:60px;scroll-margin-top:110px}
+.boxeup-sport-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.boxeup-sport{position:relative;display:block;border-radius:14px;overflow:hidden;aspect-ratio:1/1.12;background:#171717;color:white}
+.boxeup-sport img{width:100%;height:100%;object-fit:cover;display:block}
+.boxeup-sport:after{content:'';position:absolute;inset:40% 0 0;background:linear-gradient(transparent,#000b);pointer-events:none}
+.boxeup-sport-label{position:absolute;z-index:1;bottom:18px;left:18px;right:18px;display:flex;justify-content:space-between;align-items:center;font-size:17px;font-weight:700}
+.boxeup-sport-label>span{display:grid;place-items:center;border:1px solid #ffffff80;border-radius:50%;width:35px;height:35px}
+.boxeup-brands-home{padding:50px 0}
+.boxeup-brand-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:24px}
+.boxeup-brand-grid a{display:flex;align-items:center;justify-content:center;min-height:82px;border:1px solid #e8e5e2;border-radius:10px;color:#171717;text-decoration:none;font-size:20px;font-weight:750;letter-spacing:-.03em}
+.boxeup-brand-grid a:hover{background:#f7f3f0;border-color:#945057}
+.boxeup-home-about{display:flex;gap:45px;align-items:center;justify-content:space-between;padding:38px;background:#f5f2ef;border-radius:18px}
+.boxeup-home-about h2{max-width:560px;margin:0}
+.boxeup-home-about p:not(.boxeup-kicker){max-width:620px;font-size:15px;line-height:1.8}
+.boxeup-about-actions{display:flex;flex-direction:column;align-items:center;gap:20px;flex-shrink:0}
+.boxeup-catalog-message{min-height:20px;margin:8px 0 0}
+.collection-hero__title{font-size:clamp(28px,3vw,42px);margin:24px 0;min-height:1.2em}
+#MainContent[aria-busy=true] #ProductGridContainer{opacity:.7;pointer-events:none}
+#ProductGridContainer{overflow-anchor:none;view-transition-name:boxeup-products}
+::view-transition-old(root),::view-transition-new(root){animation:none}
+::view-transition-group(boxeup-products){animation-duration:240ms}
+::view-transition-old(boxeup-products){animation:boxeup-fade-out 150ms ease both}
+::view-transition-new(boxeup-products){animation:boxeup-fade-in 250ms ease both}
+@keyframes boxeup-fade-out{to{opacity:0;transform:translateY(-5px)}}
+@keyframes boxeup-fade-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:no-preference){.boxeup-sport img{transition:transform .5s cubic-bezier(.2,.7,.3,1)}.boxeup-sport:hover img{transform:scale(1.045)}.boxeup-brand-grid a{transition:background .2s,border-color .2s}}
+@media(max-width:989px){.boxeup-home .boxeup-hero__copy{padding:32px}.boxeup-home .boxeup-hero__visual{min-height:330px}.boxeup-home-about{gap:24px;padding:28px}.boxeup-home-shortcuts .boxeup-chip{flex:none}}
+@media(max-width:749px){.boxeup-home .boxeup-hero{grid-template-columns:1fr;min-height:0}.boxeup-home .boxeup-hero__copy{padding:28px 24px;min-height:310px;background:linear-gradient(90deg,#151515f5,#151515a8 70%,#15151555)}.boxeup-home .boxeup-hero__visual{position:absolute;inset:0;min-height:0;opacity:.55}.boxeup-home .boxeup-hero__heading{font-size:40px}.boxeup-home .boxeup-hero__side-label,.boxeup-home .boxeup-hero__edition{display:none}.boxeup-home .boxeup-hero__description{max-width:290px;color:#eee}.boxeup-home .boxeup-hero__micro{display:none}.boxeup-home .boxeup-eyebrow{font-size:10px;margin-bottom:18px}.boxeup-home-shortcuts{padding-top:18px}.boxeup-shelf{padding-top:25px;padding-bottom:20px}.boxeup-shelf-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}.boxeup-shelf .boxeup-section-heading{display:flex;align-items:end;gap:10px}.boxeup-shelf .boxeup-text-link{font-size:11px;margin:0}.boxeup-shelf .boxeup-text-link span{margin-left:6px}.boxeup-shelf .boxeup-kicker{font-size:10px}.boxeup-shelf-filters{flex-wrap:nowrap;overflow:auto;padding:3px 2px 10px}.boxeup-shelf-filters button{white-space:nowrap}.boxeup-sport-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.boxeup-sport-label{font-size:15px;left:12px;right:12px;bottom:12px}.boxeup-brand-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.boxeup-brand-grid a{font-size:18px;min-height:65px}.boxeup-home-about{display:block;padding:25px}.boxeup-about-actions{align-items:flex-start;margin-top:22px}.boxeup-discover{padding-top:30px}.collection-hero__title{font-size:28px}}
+@media(prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}.boxeup-chip{transition:none}}

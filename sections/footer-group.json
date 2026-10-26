@@ -1,0 +1,63 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "newsletter_enable": true,
+        "newsletter_heading": "Novidades da Boxeup",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": false,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      },
+      "blocks": {
+        "categorias": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Categorias",
+            "menu": "footer-categorias"
+          }
+        },
+        "informacoes": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Informações",
+            "menu": "footer"
+          }
+        },
+        "contacto": {
+          "type": "text",
+          "settings": {
+            "heading": "Contactos",
+            "subtext": "<p><a href=\"mailto:business@boxeup.com\">business@boxeup.com</a></p><p>Para apoio a encomendas e propostas de parceria.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "categorias",
+        "informacoes",
+        "contacto"
+      ]
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

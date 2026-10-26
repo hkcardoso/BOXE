@@ -1,0 +1,28 @@
+<section class="boxeup-catalog-controls page-width" aria-label="{{ 'boxeup_navigation.categories' | t }}">
+  <h2>{{ 'boxeup_navigation.heading' | t }}</h2>
+  <nav class="boxeup-chip-list" aria-label="{{ 'boxeup_navigation.categories' | t }}">
+    <a class="boxeup-chip" data-boxeup-catalog href="{{ routes.all_products_collection_url }}"{% if collection.handle == 'all' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.all' | t }}</a>
+    {% assign category_handles = 'luvas-de-boxe-e-muay-thai,caneleiras-de-muay-thai-e-kickboxing,boqueiras-e-protecoes,calcoes-e-roupa-de-combate,mochilas-e-sacos-de-treino-1,equipamento-de-treino' | split: ',' %}
+    {% assign category_labels = 'luvas,caneleiras,boqueiras,roupa,mochilas,treino' | split: ',' %}
+    {% for category_handle in category_handles %}
+      {% assign category = collections[category_handle] %}
+      {% assign label_key = 'boxeup_navigation.' | append: category_labels[forloop.index0] %}
+      {% if category != blank %}<a class="boxeup-chip" data-boxeup-catalog href="{{ category.url }}"{% if collection.handle == category_handle %} aria-current="page"{% endif %}>{{ label_key | t }}</a>{% endif %}
+    {% endfor %}
+  </nav>
+  <details class="boxeup-brands">
+    <summary>{{ 'boxeup_navigation.brands' | t }}</summary>
+    <nav class="boxeup-chip-list" aria-label="{{ 'boxeup_navigation.brands' | t }}">
+      {% assign brands = 'fairtex,charlie,buddha,venum,cleto-reyes,rival,twins,everlast' | split: ',' %}
+      {% for brand_handle in brands %}
+        {% assign brand = collections[brand_handle] %}
+        {% if brand != blank %}<a class="boxeup-chip" data-boxeup-catalog href="{{ brand.url }}"{% if collection.handle == brand_handle %} aria-current="page"{% endif %}>{{ brand.title | escape }}</a>{% endif %}
+      {% endfor %}
+    </nav>
+  </details>
+  <p class="boxeup-catalog-message" role="status" aria-live="polite" data-loading="{{ 'boxeup_navigation.loading' | t }}" data-loaded="{{ 'boxeup_navigation.loaded' | t }}" data-error="{{ 'boxeup_navigation.error' | t }}"></p>
+</section>
+{% schema %}
+{"name":"BOXEUP | Categorias","tag":"section","class":"section-boxeup-shop-categories","settings":[],"presets":[{"name":"BOXEUP | Categorias"}]}
+{% endschema %}
+

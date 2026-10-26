@@ -1,0 +1,66 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "boxeup_home": {
+      "type": "boxeup-home",
+      "blocks": {
+        "boxe": {
+          "type": "category",
+          "settings": {
+            "title": "Boxe",
+            "subtitle": "Luvas, proteção e treino",
+            "search_term": "boxe",
+            "image": "shopify://shop_images/boxeup-boxe.jpg"
+          }
+        },
+        "muaythai": {
+          "type": "category",
+          "settings": {
+            "title": "Muay Thai",
+            "subtitle": "Técnica e potência",
+            "search_term": "muay thai",
+            "image": "shopify://shop_images/boxeup-muay-thai.jpg"
+          }
+        },
+        "mma": {
+          "type": "category",
+          "settings": {
+            "title": "MMA",
+            "subtitle": "Preparação e combate",
+            "search_term": "mma",
+            "image": "shopify://shop_images/boxeup-mma.jpg"
+          }
+        },
+        "jiujitsu": {
+          "type": "category",
+          "settings": {
+            "title": "Jiu-Jitsu",
+            "subtitle": "Equipamento de tatami",
+            "search_term": "jiu jitsu",
+            "image": "shopify://shop_images/boxeup-jiu-jitsu.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "boxe",
+        "muaythai",
+        "mma",
+        "jiujitsu"
+      ],
+      "settings": {
+        "hero_video": "shopify://files/videos/8745106-uhd_4096_2160_25fps.mp4"
+      }
+    }
+  },
+  "order": [
+    "boxeup_home"
+  ]
+}

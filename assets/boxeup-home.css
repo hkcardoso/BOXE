@@ -366,3 +366,29 @@
  .section-boxeup-home .bxv2 .bxv2-cat,
  .section-boxeup-home .bxv2 .bxv2-cat .bxv2-cat__photo{transition:none!important}
 }
+
+
+/* Match homepage featured products to premium catalog product cards. */
+.bxv2-block--products .bxv2-product{background:#101114!important;border-radius:6px}
+.bxv2-block--products .bxv2-product__info{background:#101114!important;padding:15px 13px 14px;display:flex;flex-direction:column;min-height:156px}
+.bxv2-block--products .bxv2-product__title{font-size:clamp(14px,1.2vw,18px)!important;font-weight:850!important;letter-spacing:-.02em!important;min-height:0;line-height:1.25}
+.bxv2-block--products .bxv2-product__subtitle{font-size:clamp(11px,1vw,14px);line-height:1.4;color:#bfc0c6;margin:6px 0 0;min-height:18px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.bxv2-block--products .bxv2-product__bottom{display:flex;align-items:end;justify-content:space-between;gap:6px;margin-top:auto;padding-top:12px}
+.bxv2-block--products .bxv2-product__prices{min-width:0}
+.bxv2-block--products .bxv2-product__prices strong{font-size:clamp(14px,1.2vw,18px);font-weight:850!important}
+.bxv2-block--products .boxeup-home-card-actions{display:flex;align-items:center;gap:7px;flex:none}
+.bxv2-block--products .bxv2-product__view,.bxv2-block--products .bxv2-product__add{display:grid!important;place-items:center!important;width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;padding:0!important;border-radius:5px!important;text-decoration:none!important}
+.bxv2-block--products .bxv2-product__view{background:#1b1e23;border:1px solid rgba(255,255,255,.26);color:#fff}
+.bxv2-block--products .bxv2-product__add{background:#ed2437!important;color:#fff!important;border:0!important;font-size:0!important}
+.bxv2-block--products .bxv2-product__add--disabled{background:#34353a!important;opacity:.55}
+.bxv2-block--products .bxv2-product__view svg,.bxv2-block--products .bxv2-product__add svg{display:block;width:21px;height:21px}
+.bxv2-block--products .bxv2-product__form{margin:0}
+.bxv2-block--products .boxeup-real-swatches{margin-top:8px}
+@media(max-width:749px){
+.bxv2-block--products .bxv2-product__info{padding:11px 10px!important;min-height:142px}
+.bxv2-block--products .bxv2-product__title{font-size:12px!important}
+.bxv2-block--products .bxv2-product__subtitle{font-size:11px}
+.bxv2-block--products .boxeup-home-card-actions{gap:5px}
+.bxv2-block--products .bxv2-product__view,.bxv2-block--products .bxv2-product__add{width:32px!important;height:34px!important;min-width:32px!important;min-height:34px!important}
+.bxv2-block--products .bxv2-product__view svg,.bxv2-block--products .bxv2-product__add svg{width:17px;height:17px}
+}

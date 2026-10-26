@@ -146,6 +146,8 @@
           </div>
         </div>
         <div class="card__content">
+          {%- assign bx_title_parts = card_product.title | split: ' — ' -%}
+          {%- if bx_title_parts.size == 1 -%}{%- assign bx_title_parts = card_product.title | split: ' | ' -%}{%- endif -%}
           <div class="card__information">
             <h3
               class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
@@ -159,9 +161,14 @@
                 class="full-unstyled-link"
                 aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }}{% if card_product.available == false or card_product.compare_at_price > card_product.price %} Badge-{{ section_id }}-{{ card_product.id }}{% endif %}"
               >
-                {{ card_product.title | escape }}
+                {% if bx_title_parts.size > 1 %}{{ bx_title_parts.first | escape }}{% else %}{{ card_product.title | escape }}{% endif %}
               </a>
             </h3>
+            {% if bx_title_parts.size > 1 %}
+              <p class="boxeup-card__subtitle">{{ bx_title_parts[1] | strip | escape }}</p>
+            {% elsif card_product.vendor != blank %}
+              <p class="boxeup-card__subtitle">{{ card_product.vendor | escape }}</p>
+            {% endif %}
             <div class="card-information">
               {%- if show_vendor -%}
                 <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
@@ -207,6 +214,7 @@
               {%- endif -%}
 
               {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+              {% render 'boxeup-real-swatches', product: card_product %}
               {%- if card_product.quantity_price_breaks_configured? -%}
                 {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
                   {% liquid
@@ -290,6 +298,12 @@
               {%- endif -%}
             </div>
           </div>
+          <a class="boxeup-card__view" href="{{ card_product.url }}" aria-label="Ver {{ card_product.title | escape }}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></a>
+          {% if quick_add != 'standard' and quick_add != 'bulk' %}
+            <a class="boxeup-card__cart-link" href="{{ card_product.url }}" aria-label="Escolher {{ card_product.title | escape }}">
+              <span class="boxeup-card__cart-glyph" aria-hidden="true"></span>
+            </a>
+          {% endif %}
           {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}
           {% if quick_add == 'standard' %}
             <div class="quick-add no-js-hidden">

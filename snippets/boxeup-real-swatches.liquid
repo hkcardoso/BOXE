@@ -1,0 +1,19 @@
+{% comment %} Display only real color swatches configured for a Shopify product. {% endcomment %}
+{% if product != blank %}
+  {% for option in product.options_with_values %}
+    {% assign bx_color_name = option.name | downcase %}
+    {% if bx_color_name contains 'cor' or bx_color_name contains 'color' or bx_color_name contains 'colour' %}
+      {% assign bx_has_swatches = false %}
+      {% capture bx_colors %}
+        {% for option_value in option.values limit: 5 %}
+          {% if option_value.swatch.color != blank %}
+            {% assign bx_has_swatches = true %}
+            <span class="boxeup-real-swatch" style="background-color:{{ option_value.swatch.color | escape }}" role="img" aria-label="{{ option_value.name | escape }}" title="{{ option_value.name | escape }}"></span>
+          {% endif %}
+        {% endfor %}
+      {% endcapture %}
+      {% if bx_has_swatches %}<div class="boxeup-real-swatches" aria-label="Cores disponíveis">{{ bx_colors }}</div>{% endif %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}

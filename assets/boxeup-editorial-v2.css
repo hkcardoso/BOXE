@@ -208,3 +208,41 @@ body .header-wrapper .header__icons{gap:1px}
   body .header-wrapper .boxeup-wordmark{font-size:24px}
   body .header-wrapper .header__icon{width:34px;height:34px}
 }
+
+/* BOXEUP / glass navigation: translucent surface with real frosted blur. */
+body .header-wrapper,
+body .header-wrapper--border-bottom{
+  background:rgba(11,12,16,.46)!important;
+  -webkit-backdrop-filter:blur(16px) saturate(145%);
+  backdrop-filter:blur(16px) saturate(145%);
+  border-bottom:1px solid rgba(255,255,255,.14)!important;
+  box-shadow:0 2px 16px rgba(0,0,0,.10)!important;
+}
+body .header-wrapper .header{background:transparent!important}
+body.boxeup-page-home .section-header,
+body.boxeup-page-home .shopify-section-header-sticky{
+  position:sticky;
+  top:0;
+  z-index:220!important;
+}
+/* Move only the homepage hero beneath the floating glass navigation. */
+body.boxeup-page-home #MainContent[data-template="index"]{
+  margin-top:-64px;
+  position:relative;
+  z-index:1;
+}
+body.boxeup-page-home .bxv2-hero{padding-top:64px}
+body.boxeup-page-home .header-wrapper .header__menu-item,
+body.boxeup-page-home .header-wrapper .header__icon{color:#fff!important}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+  body .header-wrapper{background:rgba(11,12,16,.88)!important}
+}
+@media(max-width:989px){
+  body.boxeup-page-home #MainContent[data-template="index"]{margin-top:-60px}
+  body.boxeup-page-home .bxv2-hero{padding-top:60px}
+}
+@media(max-width:749px){
+  body .header-wrapper{background:rgba(11,12,16,.56)!important}
+  body.boxeup-page-home #MainContent[data-template="index"]{margin-top:-55px}
+  body.boxeup-page-home .bxv2-hero{padding-top:55px}
+}

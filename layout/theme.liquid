@@ -285,7 +285,10 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'boxeup.css' | asset_url | stylesheet_tag }}
     {{ 'boxeup-secondary.css' | asset_url | stylesheet_tag }}
+    {{ 'boxeup-premium.css' | asset_url | stylesheet_tag }}
+    {{ 'boxeup-v4.css' | asset_url | stylesheet_tag }}
     {{ 'boxeup-editorial-v2.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'boxeup-catalog.js' | asset_url }}" defer></script>
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -328,7 +331,7 @@
     </script>
   </head>
 
-  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}{% if request.page_type == 'index' %} boxeup-page-home{% endif %}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
@@ -410,3 +413,5 @@
     {%- endif -%}
   </body>
 </html>
+
+

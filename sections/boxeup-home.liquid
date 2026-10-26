@@ -5,12 +5,36 @@
   <div class="bxv2-wrap">
     <div class="bxv2-hero">
       <div class="bxv2-hero__media">
-        {% if section.settings.hero_video != blank %}
+        {%- liquid
+          assign boxeup_video_hd = blank
+          assign boxeup_video_fallback = blank
+          if section.settings.hero_video != blank
+            for source in section.settings.hero_video.sources
+              if source.format == 'mp4'
+                if boxeup_video_fallback == blank
+                  assign boxeup_video_fallback = source.url
+                endif
+                if source.height >= 1080
+                  assign boxeup_video_hd = source.url
+                  break
+                endif
+              endif
+            endfor
+          endif
+          if boxeup_video_hd == blank
+            assign boxeup_video_hd = boxeup_video_fallback
+          endif
+        -%}
+        {% if boxeup_video_hd != blank %}
+          <video class="bxv2-hero__motion bxv2-hero__motion--video" autoplay muted loop playsinline preload="metadata" poster="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+            <source src="{{ boxeup_video_hd | escape }}" type="video/mp4">
+          </video>
+        {% elsif section.settings.hero_video != blank %}
           {{ section.settings.hero_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, preload: 'metadata', class: 'bxv2-hero__motion bxv2-hero__motion--video' }}
         {% else %}
-          <img class="bxv2-hero__motion" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-motion.webp?v=1793029201" alt="" role="presentation" width="1200" height="633" fetchpriority="high" decoding="async">
+          <img class="bxv2-hero__motion" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1600" height="900" fetchpriority="high">
         {% endif %}
-        <img class="bxv2-hero__still" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1200" height="633" loading="eager" decoding="async">
+        <img class="bxv2-hero__still" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1600" height="900" loading="eager" decoding="async">
       </div>
       <div class="bxv2-hero__shade"></div>
       <div class="bxv2-hero__inner">

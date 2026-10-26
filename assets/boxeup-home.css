@@ -247,3 +247,15 @@
   .section-boxeup-home .bxv2 .bxv2-hero__motion{display:none!important}
   .section-boxeup-home .bxv2 .bxv2-hero__still{display:block!important}
 }
+
+/* Native Shopify 1080p MP4 — render at full hero dimensions, no blur filter. */
+.section-boxeup-home .bxv2 .bxv2-hero__motion--video{
+  width:100%;height:100%;display:block;
+  object-fit:cover;object-position:center center;
+  filter:none!important;transform:none!important;
+  opacity:1;
+}
+.section-boxeup-home .bxv2 .bxv2-hero__media{background:#0b0c10}
+@media(prefers-reduced-motion:reduce){
+  .section-boxeup-home .bxv2 .bxv2-hero__motion--video{display:none!important}
+}

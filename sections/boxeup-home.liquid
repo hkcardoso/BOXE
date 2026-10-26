@@ -41,12 +41,12 @@
         <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">Ver todo o catálogo <span aria-hidden="true">↗</span></a>
       </div>
       <div class="bxv2-cat-grid">
-        <a href="{{ routes.search_url }}?q=luvas&type=product" class="bxv2-cat bxv2-cat--1"><span class="bxv2-cat__num">01 / EQUIPAMENTO</span><strong>Luvas</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
-        <a href="{{ routes.search_url }}?q=caneleiras&type=product" class="bxv2-cat bxv2-cat--2"><span class="bxv2-cat__num">02 / PROTEÇÃO</span><strong>Caneleiras</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
-        <a href="{{ routes.search_url }}?q=boqueira&type=product" class="bxv2-cat bxv2-cat--3"><span class="bxv2-cat__num">03 / PROTEÇÃO</span><strong>Boqueiras</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
-        <a href="{{ routes.search_url }}?q=cal%C3%A7%C3%B5es&type=product" class="bxv2-cat bxv2-cat--4"><span class="bxv2-cat__num">04 / VESTUÁRIO</span><strong>Calções e roupa</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
-        <a href="{{ routes.search_url }}?q=mochila&type=product" class="bxv2-cat bxv2-cat--5"><span class="bxv2-cat__num">05 / ACESSÓRIOS</span><strong>Mochilas e sacos</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
-        <a href="{{ routes.search_url }}?q=treino&type=product" class="bxv2-cat bxv2-cat--6"><span class="bxv2-cat__num">06 / PERFORMANCE</span><strong>Equipamento de treino</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
+        <a href="{{ routes.search_url }}?q=luvas&type=product" class="bxv2-cat bxv2-cat--1">{% render 'boxeup-category-photo', products: bx_products, keyword: 'luvas', alt: 'Luvas de combate' %}<span class="bxv2-cat__num">01 / EQUIPAMENTO</span><strong>Luvas</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
+        <a href="{{ routes.search_url }}?q=caneleiras&type=product" class="bxv2-cat bxv2-cat--2">{% render 'boxeup-category-photo', products: bx_products, keyword: 'caneleiras', alt: 'Caneleiras de combate' %}<span class="bxv2-cat__num">02 / PROTEÇÃO</span><strong>Caneleiras</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
+        <a href="{{ routes.search_url }}?q=boqueira&type=product" class="bxv2-cat bxv2-cat--3">{% render 'boxeup-category-photo', products: bx_products, keyword: 'boqueira', alt: 'Boqueiras de proteção' %}<span class="bxv2-cat__num">03 / PROTEÇÃO</span><strong>Boqueiras</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
+        <a href="{{ routes.search_url }}?q=cal%C3%A7%C3%B5es&type=product" class="bxv2-cat bxv2-cat--4">{% render 'boxeup-category-photo', products: bx_products, keyword: 'calções', alt: 'Calções de combate' %}<span class="bxv2-cat__num">04 / VESTUÁRIO</span><strong>Calções e roupa</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
+        <a href="{{ routes.search_url }}?q=mochila&type=product" class="bxv2-cat bxv2-cat--5">{% render 'boxeup-category-photo', products: bx_products, keyword: 'mochila', alt: 'Mochilas de treino' %}<span class="bxv2-cat__num">05 / ACESSÓRIOS</span><strong>Mochilas e sacos</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
+        <a href="{{ routes.search_url }}?q=treino&type=product" class="bxv2-cat bxv2-cat--6">{% render 'boxeup-category-photo', products: bx_products, keyword: 'treino', alt: 'Equipamento de treino' %}<span class="bxv2-cat__num">06 / PERFORMANCE</span><strong>Equipamento de treino</strong><span class="bxv2-cat__arrow" aria-hidden="true">↗</span></a>
       </div>
     </div>
 

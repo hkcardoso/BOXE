@@ -1,0 +1,15 @@
+{% comment %}
+Select a relevant real Shopify product image for a category card.
+No fake products or external image dependencies.
+{% endcomment %}
+{%- assign selected_image = blank -%}
+{%- for item in products -%}
+  {%- assign item_title = item.title | downcase -%}
+  {%- if item_title contains keyword and item.featured_image != blank -%}
+    {%- assign selected_image = item.featured_image -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if selected_image != blank -%}
+  {{ selected_image | image_url: width: 500 | image_tag: loading: 'lazy', widths: '200,350,500', sizes: '(min-width:990px) 16vw, 45vw', class: 'bxv2-cat__photo', alt: alt }}
+{%- endif -%}

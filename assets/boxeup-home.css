@@ -422,7 +422,9 @@
   object-position:center;
   padding:0;
   margin:0 auto;
-  opacity:.91;
+  /* All brand SVG artwork rendered consistently in white, preserving transparency. */
+  filter:brightness(0) saturate(100%) invert(100%);
+  opacity:.96;
   transition:opacity .2s,transform .2s;
 }
 .bxv2 .bxv2-brand--with-logo:hover .bxv2-brand__logo {opacity:1;transform:scale(1.025)}

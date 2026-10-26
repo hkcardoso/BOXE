@@ -199,7 +199,16 @@
       <div class="bxv2-brand-grid">
         {% assign bx_brand_names = 'Fairtex|Charlie|Buddha|Venum|Cleto Reyes|Rival|Twins|Everlast' | split: '|' %}
         {% for brand in bx_brand_names %}
-          <a class="bxv2-brand" href="{{ routes.search_url }}?q={{ brand | url_encode }}&type=product" aria-label="Ver produtos {{ brand | escape }}"><strong>{{ brand | escape }}</strong><span aria-hidden="true">↗</span></a>
+          {%- liquid
+            assign bx_brand_slug = brand | handleize
+            if bx_brand_slug == 'cleto-reyes'
+              assign bx_brand_slug = 'reyes'
+            endif
+            assign bx_brand_logo_file = 'boxeup-brand-' | append: bx_brand_slug | append: '.svg'
+          -%}
+          <a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.search_url }}?q={{ brand | url_encode }}&type=product" aria-label="Ver produtos {{ brand | escape }}">
+            <img class="bxv2-brand__logo" src="{{ bx_brand_logo_file | asset_url }}" alt="{{ brand | escape }}" loading="lazy" width="140" height="72">
+          </a>
         {% endfor %}
       </div>
     </div>

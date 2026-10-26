@@ -582,3 +582,61 @@ body.boxeup-page-home .header-wrapper .header__icon{color:#fff!important}
     transform:none!important;
   }
 }
+
+/* BOXEUP | Header visibility + cart sizing, 26 Oct 2026 */
+/* Active page text must not inherit Dawn's dark foreground colour. */
+body .header-wrapper .header__inline-menu .header__active-menu-item,
+body .header-wrapper .header__inline-menu .header__menu-item[aria-current="page"],
+body .header-wrapper .header__inline-menu details[open] > summary.header__menu-item,
+body .header-wrapper .header__inline-menu details[open] > summary.header__menu-item > span {
+  color:#f6f6f7!important;
+}
+body .header-wrapper .header__inline-menu .header__menu-item:hover > span,
+body .header-wrapper .header__inline-menu .header__menu-item:hover > .header__active-menu-item {
+  color:#f23a4c!important;
+}
+body .header-wrapper .header__submenu .list-menu__item--active,
+body .header-wrapper .header__submenu [aria-current="page"] {
+  color:#fff!important;
+}
+body .header-wrapper #cart-icon-bubble {
+  box-sizing:border-box!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:36px!important;
+  min-width:36px!important;
+  height:36px!important;
+  margin-right:0!important;
+}
+body .header-wrapper #cart-icon-bubble .svg-wrapper {
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:36px!important;
+  height:36px!important;
+}
+body .header-wrapper #cart-icon-bubble .icon,
+body .header-wrapper #cart-icon-bubble .icon-cart,
+body .header-wrapper #cart-icon-bubble .icon-cart-empty {
+  display:block!important;
+  flex:none!important;
+  width:32px!important;
+  height:32px!important;
+  padding:0!important;
+}
+@media(max-width:749px) {
+  body .header-wrapper #cart-icon-bubble {
+    width:34px!important;
+    min-width:34px!important;
+    height:34px!important;
+  }
+  body .header-wrapper #cart-icon-bubble .svg-wrapper {
+    width:34px!important;
+    height:34px!important;
+  }
+  body .header-wrapper #cart-icon-bubble .icon {
+    width:30px!important;
+    height:30px!important;
+  }
+}

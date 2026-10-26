@@ -93,7 +93,12 @@
           FacetFiltersForm.searchParamsPrev = target.search.slice(1);
           FacetFiltersForm.filterData = [];
         }
-        root.querySelectorAll('.scroll-trigger').forEach(el => el.classList.add('scroll-trigger--cancel'));
+        root.querySelectorAll('.scroll-trigger').forEach(el => {
+          // The fetched collection is inserted without a full page reload.
+          // Reveal any tiles left offscreen by Dawn's scroll animation state.
+          el.classList.remove('scroll-trigger--offscreen');
+          el.classList.add('scroll-trigger--cancel');
+        });
         window.scrollTo({top:scrollY,behavior:'instant'});
         if (focused?.isConnected) focused.focus({preventScroll:true});
         else if (focusId && document.getElementById(focusId)) document.getElementById(focusId).focus({preventScroll:true});

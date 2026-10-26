@@ -135,3 +135,8 @@ body .cart-notification a,body .cart-drawer a,body .cart-drawer .totals,body .ca
 @media(max-width:989px){#MainContent .grid.product-grid{gap:18px 11px}#MainContent .card-wrapper .card__information{padding:11px 10px 4px!important}}
 @media(max-width:749px){body .header{min-height:56px}#MainContent .collection-hero__inner.page-width{padding-top:25px;padding-bottom:20px}#MainContent .collection-hero__title,#MainContent .main-page-title{font-size:36px!important}#MainContent .card-wrapper .card__information{padding:9px 9px 2px!important}#MainContent .card-wrapper .card__heading,#MainContent .card-wrapper .card__heading a{font-size:12px!important}#MainContent .card-wrapper .price,#MainContent .card-wrapper .price-item{font-size:13px!important}#MainContent .grid.product-grid{gap:10px 9px}#MainContent .boxeup-contact__form-wrap{padding:24px 18px}}
 @media(prefers-reduced-motion:reduce){#MainContent .card-wrapper,#MainContent .card-wrapper img,body .header-wrapper a{transition:none!important}}
+
+
+/* Action-first product cards: Shopify native quick-add, no fabricated variants. */
+#MainContent .card-wrapper .quick-add__submit{background:var(--bx-red)!important;border:1px solid var(--bx-red)!important;color:#fff!important;font-weight:750;border-radius:3px!important;transition:filter .2s}
+#MainContent .card-wrapper .quick-add__submit:hover{filter:brightness(1.16)}

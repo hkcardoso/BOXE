@@ -288,3 +288,12 @@ body.boxeup-page-home .header-wrapper .header__icon{color:#fff!important}
 #MainContent .card-wrapper .boxeup-card__view svg{width:17px;height:17px}
 #MainContent .card-wrapper .quick-add__submit::before,#MainContent .card-wrapper .boxeup-card__cart-glyph{width:18px;height:18px}
 }
+
+/* Catalog reliability: product tiles must remain visible even if Dawn's
+   scroll-reveal JavaScript has not run after an AJAX collection change. */
+#MainContent[data-template="collection"] .product-grid-container.scroll-trigger,
+#MainContent[data-template="collection"] #product-grid > .scroll-trigger,
+#MainContent .collection-list > .scroll-trigger {
+  opacity: 1 !important;
+  transform: none !important;
+}

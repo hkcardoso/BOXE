@@ -6,8 +6,8 @@
         "boxe": {
           "type": "category",
           "settings": {
-            "title": "BOXE",
-            "subtitle": "Luvas e proteção",
+            "title": "Boxe",
+            "subtitle": "Luvas, proteção e treino",
             "search_term": "boxe",
             "image": "shopify://shop_images/boxeup-boxe.jpg"
           }
@@ -15,8 +15,8 @@
         "muaythai": {
           "type": "category",
           "settings": {
-            "title": "MUAY THAI",
-            "subtitle": "Treino e combate",
+            "title": "Muay Thai",
+            "subtitle": "Técnica e potência",
             "search_term": "muay thai",
             "image": "shopify://shop_images/boxeup-muay-thai.jpg"
           }
@@ -25,7 +25,7 @@
           "type": "category",
           "settings": {
             "title": "MMA",
-            "subtitle": "Equipamento técnico",
+            "subtitle": "Preparação e combate",
             "search_term": "mma",
             "image": "shopify://shop_images/boxeup-mma.jpg"
           }
@@ -33,8 +33,8 @@
         "jiujitsu": {
           "type": "category",
           "settings": {
-            "title": "JIU-JITSU",
-            "subtitle": "Tatami e treino",
+            "title": "Jiu-Jitsu",
+            "subtitle": "Equipamento de tatami",
             "search_term": "jiu jitsu",
             "image": "shopify://shop_images/boxeup-jiu-jitsu.jpg"
           }
@@ -46,45 +46,10 @@
         "mma",
         "jiujitsu"
       ],
-      "settings": {
-        "eyebrow": "EQUIPAMENTO DE COMBATE / BOXEUP",
-        "heading": "PREPARA-TE",
-        "heading_accent": "PARA O PRÓXIMO ROUND.",
-        "description": "Boxe, Muay Thai, MMA e Jiu-Jitsu. O teu espaço para encontrar equipamento à altura do teu treino.",
-        "categories_heading": "A TUA MODALIDADE. O TEU EQUIPAMENTO."
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "A EQUIPAR O PRÓXIMO TREINO",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 32,
-        "padding_bottom": 72
-      }
+      "settings": {}
     }
   },
   "order": [
-    "boxeup_home",
-    "featured_collection"
+    "boxeup_home"
   ]
 }

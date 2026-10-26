@@ -425,8 +425,8 @@
   display:flex!important;
   flex:1 1 auto!important;
   flex-direction:column!important;
-  min-height:116px!important;
-  padding:11px 12px 11px!important;
+  min-height:112px!important;
+  padding:10px 12px 10px!important;
   background:#101114!important;
 }
 .bxv2-block--products .bxv2-product__title {

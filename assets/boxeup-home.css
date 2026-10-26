@@ -392,3 +392,42 @@
 .bxv2-block--products .bxv2-product__view,.bxv2-block--products .bxv2-product__add{width:32px!important;height:34px!important;min-width:32px!important;min-height:34px!important}
 .bxv2-block--products .bxv2-product__view svg,.bxv2-block--products .bxv2-product__add svg{width:17px;height:17px}
 }
+
+/* BOXEUP: brand marks from the supplied visual reference. */
+.bxv2 .bxv2-brand-grid {gap:9px}
+.bxv2 .bxv2-brand--with-logo {
+  min-height:83px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 13px;
+  border:1px solid #34363c;
+  border-radius:7px;
+  background:#151619;
+  overflow:hidden;
+  transition:background-color .2s,border-color .2s,transform .2s;
+}
+.bxv2 .bxv2-brand--with-logo:hover {
+  transform:translateY(-2px);
+  background:#1e1f23;
+  border-color:#6a6b73;
+}
+.bxv2 .bxv2-brand--with-logo .bxv2-brand__logo {
+  display:block;
+  width:100%;
+  max-width:123px;
+  height:56px;
+  max-height:56px;
+  object-fit:contain;
+  object-position:center;
+  padding:0;
+  margin:0 auto;
+  opacity:.91;
+  transition:opacity .2s,transform .2s;
+}
+.bxv2 .bxv2-brand--with-logo:hover .bxv2-brand__logo {opacity:1;transform:scale(1.025)}
+@media(max-width:749px){
+  .bxv2 .bxv2-brand-grid {gap:7px}
+  .bxv2 .bxv2-brand--with-logo {min-height:67px;padding:9px 7px}
+  .bxv2 .bxv2-brand--with-logo .bxv2-brand__logo {max-width:100%;height:42px;max-height:42px}
+}

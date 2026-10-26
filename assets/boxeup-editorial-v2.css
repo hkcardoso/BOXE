@@ -185,3 +185,26 @@ body .footer .boxeup-footer-brand__wordmark b{display:none}
   padding: 0 !important;
   transform: none !important;
 }
+
+
+/* BOXEUP — header v3: compact, centered navigation like the mockup. */
+body .utility-bar{display:none!important}
+body .header-wrapper,body .header-wrapper--border-bottom{background:rgba(11,12,15,.97)!important;border-bottom:1px solid rgba(255,255,255,.13)!important}
+body .header{min-height:56px!important;padding-top:7px!important;padding-bottom:7px!important;column-gap:22px!important}
+body .header-wrapper .boxeup-wordmark{font-size:clamp(23px,1.8vw,30px);letter-spacing:-.09em}
+body .header-wrapper .boxeup-wordmark strong{color:#ed2437!important}
+body .header-wrapper .header__inline-menu .header__menu-item{font-size:11px!important;letter-spacing:0!important;font-weight:600!important;text-transform:none!important}
+body .header-wrapper .header__inline-menu .list-menu--inline{gap:clamp(4px,1.1vw,20px)}
+body .header-wrapper .header__icon{height:36px;width:36px}
+body .header-wrapper .header__icons{gap:1px}
+@media(min-width:990px){
+  body .header.header--middle-left{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"heading navigation icons"}
+  body .header__inline-menu{justify-self:center;margin-left:0!important}
+  body .header:not(.drawer-menu).page-width,body .header.page-width{padding-left:clamp(24px,3vw,62px)!important;padding-right:clamp(24px,3vw,62px)!important}
+}
+@media(max-width:989px){body .header{min-height:54px!important}}
+@media(max-width:749px){
+  body .header{padding-top:5px!important;padding-bottom:5px!important}
+  body .header-wrapper .boxeup-wordmark{font-size:24px}
+  body .header-wrapper .header__icon{width:34px;height:34px}
+}

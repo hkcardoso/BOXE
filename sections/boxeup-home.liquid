@@ -5,17 +5,18 @@
   <div class="bxv2-wrap">
     <div class="bxv2-hero">
       <div class="bxv2-hero__media">
-        {% if section.settings.hero_image != blank %}
-          {{ section.settings.hero_image | image_url: width: 2200 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '750,1100,1500,1800,2200', sizes: '100vw', class: 'bxv2-hero__img', alt: 'Atleta de boxe durante o treino' }}
+        {% if section.settings.hero_video != blank %}
+          {{ section.settings.hero_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, preload: 'metadata', class: 'bxv2-hero__motion bxv2-hero__motion--video' }}
         {% else %}
-          <img class="bxv2-hero__img" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-home-hero-2026.jpg?v=1793013818" alt="Atleta a treinar boxe num ginásio" width="1920" height="1100" fetchpriority="high">
+          <img class="bxv2-hero__motion" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-motion.webp?v=1793029201" alt="" role="presentation" width="1200" height="633" fetchpriority="high" decoding="async">
         {% endif %}
+        <img class="bxv2-hero__still" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1200" height="633" loading="eager" decoding="async">
       </div>
       <div class="bxv2-hero__shade"></div>
       <div class="bxv2-hero__inner">
-        <p class="bxv2-overline"><span class="bxv2-dot"></span> EQUIPAMENTO PARA DESPORTOS DE COMBATE</p>
-        <h1>Equipa-te para<br>o <em>próximo nível.</em></h1>
-        <p class="bxv2-hero__desc">Tudo para o teu treino. Equipamento das melhores marcas de combate, num só lugar.</p>
+        <p class="bxv2-overline"><span class="bxv2-dot"></span> MAIS QUE EQUIPAMENTO</p>
+        <h1>Prepara-te para<br>o próximo <em>round.</em></h1>
+        <p class="bxv2-hero__desc">Equipamento de combate para Boxe, Muay Thai, MMA e Jiu-Jitsu. As melhores marcas, num só lugar.</p>
         <div class="bxv2-actions">
           <a class="bxv2-btn bxv2-btn--red" href="{{ routes.all_products_collection_url }}">Ver catálogo <span aria-hidden="true">↗</span></a>
           <a class="bxv2-btn bxv2-btn--glass" href="#bxv2-modalidades">Explorar modalidades <span aria-hidden="true">↗</span></a>
@@ -23,13 +24,11 @@
         <span class="bxv2-hero__index">BOXE <b>/</b> MUAY THAI <b>/</b> MMA <b>/</b> JIU-JITSU</span>
       </div>
       <div class="bxv2-hero__stamp" aria-hidden="true">DISCIPLINA<br>FOCO<br>PROGRESSO<span>.</span></div>
-    </div>
-
-    <div class="bxv2-trust" aria-label="Vantagens BOXEUP">
-      <span><i aria-hidden="true">✦</i> Loja portuguesa</span>
-      <span><i aria-hidden="true">✦</i> Várias marcas de combate</span>
-      <span><i aria-hidden="true">✦</i> Compra segura</span>
-      <span><i aria-hidden="true">✦</i> Apoio por email</span>
+      <div class="bxv2-trust" aria-label="Vantagens BOXEUP">
+        <span><i aria-hidden="true">✦</i> Loja portuguesa</span>
+        <span><i aria-hidden="true">✦</i> Várias marcas de combate</span>
+        <span><i aria-hidden="true">✦</i> Compra segura</span>
+      </div>
     </div>
 
     <div class="bxv2-block bxv2-block--categories">
@@ -179,7 +178,7 @@
   "tag": "section",
   "class": "section-boxeup-home",
   "settings": [
-    {"type":"image_picker","id":"hero_image","label":"Fotografia principal","info":"Opcional: por defeito, é apresentada a fotografia nova da BOXEUP."},
+    {"type":"video","id":"hero_video","label":"Vídeo do destaque (Shopify)","info":"Opcional. Por defeito, é apresentada uma animação otimizada do vídeo enviado."},
     {"type":"image_picker","id":"editorial_image","label":"Fotografia da secção Disciplina","info":"Opcional: substitui a fotografia editorial da BOXEUP."}
   ],
   "blocks": [

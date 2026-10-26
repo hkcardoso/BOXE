@@ -251,10 +251,10 @@ body.boxeup-page-home .header-wrapper .header__icon{color:#fff!important}
 /* BOXEUP — premium catalog cards with actual image, title, subtitle and native quick add. */
 #MainContent .card-wrapper{position:relative;background:#101114!important;border:1px solid rgba(255,255,255,.11)!important;border-radius:6px!important;padding:0!important;overflow:hidden}
 #MainContent .card-wrapper .card{height:100%;display:flex;flex-direction:column}
-#MainContent .card-wrapper .card__content:nth-child(2){position:relative;display:flex;flex:1;flex-direction:column;min-height:155px;background:#101114!important;padding:0!important}
-#MainContent .card-wrapper .card__content:nth-child(2)>.card__information{flex:1;display:flex;flex-direction:column;padding:15px 13px 14px!important}
-#MainContent .card-wrapper .card__content:nth-child(2) .card__heading{margin:0!important}
-#MainContent .card-wrapper .card__content:nth-child(2) .card__heading a{font-size:clamp(14px,1.25vw,18px)!important;font-weight:850!important;line-height:1.25!important;letter-spacing:-.022em;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;color:#fff!important}
+#MainContent .product-card-wrapper .card > .card__content{position:relative;display:flex;flex:1;flex-direction:column;min-height:155px;background:#101114!important;padding:0!important}
+#MainContent .product-card-wrapper .card > .card__content>.card__information{flex:1;display:flex;flex-direction:column;padding:15px 13px 14px!important}
+#MainContent .product-card-wrapper .card > .card__content .card__heading{margin:0!important}
+#MainContent .product-card-wrapper .card > .card__content .card__heading a{font-size:clamp(14px,1.25vw,18px)!important;font-weight:850!important;line-height:1.25!important;letter-spacing:-.022em;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;color:#fff!important}
 #MainContent .card-wrapper .boxeup-card__subtitle{font-size:clamp(11px,1vw,14px);line-height:1.4;color:#bec0c6;margin:5px 0 0!important;min-height:18px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
 #MainContent .card-wrapper .card-information{margin-top:auto;padding-top:12px}
 #MainContent .card-wrapper .card-information>.caption-with-letter-spacing,
@@ -271,14 +271,14 @@ body.boxeup-page-home .header-wrapper .header__icon{color:#fff!important}
 #MainContent .card-wrapper .quick-add__submit::before,#MainContent .card-wrapper .boxeup-card__cart-glyph{content:'';width:22px;height:22px;display:block;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.8' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M2.5 3.5h2.8l2.2 11.3h11.6l2-8.2H6.2'/%3E%3Ccircle cx='9.2' cy='20' r='1.3'/%3E%3Ccircle cx='18' cy='20' r='1.3'/%3E%3C/svg%3E");background-repeat:no-repeat;background-size:contain;background-position:center}
 #MainContent .card-wrapper .quick-add__submit>span:not(.loading-overlay__spinner){font-size:0!important;position:absolute;width:0;height:0;overflow:hidden}
 #MainContent .card-wrapper .quick-add__submit .icon-wrap{display:none!important}
-#MainContent .card-wrapper .card__content:nth-child(2)>.card__badge{display:none}
+#MainContent .product-card-wrapper .card > .card__content>.card__badge{display:none}
 #MainContent .card-wrapper .card__badge{pointer-events:none}
 .boxeup-real-swatches{display:flex;gap:7px;align-items:center;margin-top:8px;min-height:15px}
 .boxeup-real-swatch{display:block;width:15px;height:15px;flex:none;border-radius:50%;border:2px solid rgba(255,255,255,.38);box-shadow:0 0 0 1px rgba(0,0,0,.18)}
 @media(max-width:749px){
-#MainContent .card-wrapper .card__content:nth-child(2){min-height:137px!important}
-#MainContent .card-wrapper .card__content:nth-child(2)>.card__information{padding:11px 10px 11px!important}
-#MainContent .card-wrapper .card__content:nth-child(2) .card__heading a{font-size:12px!important}
+#MainContent .product-card-wrapper .card > .card__content{min-height:137px!important}
+#MainContent .product-card-wrapper .card > .card__content>.card__information{padding:11px 10px 11px!important}
+#MainContent .product-card-wrapper .card > .card__content .card__heading a{font-size:12px!important}
 #MainContent .card-wrapper .boxeup-card__subtitle{font-size:11px;min-height:15px}
 #MainContent .card-wrapper .card-information .price{padding-right:75px}
 #MainContent .card-wrapper .card-information .price .price-item{font-size:13px!important}
@@ -366,4 +366,14 @@ body.boxeup-page-home .header-wrapper .header__icon{color:#fff!important}
 }
 #MainContent .product-card-wrapper .card--media > .card__content:nth-child(2) {
   flex:0 0 auto!important;
+}
+
+
+/* Fix: Dawn adds a second, visual-only title layer inside the photo area.
+   The previous compact card CSS gave it an opaque background covering the
+   product photo. Keep this duplicate layer out of the visual layout;
+   the accessible title/link and real quick-add remain in the details. */
+#MainContent .product-card-wrapper .card--media > .card__inner > .card__content {
+  display: none !important;
+  background: transparent !important;
 }

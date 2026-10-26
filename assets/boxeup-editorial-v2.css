@@ -248,196 +248,32 @@ body.boxeup-page-home .header-wrapper .header__icon{color:#fff!important}
 }
 
 
-/* BOXEUP — premium catalog cards with actual image, title, subtitle and native quick add. */
-#MainContent .card-wrapper{position:relative;background:#101114!important;border:1px solid rgba(255,255,255,.11)!important;border-radius:6px!important;padding:0!important;overflow:hidden}
-#MainContent .card-wrapper .card{height:100%;display:flex;flex-direction:column}
-#MainContent .product-card-wrapper .card > .card__content{position:relative;display:flex;flex:1;flex-direction:column;min-height:155px;background:#101114!important;padding:0!important}
-#MainContent .product-card-wrapper .card > .card__content>.card__information{flex:1;display:flex;flex-direction:column;padding:15px 13px 14px!important}
-#MainContent .product-card-wrapper .card > .card__content .card__heading{margin:0!important}
-#MainContent .product-card-wrapper .card > .card__content .card__heading a{font-size:clamp(14px,1.25vw,18px)!important;font-weight:850!important;line-height:1.25!important;letter-spacing:-.022em;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;color:#fff!important}
-#MainContent .card-wrapper .boxeup-card__subtitle{font-size:clamp(11px,1vw,14px);line-height:1.4;color:#bec0c6;margin:5px 0 0!important;min-height:18px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
-#MainContent .card-wrapper .card-information{margin-top:auto;padding-top:12px}
-#MainContent .card-wrapper .card-information>.caption-with-letter-spacing,
-#MainContent .card-wrapper .card-information>.caption-large{display:none!important}
-#MainContent .card-wrapper .card-information .price{padding-right:100px;margin:0!important}
-#MainContent .card-wrapper .card-information .price .price-item{font-size:clamp(14px,1.24vw,18px)!important;font-weight:850!important;color:#fff!important}
-#MainContent .card-wrapper .boxeup-card__view,#MainContent .card-wrapper .boxeup-card__cart-link{position:absolute;z-index:9;bottom:13px;right:62px;display:grid;place-items:center;width:42px;height:42px;background:#1b1e23;border:1px solid rgba(255,255,255,.26);color:#fff!important;border-radius:5px;cursor:pointer}
-#MainContent .card-wrapper .boxeup-card__view:hover{background:#303237;border-color:#fff}
-#MainContent .card-wrapper .boxeup-card__cart-link{right:13px;background:#ed2437;border-color:#ed2437}
-#MainContent .card-wrapper .quick-add{position:absolute!important;z-index:9;bottom:13px;right:13px;margin:0!important;width:42px!important}
-#MainContent .card-wrapper .quick-add product-form,#MainContent .card-wrapper .quick-add form{margin:0!important}
-#MainContent .card-wrapper .quick-add__submit{min-width:42px!important;min-height:42px!important;width:42px!important;height:42px!important;margin:0!important;padding:0!important;display:grid!important;place-items:center!important;overflow:hidden;font-size:0!important;border:0!important;background:#ed2437!important;border-radius:5px!important;color:#fff!important;cursor:pointer}
-#MainContent .card-wrapper .quick-add__submit:disabled{background:#34353a!important;cursor:default}
-#MainContent .card-wrapper .quick-add__submit::before,#MainContent .card-wrapper .boxeup-card__cart-glyph{content:'';width:22px;height:22px;display:block;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.8' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M2.5 3.5h2.8l2.2 11.3h11.6l2-8.2H6.2'/%3E%3Ccircle cx='9.2' cy='20' r='1.3'/%3E%3Ccircle cx='18' cy='20' r='1.3'/%3E%3C/svg%3E");background-repeat:no-repeat;background-size:contain;background-position:center}
-#MainContent .card-wrapper .quick-add__submit>span:not(.loading-overlay__spinner){font-size:0!important;position:absolute;width:0;height:0;overflow:hidden}
-#MainContent .card-wrapper .quick-add__submit .icon-wrap{display:none!important}
-#MainContent .product-card-wrapper .card > .card__content>.card__badge{display:none}
-#MainContent .card-wrapper .card__badge{pointer-events:none}
-.boxeup-real-swatches{display:flex;gap:7px;align-items:center;margin-top:8px;min-height:15px}
-.boxeup-real-swatch{display:block;width:15px;height:15px;flex:none;border-radius:50%;border:2px solid rgba(255,255,255,.38);box-shadow:0 0 0 1px rgba(0,0,0,.18)}
-@media(max-width:749px){
-#MainContent .product-card-wrapper .card > .card__content{min-height:137px!important}
-#MainContent .product-card-wrapper .card > .card__content>.card__information{padding:11px 10px 11px!important}
-#MainContent .product-card-wrapper .card > .card__content .card__heading a{font-size:12px!important}
-#MainContent .card-wrapper .boxeup-card__subtitle{font-size:11px;min-height:15px}
-#MainContent .card-wrapper .card-information .price{padding-right:75px}
-#MainContent .card-wrapper .card-information .price .price-item{font-size:13px!important}
-#MainContent .card-wrapper .boxeup-card__view,#MainContent .card-wrapper .boxeup-card__cart-link,#MainContent .card-wrapper .quick-add__submit{width:33px!important;height:35px!important;min-width:33px!important;min-height:35px!important}
-#MainContent .card-wrapper .boxeup-card__view{right:48px;bottom:10px}
-#MainContent .card-wrapper .boxeup-card__cart-link,#MainContent .card-wrapper .quick-add{right:10px;bottom:10px;width:33px!important}
-#MainContent .card-wrapper .boxeup-card__view svg{width:17px;height:17px}
-#MainContent .card-wrapper .quick-add__submit::before,#MainContent .card-wrapper .boxeup-card__cart-glyph{width:18px;height:18px}
-}
 
-/* Catalog reliability: product tiles must remain visible even if Dawn's
-   scroll-reveal JavaScript has not run after an AJAX collection change. */
-#MainContent[data-template="collection"] .product-grid-container.scroll-trigger,
-#MainContent[data-template="collection"] #product-grid > .scroll-trigger,
-#MainContent .collection-list > .scroll-trigger {
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-
-/* BOXEUP | Catalogue media fix (2026-10-26)
-   Keep the image stage from collapsing inside compact flex product cards. */
-#MainContent .product-card-wrapper .card--media > .card__inner {
-  display:block!important;
-  position:relative!important;
-  flex:0 0 auto!important;
-  flex-shrink:0!important;
-  width:100%!important;
-  aspect-ratio:1/1!important;
-  min-height:0!important;
-  overflow:hidden!important;
-  background:#1b1c1f!important;
-}
-#MainContent .product-card-wrapper .card--media > .card__inner > .card__media {
-  display:block!important;
-  position:absolute!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-  margin:0!important;
-  overflow:hidden!important;
-}
-#MainContent .product-card-wrapper .card--media > .card__inner > .card__media > .media {
-  display:block!important;
-  position:absolute!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-}
-#MainContent .product-card-wrapper .card--media > .card__inner .card__media img {
-  display:block!important;
-  position:absolute!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-  opacity:1!important;
-  visibility:visible!important;
-  object-fit:contain!important;
-  object-position:center!important;
-  z-index:1!important;
-}
-#MainContent .product-card-wrapper .card--media > .card__inner .card__media img + img {
-  opacity:0!important;
-}
-#MainContent .product-card-wrapper .card--media:hover > .card__inner .card__media img + img {
-  opacity:1!important;
-}
-#MainContent .product-card-wrapper .card--media > .card__inner > .card__content {
-  position:absolute!important;
-  inset:0!important;
-  z-index:2!important;
-  pointer-events:none;
-}
-#MainContent .product-card-wrapper .card--media > .card__inner > .card__content .card__heading {
-  opacity:0!important;
-}
-#MainContent .product-card-wrapper .card--media > .card__inner > .card__content .card__heading a {
-  pointer-events:auto;
-}
-
-/* Let each grid item grow to fit both the square photo and compact details. */
-#MainContent .product-card-wrapper .card--media {
-  height:auto!important;
-  min-height:0!important;
-}
-#MainContent .product-card-wrapper .card--media > .card__content:nth-child(2) {
-  flex:0 0 auto!important;
-}
-
-
-/* Fix: Dawn adds a second, visual-only title layer inside the photo area.
-   The previous compact card CSS gave it an opaque background covering the
-   product photo. Keep this duplicate layer out of the visual layout;
-   the accessible title/link and real quick-add remain in the details. */
-#MainContent .product-card-wrapper .card--media > .card__inner > .card__content {
-  display: none !important;
-  background: transparent !important;
-}
-
-/* BOXEUP | Catalog cards v6: compact grid and correct SVG controls. */
-/* Use CSS Grid instead of conflicting four-column flex widths from legacy styles. */
-#MainContent #product-grid.product-grid:not(.slider) {
-  display:grid!important;
-  grid-template-columns:repeat(5,minmax(0,1fr))!important;
-  column-gap:12px!important;
-  row-gap:14px!important;
-  width:100%!important;
-  max-width:100%!important;
-  align-items:stretch!important;
-}
-#MainContent #product-grid.product-grid:not(.slider)>li.grid__item {
-  flex:none!important;
-  display:block!important;
-  width:100%!important;
-  max-width:100%!important;
-  min-width:0!important;
-  margin:0!important;
-  padding:0!important;
-}
-@media(min-width:990px) {
-  #MainContent .boxeup-shelf-grid {
-    grid-template-columns:repeat(5,minmax(0,1fr))!important;
-    gap:14px 12px!important;
-  }
-}
-@media(min-width:750px) and (max-width:989px) {
-  #MainContent #product-grid.product-grid:not(.slider) {
-    grid-template-columns:repeat(3,minmax(0,1fr))!important;
-  }
-  #MainContent .boxeup-shelf-grid {
-    grid-template-columns:repeat(3,minmax(0,1fr))!important;
-    gap:12px!important;
-  }
-}
-@media(max-width:749px) {
-  #MainContent #product-grid.product-grid:not(.slider) {
-    grid-template-columns:repeat(2,minmax(0,1fr))!important;
-    gap:9px!important;
-  }
-  #MainContent .boxeup-shelf-grid {grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
-}
-/* Remove height inflation and clipping; crop neither the product nor its canvas. */
+/* BOXEUP / Product cards — unified with homepage (2026-10-26) */
+/* Only the Shopify product cards; collection category tiles remain unchanged. */
 #MainContent .product-card-wrapper {
-  position:relative!important;
-  display:block!important;
-  height:100%!important;
+  position:relative;
+  display:block;
+  height:100%;
   padding:0!important;
+  overflow:hidden;
   border:1px solid #303138!important;
   border-radius:6px!important;
-  background:#111215!important;
+  background:#101114!important;
   box-shadow:none!important;
-  overflow:hidden!important;
+  transform:none!important;
+  transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease;
 }
-#MainContent .product-card-wrapper:hover {transform:translateY(-2px)!important;border-color:#5b5d66!important}
+#MainContent .product-card-wrapper:hover {
+  transform:translateY(-2px)!important;
+  border-color:#565963!important;
+  box-shadow:0 6px 18px rgb(0 0 0 / 14%)!important;
+}
 #MainContent .product-card-wrapper>.card {
   display:flex!important;
   flex-direction:column!important;
   height:100%!important;
-  background:#111215!important;
+  background:#101114!important;
 }
 #MainContent .product-card-wrapper .card--media>.card__inner {
   display:block!important;
@@ -446,11 +282,13 @@ body.boxeup-page-home .header-wrapper .header__icon{color:#fff!important}
   width:100%!important;
   height:auto!important;
   min-height:0!important;
-  aspect-ratio:1 / .92!important;
-  padding:0!important;
+  aspect-ratio:1 / 1!important;
   margin:0!important;
+  padding:0!important;
   overflow:hidden!important;
   background:#1b1c1f!important;
+  border:0!important;
+  border-radius:0!important;
 }
 #MainContent .product-card-wrapper .card--media>.card__inner.ratio::before {
   content:none!important;
@@ -461,11 +299,14 @@ body.boxeup-page-home .header-wrapper .header__icon{color:#fff!important}
   display:block!important;
   position:absolute!important;
   inset:0!important;
-  margin:0!important;
   width:100%!important;
   height:100%!important;
+  margin:0!important;
+  padding:0!important;
   overflow:hidden!important;
-  background:#1b1c1f!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
 }
 #MainContent .product-card-wrapper .card--media>.card__inner .card__media img {
   display:block!important;
@@ -474,155 +315,254 @@ body.boxeup-page-home .header-wrapper .header__icon{color:#fff!important}
   box-sizing:border-box!important;
   width:100%!important;
   height:100%!important;
-  padding:7px!important;
   margin:0!important;
-  object-fit:contain!important;
+  padding:0!important;
+  border:0!important;
+  object-fit:cover!important;
   object-position:center!important;
   background:transparent!important;
-  transform:none!important;
   mix-blend-mode:normal!important;
   filter:none!important;
+  opacity:1!important;
   visibility:visible!important;
+  transform:scale(1)!important;
+  transition:transform .35s ease,opacity .25s ease!important;
 }
-#MainContent .product-card-wrapper .card--media>.card__inner .card__media img:first-child {opacity:1!important}
-#MainContent .product-card-wrapper .card--media>.card__inner .card__media img+img {opacity:0!important}
-#MainContent .product-card-wrapper .card--media:hover>.card__inner .card__media img+img {opacity:1!important}
-#MainContent .product-card-wrapper .card--media>.card__inner>.card__content {display:none!important}
-/* Compact product data: no empty block between subtitle and price. */
+#MainContent .product-card-wrapper .card--media>.card__inner .card__media img+img {
+  opacity:0!important;
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference) {
+  #MainContent .product-card-wrapper:hover .card--media>.card__inner .card__media img:first-child {
+    transform:scale(1.015)!important;
+  }
+  #MainContent .product-card-wrapper:hover .card--media>.card__inner .card__media img+img {
+    opacity:1!important;
+    transform:scale(1.015)!important;
+  }
+}
+/* Dawn renders an extra heading inside the photograph; never paint over the image. */
+#MainContent .product-card-wrapper .card--media>.card__inner>.card__content {
+  display:none!important;
+}
 #MainContent .product-card-wrapper .card--media>.card__content {
-  position:relative!important;
   display:flex!important;
+  position:relative!important;
   flex:1 0 auto!important;
   flex-direction:column!important;
-  min-height:88px!important;
   height:auto!important;
-  padding:0!important;
+  min-height:108px!important;
   margin:0!important;
-  background:#111215!important;
+  padding:0!important;
+  background:#101114!important;
 }
 #MainContent .product-card-wrapper .card--media>.card__content>.card__information {
   display:flex!important;
-  flex:1 1 auto!important;
+  flex:1 0 auto!important;
   flex-direction:column!important;
-  min-height:88px!important;
-  padding:9px 9px 9px!important;
+  min-height:108px!important;
+  padding:11px 11px 10px!important;
 }
-#MainContent .product-card-wrapper .card--media>.card__content .card__heading {margin:0!important}
+#MainContent .product-card-wrapper .card__heading {margin:0!important}
 #MainContent .product-card-wrapper .card--media>.card__content .card__heading a {
   display:-webkit-box!important;
-  -webkit-box-orient:vertical!important;
   -webkit-line-clamp:2!important;
+  -webkit-box-orient:vertical!important;
   overflow:hidden!important;
+  color:#fafafa!important;
+  font-size:14px!important;
+  font-weight:760!important;
+  line-height:1.28!important;
+  letter-spacing:-.015em!important;
   text-decoration:none!important;
-  color:#f6f6f7!important;
-  font-size:12px!important;
-  line-height:1.3!important;
-  font-weight:750!important;
 }
 #MainContent .product-card-wrapper .boxeup-card__subtitle {
   display:-webkit-box!important;
   -webkit-box-orient:vertical!important;
   -webkit-line-clamp:1!important;
   overflow:hidden!important;
-  margin:2px 0 0!important;
+  margin:4px 0 0!important;
   min-height:0!important;
-  color:#9ea0aa!important;
-  font-size:10px!important;
+  color:#abaeb6!important;
+  font-size:11px!important;
   line-height:1.35!important;
 }
-#MainContent .product-card-wrapper .card-information {margin-top:auto!important;padding-top:7px!important}
-#MainContent .product-card-wrapper .card-information .price {margin:0!important;padding-right:72px!important}
+#MainContent .product-card-wrapper .card-information {
+  min-width:0;
+  margin-top:auto!important;
+  padding-top:10px!important;
+}
+#MainContent .product-card-wrapper .card-information>.caption-with-letter-spacing,
+#MainContent .product-card-wrapper .card-information>.caption-large {
+  display:none!important;
+}
+#MainContent .product-card-wrapper .card-information .price {
+  margin:0!important;
+  padding-right:78px!important;
+}
 #MainContent .product-card-wrapper .price,
 #MainContent .product-card-wrapper .price .price-item {
   color:#fff!important;
-  font-size:12px!important;
+  font-size:15px!important;
   font-weight:800!important;
   line-height:1.25!important;
+  letter-spacing:-.02em!important;
 }
-#MainContent .product-card-wrapper .boxeup-real-swatches {gap:4px!important;margin-top:3px!important;min-height:0!important}
-#MainContent .product-card-wrapper .boxeup-real-swatch {width:11px!important;height:11px!important}
-/* Explicit icon SVG for buttons; don't rely on ::before from Dawn. */
+#MainContent .product-card-wrapper .boxeup-real-swatches {
+  display:flex;align-items:center;gap:5px;margin-top:4px;min-height:0;
+}
+#MainContent .product-card-wrapper .boxeup-real-swatch {
+  flex:none;width:12px;height:12px;
+  border-radius:50%;border:2px solid rgb(255 255 255 / 35%);
+}
+/* Consistent action controls, matching featured products on the homepage. */
+#MainContent .product-card-wrapper .boxeup-card__view,
+#MainContent .product-card-wrapper .boxeup-card__cart-link,
+#MainContent .product-card-wrapper .quick-add__submit {
+  box-sizing:border-box!important;
+  display:grid!important;
+  place-items:center!important;
+  width:34px!important;
+  min-width:34px!important;
+  height:34px!important;
+  min-height:34px!important;
+  padding:0!important;
+  margin:0!important;
+  border-radius:5px!important;
+  color:#fff!important;
+  text-decoration:none!important;
+  font-size:0!important;
+  transition:background .2s ease,border-color .2s ease,transform .2s ease!important;
+}
 #MainContent .product-card-wrapper .boxeup-card__view,
 #MainContent .product-card-wrapper .boxeup-card__cart-link {
   position:absolute!important;
-  right:42px!important;
-  bottom:9px!important;
-  display:grid!important;
-  place-items:center!important;
-  width:29px!important;
-  height:30px!important;
-  min-width:29px!important;
-  min-height:30px!important;
-  padding:0!important;
-  border:1px solid #41434b!important;
-  border-radius:4px!important;
-  color:#fff!important;
-  background:#1e2025!important;
+  z-index:9!important;
+  bottom:10px!important;
+  right:50px!important;
+  background:#1b1e23!important;
+  border:1px solid #454750!important;
 }
-#MainContent .product-card-wrapper .boxeup-card__view svg {display:block!important;width:16px!important;height:16px!important}
+#MainContent .product-card-wrapper .boxeup-card__view:hover {
+  background:#30333a!important;
+  border-color:#797c86!important;
+}
+#MainContent .product-card-wrapper .boxeup-card__view svg {
+  display:block!important;width:18px!important;height:18px!important;
+}
 #MainContent .product-card-wrapper .boxeup-card__cart-link {
-  right:9px!important;
-  border-color:#ed2437!important;
-  background:#ed2437!important;
+  right:10px!important;background:#ed2437!important;border-color:#ed2437!important;
+}
+#MainContent .product-card-wrapper .boxeup-card__cart-link:hover,
+#MainContent .product-card-wrapper .quick-add__submit:hover:not(:disabled) {
+  background:#c6172a!important;border-color:#c6172a!important;
 }
 #MainContent .product-card-wrapper .quick-add {
   position:absolute!important;
   z-index:10!important;
-  right:9px!important;
-  bottom:9px!important;
-  width:29px!important;
+  right:10px!important;
+  bottom:10px!important;
+  width:34px!important;
+  margin:0!important;
+}
+#MainContent .product-card-wrapper .quick-add product-form,
+#MainContent .product-card-wrapper .quick-add form {
   margin:0!important;
 }
 #MainContent .product-card-wrapper .quick-add__submit {
   position:relative!important;
-  display:grid!important;
-  place-items:center!important;
-  width:29px!important;
-  min-width:29px!important;
-  height:30px!important;
-  min-height:30px!important;
-  margin:0!important;
-  padding:0!important;
-  border:0!important;
-  border-radius:4px!important;
-  color:white!important;
-  background:#ed2437!important;
-  cursor:pointer!important;
   overflow:hidden!important;
+  background:#ed2437!important;
+  border:1px solid #ed2437!important;
+  cursor:pointer!important;
 }
-#MainContent .product-card-wrapper .quick-add__submit::before {display:none!important;content:none!important}
+#MainContent .product-card-wrapper .quick-add__submit:disabled {
+  background:#44464c!important;border-color:#44464c!important;cursor:default!important;
+}
+#MainContent .product-card-wrapper .quick-add__submit::before {
+  display:none!important;content:none!important;
+}
+#MainContent .product-card-wrapper .quick-add__submit>span:not(.loading-overlay__spinner) {
+  font-size:0!important;position:absolute;width:0;height:0;overflow:hidden;
+}
+#MainContent .product-card-wrapper .quick-add__submit .icon-wrap {display:none!important}
 #MainContent .product-card-wrapper .quick-add__submit>.boxeup-card__cart-icon {
   position:absolute!important;
   display:block!important;
   width:18px!important;
   height:18px!important;
-  top:50%!important;
-  left:50%!important;
+  top:50%!important;left:50%!important;
   transform:translate(-50%,-50%)!important;
-  color:#fff!important;
   stroke:#fff!important;
+  fill:none!important;
   z-index:3!important;
   pointer-events:none!important;
 }
-#MainContent .product-card-wrapper .quick-add__submit:disabled{background:#44464c!important;cursor:not-allowed!important}
+#MainContent .product-card-wrapper .boxeup-card__cart-glyph {
+  display:block;width:18px;height:18px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 3.5h2.8l2.2 11.3h11.6l2-8.2H6.2'/%3E%3Ccircle cx='9.2' cy='20' r='1.3'/%3E%3Ccircle cx='18' cy='20' r='1.3'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+#MainContent .product-card-wrapper .card__badge {pointer-events:none}
+/* Preserve five columns without the Dawn four-column flex constraints. */
+#MainContent #product-grid.product-grid:not(.slider) {
+  display:grid!important;
+  grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  gap:14px 12px!important;
+  align-items:stretch!important;
+  width:100%!important;
+  max-width:100%!important;
+}
+#MainContent #product-grid.product-grid:not(.slider)>li.grid__item {
+  display:block!important;flex:none!important;
+  min-width:0!important;
+  width:100%!important;max-width:100%!important;
+  padding:0!important;margin:0!important;
+}
+@media(min-width:750px) and (max-width:989px) {
+  #MainContent #product-grid.product-grid:not(.slider) {
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+}
 @media(max-width:749px) {
+  #MainContent #product-grid.product-grid:not(.slider) {
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px 8px!important;
+  }
   #MainContent .product-card-wrapper .card--media>.card__content,
-  #MainContent .product-card-wrapper .card--media>.card__content>.card__information{min-height:86px!important}
-  #MainContent .product-card-wrapper .card--media>.card__content>.card__information {padding:8px!important}
-  #MainContent .product-card-wrapper .card--media>.card__content .card__heading a {font-size:11px!important}
+  #MainContent .product-card-wrapper .card--media>.card__content>.card__information {
+    min-height:100px!important;
+  }
+  #MainContent .product-card-wrapper .card--media>.card__content>.card__information {
+    padding:9px 8px 8px!important;
+  }
+  #MainContent .product-card-wrapper .card--media>.card__content .card__heading a {font-size:12px!important}
+  #MainContent .product-card-wrapper .boxeup-card__subtitle {font-size:10px!important}
   #MainContent .product-card-wrapper .price,
-  #MainContent .product-card-wrapper .price .price-item {font-size:11px!important}
-  #MainContent .product-card-wrapper .card-information .price{padding-right:66px!important}
-  #MainContent .product-card-wrapper .boxeup-card__view {right:37px!important;bottom:8px!important}
+  #MainContent .product-card-wrapper .price .price-item {font-size:13px!important}
+  #MainContent .product-card-wrapper .card-information .price {padding-right:68px!important}
+  #MainContent .product-card-wrapper .boxeup-card__view {
+    right:42px!important;bottom:8px!important;
+  }
   #MainContent .product-card-wrapper .boxeup-card__cart-link,
-  #MainContent .product-card-wrapper .quick-add{right:8px!important;bottom:8px!important}
+  #MainContent .product-card-wrapper .quick-add {
+    right:8px!important;bottom:8px!important;
+  }
   #MainContent .product-card-wrapper .boxeup-card__view,
   #MainContent .product-card-wrapper .boxeup-card__cart-link,
   #MainContent .product-card-wrapper .quick-add__submit {
-    width:26px!important;
-    min-width:26px!important;
-    height:28px!important;
-    min-height:28px!important;
+    width:30px!important;min-width:30px!important;
+    height:32px!important;min-height:32px!important;
   }
-  #MainContent .product-card-wrapper .quick-add{width:26px!important}
+  #MainContent .product-card-wrapper .quick-add {width:30px!important}
+}
+@media(prefers-reduced-motion:reduce) {
+  #MainContent .product-card-wrapper,
+  #MainContent .product-card-wrapper .card--media>.card__inner .card__media img,
+  #MainContent .product-card-wrapper .boxeup-card__view,
+  #MainContent .product-card-wrapper .quick-add__submit {
+    transition:none!important;animation:none!important;
+  }
+  #MainContent .product-card-wrapper:hover,
+  #MainContent .product-card-wrapper:hover .card--media>.card__inner .card__media img:first-child {
+    transform:none!important;
+  }
 }

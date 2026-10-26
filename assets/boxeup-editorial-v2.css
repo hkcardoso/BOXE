@@ -140,3 +140,9 @@ body .cart-notification a,body .cart-drawer a,body .cart-drawer .totals,body .ca
 /* Action-first product cards: Shopify native quick-add, no fabricated variants. */
 #MainContent .card-wrapper .quick-add__submit{background:var(--bx-red)!important;border:1px solid var(--bx-red)!important;color:#fff!important;font-weight:750;border-radius:3px!important;transition:filter .2s}
 #MainContent .card-wrapper .quick-add__submit:hover{filter:brightness(1.16)}
+
+/* Red UP wordmark across navigation and footer, matching the approved reference. */
+body .header-wrapper .boxeup-wordmark strong{color:var(--bx-red)!important}
+body .header-wrapper .boxeup-wordmark i{display:none}
+body .footer .boxeup-footer-brand__wordmark span{color:var(--bx-red)!important}
+body .footer .boxeup-footer-brand__wordmark b{display:none}

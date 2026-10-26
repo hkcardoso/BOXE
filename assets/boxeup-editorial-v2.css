@@ -146,3 +146,42 @@ body .header-wrapper .boxeup-wordmark strong{color:var(--bx-red)!important}
 body .header-wrapper .boxeup-wordmark i{display:none}
 body .footer .boxeup-footer-brand__wordmark span{color:var(--bx-red)!important}
 body .footer .boxeup-footer-brand__wordmark b{display:none}
+
+/* BOXEUP — 3D product renders: edge-to-edge photography, no artificial studio pedestal. */
+#MainContent .card-wrapper .card__media .media::before {
+  content: none !important;
+  display: none !important;
+}
+#MainContent .card-wrapper .card__inner,
+#MainContent .card-wrapper .card__media,
+#MainContent .card-wrapper .card__media .media {
+  background: #1b1c1f !important;
+}
+#MainContent .card-wrapper .card__media .media img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  transform: none !important;
+  mix-blend-mode: normal !important;
+  filter: none !important;
+}
+#MainContent .card-wrapper:hover .card__media .media img {
+  transform: none !important;
+}
+/* On a product detail page, keep the entire product visible. */
+#MainContent[data-template="product"] .product__media-list .product__media,
+#MainContent[data-template="product"] .product__media-list .media,
+#MainContent[data-template="product"] .product__media-container {
+  background: #1b1c1f !important;
+}
+#MainContent[data-template="product"] .product__media-list .media img {
+  object-fit: contain !important;
+  mix-blend-mode: normal !important;
+  filter: none !important;
+  padding: 0 !important;
+  transform: none !important;
+}

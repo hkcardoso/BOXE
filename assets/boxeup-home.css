@@ -166,3 +166,28 @@
 /* Layer the studio pedestal behind each authentic product photograph. */
 .bxv2-block--products .bxv2-product__image:before{z-index:0}
 .bxv2-block--products .bxv2-product__image img{position:relative;z-index:1}
+
+/* BOXEUP 3D catalogue imagery — clean square image, flush to the card edges. */
+.bxv2-block--products .bxv2-product__image {
+  aspect-ratio: 1 / 1;
+  background: #1b1c1f !important;
+}
+.bxv2-block--products .bxv2-product__image::before {
+  content: none !important;
+  display: none !important;
+}
+.bxv2-block--products .bxv2-product__image img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  transform: none !important;
+}
+.bxv2-block--products .bxv2-product:hover .bxv2-product__image img {
+  transform: none !important;
+}

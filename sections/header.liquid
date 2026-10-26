@@ -98,6 +98,58 @@
     min-width: 4.4rem;
     height: 4.4rem;
   }
+  /* BOXEUP header live correction: readable active nav + full-size cart */
+  .header-wrapper .header__inline-menu .header__menu-item .header__active-menu-item,
+  .header-wrapper .header__inline-menu .header__menu-item[aria-current="page"] span,
+  .header-wrapper .header__inline-menu details[open] > summary.header__menu-item,
+  .header-wrapper .header__inline-menu details[open] > summary.header__menu-item span {
+    color: #f6f6f7 !important;
+  }
+  .header-wrapper .header__inline-menu .header__menu-item:hover,
+  .header-wrapper .header__inline-menu .header__menu-item:hover > span {
+    color: #f23a4c !important;
+  }
+  .header-wrapper #cart-icon-bubble {
+    width: 40px !important;
+    min-width: 40px !important;
+    height: 40px !important;
+    margin-right: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .header-wrapper #cart-icon-bubble .svg-wrapper {
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .header-wrapper #cart-icon-bubble .icon {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    fill: none !important;
+    stroke: currentColor !important;
+    stroke-width: 1.8 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+  }
+  @media(max-width: 749px) {
+    .header-wrapper #cart-icon-bubble,
+    .header-wrapper #cart-icon-bubble .svg-wrapper {
+      width: 36px !important;
+      min-width: 36px !important;
+      height: 36px !important;
+    }
+    .header-wrapper #cart-icon-bubble .icon {
+      width: 32px !important;
+      min-width: 32px !important;
+      height: 32px !important;
+      min-height: 32px !important;
+    }
+  }
 </style>
 
 {%- style -%}
@@ -300,11 +352,12 @@
       {%- endfor -%}
 
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-        {% if cart == empty %}
-          <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
-        {% else %}
-          <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
-        {% endif %}
+        <span class="svg-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon {% if cart == empty %}icon-cart-empty{% else %}icon-cart{% endif %}" viewBox="0 0 24 24" role="img" aria-label="{{ 'templates.cart.cart' | t | escape }}">
+            <path d="M5 8.5h14l1 11.5H4L5 8.5Z" />
+            <path d="M9 9V6a3 3 0 0 1 6 0v3" />
+          </svg>
+        </span>
         <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
         {%- if cart != empty -%}
           <div class="cart-count-bubble">

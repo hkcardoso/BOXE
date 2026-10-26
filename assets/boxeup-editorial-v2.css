@@ -358,3 +358,12 @@ body.boxeup-page-home .header-wrapper .header__icon{color:#fff!important}
 #MainContent .product-card-wrapper .card--media > .card__inner > .card__content .card__heading a {
   pointer-events:auto;
 }
+
+/* Let each grid item grow to fit both the square photo and compact details. */
+#MainContent .product-card-wrapper .card--media {
+  height:auto!important;
+  min-height:0!important;
+}
+#MainContent .product-card-wrapper .card--media > .card__content:nth-child(2) {
+  flex:0 0 auto!important;
+}

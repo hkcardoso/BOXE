@@ -1,3 +1,13 @@
+{% comment %}BOXEUP — full-bleed dark background behind the centered category controls.{% endcomment %}
+<style>
+  #MainContent .shopify-section.section-boxeup-shop-categories,
+  #MainContent .section-boxeup-shop-categories {
+    background: #111214 !important;
+  }
+  #MainContent .section-boxeup-shop-categories > .boxeup-catalog-controls {
+    background: #111214 !important;
+  }
+</style>
 <section class="boxeup-catalog-controls page-width" aria-label="{{ 'boxeup_navigation.categories' | t }}">
   <h2>{{ 'boxeup_navigation.heading' | t }}</h2>
   <nav class="boxeup-chip-list" aria-label="{{ 'boxeup_navigation.categories' | t }}">

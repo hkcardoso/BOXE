@@ -15,6 +15,8 @@
   {% endif %}
   <ul class="boxeup-shelf-grid" role="list">
     {% for product in section.settings.collection.products offset: section.settings.offset limit: 8 %}
+                  {%- capture bx_visible -%}{%- render 'boxeup-product-visible', product: product -%}{%- endcapture -%}
+                  {%- if bx_visible == 'false' -%}{%- continue -%}{%- endif -%}
       {% assign display_vendor = true %}
       {% if product.vendor == 'My Store' or product.vendor == 'Printify' %}{% assign display_vendor = false %}{% endif %}
       <li class="boxeup-shelf-item" data-shelf-tags="{{ product.tags | join: ',' | escape }}">
@@ -27,3 +29,4 @@
 {% schema %}
 {"name":"BOXEUP | Produtos","settings":[{"type":"text","id":"title","label":"Título","default":"Destaques BOXEUP"},{"type":"text","id":"eyebrow","label":"Texto de topo","default":"A tua próxima escolha"},{"type":"collection","id":"collection","label":"Coleção"},{"type":"range","id":"offset","label":"Saltar os primeiros produtos","min":0,"max":24,"step":1,"default":0},{"type":"checkbox","id":"filters","label":"Botões de filtro","default":true}],"presets":[{"name":"BOXEUP | Produtos"}]}
 {% endschema %}
+

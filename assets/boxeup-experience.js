@@ -68,6 +68,24 @@
     });
   }
   document.getElementById('BxGuideForm')?.addEventListener('submit', event => { event.preventDefault(); showMatches(); });
+  const filterButton = root.querySelector('[data-bx-mobile-filters]');
+  let filterObserver;
+  function setupMobileFilters() {
+    if (!filterButton) return;
+    filterObserver?.disconnect();
+    const grid = document.getElementById('ProductGridContainer');
+    const trigger = document.querySelector('.mobile-facets__disclosure > summary');
+    if (!grid || !trigger) { filterButton.hidden = true; return; }
+    filterObserver = new IntersectionObserver(entries => {
+      filterButton.hidden = !entries[0].isIntersecting;
+    }, { threshold: 0 });
+    filterObserver.observe(grid);
+  }
+  filterButton?.addEventListener('click', () => {
+    document.querySelector('.mobile-facets__disclosure > summary')?.click();
+  });
+  document.addEventListener('boxeup:catalog-updated', setupMobileFilters);
+  setupMobileFilters();
   const supports = new WeakSet();
   function initSupport(support) {
     if (supports.has(support)) return;

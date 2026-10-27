@@ -9,6 +9,8 @@
   <script type="application/json" data-bx-catalog>[
     {% assign bx_first = true %}
     {% for item in collections['all'].products limit: 50 %}
+                  {%- capture bx_visible -%}{%- render 'boxeup-product-visible', product: item -%}{%- endcapture -%}
+                  {%- if bx_visible == 'false' -%}{%- continue -%}{%- endif -%}
       {% assign bx_vendor = item.vendor | downcase %}
       {% unless item.price == 0 or bx_vendor == 'my store' %}
         {% unless bx_first %},{% endunless %}{% render 'boxeup-product-data', product: item %}{% assign bx_first = false %}
@@ -35,6 +37,9 @@
     <h2 id="BxSizeGuideTitle">{{ 'boxeup_experience.size_title' | t }}</h2>
     {% render 'boxeup-size-guide' %}
   </dialog>
+  {% if request.page_type == 'collection' %}
+    <button type="button" class="bx-mobile-filters" data-bx-mobile-filters hidden aria-controls="FacetFiltersFormMobile"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 7h16M4 17h16M8 4v6M16 14v6"/></svg>{{ 'boxeup_experience.mobile_filters' | t }}</button>
+  {% endif %}
   {% if request.page_type == 'product' %}
     <div class="bx-sticky-buy" data-bx-sticky hidden>
       <div><strong data-bx-sticky-price>{{ product.selected_or_first_available_variant.price | money }}</strong><small data-bx-sticky-variant>{{ product.selected_or_first_available_variant.title | escape }}</small></div>

@@ -42,6 +42,8 @@
 >
   <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
     {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- capture bx_count_text -%}{%- render 'boxeup-visible-count', items: collection.products -%}{%- endcapture -%}
+      {%- assign bx_visible_count = bx_count_text | plus: 0 -%}
       {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
       {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
         <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
@@ -128,7 +130,7 @@
             data-cascade
           {% endif %}
         >
-          {%- if collection.products.size == 0 -%}
+          {%- if bx_visible_count == 0 -%}
             <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
               <div class="loading-overlay gradient"></div>
               <div class="title-wrapper center">
@@ -158,6 +160,8 @@
               >
                 {% assign skip_card_product_styles = false %}
                 {%- for product in collection.products -%}
+                  {%- capture bx_visible -%}{%- render 'boxeup-product-visible', product: product -%}{%- endcapture -%}
+                  {%- if bx_visible == 'false' -%}{%- continue -%}{%- endif -%}
                   {% assign lazy_load = false %}
                   {%- if forloop.index > 2 -%}
                     {%- assign lazy_load = true -%}

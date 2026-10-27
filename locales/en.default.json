@@ -1454,6 +1454,26 @@
     "usage": "Use",
     "bag_work": "Bag and pad work",
     "sparring": "Sparring",
-    "secure_desc": "Choose your payment method at checkout."
+    "secure_desc": "Choose your payment method at checkout.",
+    "items_on_page": "{{ count }} items on this page",
+    "mobile_filters": "Filter and sort",
+    "contact_subject": "Subject",
+    "subject_placeholder": "Choose a subject",
+    "subject_produto": "Product enquiry",
+    "subject_encomenda": "Order support",
+    "subject_devolucao": "Return or warranty",
+    "subject_parceria": "Partnership proposal",
+    "faq_eyebrow": "Before you order",
+    "faq_title": "Frequently asked questions",
+    "faq_weights_question": "How do I choose a glove weight?",
+    "faq_weights_answer": "Ounces indicate glove weight. Your choice depends on training, the athlete and gym rules. Read the guide and confirm your gym’s sparring requirements with your coach.",
+    "faq_availability_question": "How do I check availability?",
+    "faq_availability_answer": "Select the weight, size or colour on the product page. Availability applies to that variant. If it is sold out, you can request restock information.",
+    "faq_shipping_question": "What are the shipping fees and delivery times?",
+    "faq_shipping_answer": "Conditions depend on the product and destination. Read the shipping page and check the fees at checkout before completing your purchase. Contact us before ordering if you need a specific date.",
+    "faq_returns_question": "How do I request a return or warranty support?",
+    "faq_returns_answer": "Read the returns and warranty conditions, then contact us with your order reference and a description of your request. Select “Return or warranty” in the contact form.",
+    "faq_help_question": "Can you help me choose equipment?",
+    "faq_help_answer": "Yes. Tell us your discipline, training, experience and budget. Use the equipment guide or send our team a message."
   }
 }

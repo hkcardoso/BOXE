@@ -45,6 +45,8 @@
       >
         {% assign skip_card_product_styles = false %}
         {% for recommendation in recommendations.products %}
+                  {%- capture bx_visible -%}{%- render 'boxeup-product-visible', product: recommendation -%}{%- endcapture -%}
+                  {%- if bx_visible == 'false' -%}{%- continue -%}{%- endif -%}
           <li class="grid__item">
             {% render 'card-product',
               card_product: recommendation,
@@ -263,3 +265,4 @@
   ]
 }
 {% endschema %}
+

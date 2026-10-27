@@ -799,6 +799,26 @@
     "usage": "Utilização",
     "bag_work": "Saco e pads",
     "sparring": "Sparring",
-    "secure_desc": "Escolhe o método de pagamento no checkout."
+    "secure_desc": "Escolhe o método de pagamento no checkout.",
+    "items_on_page": "{{ count }} artigos nesta página",
+    "mobile_filters": "Filtrar e ordenar",
+    "contact_subject": "Assunto",
+    "subject_placeholder": "Seleciona o assunto",
+    "subject_produto": "Dúvida sobre um produto",
+    "subject_encomenda": "Apoio a uma encomenda",
+    "subject_devolucao": "Devolução ou garantia",
+    "subject_parceria": "Proposta de parceria",
+    "faq_eyebrow": "Antes de encomendar",
+    "faq_title": "Perguntas frequentes",
+    "faq_weights_question": "Como escolho as onças das luvas?",
+    "faq_weights_answer": "As onças indicam o peso da luva. A escolha depende do tipo de treino, do praticante e das regras do ginásio. Consulta o guia e confirma com o teu treinador o peso exigido para sparring.",
+    "faq_availability_question": "Como confirmo a disponibilidade?",
+    "faq_availability_answer": "Seleciona as onças, o tamanho ou a cor na página do produto. A disponibilidade apresentada corresponde à variante escolhida. Se estiver esgotada, podes pedir informação sobre a reposição.",
+    "faq_shipping_question": "Quais são os portes e o prazo de entrega?",
+    "faq_shipping_answer": "As condições dependem do produto e do destino. Consulta a página de envios e confirma os portes no checkout antes de concluir a compra. Se precisares de uma data concreta, contacta-nos antes de encomendar.",
+    "faq_returns_question": "Como peço uma devolução ou apoio de garantia?",
+    "faq_returns_answer": "Consulta as condições de devolução e garantia e contacta-nos com a referência da encomenda e uma descrição do pedido. No formulário, escolhe “Devolução ou garantia” para identificar o assunto.",
+    "faq_help_question": "Podem ajudar-me a escolher equipamento?",
+    "faq_help_answer": "Sim. Indica a modalidade, o tipo de treino, a tua experiência e o orçamento. Podes usar o guia de escolha ou enviar uma mensagem à equipa."
   }
 }

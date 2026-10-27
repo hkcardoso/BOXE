@@ -62,7 +62,15 @@
               <span id="BoxeupEmailError" class="boxeup-contact__field-error">{{ 'boxeup_sections.contact_email_error' | t }}</span>
             {% endif %}
           </div>
-          <div class="boxeup-contact__field boxeup-contact__field--full">
+          <div class="boxeup-contact__field">
+            <label for="BoxeupContactSubject">{{ 'boxeup_experience.contact_subject' | t }} <span aria-hidden="true">*</span></label>
+            <select id="BoxeupContactSubject" name="contact[assunto]" required>
+              <option value="" disabled{% if form.assunto == blank %} selected{% endif %}>{{ 'boxeup_experience.subject_placeholder' | t }}</option>
+              {% assign bx_subjects = 'produto,encomenda,devolucao,parceria' | split: ',' %}
+              {% for value in bx_subjects %}{% assign bx_subject_key = 'boxeup_experience.subject_' | append: value %}<option value="{{ value }}"{% if form.assunto == value %} selected{% endif %}>{{ bx_subject_key | t }}</option>{% endfor %}
+            </select>
+          </div>
+          <div class="boxeup-contact__field">
             <label for="BoxeupContactPhone">{{ 'boxeup_sections.contact_telephone' | t }} <span class="boxeup-contact__optional">{{ 'boxeup_sections.contact_optional' | t }}</span></label>
             <input type="tel" id="BoxeupContactPhone" name="contact[phone]" autocomplete="tel"
               value="{{ form.phone | escape }}" placeholder="+351">
@@ -82,6 +90,7 @@
       {% endform %}
     </div>
   </div>
+  {% render 'boxeup-faq', id: 'BxContactFaq' %}
 </section>
 {% schema %}
 {

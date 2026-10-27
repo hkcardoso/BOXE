@@ -158,6 +158,8 @@
           {% assign bx_seen_types = '' %}
           {% assign bx_twice_types = '' %}
           {% for product in bx_products %}
+                  {%- capture bx_visible -%}{%- render 'boxeup-product-visible', product: product -%}{%- endcapture -%}
+                  {%- if bx_visible == 'false' -%}{%- continue -%}{%- endif -%}
             {% assign bx_vendor = product.vendor | downcase %}
             {% if bx_vendor == 'my store' or product.price == 0 %}{% continue %}{% endif %}
             {% if bx_shown == 10 %}{% break %}{% endif %}
@@ -218,27 +220,6 @@
       {% else %}
         <div class="bxv2-empty">{{ 'boxeup_sections.home_empty' | t }} <a href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_empty_catalog' | t }}</a>.</div>
       {% endif %}
-    </div>
-  </div>
-
-  <div class="bxv2-editorial">
-    <div class="bxv2-editorial__photo">
-      {% if section.settings.editorial_image != blank %}
-        {{ section.settings.editorial_image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '650,950,1400', sizes: '(min-width:990px) 50vw, 100vw', alt: 'boxeup_sections.photo_boxing' | t }}
-      {% else %}
-        <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-disciplina-banner.jpg?v=1793120726" alt="Pugilista com luvas BOXEUP a golpear um saco de treino" width="2172" height="724" loading="lazy">
-      {% endif %}
-    </div>
-    <div class="bxv2-editorial__content">
-      <p class="bxv2-kicker">{{ 'boxeup_sections.home_editorial_kicker' | t }}</p>
-      <h2>{{ 'boxeup_sections.home_editorial_a' | t }}<br>{{ 'boxeup_sections.home_editorial_b' | t }}<span class="bxv2-red">.</span></h2>
-      <p>{{ 'boxeup_sections.home_editorial_desc' | t }}</p>
-      <a class="bxv2-btn bxv2-btn--white" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_view_gear' | t }} <span aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></a>
-    </div>
-    <div class="bxv2-editorial__side">
-      <span><b>01</b><strong>{{ 'boxeup_sections.home_selection' | t }}</strong><small>{{ 'boxeup_sections.home_selection_desc' | t }}</small></span>
-      <span><b>02</b><strong>{{ 'boxeup_sections.home_online' | t }}</strong><small>{{ 'boxeup_sections.home_online_desc' | t }}</small></span>
-      <span><b>03</b><strong>{{ 'boxeup_sections.home_contact' | t }}</strong><small>business@boxeup.com</small></span>
     </div>
   </div>
 

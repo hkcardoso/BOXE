@@ -119,3 +119,29 @@ body #MainContent .boxeup-contact__email{display:inline-flex;align-items:center;
 body #MainContent .boxeup-contact__email:hover{color:#ff657c}
 @media(max-width:749px){body #MainContent[data-template="index"] .bxv2 .bxv2-heading .bxv2-more{margin-top:16px!important}body #MainContent .boxeup-contact__form-wrap{padding:22px 18px!important}body #MainContent .section-boxeup-contact>.boxeup-contact{padding-top:24px!important;padding-bottom:44px!important}body #MainContent .boxeup-contact__heading>p:not(.boxeup-contact__eyebrow){font-size:14px!important}}
 @media(max-width:420px){body #MainContent[data-template="index"] .section-boxeup-home .bxv2-news__form{grid-template-columns:minmax(0,1fr)!important}body #MainContent[data-template="index"] .section-boxeup-home .bxv2-news__form>button{width:100%!important}}
+
+.bx-faq{max-width:100%;margin-top:48px;padding-top:32px;border-top:1px solid #34373e;color:#f4f4f5;font:15px/1.7 var(--bx-ui)}
+body #MainContent .bx-faq h2{margin:12px 0 26px;color:#f4f4f5!important;font:700 clamp(26px,3vw,36px)/1.2 var(--bx-ui)!important;letter-spacing:-.035em!important;text-transform:none!important}
+.bx-faq-item{border-top:1px solid #34373e}
+.bx-faq-item:last-child{border-bottom:1px solid #34373e}
+.bx-faq-item>summary{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:20px 0;color:#f4f4f5;cursor:pointer;list-style:none;font:600 15px/1.5 var(--bx-ui)}
+.bx-faq-item>summary::-webkit-details-marker{display:none}
+.bx-faq-item>summary>span{font-size:24px;font-weight:400;line-height:1;transition:transform .18s var(--bx-ease)}
+.bx-faq-item[open]>summary>span{transform:rotate(45deg)}
+.bx-faq-answer{max-width:850px;padding:0 30px 20px 0;color:#bcc0c8;font-size:14px}
+.bx-faq-answer>p{margin:0 0 12px;line-height:1.8}
+.bx-faq-answer>a{display:inline-flex;align-items:center;min-height:36px;color:#fff;text-underline-offset:4px;font-size:13px}
+.bx-faq-item[open] .bx-faq-answer{animation:bx-faq-in .18s var(--bx-ease)}
+.bx-product-faq{padding-bottom:44px!important}
+body #MainContent .boxeup-contact__field select{box-sizing:border-box;appearance:auto;width:100%;min-height:48px;padding:12px 15px;font:15px/1.5 var(--bx-ui);color:#f4f4f5;background:#22262d;border:1px solid #4d525d;border-radius:5px;color-scheme:dark}
+body #MainContent .boxeup-contact__field select:focus-visible,.bx-faq-item>summary:focus-visible,.bx-mobile-filters:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.bx-mobile-filters{display:none!important}
+body #MainContent[data-template="index"] .bxv2-story{margin-top:32px!important}
+body #MainContent[data-template="index"] .bxv2-story__art{min-height:240px!important;max-height:340px!important}
+body #MainContent[data-template="index"] .bxv2-story__copy{padding-block:36px!important}
+body #MainContent[data-template="index"] .bxv2-block--modalities{padding-top:44px!important}
+@keyframes bx-faq-in{from{opacity:.4;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media(max-width:749px){.bx-mobile-filters:not([hidden]){position:fixed;display:inline-flex!important;align-items:center;justify-content:center;gap:12px;z-index:18;bottom:calc(16px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);max-width:calc(100% - 32px);min-height:48px;padding:12px 22px;border:1px solid #ffffff50;border-radius:7px;background:#20242bf2;color:#fff;font:650 14px/1.5 var(--bx-ui);box-shadow:0 8px 30px #0008;backdrop-filter:blur(8px);cursor:pointer;white-space:nowrap}.bx-mobile-filters[hidden]{display:none!important}body:has(.mobile-facets__disclosure[open]) .bx-mobile-filters{display:none!important}.bx-faq{margin-top:32px;padding-top:24px}.bx-faq-item>summary{font-size:14px;gap:16px;padding:17px 0}.bx-faq-answer{padding-right:0;font-size:13px}.bx-product-faq{padding-bottom:30px!important}body #MainContent[data-template="index"] .bxv2-story__art{min-height:200px!important;max-height:240px!important}}
+@media(prefers-reduced-motion:reduce){.bx-faq-item[open] .bx-faq-answer{animation:none}.bx-faq-item>summary>span{transition:none}}
+@media(min-width:990px){body #MainContent .template-search__results>ul.grid{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important}body #MainContent .template-search__results>ul.grid>.grid__item{width:auto!important;max-width:none!important}}
+@media(max-width:749px){body #MainContent .template-search__results>ul.grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}body #MainContent .template-search__results>ul.grid>.grid__item{width:auto!important;max-width:none!important}}

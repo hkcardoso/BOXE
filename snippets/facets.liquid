@@ -339,6 +339,9 @@
                   </details>
               {% endcase %}
             {%- endfor -%}
+            {%- if template.name == 'collection' -%}
+              {% render 'boxeup-modality-filter', variant: 'desktop' %}
+            {%- endif -%}
           </div>
           {% comment %} Pills after filtes on filter type horizontal {% endcomment %}
           {%- if filter_type == 'horizontal' -%}
@@ -512,6 +515,9 @@
               id="FacetsWrapperMobile"
               class="mobile-facets__main has-submenu gradient"
             >
+              {%- if template.name == 'collection' -%}
+                {% render 'boxeup-modality-filter', variant: 'mobile' %}
+              {%- endif -%}
               {%- if enable_filtering -%}
                 {%- for filter in results.filters -%}
                   {% liquid

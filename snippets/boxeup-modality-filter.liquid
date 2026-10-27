@@ -1,0 +1,36 @@
+{% comment %}BOXEUP | Modality selector. Existing tag-based collections preserve Shopify availability, price and sorting filters.{% endcomment %}
+{%- assign bx_boxe = collections['boxe'] -%}
+{%- assign bx_muay = collections['muay-thai-e-kickboxing'] -%}
+{%- if variant == 'desktop' -%}
+  {%- assign bx_selected = '' -%}
+  {%- if collection.handle == 'boxe' -%}
+    {%- assign bx_selected = 'boxeup_navigation.boxe' | t -%}
+  {%- elsif collection.handle == 'muay-thai-e-kickboxing' -%}
+    {%- assign bx_selected = 'boxeup_navigation.muay_thai' | t -%}
+  {%- endif -%}
+  <details id="boxeup-modality-filter" class="facets__disclosure boxeup-facet-modalities">
+    <summary class="facets__summary caption-large focus-offset">
+      <div><span class="facets__summary-label">{{ 'boxeup_navigation.modality_filter' | t }}{% if bx_selected != blank %}<span class="boxeup-facet-modalities__selected">: {{ bx_selected | escape }}</span>{% endif %}</span>{{- 'icon-caret.svg' | inline_asset_content -}}</div>
+    </summary>
+    <div class="boxeup-facet-modalities__panel">
+      <nav aria-label="{{ 'boxeup_navigation.modality_filter' | t }}">
+        <a data-boxeup-catalog href="{{ routes.all_products_collection_url }}#main-collection-filters" class="boxeup-facet-modalities__link"{% if collection.handle == 'all' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.all_modalities' | t }}</a>
+        {% if bx_boxe != blank %}<a data-boxeup-catalog href="{{ bx_boxe.url }}#main-collection-filters" class="boxeup-facet-modalities__link"{% if collection.handle == 'boxe' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.boxe' | t }}</a>{% endif %}
+        {% if bx_muay != blank %}<a data-boxeup-catalog href="{{ bx_muay.url }}#main-collection-filters" class="boxeup-facet-modalities__link"{% if collection.handle == 'muay-thai-e-kickboxing' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.muay_thai' | t }}</a>{% endif %}
+        <span class="boxeup-facet-modalities__link boxeup-facet-modalities__link--disabled" aria-disabled="true">MMA <small>{{ 'boxeup_navigation.coming_soon' | t }}</small></span>
+        <span class="boxeup-facet-modalities__link boxeup-facet-modalities__link--disabled" aria-disabled="true">Jiu-Jitsu <small>{{ 'boxeup_navigation.coming_soon' | t }}</small></span>
+      </nav>
+    </div>
+  </details>
+{%- elsif variant == 'mobile' -%}
+  <section class="boxeup-mobile-modality-filter" aria-label="{{ 'boxeup_navigation.modality_filter' | t }}">
+    <h3>{{ 'boxeup_navigation.modality_filter' | t }}</h3>
+    <div class="boxeup-mobile-modality-filter__links">
+      <a data-boxeup-catalog href="{{ routes.all_products_collection_url }}#main-collection-filters"{% if collection.handle == 'all' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.all_modalities' | t }}</a>
+      {% if bx_boxe != blank %}<a data-boxeup-catalog href="{{ bx_boxe.url }}#main-collection-filters"{% if collection.handle == 'boxe' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.boxe' | t }}</a>{% endif %}
+      {% if bx_muay != blank %}<a data-boxeup-catalog href="{{ bx_muay.url }}#main-collection-filters"{% if collection.handle == 'muay-thai-e-kickboxing' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.muay_thai' | t }}</a>{% endif %}
+      <span aria-disabled="true">MMA · {{ 'boxeup_navigation.coming_soon' | t }}</span>
+      <span aria-disabled="true">Jiu-Jitsu · {{ 'boxeup_navigation.coming_soon' | t }}</span>
+    </div>
+  </section>
+{%- endif -%}

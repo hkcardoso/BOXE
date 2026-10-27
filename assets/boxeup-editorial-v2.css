@@ -640,3 +640,46 @@ body .header-wrapper #cart-icon-bubble .icon-cart-empty {
     height:30px!important;
   }
 }
+
+
+/* BOXEUP | Discipline selector next to Shopify's availability/price facets. */
+#MainContent[data-template="collection"] .boxeup-facet-modalities{position:relative;margin-right:3.5rem}
+#MainContent[data-template="collection"] .boxeup-facet-modalities[open]{z-index:20}
+#MainContent[data-template="collection"] .boxeup-facet-modalities__selected{color:#ef465a;font-weight:650}
+#MainContent[data-template="collection"] .boxeup-facet-modalities__panel{
+  position:absolute;top:calc(100% + 4px);left:-13px;z-index:21;
+  width:min(290px,82vw);padding:7px;border:1px solid #3f4149;
+  border-radius:5px;background:#1b1c20!important;box-shadow:0 14px 34px #0009
+}
+#MainContent[data-template="collection"] .boxeup-facet-modalities__panel nav{display:flex;flex-direction:column;gap:2px}
+#MainContent[data-template="collection"] .boxeup-facet-modalities__link{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  min-height:40px;padding:8px 11px;border-radius:4px;font-size:13px;
+  line-height:1.3;font-weight:600;color:#f4f4f6!important;text-decoration:none!important
+}
+#MainContent[data-template="collection"] a.boxeup-facet-modalities__link:hover,
+#MainContent[data-template="collection"] a.boxeup-facet-modalities__link:focus-visible{background:#303138;outline-offset:-2px}
+#MainContent[data-template="collection"] .boxeup-facet-modalities__link[aria-current="page"]{
+  background:#332127!important;color:#fff!important;box-shadow:inset 3px 0 #ed2437
+}
+#MainContent[data-template="collection"] .boxeup-facet-modalities__link--disabled{opacity:.47;cursor:default}
+#MainContent[data-template="collection"] .boxeup-facet-modalities__link small{font-size:11px;font-weight:500;white-space:nowrap}
+#MainContent[data-template="collection"] .boxeup-mobile-modality-filter{
+  padding:19px 22px 17px;border-bottom:1px solid #3c3d42
+}
+#MainContent[data-template="collection"] .boxeup-mobile-modality-filter h3{
+  margin:0 0 13px;font-size:15px;font-weight:750;color:#fff
+}
+#MainContent[data-template="collection"] .boxeup-mobile-modality-filter__links{display:flex;flex-wrap:wrap;gap:7px}
+#MainContent[data-template="collection"] .boxeup-mobile-modality-filter__links>*{
+  display:inline-flex;align-items:center;min-height:35px;border:1px solid #404149;
+  border-radius:4px;padding:8px 10px;background:#222329;color:#f0f0f3!important;
+  font-size:12px;line-height:1.3;text-decoration:none!important
+}
+#MainContent[data-template="collection"] .boxeup-mobile-modality-filter__links a[aria-current="page"]{
+  border-color:#ed2437;background:#3c2026
+}
+#MainContent[data-template="collection"] .boxeup-mobile-modality-filter__links span[aria-disabled="true"]{opacity:.46}
+@media(max-width:749px){
+  #MainContent[data-template="collection"] .boxeup-mobile-modality-filter{padding:15px 16px}
+}

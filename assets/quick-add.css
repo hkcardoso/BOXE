@@ -567,7 +567,16 @@ quick-add-modal .bxq-product .bxp-product-intro{
   font-size:12px!important;line-height:1.5!important;
   color:#b9bac1!important;
 }
-quick-add-modal .bxq-product variant-selects{display:block!important;margin:3px 0!important}
+/* Shopify swaps the variant picker via HTMLUpdateUtility.viewTransition().
+   It temporarily sets display:none on the old picker for 500ms.
+   Never force display:block!important here, or both old and new size rows show. */
+quick-add-modal .bxq-product variant-selects{
+  display:block;
+  margin:3px 0!important;
+}
+quick-add-modal .bxq-product variant-selects[style*="display: none"]{
+  display:none!important;
+}
 quick-add-modal .bxq-product .product-form__input{max-width:100%!important;margin:0 0 8px!important}
 quick-add-modal .bxq-product .product-form__input .form__label,
 quick-add-modal .bxq-product .quantity__label{

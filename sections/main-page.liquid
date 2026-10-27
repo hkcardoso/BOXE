@@ -1,3 +1,7 @@
+{%- if page.handle == 'sobre-a-boxeup' -%}
+  {{ 'boxeup-about.css' | asset_url | stylesheet_tag }}
+  {% render 'boxeup-about-content' %}
+{%- else -%}
 {{ 'section-main-page.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
@@ -56,3 +60,4 @@
   ]
 }
 {% endschema %}
+{%- endif -%}

@@ -31,12 +31,14 @@
     width: 100% !important;
     height: 100% !important;
     pointer-events: none !important;
+    /* Hold the dark area across the headline and both action buttons,
+       then fade progressively through the last third of the video. */
     background: linear-gradient(90deg,
-      rgba(3,4,6,.99) 0%, rgba(3,4,6,.98) 23%,
-      rgba(3,4,6,.95) 38%, rgba(3,4,6,.88) 53%,
-      rgba(3,4,6,.72) 68%, rgba(3,4,6,.47) 84%,
-      rgba(3,4,6,.28) 100%),
-      linear-gradient(0deg,rgba(3,4,6,.56),transparent 55%) !important;
+      rgba(3,4,6,.99) 0%, rgba(3,4,6,.99) 35%,
+      rgba(3,4,6,.98) 53%, rgba(3,4,6,.94) 63%,
+      rgba(3,4,6,.76) 76%, rgba(3,4,6,.34) 91%,
+      rgba(3,4,6,.08) 100%),
+      linear-gradient(0deg,rgba(3,4,6,.42),transparent 45%) !important;
   }
   @media(max-width:749px) {
     #shopify-section-{{ section.id }} .bxv2-hero__video-overlay {
@@ -85,7 +87,7 @@
         {% endif %}
         <img class="bxv2-hero__still" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1600" height="900" loading="eager" decoding="async">
         {% comment %}Positioned over the video itself, not behind a separate video stacking layer.{% endcomment %}
-        <div class="bxv2-hero__video-overlay" aria-hidden="true" style="position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(90deg,rgba(3,4,6,.99) 0%,rgba(3,4,6,.95) 38%,rgba(3,4,6,.72) 68%,rgba(3,4,6,.28) 100%);"></div>
+        <div class="bxv2-hero__video-overlay" aria-hidden="true"></div>
       </div>
       <div class="bxv2-hero__inner">
         <p class="bxv2-overline"><span class="bxv2-dot"></span> {{ 'boxeup_sections.home_overline' | t }}</p>

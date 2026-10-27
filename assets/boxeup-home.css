@@ -200,7 +200,7 @@
 .section-boxeup-home .bxv2 .bxv2-hero__motion,
 .section-boxeup-home .bxv2 .bxv2-hero__still{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
 .section-boxeup-home .bxv2 .bxv2-hero__still{display:none}
-.section-boxeup-home .bxv2 .bxv2-hero__video-overlay{position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(90deg,rgba(3,4,6,.99) 0%,rgba(3,4,6,.98) 23%,rgba(3,4,6,.95) 38%,rgba(3,4,6,.88) 53%,rgba(3,4,6,.72) 68%,rgba(3,4,6,.47) 84%,rgba(3,4,6,.28) 100%),linear-gradient(0deg,rgba(3,4,6,.56),transparent 55%)}
+.section-boxeup-home .bxv2 .bxv2-hero__video-overlay{position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(90deg,rgba(3,4,6,.99) 0%,rgba(3,4,6,.99) 35%,rgba(3,4,6,.98) 53%,rgba(3,4,6,.94) 63%,rgba(3,4,6,.76) 76%,rgba(3,4,6,.34) 91%,rgba(3,4,6,.08) 100%),linear-gradient(0deg,rgba(3,4,6,.42),transparent 45%)}
 .section-boxeup-home .bxv2 .bxv2-hero__inner{width:min(760px,65%);padding-left:clamp(25px,4vw,78px);padding-right:10px;padding-bottom:88px;padding-top:32px}
 .section-boxeup-home .bxv2 .bxv2-hero h1{font-size:clamp(52px,5.2vw,87px);line-height:.97;letter-spacing:-.066em;font-weight:900;max-width:800px;text-wrap:balance}
 .section-boxeup-home .bxv2 .bxv2-hero h1 em{color:#ed2437}

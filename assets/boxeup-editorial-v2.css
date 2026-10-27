@@ -622,8 +622,8 @@ body .header-wrapper #cart-icon-bubble .icon-cart,
 body .header-wrapper #cart-icon-bubble .icon-cart-empty {
   display:block!important;
   flex:none!important;
-  width:24px!important;
-  height:24px!important;
+  width:23px!important;
+  height:23px!important;
   padding:0!important;
 }
 @media(max-width:749px) {
@@ -634,8 +634,8 @@ body .header-wrapper #cart-icon-bubble .icon-cart-empty {
     height:36px!important;
   }
   body .header-wrapper #cart-icon-bubble .icon {
-    width:23px!important;
-    height:23px!important;
+    width:22px!important;
+    height:22px!important;
   }
 }
 

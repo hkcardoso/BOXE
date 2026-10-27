@@ -129,14 +129,14 @@
   }
   .header-wrapper #cart-icon-bubble .icon {
     display: block !important;
-    width: 24px !important;
-    min-width: 24px !important;
-    height: 24px !important;
-    min-height: 24px !important;
+    width: 23px !important;
+    min-width: 23px !important;
+    height: 23px !important;
+    min-height: 23px !important;
     flex: 0 0 auto;
     fill: none !important;
     stroke: currentColor !important;
-    stroke-width: 1.15 !important;
+    stroke-width: 1 !important;
     stroke-linecap: round !important;
     stroke-linejoin: round !important;
   }
@@ -148,10 +148,10 @@
       height: 36px !important;
     }
     .header-wrapper #cart-icon-bubble .icon {
-      width: 23px !important;
-      min-width: 23px !important;
-      height: 23px !important;
-      min-height: 23px !important;
+      width: 22px !important;
+      min-width: 22px !important;
+      height: 22px !important;
+      min-height: 22px !important;
     }
   }
 
@@ -734,7 +734,7 @@
 
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         <span class="svg-wrapper">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon {% if cart == empty %}icon-cart-empty{% else %}icon-cart{% endif %}" viewBox="3 2 18 19" role="img" aria-label="{{ 'templates.cart.cart' | t | escape }}" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon {% if cart == empty %}icon-cart-empty{% else %}icon-cart{% endif %}" viewBox="1.5 1 21 21" role="img" aria-label="{{ 'templates.cart.cart' | t | escape }}" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 8.5h14l1 11.5H4L5 8.5Z" />
             <path d="M9 9V6a3 3 0 0 1 6 0v3" />
           </svg>

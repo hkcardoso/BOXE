@@ -412,3 +412,98 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
     margin-left: 0;
   }
 }
+
+
+/* BOXEUP | Full-height cart drawer. Uses Shopify Dawn's native cart
+   updates, quantity controls, cart badge and checkout behaviour. */
+cart-drawer.drawer {
+  background:rgba(0,0,0,.68)!important;
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+}
+cart-drawer .drawer__inner{
+  width:min(455px,100vw)!important;
+  max-width:100vw!important;
+  padding-left:clamp(18px,2vw,30px)!important;
+  padding-right:clamp(18px,2vw,30px)!important;
+  background:#151619!important;
+  border-left:1px solid #35363d!important;
+  color:#f5f5f6!important;
+  box-shadow:-18px 0 55px rgba(0,0,0,.35)!important;
+  transition:transform .28s cubic-bezier(.2,.75,.25,1)!important;
+}
+cart-drawer .drawer__header{
+  min-height:78px;
+  padding:22px 0 18px!important;
+  border-bottom:1px solid #303137!important;
+}
+cart-drawer .drawer__heading{
+  color:#f5f5f6!important;
+  font-size:23px!important;
+  font-weight:800!important;
+  letter-spacing:-.025em!important;
+  margin:0!important;
+}
+cart-drawer .drawer__close{
+  right:0!important;
+  top:17px!important;
+  color:#f5f5f6!important;
+  width:38px!important;
+  min-width:38px!important;
+  height:38px!important;
+  min-height:38px!important;
+  border-radius:4px!important;
+}
+cart-drawer .drawer__close:hover{background:#292a30!important}
+cart-drawer .cart-drawer,
+cart-drawer .cart-drawer__footer,
+cart-drawer .cart-item,
+cart-drawer .cart-drawer__collection{
+  background:#151619!important;color:#f5f5f6!important;
+}
+cart-drawer .cart-item__name,
+cart-drawer .cart-item__price-wrapper,
+cart-drawer .cart-item__details,
+cart-drawer .drawer__footer,
+cart-drawer .totals,
+cart-drawer .price,
+cart-drawer .cart__empty-text,
+cart-drawer .cart__login-title{
+  color:#f5f5f6!important;
+}
+cart-drawer .cart-item__name:hover{text-decoration:underline}
+cart-drawer .cart-item{border-bottom:1px solid #2e3035!important}
+cart-drawer .drawer__footer{
+  border-top:1px solid #35363d!important;
+  background:#151619!important;
+  padding-top:19px!important;
+}
+cart-drawer .cart__checkout-button,
+cart-drawer .cart__warnings .button,
+cart-drawer .cart-drawer__warnings .button{
+  min-height:50px!important;
+  border-radius:4px!important;
+  background:#ed2437!important;
+  color:#fff!important;
+  font-weight:800!important;
+  border:1px solid #ed2437!important;
+}
+cart-drawer .cart__checkout-button:hover,
+cart-drawer .cart-drawer__warnings .button:hover{
+  background:#ca1e30!important;
+  border-color:#ca1e30!important;
+}
+cart-drawer .quantity,
+cart-drawer .quantity__button,
+cart-drawer .quantity__input{
+  background:#23242a!important;
+  color:#f5f5f6!important;
+}
+cart-drawer .cart-item__image{border-radius:3px}
+@media(max-width:749px){
+  cart-drawer .drawer__inner{width:min(420px,100vw)!important}
+  cart-drawer .drawer__header{min-height:69px}
+}
+@media(prefers-reduced-motion:reduce){
+  cart-drawer .drawer__inner{transition:none!important}
+}

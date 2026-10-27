@@ -552,6 +552,44 @@
     .header-wrapper .boxeup-nav-modalities__icon{transition:none;}
   }
 
+  /* BOXEUP | Refined navigation typography: distinct from the store's body font.
+     Uses local system fonts; no remote font request or layout changes. */
+  body .header-wrapper .header__inline-menu .header__menu-item,
+  body .header-wrapper .header__inline-menu .header__menu-item > span {
+    font-family: "Helvetica Neue", "Segoe UI Variable", "Segoe UI", Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    letter-spacing: .005em !important;
+    line-height: 1.28 !important;
+    text-transform: none !important;
+    font-kerning: normal;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Dropdowns: a softer weight and slightly more generous line-height. */
+  body .header-wrapper .boxeup-nav-modalidades__dropdown .boxeup-nav-modalidades__link,
+  body .header-wrapper .header__submenu .header__menu-item,
+  body .header-wrapper .header__submenu .list-menu__item {
+    font-family: "Helvetica Neue", "Segoe UI Variable", "Segoe UI", Arial, sans-serif !important;
+    font-size: 12.5px !important;
+    font-weight: 500 !important;
+    letter-spacing: .01em !important;
+    line-height: 1.4 !important;
+    text-transform: none !important;
+    -webkit-font-smoothing: antialiased;
+  }
+  body .header-wrapper .boxeup-nav-modalidades__dropdown .boxeup-nav-modalidades__link--nested {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+  }
+  /* Matching hierarchy inside the mobile drawer. */
+  body .header-wrapper .menu-drawer__menu-item {
+    font-family: "Helvetica Neue", "Segoe UI Variable", "Segoe UI", Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 550 !important;
+    letter-spacing: .005em !important;
+    text-transform: none !important;
+  }
+
 </style>
 
 {%- style -%}

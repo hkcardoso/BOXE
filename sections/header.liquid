@@ -129,10 +129,10 @@
   }
   .header-wrapper #cart-icon-bubble .icon {
     display: block !important;
-    width: 22px !important;
-    min-width: 22px !important;
-    height: 22px !important;
-    min-height: 22px !important;
+    width: 24px !important;
+    min-width: 24px !important;
+    height: 24px !important;
+    min-height: 24px !important;
     flex: 0 0 auto;
     fill: none !important;
     stroke: currentColor !important;
@@ -148,10 +148,10 @@
       height: 36px !important;
     }
     .header-wrapper #cart-icon-bubble .icon {
-      width: 21px !important;
-      min-width: 21px !important;
-      height: 21px !important;
-      min-height: 21px !important;
+      width: 23px !important;
+      min-width: 23px !important;
+      height: 23px !important;
+      min-height: 23px !important;
     }
   }
 
@@ -184,24 +184,30 @@
   .menu-drawer__localization .boxeup-language-disclosure .boxeup-lang-flag {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     flex: 0 0 21px;
     width: 21px;
     height: 15px;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 0;
   }
   .header-wrapper .boxeup-language-disclosure .boxeup-language-flag,
   .menu-drawer__localization .boxeup-language-disclosure .boxeup-language-flag {
     display: block;
     width: 21px;
     height: 15px;
+    flex: none;
     border-radius: 1px;
     box-shadow: 0 0 0 .5px rgba(0,0,0,.15);
   }
   /* Compact flag and two-letter language picker, inspired by the supplied video. */
   .header-wrapper .desktop-localization-wrapper .boxeup-lang-trigger {
-    display: inline-flex !important;
+    display: inline-grid !important;
+    grid-template-columns: 21px 18px !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 6px !important;
+    column-gap: 6px !important;
     box-sizing: border-box !important;
     width: 65px !important;
     min-width: 65px !important;
@@ -282,10 +288,10 @@
   .header-wrapper .boxeup-lang-panel .boxeup-lang-option,
   .menu-drawer__localization .boxeup-lang-panel .boxeup-lang-option {
     display: grid !important;
-    grid-template-columns: 21px 18px;
+    grid-template-columns: 21px 18px !important;
     align-items: center !important;
     justify-content: center !important;
-    column-gap: 8px !important;
+    column-gap: 6px !important;
     box-sizing: border-box !important;
     width: 100% !important;
     min-height: 35px !important;

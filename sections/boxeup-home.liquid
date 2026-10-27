@@ -10,6 +10,28 @@
   .section-boxeup-home .bxv2 .bxv2-cat .bxv2-cat__arrow .bxv2-arrow-svg{width:14px;height:14px}
   .section-boxeup-home .bxv2 .bxv2-mod__arrow .bxv2-arrow-svg{width:15px;height:15px}
   @media(max-width:749px){.section-boxeup-home .bxv2 .bxv2-btn>span[aria-hidden="true"] .bxv2-arrow-svg{width:14px;height:14px}}
+
+  /* BOXEUP hero gradient: section-local rule has priority over cached asset CSS. */
+  #shopify-section-{{ section.id }} .bxv2-hero__shade {
+    background:
+      linear-gradient(90deg,
+        rgba(3,4,6,.995) 0%, rgba(3,4,6,.99) 24%,
+        rgba(4,5,7,.98) 37%, rgba(4,5,7,.96) 50%,
+        rgba(4,5,7,.90) 66%, rgba(4,5,7,.70) 83%,
+        rgba(4,5,7,.48) 100%),
+      linear-gradient(0deg, rgba(3,4,6,.76), transparent 55%) !important;
+    z-index: 1 !important;
+    pointer-events: none;
+  }
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .bxv2-hero__shade {
+      background:
+        linear-gradient(0deg,
+          rgba(6,7,9,.99) 0%, rgba(6,7,9,.98) 42%,
+          rgba(6,7,9,.72) 85%, rgba(6,7,9,.55) 100%),
+        linear-gradient(90deg, rgba(6,7,9,.45), transparent 90%) !important;
+    }
+  }
 </style>
 
 {% assign bx_products = collections['all'].products %}

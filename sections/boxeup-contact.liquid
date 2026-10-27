@@ -5,7 +5,7 @@
     <span aria-current="page">{{ 'boxeup_sections.contact_contact' | t }}</span>
   </nav>
   <div class="boxeup-contact__heading">
-    <p class="boxeup-contact__eyebrow">02 / {{ section.settings.eyebrow | escape }}</p>
+    <p class="boxeup-contact__eyebrow">{{ section.settings.eyebrow | escape }}</p>
     <h1>{{ section.settings.heading | escape }}</h1>
     <p>{{ section.settings.description | escape }}</p>
   </div>
@@ -15,6 +15,7 @@
         <span class="boxeup-contact__detail-number">{{ 'boxeup_sections.contact_support' | t }}</span>
         <h2>{{ section.settings.details_heading | escape }}</h2>
         <p>{{ section.settings.details_text | escape }}</p>
+        <a class="boxeup-contact__email" href="mailto:business@boxeup.com">business@boxeup.com <span aria-hidden="true">→</span></a>
       </div>
       <div class="boxeup-contact__detail">
         <span class="boxeup-contact__detail-number">{{ 'boxeup_sections.contact_explore' | t }}</span>
@@ -30,7 +31,7 @@
     </aside>
 
     <div class="boxeup-contact__form-wrap">
-      <span class="boxeup-contact__form-overline">{{ 'boxeup_sections.contact_send' | t }} <span>↗</span></span>
+      <span class="boxeup-contact__form-overline">{{ 'boxeup_sections.contact_send' | t }} </span>
       <h2>{{ section.settings.form_heading | escape }}</h2>
       <p class="boxeup-contact__form-intro">{{ section.settings.form_intro | escape }}</p>
       {% form 'contact', id: 'BoxeupContactForm', class: 'boxeup-contact__form' %}
@@ -89,9 +90,9 @@
   "class": "section-boxeup-contact",
   "settings": [
     {"type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "ESTAMOS AQUI PARA AJUDAR"},
-    {"type": "text", "id": "heading", "label": "Título principal", "default": "FALA CONNOSCO."},
+    {"type": "text", "id": "heading", "label": "Título principal", "default": "Fala connosco."},
     {"type": "textarea", "id": "description", "label": "Introdução", "default": "Precisas de ajuda a escolher equipamento, tens uma dúvida sobre um produto ou queres apresentar uma proposta de parceria? Envia-nos uma mensagem."},
-    {"type": "text", "id": "details_heading", "label": "Título do apoio", "default": "COMO PODEMOS AJUDAR?"},
+    {"type": "text", "id": "details_heading", "label": "Título do apoio", "default": "Como podemos ajudar?"},
     {"type": "textarea", "id": "details_text", "label": "Texto de apoio", "default": "Dúvidas sobre produtos, encomendas e colaborações. Explica-nos o que precisas e responderemos através do contacto que indicares."},
     {"type": "text", "id": "form_heading", "label": "Título do formulário", "default": "Envia-nos uma mensagem"},
     {"type": "textarea", "id": "form_intro", "label": "Introdução ao formulário", "default": "Preenche os campos abaixo para entrar em contacto com a BOXEUP."}
@@ -99,3 +100,4 @@
   "presets": [{"name": "BOXEUP | Contacto"}]
 }
 {% endschema %}
+

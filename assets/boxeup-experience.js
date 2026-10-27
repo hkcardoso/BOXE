@@ -20,22 +20,10 @@
     link.href = item.url;
     return link;
   };
-  let toastTimer;
-  function toast(message) {
-    const node = root.querySelector('[data-bx-toast]');
-    clearTimeout(toastTimer);
-    node.textContent = message;
-    node.hidden = false;
-    toastTimer = setTimeout(() => { node.hidden = true; }, 4500);
-  }
   let lastOpener;
   function openDialog(id, opener) {
     const dialog = document.getElementById(id);
     if (!dialog || typeof dialog.showModal !== 'function') return;
-    if (id === 'BxCompare') {
-      if (selected.length < 2) { toast(t('compare_min')); return; }
-      renderComparison();
-    }
     document.querySelectorAll('#BxExperience dialog[open]').forEach(node => node.close());
     lastOpener = opener;
     dialog.showModal();
@@ -52,92 +40,12 @@
       if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
     });
   });
-  let selected = [];
-  const validProduct = item => item && Number.isFinite(item.id) && Number.isFinite(item.price) && typeof item.title === 'string' && /^\/(?:[a-z]{2}(?:-[A-Za-z]{2})?\/)?products\//.test(item.url) && Array.isArray(item.options);
-  try {
-    const saved = JSON.parse(localStorage.getItem('boxeup.compare.v1') || '[]');
-    if (Array.isArray(saved)) selected = saved.filter(validProduct).slice(0, 3);
-  } catch {}
-  selected = selected.map(item => products.find(product => product.id === item.id) || item);
-  function syncButtons(scope = document) {
-    scope.querySelectorAll('[data-bx-compare]').forEach(button => {
-      button.setAttribute('aria-pressed', String(selected.some(item => String(item.id) === button.dataset.bxCompare)));
-    });
-  }
-  function persist() {
-    try { localStorage.setItem('boxeup.compare.v1', JSON.stringify(selected)); } catch {}
-    renderTray();
-  }
-  function removeItem(id) {
-    selected = selected.filter(item => String(item.id) !== String(id));
-    persist();
-    const dialog = document.getElementById('BxCompare');
-    if (dialog.open) {
-      if (selected.length < 2) dialog.close();
-      else renderComparison();
-    }
-  }
-  function renderTray() {
-    const tray = root.querySelector('[data-bx-tray]');
-    tray.hidden = !selected.length;
-    root.querySelector('[data-bx-count]').textContent = `${selected.length}/3 ${t('compare_count')}`;
-    const list = root.querySelector('[data-bx-tray-items]');
-    list.replaceChildren();
-    selected.forEach(item => {
-      const button = make('button', item.title + ' ×');
-      button.type = 'button';
-      button.setAttribute('aria-label', `${t('remove')}: ${item.title}`);
-      button.addEventListener('click', () => removeItem(item.id));
-      list.append(button);
-    });
-    syncButtons();
-  }
-  function renderComparison() {
-    const container = root.querySelector('[data-bx-compare-table]');
-    const table = make('table', undefined, 'bx-compare-table');
-    table.append(make('caption', t('compare_title'), 'visually-hidden'));
-    const header = make('tr');
-    const corner = make('th', t('gloves'));
-    corner.scope = 'col'; header.append(corner);
-    selected.forEach(item => {
-      const cell = make('th'); cell.scope = 'col';
-      if (item.image && /^https:\/\/cdn\.shopify\.com\//.test(item.image)) {
-        const img = make('img'); img.src = item.image; img.alt = ''; img.width = 160; img.height = 160; img.loading = 'lazy'; cell.append(img);
-      }
-      cell.append(make('strong', item.title));
-      const remove = make('button', t('remove'), 'bx-text-button'); remove.type = 'button';
-      remove.addEventListener('click', () => removeItem(item.id)); cell.append(remove); header.append(cell);
-    });
-    const thead = make('thead'); thead.append(header); table.append(thead);
-    const body = make('tbody');
-    const rows = [
-      ['price', price], ['brand', item => item.vendor], ['category', item => item.type],
-      ['options', item => item.options.filter(option => option.name !== 'Title').map(option => `${option.name}: ${option.values.join(', ')}`).join('\n')],
-      ['material', item => item.material], ['availability', item => t(item.available ? 'available' : 'unavailable')],
-      ['details', item => item.description]
-    ];
-    rows.forEach(([key, getter]) => {
-      const row = make('tr'); const label = make('th', t(key)); label.scope = 'row'; row.append(label);
-      selected.forEach(item => row.append(make('td', getter(item) || t('not_specified')))); body.append(row);
-    });
-    const actions = make('tr'); actions.append(make('th', t('view')));
-    selected.forEach(item => { const cell = make('td'); cell.append(productLink(item)); actions.append(cell); });
-    body.append(actions); table.append(body); container.replaceChildren(table);
-  }
   document.addEventListener('click', event => {
     const open = event.target.closest('[data-bx-open]');
     if (open) { event.preventDefault(); openDialog(open.dataset.bxOpen, open); return; }
     const close = event.target.closest('[data-bx-close]');
     if (close) { close.closest('dialog')?.close(); return; }
-    if (event.target.closest('[data-bx-clear]')) { selected = []; persist(); return; }
-    const compare = event.target.closest('[data-bx-compare]');
-    if (compare) {
-      const existing = selected.some(item => String(item.id) === compare.dataset.bxCompare);
-      if (existing) { removeItem(compare.dataset.bxCompare); return; }
-      if (selected.length === 3) { toast(t('compare_limit')); return; }
-      const item = parse(compare.parentElement.querySelector('[data-bx-product]'), null);
-      if (validProduct(item)) { selected.push(item); persist(); }
-    }
+
   });
   function showMatches() {
     const form = document.getElementById('BxGuideForm');
@@ -160,8 +68,6 @@
     });
   }
   document.getElementById('BxGuideForm')?.addEventListener('submit', event => { event.preventDefault(); showMatches(); });
-  renderTray();
-  document.addEventListener('boxeup:catalog-updated', () => syncButtons());
   const supports = new WeakSet();
   function initSupport(support) {
     if (supports.has(support)) return;
@@ -230,7 +136,6 @@
       if (node.nodeType !== 1) return;
       if (node.matches('[data-bx-support]')) initSupport(node);
       node.querySelectorAll('[data-bx-support]').forEach(initSupport);
-      if (node.matches('[data-bx-compare]') || node.querySelector('[data-bx-compare]')) syncButtons(node.parentElement || node);
     }));
   }).observe(document.getElementById('MainContent'), { childList: true, subtree: true });
   document.querySelectorAll('[data-bx-video]').forEach(button => {

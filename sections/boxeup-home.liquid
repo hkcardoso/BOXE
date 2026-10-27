@@ -117,7 +117,7 @@
           <p class="bxv2-kicker">{{ 'boxeup_sections.home_choose_gear' | t }}</p>
           <h2>{{ 'boxeup_sections.home_start' | t }}<span class="bxv2-red">.</span></h2>
         </div>
-        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_all_catalog' | t }} <span aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></a>
+        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_all_catalog' | t }} <span aria-hidden="true">→</span></a>
       </div>
       <div class="bxv2-cat-grid">
         <a href="{{ collections['luvas-de-boxe-e-muay-thai'].url }}#boxeup-catalog-filters" class="bxv2-cat bxv2-cat--1" aria-label="{{ 'boxeup_sections.aria_gloves' | t }}">
@@ -150,7 +150,7 @@
     <div class="bxv2-block bxv2-block--products" id="bxv2-destaques">
       <div class="bxv2-heading">
         <div><p class="bxv2-kicker">{{ 'boxeup_sections.home_featured' | t }}</p><h2>{{ 'boxeup_sections.home_featured_title' | t }}<span class="bxv2-red">.</span></h2><p>{{ 'boxeup_sections.home_featured_desc' | t }}</p></div>
-        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_all_products' | t }} <span aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></a>
+        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_all_products' | t }} <span aria-hidden="true">→</span></a>
       </div>
       {% if bx_products.size > 0 %}
         <div class="bxv2-product-grid">
@@ -168,7 +168,6 @@
             {% assign bx_seen_types = bx_seen_types | append: bx_type_marker %}
             {% assign bx_shown = bx_shown | plus: 1 %}
             <article class="bxv2-product">
-              {% render 'boxeup-compare-button', product: product %}
               <a class="bxv2-product__image" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
                 {% if product.featured_image %}
                   {{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '300,450,600,700', sizes: '(min-width:990px) 18vw, (min-width:750px) 30vw, 47vw', alt: product.title }}
@@ -247,7 +246,7 @@
     <div class="bxv2-block bxv2-block--modalities" id="bxv2-modalidades">
       <div class="bxv2-heading">
         <div><p class="bxv2-kicker">{{ 'boxeup_sections.home_sport_label' | t }}</p><h2>{{ 'boxeup_sections.home_sport_heading' | t }}<span class="bxv2-red">.</span></h2></div>
-        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_explore_catalog' | t }} <span aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></a>
+        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_explore_catalog' | t }} <span aria-hidden="true">→</span></a>
       </div>
       <div class="bxv2-mod-grid">
         {% for block in section.blocks %}
@@ -272,7 +271,7 @@
     </div>
 
     <div class="bxv2-block bxv2-block--brands">
-      <div class="bxv2-heading"><div><p class="bxv2-kicker">{{ 'boxeup_sections.home_brands_kicker' | t }}</p><h2>{{ 'boxeup_sections.home_brands_heading' | t }}<span class="bxv2-red">.</span></h2></div><a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_catalog' | t }} <span aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></a></div>
+      <div class="bxv2-heading"><div><p class="bxv2-kicker">{{ 'boxeup_sections.home_brands_kicker' | t }}</p><h2>{{ 'boxeup_sections.home_brands_heading' | t }}<span class="bxv2-red">.</span></h2></div><a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_catalog' | t }} <span aria-hidden="true">→</span></a></div>
       <div class="bxv2-brand-grid">
         <a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/fairtex" aria-label="{{ 'boxeup_sections.view_brand' | t }} Fairtex"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-fairtex-white.png?v=1793040787" alt="Fairtex" width="140" height="72" loading="lazy"></a>
         <a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/charlie" aria-label="{{ 'boxeup_sections.view_brand' | t }} Charlie"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-charlie-white.png?v=1793040801" alt="Charlie" width="140" height="72" loading="lazy"></a>
@@ -292,7 +291,7 @@
       <p class="bxv2-kicker">{{ 'boxeup_sections.home_history_kicker' | t }}</p>
       <h2>{{ 'boxeup_sections.home_history_a' | t }}<br><em>{{ 'boxeup_sections.home_history_b' | t }}</em></h2>
       <p>{{ 'boxeup_sections.home_history_desc' | t }}</p>
-      <a class="bxv2-more bxv2-more--light" href="{{ routes.root_url }}pages/sobre-a-boxeup">{{ 'boxeup_sections.home_learn' | t }} <span aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></a>
+      <a class="bxv2-more bxv2-more--light" href="{{ routes.root_url }}pages/sobre-a-boxeup">{{ 'boxeup_sections.home_learn' | t }} <span aria-hidden="true">→</span></a>
     </div>
   </div>
 
@@ -313,7 +312,7 @@
         <input type="hidden" name="contact[tags]" value="newsletter">
         <label class="visually-hidden" for="bxv2-email-{{ section.id }}">{{ 'boxeup_sections.home_your_email' | t }}</label>
         <input id="bxv2-email-{{ section.id }}" type="email" name="contact[email]" autocomplete="email" placeholder="{{ 'boxeup_sections.home_your_email' | t }}" required aria-required="true" value="{{ form.email | escape }}">
-        <button type="submit" aria-label="{{ 'boxeup_sections.aria_subscribe' | t }}">{{ 'boxeup_sections.home_subscribe' | t }} <span aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></button>
+        <button type="submit" aria-label="{{ 'boxeup_sections.aria_subscribe' | t }}">{{ 'boxeup_sections.home_subscribe' | t }}</button>
         {% if form.posted_successfully? %}<p class="bxv2-news__feedback" role="status">{{ 'boxeup_sections.home_success' | t }}</p>{% elsif form.errors %}<p class="bxv2-news__feedback" role="alert">{{ form.errors | default_errors }}</p>{% endif %}
       {% endform %}
     </div>

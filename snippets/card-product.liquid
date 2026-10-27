@@ -585,6 +585,15 @@
           </div>
         </div>
       </div>
+      {%- if product_view_context == 'collection' -%}
+        <a
+          class="boxeup-card__full-link"
+          href="{{ card_product.url }}"
+          aria-hidden="true"
+          tabindex="-1"
+          style="position:absolute;inset:0;z-index:2;display:block;background:transparent;"
+        ></a>
+      {%- endif -%}
     </div>
   </product-component>
 {%- else -%}

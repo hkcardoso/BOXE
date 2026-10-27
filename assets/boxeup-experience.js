@@ -228,4 +228,12 @@
       document.querySelector('#cart-icon-bubble')?.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.12)' }, { transform: 'scale(1)' }], { duration: 280 });
     }
   });
+  const syncKeyboard = () => {
+    const inputFocused = document.activeElement?.matches('input,textarea,select,[contenteditable="true"]');
+    const keyboard = window.visualViewport && window.innerHeight - window.visualViewport.height > 150;
+    document.body.classList.toggle('bx-keyboard-open', !!inputFocused && !!keyboard);
+  };
+  window.visualViewport?.addEventListener('resize', syncKeyboard, { passive: true });
+  document.addEventListener('focusin', syncKeyboard);
+  document.addEventListener('focusout', () => requestAnimationFrame(syncKeyboard));
 })();

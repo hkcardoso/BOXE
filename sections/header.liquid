@@ -109,30 +109,34 @@
   .header-wrapper .header__inline-menu .header__menu-item:hover > span {
     color: #f23a4c !important;
   }
+  /* Compact, thin cart outline while retaining an accessible click target. */
   .header-wrapper #cart-icon-bubble {
-    width: 36px !important;
-    min-width: 36px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 34px !important;
+    min-width: 34px !important;
     height: 36px !important;
     margin-right: 0 !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
   }
   .header-wrapper #cart-icon-bubble .svg-wrapper {
-    width: 36px !important;
-    height: 36px !important;
     display: flex !important;
-    justify-content: center !important;
     align-items: center !important;
+    justify-content: center !important;
+    width: 34px !important;
+    height: 36px !important;
   }
   .header-wrapper #cart-icon-bubble .icon {
-    width: 28px !important;
-    height: 28px !important;
-    min-width: 28px !important;
-    min-height: 28px !important;
+    display: block !important;
+    width: 22px !important;
+    min-width: 22px !important;
+    height: 22px !important;
+    min-height: 22px !important;
+    flex: 0 0 auto;
     fill: none !important;
     stroke: currentColor !important;
-    stroke-width: 1.5 !important;
+    stroke-width: 1.15 !important;
     stroke-linecap: round !important;
     stroke-linejoin: round !important;
   }
@@ -144,14 +148,13 @@
       height: 36px !important;
     }
     .header-wrapper #cart-icon-bubble .icon {
-      width: 27px !important;
-      min-width: 27px !important;
-      height: 27px !important;
-      min-height: 27px !important;
+      width: 21px !important;
+      min-width: 21px !important;
+      height: 21px !important;
+      min-height: 21px !important;
     }
   }
 
-  /* BOXEUP — precise centered desktop menu + compact flag language picker */
   @media screen and (min-width: 990px) {
     body .header-wrapper .header.header--middle-left:not(.drawer-menu) {
       grid-template-columns: minmax(0,1fr) max-content minmax(0,1fr) !important;
@@ -242,15 +245,15 @@
   .header-wrapper .boxeup-lang-panel,
   .menu-drawer__localization .boxeup-lang-panel {
     box-sizing: border-box;
-    width: 76px !important;
-    min-width: 76px !important;
-    max-width: 76px !important;
-    padding: 3px !important;
+    width: 82px !important;
+    min-width: 82px !important;
+    max-width: 82px !important;
+    padding: 5px !important;
     margin: 0 !important;
-    border-radius: 3px !important;
-    background: #fafafa !important;
-    border: 1px solid #e4e4e7 !important;
-    box-shadow: 0 7px 22px rgba(0,0,0,.22) !important;
+    border-radius: 5px !important;
+    background: #18191d !important;
+    border: 1px solid #35373e !important;
+    box-shadow: 0 16px 36px rgba(0,0,0,.38) !important;
     overflow: visible !important;
     z-index: 75 !important;
   }
@@ -278,19 +281,20 @@
   }
   .header-wrapper .boxeup-lang-panel .boxeup-lang-option,
   .menu-drawer__localization .boxeup-lang-panel .boxeup-lang-option {
-    display: flex !important;
+    display: grid !important;
+    grid-template-columns: 21px 18px;
     align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 6px !important;
+    justify-content: center !important;
+    column-gap: 8px !important;
     box-sizing: border-box !important;
     width: 100% !important;
-    min-height: 31px !important;
+    min-height: 35px !important;
     margin: 0 !important;
-    padding: 6px 5px !important;
+    padding: 7px 4px !important;
     border: 0 !important;
-    border-radius: 1px !important;
+    border-radius: 3px !important;
     background: transparent !important;
-    color: #17181b !important;
+    color: #f3f3f5 !important;
     font-size: 11px !important;
     font-weight: 700 !important;
     line-height: 1 !important;
@@ -302,7 +306,7 @@
   .header-wrapper .boxeup-lang-panel .boxeup-lang-option:focus-visible,
   .menu-drawer__localization .boxeup-lang-panel .boxeup-lang-option:hover,
   .menu-drawer__localization .boxeup-lang-panel .boxeup-lang-option:focus-visible {
-    background: #18191d !important;
+    background: #303138 !important;
     color: #fff !important;
     outline-offset: -1px !important;
   }
@@ -313,7 +317,7 @@
   @media screen and (min-width: 990px) {
     .header-wrapper .desktop-localization-wrapper .boxeup-lang-panel {
       top: 100% !important;
-      right: 0 !important;
+      right: -8px !important;
       bottom: auto !important;
       left: auto !important;
       transform: none;
@@ -610,17 +614,8 @@
   -%}
   <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if country_selector or language_selector %} header--has-localizations{% endif %}">
     {%- liquid
-      assign render_search_left = false
-      if section.settings.logo_position == 'top-center' or section.settings.menu == blank or shop.customer_accounts_enabled
-        assign render_search_left = true
-      endif
-
       if section.settings.menu != blank
         render 'header-drawer', show_country_selector: country_selector, show_language_selector: language_selector, show_social_links: social_links
-      endif
-
-      if render_search_left
-        render 'header-search', input_id: 'Search-In-Modal-1'
       endif
     -%}
 
@@ -724,7 +719,6 @@
           </localization-form>
         {%- endif -%}
       </div>
-      {% render 'header-search', input_id: 'Search-In-Modal' %}
 
       {%- if shop.customer_accounts_enabled -%}
         <shopify-account
@@ -745,7 +739,7 @@
 
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         <span class="svg-wrapper">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon {% if cart == empty %}icon-cart-empty{% else %}icon-cart{% endif %}" viewBox="0 0 24 24" role="img" aria-label="{{ 'templates.cart.cart' | t | escape }}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon {% if cart == empty %}icon-cart-empty{% else %}icon-cart{% endif %}" viewBox="0 0 24 24" role="img" aria-label="{{ 'templates.cart.cart' | t | escape }}" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 8.5h14l1 11.5H4L5 8.5Z" />
             <path d="M9 9V6a3 3 0 0 1 6 0v3" />
           </svg>

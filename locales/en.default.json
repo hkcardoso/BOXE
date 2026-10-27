@@ -550,6 +550,8 @@
     }
   },
   "boxeup_navigation": {
+    "modality_filter": "Discipline",
+    "all_modalities": "All disciplines",
     "modalities": "Browse by discipline",
     "boxe": "Boxing",
     "muay_thai": "Muay Thai & Kickboxing",

@@ -550,6 +550,8 @@
     }
   },
   "boxeup_navigation": {
+    "modality_filter": "Modalidad",
+    "all_modalities": "Todas las modalidades",
     "modalities": "Explorar por modalidad",
     "boxe": "Boxeo",
     "muay_thai": "Muay Thai y Kickboxing",

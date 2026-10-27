@@ -1,0 +1,106 @@
+/* BOXEUP | Shared layout grid / matches the catalogue margins.
+   Global wrapper for header, navigation, home, catalog, pages and footer.
+   Full-bleed hero/backgrounds remain full width; their copy aligns to the grid. */
+:root{
+  --boxeup-content-max:190rem;
+  --boxeup-content-gutter:clamp(3rem,4.5vw,9rem);
+  --boxeup-content-outer:max(
+    var(--boxeup-content-gutter),
+    calc((100vw - var(--boxeup-content-max))/2 + var(--boxeup-content-gutter))
+  );
+}
+@media (min-width:750px) and (max-width:989px){
+  :root{--boxeup-content-gutter:5rem}
+}
+@media (max-width:749px){
+  :root{--boxeup-content-gutter:1.5rem}
+}
+/* Use one grid for catalogue cards, section headings and other pages. */
+#MainContent .page-width:not(.page-width--narrow),
+#MainContent .page-width-desktop{
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:var(--boxeup-content-max)!important;
+  margin-left:auto!important;margin-right:auto!important;
+  padding-left:var(--boxeup-content-gutter)!important;
+  padding-right:var(--boxeup-content-gutter)!important;
+}
+/* The logo, centered navigation, language selector and last cart icon all
+   share the catalogue's exact left/right content rails. */
+body .header-wrapper .header.page-width,
+body .header-wrapper .header:not(.drawer-menu).page-width{
+  box-sizing:border-box!important;
+  width:100%!important;max-width:var(--boxeup-content-max)!important;
+  margin-left:auto!important;margin-right:auto!important;
+  padding-left:var(--boxeup-content-gutter)!important;
+  padding-right:var(--boxeup-content-gutter)!important;
+}
+@media(min-width:990px){
+  body .header-wrapper .header.header--middle-left:not(.drawer-menu){
+    grid-template-columns:minmax(0,1fr) max-content minmax(0,1fr)!important;
+    grid-template-areas:"heading navigation icons"!important;
+  }
+  body .header-wrapper .header.header--middle-left .header__heading,
+  body .header-wrapper .header.header--middle-left .header__heading-link{
+    justify-self:start!important;
+  }
+  body .header-wrapper .header.header--middle-left .header__inline-menu{
+    grid-area:navigation!important;justify-self:center!important;
+  }
+  body .header-wrapper .header.header--middle-left .header__icons{
+    grid-area:icons!important;justify-self:end!important;
+    margin:0!important;
+  }
+}
+/* The home hero video remains edge-to-edge; only its text/icons align. */
+#MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-wrap{
+  box-sizing:border-box!important;width:100%!important;
+  max-width:var(--boxeup-content-max)!important;
+  margin-left:auto!important;margin-right:auto!important;
+  padding-left:var(--boxeup-content-gutter)!important;
+  padding-right:var(--boxeup-content-gutter)!important;
+}
+#MainContent[data-template="index"] .section-boxeup-home .bxv2>.bxv2-wrap:first-child{
+  max-width:none!important;padding-left:0!important;padding-right:0!important;
+}
+#MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero{
+  margin-left:0!important;margin-right:0!important;border-radius:0!important;
+}
+#MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero__inner{
+  box-sizing:border-box!important;
+  padding-left:var(--boxeup-content-outer)!important;
+  padding-right:clamp(16px,2vw,40px)!important;
+}
+#MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero .bxv2-trust{
+  left:var(--boxeup-content-outer)!important;
+}
+#MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero__stamp{
+  right:var(--boxeup-content-outer)!important;
+}
+/* Footer content and bottom legal/payment row match the same outer rails. */
+body .footer .boxeup-footer-brand.page-width,
+body .footer .footer__content-top.page-width,
+body .footer .footer__content-bottom-wrapper.page-width{
+  box-sizing:border-box!important;width:100%!important;
+  max-width:var(--boxeup-content-max)!important;
+  margin-left:auto!important;margin-right:auto!important;
+  padding-left:var(--boxeup-content-gutter)!important;
+  padding-right:var(--boxeup-content-gutter)!important;
+}
+/* Keep mobile cart, menu and language reachable without horizontal overflow. */
+@media(max-width:749px){
+  body .header-wrapper .header.page-width,
+  body .header-wrapper .header:not(.drawer-menu).page-width{
+    padding-left:var(--boxeup-content-gutter)!important;
+    padding-right:var(--boxeup-content-gutter)!important;
+  }
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero__inner{
+    width:100%!important;
+    padding-left:var(--boxeup-content-gutter)!important;
+    padding-right:var(--boxeup-content-gutter)!important;
+  }
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero .bxv2-trust{
+    left:var(--boxeup-content-gutter)!important;
+    right:var(--boxeup-content-gutter)!important;
+  }
+}

@@ -1023,3 +1023,51 @@ body.boxeup-product-view .footer .footer__content-bottom{
   }
 }
 
+
+
+/* BOXEUP | product content aligned with the catalogue grid. */
+#MainContent[data-template="product"] [id^="MainProduct-"] product-component>.page-width,
+#MainContent[data-template="product"] [id^="MainProduct-"]>.page-width{
+  box-sizing:border-box!important;
+  width:100%!important;max-width:var(--boxeup-content-max)!important;
+  margin-left:auto!important;margin-right:auto!important;
+  padding-left:var(--boxeup-content-gutter)!important;
+  padding-right:var(--boxeup-content-gutter)!important;
+}
+#MainContent[data-template="product"] .bxp-story__inner,
+#MainContent[data-template="product"] .bxp-details,
+#MainContent[data-template="product"] .related-products{
+  box-sizing:border-box!important;
+  width:100%!important;max-width:var(--boxeup-content-max)!important;
+  margin-left:auto!important;margin-right:auto!important;
+  padding-left:var(--boxeup-content-gutter)!important;
+  padding-right:var(--boxeup-content-gutter)!important;
+}
+body.boxeup-product-view .header-wrapper .header.page-width,
+body.boxeup-product-view .header-wrapper .header:not(.drawer-menu).page-width{
+  box-sizing:border-box!important;
+  width:100%!important;max-width:var(--boxeup-content-max)!important;
+  margin-left:auto!important;margin-right:auto!important;
+  padding-left:var(--boxeup-content-gutter)!important;
+  padding-right:var(--boxeup-content-gutter)!important;
+}
+body.boxeup-product-view .footer .boxeup-footer-brand.page-width,
+body.boxeup-product-view .footer .footer__content-top.page-width,
+body.boxeup-product-view .footer .footer__content-bottom-wrapper.page-width{
+  box-sizing:border-box!important;
+  width:100%!important;max-width:var(--boxeup-content-max)!important;
+  margin-left:auto!important;margin-right:auto!important;
+  padding-left:var(--boxeup-content-gutter)!important;
+  padding-right:var(--boxeup-content-gutter)!important;
+}
+@media(max-width:749px){
+  #MainContent[data-template="product"] .bxp-story__inner{
+    padding-top:34px!important;padding-bottom:34px!important;
+  }
+  #MainContent[data-template="product"] .bxp-details{
+    padding-top:24px!important;padding-bottom:24px!important;
+  }
+  #MainContent[data-template="product"] .related-products{
+    padding-top:24px!important;padding-bottom:32px!important;
+  }
+}

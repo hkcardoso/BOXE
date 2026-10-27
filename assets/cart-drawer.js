@@ -33,7 +33,8 @@ class CartDrawer extends HTMLElement {
     // here the animation doesn't seem to always get triggered. A timeout seem to help
     setTimeout(() => {
       this.classList.add('animate', 'active');
-      focusDrawer();
+      requestAnimationFrame(focusDrawer);
+      setTimeout(focusDrawer, 320);
     });
 
     const focusDrawer = () => {

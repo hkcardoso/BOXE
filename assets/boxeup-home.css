@@ -142,7 +142,7 @@
 
 
 /* BOXEUP 2026 — studio product gallery like the approved editorial mockup. */
-.bxv2-block--products .bxv2-product-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:17px 14px}
+.bxv2-block--products .bxv2-product-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:17px 14px}
 .bxv2-block--products .bxv2-product{background:#17181b;border:1px solid #333439;border-radius:4px}
 .bxv2-block--products .bxv2-product__image{aspect-ratio:1/.98;background:linear-gradient(145deg,#bfbab5,#a7a29e 64%,#97928e);isolation:isolate;overflow:hidden}
 .bxv2-block--products .bxv2-product__image:before{content:"";position:absolute;left:17%;right:17%;bottom:8%;height:12%;background:linear-gradient(155deg,#98928b,#d1cbc5);box-shadow:0 16px 24px rgba(30,28,27,.2);border-top:1px solid rgba(255,255,255,.3);z-index:-1}

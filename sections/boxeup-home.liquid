@@ -111,7 +111,7 @@
       </div>
       {% if bx_products.size > 0 %}
         <div class="bxv2-product-grid">
-          {% for product in bx_products limit: 8 %}
+          {% for product in bx_products limit: 10 %}
             <article class="bxv2-product">
               <a class="bxv2-product__image" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
                 {% if product.featured_image %}

@@ -82,6 +82,13 @@
               disabled
             {% endif %}
           >
+            {%- if request.page_type == 'product' -%}
+              <svg class="bxp-add-cart-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="9" cy="20" r="1.6"></circle>
+                <circle cx="19" cy="20" r="1.6"></circle>
+                <path d="M2 3h3l2.7 12h12l2-9H6"></path>
+              </svg>
+            {%- endif -%}
             <span>
               {%- if product.selected_or_first_available_variant == null -%}
                 {{ 'products.product.unavailable' | t }}

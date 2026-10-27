@@ -9,6 +9,37 @@
   }
   #boxeup-catalog-filters { scroll-margin-top: 96px; }
 
+  /* BOXEUP | Third catalog filter, by combat discipline. */
+  #boxeup-modalities-filter {scroll-margin-top:96px;margin:20px 0 0}
+  #MainContent .boxeup-modalities-filter__heading{
+    margin:0 0 12px;color:#e1e1e5;font-size:14px;line-height:1.4;font-weight:600;letter-spacing:0
+  }
+  #MainContent .boxeup-modalities-list{display:flex;flex-wrap:wrap;gap:9px}
+  #MainContent .boxeup-modality-chip{
+    min-height:41px;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:10px 18px;border-radius:5px;background:#1e1f23;border:1px solid #393b43;
+    color:#f5f5f7!important;font-size:12px;font-weight:750;line-height:1.3;
+    text-decoration:none;transition:border-color .18s,background .18s,transform .18s
+  }
+  #MainContent a.boxeup-modality-chip:hover{background:#27292f;border-color:#767984;transform:translateY(-1px)}
+  #MainContent a.boxeup-modality-chip[aria-current="page"]{background:#292126;border-color:#ed2437;color:#fff!important}
+  #MainContent a.boxeup-modality-chip:focus-visible{outline:2px solid white;outline-offset:2px}
+  #MainContent .boxeup-modality-chip--coming{
+    opacity:.46;cursor:not-allowed;user-select:none
+  }
+  #MainContent .boxeup-modality-chip--coming small{font-size:10px;font-weight:500}
+  @media(max-width:749px){
+    #boxeup-modalities-filter{margin-top:18px;scroll-margin-top:74px}
+    #MainContent .boxeup-modalities-filter__heading{font-size:13px;margin-bottom:9px}
+    #MainContent .boxeup-modalities-list{gap:7px}
+    #MainContent .boxeup-modality-chip{min-height:38px;padding:9px 12px;font-size:11px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    #MainContent .boxeup-modality-chip{transition:none}
+    #MainContent a.boxeup-modality-chip:hover{transform:none}
+  }
+
+
   /* BOXEUP | Always-visible brand logos on the collection navigation. */
   #MainContent .boxeup-brands-always-open { margin: 19px 0 0; }
   #MainContent .boxeup-brands-always-open__heading {
@@ -101,6 +132,21 @@
     <a class="boxeup-brand-card" data-boxeup-catalog href="{{ routes.root_url }}collections/rival" aria-label="{{ 'boxeup_sections.view_brand' | t }} Rival"{% if collection.handle == 'rival' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-rival-white.png?v=1793040835" alt="Rival" loading="lazy" width="140" height="72"></a>
     <a class="boxeup-brand-card" data-boxeup-catalog href="{{ routes.root_url }}collections/twins" aria-label="{{ 'boxeup_sections.view_brand' | t }} Twins"{% if collection.handle == 'twins' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-twins-white.png?v=1793040843" alt="Twins" loading="lazy" width="140" height="72"></a>
     <a class="boxeup-brand-card" data-boxeup-catalog href="{{ routes.root_url }}collections/everlast" aria-label="{{ 'boxeup_sections.view_brand' | t }} Everlast"{% if collection.handle == 'everlast' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-everlast-white.png?v=1793040849" alt="Everlast" loading="lazy" width="140" height="72"></a>
+    </nav>
+  </div>
+  <div id="boxeup-modalities-filter" class="boxeup-modalities-filter">
+    <h3 class="boxeup-modalities-filter__heading">{{ 'boxeup_navigation.modalities' | t }}</h3>
+    <nav class="boxeup-modalities-list" aria-label="{{ 'boxeup_navigation.modalities' | t }}">
+      {%- assign boxeup_boxing_collection = collections['boxe'] -%}
+      {%- assign boxeup_muaythai_collection = collections['muay-thai-e-kickboxing'] -%}
+      {%- if boxeup_boxing_collection != blank -%}
+        <a class="boxeup-modality-chip" data-boxeup-catalog href="{{ boxeup_boxing_collection.url }}"{% if collection.handle == 'boxe' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.boxe' | t }}</a>
+      {%- endif -%}
+      {%- if boxeup_muaythai_collection != blank -%}
+        <a class="boxeup-modality-chip" data-boxeup-catalog href="{{ boxeup_muaythai_collection.url }}"{% if collection.handle == 'muay-thai-e-kickboxing' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.muay_thai' | t }}</a>
+      {%- endif -%}
+      <span class="boxeup-modality-chip boxeup-modality-chip--coming" aria-disabled="true">MMA <small>{{ 'boxeup_navigation.coming_soon' | t }}</small></span>
+      <span class="boxeup-modality-chip boxeup-modality-chip--coming" aria-disabled="true">Jiu-Jitsu <small>{{ 'boxeup_navigation.coming_soon' | t }}</small></span>
     </nav>
   </div>
   <p class="boxeup-catalog-message" role="status" aria-live="polite" data-loading="{{ 'boxeup_navigation.loading' | t }}" data-loaded="{{ 'boxeup_navigation.loaded' | t }}" data-error="{{ 'boxeup_navigation.error' | t }}"></p>

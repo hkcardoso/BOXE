@@ -17,14 +17,14 @@
             </a>
             <ul class="boxeup-nav-modalities__dropdown" role="list" aria-label="{{ link.title | escape }}">
               <li>
-                <a class="boxeup-nav-modalities__link focus-inset" href="{{ collections['boxe'].url }}#main-collection-filters"{% if collection.handle == 'boxe' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.boxe' | t }}</a>
+                <a class="boxeup-nav-modalities__link focus-inset" href="{{ collections['boxe'].url }}#main-collection-filters"{% if collection.handle == 'boxe' %} aria-current="page"{% endif %}><span class="boxeup-nav-modalities__label-wrap">{% render 'boxeup-menu-icon', name: 'boxe' %}<span>{{ 'boxeup_navigation.boxe' | t }}</span></span></a>
               </li>
               <li>
-                <a class="boxeup-nav-modalities__link focus-inset" href="{{ collections['muay-thai-e-kickboxing'].url }}#main-collection-filters"{% if collection.handle == 'muay-thai-e-kickboxing' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.muay_thai' | t }}</a>
+                <a class="boxeup-nav-modalities__link focus-inset" href="{{ collections['muay-thai-e-kickboxing'].url }}#main-collection-filters"{% if collection.handle == 'muay-thai-e-kickboxing' %} aria-current="page"{% endif %}><span class="boxeup-nav-modalities__label-wrap">{% render 'boxeup-menu-icon', name: 'muay-thai-e-kickboxing' %}<span>{{ 'boxeup_navigation.muay_thai' | t }}</span></span></a>
               </li>
               <li class="boxeup-nav-modalities__divider" role="separator" aria-hidden="true"></li>
-              <li><span class="boxeup-nav-modalities__link boxeup-nav-modalities__link--disabled" aria-disabled="true">MMA <small class="boxeup-nav-modalities__badge">{{ 'boxeup_navigation.coming_soon' | t }}</small></span></li>
-              <li><span class="boxeup-nav-modalities__link boxeup-nav-modalities__link--disabled" aria-disabled="true">Jiu-Jitsu <small class="boxeup-nav-modalities__badge">{{ 'boxeup_navigation.coming_soon' | t }}</small></span></li>
+              <li><span class="boxeup-nav-modalities__link boxeup-nav-modalities__link--disabled" aria-disabled="true"><span class="boxeup-nav-modalities__label-wrap">{% render 'boxeup-menu-icon', name: 'mma' %}<span>MMA</span></span> <small class="boxeup-nav-modalities__badge">{{ 'boxeup_navigation.coming_soon' | t }}</small></span></li>
+              <li><span class="boxeup-nav-modalities__link boxeup-nav-modalities__link--disabled" aria-disabled="true"><span class="boxeup-nav-modalities__label-wrap">{% render 'boxeup-menu-icon', name: 'jiu-jitsu' %}<span>Jiu-Jitsu</span></span> <small class="boxeup-nav-modalities__badge">{{ 'boxeup_navigation.coming_soon' | t }}</small></span></li>
             </ul>
           </div>
         {%- elsif link.links != blank -%}
@@ -50,7 +50,7 @@
                     href="{{ childlink.url }}"
                     class="boxeup-nav-modalities__link focus-inset"
                     {% if childlink.current %}aria-current="page"{% endif %}
-                  >{{ childlink.title | escape }}</a>
+                  >{% if link.handle == 'catalogo' %}<span class="boxeup-nav-modalities__label-wrap">{% render 'boxeup-menu-icon', name: childlink.handle %}<span>{{ childlink.title | escape }}</span></span>{% else %}{{ childlink.title | escape }}{% endif %}</a>
                   {%- if childlink.links != blank -%}
                     <ul class="boxeup-nav-modalities__children" role="list">
                       {%- for grandchildlink in childlink.links -%}

@@ -1,0 +1,42 @@
+{% comment %}
+  BOXEUP: monochrome, inline line-art for ONLY the existing catalog and modality menu items.
+  Usage: render 'boxeup-menu-icon', name: childlink.handle
+  No external icon library or image downloads required.
+{% endcomment %}
+{%- assign bx_icon = name | downcase | handleize -%}
+<svg class="boxeup-nav-modalities__icon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  {%- case bx_icon -%}
+    {%- when 'todos-os-produtos', 'todo-o-catalogo', 'ver-tudo', 'all-products' -%}
+      <rect x="3" y="3" width="7" height="7" rx="1.2"/><rect x="14" y="3" width="7" height="7" rx="1.2"/><rect x="3" y="14" width="7" height="7" rx="1.2"/><rect x="14" y="14" width="7" height="7" rx="1.2"/>
+    {%- when 'boxe', 'boxing', 'luvas', 'gloves' -%}
+      <path d="M8 13V7.6c0-2.5 1.8-4.6 4.3-4.6h2.1c2.7 0 4.6 2 4.6 4.6v6c0 2-1 3.2-2.6 4.5H9.3C7.2 16.9 6 15.5 6 13.6v-2.3c0-1.5.8-2.5 2-2.5"/>
+      <path d="M9.5 18h7v3h-7zM11 4v4m3-4v4m3-3v4"/>
+    {%- when 'muay-thai-e-kickboxing', 'muay-thai', 'kickboxing', 'muay-thai-kickboxing' -%}
+      <path d="M6 3l3 4 2 4m7-8-3 4-2 4M3 14l6-3 3 3 3-3 6 3"/>
+      <path d="M5.5 13.5l-1 5 4.5 2 3-5.5M18.5 13.5l1 5-4.5 2-3-5.5"/>
+      <path d="M9.2 8l2.8 3 2.8-3"/>
+    {%- when 'caneleiras', 'shin-guards', 'shin-guards-and-protection' -%}
+      <path d="M5 3h5l1 11-1.5 6.5H5L3.5 14 5 3zM14 3h5l1.5 11-1.5 6.5h-4.5L13 14l1-11z"/>
+      <path d="M5 7h5M14 7h5M5 17h5M14 17h5"/>
+    {%- when 'boqueiras-e-protecoes', 'boqueiras', 'mouthguards', 'protecoes' -%}
+      <path d="M3 7c2.6-1.7 5.6-2.5 9-2.5s6.4.8 9 2.5l-1.3 6.6c-.7 3.7-3.7 6.4-7.7 6.4s-7-2.7-7.7-6.4L3 7z"/>
+      <path d="M6 9c1.8-.9 3.8-1.4 6-1.4s4.2.5 6 1.4M7.5 11l1 4 3.5 2 3.5-2 1-4"/>
+    {%- when 'calcoes-e-roupa', 'calcoes-e-roupa-de-combate', 'roupa', 'shorts-and-apparel' -%}
+      <path d="M5 3h14l2 16-6 2-3-8-3 8-6-2L5 3z"/>
+      <path d="M5 8h14M9 3l3 5 3-5"/>
+    {%- when 'mochilas-e-sacos', 'mochilas-e-sacos-de-treino', 'backpacks-and-bags', 'mochilas' -%}
+      <rect x="5" y="7" width="14" height="14" rx="3"/><path d="M9 7V5a3 3 0 0 1 6 0v2M5 11H3v7h2M19 11h2v7h-2"/>
+      <path d="M9 12h6v5H9z"/>
+    {%- when 'equipamento-de-treino', 'training-equipment', 'treino' -%}
+      <path d="M4 9v6M7 6v12M10 11h4M14 11h-4M17 6v12M20 9v6"/>
+      <path d="M2 9h2v6H2zM7 7h3v10H7zM14 7h3v10h-3zM20 9h2v6h-2z"/>
+    {%- when 'mma' -%}
+      <path d="M7 3h10l4 4v10l-4 4H7l-4-4V7l4-4z"/>
+      <path d="M8 15v-3h8v3M8 12V9m3 3V8m3 4V8m2 4V9M9 15v3h6v-3"/>
+    {%- when 'jiu-jitsu', 'jiu-jitsu-brasileiro', 'bjj' -%}
+      <path d="M8.5 3h7l5 4 2 6-4 2-2-4V21h-9V11l-2 4-4-2 2-6 5-4z"/>
+      <path d="M9 3l3 6 3-6M12 9l-2 7 5-2M7.5 17h9"/>
+    {%- else -%}
+      <path d="M5 8V5h14v14H5v-3M3 12h18"/>
+  {%- endcase -%}
+</svg>

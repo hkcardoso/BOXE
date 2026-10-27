@@ -6,7 +6,7 @@
       <p class="bx-about__eyebrow bx-about__eyebrow--light">{{ 'boxeup_experience.about_label' | t }}</p>
       <h1 id="bx-about-title">{{ 'boxeup_experience.about_title' | t }}</h1>
       <p class="bx-about__hero-description">{{ 'boxeup_experience.about_origin' | t }}</p>
-      <a class="bx-about__button bx-about__button--red" href="{{ routes.all_products_collection_url }}">Explorar catálogo <span aria-hidden="true">→</span></a>
+      <a class="bx-about__button bx-about__button--red" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_experience.catalog' | t }} <span aria-hidden="true">→</span></a>
     </div>
   </div>
 
@@ -59,28 +59,28 @@
   <div class="bx-about__categories bx-about__container">
     <div class="bx-about__categories-heading">
       <div><p class="bx-about__eyebrow">{{ 'boxeup_experience.about_categories' | t }}</p><h2>{{ 'boxeup_experience.about_categories_title' | t }}</h2></div>
-      <a href="{{ routes.all_products_collection_url }}" class="bx-about__text-link">Explorar catálogo <span aria-hidden="true">→</span></a>
+      <a href="{{ routes.all_products_collection_url }}" class="bx-about__text-link">{{ 'boxeup_experience.catalog' | t }} <span aria-hidden="true">→</span></a>
     </div>
     <div class="bx-about__categories-grid">
       <a href="{{ collections['luvas-de-boxe-e-muay-thai'].url | default: routes.all_products_collection_url }}" class="bx-about__category">
         <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-boxe.jpg?v=1792197588" alt="{{ 'boxeup_experience.alt_gloves' | t | escape }}" width="1000" height="1000" loading="lazy">
-        <span>Luvas <span aria-hidden="true">→</span></span>
+        <span>{{ 'boxeup_experience.gloves' | t }} <span aria-hidden="true">→</span></span>
       </a>
       <a href="{{ collections['caneleiras-de-muay-thai-e-kickboxing'].url | default: routes.all_products_collection_url }}" class="bx-about__category">
         <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-muay-thai.jpg?v=1792197595" alt="{{ 'boxeup_experience.alt_shins' | t | escape }}" width="1000" height="1000" loading="lazy">
-        <span>Caneleiras <span aria-hidden="true">→</span></span>
+        <span>{{ 'boxeup_experience.shins' | t }} <span aria-hidden="true">→</span></span>
       </a>
       <a href="{{ collections['calcoes-e-roupa-de-combate'].url | default: routes.all_products_collection_url }}" class="bx-about__category">
         <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-mma.jpg?v=1792197601" alt="{{ 'boxeup_experience.alt_combat' | t | escape }}" width="1000" height="1000" loading="lazy">
-        <span>Calções e roupa <span aria-hidden="true">→</span></span>
+        <span>{{ 'boxeup_experience.apparel' | t }} <span aria-hidden="true">→</span></span>
       </a>
       <a href="{{ collections['boqueiras-e-protecoes'].url | default: routes.all_products_collection_url }}" class="bx-about__category">
         <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-jiu-jitsu.jpg?v=1792197608" alt="{{ 'boxeup_experience.alt_protection' | t | escape }}" width="1000" height="1000" loading="lazy">
-        <span>Proteção <span aria-hidden="true">→</span></span>
+        <span>{{ 'boxeup_experience.protection' | t }} <span aria-hidden="true">→</span></span>
       </a>
       <a href="{{ collections['mochilas-e-sacos-de-treino-1'].url | default: routes.all_products_collection_url }}" class="bx-about__category">
         <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-comunidade.webp?v=1793121082" alt="{{ 'boxeup_experience.alt_gym' | t | escape }}" width="2048" height="682" loading="lazy">
-        <span>Mochilas e sacos <span aria-hidden="true">→</span></span>
+        <span>{{ 'boxeup_experience.bags' | t }} <span aria-hidden="true">→</span></span>
       </a>
     </div>
   </div>
@@ -92,7 +92,7 @@
       <p class="bx-about__eyebrow">{{ 'boxeup_experience.about_contact_label' | t }}</p>
       <h2>{{ 'boxeup_experience.about_contact_title' | t }}</h2>
       <p>{{ 'boxeup_experience.about_contact_text' | t }}</p>
-      <a class="bx-about__button bx-about__button--white" href="{{ pages['contact'].url | default: '/pages/contact' }}">Contactar <span aria-hidden="true">→</span></a>
+      <a class="bx-about__button bx-about__button--white" href="{{ pages['contact'].url | default: '/pages/contact' }}">{{ 'boxeup_experience.contact' | t }} <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>

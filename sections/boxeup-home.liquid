@@ -158,8 +158,9 @@
           {% assign bx_seen_types = '' %}
           {% assign bx_twice_types = '' %}
           {% for product in bx_products %}
-                  {%- capture bx_visible -%}{%- render 'boxeup-product-visible', product: product -%}{%- endcapture -%}
-                  {%- if bx_visible == 'false' -%}{%- continue -%}{%- endif -%}
+                  {%- assign bx_vendor = product.vendor | downcase | strip -%}
+{%- assign bx_title = product.title | downcase | strip -%}
+{%- if bx_vendor == 'my store' or product.price == 0 or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}{%- continue -%}{%- endif -%}
             {% assign bx_vendor = product.vendor | downcase %}
             {% if bx_vendor == 'my store' or product.price == 0 %}{% continue %}{% endif %}
             {% if bx_shown == 10 %}{% break %}{% endif %}

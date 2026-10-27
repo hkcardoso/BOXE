@@ -263,8 +263,9 @@
               >
                 {%- assign skip_card_product_styles = false -%}
                 {%- for item in search.results -%}
-                  {%- capture bx_visible -%}{%- render 'boxeup-product-visible', product: item -%}{%- endcapture -%}
-                  {%- if bx_visible == 'false' -%}{%- continue -%}{%- endif -%}
+                  {%- assign bx_vendor = item.vendor | downcase | strip -%}
+{%- assign bx_title = item.title | downcase | strip -%}
+{%- if bx_vendor == 'my store' or item.price == 0 or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}{%- continue -%}{%- endif -%}
                   {% assign lazy_load = false %}
                   {%- if forloop.index > 2 -%}
                     {%- assign lazy_load = true -%}

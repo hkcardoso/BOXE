@@ -29,8 +29,14 @@
 -%}
 
 {% assign bx_items = results.products | default: results.results %}
-{% capture bx_count_text %}{% render 'boxeup-visible-count', items: bx_items %}{% endcapture %}
-{% assign bx_visible_count = bx_count_text | plus: 0 %}
+{%- assign bx_visible_count = 0 -%}
+{%- for bx_item in bx_items -%}
+{%- assign bx_vendor = bx_item.vendor | downcase | strip -%}
+{%- assign bx_title = bx_item.title | downcase | strip -%}
+{%- unless bx_vendor == 'my store' or bx_item.price == 0 or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}
+{%- assign bx_visible_count = bx_visible_count | plus: 1 -%}
+{%- endunless -%}
+{%- endfor -%}
 {% capture bx_count_label %}{% if paginate.pages > 1 %}{{ 'boxeup_experience.items_on_page' | t: count: bx_visible_count }}{% elsif results.terms != blank %}{{ 'templates.search.results_with_count' | t: terms: results.terms, count: bx_visible_count }}{% else %}{{ 'products.facets.product_count_simple' | t: count: bx_visible_count }}{% endif %}{% endcapture %}
 <div
   class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"

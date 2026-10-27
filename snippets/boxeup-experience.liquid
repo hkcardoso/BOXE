@@ -9,8 +9,9 @@
   <script type="application/json" data-bx-catalog>[
     {% assign bx_first = true %}
     {% for item in collections['all'].products limit: 50 %}
-                  {%- capture bx_visible -%}{%- render 'boxeup-product-visible', product: item -%}{%- endcapture -%}
-                  {%- if bx_visible == 'false' -%}{%- continue -%}{%- endif -%}
+                  {%- assign bx_vendor = item.vendor | downcase | strip -%}
+{%- assign bx_title = item.title | downcase | strip -%}
+{%- if bx_vendor == 'my store' or item.price == 0 or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}{%- continue -%}{%- endif -%}
       {% assign bx_vendor = item.vendor | downcase %}
       {% unless item.price == 0 or bx_vendor == 'my store' %}
         {% unless bx_first %},{% endunless %}{% render 'boxeup-product-data', product: item %}{% assign bx_first = false %}

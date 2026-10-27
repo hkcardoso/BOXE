@@ -1,0 +1,38 @@
+{% doc %}
+  @param {product} product - Current product.
+  @param {string} product_form_id - Native add-to-cart form ID.
+  @param {string} section_id - Product section identifier.
+  @param {string} [delivery_note] - Confirmed delivery note from the theme editor.
+{% enddoc %}
+{% assign bx_variant = product.selected_or_first_available_variant %}
+<div class="bx-product-support" data-bx-support data-form-id="{{ product_form_id }}" data-section-id="{{ section_id }}" data-product-title="{{ product.title | escape }}" data-product-url="{{ product.url }}">
+  <p class="bx-stock" data-bx-stock role="status">
+    {% if bx_variant.available == false %}{{ 'boxeup_experience.unavailable' | t }}
+    {% elsif bx_variant.inventory_management != blank and bx_variant.inventory_quantity <= 0 and bx_variant.inventory_policy == 'continue' %}{{ 'boxeup_experience.backorder' | t }}
+    {% else %}{{ 'boxeup_experience.available' | t }}{% endif %}
+  </p>
+  <div class="bx-product-policies">
+    <a href="{{ shop.shipping_policy.url | default: pages['envios-e-entregas'].url | default: '/pages/envios-e-entregas' }}">{{ 'boxeup_experience.shipping' | t }} ↗</a>
+    <a href="{{ shop.refund_policy.url | default: pages['devolucoes-e-garantias'].url | default: '/pages/devolucoes-e-garantias' }}">{{ 'boxeup_experience.returns' | t }} ↗</a>
+    <a href="{{ pages['contact'].url | default: '/pages/contact' }}">{{ 'boxeup_experience.contact' | t }} ↗</a>
+  </div>
+  {% if delivery_note != blank %}<p class="bx-muted">{{ delivery_note | escape }}</p>{% endif %}
+  <details class="bx-restock" data-bx-restock{% if bx_variant.available %} hidden{% endif %}>
+    <summary>{{ 'boxeup_experience.restock' | t }}</summary>
+    <p>{{ 'boxeup_experience.restock_intro' | t }}</p>
+    {% assign bx_restock_id = 'BxRestock-' | append: section_id %}
+    {% form 'contact', id: bx_restock_id %}
+      {% if form.posted_successfully? %}<p role="status">{{ 'boxeup_experience.request_sent' | t }}</p>{% endif %}
+      {% if form.errors %}<div role="alert">{{ form.errors | default_errors }}</div>{% endif %}
+      <label for="BxRestockEmail-{{ section_id }}">{{ 'boxeup_experience.email' | t }}</label>
+      <input id="BxRestockEmail-{{ section_id }}" type="email" name="contact[email]" autocomplete="email" value="{{ form.email | escape }}" required>
+      <label for="BxRestockBody-{{ section_id }}" class="visually-hidden">{{ 'boxeup_experience.product_request' | t }}</label>
+      <textarea id="BxRestockBody-{{ section_id }}" name="contact[body]" rows="3" data-bx-restock-body readonly>{{ 'boxeup_experience.request_body' | t }}: {{ product.title | escape }} — {{ bx_variant.title | escape }} ({{ request.origin }}{{ product.url }}?variant={{ bx_variant.id }})</textarea>
+      <button class="bx-button" type="submit">{{ 'boxeup_experience.send' | t }}</button>
+      <p class="bx-muted">{{ 'boxeup_experience.privacy' | t }}</p>
+    {% endform %}
+  </details>
+  <script type="application/json" data-bx-variants>[
+    {% for variant in product.variants %}{"id":{{ variant.id | json }},"title":{{ variant.title | json | replace: '<', '\u003c' }},"available":{{ variant.available | json }},"price":{{ variant.price | json }},"backorder":{% if variant.inventory_management != blank and variant.inventory_quantity <= 0 and variant.inventory_policy == 'continue' %}true{% else %}false{% endif %}}{% unless forloop.last %},{% endunless %}{% endfor %}
+  ]</script>
+</div>

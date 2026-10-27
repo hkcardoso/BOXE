@@ -42,10 +42,14 @@ if (!customElements.get('quick-add-modal')) {
         opener.querySelector('.loading__spinner').classList.remove('hidden');
 
         fetch(opener.getAttribute('data-product-url'))
-          .then((response) => response.text())
+          .then((response) => {
+            if (!response.ok) throw new Error('Product unavailable');
+            return response.text();
+          })
           .then((responseText) => {
             const responseHTML = new DOMParser().parseFromString(responseText, 'text/html');
             const productElement = responseHTML.querySelector('product-info');
+            if (!productElement) throw new Error('Product unavailable');
 
             this.preprocessHTML(productElement);
             HTMLUpdateUtility.setInnerHTML(this.modalContent, productElement.outerHTML);
@@ -58,6 +62,17 @@ if (!customElements.get('quick-add-modal')) {
             this.modalContent.querySelector('product-component')?.dispatchViewEvent?.();
 
             super.show(opener);
+          })
+          .catch(() => {
+            const link = document.createElement('a');
+            link.href = opener.getAttribute('data-product-url');
+            link.className = 'bx-text-button';
+            link.textContent = document.documentElement.lang.startsWith('en') ? 'View product →' : 'Ver produto →';
+            const existing = opener.parentElement.querySelector('[data-bx-quick-error]');
+            if (!existing) {
+              link.dataset.bxQuickError = '';
+              opener.parentElement.append(link);
+            }
           })
           .finally(() => {
             opener.removeAttribute('aria-disabled');
@@ -222,3 +237,4 @@ if (!customElements.get('quick-add-modal')) {
     }
   );
 }
+

@@ -50,7 +50,7 @@
   }
 </style>
 
-{% assign bx_products = collections['all'].products %}
+{% assign bx_products = section.settings.featured_collection.products | default: collections['all'].products %}
 
 <section class="bxv2" aria-label="{{ 'boxeup_sections.aria_home' | t }}">
   <div class="bxv2-wrap">
@@ -92,13 +92,14 @@
       <div class="bxv2-hero__inner">
         <p class="bxv2-overline"><span class="bxv2-dot"></span> {{ 'boxeup_sections.home_overline' | t }}</p>
         <h1>{{ 'boxeup_sections.home_h1a' | t }}<br>{{ 'boxeup_sections.home_h1b' | t }} <em>{{ 'boxeup_sections.home_h1c' | t }}</em></h1>
-        <p class="bxv2-hero__desc">{{ 'boxeup_sections.home_intro' | t }}</p>
+        <p class="bxv2-hero__desc">{{ 'boxeup_experience.home_intro' | t }}</p>
         <div class="bxv2-actions">
           <a class="bxv2-btn bxv2-btn--red" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_catalog' | t }} <span aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></a>
           <a class="bxv2-btn bxv2-btn--glass" href="#bxv2-modalidades">{{ 'boxeup_sections.home_disciplines' | t }} <span aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></a>
         </div>
         <span class="bxv2-hero__index">{{ 'boxeup_sections.home_boxing' | t }} <b>/</b> MUAY THAI <b>/</b> MMA <b>/</b> JIU-JITSU</span>
       </div>
+      <button type="button" class="bx-video-toggle" data-bx-video aria-label="{{ 'boxeup_experience.pause' | t }}"><span aria-hidden="true">Ⅱ</span></button>
       <div class="bxv2-hero__stamp" aria-hidden="true">{{ 'boxeup_sections.home_discipline' | t }}<br>{{ 'boxeup_sections.home_focus' | t }}<br>{{ 'boxeup_sections.home_progress' | t }}<span>.</span></div>
       <div class="bxv2-trust" aria-label="{{ 'boxeup_sections.aria_trust' | t }}">
         <span><i aria-hidden="true">✦</i> {{ 'boxeup_sections.home_portuguese' | t }}</span>
@@ -153,11 +154,24 @@
       </div>
       {% if bx_products.size > 0 %}
         <div class="bxv2-product-grid">
-          {% for product in bx_products limit: 10 %}
+          {% assign bx_shown = 0 %}
+          {% assign bx_seen_types = '' %}
+          {% assign bx_twice_types = '' %}
+          {% for product in bx_products %}
+            {% assign bx_vendor = product.vendor | downcase %}
+            {% if bx_vendor == 'my store' or product.price == 0 %}{% continue %}{% endif %}
+            {% if bx_shown == 10 %}{% break %}{% endif %}
+            {% assign bx_type = product.type | default: product.vendor | handleize %}
+            {% assign bx_type_marker = '|' | append: bx_type | append: '|' %}
+            {% if bx_twice_types contains bx_type_marker %}{% continue %}{% endif %}
+            {% if bx_seen_types contains bx_type_marker %}{% assign bx_twice_types = bx_twice_types | append: bx_type_marker %}{% endif %}
+            {% assign bx_seen_types = bx_seen_types | append: bx_type_marker %}
+            {% assign bx_shown = bx_shown | plus: 1 %}
             <article class="bxv2-product">
+              {% render 'boxeup-compare-button', product: product %}
               <a class="bxv2-product__image" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
                 {% if product.featured_image %}
-                  {{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '300,450,600,700', sizes: '(min-width:1100px) 23vw, (min-width:750px) 31vw, 47vw', alt: product.title }}
+                  {{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '300,450,600,700', sizes: '(min-width:990px) 18vw, (min-width:750px) 30vw, 47vw', alt: product.title }}
                 {% else %}
                   {{ 'product-1' | placeholder_svg_tag: 'bxv2-product__placeholder' }}
                 {% endif %}
@@ -238,8 +252,10 @@
       <div class="bxv2-mod-grid">
         {% for block in section.blocks %}
           {% if block.type == 'category' %}
-            {% assign bx_search = block.settings.search_term | default: block.settings.title | url_encode %}
-            <a class="bxv2-mod" href="{{ routes.search_url }}?q={{ bx_search }}&type=product" {{ block.shopify_attributes }}>
+            {% assign bx_modality_handle = block.settings.title | handleize %}
+            {% if bx_modality_handle == 'muay-thai' %}{% assign bx_modality_handle = 'muay-thai-e-kickboxing' %}{% endif %}
+            {% assign bx_modality = collections[bx_modality_handle] %}
+            <a class="bxv2-mod{% if bx_modality_handle == 'mma' or bx_modality_handle == 'jiu-jitsu' %} bxv2-mod--coming{% endif %}" {% if bx_modality_handle == 'mma' or bx_modality_handle == 'jiu-jitsu' %}role="link" aria-disabled="true"{% else %}href="{{ bx_modality.url | default: routes.all_products_collection_url }}"{% endif %} {{ block.shopify_attributes }}>
               <div class="bxv2-mod__image">
                 {% if block.settings.image != blank %}
                   {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400,600,800,1000', sizes: '(min-width:990px) 25vw, (min-width:750px) 50vw, 90vw', alt: block.settings.title }}
@@ -247,7 +263,7 @@
                   <span class="bxv2-mod__fallback" aria-hidden="true">{{ block.settings.title | slice: 0, 1 }}</span>
                 {% endif %}
               </div>
-              <span class="bxv2-mod__body"><strong>{{ block.settings.title | escape }}</strong><small>{{ block.settings.subtitle | escape }}</small></span>
+              <span class="bxv2-mod__body"><strong>{{ block.settings.title | escape }}</strong><small>{% if bx_modality_handle == 'mma' or bx_modality_handle == 'jiu-jitsu' %}{{ 'boxeup_experience.coming' | t }}{% else %}{{ block.settings.subtitle | escape }}{% endif %}</small></span>
               <span class="bxv2-mod__arrow" aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span>
             </a>
           {% endif %}
@@ -276,10 +292,20 @@
       <p class="bxv2-kicker">{{ 'boxeup_sections.home_history_kicker' | t }}</p>
       <h2>{{ 'boxeup_sections.home_history_a' | t }}<br><em>{{ 'boxeup_sections.home_history_b' | t }}</em></h2>
       <p>{{ 'boxeup_sections.home_history_desc' | t }}</p>
-      <a class="bxv2-more bxv2-more--light" href="{{ routes.root_url }}pages/sobre-nos">{{ 'boxeup_sections.home_learn' | t }} <span aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></a>
+      <a class="bxv2-more bxv2-more--light" href="{{ routes.root_url }}pages/sobre-a-boxeup">{{ 'boxeup_sections.home_learn' | t }} <span aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></a>
     </div>
   </div>
 
+  <div class="bxv2-wrap bx-choice-section">
+    <p class="bxv2-kicker">{{ 'boxeup_experience.new_here' | t }}</p>
+    <h2>{{ 'boxeup_experience.help_title' | t }}</h2>
+    <p>{{ 'boxeup_experience.new_here_intro' | t }}</p>
+    <div class="bx-choice-grid">
+      <button type="button" class="bx-choice-card" data-bx-open="BxGuide"><strong>{{ 'boxeup_experience.first_gloves' | t }}</strong><span>{{ 'boxeup_experience.first_gloves_text' | t }}</span><span aria-hidden="true">↗</span></button>
+      <a class="bx-choice-card" href="{{ collections['muay-thai-e-kickboxing'].url | default: routes.all_products_collection_url }}"><strong>{{ 'boxeup_experience.thai_kit' | t }}</strong><span>{{ 'boxeup_experience.thai_kit_text' | t }}</span><span aria-hidden="true">↗</span></a>
+      <button type="button" class="bx-choice-card" data-bx-open="BxSizeGuide"><strong>{{ 'boxeup_experience.size_guide' | t }}</strong><span>{{ 'boxeup_experience.help_text' | t }}</span><span aria-hidden="true">↗</span></button>
+    </div>
+  </div>
   <div class="bxv2-wrap bxv2-wrap--newsletter">
     <div class="bxv2-news">
       <div><p class="bxv2-kicker">{{ 'boxeup_sections.home_join' | t }}</p><h2>{{ 'boxeup_sections.home_newsletter_heading' | t }}</h2><p>{{ 'boxeup_sections.home_newsletter_desc' | t }}</p></div>
@@ -300,6 +326,7 @@
   "tag": "section",
   "class": "section-boxeup-home",
   "settings": [
+    {"type":"collection","id":"featured_collection","label":"Coleção de produtos em destaque"},
     {"type":"video","id":"hero_video","label":"Vídeo do destaque (Shopify)","info":"Opcional. Por defeito, é apresentada uma animação otimizada do vídeo enviado."},
     {"type":"image_picker","id":"editorial_image","label":"Fotografia da secção Disciplina","info":"Opcional: substitui a fotografia editorial da BOXEUP."}
   ],
@@ -325,3 +352,4 @@
   ]}]
 }
 {% endschema %}
+

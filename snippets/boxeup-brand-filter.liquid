@@ -1,0 +1,17 @@
+{% doc %}
+  @param {string} variant - Desktop or mobile collection navigation.
+{% enddoc %}
+{% assign bx_native_brand = false %}
+{% for filter in collection.filters %}{% if filter.param_name == 'filter.p.vendor' %}{% assign bx_native_brand = true %}{% endif %}{% endfor %}
+{% unless bx_native_brand %}
+<details class="facets__disclosure bx-brand-filter{% if variant == 'mobile' %} bx-brand-filter--mobile{% endif %}">
+  <summary class="facets__summary caption-large focus-offset"><div><span>{{ 'boxeup_experience.brand_navigation' | t }}</span>{{ 'icon-caret.svg' | inline_asset_content }}</div></summary>
+  <nav class="bx-brand-panel" aria-label="{{ 'boxeup_experience.brand_navigation' | t }}">
+    {% assign bx_brands = 'fairtex,charlie,buddha,venum,cleto-reyes,rival,twins,everlast' | split: ',' %}
+    {% for handle in bx_brands %}
+      {% assign bx_brand = collections[handle] %}
+      {% if bx_brand != blank %}<a data-boxeup-catalog href="{{ bx_brand.url }}"{% if collection.handle == handle %} aria-current="page"{% endif %}>{{ bx_brand.title | escape }}</a>{% endif %}
+    {% endfor %}
+  </nav>
+</details>
+{% endunless %}

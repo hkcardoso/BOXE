@@ -169,7 +169,7 @@
             data-cascade
           {% endif %}
         >
-          {%- if section.settings.newsletter_enable -%}
+          {%- if section.settings.newsletter_enable and request.page_type != 'index' -%}
             <div class="footer-block__newsletter">
               {%- if section.settings.newsletter_heading != blank -%}
                 <h2 class="footer-block__heading inline-richtext">{{ section.settings.newsletter_heading }}</h2>
@@ -291,7 +291,8 @@
           <div class="footer__payment">
             <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
             <ul class="list list-payment" role="list">
-              {%- for type in shop.enabled_payment_types -%}
+              {%- assign boxeup_payment_types = shop.enabled_payment_types | uniq -%}
+              {%- for type in boxeup_payment_types -%}
                 <li class="list-payment__item">
                   {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
                 </li>
@@ -547,3 +548,4 @@
   }
 }
 {% endschema %}
+

@@ -340,6 +340,7 @@
               {% endcase %}
             {%- endfor -%}
             {%- if template.name == 'collection' -%}
+              {% render 'boxeup-brand-filter', variant: 'desktop' %}
               {% render 'boxeup-modality-filter', variant: 'desktop' %}
             {%- endif -%}
           </div>
@@ -516,6 +517,7 @@
               class="mobile-facets__main has-submenu gradient"
             >
               {%- if template.name == 'collection' -%}
+                {% render 'boxeup-brand-filter', variant: 'mobile' %}
                 {% render 'boxeup-modality-filter', variant: 'mobile' %}
               {%- endif -%}
               {%- if enable_filtering -%}
@@ -950,3 +952,4 @@
     </facet-filters-form>
   {%- endif -%}
 </div>
+

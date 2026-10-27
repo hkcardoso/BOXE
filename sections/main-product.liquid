@@ -514,6 +514,7 @@
                     section_id: section.id,
                     show_pickup_availability: true
                   -%}
+                  {% render 'boxeup-product-support', product: product, product_form_id: product_form_id, section_id: section.id, delivery_note: section.settings.bx_delivery_note %}
                 {%- when 'rating' -%}
                   {%- if product.metafields.reviews.rating.value != blank -%}
                     <div class="rating-wrapper">
@@ -2349,7 +2350,14 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    },
+    {
+      "type": "textarea",
+      "id": "bx_delivery_note",
+      "label": "Nota de prazo e disponibilidade",
+      "info": "Usa apenas prazos confirmados para os produtos. Sem texto, a nota não aparece."
     }
   ]
 }
 {% endschema %}
+

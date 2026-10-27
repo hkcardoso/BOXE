@@ -104,6 +104,7 @@
         else if (focusId && document.getElementById(focusId)) document.getElementById(focusId).focus({preventScroll:true});
         else if (focused?.closest('.pagination')) {const grid = document.getElementById('ProductGridContainer');grid.tabIndex = -1;grid.focus({preventScroll:true});}
         if (message) message.textContent = message.dataset.loaded;
+        document.dispatchEvent(new CustomEvent('boxeup:catalog-updated'));
       };
       if (document.startViewTransition && !reduced()) {
         transition = document.startViewTransition(apply);
@@ -116,6 +117,7 @@
     } catch (error) {
       if (error.name === 'AbortError' || current !== sequence) return;
       if (message) message.textContent = message.dataset.error;
+      location.assign(target.href);
     } finally {
       if (current === sequence) root.removeAttribute('aria-busy');
     }
@@ -132,3 +134,4 @@
     if (event.state?.boxeupCatalog && main()?.dataset.template === 'collection') navigate(location.href,false);
   });
 })();
+

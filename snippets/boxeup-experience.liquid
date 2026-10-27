@@ -1,0 +1,55 @@
+{% doc %}
+  Renders accessible equipment guides, comparison and mobile purchase controls.
+{% enddoc %}
+<div id="BxExperience" data-currency="{{ cart.currency.iso_code }}" data-locale="{{ request.locale.iso_code }}" data-catalog="{{ routes.all_products_collection_url }}">
+  {% assign bx_translation_keys = 'guide,guide_title,guide_intro,discipline,equipment,budget,any_budget,all,boxing,thai,gloves,shins,protection,apparel,bags,show_matches,matches,no_matches,catalog,view,choose,close,coming,brands,all_brands,compare,compare_title,compare_intro,compare_count,compare_limit,compare_min,remove,clear,price,brand,category,options,material,details,not_specified,from,available,unavailable,backorder,availability,variant_pending,size_guide,size_title,size_intro,size_light,size_light_text,size_middle,size_middle_text,size_heavy,size_heavy_text,size_note,shipping,returns,shipping_help,returns_help,contact,restock,restock_title,restock_intro,email,send,request_sent,request_body,privacy,add,buy,pause,play,error,retry,new_here,new_here_intro,first_gloves,first_gloves_text,thai_kit,thai_kit_text,help_title,help_text,home_intro,selection,selection_text,about_origin,about_mission,about_future,secure,support,support_text,options_text,selection_label,selection_desc,general_shipping,general_returns,guide_cta,product_request,filters,brand_navigation,variant,usage,bag_work,sparring,secure_desc' | split: ',' %}
+  <script type="application/json" data-bx-translations>{
+    {% for key in bx_translation_keys %}{{ key | json }}:{% assign bx_key = 'boxeup_experience.' | append: key %}{{ bx_key | t | json | replace: '<', '\u003c' }}{% unless forloop.last %},{% endunless %}{% endfor %}
+  }</script>
+  <script type="application/json" data-bx-catalog>[
+    {% assign bx_first = true %}
+    {% for item in collections['all'].products limit: 50 %}
+      {% assign bx_vendor = item.vendor | downcase %}
+      {% unless item.price == 0 or bx_vendor == 'my store' %}
+        {% unless bx_first %},{% endunless %}{% render 'boxeup-product-data', product: item %}{% assign bx_first = false %}
+      {% endunless %}
+    {% endfor %}
+  ]</script>
+  <dialog id="BxGuide" class="bx-dialog" aria-labelledby="BxGuideTitle">
+    <div class="bx-dialog-head"><p class="bx-eyebrow">BOXEUP / {{ 'boxeup_experience.guide' | t }}</p><button type="button" data-bx-close aria-label="{{ 'boxeup_experience.close' | t }}">×</button></div>
+    <h2 id="BxGuideTitle">{{ 'boxeup_experience.guide_title' | t }}</h2>
+    <p>{{ 'boxeup_experience.guide_intro' | t }}</p>
+    <form id="BxGuideForm" class="bx-guide-form">
+      <div><label for="BxDiscipline">{{ 'boxeup_experience.discipline' | t }}</label><select id="BxDiscipline" name="discipline"><option value="all">{{ 'boxeup_experience.all' | t }}</option><option value="boxe">{{ 'boxeup_experience.boxing' | t }}</option><option value="muay-thai-e-kickboxing">{{ 'boxeup_experience.thai' | t }}</option></select></div>
+      <div><label for="BxEquipment">{{ 'boxeup_experience.equipment' | t }}</label><select id="BxEquipment" name="equipment"><option value="all">{{ 'boxeup_experience.all' | t }}</option><option value="luvas-de-boxe-e-muay-thai">{{ 'boxeup_experience.gloves' | t }}</option><option value="caneleiras-de-muay-thai-e-kickboxing">{{ 'boxeup_experience.shins' | t }}</option><option value="boqueiras-e-protecoes">{{ 'boxeup_experience.protection' | t }}</option><option value="calcoes-e-roupa-de-combate">{{ 'boxeup_experience.apparel' | t }}</option><option value="mochilas-e-sacos-de-treino-1">{{ 'boxeup_experience.bags' | t }}</option></select></div>
+      <div><label for="BxUsage">{{ 'boxeup_experience.usage' | t }}</label><select id="BxUsage" name="usage"><option value="all">{{ 'boxeup_experience.all' | t }}</option><option value="bag">{{ 'boxeup_experience.bag_work' | t }}</option><option value="sparring">{{ 'boxeup_experience.sparring' | t }}</option></select></div>
+      <div><label for="BxBudget">{{ 'boxeup_experience.budget' | t }} ({{ cart.currency.iso_code }})</label><input id="BxBudget" name="budget" type="number" min="0" step="1" inputmode="numeric" placeholder="{{ 'boxeup_experience.any_budget' | t }}"></div>
+      <button type="submit" class="bx-button">{{ 'boxeup_experience.show_matches' | t }} ↗</button>
+    </form>
+    <p data-bx-guide-status role="status" aria-live="polite"></p>
+    <div data-bx-guide-results class="bx-guide-results"></div>
+    <a class="bx-text-button" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_experience.catalog' | t }} →</a>
+  </dialog>
+  <dialog id="BxSizeGuide" class="bx-dialog bx-dialog--small" aria-labelledby="BxSizeGuideTitle">
+    <div class="bx-dialog-head"><p class="bx-eyebrow">BOXEUP / {{ 'boxeup_experience.gloves' | t }}</p><button type="button" data-bx-close aria-label="{{ 'boxeup_experience.close' | t }}">×</button></div>
+    <h2 id="BxSizeGuideTitle">{{ 'boxeup_experience.size_title' | t }}</h2>
+    {% render 'boxeup-size-guide' %}
+  </dialog>
+  <dialog id="BxCompare" class="bx-dialog bx-dialog--wide" aria-labelledby="BxCompareTitle">
+    <div class="bx-dialog-head"><p class="bx-eyebrow">BOXEUP / {{ 'boxeup_experience.gloves' | t }}</p><button type="button" data-bx-close aria-label="{{ 'boxeup_experience.close' | t }}">×</button></div>
+    <h2 id="BxCompareTitle">{{ 'boxeup_experience.compare_title' | t }}</h2><p>{{ 'boxeup_experience.compare_intro' | t }}</p>
+    <div data-bx-compare-table class="bx-table-scroll"></div>
+  </dialog>
+  <div class="bx-compare-tray" data-bx-tray hidden role="region" aria-label="{{ 'boxeup_experience.compare' | t }}">
+    <div><strong data-bx-count></strong><div data-bx-tray-items class="bx-tray-items"></div></div>
+    <button type="button" class="bx-button" data-bx-open="BxCompare">{{ 'boxeup_experience.compare' | t }}</button>
+    <button type="button" class="bx-text-button" data-bx-clear>{{ 'boxeup_experience.clear' | t }}</button>
+  </div>
+  {% if request.page_type == 'product' %}
+    <div class="bx-sticky-buy" data-bx-sticky hidden>
+      <div><strong data-bx-sticky-price>{{ product.selected_or_first_available_variant.price | money }}</strong><small data-bx-sticky-variant>{{ product.selected_or_first_available_variant.title | escape }}</small></div>
+      <button type="button" class="bx-button" data-bx-sticky-submit>{{ 'boxeup_experience.add' | t }}</button>
+    </div>
+  {% endif %}
+  <p class="bx-toast" data-bx-toast role="status" aria-live="polite" hidden></p>
+</div>

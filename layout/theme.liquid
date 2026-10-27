@@ -289,6 +289,7 @@
     {{ 'boxeup-v4.css' | asset_url | stylesheet_tag }}
     {{ 'boxeup-editorial-v2.css' | asset_url | stylesheet_tag }}
     {{ 'boxeup-layout-unified.css' | asset_url | stylesheet_tag }}
+    {{ 'boxeup-experience.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'boxeup-catalog.js' | asset_url }}" defer></script>
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
@@ -354,6 +355,8 @@
     </main>
 
     {% sections 'footer-group' %}
+    {% render 'boxeup-experience' %}
+    <script src="{{ 'boxeup-experience.js' | asset_url }}" defer></script>
 
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
@@ -415,5 +418,6 @@
     {%- endif -%}
   </body>
 </html>
+
 
 

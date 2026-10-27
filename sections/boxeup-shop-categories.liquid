@@ -11,6 +11,10 @@
       {% if category != blank %}<a class="boxeup-chip" data-boxeup-catalog href="{{ category.url }}"{% if collection.handle == category_handle %} aria-current="page"{% endif %}>{{ label_key | t }}</a>{% endif %}
     {% endfor %}
   </nav>
+  <details class="bx-brand-directory" id="BxBrands"><summary>{{ 'boxeup_experience.brands' | t }} <span aria-hidden="true">+</span></summary><nav aria-label="{{ 'boxeup_experience.brand_navigation' | t }}">
+    {% assign bx_brand_handles = 'fairtex,charlie,buddha,venum,cleto-reyes,rival,twins,everlast' | split: ',' %}
+    {% for handle in bx_brand_handles %}{% assign bx_brand = collections[handle] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_vendor == 'my store' or bx_item.tags contains 'boxeup:hidden' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a data-boxeup-catalog href="{{ bx_brand.url }}">{{ bx_brand.title | escape }}</a>{% endif %}{% endfor %}
+  </nav></details>
   <div class="bx-tools-row">
     <button type="button" class="bx-text-button" data-bx-open="BxGuide">{{ 'boxeup_experience.guide' | t }} <span aria-hidden="true">↗</span></button>
     <button type="button" class="bx-text-button" data-bx-open="BxSizeGuide">{{ 'boxeup_experience.size_guide' | t }}</button>

@@ -292,9 +292,15 @@
             <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
             <ul class="list list-payment" role="list">
               {%- assign boxeup_payment_types = shop.enabled_payment_types | uniq -%}
+              {%- assign bx_payment_seen = '|' -%}
               {%- for type in boxeup_payment_types -%}
+                {%- capture bx_payment_icon -%}{{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}{%- endcapture -%}
+                {%- assign bx_payment_label = bx_payment_icon | strip_html | strip | downcase | default: type -%}
+                {%- assign bx_payment_key = bx_payment_label | prepend: '|' | append: '|' -%}
+                {%- if bx_payment_seen contains bx_payment_key -%}{%- continue -%}{%- endif -%}
+                {%- assign bx_payment_seen = bx_payment_seen | append: bx_payment_key -%}
                 <li class="list-payment__item">
-                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                  {{ bx_payment_icon }}
                 </li>
               {%- endfor -%}
             </ul>

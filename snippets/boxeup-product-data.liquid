@@ -11,8 +11,8 @@
   "price": {{ product.price | json }},
   "varies": {{ product.price_varies | json }},
   "available": {{ product.available | json }},
-  "description": {{ product.description | strip_html | truncatewords: 45 | json | replace: '<', '\u003c' }},
   "material": {{ product.metafields.custom.material.value | default: '' | json | replace: '<', '\u003c' }},
+  "usage": [{% assign bx_first_usage = true %}{% for tag in product.tags %}{% case tag %}{% when 'bx:usage:bag' %}{% unless bx_first_usage %},{% endunless %}"bag"{% assign bx_first_usage = false %}{% when 'bx:usage:sparring' %}{% unless bx_first_usage %},{% endunless %}"sparring"{% assign bx_first_usage = false %}{% endcase %}{% endfor %}],
   "collections": {{ product.collections | map: 'handle' | json }},
   "options": [{% for option in product.options_with_values %}{"name":{{ option.name | json | replace: '<', '\u003c' }},"values":{{ option.values | map: 'name' | json | replace: '<', '\u003c' }}}{% unless forloop.last %},{% endunless %}{% endfor %}]
 }

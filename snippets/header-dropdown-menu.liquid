@@ -35,7 +35,7 @@
           <div class="boxeup-nav-modalities">
             <a
               id="HeaderMenu-{{ link.handle }}"
-              href="{{ link.url }}"
+              href="{% if link.handle == 'marcas' %}{{ routes.all_products_collection_url }}#BxBrands{% else %}{{ link.url }}{% endif %}"
               class="header__menu-item list-menu__item link link--text focus-inset boxeup-nav-modalities__trigger"
               {% if link.current %}aria-current="page"{% endif %}
             >
@@ -44,6 +44,11 @@
             </a>
             <ul id="HeaderMenu-MenuList-{{ forloop.index }}" class="boxeup-nav-modalities__dropdown" role="list" aria-label="{{ link.title | escape }}">
               {%- for childlink in link.links -%}
+              {% if link.handle == 'marcas' %}
+                {% assign bx_brand_visible = false %}
+                {% assign bx_link_handle = childlink.url | split: '/collections/' | last | split: '?' | first | split: '#' | first %}{% assign bx_menu_collection = childlink.object | default: collections[bx_link_handle] %}{% for bx_item in bx_menu_collection.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}
+                {% unless bx_brand_visible %}{% continue %}{% endunless %}
+              {% endif %}
                 <li>
                   <a
                     id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
@@ -72,7 +77,7 @@
         {%- else -%}
           <a
             id="HeaderMenu-{{ link.handle }}"
-            href="{{ link.url }}"
+            href="{% if link.handle == 'marcas' %}{{ routes.all_products_collection_url }}#BxBrands{% else %}{{ link.url }}{% endif %}"
             class="header__menu-item list-menu__item link link--text focus-inset"
             {% if link.current %}
               aria-current="page"

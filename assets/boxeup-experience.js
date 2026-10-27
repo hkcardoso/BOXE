@@ -5,7 +5,8 @@
   const parse = (node, fallback) => { try { return JSON.parse(node?.textContent || ''); } catch { return fallback; } };
   const labels = parse(root.querySelector('[data-bx-translations]'), {});
   const t = key => labels[key] || key;
-  const products = parse(root.querySelector('[data-bx-catalog]'), []);
+  let products = [];
+  let catalogueRequest;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const money = cents => new Intl.NumberFormat(root.dataset.locale || 'pt-PT', { style: 'currency', currency: root.dataset.currency || 'EUR' }).format(cents / 100);
   const price = item => (item.varies ? t('from') + ' ' : '') + money(item.price);
@@ -27,6 +28,7 @@
     document.querySelectorAll('#BxExperience dialog[open]').forEach(node => node.close());
     lastOpener = opener;
     dialog.showModal();
+    if (id === 'BxGuide') loadCatalogue().catch(() => {});
     document.documentElement.classList.add('bx-dialog-open');
   }
   root.querySelectorAll('dialog').forEach(dialog => {
@@ -47,15 +49,50 @@
     if (close) { close.closest('dialog')?.close(); return; }
 
   });
-  function showMatches() {
+  async function loadCatalogue() {
+    if (catalogueRequest) return catalogueRequest;
+    const status = root.querySelector('[data-bx-guide-status]');
+    status.textContent = t('catalog_loading');
+    const results = root.querySelector('[data-bx-guide-results]');
+    results.setAttribute('aria-busy', 'true');
+    catalogueRequest = (async () => {
+      const loaded = [];
+      let next = new URL(root.dataset.root || '/', location.origin);
+      const visited = new Set();
+      while (next) {
+        next.searchParams.set('section_id', 'boxeup-guide-catalog');
+        if (visited.has(next.href)) throw new Error('Catalogue pagination loop');
+        visited.add(next.href);
+        const response = await fetch(next.href, { credentials: 'same-origin' });
+        if (!response.ok) throw new Error('Catalogue response failed');
+        const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        const payload = parse(doc.querySelector('[data-bx-guide-page]'), null);
+        if (!payload || !Array.isArray(payload.products)) throw new Error('Catalogue data missing');
+        loaded.push(...payload.products);
+        next = payload.next ? new URL(payload.next, location.origin) : null;
+        if (next && next.origin !== location.origin) throw new Error('Invalid catalogue origin');
+      }
+      products = [...new Map(loaded.map(item => [item.id, item])).values()];
+      const usage = root.querySelector('[data-bx-usage-field]');
+      if (usage) usage.hidden = !products.some(item => item.usage?.length);
+      status.textContent = '';
+      return products;
+    })().catch(error => {
+      catalogueRequest = undefined;
+      status.textContent = t('catalog_load_error');
+      throw error;
+    }).finally(() => results.removeAttribute('aria-busy'));
+    return catalogueRequest;
+  }
+  async function showMatches() {
+    try { await loadCatalogue(); } catch { return; }
     const form = document.getElementById('BxGuideForm');
     const discipline = form.elements.discipline.value;
     const equipment = form.elements.equipment.value;
     const usage = form.elements.usage.value;
     const budget = form.elements.budget.value === '' ? Infinity : Number(form.elements.budget.value) * 100;
     const matches = products.filter(item => {
-      const description = (item.title + ' ' + item.description).toLowerCase();
-      const usageMatches = usage === 'all' || (usage === 'sparring' ? description.includes('sparring') : /\bsaco\b|\bbag\b|\bpads?\b/.test(description));
+      const usageMatches = usage === 'all' || item.usage?.includes(usage);
       return item.price <= budget && usageMatches && (discipline === 'all' || item.collections.includes(discipline)) && (equipment === 'all' || item.collections.includes(equipment));
     });
     const results = root.querySelector('[data-bx-guide-results]'); results.replaceChildren();
@@ -163,7 +200,15 @@
       button.setAttribute('aria-label', t(video.paused ? 'play' : 'pause'));
       button.querySelector('span').textContent = video.paused ? '▷' : 'Ⅱ';
     };
-    if (reduced.matches) video.pause();
+    const saveData = navigator.connection?.saveData;
+    if (reduced.matches || saveData) video.pause();
+    else video.play().catch(() => {});
+    let resumeVideo = false;
+    new IntersectionObserver(entries => {
+      const visible = entries[0].isIntersecting;
+      if (!visible) { resumeVideo = !video.paused; video.pause(); }
+      else if (resumeVideo && !reduced.matches && !saveData) { resumeVideo = false; video.play().catch(() => {}); }
+    }, { threshold: .1 }).observe(video);
     button.addEventListener('click', () => { if (video.paused) video.play().catch(() => {}); else video.pause(); });
     video.addEventListener('play', update); video.addEventListener('pause', update); update();
   });
@@ -236,4 +281,21 @@
   window.visualViewport?.addEventListener('resize', syncKeyboard, { passive: true });
   document.addEventListener('focusin', syncKeyboard);
   document.addEventListener('focusout', () => requestAnimationFrame(syncKeyboard));
+  const contactSubject = document.getElementById('BoxeupContactSubject');
+  if (contactSubject) {
+    const params = new URLSearchParams(location.search);
+    const subject = params.get('assunto');
+    const product = params.get('produto');
+    if ([...contactSubject.options].some(option => option.value === subject)) contactSubject.value = subject;
+    const message = document.querySelector('.boxeup-contact textarea');
+    if (product && message && !message.value.trim()) message.value = `${t('product_question')} ${product}`;
+  }
+  const openBrands = () => {
+    if (location.hash !== '#BxBrands') return;
+    const brands = document.getElementById('BxBrands');
+    if (brands) brands.open = true;
+  };
+  openBrands();
+  window.addEventListener('hashchange', openBrands);
+  document.addEventListener('boxeup:catalog-updated', openBrands);
 })();

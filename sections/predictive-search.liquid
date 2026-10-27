@@ -5,7 +5,7 @@
 {%- for bx_item in predictive_search.resources.products -%}
 {%- assign bx_vendor = bx_item.vendor | downcase | strip -%}
 {%- assign bx_title = bx_item.title | downcase | strip -%}
-{%- unless bx_vendor == 'my store' or bx_item.price == 0 or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}
+{%- unless bx_vendor == 'my store' or bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}
 {%- assign bx_predictive_count = bx_predictive_count | plus: 1 -%}
 {%- endunless -%}
 {%- endfor -%}
@@ -140,7 +140,7 @@
               {%- for product in predictive_search.resources.products -%}
                   {%- assign bx_vendor = product.vendor | downcase | strip -%}
 {%- assign bx_title = product.title | downcase | strip -%}
-{%- if bx_vendor == 'my store' or product.price == 0 or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}{%- continue -%}{%- endif -%}
+{%- if bx_vendor == 'my store' or product.price == 0 or product.tags contains 'boxeup:hidden' or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}{%- continue -%}{%- endif -%}
                 <li
                   id="predictive-search-option-product-{{ forloop.index }}"
                   class="predictive-search__list-item"

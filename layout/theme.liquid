@@ -19,18 +19,33 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
+    {%- assign bx_page_title = page_title -%}
+    {%- assign bx_page_description = page_description -%}
+    {%- if request.page_type == 'index' -%}
+      {%- assign bx_page_title = 'boxeup_experience.seo_title' | t -%}
+      {%- assign bx_page_description = 'boxeup_experience.seo_description' | t -%}
+    {%- elsif request.page_type == 'page' and page.handle == 'sobre-a-boxeup' -%}
+      {%- assign bx_page_title = 'boxeup_experience.about_label' | t -%}
+      {%- assign bx_page_description = 'boxeup_experience.about_personal' | t | truncate: 160 -%}
+    {%- elsif request.page_type == 'page' and page.handle == 'envios-e-entregas' -%}
+      {%- assign bx_page_title = 'boxeup_experience.shipping' | t -%}
+      {%- assign bx_page_description = 'boxeup_experience.shipping_intro' | t -%}
+    {%- elsif request.page_type == 'page' and page.handle == 'devolucoes-e-garantias' -%}
+      {%- assign bx_page_title = 'boxeup_experience.returns' | t -%}
+      {%- assign bx_page_description = 'boxeup_experience.returns_intro' | t -%}
+    {%- endif -%}
     <title>
-      {{ page_title }}
+      {{ bx_page_title | escape }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains 'BOXEUP' %} &ndash; BOXEUP{% endunless -%}
+      {%- unless bx_page_title contains 'Boxeup' or bx_page_title contains 'BOXEUP' %} &ndash; BOXEUP{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
+    {% if bx_page_description %}
+      <meta name="description" content="{{ bx_page_description | escape }}">
     {% endif %}
 
-    {% render 'meta-tags' %}
+    {% render 'meta-tags', bx_page_title: bx_page_title, bx_page_description: bx_page_description %}
 
     <script type="module">
       import * as StandardEvents from 'https://cdn.shopify.com/storefront/standard-events.js';

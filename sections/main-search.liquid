@@ -265,7 +265,7 @@
                 {%- for item in search.results -%}
                   {%- assign bx_vendor = item.vendor | downcase | strip -%}
 {%- assign bx_title = item.title | downcase | strip -%}
-{%- if bx_vendor == 'my store' or item.price == 0 or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}{%- continue -%}{%- endif -%}
+{%- if bx_vendor == 'my store' or item.price == 0 or item.tags contains 'boxeup:hidden' or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}{%- continue -%}{%- endif -%}
                   {% assign lazy_load = false %}
                   {%- if forloop.index > 2 -%}
                     {%- assign lazy_load = true -%}

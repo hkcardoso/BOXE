@@ -10,7 +10,7 @@
     {% assign bx_brands = 'fairtex,charlie,buddha,venum,cleto-reyes,rival,twins,everlast' | split: ',' %}
     {% for handle in bx_brands %}
       {% assign bx_brand = collections[handle] %}
-      {% if bx_brand != blank %}<a data-boxeup-catalog href="{{ bx_brand.url }}"{% if collection.handle == handle %} aria-current="page"{% endif %}>{{ bx_brand.title | escape }}</a>{% endif %}
+      {% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a data-boxeup-catalog href="{{ bx_brand.url }}"{% if collection.handle == handle %} aria-current="page"{% endif %}>{{ bx_brand.title | escape }}</a>{% endif %}
     {% endfor %}
   </nav>
 </details>

@@ -11,6 +11,7 @@
     {% elsif bx_variant.inventory_management != blank and bx_variant.inventory_quantity <= 0 and bx_variant.inventory_policy == 'continue' %}{{ 'boxeup_experience.backorder' | t }}
     {% else %}{{ 'boxeup_experience.available' | t }}{% endif %}
   </p>
+  <div class="bx-delivery-summary"><p>{{ 'boxeup_experience.delivery_clarity' | t }}</p><a href="{{ routes.root_url }}pages/contact?assunto=produto&amp;produto={{ product.title | url_encode }}">{{ 'boxeup_experience.ask_delivery' | t }} →</a></div>
   <div class="bx-product-policies">
     <a href="{{ shop.shipping_policy.url | default: pages['envios-e-entregas'].url | default: '/pages/envios-e-entregas' }}">{{ 'boxeup_experience.shipping' | t }} ↗</a>
     <a href="{{ shop.refund_policy.url | default: pages['devolucoes-e-garantias'].url | default: '/pages/devolucoes-e-garantias' }}">{{ 'boxeup_experience.returns' | t }} ↗</a>

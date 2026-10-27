@@ -17,7 +17,7 @@
     {% for product in section.settings.collection.products offset: section.settings.offset limit: 8 %}
                   {%- assign bx_vendor = product.vendor | downcase | strip -%}
 {%- assign bx_title = product.title | downcase | strip -%}
-{%- if bx_vendor == 'my store' or product.price == 0 or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}{%- continue -%}{%- endif -%}
+{%- if bx_vendor == 'my store' or product.price == 0 or product.tags contains 'boxeup:hidden' or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}{%- continue -%}{%- endif -%}
       {% assign display_vendor = true %}
       {% if product.vendor == 'My Store' or product.vendor == 'Printify' %}{% assign display_vendor = false %}{% endif %}
       <li class="boxeup-shelf-item" data-shelf-tags="{{ product.tags | join: ',' | escape }}">

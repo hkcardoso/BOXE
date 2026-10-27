@@ -5,16 +5,16 @@
     <span aria-current="page">{{ 'boxeup_sections.contact_contact' | t }}</span>
   </nav>
   <div class="boxeup-contact__heading">
-    <p class="boxeup-contact__eyebrow">{{ section.settings.eyebrow | escape }}</p>
-    <h1>{{ section.settings.heading | escape }}</h1>
-    <p>{{ section.settings.description | escape }}</p>
+    <p class="boxeup-contact__eyebrow">{% if request.locale.iso_code == 'pt-PT' or request.locale.iso_code == 'pt' %}{{ section.settings.eyebrow | escape }}{% else %}{{ 'boxeup_experience.support' | t }}{% endif %}</p>
+    <h1>{{ 'boxeup_experience.about_contact_title' | t }}</h1>
+    <p>{{ 'boxeup_experience.contact_intro' | t }}</p>
   </div>
   <div class="boxeup-contact__grid">
     <aside class="boxeup-contact__details">
       <div class="boxeup-contact__detail">
         <span class="boxeup-contact__detail-number">{{ 'boxeup_sections.contact_support' | t }}</span>
-        <h2>{{ section.settings.details_heading | escape }}</h2>
-        <p>{{ section.settings.details_text | escape }}</p>
+        <h2>{{ 'boxeup_experience.help_title' | t }}</h2>
+        <p>{{ 'boxeup_experience.about_contact_text' | t }}</p>
         <a class="boxeup-contact__email" href="mailto:business@boxeup.com">business@boxeup.com <span aria-hidden="true">→</span></a>
       </div>
       <div class="boxeup-contact__detail">
@@ -32,8 +32,8 @@
 
     <div class="boxeup-contact__form-wrap">
       <span class="boxeup-contact__form-overline">{{ 'boxeup_sections.contact_send' | t }} </span>
-      <h2>{{ section.settings.form_heading | escape }}</h2>
-      <p class="boxeup-contact__form-intro">{{ section.settings.form_intro | escape }}</p>
+      <h2>{{ 'boxeup_experience.send' | t }}</h2>
+      <p class="boxeup-contact__form-intro">{{ 'boxeup_experience.contact_intro' | t }}</p>
       {% form 'contact', id: 'BoxeupContactForm', class: 'boxeup-contact__form' %}
         {% if form.posted_successfully? %}
           <div class="boxeup-contact__success" role="status" tabindex="-1" autofocus>

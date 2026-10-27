@@ -50,7 +50,7 @@
   }
 </style>
 
-{% assign bx_products = section.settings.featured_collection.products | default: collections['all'].products %}
+{% assign bx_products = section.settings.featured_products | default: section.settings.featured_collection.products | default: collections['all'].products %}
 
 <section class="bxv2" aria-label="{{ 'boxeup_sections.aria_home' | t }}">
   <div class="bxv2-wrap">
@@ -58,30 +58,31 @@
       <div class="bxv2-hero__media">
         {%- liquid
           assign boxeup_video_hd = blank
+          assign boxeup_video_mobile = blank
           assign boxeup_video_fallback = blank
-          if section.settings.hero_video != blank
-            for source in section.settings.hero_video.sources
-              if source.format == 'mp4'
-                if boxeup_video_fallback == blank
-                  assign boxeup_video_fallback = source.url
-                endif
-                if source.height >= 1080
-                  assign boxeup_video_hd = source.url
-                  break
-                endif
+          for source in section.settings.hero_video.sources
+            if source.format == 'mp4'
+              if boxeup_video_fallback == blank
+                assign boxeup_video_fallback = source.url
               endif
-            endfor
-          endif
-          if boxeup_video_hd == blank
-            assign boxeup_video_hd = boxeup_video_fallback
-          endif
+              if source.height <= 720 and source.height >= 360
+                assign boxeup_video_mobile = source.url
+              endif
+              if source.height == 1080
+                assign boxeup_video_hd = source.url
+              endif
+            endif
+          endfor
+          assign boxeup_video_hd = boxeup_video_hd | default: boxeup_video_fallback
+          assign boxeup_video_mobile = boxeup_video_mobile | default: boxeup_video_hd
         -%}
         {% if boxeup_video_hd != blank %}
-          <video class="bxv2-hero__motion bxv2-hero__motion--video" autoplay muted loop playsinline preload="metadata" poster="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+          <video class="bxv2-hero__motion bxv2-hero__motion--video" muted loop playsinline preload="metadata" poster="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+            <source src="{{ boxeup_video_mobile | escape }}" media="(max-width: 749px)" type="video/mp4">
             <source src="{{ boxeup_video_hd | escape }}" type="video/mp4">
           </video>
         {% elsif section.settings.hero_video != blank %}
-          {{ section.settings.hero_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, preload: 'metadata', class: 'bxv2-hero__motion bxv2-hero__motion--video' }}
+          {{ section.settings.hero_video | video_tag: autoplay: false, loop: true, muted: true, controls: false, playsinline: true, preload: 'metadata', class: 'bxv2-hero__motion bxv2-hero__motion--video' }}
         {% else %}
           <img class="bxv2-hero__motion" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1600" height="900" fetchpriority="high">
         {% endif %}
@@ -160,10 +161,12 @@
           {% for product in bx_products %}
                   {%- assign bx_vendor = product.vendor | downcase | strip -%}
 {%- assign bx_title = product.title | downcase | strip -%}
-{%- if bx_vendor == 'my store' or product.price == 0 or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}{%- continue -%}{%- endif -%}
+{%- if bx_vendor == 'my store' or product.price == 0 or product.tags contains 'boxeup:hidden' or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}{%- continue -%}{%- endif -%}
             {% assign bx_vendor = product.vendor | downcase %}
-            {% if bx_vendor == 'my store' or product.price == 0 %}{% continue %}{% endif %}
+            {% if bx_vendor == 'my store' or product.price == 0 or product.tags contains 'boxeup:hidden' %}{% continue %}{% endif %}
             {% if bx_shown == 10 %}{% break %}{% endif %}
+            {% assign bx_product_title = product.title | downcase %}
+            {% if bx_product_title contains 't-shirt portugal' %}{% continue %}{% endif %}
             {% assign bx_type = product.type | default: product.vendor | handleize %}
             {% assign bx_type_marker = '|' | append: bx_type | append: '|' %}
             {% if bx_twice_types contains bx_type_marker %}{% continue %}{% endif %}
@@ -234,6 +237,7 @@
         {% for block in section.blocks %}
           {% if block.type == 'category' %}
             {% assign bx_modality_handle = block.settings.title | handleize %}
+            {% if bx_modality_handle == 'mma' or bx_modality_handle == 'jiu-jitsu' %}{% continue %}{% endif %}
             {% if bx_modality_handle == 'muay-thai' %}{% assign bx_modality_handle = 'muay-thai-e-kickboxing' %}{% endif %}
             {% assign bx_modality = collections[bx_modality_handle] %}
             <a class="bxv2-mod{% if bx_modality_handle == 'mma' or bx_modality_handle == 'jiu-jitsu' %} bxv2-mod--coming{% endif %}" {% if bx_modality_handle == 'mma' or bx_modality_handle == 'jiu-jitsu' %}role="link" aria-disabled="true"{% else %}href="{{ bx_modality.url | default: routes.all_products_collection_url }}"{% endif %} {{ block.shopify_attributes }}>
@@ -252,17 +256,17 @@
       </div>
     </div>
 
-    <div class="bxv2-block bxv2-block--brands">
+    <div class="bxv2-block bxv2-block--brands" id="BxHomeBrands">
       <div class="bxv2-heading"><div><p class="bxv2-kicker">{{ 'boxeup_sections.home_brands_kicker' | t }}</p><h2>{{ 'boxeup_sections.home_brands_heading' | t }}<span class="bxv2-red">.</span></h2></div><a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_catalog' | t }} <span aria-hidden="true">→</span></a></div>
       <div class="bxv2-brand-grid">
-        <a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/fairtex" aria-label="{{ 'boxeup_sections.view_brand' | t }} Fairtex"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-fairtex-white.png?v=1793040787" alt="Fairtex" width="140" height="72" loading="lazy"></a>
-        <a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/charlie" aria-label="{{ 'boxeup_sections.view_brand' | t }} Charlie"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-charlie-white.png?v=1793040801" alt="Charlie" width="140" height="72" loading="lazy"></a>
-        <a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/buddha" aria-label="{{ 'boxeup_sections.view_brand' | t }} Buddha"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-buddha-white.png?v=1793040808" alt="Buddha" width="140" height="72" loading="lazy"></a>
-        <a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/venum" aria-label="{{ 'boxeup_sections.view_brand' | t }} Venum"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-venum-white.png?v=1793040818" alt="Venum" width="140" height="72" loading="lazy"></a>
-        <a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/cleto-reyes" aria-label="{{ 'boxeup_sections.view_brand' | t }} Cleto Reyes"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-reyes-white.png?v=1793040826" alt="Cleto Reyes" width="140" height="72" loading="lazy"></a>
-        <a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/rival" aria-label="{{ 'boxeup_sections.view_brand' | t }} Rival"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-rival-white.png?v=1793040835" alt="Rival" width="140" height="72" loading="lazy"></a>
-        <a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/twins" aria-label="{{ 'boxeup_sections.view_brand' | t }} Twins"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-twins-white.png?v=1793040843" alt="Twins" width="140" height="72" loading="lazy"></a>
-        <a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/everlast" aria-label="{{ 'boxeup_sections.view_brand' | t }} Everlast"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-everlast-white.png?v=1793040849" alt="Everlast" width="140" height="72" loading="lazy"></a>
+        {% assign bx_brand = collections['fairtex'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/fairtex" aria-label="{{ 'boxeup_sections.view_brand' | t }} Fairtex"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-fairtex-white.png?v=1793040787" alt="Fairtex" width="140" height="72" loading="lazy"></a>{% endif %}
+        {% assign bx_brand = collections['charlie'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/charlie" aria-label="{{ 'boxeup_sections.view_brand' | t }} Charlie"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-charlie-white.png?v=1793040801" alt="Charlie" width="140" height="72" loading="lazy"></a>{% endif %}
+        {% assign bx_brand = collections['buddha'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/buddha" aria-label="{{ 'boxeup_sections.view_brand' | t }} Buddha"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-buddha-white.png?v=1793040808" alt="Buddha" width="140" height="72" loading="lazy"></a>{% endif %}
+        {% assign bx_brand = collections['venum'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/venum" aria-label="{{ 'boxeup_sections.view_brand' | t }} Venum"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-venum-white.png?v=1793040818" alt="Venum" width="140" height="72" loading="lazy"></a>{% endif %}
+        {% assign bx_brand = collections['cleto-reyes'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/cleto-reyes" aria-label="{{ 'boxeup_sections.view_brand' | t }} Cleto Reyes"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-reyes-white.png?v=1793040826" alt="Cleto Reyes" width="140" height="72" loading="lazy"></a>{% endif %}
+        {% assign bx_brand = collections['rival'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/rival" aria-label="{{ 'boxeup_sections.view_brand' | t }} Rival"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-rival-white.png?v=1793040835" alt="Rival" width="140" height="72" loading="lazy"></a>{% endif %}
+        {% assign bx_brand = collections['twins'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/twins" aria-label="{{ 'boxeup_sections.view_brand' | t }} Twins"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-twins-white.png?v=1793040843" alt="Twins" width="140" height="72" loading="lazy"></a>{% endif %}
+        {% assign bx_brand = collections['everlast'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/everlast" aria-label="{{ 'boxeup_sections.view_brand' | t }} Everlast"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-everlast-white.png?v=1793040849" alt="Everlast" width="140" height="72" loading="lazy"></a>{% endif %}
       </div>
     </div>
   </div>
@@ -307,6 +311,7 @@
   "tag": "section",
   "class": "section-boxeup-home",
   "settings": [
+    {"type":"product_list","id":"featured_products","label":"Seleção manual de produtos","limit":10},
     {"type":"collection","id":"featured_collection","label":"Coleção de produtos em destaque"},
     {"type":"video","id":"hero_video","label":"Vídeo do destaque (Shopify)","info":"Opcional. Por defeito, é apresentada uma animação otimizada do vídeo enviado."},
     {"type":"image_picker","id":"editorial_image","label":"Fotografia da secção Disciplina","info":"Opcional: substitui a fotografia editorial da BOXEUP."}

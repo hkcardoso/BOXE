@@ -18,12 +18,21 @@
   }
 {%- endstyle -%}
 
-<div class="page-width page-width--narrow section-{{ section.id }}-padding">
+<div class="bx-information-page page-width page-width--narrow section-{{ section.id }}-padding">
   <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-    {{ page.title | escape }}
+    {% if page.handle == 'envios-e-entregas' %}{{ 'boxeup_experience.shipping' | t }}{% elsif page.handle == 'devolucoes-e-garantias' %}{{ 'boxeup_experience.returns' | t }}{% else %}{{ page.title | escape }}{% endif %}
   </h1>
   <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {% if page.handle == 'envios-e-entregas' %}
+      <p class="bx-information-intro">{{ 'boxeup_experience.shipping_intro' | t }}</p>
+      <dl class="bx-information-facts">
+        <div><dt>{{ 'boxeup_experience.shipping_cost' | t }}</dt><dd>{{ 'boxeup_experience.shipping_cost_value' | t }}</dd></div>
+        <div><dt>{{ 'boxeup_experience.shipping_time' | t }}</dt><dd>{{ 'boxeup_experience.shipping_time_value' | t }}</dd></div>
+        <div><dt>{{ 'boxeup_experience.shipping_destination' | t }}</dt><dd>{{ 'boxeup_experience.shipping_destination_value' | t }}</dd></div>
+      </dl>
+    {% elsif page.handle == 'devolucoes-e-garantias' %}<p class="bx-information-intro">{{ 'boxeup_experience.returns_intro' | t }}</p>{% endif %}
     {{ page.content }}
+    {% if page.handle == 'envios-e-entregas' or page.handle == 'devolucoes-e-garantias' or page.handle == 'politica-de-privacidade' %}<aside class="bx-information-help"><h2>{{ 'boxeup_experience.policy_question' | t }}</h2><a class="bx-button" href="{{ routes.root_url }}pages/contact">{{ 'boxeup_experience.ask_support' | t }}</a></aside>{% endif %}
   </div>
 </div>
 

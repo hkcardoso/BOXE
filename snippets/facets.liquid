@@ -33,7 +33,7 @@
 {%- for bx_item in bx_items -%}
 {%- assign bx_vendor = bx_item.vendor | downcase | strip -%}
 {%- assign bx_title = bx_item.title | downcase | strip -%}
-{%- unless bx_vendor == 'my store' or bx_item.price == 0 or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}
+{%- unless bx_vendor == 'my store' or bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}
 {%- assign bx_visible_count = bx_visible_count | plus: 1 -%}
 {%- endunless -%}
 {%- endfor -%}

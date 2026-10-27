@@ -15,27 +15,26 @@
   >
     <span class="boxeup-lang-flag">{% render 'boxeup-language-flag', language_code: localization.language.iso_code %}</span>
     <span class="boxeup-lang-code">{{ bxp_current_locale_code }}</span>
-    <svg class="boxeup-lang-caret" viewBox="0 0 16 16" width="12" height="12" fill="none" aria-hidden="true"><path d="m3.5 6 4.5 4 4.5-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
   <div class="disclosure__list-wrapper language-selector boxeup-lang-panel" hidden>
     <ul id="{{ localPosition }}List" role="list" class="disclosure__list list-unstyled boxeup-lang-list">
       {%- for language in localization.available_languages -%}
         {%- assign bxp_option_locale_code = language.iso_code | slice: 0, 2 | upcase -%}
-        <li class="disclosure__item" tabindex="-1">
-          <a
-            class="link link--text disclosure__link caption-large focus-inset boxeup-lang-option"
-            href="#"
-            hreflang="{{ language.iso_code }}"
-            lang="{{ language.iso_code }}"
-            title="{{ language.endonym_name | escape }}"
-            {% if language.iso_code == localization.language.iso_code %}aria-current="true"{% endif %}
-            data-value="{{ language.iso_code }}"
-          >
-            <span class="boxeup-lang-flag">{% render 'boxeup-language-flag', language_code: language.iso_code %}</span>
-            <span class="boxeup-lang-code">{{ bxp_option_locale_code }}</span>
-            <span class="boxeup-lang-check" aria-hidden="true">{% if language.iso_code == localization.language.iso_code %}✓{% endif %}</span>
-          </a>
-        </li>
+        {%- unless language.iso_code == localization.language.iso_code -%}
+          <li class="disclosure__item" tabindex="-1">
+            <a
+              class="link link--text disclosure__link caption-large focus-inset boxeup-lang-option"
+              href="#"
+              hreflang="{{ language.iso_code }}"
+              lang="{{ language.iso_code }}"
+              title="{{ language.endonym_name | escape }}"
+              data-value="{{ language.iso_code }}"
+            >
+              <span class="boxeup-lang-flag">{% render 'boxeup-language-flag', language_code: language.iso_code %}</span>
+              <span class="boxeup-lang-code">{{ bxp_option_locale_code }}</span>
+            </a>
+          </li>
+        {%- endunless -%}
       {%- endfor -%}
     </ul>
   </div>

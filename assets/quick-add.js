@@ -6,6 +6,22 @@ if (!customElements.get('quick-add-modal')) {
         super();
         this.modalContent = this.querySelector('[id^="QuickAddInfo-"]');
 
+        // Thumbnail selection is delegated so it survives variant changes.
+        this.addEventListener('click', (event) => {
+          const thumbnail = event.target.closest('[data-bxq-thumbnail]');
+          if (!thumbnail) return;
+          const gallery = thumbnail.closest('.bxq-gallery');
+          const preview = gallery?.querySelector('.bxq-gallery__main img');
+          if (!preview) return;
+          preview.src = thumbnail.dataset.imageSrc;
+          if (thumbnail.dataset.imageSrcset) preview.srcset = thumbnail.dataset.imageSrcset;
+          else preview.removeAttribute('srcset');
+          preview.alt = thumbnail.dataset.imageAlt || '';
+          gallery.querySelectorAll('[data-bxq-thumbnail]').forEach((button) => {
+            button.setAttribute('aria-pressed', String(button === thumbnail));
+          });
+        });
+
         this.addEventListener('product-info:loaded', ({ target }) => {
           target.addPreProcessCallback(this.preprocessHTML.bind(this));
         });
@@ -60,6 +76,90 @@ if (!customElements.get('quick-add-modal')) {
         this.removeGalleryListSemantic(productElement);
         this.updateImageSizes(productElement);
         this.preventVariantURLSwitching(productElement);
+        this.prepareCompactProduct(productElement);
+      }
+
+      prepareCompactProduct(productElement) {
+        if (!productElement) return;
+        const product = productElement.querySelector('.product');
+        const mediaWrapper = product?.querySelector('.product__media-wrapper');
+        const info = product?.querySelector('.product__info-container');
+        if (!product || !mediaWrapper || !info) return;
+
+        product.classList.add('bxq-product');
+
+        // Native media-gallery stays in the DOM (for Shopify variant/media handling)
+        // but a smaller read-only preview and accessible thumbnail buttons are shown.
+        const originals = [...mediaWrapper.querySelectorAll('.product__media-list .product__media-item img')];
+        const images = [];
+        const seen = new Set();
+        originals.forEach((original) => {
+          const src = original.getAttribute('src');
+          const mediaId = original.closest('[data-media-id]')?.dataset.mediaId || src;
+          if (!src || seen.has(mediaId) || images.length >= 6) return;
+          seen.add(mediaId);
+          images.push({
+            src,
+            srcset: original.getAttribute('srcset') || '',
+            alt: original.getAttribute('alt') || ''
+          });
+        });
+
+        if (images.length) {
+          const gallery = document.createElement('div');
+          gallery.className = 'bxq-gallery';
+          const imageFrame = document.createElement('div');
+          imageFrame.className = 'bxq-gallery__main';
+          const main = document.createElement('img');
+          main.src = images[0].src;
+          if (images[0].srcset) main.srcset = images[0].srcset;
+          main.alt = images[0].alt;
+          main.loading = 'eager';
+          imageFrame.appendChild(main);
+          gallery.appendChild(imageFrame);
+
+          if (images.length > 1) {
+            const thumbs = document.createElement('div');
+            thumbs.className = 'bxq-gallery__thumbs';
+            thumbs.setAttribute('aria-label', document.documentElement.lang.startsWith('en') ? 'Product photos' : 'Fotografias do produto');
+            images.forEach((image, index) => {
+              const button = document.createElement('button');
+              button.type = 'button';
+              button.className = 'bxq-gallery__thumb';
+              button.dataset.bxqThumbnail = '';
+              button.dataset.imageSrc = image.src;
+              button.dataset.imageSrcset = image.srcset;
+              button.dataset.imageAlt = image.alt;
+              button.setAttribute('aria-label', String(index + 1));
+              button.setAttribute('aria-pressed', String(index === 0));
+              const thumbnail = document.createElement('img');
+              thumbnail.src = image.src;
+              thumbnail.alt = '';
+              thumbnail.loading = 'lazy';
+              button.appendChild(thumbnail);
+              thumbs.appendChild(button);
+            });
+            gallery.appendChild(thumbs);
+          }
+          mediaWrapper.prepend(gallery);
+        }
+
+        // Keep Shopify's native price/variant picker/quantity/product-form intact.
+        // Hide the remaining full-page blocks only in the compact popup.
+        [...info.children].forEach((child) => {
+          const essential =
+            child.matches('.product__text, .product__title, .bxp-product-intro, variant-selects, [id^="price-"], [id^="Quantity-Form"]') ||
+            child.querySelector(':scope > product-form');
+          if (!essential) child.classList.add('bxq-extra');
+        });
+
+        const details = document.createElement('a');
+        details.className = 'bxq-details-link';
+        details.href = productElement.dataset.url || '#';
+        const locale = document.documentElement.lang.toLowerCase();
+        details.textContent = locale.startsWith('es') ? 'Ver detalles del producto' :
+          locale.startsWith('en') ? 'View full product details' : 'Ver todos os detalhes';
+        info.appendChild(details);
       }
 
       preventVariantURLSwitching(productElement) {

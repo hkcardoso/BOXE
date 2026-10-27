@@ -659,3 +659,22 @@
 @media(prefers-reduced-motion:reduce) {
   .section-boxeup-home .bxv2 .bxv2-arrow-svg {transition:none}
 }
+
+
+/* Homepage featured cart icons use the same subtle hover feedback as catalogue. */
+.bxv2-block--products modal-opener{display:inline-flex}
+.bxv2-block--products modal-opener .bxv2-product__add{
+  transition:background .2s ease,border-color .2s ease,transform .23s cubic-bezier(.2,.75,.3,1),box-shadow .2s ease!important;
+}
+.bxv2-block--products modal-opener .bxv2-product__add:hover:not([aria-disabled="true"]){
+  transform:translateY(-2px) scale(1.055)!important;
+  box-shadow:0 7px 20px rgba(237,36,55,.25)!important;
+}
+.bxv2-block--products modal-opener .bxv2-product__add[aria-disabled="true"]{cursor:wait!important;opacity:.8}
+.bxv2-block--products modal-opener .bxv2-product__add .loading__spinner{
+  position:absolute!important;width:18px!important;height:18px!important;
+}
+.bxv2-block--products modal-opener .bxv2-product__add.loading svg:not(.spinner){opacity:.2}
+@media(prefers-reduced-motion:reduce){
+  .bxv2-block--products modal-opener .bxv2-product__add{transition:none!important}
+}

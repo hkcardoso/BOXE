@@ -419,6 +419,38 @@
       white-space: nowrap;
     }
   }
+  /* Catalogue and Brands can have nested menu items; keep the same menu surface. */
+  @media (min-width: 990px) {
+    .header-wrapper .boxeup-nav-modalities__dropdown {
+      max-height: min(72vh, 650px) !important;
+      overflow-y: auto !important;
+      overscroll-behavior: contain;
+    }
+    .header-wrapper .boxeup-nav-modalities__children {
+      display: flex !important;
+      flex-direction: column;
+      gap: 2px;
+      list-style: none;
+      padding: 0 0 5px 0 !important;
+      margin: 0 !important;
+    }
+    .header-wrapper .boxeup-nav-modalities__children > li {
+      display: block;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .header-wrapper .boxeup-nav-modalities__dropdown .boxeup-nav-modalities__link--nested {
+      min-height: 35px;
+      margin-left: 11px !important;
+      width: calc(100% - 11px) !important;
+      padding-left: 19px !important;
+      border-left: 1px solid #40424b !important;
+      font-size: 11px !important;
+      font-weight: 550 !important;
+      color: #c2c4ca !important;
+    }
+  }
   @media (prefers-reduced-motion: reduce) {
     .header-wrapper .boxeup-nav-modalities__dropdown,
     .header-wrapper .boxeup-nav-modalities__trigger .icon-caret {

@@ -8,8 +8,14 @@
   <div class="bxp-story__inner">
     <div>
       <p class="bxp-story__eyebrow">{{ product.vendor | default: 'BOXEUP' | escape }}</p>
-      <h2 class="bxp-story__headline">{{ 'boxeup_sections.story_headline' | t }}</h2>
-      <p class="bxp-story__tagline">{{ 'boxeup_sections.story_tagline' | t }}</p>
+      {%- assign bxp_story_type = product.type | downcase -%}
+      {%- if bxp_story_type contains 'luva' or bxp_story_type contains 'glove' -%}
+        <h2 class="bxp-story__headline">{{ 'boxeup_sections.story_gloves_headline' | t }}</h2>
+        <p class="bxp-story__tagline">{{ 'boxeup_sections.story_gloves_tagline' | t }}</p>
+      {%- else -%}
+        <h2 class="bxp-story__headline">{{ 'boxeup_sections.story_headline' | t }}</h2>
+        <p class="bxp-story__tagline">{{ 'boxeup_sections.story_tagline' | t }}</p>
+      {%- endif -%}
     </div>
     <div class="bxp-story__benefits">
       <div class="bxp-story__benefit">

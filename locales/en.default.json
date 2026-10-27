@@ -550,6 +550,10 @@
     }
   },
   "boxeup_navigation": {
+    "modalities": "Browse by discipline",
+    "boxe": "Boxing",
+    "muay_thai": "Muay Thai & Kickboxing",
+    "coming_soon": "Coming soon",
     "heading": "Find your equipment",
     "all": "View all",
     "brands": "Browse by brand",

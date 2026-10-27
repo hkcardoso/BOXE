@@ -28,12 +28,12 @@
               {%- for link in section.settings.menu.links -%}
                 <li>
                   {%- if link.handle == 'modalidades' -%}
-                    <a id="HeaderDrawer-{{ link.handle }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.all_products_collection_url }}#boxeup-modalities-filter">
+                    <a id="HeaderDrawer-{{ link.handle }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.all_products_collection_url }}#main-collection-filters">
                       {{ link.title | escape }}
                     </a>
                     <ul class="menu-drawer__menu list-menu boxeup-mobile-modalities" role="list">
-                      <li><a class="menu-drawer__menu-item list-menu__item link link--text" href="{{ collections['boxe'].url }}#boxeup-modalities-filter">{{ 'boxeup_navigation.boxe' | t }}</a></li>
-                      <li><a class="menu-drawer__menu-item list-menu__item link link--text" href="{{ collections['muay-thai-e-kickboxing'].url }}#boxeup-modalities-filter">{{ 'boxeup_navigation.muay_thai' | t }}</a></li>
+                      <li><a class="menu-drawer__menu-item list-menu__item link link--text" href="{{ collections['boxe'].url }}#main-collection-filters">{{ 'boxeup_navigation.boxe' | t }}</a></li>
+                      <li><a class="menu-drawer__menu-item list-menu__item link link--text" href="{{ collections['muay-thai-e-kickboxing'].url }}#main-collection-filters">{{ 'boxeup_navigation.muay_thai' | t }}</a></li>
                     </ul>
                   {%- elsif link.links != blank -%}
                     <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">

@@ -134,21 +134,6 @@
     <a class="boxeup-brand-card" data-boxeup-catalog href="{{ routes.root_url }}collections/everlast" aria-label="{{ 'boxeup_sections.view_brand' | t }} Everlast"{% if collection.handle == 'everlast' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-everlast-white.png?v=1793040849" alt="Everlast" loading="lazy" width="140" height="72"></a>
     </nav>
   </div>
-  <div id="boxeup-modalities-filter" class="boxeup-modalities-filter">
-    <h3 class="boxeup-modalities-filter__heading">{{ 'boxeup_navigation.modalities' | t }}</h3>
-    <nav class="boxeup-modalities-list" aria-label="{{ 'boxeup_navigation.modalities' | t }}">
-      {%- assign boxeup_boxing_collection = collections['boxe'] -%}
-      {%- assign boxeup_muaythai_collection = collections['muay-thai-e-kickboxing'] -%}
-      {%- if boxeup_boxing_collection != blank -%}
-        <a class="boxeup-modality-chip" data-boxeup-catalog href="{{ boxeup_boxing_collection.url }}"{% if collection.handle == 'boxe' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.boxe' | t }}</a>
-      {%- endif -%}
-      {%- if boxeup_muaythai_collection != blank -%}
-        <a class="boxeup-modality-chip" data-boxeup-catalog href="{{ boxeup_muaythai_collection.url }}"{% if collection.handle == 'muay-thai-e-kickboxing' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.muay_thai' | t }}</a>
-      {%- endif -%}
-      <span class="boxeup-modality-chip boxeup-modality-chip--coming" aria-disabled="true">MMA <small>{{ 'boxeup_navigation.coming_soon' | t }}</small></span>
-      <span class="boxeup-modality-chip boxeup-modality-chip--coming" aria-disabled="true">Jiu-Jitsu <small>{{ 'boxeup_navigation.coming_soon' | t }}</small></span>
-    </nav>
-  </div>
   <p class="boxeup-catalog-message" role="status" aria-live="polite" data-loading="{{ 'boxeup_navigation.loading' | t }}" data-loaded="{{ 'boxeup_navigation.loaded' | t }}" data-error="{{ 'boxeup_navigation.error' | t }}"></p>
 </section>
 {% schema %}

@@ -1235,6 +1235,11 @@
     }
   },
   "boxeup_sections": {
+    "story_gloves_headline": "MADE FOR REAL FIGHTERS",
+    "story_gloves_tagline": "Quality and protection for every round.",
+    "purchase_shipping": "Shipping",
+    "purchase_returns": "Returns",
+    "purchase_secure": "Secure checkout",
     "home_overline": "MORE THAN EQUIPMENT",
     "home_h1a": "Get ready for",
     "home_h1b": "the next",

@@ -25,16 +25,16 @@
   padding-left:var(--boxeup-content-gutter)!important;
   padding-right:var(--boxeup-content-gutter)!important;
 }
-/* The global header stays full width (not constrained to the catalogue grid).
-   Restore the original compact gutters and centered desktop navigation. */
+/* The navigation bar's INNER CONTENT uses the catalogue's content rails.
+   Its background stays full width; the homepage video hero remains full bleed. */
 body .header-wrapper .header.page-width,
 body .header-wrapper .header:not(.drawer-menu).page-width {
   box-sizing:border-box!important;
   width:100%!important;
-  max-width:none!important;
+  max-width:var(--boxeup-content-max)!important;
   margin-inline:auto!important;
-  padding-left:clamp(24px,3vw,62px)!important;
-  padding-right:clamp(24px,3vw,62px)!important;
+  padding-left:var(--boxeup-content-gutter)!important;
+  padding-right:var(--boxeup-content-gutter)!important;
 }
 @media(min-width:990px){
   body .header-wrapper .header.header--middle-left:not(.drawer-menu){

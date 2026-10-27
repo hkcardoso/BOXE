@@ -9,7 +9,20 @@
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
       <li>
-        {%- if link.links != blank -%}
+        {%- if link.handle == 'modalidades' -%}
+          <div class="boxeup-nav-modalities">
+            <a id="HeaderMenu-{{ link.handle }}" href="{{ routes.all_products_collection_url }}#boxeup-modalities-filter" class="header__menu-item list-menu__item link link--text focus-inset boxeup-nav-modalities__trigger">
+              <span>{{ link.title | escape }}</span>
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </a>
+            <ul class="header__submenu list-menu list-menu--disclosure color-{{ section.settings.menu_color_scheme }} gradient caption-large global-settings-popup boxeup-nav-modalities__dropdown" role="list">
+              <li><a class="header__menu-item list-menu__item link link--text focus-inset caption-large" href="{{ collections['boxe'].url }}#boxeup-modalities-filter">{{ 'boxeup_navigation.boxe' | t }}</a></li>
+              <li><a class="header__menu-item list-menu__item link link--text focus-inset caption-large" href="{{ collections['muay-thai-e-kickboxing'].url }}#boxeup-modalities-filter">{{ 'boxeup_navigation.muay_thai' | t }}</a></li>
+              <li><span class="boxeup-nav-modalities__soon">MMA — {{ 'boxeup_navigation.coming_soon' | t }}</span></li>
+              <li><span class="boxeup-nav-modalities__soon">Jiu-Jitsu — {{ 'boxeup_navigation.coming_soon' | t }}</span></li>
+            </ul>
+          </div>
+        {%- elsif link.links != blank -%}
           <header-menu>
             <details id="Details-HeaderMenu-{{ forloop.index }}">
               <summary

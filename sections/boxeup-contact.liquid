@@ -1,8 +1,8 @@
 <section class="boxeup-contact page-width">
-  <nav class="boxeup-breadcrumb" aria-label="Percurso de navegação">
-    <a href="{{ routes.root_url }}">Início</a>
+  <nav class="boxeup-breadcrumb" aria-label="{{ 'boxeup_sections.aria_breadcrumb' | t }}">
+    <a href="{{ routes.root_url }}">{{ 'boxeup_sections.contact_home' | t }}</a>
     <span aria-hidden="true">/</span>
-    <span aria-current="page">Contacto</span>
+    <span aria-current="page">{{ 'boxeup_sections.contact_contact' | t }}</span>
   </nav>
   <div class="boxeup-contact__heading">
     <p class="boxeup-contact__eyebrow">02 / {{ section.settings.eyebrow | escape }}</p>
@@ -12,15 +12,15 @@
   <div class="boxeup-contact__grid">
     <aside class="boxeup-contact__details">
       <div class="boxeup-contact__detail">
-        <span class="boxeup-contact__detail-number">01 — APOIO</span>
+        <span class="boxeup-contact__detail-number">{{ 'boxeup_sections.contact_support' | t }}</span>
         <h2>{{ section.settings.details_heading | escape }}</h2>
         <p>{{ section.settings.details_text | escape }}</p>
       </div>
       <div class="boxeup-contact__detail">
-        <span class="boxeup-contact__detail-number">02 — EXPLORAR</span>
-        <h2>Procura equipamento?</h2>
-        <p>Consulta o catálogo e encontra artigos para a tua modalidade.</p>
-        <a class="boxeup-contact__link" href="{{ routes.all_products_collection_url }}">Explorar catálogo <span aria-hidden="true">↗</span></a>
+        <span class="boxeup-contact__detail-number">{{ 'boxeup_sections.contact_explore' | t }}</span>
+        <h2>{{ 'boxeup_sections.contact_equipment' | t }}</h2>
+        <p>{{ 'boxeup_sections.contact_equipment_desc' | t }}</p>
+        <a class="boxeup-contact__link" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.contact_catalog' | t }} <span aria-hidden="true">↗</span></a>
       </div>
       {% if page.content != blank %}
         <div class="boxeup-contact__extra rte">
@@ -30,53 +30,53 @@
     </aside>
 
     <div class="boxeup-contact__form-wrap">
-      <span class="boxeup-contact__form-overline">ENVIAR PEDIDO <span>↗</span></span>
+      <span class="boxeup-contact__form-overline">{{ 'boxeup_sections.contact_send' | t }} <span>↗</span></span>
       <h2>{{ section.settings.form_heading | escape }}</h2>
       <p class="boxeup-contact__form-intro">{{ section.settings.form_intro | escape }}</p>
       {% form 'contact', id: 'BoxeupContactForm', class: 'boxeup-contact__form' %}
         {% if form.posted_successfully? %}
           <div class="boxeup-contact__success" role="status" tabindex="-1" autofocus>
-            <strong>Mensagem enviada.</strong>
-            <p>Recebemos o teu contacto. Obrigado!</p>
+            <strong>{{ 'boxeup_sections.contact_sent' | t }}</strong>
+            <p>{{ 'boxeup_sections.contact_received' | t }}</p>
           </div>
         {% endif %}
         {% if form.errors %}
           <div class="boxeup-contact__error" role="alert" tabindex="-1" autofocus>
-            <strong>Não foi possível enviar a mensagem.</strong>
+            <strong>{{ 'boxeup_sections.contact_error' | t }}</strong>
             {{ form.errors | default_errors }}
           </div>
         {% endif %}
         <div class="boxeup-contact__fields">
           <div class="boxeup-contact__field">
-            <label for="BoxeupContactName">Nome <span aria-hidden="true">*</span></label>
+            <label for="BoxeupContactName">{{ 'boxeup_sections.contact_name' | t }} <span aria-hidden="true">*</span></label>
             <input type="text" id="BoxeupContactName" name="contact[name]" autocomplete="name"
-              value="{{ form.name | escape }}" placeholder="O teu nome" required>
+              value="{{ form.name | escape }}" placeholder="{{ 'boxeup_sections.contact_your_name' | t }}" required>
           </div>
           <div class="boxeup-contact__field">
-            <label for="BoxeupContactEmail">Email <span aria-hidden="true">*</span></label>
+            <label for="BoxeupContactEmail">{{ 'boxeup_sections.contact_email' | t }} <span aria-hidden="true">*</span></label>
             <input type="email" id="BoxeupContactEmail" name="contact[email]" autocomplete="email"
               value="{{ form.email | escape }}" placeholder="exemplo@email.com" autocapitalize="off" spellcheck="false"
               {% if form.errors contains 'email' %}aria-invalid="true" aria-describedby="BoxeupEmailError"{% endif %} required>
             {% if form.errors contains 'email' %}
-              <span id="BoxeupEmailError" class="boxeup-contact__field-error">Confirma o endereço de email.</span>
+              <span id="BoxeupEmailError" class="boxeup-contact__field-error">{{ 'boxeup_sections.contact_email_error' | t }}</span>
             {% endif %}
           </div>
           <div class="boxeup-contact__field boxeup-contact__field--full">
-            <label for="BoxeupContactPhone">Telefone <span class="boxeup-contact__optional">(opcional)</span></label>
+            <label for="BoxeupContactPhone">{{ 'boxeup_sections.contact_telephone' | t }} <span class="boxeup-contact__optional">{{ 'boxeup_sections.contact_optional' | t }}</span></label>
             <input type="tel" id="BoxeupContactPhone" name="contact[phone]" autocomplete="tel"
               value="{{ form.phone | escape }}" placeholder="+351">
           </div>
           <div class="boxeup-contact__field boxeup-contact__field--full">
-            <label for="BoxeupContactBody">Mensagem <span aria-hidden="true">*</span></label>
-            <textarea id="BoxeupContactBody" name="contact[body]" rows="7" placeholder="Como te podemos ajudar?" required>{{ form.body | escape }}</textarea>
+            <label for="BoxeupContactBody">{{ 'boxeup_sections.contact_message' | t }} <span aria-hidden="true">*</span></label>
+            <textarea id="BoxeupContactBody" name="contact[body]" rows="7" placeholder="{{ 'boxeup_sections.contact_message_help' | t }}" required>{{ form.body | escape }}</textarea>
           </div>
         </div>
         <div class="boxeup-contact__submit-row">
-          <button type="submit">Enviar mensagem <span aria-hidden="true">↗</span></button>
-          <span>* Campos obrigatórios</span>
+          <button type="submit">{{ 'boxeup_sections.contact_send_message' | t }} <span aria-hidden="true">↗</span></button>
+          <span>{{ 'boxeup_sections.contact_required' | t }}</span>
         </div>
         {% if shop.privacy_policy != blank %}
-          <p class="boxeup-contact__privacy">Consulta a nossa <a href="{{ shop.privacy_policy.url }}">Política de Privacidade</a>.</p>
+          <p class="boxeup-contact__privacy">{{ 'boxeup_sections.contact_privacy' | t }} <a href="{{ shop.privacy_policy.url }}">{{ 'boxeup_sections.contact_policy' | t }}</a>.</p>
         {% endif %}
       {% endform %}
     </div>

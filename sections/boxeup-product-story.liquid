@@ -2,56 +2,56 @@
   BOXEUP — Editorial product story + accessible product information tabs.
   All data comes from the current product and Shopify policy links.
 {% endcomment %}
-<section class="bxp-story" aria-label="Sobre o equipamento">
+<section class="bxp-story" aria-label="{{ 'boxeup_sections.aria_story' | t }}">
   <div class="bxp-story__backdrop" aria-hidden="true"
     style="background-image:url('https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-training-editorial-2026.jpg?v=1793013824')"></div>
   <div class="bxp-story__inner">
     <div>
       <p class="bxp-story__eyebrow">{{ product.vendor | default: 'BOXEUP' | escape }}</p>
-      <h2 class="bxp-story__headline">FEITO PARA O TEU PRÓXIMO ROUND.</h2>
-      <p class="bxp-story__tagline">Encontra o equipamento certo para cada treino.</p>
+      <h2 class="bxp-story__headline">{{ 'boxeup_sections.story_headline' | t }}</h2>
+      <p class="bxp-story__tagline">{{ 'boxeup_sections.story_tagline' | t }}</p>
     </div>
     <div class="bxp-story__benefits">
       <div class="bxp-story__benefit">
         <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 18 16 5l12 13M8 16v11h16V16M13 27v-7h6v7"/></svg>
-        <strong>Marcas de combate</strong><small>Equipamento multimarca</small>
+        <strong>{{ 'boxeup_sections.story_brands' | t }}</strong><small>{{ 'boxeup_sections.story_brands_desc' | t }}</small>
       </div>
       <div class="bxp-story__benefit">
         <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 6h22v21H5zM10 11h12M10 16h12M10 21h7"/></svg>
-        <strong>Informação clara</strong><small>Detalhes de cada produto</small>
+        <strong>{{ 'boxeup_sections.story_clear' | t }}</strong><small>{{ 'boxeup_sections.story_clear_desc' | t }}</small>
       </div>
       <div class="bxp-story__benefit">
         <svg viewBox="0 0 32 32" aria-hidden="true"><path d="m16 3 11 4v9c0 6-4 10-11 13C9 26 5 22 5 16V7zM11 16l3.5 3.5L21 12"/></svg>
-        <strong>Compra segura</strong><small>Pagamento protegido</small>
+        <strong>{{ 'boxeup_sections.story_secure' | t }}</strong><small>{{ 'boxeup_sections.story_secure_desc' | t }}</small>
       </div>
     </div>
   </div>
 </section>
 
-<section id="bxp-details-{{ section.id }}" class="bxp-details" aria-label="Informações detalhadas sobre o produto">
-  <div class="bxp-details__tabs" role="tablist" aria-label="Detalhes do produto">
-    <button type="button" class="bxp-details__tab" role="tab" id="bxp-tab-description-{{ section.id }}" aria-controls="bxp-panel-description-{{ section.id }}" aria-selected="true" tabindex="0">Descrição</button>
-    <button type="button" class="bxp-details__tab" role="tab" id="bxp-tab-specs-{{ section.id }}" aria-controls="bxp-panel-specs-{{ section.id }}" aria-selected="false" tabindex="-1">Características</button>
-    <button type="button" class="bxp-details__tab" role="tab" id="bxp-tab-sizes-{{ section.id }}" aria-controls="bxp-panel-sizes-{{ section.id }}" aria-selected="false" tabindex="-1">Tamanhos</button>
-    <button type="button" class="bxp-details__tab" role="tab" id="bxp-tab-shipping-{{ section.id }}" aria-controls="bxp-panel-shipping-{{ section.id }}" aria-selected="false" tabindex="-1">Envios e devoluções</button>
+<section id="bxp-details-{{ section.id }}" class="bxp-details" aria-label="{{ 'boxeup_sections.aria_details' | t }}">
+  <div class="bxp-details__tabs" role="tablist" aria-label="{{ 'boxeup_sections.aria_product_tabs' | t }}">
+    <button type="button" class="bxp-details__tab" role="tab" id="bxp-tab-description-{{ section.id }}" aria-controls="bxp-panel-description-{{ section.id }}" aria-selected="true" tabindex="0">{{ 'boxeup_sections.story_description' | t }}</button>
+    <button type="button" class="bxp-details__tab" role="tab" id="bxp-tab-specs-{{ section.id }}" aria-controls="bxp-panel-specs-{{ section.id }}" aria-selected="false" tabindex="-1">{{ 'boxeup_sections.story_features' | t }}</button>
+    <button type="button" class="bxp-details__tab" role="tab" id="bxp-tab-sizes-{{ section.id }}" aria-controls="bxp-panel-sizes-{{ section.id }}" aria-selected="false" tabindex="-1">{{ 'boxeup_sections.story_sizes' | t }}</button>
+    <button type="button" class="bxp-details__tab" role="tab" id="bxp-tab-shipping-{{ section.id }}" aria-controls="bxp-panel-shipping-{{ section.id }}" aria-selected="false" tabindex="-1">{{ 'boxeup_sections.story_shipping' | t }}</button>
   </div>
   <div id="bxp-panel-description-{{ section.id }}" class="bxp-details__panel" role="tabpanel" aria-labelledby="bxp-tab-description-{{ section.id }}" tabindex="0">
     {%- if product.description != blank -%}
       <div class="rte">{{ product.description }}</div>
     {%- else -%}
-      <p>Consulta as características e opções disponíveis para este produto.</p>
+      <p>{{ 'boxeup_sections.story_empty' | t }}</p>
     {%- endif -%}
   </div>
   <div id="bxp-panel-specs-{{ section.id }}" class="bxp-details__panel" role="tabpanel" aria-labelledby="bxp-tab-specs-{{ section.id }}" tabindex="0" hidden>
     <table class="bxp-details__specs">
       <tbody>
-        {%- if product.vendor != blank -%}<tr><th scope="row">Marca</th><td>{{ product.vendor | escape }}</td></tr>{%- endif -%}
-        {%- if product.type != blank -%}<tr><th scope="row">Categoria</th><td>{{ product.type | escape }}</td></tr>{%- endif -%}
+        {%- if product.vendor != blank -%}<tr><th scope="row">{{ 'boxeup_sections.story_brand' | t }}</th><td>{{ product.vendor | escape }}</td></tr>{%- endif -%}
+        {%- if product.type != blank -%}<tr><th scope="row">{{ 'boxeup_sections.story_category' | t }}</th><td>{{ product.type | escape }}</td></tr>{%- endif -%}
         {%- for option in product.options_with_values -%}
           <tr><th scope="row">{{ option.name | escape }}</th><td>{% for value in option.values %}{{ value | escape }}{% unless forloop.last %}, {% endunless %}{% endfor %}</td></tr>
         {%- endfor -%}
         {%- if product.selected_or_first_available_variant.sku != blank -%}
-          <tr><th scope="row">Referência</th><td>{{ product.selected_or_first_available_variant.sku | escape }}</td></tr>
+          <tr><th scope="row">{{ 'boxeup_sections.story_reference' | t }}</th><td>{{ product.selected_or_first_available_variant.sku | escape }}</td></tr>
         {%- endif -%}
       </tbody>
     </table>
@@ -60,22 +60,22 @@
     {%- assign bxp_found_size = false -%}
     {%- for option in product.options_with_values -%}
       {%- assign bxp_option_label = option.name | downcase -%}
-      {%- if bxp_option_label contains 'tamanho' or bxp_option_label contains 'size' or bxp_option_label contains 'oz' or bxp_option_label contains 'peso' -%}
+      {%- if bxp_option_label contains 'tamanho' or bxp_option_label contains 'talla' or bxp_option_label contains 'size' or bxp_option_label contains 'oz' or bxp_option_label contains 'peso' -%}
         <p><strong>{{ option.name | escape }}:</strong> {% for value in option.values %}{{ value | escape }}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
         {%- assign bxp_found_size = true -%}
       {%- endif -%}
     {%- endfor -%}
-    {%- unless bxp_found_size -%}<p>Consulta as opções disponíveis na área de compra. Se precisares de ajuda para escolher, contacta-nos.</p>{%- endunless -%}
+    {%- unless bxp_found_size -%}<p>{{ 'boxeup_sections.story_sizes_help' | t }}</p>{%- endunless -%}
   </div>
   <div id="bxp-panel-shipping-{{ section.id }}" class="bxp-details__panel" role="tabpanel" aria-labelledby="bxp-tab-shipping-{{ section.id }}" tabindex="0" hidden>
-    <p>Os prazos e condições aplicáveis à encomenda dependem do produto e do destino de entrega.</p>
+    <p>{{ 'boxeup_sections.story_shipping_terms' | t }}</p>
     {%- if shop.shipping_policy.body != blank -%}
-      <p><a href="{{ shop.shipping_policy.url }}">Consultar as condições de envio</a></p>
+      <p><a href="{{ shop.shipping_policy.url }}">{{ 'boxeup_sections.story_shipping_policy' | t }}</a></p>
     {%- endif -%}
     {%- if shop.refund_policy.body != blank -%}
-      <p><a href="{{ shop.refund_policy.url }}">Consultar a política de devoluções</a></p>
+      <p><a href="{{ shop.refund_policy.url }}">{{ 'boxeup_sections.story_returns_policy' | t }}</a></p>
     {%- endif -%}
-    <p>Para esclarecer alguma questão, consulta a página de <a href="/pages/contactos">contactos</a>.</p>
+    <p>{{ 'boxeup_sections.story_contact_intro' | t }} <a href="{{ routes.root_url }}pages/contactos">{{ 'boxeup_sections.story_contacts' | t }}</a>.</p>
   </div>
 </section>
 

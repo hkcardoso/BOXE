@@ -4,7 +4,7 @@
   Expected localPosition: unique header/footer localization form prefix.
 {%- endcomment -%}
 {%- assign bxp_current_locale_code = localization.language.iso_code | slice: 0, 2 | upcase -%}
-<div class="disclosure boxeup-language-disclosure">
+<div class="disclosure boxeup-language-disclosure" data-boxeup-language-picker="flags-v1">
   <button
     type="button"
     class="disclosure__button localization-form__select localization-selector link link--text caption-large boxeup-lang-trigger"

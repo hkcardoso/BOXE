@@ -163,7 +163,7 @@ if (!customElements.get('quick-add-modal')) {
         // Hide the remaining full-page blocks only in the compact popup.
         [...info.children].forEach((child) => {
           const essential =
-            child.matches('.product__text, .product__title, .bxp-product-intro, variant-selects, [id^="price-"], [id^="Quantity-Form"]') ||
+            child.matches('.product__text, .product__title, .bxp-product-intro, .bx-product-support, variant-selects, [id^="price-"], [id^="Quantity-Form"]') ||
             child.querySelector(':scope > product-form');
           if (!essential) child.classList.add('bxq-extra');
         });

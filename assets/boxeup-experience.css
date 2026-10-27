@@ -1,6 +1,6 @@
 :root{--bx-ui:"Helvetica Neue","Segoe UI",Arial,sans-serif;--bx-red:#f01837;--bx-surface:#17191d;--bx-line:#34373e;--bx-text:#f4f4f5;--bx-subtle:#b9bbc2;--bx-ease:cubic-bezier(.2,.75,.25,1)}
 html.bx-dialog-open{overflow:hidden}
-body #MainContent h1,body #MainContent h2,body #MainContent .product.bxp-product-grid .product__title h1,body #MainContent .bxp-story__headline,body #MainContent .bx-about h1,body #MainContent .bx-about h2{font-family:var(--bx-ui)!important;font-weight:750!important;letter-spacing:-.04em!important;text-transform:none!important}
+body #MainContent h1,body #MainContent h2,body #MainContent[data-template="product"] .product.bxp-product-grid .product__title h1,body #MainContent[data-template="product"] .bxp-story__headline,body #MainContent .bx-about h1,body #MainContent .bx-about h2{font-family:var(--bx-ui)!important;font-weight:750!important;letter-spacing:-.04em!important;text-transform:none!important}
 body #MainContent .boxeup-breadcrumb,body #MainContent .boxeup-breadcrumb a,body #MainContent .boxeup-breadcrumb [aria-current="page"],body #MainContent .boxeup-breadcrumb--product span{color:#b9bbc2!important;opacity:1!important}
 body #MainContent .collection-hero__inner.page-width{padding-top:22px!important;padding-bottom:22px!important;min-height:0!important}
 body #MainContent .collection-hero .boxeup-breadcrumb{margin-bottom:14px!important}
@@ -17,6 +17,7 @@ body #MainContent .facets-wrapper{padding-top:8px!important;padding-bottom:8px!i
 body #MainContent #ProductGridContainer{padding-top:12px!important}
 body #MainContent .bxv2-product-grid,body #MainContent #product-grid.grid{column-gap:16px!important;row-gap:24px!important}
 @media(min-width:990px){body #MainContent .bxv2-product-grid,body #MainContent #product-grid.grid{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important}body #MainContent #product-grid.grid>.grid__item{width:auto!important;max-width:none!important}}
+@media(min-width:990px){body #MainContent[data-template="product"] .related-products .grid.product-grid{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important}body #MainContent[data-template="product"] .related-products .grid.product-grid>.grid__item{width:auto!important;max-width:none!important}}
 body .header-wrapper .header__icons{gap:4px!important}
 body .header-wrapper .header__search,body .header-wrapper .header__icon--search{display:block!important;visibility:visible!important;opacity:1!important}
 body .header-wrapper .header__icon--search{display:flex!important;width:40px!important;height:44px!important;color:#f4f4f5!important}
@@ -83,6 +84,8 @@ body #MainContent .bx-size-link{margin-top:0!important;margin-bottom:12px!import
 [data-bx-tray][hidden],[data-bx-sticky][hidden],[data-bx-toast][hidden],[data-bx-restock][hidden],[data-bx-video][hidden]{display:none!important}
 body .quick-add-modal .bx-product-support{display:block!important}.quick-add-modal .bx-restock{display:none!important}.quick-add-modal .bx-product-policies{display:none!important}
 body #MainContent .bxp-story__inner{min-height:0!important;padding-block:32px!important}.bxp-story__benefits{gap:16px}
+body #MainContent[data-template="product"] .bxp-story__headline{font-size:clamp(25px,3vw,40px)!important;line-height:1.15!important}
+@media(max-width:749px){body:has(.bx-sticky-buy:not([hidden])) .bx-compare-tray{bottom:100px}}
 #BxExperience :focus-visible,body #MainContent .bx-text-button:focus-visible,.bx-compare-button:focus-visible{outline:2px solid #fff;outline-offset:4px}
 @keyframes bx-dialog-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @media(min-width:750px) and (max-width:989px){body #MainContent .bxv2-product-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}

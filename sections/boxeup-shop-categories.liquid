@@ -7,6 +7,75 @@
   #MainContent .section-boxeup-shop-categories > .boxeup-catalog-controls {
     background: #111214 !important;
   }
+
+  /* BOXEUP | Always-visible brand logos on the collection navigation. */
+  #MainContent .boxeup-brands-always-open { margin: 19px 0 0; }
+  #MainContent .boxeup-brands-always-open__heading {
+    color:#e1e1e5!important;
+    font-size:14px;
+    font-weight:600;
+    line-height:1.4;
+    margin:0 0 12px;
+    letter-spacing:0;
+  }
+  #MainContent .boxeup-brand-grid {
+    display:grid;
+    grid-template-columns:repeat(8,minmax(0,1fr));
+    gap:9px;
+    margin:0;
+  }
+  #MainContent .boxeup-brand-card {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-width:0;
+    min-height:77px;
+    padding:11px 12px;
+    border:1px solid #34363c;
+    border-radius:6px;
+    background:#191a1e;
+    text-decoration:none;
+    transition:background .18s ease,border-color .18s ease,transform .18s ease;
+  }
+  #MainContent .boxeup-brand-card:hover {
+    background:#23252a;
+    border-color:#666972;
+    transform:translateY(-2px);
+  }
+  #MainContent .boxeup-brand-card[aria-current="page"] {
+    border-color:#ed2437;
+    background:#242025;
+  }
+  #MainContent .boxeup-brand-card:focus-visible {
+    outline:2px solid #fff;
+    outline-offset:2px;
+  }
+  #MainContent .boxeup-brand-card__logo {
+    display:block;
+    width:100%;
+    max-width:115px;
+    height:51px;
+    object-fit:contain;
+    object-position:center;
+    background:transparent;
+    /* Reproduce the monochrome white styling from the homepage. */
+    filter:brightness(0) saturate(100%) invert(100%);
+    opacity:.94;
+  }
+  #MainContent .boxeup-brand-card:hover .boxeup-brand-card__logo {opacity:1}
+  @media(max-width:989px){
+    #MainContent .boxeup-brand-grid {grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+  }
+  @media(max-width:749px){
+    #MainContent .boxeup-brands-always-open {margin-top:16px}
+    #MainContent .boxeup-brands-always-open__heading {font-size:13px;margin-bottom:9px}
+    #MainContent .boxeup-brand-card {min-height:62px;padding:9px 8px}
+    #MainContent .boxeup-brand-card__logo {height:39px;max-width:96px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    #MainContent .boxeup-brand-card {transition:none}
+    #MainContent .boxeup-brand-card:hover {transform:none}
+  }
 </style>
 <section class="boxeup-catalog-controls page-width" aria-label="{{ 'boxeup_navigation.categories' | t }}">
   <h2>{{ 'boxeup_navigation.heading' | t }}</h2>
@@ -20,16 +89,19 @@
       {% if category != blank %}<a class="boxeup-chip" data-boxeup-catalog href="{{ category.url }}"{% if collection.handle == category_handle %} aria-current="page"{% endif %}>{{ label_key | t }}</a>{% endif %}
     {% endfor %}
   </nav>
-  <details class="boxeup-brands">
-    <summary>{{ 'boxeup_navigation.brands' | t }}</summary>
-    <nav class="boxeup-chip-list" aria-label="{{ 'boxeup_navigation.brands' | t }}">
-      {% assign brands = 'fairtex,charlie,buddha,venum,cleto-reyes,rival,twins,everlast' | split: ',' %}
-      {% for brand_handle in brands %}
-        {% assign brand = collections[brand_handle] %}
-        {% if brand != blank %}<a class="boxeup-chip" data-boxeup-catalog href="{{ brand.url }}"{% if collection.handle == brand_handle %} aria-current="page"{% endif %}>{{ brand.title | escape }}</a>{% endif %}
-      {% endfor %}
+  <div class="boxeup-brands-always-open">
+    <h3 class="boxeup-brands-always-open__heading">{{ 'boxeup_navigation.brands' | t }}</h3>
+    <nav class="boxeup-brand-grid" aria-label="{{ 'boxeup_navigation.brands' | t }}">
+    <a class="boxeup-brand-card" data-boxeup-catalog href="/collections/fairtex" aria-label="Ver produtos Fairtex"{% if collection.handle == 'fairtex' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-fairtex-white.png?v=1793040787" alt="Fairtex" loading="lazy" width="140" height="72"></a>
+    <a class="boxeup-brand-card" data-boxeup-catalog href="/collections/charlie" aria-label="Ver produtos Charlie"{% if collection.handle == 'charlie' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-charlie-white.png?v=1793040801" alt="Charlie" loading="lazy" width="140" height="72"></a>
+    <a class="boxeup-brand-card" data-boxeup-catalog href="/collections/buddha" aria-label="Ver produtos Buddha"{% if collection.handle == 'buddha' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-buddha-white.png?v=1793040808" alt="Buddha" loading="lazy" width="140" height="72"></a>
+    <a class="boxeup-brand-card" data-boxeup-catalog href="/collections/venum" aria-label="Ver produtos Venum"{% if collection.handle == 'venum' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-venum-white.png?v=1793040818" alt="Venum" loading="lazy" width="140" height="72"></a>
+    <a class="boxeup-brand-card" data-boxeup-catalog href="/collections/cleto-reyes" aria-label="Ver produtos Cleto Reyes"{% if collection.handle == 'cleto-reyes' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-reyes-white.png?v=1793040826" alt="Cleto Reyes" loading="lazy" width="140" height="72"></a>
+    <a class="boxeup-brand-card" data-boxeup-catalog href="/collections/rival" aria-label="Ver produtos Rival"{% if collection.handle == 'rival' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-rival-white.png?v=1793040835" alt="Rival" loading="lazy" width="140" height="72"></a>
+    <a class="boxeup-brand-card" data-boxeup-catalog href="/collections/twins" aria-label="Ver produtos Twins"{% if collection.handle == 'twins' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-twins-white.png?v=1793040843" alt="Twins" loading="lazy" width="140" height="72"></a>
+    <a class="boxeup-brand-card" data-boxeup-catalog href="/collections/everlast" aria-label="Ver produtos Everlast"{% if collection.handle == 'everlast' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-everlast-white.png?v=1793040849" alt="Everlast" loading="lazy" width="140" height="72"></a>
     </nav>
-  </details>
+  </div>
   <p class="boxeup-catalog-message" role="status" aria-live="polite" data-loading="{{ 'boxeup_navigation.loading' | t }}" data-loaded="{{ 'boxeup_navigation.loaded' | t }}" data-error="{{ 'boxeup_navigation.error' | t }}"></p>
 </section>
 {% schema %}

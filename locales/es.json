@@ -548,5 +548,31 @@
       "expanded": "Formulario del destinatario de la tarjeta de regalo expandido",
       "collapsed": "Formulario del destinatario de tarjeta de regalo contraído"
     }
+  },
+  "boxeup_navigation": {
+    "heading": "Encuentra tu equipamiento",
+    "all": "Ver todo",
+    "brands": "Explorar por marca",
+    "loading": "Actualizando los productos…",
+    "loaded": "Productos actualizados.",
+    "error": "No se han podido actualizar los productos. Vuelve a seleccionar la categoría.",
+    "categories": "Categorías",
+    "luvas": "Guantes",
+    "caneleiras": "Espinilleras",
+    "boqueiras": "Protectores bucales",
+    "roupa": "Pantalones cortos y ropa",
+    "mochilas": "Mochilas y bolsas",
+    "treino": "Material de entrenamiento"
+  },
+  "boxeup_v4": {
+    "catalog": "Ver catálogo",
+    "modalities": "Ver disciplinas",
+    "view_all": "Ver todos",
+    "results": "productos de esta selección",
+    "your_training": "Tu entrenamiento empieza aquí",
+    "brands": "Encuentra tu marca",
+    "about_title": "Del primer entrenamiento al siguiente asalto.",
+    "about_text": "Una tienda portuguesa especializada en deportes de combate. Explora el equipamiento, compara modelos y contacta con nosotros si necesitas ayuda para elegir.",
+    "about_link": "Conoce BOXEUP"
   }
 }

@@ -1083,6 +1083,9 @@
         "validation_errors_banner": {
           "heading": {
             "many": "There are {{count}} errors:"
+          },
+          "errors_in_section": {
+            "many": "{{count}} errors in {{section}}"
           }
         }
       },

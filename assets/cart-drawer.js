@@ -41,7 +41,7 @@ class CartDrawer extends HTMLElement {
       const container = this.classList.contains('is-empty')
         ? this.querySelector('.drawer__inner-empty')
         : this.querySelector('#CartDrawer');
-      const focusElement = this.querySelector('.drawer__close') || this.querySelector('.drawer__inner');
+      const focusElement = container?.querySelector('.drawer__close') || container;
       if (container && focusElement) trapFocus(container, focusElement);
     };
 

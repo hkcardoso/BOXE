@@ -7,6 +7,7 @@
   #MainContent .section-boxeup-shop-categories > .boxeup-catalog-controls {
     background: #111214 !important;
   }
+  #boxeup-catalog-filters { scroll-margin-top: 80px; }
 
   /* BOXEUP | Always-visible brand logos on the collection navigation. */
   #MainContent .boxeup-brands-always-open { margin: 19px 0 0; }
@@ -77,7 +78,7 @@
     #MainContent .boxeup-brand-card:hover {transform:none}
   }
 </style>
-<section class="boxeup-catalog-controls page-width" aria-label="{{ 'boxeup_navigation.categories' | t }}">
+<section id="boxeup-catalog-filters" class="boxeup-catalog-controls page-width" aria-label="{{ 'boxeup_navigation.categories' | t }}">
   <h2>{{ 'boxeup_navigation.heading' | t }}</h2>
   <nav class="boxeup-chip-list" aria-label="{{ 'boxeup_navigation.categories' | t }}">
     <a class="boxeup-chip" data-boxeup-catalog href="{{ routes.all_products_collection_url }}"{% if collection.handle == 'all' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.all' | t }}</a>

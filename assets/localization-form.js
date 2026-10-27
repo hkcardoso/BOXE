@@ -21,6 +21,17 @@ if (!customElements.get('localization-form')) {
         this.addEventListener('focusout', this.closeSelector.bind(this));
         this.elements.button.addEventListener('click', this.openSelector.bind(this));
 
+        // The desktop header language picker behaves like the Catalogue and
+        // Modalidades dropdowns: open instantly on hover, close on mouse leave.
+        // Retain native click/keyboard behaviour on touch and small screens.
+        this.languageDisclosure = this.querySelector('.boxeup-language-disclosure');
+        this.languageHoverMedia = window.matchMedia('(min-width: 990px) and (hover: hover) and (pointer: fine)');
+        this.languageHoverCloseTimer = null;
+        if (this.languageDisclosure && this.closest('.desktop-localization-wrapper')) {
+          this.languageDisclosure.addEventListener('mouseenter', this.openLanguageOnHover.bind(this));
+          this.languageDisclosure.addEventListener('mouseleave', this.closeLanguageOnHover.bind(this));
+        }
+
         if (this.elements.search) {
           this.elements.search.addEventListener('keyup', this.filterCountries.bind(this));
           this.elements.search.addEventListener('focus', this.onSearchFocus.bind(this));
@@ -38,7 +49,31 @@ if (!customElements.get('localization-form')) {
         this.querySelectorAll('a').forEach((item) => item.addEventListener('click', this.onItemClick.bind(this)));
       }
 
+      openLanguageOnHover() {
+        if (!this.languageHoverMedia.matches) return;
+        clearTimeout(this.languageHoverCloseTimer);
+        this.languageHoverCloseTimer = null;
+        if (!this.elements.panel.hasAttribute('hidden')) return;
+        this.elements.panel.removeAttribute('hidden');
+        this.elements.button.setAttribute('aria-expanded', 'true');
+        if (this.hasAttribute('data-prevent-hide') && this.header) {
+          this.header.preventHide = true;
+        }
+      }
+
+      closeLanguageOnHover() {
+        if (!this.languageHoverMedia.matches) return;
+        clearTimeout(this.languageHoverCloseTimer);
+        // Short grace period bridges the small gap between button and panel.
+        this.languageHoverCloseTimer = setTimeout(() => {
+          if (!this.languageDisclosure.matches(':hover')) this.hidePanel();
+          this.languageHoverCloseTimer = null;
+        }, 140);
+      }
+
       hidePanel() {
+        clearTimeout(this.languageHoverCloseTimer);
+        this.languageHoverCloseTimer = null;
         this.elements.button.setAttribute('aria-expanded', 'false');
         this.elements.panel.setAttribute('hidden', true);
         if (this.elements.search) {
@@ -47,8 +82,8 @@ if (!customElements.get('localization-form')) {
           this.elements.search.setAttribute('aria-activedescendant', '');
         }
         document.body.classList.remove('overflow-hidden-mobile');
-        document.querySelector('.menu-drawer').classList.remove('country-selector-open');
-        this.header.preventHide = false;
+        document.querySelector('.menu-drawer')?.classList.remove('country-selector-open');
+        if (this.header) this.header.preventHide = false;
       }
 
       onContainerKeyDown(event) {
@@ -109,7 +144,15 @@ if (!customElements.get('localization-form')) {
         if (form) form.submit();
       }
 
-      openSelector() {
+      openSelector(event) {
+        // A click while the hovered language menu is already open must not
+        // immediately toggle it closed. Keyboard and mobile clicks still work.
+        if (
+          event?.type === 'click' &&
+          this.languageHoverMedia?.matches &&
+          this.languageDisclosure?.matches(':hover') &&
+          !this.elements.panel.hasAttribute('hidden')
+        ) return;
         this.elements.button.focus();
         this.elements.panel.toggleAttribute('hidden');
         this.elements.button.setAttribute(

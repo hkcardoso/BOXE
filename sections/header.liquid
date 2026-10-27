@@ -225,25 +225,18 @@
     height: 12px;
     flex: none;
   }
-  /* Keep the trigger visually unchanged when hovered/open/selected. */
   .header-wrapper .boxeup-lang-caret,
   .menu-drawer__localization .boxeup-lang-caret {
-    transform: none !important;
-    transition: none !important;
-    color: #b9babf;
+    transition: transform .18s ease;
   }
-  .header-wrapper .desktop-localization-wrapper .boxeup-lang-trigger:hover,
-  .header-wrapper .desktop-localization-wrapper .boxeup-lang-trigger[aria-expanded="true"],
-  .header-wrapper .desktop-localization-wrapper .boxeup-lang-trigger:focus {
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    color: #f5f5f6 !important;
+  .header-wrapper .boxeup-lang-trigger[aria-expanded="true"] .boxeup-lang-caret,
+  .menu-drawer__localization .boxeup-lang-trigger[aria-expanded="true"] .boxeup-lang-caret {
+    transform: rotate(180deg);
+  }
+  .header-wrapper .desktop-localization-wrapper .boxeup-lang-trigger:hover {
+    color: #fff !important;
+    background: rgba(255,255,255,.08) !important;
     text-decoration: none !important;
-  }
-  .header-wrapper .desktop-localization-wrapper .boxeup-lang-trigger:focus-visible {
-    outline: 1px solid #777a82 !important;
-    outline-offset: 2px;
     border-radius: 4px;
   }
   /* Same dark surface and entrance motion as Catalogue / Modalidades. */
@@ -303,25 +296,18 @@
     color: #fff !important;
     outline-offset: -2px;
   }
-  /* The active language is indicated only by a small neutral tick. */
   .header-wrapper .boxeup-lang-option[aria-current="true"],
   .menu-drawer__localization .boxeup-lang-option[aria-current="true"] {
-    background: transparent !important;
-    box-shadow: none !important;
+    background: #322027 !important;
+    box-shadow: inset 3px 0 #ed2437 !important;
     color: #fff !important;
-  }
-  .header-wrapper .boxeup-lang-option[aria-current="true"]:hover,
-  .header-wrapper .boxeup-lang-option[aria-current="true"]:focus-visible,
-  .menu-drawer__localization .boxeup-lang-option[aria-current="true"]:hover,
-  .menu-drawer__localization .boxeup-lang-option[aria-current="true"]:focus-visible {
-    background: #2b2d33 !important;
   }
   .header-wrapper .boxeup-lang-check,
   .menu-drawer__localization .boxeup-lang-check {
     margin-left: auto;
-    color: #b8bac1;
-    font-weight: 600;
-    font-size: 11px;
+    color: #ed2437;
+    font-weight: 800;
+    font-size: 12px;
   }
   @media screen and (min-width: 990px) {
     .header-wrapper .desktop-localization-wrapper .boxeup-lang-panel {
@@ -437,10 +423,30 @@
       color: #fff !important;
       outline-offset: -2px;
     }
+    /* Selection stays neutral. Only hover uses a soft charcoal surface. */
     .header-wrapper .boxeup-nav-modalities__dropdown a.boxeup-nav-modalities__link[aria-current="page"] {
-      background: #322027 !important;
-      box-shadow: inset 3px 0 #ed2437;
+      background: transparent !important;
+      box-shadow: none !important;
       color: #fff !important;
+      font-weight: 700 !important;
+    }
+    .header-wrapper .boxeup-nav-modalities__dropdown a.boxeup-nav-modalities__link[aria-current="page"]:hover,
+    .header-wrapper .boxeup-nav-modalities__dropdown a.boxeup-nav-modalities__link[aria-current="page"]:focus-visible {
+      background: #2b2d33 !important;
+    }
+    /* Remove Dawn's selected/hover underline and red text on menu headings. */
+    .header-wrapper .header__inline-menu .boxeup-nav-modalities__trigger,
+    .header-wrapper .header__inline-menu .boxeup-nav-modalities__trigger > span,
+    .header-wrapper .header__inline-menu .boxeup-nav-modalities__trigger .header__active-menu-item {
+      text-decoration: none !important;
+      box-shadow: none !important;
+      border-bottom: 0 !important;
+    }
+    .header-wrapper .header__inline-menu .boxeup-nav-modalities__trigger:hover,
+    .header-wrapper .header__inline-menu .boxeup-nav-modalities__trigger:hover > span,
+    .header-wrapper .header__inline-menu .boxeup-nav-modalities__trigger:focus-visible > span {
+      color: #f6f6f7 !important;
+      text-decoration: none !important;
     }
     .header-wrapper .boxeup-nav-modalities__divider {
       height: 1px;

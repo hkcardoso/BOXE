@@ -61,7 +61,8 @@ body .header-wrapper .header:not(.drawer-menu).page-width {
   }
 }
 
-/* The home hero video remains edge-to-edge; only its text/icons align. */
+/* The hero is editorial and full-bleed; neither its text nor its video
+   follows the narrower catalogue/header content rail. */
 #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-wrap{
   box-sizing:border-box!important;width:100%!important;
   max-width:var(--boxeup-content-max)!important;
@@ -73,18 +74,25 @@ body .header-wrapper .header:not(.drawer-menu).page-width {
   max-width:none!important;padding-left:0!important;padding-right:0!important;
 }
 #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero{
+  --boxeup-hero-inset:clamp(25px,4vw,78px);
   margin-left:0!important;margin-right:0!important;border-radius:0!important;
 }
 #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero__inner{
   box-sizing:border-box!important;
-  padding-left:var(--boxeup-content-outer)!important;
-  padding-right:clamp(16px,2vw,40px)!important;
+  width:min(1050px,80vw)!important;
+  max-width:none!important;
+  padding-left:var(--boxeup-hero-inset)!important;
+  padding-right:clamp(14px,1.6vw,28px)!important;
+}
+#MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero h1{
+  max-width:900px!important;
+  text-wrap:wrap!important;
 }
 #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero .bxv2-trust{
-  left:var(--boxeup-content-outer)!important;
+  left:var(--boxeup-hero-inset)!important;
 }
 #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero__stamp{
-  right:var(--boxeup-content-outer)!important;
+  right:var(--boxeup-hero-inset)!important;
 }
 /* Footer content and bottom legal/payment row match the same outer rails. */
 body .footer .boxeup-footer-brand.page-width,
@@ -97,15 +105,27 @@ body .footer .footer__content-bottom-wrapper.page-width{
   padding-right:var(--boxeup-content-gutter)!important;
 }
 /* Keep mobile cart, menu and language reachable without horizontal overflow. */
+@media(min-width:750px) and (max-width:989px){
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero__inner{
+    width:min(850px,88vw)!important;
+  }
+}
 @media(max-width:749px){
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero{
+    --boxeup-hero-inset:20px;
+  }
   #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero__inner{
     width:100%!important;
-    padding-left:var(--boxeup-content-gutter)!important;
-    padding-right:var(--boxeup-content-gutter)!important;
+    padding-left:var(--boxeup-hero-inset)!important;
+    padding-right:var(--boxeup-hero-inset)!important;
+  }
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero h1{
+    max-width:100%!important;
+    text-wrap:balance!important;
   }
   #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero .bxv2-trust{
-    left:var(--boxeup-content-gutter)!important;
-    right:var(--boxeup-content-gutter)!important;
+    left:var(--boxeup-hero-inset)!important;
+    right:var(--boxeup-hero-inset)!important;
   }
 }
 

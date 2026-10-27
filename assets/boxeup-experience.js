@@ -185,4 +185,47 @@
     menu.addEventListener('pointerleave', reset);
     menu.addEventListener('focusout', event => { if (!menu.contains(event.relatedTarget)) reset(); });
   });
+  let headerFrame;
+  const syncHeader = () => {
+    document.body.classList.toggle('bx-scrolled', window.scrollY > 48);
+    headerFrame = undefined;
+  };
+  window.addEventListener('scroll', () => {
+    if (!headerFrame) headerFrame = requestAnimationFrame(syncHeader);
+  }, { passive: true });
+  syncHeader();
+  function polishCards(scope = document) {
+    scope.querySelectorAll('.bxv2-product__image,.product-card-wrapper .card__inner').forEach(image => {
+      if (image.querySelector('.bx-card-cta')) return;
+      const card = image.closest('.bxv2-product,.product-card-wrapper');
+      if (!card?.querySelector('a[href*="/products/"]')) return;
+      const label = make('span', t('view'), 'bx-card-cta');
+      label.setAttribute('aria-hidden', 'true');
+      image.append(label);
+    });
+  }
+  polishCards();
+  document.addEventListener('boxeup:catalog-updated', () => polishCards());
+  document.addEventListener('shopify:section:load', event => polishCards(event.target));
+  document.addEventListener('toggle', event => {
+    const details = event.target;
+    if (!details.matches?.('.bx-faq-item,.product__accordion details') || !details.open || reduced.matches) return;
+    const answer = details.querySelector('.bx-faq-answer,.accordion__content');
+    answer?.animate([{ opacity: .3, transform: 'translateY(-4px)' }, { opacity: 1, transform: 'none' }], { duration: 200, easing: 'ease-out' });
+  }, true);
+  document.addEventListener('boxeup:cart-added', () => {
+    const drawer = document.querySelector('cart-drawer');
+    const header = drawer?.querySelector('.drawer__header');
+    if (!header) return;
+    let notice = drawer.querySelector('.bx-cart-feedback');
+    if (!notice) {
+      notice = make('p', t('cart_added'), 'bx-cart-feedback');
+      notice.setAttribute('role', 'status');
+      header.after(notice);
+    }
+    if (!reduced.matches) {
+      notice.animate([{ opacity: 0, transform: 'translateY(5px)' }, { opacity: 1, transform: 'none' }], { duration: 220 });
+      document.querySelector('#cart-icon-bubble')?.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.12)' }, { transform: 'scale(1)' }], { duration: 280 });
+    }
+  });
 })();

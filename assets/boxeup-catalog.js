@@ -110,6 +110,7 @@
         transition = document.startViewTransition(apply);
         await transition.updateCallbackDone;
         await transition.finished.catch(() => {});
+        if (current === sequence) reveal(root);
       } else {
         apply();
         reveal(root,before);

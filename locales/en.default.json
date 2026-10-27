@@ -1474,6 +1474,7 @@
     "faq_returns_question": "How do I request a return or warranty support?",
     "faq_returns_answer": "Read the returns and warranty conditions, then contact us with your order reference and a description of your request. Select “Return or warranty” in the contact form.",
     "faq_help_question": "Can you help me choose equipment?",
-    "faq_help_answer": "Yes. Tell us your discipline, training, experience and budget. Use the equipment guide or send our team a message."
+    "faq_help_answer": "Yes. Tell us your discipline, training, experience and budget. Use the equipment guide or send our team a message.",
+    "cart_added": "Item added to your cart"
   }
 }

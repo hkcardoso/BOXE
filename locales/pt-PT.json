@@ -819,6 +819,7 @@
     "faq_returns_question": "Como peço uma devolução ou apoio de garantia?",
     "faq_returns_answer": "Consulta as condições de devolução e garantia e contacta-nos com a referência da encomenda e uma descrição do pedido. No formulário, escolhe “Devolução ou garantia” para identificar o assunto.",
     "faq_help_question": "Podem ajudar-me a escolher equipamento?",
-    "faq_help_answer": "Sim. Indica a modalidade, o tipo de treino, a tua experiência e o orçamento. Podes usar o guia de escolha ou enviar uma mensagem à equipa."
+    "faq_help_answer": "Sim. Indica a modalidade, o tipo de treino, a tua experiência e o orçamento. Podes usar o guia de escolha ou enviar uma mensagem à equipa.",
+    "cart_added": "Artigo adicionado ao carrinho"
   }
 }

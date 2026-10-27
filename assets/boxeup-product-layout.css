@@ -1043,14 +1043,6 @@ body.boxeup-product-view .footer .footer__content-bottom{
   padding-left:var(--boxeup-content-gutter)!important;
   padding-right:var(--boxeup-content-gutter)!important;
 }
-body.boxeup-product-view .header-wrapper .header.page-width,
-body.boxeup-product-view .header-wrapper .header:not(.drawer-menu).page-width{
-  box-sizing:border-box!important;
-  width:100%!important;max-width:var(--boxeup-content-max)!important;
-  margin-left:auto!important;margin-right:auto!important;
-  padding-left:var(--boxeup-content-gutter)!important;
-  padding-right:var(--boxeup-content-gutter)!important;
-}
 body.boxeup-product-view .footer .boxeup-footer-brand.page-width,
 body.boxeup-product-view .footer .footer__content-top.page-width,
 body.boxeup-product-view .footer .footer__content-bottom-wrapper.page-width{

@@ -25,15 +25,16 @@
   padding-left:var(--boxeup-content-gutter)!important;
   padding-right:var(--boxeup-content-gutter)!important;
 }
-/* The logo, centered navigation, language selector and last cart icon all
-   share the catalogue's exact left/right content rails. */
+/* The global header stays full width (not constrained to the catalogue grid).
+   Restore the original compact gutters and centered desktop navigation. */
 body .header-wrapper .header.page-width,
-body .header-wrapper .header:not(.drawer-menu).page-width{
+body .header-wrapper .header:not(.drawer-menu).page-width {
   box-sizing:border-box!important;
-  width:100%!important;max-width:var(--boxeup-content-max)!important;
-  margin-left:auto!important;margin-right:auto!important;
-  padding-left:var(--boxeup-content-gutter)!important;
-  padding-right:var(--boxeup-content-gutter)!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-inline:auto!important;
+  padding-left:clamp(24px,3vw,62px)!important;
+  padding-right:clamp(24px,3vw,62px)!important;
 }
 @media(min-width:990px){
   body .header-wrapper .header.header--middle-left:not(.drawer-menu){
@@ -52,6 +53,14 @@ body .header-wrapper .header:not(.drawer-menu).page-width{
     margin:0!important;
   }
 }
+@media(max-width:749px){
+  body .header-wrapper .header.page-width,
+  body .header-wrapper .header:not(.drawer-menu).page-width{
+    padding-left:1.5rem!important;
+    padding-right:1.5rem!important;
+  }
+}
+
 /* The home hero video remains edge-to-edge; only its text/icons align. */
 #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-wrap{
   box-sizing:border-box!important;width:100%!important;
@@ -89,11 +98,6 @@ body .footer .footer__content-bottom-wrapper.page-width{
 }
 /* Keep mobile cart, menu and language reachable without horizontal overflow. */
 @media(max-width:749px){
-  body .header-wrapper .header.page-width,
-  body .header-wrapper .header:not(.drawer-menu).page-width{
-    padding-left:var(--boxeup-content-gutter)!important;
-    padding-right:var(--boxeup-content-gutter)!important;
-  }
   #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero__inner{
     width:100%!important;
     padding-left:var(--boxeup-content-gutter)!important;
@@ -102,5 +106,28 @@ body .footer .footer__content-bottom-wrapper.page-width{
   #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero .bxv2-trust{
     left:var(--boxeup-content-gutter)!important;
     right:var(--boxeup-content-gutter)!important;
+  }
+}
+
+/* Merchandising content starts at the same x-position as the disciplines
+   and brand sections: no more edge-to-edge product cards. */
+#MainContent[data-template="index"] .section-boxeup-home .bxv2>.bxv2-wrap--merchandising{
+  box-sizing:border-box!important;
+  max-width:var(--boxeup-content-max)!important;
+  margin-inline:auto!important;
+  padding-inline:var(--boxeup-content-gutter)!important;
+}
+#MainContent[data-template="index"] .section-boxeup-home .bxv2-wrap--merchandising .bxv2-block--categories{
+  padding-top:clamp(24px,2.6vw,42px)!important;
+}
+#MainContent[data-template="index"] .section-boxeup-home .bxv2-wrap--merchandising .bxv2-block--products{
+  padding-top:clamp(44px,5vw,76px)!important;
+}
+@media(max-width:749px){
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2-wrap--merchandising .bxv2-block--categories{
+    padding-top:16px!important;
+  }
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2-wrap--merchandising .bxv2-block--products{
+    padding-top:38px!important;
   }
 }

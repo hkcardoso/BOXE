@@ -518,39 +518,6 @@
     }
   }
 
-  /* Outline pictograms only in the existing Catalogue and Modalidades items.
-     Brand names remain text-only. */
-  .header-wrapper .boxeup-nav-modalities__label-wrap{
-    display:inline-flex;
-    align-items:center;
-    gap:11px;
-    min-width:0;
-    text-align:left;
-  }
-  .header-wrapper .boxeup-nav-modalities__label-wrap > span{
-    min-width:0;
-  }
-  .header-wrapper .boxeup-nav-modalities__icon{
-    display:block;
-    width:21px;
-    height:21px;
-    flex:0 0 21px;
-    color:#c7c8ce;
-    opacity:.9;
-    transition:color .15s ease,opacity .15s ease;
-  }
-  .header-wrapper .boxeup-nav-modalities__link:hover .boxeup-nav-modalities__icon,
-  .header-wrapper .boxeup-nav-modalities__link:focus-visible .boxeup-nav-modalities__icon,
-  .header-wrapper .boxeup-nav-modalities__link[aria-current="page"] .boxeup-nav-modalities__icon{
-    color:#fff;
-    opacity:1;
-  }
-  .header-wrapper .boxeup-nav-modalities__link--disabled .boxeup-nav-modalities__icon{
-    opacity:.45;
-  }
-  @media (prefers-reduced-motion:reduce){
-    .header-wrapper .boxeup-nav-modalities__icon{transition:none;}
-  }
 
   /* BOXEUP | Refined navigation typography: distinct from the store's body font.
      Uses local system fonts; no remote font request or layout changes. */

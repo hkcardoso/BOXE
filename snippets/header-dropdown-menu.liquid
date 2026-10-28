@@ -8,6 +8,9 @@
 <nav class="{% if mobile %}bx-mobile-shared-nav{% else %}header__inline-menu{% endif %}">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
+      {%- if link.handle == 'sobre-nos' or link.handle == 'contactos' -%}
+        {%- continue -%}
+      {%- endif -%}
       <li>
         {%- if link.handle == 'modalidades' -%}
           <div class="boxeup-nav-modalities">

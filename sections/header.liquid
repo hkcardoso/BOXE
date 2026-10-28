@@ -711,7 +711,7 @@
         <label class="vh-header-search__form">
           <span class="visually-hidden">{{ 'general.search.search' | t }}</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 5 5"/></svg>
-          <input type="search" name="q" placeholder="{% case request.locale.iso_code | slice: 0, 2 %}{% when 'en' %}Search products, brands...{% when 'es' %}Buscar productos, marcas...{% else %}Pesquisar produtos, marcas...{% endcase %}" autocomplete="off">
+          <input type="search" name="q" placeholder="{% assign vh_header_lang = request.locale.iso_code | slice: 0, 2 %}{% case vh_header_lang %}{% when 'en' %}Search products, brands...{% when 'es' %}Buscar productos, marcas...{% else %}Pesquisar produtos, marcas...{% endcase %}" autocomplete="off">
           <input type="hidden" name="options[prefix]" value="last">
         </label>
       </form>

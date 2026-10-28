@@ -707,3 +707,124 @@
   .footer .footer__localization{gap:8px!important}
   .footer .footer__localization .disclosure__button.localization-form__select{padding-inline:9px!important}
 }
+
+/* VIRIATTO | Footer language selector: centered trigger and aligned options.
+   Isolated from the header's compact language dropdown. */
+.footer .footer__localization .boxeup-language-disclosure{
+  position:relative!important;
+  width:100%!important;
+}
+.footer .footer__localization .boxeup-language-disclosure .boxeup-lang-trigger{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:10px!important;
+  width:100%!important;
+  min-width:0!important;
+  padding:10px 12px!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+}
+.footer .footer__localization .boxeup-language-disclosure .boxeup-lang-flag{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex:0 0 24px!important;
+  width:24px!important;
+  height:16px!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:0!important;
+}
+.footer .footer__localization .boxeup-language-disclosure .boxeup-language-flag{
+  display:block!important;
+  flex:none!important;
+  width:24px!important;
+  height:16px!important;
+  border-radius:1px;
+}
+.footer .footer__localization .boxeup-language-disclosure .boxeup-lang-code{
+  display:inline-block!important;
+  width:24px!important;
+  flex:0 0 24px!important;
+  margin:0!important;
+  padding:0!important;
+  color:#f5f5f7!important;
+  font-size:12px!important;
+  font-weight:700!important;
+  line-height:1!important;
+  text-align:left!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
+}
+.footer .footer__localization .boxeup-language-disclosure .boxeup-lang-panel{
+  box-sizing:border-box!important;
+  position:absolute!important;
+  left:0!important;
+  right:0!important;
+  bottom:calc(100% + 8px)!important;
+  top:auto!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:6px!important;
+  border:1px solid #41434b!important;
+  border-radius:9px!important;
+  background:#202126!important;
+  box-shadow:0 14px 32px rgba(0,0,0,.4)!important;
+  overflow:hidden!important;
+  transform:none!important;
+  z-index:90!important;
+}
+.footer .footer__localization .boxeup-language-disclosure .boxeup-lang-panel[hidden]{
+  display:none!important;
+}
+.footer .footer__localization .boxeup-language-disclosure .boxeup-lang-panel:not([hidden]){
+  display:block!important;
+  animation:none!important;
+}
+.footer .footer__localization .boxeup-language-disclosure .boxeup-lang-list{
+  box-sizing:border-box!important;
+  display:block!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:0!important;
+  list-style:none!important;
+  overflow:visible!important;
+}
+.footer .footer__localization .boxeup-language-disclosure .boxeup-lang-list>li{
+  display:block!important;
+  width:100%!important;
+  margin:0!important;
+  padding:0!important;
+}
+.footer .footer__localization .boxeup-language-disclosure .boxeup-lang-option{
+  box-sizing:border-box!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:10px!important;
+  width:100%!important;
+  min-height:44px!important;
+  margin:0!important;
+  padding:10px 8px!important;
+  border:0!important;
+  border-radius:5px!important;
+  background:transparent!important;
+  color:#f5f5f7!important;
+  text-decoration:none!important;
+  transition:background .15s ease!important;
+}
+.footer .footer__localization .boxeup-language-disclosure .boxeup-lang-option:hover,
+.footer .footer__localization .boxeup-language-disclosure .boxeup-lang-option:focus-visible{
+  background:#303239!important;
+  outline-offset:-2px;
+}
+@media(prefers-reduced-motion:reduce){
+  .footer .footer__localization .boxeup-language-disclosure .boxeup-lang-option{transition:none!important}
+}

@@ -502,3 +502,5 @@ body #MainContent .bx-about h1,body #MainContent .bx-about h2,body #MainContent 
   #MainContent .bxv2-btn > span[aria-hidden="true"] svg,
   #MainContent .bx-text-button .bx-inline-arrow svg {transition:none!important;transform:none!important}
 }
+
+/* BOXEUP mobile QA: touch targets and arrow SVGs finalised 28 Oct 2026. */

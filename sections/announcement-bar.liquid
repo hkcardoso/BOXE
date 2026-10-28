@@ -1,3 +1,37 @@
+{%- if request.page_type == 'index' -%}
+  {%- liquid
+    assign vh_lang = request.locale.iso_code | slice: 0, 2
+    assign vh_announcement_1 = 'PORTES GRÁTIS EM ENCOMENDAS SUPERIORES A 79 €'
+    assign vh_announcement_2 = 'EQUIPAMENTO DAS MELHORES MARCAS'
+    assign vh_announcement_3 = 'ENTREGA 1-3 DIAS ÚTEIS'
+    if vh_lang == 'en'
+      assign vh_announcement_1 = 'FREE SHIPPING ON ORDERS OVER €79'
+      assign vh_announcement_2 = 'GEAR FROM LEADING BRANDS'
+      assign vh_announcement_3 = '1-3 WORKING DAY DELIVERY'
+    elsif vh_lang == 'es'
+      assign vh_announcement_1 = 'ENVÍO GRATIS EN PEDIDOS SUPERIORES A 79 €'
+      assign vh_announcement_2 = 'EQUIPO DE LAS MEJORES MARCAS'
+      assign vh_announcement_3 = 'ENTREGA EN 1-3 DÍAS LABORABLES'
+    endif
+  -%}
+  <style>
+    .vh-benefits{height:30px;display:flex;align-items:center;background:#08090b;color:#e6e6e8;border-bottom:1px solid #2a2b2e;font-family:var(--font-body-family,Arial,sans-serif)}
+    .vh-benefits__row{width:min(100%,1330px);margin:auto;padding-inline:clamp(18px,5.2vw,86px);display:grid;grid-template-columns:1.1fr 1.1fr 1fr;align-items:center}
+    .vh-benefits__item{display:flex;justify-content:center;gap:7px;align-items:center;white-space:nowrap;font-size:9px;font-weight:700;letter-spacing:.015em;border-left:1px solid #25262a;padding-inline:10px}
+    .vh-benefits__item:first-child{justify-content:flex-start;border-left:0;padding-left:0}
+    .vh-benefits__item:last-child{justify-content:flex-end;padding-right:0}
+    .vh-benefits__item svg{width:13px;height:13px;flex:0 0 13px;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;fill:none}
+    @media(max-width:989px){.vh-benefits__item{font-size:8px}.vh-benefits__item:nth-child(3){display:none}.vh-benefits__row{grid-template-columns:1fr 1fr}}
+    @media(max-width:599px){.vh-benefits__item:not(:first-child){display:none}.vh-benefits__row{display:block}.vh-benefits__item:first-child{justify-content:center;font-size:9px}}
+  </style>
+  <div class="vh-benefits" role="region" aria-label="{{ 'sections.header.announcement' | t }}">
+    <div class="vh-benefits__row">
+      <span class="vh-benefits__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7h13v11H2zM15 10h4l3 4v4h-7M5 20a2 2 0 1 0 4 0 2 2 0 0 0-4 0Zm12 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"/></svg>{{ vh_announcement_1 }}</span>
+      <span class="vh-benefits__item"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>{{ vh_announcement_2 }}</span>
+      <span class="vh-benefits__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3zM7 9h10m-10 4h7"/></svg>{{ vh_announcement_3 }}</span>
+    </div>
+  </div>
+{%- else -%}
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
@@ -161,6 +195,9 @@
     </div>
   </div>
 </div>
+
+
+{%- endif -%}
 
 {% schema %}
 {

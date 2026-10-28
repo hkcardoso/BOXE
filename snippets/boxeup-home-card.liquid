@@ -38,6 +38,7 @@
       </span>
       <span class="vh-tile__name">{{ product.title | escape }}</span>
     </a>
+    {% render 'boxeup-mobile-card-meta', product: product %}
     {%- if product.available -%}
       <modal-opener class="vh-tile__opener" data-modal="#VHomeQuick-{{ section_id }}-{{ product.id }}">
         <button class="vh-tile__plus" type="button"

@@ -495,7 +495,7 @@
   }
   @media(max-width:989px){
     body.boxeup-page-home #MainContent[data-template="index"]{margin-top:0!important}
-    body.boxeup-page-home .header-wrapper .header .vh-header-search{display:none!important}
+    body.boxeup-page-home .header-wrapper .header .vh-header-search{display:block!important}
   }
 
 
@@ -691,6 +691,30 @@
     }
   }
 
+
+  .vh-home .vh-tile__name{display:block;white-space:nowrap;text-overflow:ellipsis;-webkit-line-clamp:1}
+  .vh-brands__viewport{overflow:hidden}
+  .vh-brands__track{display:flex;width:max-content;animation:vh-brands-scroll 40s linear infinite}
+  .vh-brands__group{display:flex;align-items:center;gap:32px;padding:12px 16px;flex-shrink:0}
+  .vh-home .vh-brands__group .vh-brand{flex:0 0 120px;width:120px;min-width:120px}
+  .vh-brands:hover .vh-brands__track,.vh-brands:focus-within .vh-brands__track{animation-play-state:paused}
+  @keyframes vh-brands-scroll{to{transform:translateX(-50%)}}
+  @media(max-width:749px){
+    .vh-home .vh-grid{gap:22px 10px!important}
+    .vh-home .vh-tile{background:transparent;overflow:visible;border-radius:0}
+    .vh-home .vh-tile__media{aspect-ratio:1;border-radius:18px}
+    .vh-home .vh-tile__shade,.vh-home .vh-tile__prices,.vh-home .vh-tile__name,
+    .vh-home .vh-tile__discount:not(.vh-tile__discount--sold){display:none!important}
+    .vh-home .vh-tile__opener{top:calc((100vw - 46px)/2 - 48px);bottom:auto;left:auto;right:6px;width:44px;height:44px}
+    .vh-home .vh-tile__plus{width:44px;height:44px}
+    .vh-brands__group{gap:24px;padding:6px 12px}
+    .vh-home .vh-brands__group .vh-brand{flex-basis:100px;min-width:100px;width:100px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .vh-brands__track{animation:none}
+    .vh-brands__viewport{overflow-x:auto}
+    .vh-brands__group[aria-hidden]{display:none}
+  }
 </style>
 
 <section class="vh-home" aria-label="{{ 'boxeup_sections.aria_home' | t }}">
@@ -715,7 +739,9 @@
   </div>
 
   <nav class="vh-brands" id="VHomeBrands" aria-label="{{ vh_brands }}">
-    <div class="vh-frame vh-brands__inner">
+    <div class="vh-brands__viewport">
+    <div class="vh-brands__track">
+      {%- capture vh_brand_items -%}
       {%- assign vh_brand_handles = 'fairtex,venum,everlast,leone-1947,charlie,rdx,cleto-reyes,rival,twins' | split: ',' -%}
       {%- for vh_brand_handle in vh_brand_handles -%}
         {%- assign vh_brand_collection = collections[vh_brand_handle] -%}
@@ -737,6 +763,10 @@
           {%- else -%}<span class="vh-brand__word">{{ vh_brand_name }}</span>{%- endif -%}
         </a>
       {%- endfor -%}
+      {%- endcapture -%}
+      <div class="vh-brands__group">{{ vh_brand_items }}</div>
+      <div class="vh-brands__group" aria-hidden="true" inert>{{ vh_brand_items }}</div>
+    </div>
     </div>
   </nav>
 

@@ -178,7 +178,7 @@
                   {%- else -%}
                     <a
                       id="HeaderDrawer-{{ link.handle }}"
-                      href="{{ link.url }}"
+                      href="{% if link.handle == 'marcas' %}{{ routes.all_products_collection_url }}#BxBrands{% else %}{{ link.url }}{% endif %}"
                       class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}{% assign bx_promo_title = link.title | downcase %}{% if bx_promo_title contains 'promo' or link.handle == 'promocoes' %} bx-mobile-nav__promotion{% endif %}"
                       {% if link.current %}
                         aria-current="page"

@@ -387,8 +387,8 @@
   .bx-contact__benefit:nth-child(3), .bx-contact__benefit:nth-child(4) { border-top: 1px solid #2e3035; padding-top: 20px; }
 }
 @media (max-width: 600px) {
-  .bx-contact__wrap { width: calc(100% - 38px); }
-  .bx-contact__hero { min-height: 420px; }
+  .bx-contact__wrap { width: calc(100% - 36px); }
+  .bx-contact__hero { min-height: 360px; }
   .bx-contact__hero-image { object-position: 62% center; filter: grayscale(.95) brightness(.65); }
   .bx-contact__hero-overlay {
     background:
@@ -396,7 +396,7 @@
       linear-gradient(90deg,rgba(8,9,11,.82),rgba(8,9,11,.20));
   }
   .bx-contact__hero-inner { padding-block: 22px 43px; display: flex; flex-direction: column; justify-content: space-between; }
-  .bx-contact__headline { margin-top: 105px; }
+  .bx-contact__headline { margin-top: 48px; }
   #MainContent .bx-contact__headline h1 { font-size: clamp(40px, 10vw, 55px) !important; }
   .bx-contact__hero-description { font-size: 13px; line-height: 1.55; margin-top: 19px; }
   .bx-contact__body { padding-block: 17px 25px; }
@@ -423,4 +423,12 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .bx-contact__quicklink,.bx-contact__quicklink-arrow,.bx-contact__submit,.bx-contact__faq-chevron { transition: none !important; }
+}
+@media(max-width:749px){
+ #MainContent .boxeup-contact.bx-contact{padding:0!important}
+ .bx-contact__hero-inner{padding-block:26px 42px}
+ .bx-contact__hero-description{max-width:38ch;font-size:14px}
+ .bx-contact__form-panel,.bx-contact__aside,.bx-contact__field{min-width:0}
+ .bx-contact__field input,.bx-contact__field select,.bx-contact__field textarea{max-width:100%;font-size:16px!important}
+ .bx-contact__submit{min-height:48px}
 }

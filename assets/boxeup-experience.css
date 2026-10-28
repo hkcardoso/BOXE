@@ -776,3 +776,39 @@ body #MainContent .bx-about h1,body #MainContent .bx-about h2,body #MainContent 
   #MainContent .bx-mobile-brand-strip > a {transition:none;}
 }
 
+
+.bx-mobile-card-meta{display:none}
+body #MainContent .product-card-wrapper .card--media>.card__content .card__heading a{display:block!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;-webkit-line-clamp:1!important}
+.vh-header-search{display:none}
+@media(max-width:989px){
+  body .header-wrapper .header{grid-template-columns:44px minmax(0,1fr) auto!important;grid-template-areas:"left-icons heading icons" "search search search"!important;row-gap:8px!important;padding-block:10px!important;background:#090a0d!important}
+  body .header-wrapper .header .vh-header-search{display:block!important;grid-area:search!important;width:100%;margin:0}
+  body .header-wrapper .header .vh-header-search__form{display:flex;align-items:center;gap:12px;height:42px;padding:0 14px;background:#222429;border:1px solid #474a50;border-radius:5px}
+  body .header-wrapper .header .vh-header-search input[type=search]{width:100%;min-width:0;border:0;outline-offset:3px;background:transparent;color:#fff;font:inherit;font-size:16px}
+  body .header-wrapper .header .header__search{display:none!important}
+  body .header-wrapper .header .header__heading,body .header-wrapper .header>.header__heading-link{grid-area:heading!important;justify-self:start!important;min-width:0}
+  body .header-wrapper .header .viriatto-site-logo{width:clamp(110px,32vw,180px)!important;max-width:100%!important;height:auto!important}
+  body .header-wrapper #menu-drawer,body .header-wrapper #menu-drawer .menu-drawer__submenu{background:#090a0d!important}
+  body .header-wrapper #menu-drawer .menu-drawer__menu-item{font-family:var(--font-body-family)!important;font-size:14px!important;font-weight:600!important;letter-spacing:.015em!important;border-radius:4px!important}
+}
+@media(max-width:749px){
+  body #MainContent .bx-mobile-card-meta{display:block!important;position:relative;color:#f5f5f7!important;text-decoration:none!important;padding:9px 3px 0;min-width:0}
+  .bx-mobile-card-meta__row{display:flex;align-items:center;gap:5px;white-space:nowrap;font-size:clamp(9px,2.8vw,13px);line-height:1.3;letter-spacing:-.025em}
+  .bx-mobile-card-meta__row strong{font-weight:700}
+  .bx-mobile-card-meta__row del{color:#a6a6aa;font-weight:400}
+  .bx-mobile-card-meta__discount{display:inline-flex;align-items:center;gap:2px;margin-left:auto;padding:3px 5px;border-radius:20px;background:#595959;color:#fff;font-size:clamp(9px,2.6vw,12px);font-weight:700}
+  .bx-mobile-card-meta__discount svg{width:12px;height:12px;flex-shrink:0}
+  .bx-mobile-card-meta__name{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:8px;font-size:13px;line-height:1.5;font-weight:400;letter-spacing:0}
+  body #MainContent .product-card-wrapper .card--media>.card__content>.card__information{padding:0 0 44px!important;min-height:0!important;display:block!important}
+  body #MainContent .product-card-wrapper .card__information>.card__heading,
+  body #MainContent .product-card-wrapper .card__information>.boxeup-card__subtitle,
+  body #MainContent .product-card-wrapper .card-information>.price{display:none!important}
+  body #MainContent .product-card-wrapper .card-information{padding-top:0!important;margin-top:5px!important}
+  body #MainContent .product-card-wrapper .card__inner{border-radius:18px!important;overflow:hidden!important}
+  body #MainContent .product-card-wrapper .card{background:transparent!important;border:0!important;box-shadow:none!important}
+}
+
+@media(max-width:749px){
+ body #MainContent .product-card-wrapper .bx-card-sale{display:none!important}
+ body #MainContent .product-card-wrapper .card--media>.card__content{background:transparent!important;min-height:0!important}
+}

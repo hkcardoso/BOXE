@@ -65,7 +65,7 @@
   .vh-home,.vh-home *{box-sizing:border-box}
   .vh-home{background:#0c0d0f;color:#f6f6f7;font-family:var(--font-body-family,Arial,sans-serif);overflow:hidden}
   .vh-home a{color:inherit;text-decoration:none}
-  .vh-frame{width:min(100%,1330px);margin-inline:auto;padding-inline:clamp(18px,5.2vw,86px)}
+  .vh-frame{width:min(100%,1440px);margin-inline:auto;padding-inline:clamp(18px,8vw,120px)}
   .vh-hero{height:clamp(390px,34vw,530px);min-height:390px;position:relative;isolation:isolate;display:flex;align-items:center;overflow:hidden;background:#08090b}
   .vh-hero__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 43%;z-index:-2}
   .vh-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(1,2,4,.95) 0%,rgba(1,2,4,.85) 25%,rgba(1,2,4,.55) 47%,rgba(1,2,4,.07) 79%),linear-gradient(0deg,rgba(0,0,0,.48),transparent 34%);z-index:-1}
@@ -130,7 +130,7 @@
   /* The reference uses a two-level desktop header with visible search. */
   @media(min-width:990px){
     body:has(.vh-home) .header-wrapper{background:#08090b!important;border-bottom:0!important}
-    body:has(.vh-home) .header{max-width:1330px!important;padding:6px clamp(18px,5.2vw,86px) 0!important;min-height:102px!important;display:grid!important;grid-template-columns:minmax(190px,230px) minmax(280px,1fr) auto!important;grid-template-rows:54px 38px!important;gap:0 22px!important;align-items:center!important}
+    body:has(.vh-home) .header{max-width:1440px!important;padding:6px clamp(18px,8vw,120px) 0!important;min-height:102px!important;display:grid!important;grid-template-columns:minmax(190px,230px) minmax(280px,1fr) auto!important;grid-template-rows:54px 38px!important;gap:0 22px!important;align-items:center!important}
     body:has(.vh-home) .header__heading,body:has(.vh-home) .header__heading-link{grid-row:1!important;grid-column:1!important;justify-self:start!important;align-self:center}
     body:has(.vh-home) .vh-header-search{grid-row:1;grid-column:2;display:block;width:min(100%,570px);justify-self:start}
     body:has(.vh-home) .header__icons{grid-row:1!important;grid-column:3!important;justify-self:end!important}
@@ -203,7 +203,7 @@
         </div>
       </div>
     </div>
-    <div class="vh-hero__dash" aria-hidden="true"><span></span><span></span><span></span></div>
+    
   </div>
 
   <nav class="vh-brands" id="VHomeBrands" aria-label="{{ vh_brands }}">

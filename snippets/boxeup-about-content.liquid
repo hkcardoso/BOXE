@@ -1,98 +1,106 @@
-<section class="bx-about" aria-labelledby="bx-about-title">
-  <div class="bx-about__hero">
-    <img class="bx-about__hero-image" style="-webkit-mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.24) 22%,rgba(0,0,0,.72) 53%,#000 87%);mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.24) 22%,rgba(0,0,0,.72) 53%,#000 87%)" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-home-hero-2026.jpg?v=1793013818" alt="{{ 'boxeup_experience.alt_boxer' | t | escape }}" width="1920" height="1280" fetchpriority="high">
-    <div class="bx-about__hero-shade" aria-hidden="true" style="background:linear-gradient(to right,rgba(8,9,11,.84) 0%,rgba(8,9,11,.60) 34%,rgba(8,9,11,.25) 60%,transparent 88%)"></div>
-    <div class="bx-about__container bx-about__hero-content">
-      <p class="bx-about__eyebrow bx-about__eyebrow--light">{{ 'boxeup_experience.about_label' | t }}</p>
-      <h1 id="bx-about-title">{{ 'boxeup_experience.about_title' | t }}</h1>
-      <p class="bx-about__hero-description">{{ 'boxeup_experience.about_origin' | t }}</p>
-      <a class="bx-about__button bx-about__button--red" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_experience.catalog' | t }} <span aria-hidden="true">→</span></a>
-    </div>
-  </div>
-
-  <div class="bx-about__trust">
-    <div class="bx-about__container bx-about__trust-grid">
-      <div class="bx-about__benefit">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 6h18l5 8-14 15L2 14 7 6Z"/><path d="M2 14h28M11 6l-4 8 9 15 9-15-4-8"/></svg>
-        <div><strong>{{ 'boxeup_experience.selection_label' | t }}</strong><span>{{ 'boxeup_experience.selection_desc' | t }}</span></div>
+{%- liquid
+  assign bx_lang = request.locale.iso_code | slice: 0, 2
+  case bx_lang
+    when 'en'
+      assign bx_about_tag = 'ABOUT US'
+      assign bx_about_title_a = 'MADE FOR'
+      assign bx_about_title_b = 'THOSE WHO TRAIN.'
+      assign bx_about_intro = 'VIRIATTO is a Portuguese multi-brand store dedicated to combat sports. We bring equipment and brands together to make choosing gear simpler.'
+      assign bx_about_second = 'From boxing to Muay Thai, our goal is to help you find what you need and get back to training.'
+      assign bx_about_catalog = 'Explore the catalogue'
+      assign bx_about_steps_tag = 'HOW IT WORKS'
+      assign bx_about_steps_title = 'FROM BROWSING TO TRAINING'
+      assign bx_about_step_1 = 'Explore'
+      assign bx_about_step_1_text = 'Browse equipment by category, brand or combat sport.'
+      assign bx_about_step_2 = 'Choose'
+      assign bx_about_step_2_text = 'Compare products and find the right option for your training.'
+      assign bx_about_step_3 = 'Train'
+      assign bx_about_step_3_text = 'Choose your gear and focus on the next session.'
+      assign bx_about_help_title = 'NEED SOME HELP CHOOSING?'
+      assign bx_about_help_text = 'Ask us about products, orders or partnerships.'
+      assign bx_about_contact = 'Contact us'
+    when 'es'
+      assign bx_about_tag = 'SOBRE NOSOTROS'
+      assign bx_about_title_a = 'HECHO PARA'
+      assign bx_about_title_b = 'QUIEN ENTRENA.'
+      assign bx_about_intro = 'VIRIATTO es una tienda online portuguesa multimarca dedicada a los deportes de combate. Reunimos equipamiento y marcas para que elegir sea más sencillo.'
+      assign bx_about_second = 'Del boxeo al Muay Thai, queremos ayudarte a encontrar lo que necesitas y volver al entrenamiento.'
+      assign bx_about_catalog = 'Ver catálogo'
+      assign bx_about_steps_tag = 'CÓMO FUNCIONA'
+      assign bx_about_steps_title = 'DE LA ELECCIÓN AL ENTRENAMIENTO'
+      assign bx_about_step_1 = 'Explora'
+      assign bx_about_step_1_text = 'Descubre productos por categoría, marca o modalidad.'
+      assign bx_about_step_2 = 'Elige'
+      assign bx_about_step_2_text = 'Compara productos y encuentra el equipo adecuado.'
+      assign bx_about_step_3 = 'Entrena'
+      assign bx_about_step_3_text = 'Prepara tu equipo y céntrate en el próximo entrenamiento.'
+      assign bx_about_help_title = '¿NECESITAS AYUDA PARA ELEGIR?'
+      assign bx_about_help_text = 'Consúltanos sobre productos, pedidos o colaboraciones.'
+      assign bx_about_contact = 'Contactar'
+    else
+      assign bx_about_tag = 'SOBRE NÓS'
+      assign bx_about_title_a = 'FEITO PARA'
+      assign bx_about_title_b = 'QUEM TREINA.'
+      assign bx_about_intro = 'A VIRIATTO é uma loja online portuguesa multimarca dedicada aos desportos de combate. Reunimos equipamento e marcas num só lugar para simplificar a tua escolha.'
+      assign bx_about_second = 'Do Boxe ao Muay Thai, queremos que percas menos tempo à procura e tenhas mais tempo para treinar.'
+      assign bx_about_catalog = 'Explorar catálogo'
+      assign bx_about_steps_tag = 'COMO FUNCIONA'
+      assign bx_about_steps_title = 'DO CLIQUE AO TREINO'
+      assign bx_about_step_1 = 'Explora'
+      assign bx_about_step_1_text = 'Procura equipamento por categoria, marca ou modalidade.'
+      assign bx_about_step_2 = 'Escolhe'
+      assign bx_about_step_2_text = 'Compara produtos e encontra a opção certa para o teu treino.'
+      assign bx_about_step_3 = 'Treina'
+      assign bx_about_step_3_text = 'Prepara o equipamento e foca-te no próximo treino.'
+      assign bx_about_help_title = 'PRECISAS DE AJUDA A ESCOLHER?'
+      assign bx_about_help_text = 'Fala connosco sobre produtos, encomendas ou parcerias.'
+      assign bx_about_contact = 'Contactar'
+  endcase
+-%}
+<section class="viri-about" aria-labelledby="ViriAboutTitle">
+  <div class="viri-about__container">
+    <div class="viri-about__intro">
+      <div class="viri-about__heading">
+        <p class="viri-about__eyebrow">{{ bx_about_tag | escape }}</p>
+        <h1 id="ViriAboutTitle">{{ bx_about_title_a | escape }}<span>{{ bx_about_title_b | escape }}</span></h1>
       </div>
-      <div class="bx-about__benefit">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h18v17H2zM20 13h5l5 6v5H20z"/><circle cx="8" cy="25" r="3"/><circle cx="25" cy="25" r="3"/></svg>
-        <div><strong>{{ 'boxeup_experience.shipping' | t }}</strong><span>{{ 'boxeup_experience.shipping_help' | t }}</span></div>
-      </div>
-      <div class="bx-about__benefit">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round" aria-hidden="true"><path d="m16 2 12 5v8c0 8-5 12-12 15C9 27 4 23 4 15V7l12-5Z"/><path d="M16 8v16"/></svg>
-        <div><strong>{{ 'boxeup_experience.support' | t }}</strong><span>{{ 'boxeup_experience.about_support' | t }}</span></div>
-      </div>
-      <div class="bx-about__benefit">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="28" height="20" rx="2"/><path d="M2 12h28M7 21h7"/></svg>
-        <div><strong>{{ 'boxeup_experience.secure' | t }}</strong><span>{{ 'boxeup_experience.secure_desc' | t }}</span></div>
+      <div class="viri-about__summary">
+        <p>{{ bx_about_intro | escape }}</p>
+        <p>{{ bx_about_second | escape }}</p>
+        <a class="viri-about__catalog-link" href="{{ routes.all_products_collection_url }}">{{ bx_about_catalog | escape }} <span aria-hidden="true">↗</span></a>
       </div>
     </div>
-  </div>
 
-  <div class="bx-about__mission bx-about__container">
-    <div class="bx-about__mission-copy">
-      <p class="bx-about__eyebrow">{{ 'boxeup_experience.about_mission_label' | t }}</p>
-      <h2>{{ 'boxeup_experience.about_mission_title' | t }}</h2>
-      <p>{{ 'boxeup_experience.about_mission' | t }}</p>
-      <p>{{ 'boxeup_experience.about_future' | t }}</p>
+    <div class="viri-about__process">
+      <div class="viri-about__process-heading">
+        <p class="viri-about__eyebrow">{{ bx_about_steps_tag | escape }}</p>
+        <h2>{{ bx_about_steps_title | escape }}</h2>
+      </div>
+      <div class="viri-about__steps">
+        <article class="viri-about__step">
+          <span class="viri-about__step-number" aria-hidden="true">01</span>
+          <h3>{{ bx_about_step_1 | escape }}</h3>
+          <p>{{ bx_about_step_1_text | escape }}</p>
+        </article>
+        <article class="viri-about__step">
+          <span class="viri-about__step-number" aria-hidden="true">02</span>
+          <h3>{{ bx_about_step_2 | escape }}</h3>
+          <p>{{ bx_about_step_2_text | escape }}</p>
+        </article>
+        <article class="viri-about__step">
+          <span class="viri-about__step-number" aria-hidden="true">03</span>
+          <h3>{{ bx_about_step_3 | escape }}</h3>
+          <p>{{ bx_about_step_3_text | escape }}</p>
+        </article>
+      </div>
     </div>
-    <div class="bx-about__mosaic">
-      <div class="bx-about__mosaic-main"><img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-training-editorial-2026.jpg?v=1793013824" alt="{{ 'boxeup_experience.alt_equipment' | t | escape }}" width="1600" height="1068" loading="lazy"></div>
-      <div><img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-muay-thai.jpg?v=1792197595" alt="{{ 'boxeup_experience.alt_thai' | t | escape }}" width="1000" height="1000" loading="lazy"></div>
-      <div><img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-boxe.jpg?v=1792197588" alt="{{ 'boxeup_experience.alt_preparation' | t | escape }}" width="1000" height="1000" loading="lazy"></div>
-    </div>
-  </div>
 
-  <div class="bx-about__community">
-    <div class="bx-about__community-photo">
-      <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-disciplina-banner.jpg?v=1793120726" alt="{{ 'boxeup_experience.alt_boxer_training' | t | escape }}" width="2172" height="724" loading="lazy">
-    </div>
-    <div class="bx-about__community-copy">
-      <p class="bx-about__eyebrow">{{ 'boxeup_experience.about_approach_label' | t }}</p>
-      <h2>{{ 'boxeup_experience.about_approach_title' | t }}</h2>
-      <p>{{ 'boxeup_experience.about_approach' | t }}</p>
-    </div>
-  </div>
-
-  <div class="bx-about__categories bx-about__container">
-    <div class="bx-about__categories-heading">
-      <div><p class="bx-about__eyebrow">{{ 'boxeup_experience.about_categories' | t }}</p><h2>{{ 'boxeup_experience.about_categories_title' | t }}</h2></div>
-      <a href="{{ routes.all_products_collection_url }}" class="bx-about__text-link">{{ 'boxeup_experience.catalog' | t }} <span aria-hidden="true">→</span></a>
-    </div>
-    <div class="bx-about__categories-grid">
-      <a href="{{ collections['luvas-de-boxe-e-muay-thai'].url | default: routes.all_products_collection_url }}" class="bx-about__category">
-        <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-boxe.jpg?v=1792197588" alt="{{ 'boxeup_experience.alt_gloves' | t | escape }}" width="1000" height="1000" loading="lazy">
-        <span>{{ 'boxeup_experience.gloves' | t }} <span aria-hidden="true">→</span></span>
-      </a>
-      <a href="{{ collections['caneleiras-de-muay-thai-e-kickboxing'].url | default: routes.all_products_collection_url }}" class="bx-about__category">
-        <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-muay-thai.jpg?v=1792197595" alt="{{ 'boxeup_experience.alt_shins' | t | escape }}" width="1000" height="1000" loading="lazy">
-        <span>{{ 'boxeup_experience.shins' | t }} <span aria-hidden="true">→</span></span>
-      </a>
-      <a href="{{ collections['calcoes-e-roupa-de-combate'].url | default: routes.all_products_collection_url }}" class="bx-about__category">
-        <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-mma.jpg?v=1792197601" alt="{{ 'boxeup_experience.alt_combat' | t | escape }}" width="1000" height="1000" loading="lazy">
-        <span>{{ 'boxeup_experience.apparel' | t }} <span aria-hidden="true">→</span></span>
-      </a>
-      <a href="{{ collections['boqueiras-e-protecoes'].url | default: routes.all_products_collection_url }}" class="bx-about__category">
-        <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-jiu-jitsu.jpg?v=1792197608" alt="{{ 'boxeup_experience.alt_protection' | t | escape }}" width="1000" height="1000" loading="lazy">
-        <span>{{ 'boxeup_experience.protection' | t }} <span aria-hidden="true">→</span></span>
-      </a>
-      <a href="{{ collections['mochilas-e-sacos-de-treino-1'].url | default: routes.all_products_collection_url }}" class="bx-about__category">
-        <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-comunidade.webp?v=1793121082" alt="{{ 'boxeup_experience.alt_gym' | t | escape }}" width="2048" height="682" loading="lazy">
-        <span>{{ 'boxeup_experience.bags' | t }} <span aria-hidden="true">→</span></span>
-      </a>
-    </div>
-  </div>
-
-  <div class="bx-about__contact">
-    <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-comunidade.webp?v=1793121082" alt="" width="2048" height="682" loading="lazy">
-    <div class="bx-about__contact-shade" aria-hidden="true"></div>
-    <div class="bx-about__container bx-about__contact-inner">
-      <p class="bx-about__eyebrow">{{ 'boxeup_experience.about_contact_label' | t }}</p>
-      <h2>{{ 'boxeup_experience.about_contact_title' | t }}</h2>
-      <p>{{ 'boxeup_experience.about_contact_text' | t }}</p>
-      <a class="bx-about__button bx-about__button--white" href="{{ pages['contact'].url | default: '/pages/contact' }}">{{ 'boxeup_experience.contact' | t }} <span aria-hidden="true">→</span></a>
+    <div class="viri-about__help">
+      <div>
+        <h2>{{ bx_about_help_title | escape }}</h2>
+        <p>{{ bx_about_help_text | escape }}</p>
+      </div>
+      <a href="{{ pages['contact'].url | default: '/pages/contact' }}">{{ bx_about_contact | escape }} <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </section>

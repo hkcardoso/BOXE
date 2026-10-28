@@ -82,7 +82,7 @@
       <nav class="boxeup-breadcrumb boxeup-breadcrumb--product" aria-label="Percurso de navegação">
         <a href="{{ routes.root_url }}">Início</a><span aria-hidden="true">/</span>
         <a href="{{ routes.all_products_collection_url }}">Catálogo</a><span aria-hidden="true">/</span>
-        <span aria-current="page">{{ product.title | escape }}</span>
+        <span aria-current="page" class="boxeup-breadcrumb__current" style="color:#f3f4f6!important;opacity:1!important;text-shadow:none!important;">{{ product.title | escape }}</span>
       </nav>
       <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} bxp-product-grid grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
         <div class="grid__item product__media-wrapper">

@@ -692,9 +692,12 @@
   /* VIRIATTO 2026-10-28 / GitHub-to-Shopify visual sync fallback */
   /* The product breadcrumb must remain legible over the dark detail-page background. */
   body #MainContent[data-template="product"] nav.boxeup-breadcrumb.boxeup-breadcrumb--product > span[aria-current="page"] {
-    color: #f0f0f3 !important;
+    color: #f3f4f6 !important;
+    -webkit-text-fill-color: #f3f4f6 !important;
     opacity: 1 !important;
     text-shadow: none !important;
+    mix-blend-mode: normal !important;
+    filter: none !important;
   }
   /* Show the real compare-at-price percentage more prominently on product cards. */
   body #MainContent .vh-home .vh-tile .vh-tile__discount:not(.vh-tile__discount--sold) {

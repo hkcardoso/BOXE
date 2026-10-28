@@ -1,306 +1,289 @@
-{{ 'boxeup-home.css' | asset_url | stylesheet_tag }}
 {{ 'quick-add.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
-<style>
-  /* BOXEUP SVG arrows: section-local style to prevent emoji rendering */
-  .section-boxeup-home .bxv2 .bxv2-arrow-svg{display:block;width:15px;height:15px;flex:none;stroke:currentColor;fill:none;vertical-align:middle}
-  .section-boxeup-home .bxv2 .bxv2-btn>span[aria-hidden="true"]{display:inline-flex;align-items:center;justify-content:center;font-size:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
-  .section-boxeup-home .bxv2 .bxv2-cat .bxv2-cat__arrow{display:grid;place-items:center;width:27px;height:27px;font-size:0!important;background:rgba(12,13,16,.35);border:1px solid rgba(255,255,255,.48);box-shadow:none;border-radius:50%}
-  .section-boxeup-home .bxv2 .bxv2-cat .bxv2-cat__arrow .bxv2-arrow-svg{width:14px;height:14px}
-  .section-boxeup-home .bxv2 .bxv2-mod__arrow .bxv2-arrow-svg{width:15px;height:15px}
-  @media(max-width:749px){.section-boxeup-home .bxv2 .bxv2-btn>span[aria-hidden="true"] .bxv2-arrow-svg{width:14px;height:14px}}
+<script src="{{ 'quick-add.js' | asset_url }}" defer></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer></script>
 
-  /* BOXEUP: dark overlay INSIDE the video layer so it always covers the footage.
-     Keep the copy and action buttons above the entire video stack. */
-  #shopify-section-{{ section.id }} .bxv2-hero__media {
-    position: absolute !important;
-    inset: 0 !important;
-    overflow: hidden !important;
-    z-index: 0 !important;
+{%- liquid
+  assign vh_locale = request.locale.iso_code | slice: 0, 2
+  assign vh_eyebrow = 'EQUIPAMENTO PARA'
+  assign vh_title_a = 'QUEM'
+  assign vh_title_b = 'TREINA.'
+  assign vh_intro = 'Luvas, proteções, vestuário e acessórios das melhores marcas de desportos de combate.'
+  assign vh_shop = 'VER PRODUTOS'
+  assign vh_brands = 'EXPLORAR MARCAS'
+  assign vh_featured = 'EM DESTAQUE'
+  assign vh_new = 'NOVIDADES'
+  assign vh_all = 'VER TODOS'
+  assign vh_delivery = 'ENTREGA EM PORTUGAL'
+  assign vh_returns = 'DEVOLUÇÕES'
+  assign vh_returns_desc = 'Consulta as condições'
+  assign vh_support = 'APOIO AO CLIENTE'
+  assign vh_support_desc = 'Estamos aqui para ajudar'
+  assign vh_shipping = 'PORTES GRÁTIS'
+  assign vh_shipping_desc = 'Em encomendas superiores a 79 €'
+  if vh_locale == 'en'
+    assign vh_eyebrow = 'EQUIPMENT FOR'
+    assign vh_title_a = 'THOSE WHO'
+    assign vh_title_b = 'TRAIN.'
+    assign vh_intro = 'Gloves, protection, clothing and accessories from leading combat sports brands.'
+    assign vh_shop = 'SHOP PRODUCTS'
+    assign vh_brands = 'EXPLORE BRANDS'
+    assign vh_featured = 'FEATURED'
+    assign vh_new = 'NEW ARRIVALS'
+    assign vh_all = 'VIEW ALL'
+    assign vh_delivery = 'DELIVERY IN PORTUGAL'
+    assign vh_returns = 'RETURNS'
+    assign vh_returns_desc = 'See our policy'
+    assign vh_support = 'CUSTOMER SUPPORT'
+    assign vh_support_desc = 'Here to help'
+    assign vh_shipping = 'FREE SHIPPING'
+    assign vh_shipping_desc = 'On orders over €79'
+  elsif vh_locale == 'es'
+    assign vh_eyebrow = 'EQUIPAMIENTO PARA'
+    assign vh_title_a = 'QUIENES'
+    assign vh_title_b = 'ENTRENAN.'
+    assign vh_intro = 'Guantes, protecciones, ropa y accesorios de las mejores marcas de deportes de combate.'
+    assign vh_shop = 'VER PRODUCTOS'
+    assign vh_brands = 'EXPLORAR MARCAS'
+    assign vh_featured = 'DESTACADOS'
+    assign vh_new = 'NOVEDADES'
+    assign vh_all = 'VER TODOS'
+    assign vh_delivery = 'ENTREGAS EN PORTUGAL'
+    assign vh_returns = 'DEVOLUCIONES'
+    assign vh_returns_desc = 'Consulta las condiciones'
+    assign vh_support = 'ATENCIÓN AL CLIENTE'
+    assign vh_support_desc = 'Estamos para ayudarte'
+    assign vh_shipping = 'ENVÍO GRATIS'
+    assign vh_shipping_desc = 'En pedidos superiores a 79 €'
+  endif
+  assign vh_featured_products = section.settings.featured_products | default: section.settings.featured_collection.products | default: collections['all'].products
+  assign vh_latest_products = collections['all'].products | sort: 'created_at' | reverse
+-%}
+
+<style>
+  /* 2026 VIRIATTO homepage — compact premium commerce layout */
+  .section-boxeup-home{background:#0c0d0f!important}
+  .vh-home,.vh-home *{box-sizing:border-box}
+  .vh-home{background:#0c0d0f;color:#f6f6f7;font-family:var(--font-body-family,Arial,sans-serif);overflow:hidden}
+  .vh-home a{color:inherit;text-decoration:none}
+  .vh-frame{width:min(100%,1330px);margin-inline:auto;padding-inline:clamp(18px,5.2vw,86px)}
+  .vh-hero{height:clamp(390px,34vw,530px);min-height:390px;position:relative;isolation:isolate;display:flex;align-items:center;overflow:hidden;background:#08090b}
+  .vh-hero__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 43%;z-index:-2}
+  .vh-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(1,2,4,.95) 0%,rgba(1,2,4,.85) 25%,rgba(1,2,4,.55) 47%,rgba(1,2,4,.07) 79%),linear-gradient(0deg,rgba(0,0,0,.48),transparent 34%);z-index:-1}
+  .vh-hero__inner{position:relative;width:100%;padding-block:56px 64px}
+  .vh-hero__copy{max-width:700px}
+  .vh-eyebrow{font-size:12px;letter-spacing:.35em;font-weight:600;margin:0 0 10px;color:#d9d9df}
+  .vh-title{font-family:'Benzin',var(--font-heading-family,Arial,sans-serif);font-weight:800;font-size:clamp(52px,5.9vw,96px);letter-spacing:-.055em;line-height:.96;margin:0;color:#fff;text-transform:uppercase}
+  .vh-intro{font-size:clamp(13px,1.15vw,16px);line-height:1.46;color:#d5d6db;max-width:440px;margin:18px 0 22px}
+  .vh-actions{display:flex;gap:11px;flex-wrap:wrap}
+  .vh-button{min-height:39px;padding:10px 18px;display:inline-flex;align-items:center;justify-content:center;gap:17px;border:1px solid rgba(255,255,255,.65);font-size:11px;font-weight:750;letter-spacing:.025em;border-radius:3px;transition:background .18s,border-color .18s,transform .18s}
+  .vh-button svg{width:15px;height:15px}
+  .vh-button:hover{transform:translateY(-2px)}
+  .vh-button--primary{color:#111215!important;background:#fff;border-color:#fff}
+  .vh-button--primary:hover{background:#d9d9dc}
+  .vh-button--secondary{background:rgba(3,4,6,.38);color:#fff!important}
+  .vh-button--secondary:hover{background:rgba(255,255,255,.14)}
+  .vh-hero__dash{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:7px}
+  .vh-hero__dash span{width:29px;height:3px;background:rgba(255,255,255,.32);border-radius:8px}
+  .vh-hero__dash span:first-child{background:#fff}
+  .vh-brands{border-top:1px solid #2e3034;border-bottom:1px solid #2e3034;background:#0b0c0e}
+  .vh-brands__inner{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));align-items:center;gap:clamp(10px,1.8vw,25px);min-height:86px}
+  .vh-brand{display:flex;align-items:center;justify-content:center;min-height:67px;opacity:.82;transition:opacity .2s,transform .2s}
+  .vh-brand:hover{opacity:1;transform:translateY(-2px)}
+  .vh-brand img{display:block;width:100%;max-width:105px;height:46px;object-fit:contain;filter:grayscale(1)}
+  .vh-brand__word{color:#fff;font-family:'Benzin',Arial,sans-serif;font-size:clamp(12px,1.05vw,17px);font-weight:750;letter-spacing:-.05em;text-align:center;line-height:1.05}
+  .vh-brand__word small{font-size:8px;display:block;letter-spacing:.12em}
+  .vh-products{padding-block:19px 3px}
+  .vh-products + .vh-products{padding-block:14px 22px}
+  .vh-products__heading{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 13px}
+  .vh-products__heading h2{font-family:'Benzin',var(--font-heading-family,Arial,sans-serif);font-weight:800;letter-spacing:-.035em;font-size:clamp(18px,2vw,26px);line-height:1.18;margin:0;color:#f7f7f7}
+  .vh-products__all{display:inline-flex;gap:8px;align-items:center;flex-shrink:0;color:#e7e7e9!important;letter-spacing:.04em;font-size:10px;font-weight:700;text-transform:uppercase}
+  .vh-products__all svg{width:13px;height:13px;transition:transform .15s}
+  .vh-products__all:hover svg{transform:translateX(3px)}
+  .vh-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+  .vh-card{min-width:0;background:#141518;border:1px solid #2e3034;border-radius:4px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+  .vh-card:hover{border-color:#696b70;transform:translateY(-2px)}
+  .vh-card__media{position:relative;display:block;aspect-ratio:1.12/1;background:radial-gradient(ellipse at 47% 32%,#3b3d40 0%,#27292c 49%,#161719 100%);overflow:hidden}
+  .vh-card__image,.vh-card__placeholder{width:100%;height:100%;object-fit:contain;display:block;transition:transform .25s;mix-blend-mode:multiply;filter:contrast(1.13) brightness(1.22)}
+  .vh-card__image{padding:3%}
+  .vh-card:hover .vh-card__image{transform:scale(1.055)}
+  .vh-card__badge{position:absolute;top:8px;left:8px;z-index:2;font-size:9px;font-weight:700;padding:4px 6px;background:#ca2438;color:#fff}
+  .vh-card__badge--muted{background:#44464b}
+  .vh-card__body{padding:9px 10px 10px;min-height:110px;display:flex;flex-direction:column;flex:1}
+  .vh-card__vendor{color:#b8b9bd;font-size:9px;font-weight:700;letter-spacing:.045em;text-transform:uppercase;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .vh-card__title{font-size:12px;font-weight:700;line-height:1.24;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .vh-card__type{font-size:9px;color:#a6a7ad;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+  .vh-card__end{margin-top:auto;padding-top:8px;display:flex;align-items:flex-end;justify-content:space-between;gap:6px}
+  .vh-card__price{display:flex;gap:5px;flex-wrap:wrap;align-items:baseline}
+  .vh-card__price strong{color:#fff;font-size:12px;font-weight:800;white-space:nowrap}
+  .vh-card__price del{font-size:10px;color:#929399;white-space:nowrap}
+  .vh-card__add{flex:0 0 30px;width:30px;height:30px;border:1px solid #66686e;border-radius:3px;background:transparent;color:#fff;display:grid;place-items:center;cursor:pointer;transition:background .2s,border-color .2s}
+  .vh-card__add:hover{background:#fff;color:#111;border-color:#fff}
+  .vh-card__add svg{width:17px;height:17px}
+  .vh-card__add--disabled{opacity:.4}
+  .vh-trust{border-top:1px solid #2d2e32;border-bottom:1px solid #2d2e32;margin-top:6px}
+  .vh-trust__inner{min-height:63px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:center}
+  .vh-trust__item{display:flex;gap:10px;align-items:center;min-width:0}
+  .vh-trust__item svg{width:23px;height:23px;flex:0 0 23px;stroke:#f2f2f3;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .vh-trust__item strong{font-size:10px;color:#f8f8f8;display:block;line-height:1.35}
+  .vh-trust__item small{font-size:9px;color:#a9aaaf;display:block}
+  .vh-empty{font-size:13px;color:#b1b2b7;border:1px dashed #3a3b41;padding:28px;margin:0}
+  /* The reference uses a two-level desktop header with visible search. */
+  @media(min-width:990px){
+    body:has(.vh-home) .header-wrapper{background:#08090b!important;border-bottom:0!important}
+    body:has(.vh-home) .header{max-width:1330px!important;padding:6px clamp(18px,5.2vw,86px) 0!important;min-height:102px!important;display:grid!important;grid-template-columns:minmax(190px,230px) minmax(280px,1fr) auto!important;grid-template-rows:54px 38px!important;gap:0 22px!important;align-items:center!important}
+    body:has(.vh-home) .header__heading,body:has(.vh-home) .header__heading-link{grid-row:1!important;grid-column:1!important;justify-self:start!important;align-self:center}
+    body:has(.vh-home) .vh-header-search{grid-row:1;grid-column:2;display:block;width:min(100%,570px);justify-self:start}
+    body:has(.vh-home) .header__icons{grid-row:1!important;grid-column:3!important;justify-self:end!important}
+    body:has(.vh-home) .header__inline-menu{grid-row:2!important;grid-column:1/-1!important;justify-self:start!important;align-self:center!important;display:block!important}
+    body:has(.vh-home) .header__inline-menu .list-menu--inline{gap:clamp(4px,1.2vw,18px)}
+    body:has(.vh-home) .header__inline-menu .header__menu-item{font-size:12px!important;padding:8px 12px!important}
+    body:has(.vh-home) .header__search{display:none!important}
+    body:has(.vh-home) .header__heading-logo{max-height:43px;width:auto}
   }
-  /* Preserve the original brightness of the footage. */
-  #shopify-section-{{ section.id }} .bxv2-hero__media .bxv2-hero__motion,
-  #shopify-section-{{ section.id }} .bxv2-hero__media .bxv2-hero__still {
-    filter: none !important;
+  .vh-header-search{display:none}
+  .vh-header-search__form{display:flex;align-items:center;gap:11px;width:100%;height:36px;border-radius:4px;background:#232528;border:1px solid #52545a;padding:0 12px;color:#fff}
+  .vh-header-search__form svg{width:17px;height:17px;flex-shrink:0;stroke:#f7f7f8;fill:none;stroke-width:1.8}
+  .vh-header-search__form input{background:transparent;border:0;outline:0;color:#fff;font-family:inherit;font-size:12px;width:100%;height:100%}
+  .vh-header-search__form input::placeholder{color:#bdbec4}
+  .vh-header-search__form:focus-within{border-color:#fff}
+  @media(min-width:750px) and (max-width:1100px){
+    .vh-brands__inner{gap:8px}
+    .vh-grid{gap:9px}
+    .vh-card__body{padding:8px}
   }
-  #shopify-section-{{ section.id }} .bxv2-hero__video-overlay {
-    display: block !important;
-    position: absolute !important;
-    inset: 0 !important;
-    z-index: 4 !important;
-    width: 100% !important;
-    height: 100% !important;
-    pointer-events: none !important;
-    /* Balanced left-to-right fade: readable copy, visible gym footage. */
-    background: linear-gradient(90deg,
-      rgba(3,4,6,.86) 0%, rgba(3,4,6,.78) 20%,
-      rgba(3,4,6,.62) 35%, rgba(3,4,6,.34) 52%,
-      rgba(3,4,6,.09) 72%, rgba(3,4,6,.02) 88%,
-      rgba(3,4,6,0) 100%),
-      linear-gradient(0deg,rgba(3,4,6,.23),transparent 45%) !important;
+  @media(max-width:989px){
+    .vh-brands__inner{display:flex;overflow-x:auto;gap:24px;scrollbar-width:none;min-height:78px}
+    .vh-brand{min-width:94px;flex:0 0 auto}
+    .vh-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .vh-trust__inner{grid-template-columns:repeat(2,minmax(0,1fr));padding-block:16px;gap:20px}
   }
-  @media(max-width:749px) {
-    #shopify-section-{{ section.id }} .bxv2-hero__video-overlay {
-      background:linear-gradient(0deg,
-        rgba(3,4,6,.88) 0%, rgba(3,4,6,.75) 38%,
-        rgba(3,4,6,.32) 75%, rgba(3,4,6,.05) 100%),
-        linear-gradient(90deg,rgba(3,4,6,.20),transparent 88%) !important;
-    }
+  @media(max-width:749px){
+    .vh-hero{height:clamp(490px,130vw,620px);min-height:490px;align-items:flex-end}
+    .vh-hero__image{object-position:66% center}
+    .vh-hero:before{background:linear-gradient(0deg,rgba(1,2,4,.95) 0%,rgba(1,2,4,.81) 25%,rgba(1,2,4,.48) 59%,rgba(1,2,4,.12) 100%)}
+    .vh-hero__inner{padding-bottom:70px;padding-top:40px}
+    .vh-hero__copy{max-width:100%}
+    .vh-eyebrow{font-size:10px;letter-spacing:.25em}
+    .vh-title{font-size:clamp(41px,9.4vw,67px)}
+    .vh-intro{font-size:13px;max-width:335px}
+    .vh-button{font-size:10px;padding:10px 12px;gap:9px}
+    .vh-hero__dash{bottom:17px}
+    .vh-products{padding-top:22px}
+    .vh-products__heading h2{font-size:18px}
+    .vh-products__all{font-size:9px}
+    .vh-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+    .vh-card__media{aspect-ratio:1/1}
+    .vh-card__title{font-size:11px}
+    .vh-card__body{min-height:105px;padding:8px}
+    .vh-card__end{gap:2px}
+    .vh-card__price strong{font-size:11px}
+    .vh-trust__item{gap:8px}
+    .vh-trust__item svg{width:19px;height:19px;flex-basis:19px}
+    .vh-trust__item strong{font-size:9px}
+    .vh-trust__item small{font-size:8px}
   }
+  @media(prefers-reduced-motion:reduce){.vh-home a,.vh-home img,.vh-home button{transition:none!important}}
 </style>
 
-{% assign bx_products = section.settings.featured_products | default: section.settings.featured_collection.products | default: collections['all'].products %}
-
-<section class="bxv2" aria-label="{{ 'boxeup_sections.aria_home' | t }}">
-  <div class="bxv2-wrap">
-    <div class="bxv2-hero">
-      <div class="bxv2-hero__media">
-        {%- liquid
-          assign boxeup_video_hd = blank
-          assign boxeup_video_mobile = blank
-          assign boxeup_video_fallback = blank
-          for source in section.settings.hero_video.sources
-            if source.format == 'mp4'
-              if boxeup_video_fallback == blank
-                assign boxeup_video_fallback = source.url
-              endif
-              if source.height <= 720 and source.height >= 360
-                assign boxeup_video_mobile = source.url
-              endif
-              if source.height == 1080
-                assign boxeup_video_hd = source.url
-              endif
-            endif
-          endfor
-          assign boxeup_video_hd = boxeup_video_hd | default: boxeup_video_fallback
-          assign boxeup_video_mobile = boxeup_video_mobile | default: boxeup_video_hd
-        -%}
-        {% if boxeup_video_hd != blank %}
-          <video class="bxv2-hero__motion bxv2-hero__motion--video" muted loop playsinline preload="metadata" poster="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" aria-hidden="true" tabindex="-1" disablepictureinpicture>
-            <source src="{{ boxeup_video_mobile | escape }}" media="(max-width: 749px)" type="video/mp4">
-            <source src="{{ boxeup_video_hd | escape }}" type="video/mp4">
-          </video>
-        {% elsif section.settings.hero_video != blank %}
-          {{ section.settings.hero_video | video_tag: autoplay: false, loop: true, muted: true, controls: false, playsinline: true, preload: 'metadata', class: 'bxv2-hero__motion bxv2-hero__motion--video' }}
-        {% else %}
-          <img class="bxv2-hero__motion" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1600" height="900" fetchpriority="high">
-        {% endif %}
-        <img class="bxv2-hero__still" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1600" height="900" loading="eager" decoding="async">
-        {% comment %}Positioned over the video itself, not behind a separate video stacking layer.{% endcomment %}
-        <div class="bxv2-hero__video-overlay" aria-hidden="true"></div>
-      </div>
-      <div class="bxv2-hero__inner">
-        <p class="bxv2-overline"><span class="bxv2-dot"></span> {{ 'boxeup_sections.home_overline' | t }}</p>
-        <h1>{{ 'boxeup_sections.home_h1a' | t }}<br>{{ 'boxeup_sections.home_h1b' | t }} <em>{{ 'boxeup_sections.home_h1c' | t }}</em></h1>
-        <p class="bxv2-hero__desc">{{ 'boxeup_experience.home_intro' | t }}</p>
-        <div class="bxv2-actions">
-          <a class="bxv2-btn bxv2-btn--red" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_catalog' | t }} <span aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></a>
-          <a class="bxv2-btn bxv2-btn--glass" href="#bxv2-modalidades">{{ 'boxeup_sections.home_disciplines' | t }} <span aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></a>
+<section class="vh-home" aria-label="{{ 'boxeup_sections.aria_home' | t }}">
+  <div class="vh-hero">
+    {%- if section.settings.hero_image != blank -%}
+      {{ section.settings.hero_image | image_url: width: 2200 | image_tag: class: 'vh-hero__image', widths: '800,1200,1600,2200', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: '' }}
+    {%- else -%}
+      <img class="vh-hero__image" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1920" height="1080" loading="eager" fetchpriority="high">
+    {%- endif -%}
+    <div class="vh-frame vh-hero__inner">
+      <div class="vh-hero__copy">
+        <p class="vh-eyebrow">{{ vh_eyebrow }}</p>
+        <h1 class="vh-title">{{ vh_title_a }}<br>{{ vh_title_b }}</h1>
+        <p class="vh-intro">{{ vh_intro }}</p>
+        <div class="vh-actions">
+          <a class="vh-button vh-button--primary" href="{{ routes.all_products_collection_url }}">{{ vh_shop }} <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+          <a class="vh-button vh-button--secondary" href="#VHomeBrands">{{ vh_brands }}</a>
         </div>
-        <span class="bxv2-hero__index">{{ 'boxeup_sections.home_boxing' | t }} <b>/</b> MUAY THAI <b>/</b> MMA <b>/</b> JIU-JITSU</span>
-      </div>
-      <button type="button" class="bx-video-toggle" data-bx-video aria-label="{{ 'boxeup_experience.pause' | t }}"><span aria-hidden="true">Ⅱ</span></button>
-      <div class="bxv2-hero__stamp" aria-hidden="true">{{ 'boxeup_sections.home_discipline' | t }}<br>{{ 'boxeup_sections.home_focus' | t }}<br>{{ 'boxeup_sections.home_progress' | t }}<span>.</span></div>
-      <div class="bxv2-trust" aria-label="{{ 'boxeup_sections.aria_trust' | t }}">
-        <span><i aria-hidden="true">✦</i> {{ 'boxeup_sections.home_portuguese' | t }}</span>
-        <span><i aria-hidden="true">✦</i> {{ 'boxeup_sections.home_multibrand' | t }}</span>
-        <span><i aria-hidden="true">✦</i> {{ 'boxeup_sections.home_secure' | t }}</span>
       </div>
     </div>
+    <div class="vh-hero__dash" aria-hidden="true"><span></span><span></span><span></span></div>
   </div>
 
-  {% comment %}Merchandising sections share the same content rail as the catalog, unlike the full-bleed hero.{% endcomment %}
-  <div class="bxv2-wrap bxv2-wrap--merchandising">
-    <div class="bxv2-block bxv2-block--categories">
-      <div class="bxv2-heading">
-        <div>
-          <p class="bxv2-kicker">{{ 'boxeup_sections.home_choose_gear' | t }}</p>
-          <h2>{{ 'boxeup_sections.home_start' | t }}<span class="bxv2-red">.</span></h2>
-        </div>
-        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_all_catalog' | t }} <span class="bx-inline-arrow" aria-hidden="true"><svg class="bxv2-arrow-svg bxv2-arrow-svg--right" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a>
-      </div>
-      <div class="bxv2-cat-grid">
-        <a href="{{ collections['luvas-de-boxe-e-muay-thai'].url }}#boxeup-catalog-filters" class="bxv2-cat bxv2-cat--1" aria-label="{{ 'boxeup_sections.aria_gloves' | t }}">
-          {% render 'boxeup-category-product', product_handle: 'charlie-bat-x-luvas-de-treino', alt: 'Luvas Charlie Bat-X vermelhas' %}
-          <span class="bxv2-cat__label"><strong>{{ 'boxeup_sections.home_gloves' | t }}</strong><span class="bxv2-cat__arrow" aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></span>
+  <nav class="vh-brands" id="VHomeBrands" aria-label="{{ vh_brands }}">
+    <div class="vh-frame vh-brands__inner">
+      {%- assign vh_brand_handles = 'fairtex,venum,everlast,leone-1947,charlie,rdx,cleto-reyes,rival,twins' | split: ',' -%}
+      {%- for vh_brand_handle in vh_brand_handles -%}
+        {%- assign vh_brand_collection = collections[vh_brand_handle] -%}
+        {%- assign vh_brand_name = vh_brand_handle | replace: '-', ' ' | capitalize -%}
+        {%- assign vh_brand_logo = '' -%}
+        {%- case vh_brand_handle -%}
+          {%- when 'fairtex' -%}{%- assign vh_brand_name = 'Fairtex' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-fairtex-white.png?v=1793040787' -%}
+          {%- when 'venum' -%}{%- assign vh_brand_name = 'Venum' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-venum-white.png?v=1793040818' -%}
+          {%- when 'everlast' -%}{%- assign vh_brand_name = 'Everlast' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-everlast-white.png?v=1793040849' -%}
+          {%- when 'leone-1947' -%}{%- assign vh_brand_name = 'Leone 1947' -%}
+          {%- when 'charlie' -%}{%- assign vh_brand_name = 'Charlie' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-charlie-white.png?v=1793040801' -%}
+          {%- when 'rdx' -%}{%- assign vh_brand_name = 'RDX' -%}
+          {%- when 'cleto-reyes' -%}{%- assign vh_brand_name = 'Cleto Reyes' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-reyes-white.png?v=1793040826' -%}
+          {%- when 'rival' -%}{%- assign vh_brand_name = 'Rival' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-rival-white.png?v=1793040835' -%}
+          {%- when 'twins' -%}{%- assign vh_brand_name = 'Twins' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-twins-white.png?v=1793040843' -%}
+        {%- endcase -%}
+        <a class="vh-brand" href="{% if vh_brand_collection != blank %}{{ vh_brand_collection.url }}{% else %}{{ routes.search_url }}?q={{ vh_brand_name | url_encode }}{% endif %}" aria-label="{{ vh_brand_name | escape }}">
+          {%- if vh_brand_logo != blank -%}<img src="{{ vh_brand_logo }}" alt="{{ vh_brand_name | escape }}" width="120" height="50" loading="lazy">
+          {%- else -%}<span class="vh-brand__word">{{ vh_brand_name }}</span>{%- endif -%}
         </a>
-        <a href="{{ collections['caneleiras-de-muay-thai-e-kickboxing'].url }}#boxeup-catalog-filters" class="bxv2-cat bxv2-cat--2" aria-label="{{ 'boxeup_sections.aria_shins' | t }}">
-          {% render 'boxeup-category-product', product_handle: 'fairtex-sp5-caneleiras-de-competicao', alt: 'Caneleiras Fairtex SP5' %}
-          <span class="bxv2-cat__label"><strong>{{ 'boxeup_sections.home_shinguards' | t }}</strong><span class="bxv2-cat__arrow" aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></span>
-        </a>
-        <a href="{{ collections['boqueiras-e-protecoes'].url }}#boxeup-catalog-filters" class="bxv2-cat bxv2-cat--3" aria-label="{{ 'boxeup_sections.aria_mouth' | t }}">
-          {% render 'boxeup-category-product', product_handle: 'venum-challenger-boqueira-com-caixa', alt: 'Boqueira Venum Challenger' %}
-          <span class="bxv2-cat__label"><strong>{{ 'boxeup_sections.home_mouthguards' | t }}</strong><span class="bxv2-cat__arrow" aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></span>
-        </a>
-        <a href="{{ collections['vestuario-e-fightwear'].url }}#boxeup-catalog-filters" class="bxv2-cat bxv2-cat--4" aria-label="{{ 'boxeup_sections.aria_apparel' | t }}">
-          {% render 'boxeup-category-product', product_handle: 'charlie-tss-muay-thai-calcoes-de-muay-thai', alt: 'Calções FLUORY de Muay Thai' %}
-          <span class="bxv2-cat__label"><strong>{{ 'boxeup_sections.home_apparel' | t }}</strong><span class="bxv2-cat__arrow" aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></span>
-        </a>
-        <a href="{{ collections['mochilas-e-sacos-de-treino-1'].url }}#boxeup-catalog-filters" class="bxv2-cat bxv2-cat--5" aria-label="{{ 'boxeup_sections.aria_bags' | t }}">
-          {% render 'boxeup-category-product', product_handle: 'venum-challenger-pro-evo-mochila-22-5-l', alt: 'Mochila Venum Challenger Pro Evo' %}
-          <span class="bxv2-cat__label"><strong>{{ 'boxeup_sections.home_bags' | t }}</strong><span class="bxv2-cat__arrow" aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></span>
-        </a>
-        <a href="{{ collections['equipamento-de-treino'].url }}#boxeup-catalog-filters" class="bxv2-cat bxv2-cat--6" aria-label="{{ 'boxeup_sections.aria_training' | t }}">
-          {% render 'boxeup-category-product', product_handle: 'rival-rhg2-capacete-hibrido', alt: 'Capacete Rival RHG2 de treino' %}
-          <span class="bxv2-cat__label"><strong>{{ 'boxeup_sections.home_gear' | t }}</strong><span class="bxv2-cat__arrow" aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></span>
-        </a>
-      </div>
+      {%- endfor -%}
     </div>
+  </nav>
 
-    <div class="bxv2-block bxv2-block--products" id="bxv2-destaques">
-      <div class="bxv2-heading">
-        <div><p class="bxv2-kicker">{{ 'boxeup_sections.home_featured' | t }}</p><h2>{{ 'boxeup_sections.home_featured_title' | t }}<span class="bxv2-red">.</span></h2><p>{{ 'boxeup_sections.home_featured_desc' | t }}</p></div>
-        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_all_products' | t }} <span class="bx-inline-arrow" aria-hidden="true"><svg class="bxv2-arrow-svg bxv2-arrow-svg--right" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a>
+  <div class="vh-frame">
+    <section class="vh-products" id="VHomeFeatured" aria-labelledby="VHomeFeaturedTitle">
+      <div class="vh-products__heading">
+        <h2 id="VHomeFeaturedTitle">{{ vh_featured }}</h2>
+        <a class="vh-products__all" href="{{ routes.all_products_collection_url }}">{{ vh_all }} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
       </div>
-      {% if bx_products.size > 0 %}
-        <div class="bxv2-product-grid">
-          {% assign bx_shown = 0 %}
-          {% assign bx_seen_types = '' %}
-          {% assign bx_twice_types = '' %}
-          {% for product in bx_products %}
-                  {%- assign bx_vendor = product.vendor | downcase | strip -%}
-{%- assign bx_title = product.title | downcase | strip -%}
-{%- if bx_vendor == 'my store' or product.price == 0 or product.tags contains 'boxeup:hidden' or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}{%- continue -%}{%- endif -%}
-            {% assign bx_vendor = product.vendor | downcase %}
-            {% if bx_vendor == 'my store' or product.price == 0 or product.tags contains 'boxeup:hidden' %}{% continue %}{% endif %}
-            {% if bx_shown == 10 %}{% break %}{% endif %}
-            {% assign bx_product_title = product.title | downcase %}
-            {% if bx_product_title contains 't-shirt portugal' %}{% continue %}{% endif %}
-            {% assign bx_type = product.type | default: product.vendor | handleize %}
-            {% assign bx_type_marker = '|' | append: bx_type | append: '|' %}
-            {% if bx_twice_types contains bx_type_marker %}{% continue %}{% endif %}
-            {% if bx_seen_types contains bx_type_marker %}{% assign bx_twice_types = bx_twice_types | append: bx_type_marker %}{% endif %}
-            {% assign bx_seen_types = bx_seen_types | append: bx_type_marker %}
-            {% assign bx_shown = bx_shown | plus: 1 %}
-            <article class="bxv2-product">
-              <a class="bxv2-product__image" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
-                {% if product.featured_image %}
-                  {{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '300,450,600,700', sizes: '(min-width:990px) 18vw, (min-width:750px) 30vw, 47vw', alt: product.title }}
-                {% else %}
-                  {{ 'product-1' | placeholder_svg_tag: 'bxv2-product__placeholder' }}
-                {% endif %}
-                {% if product.compare_at_price > product.price %}<span class="bxv2-product__badge">{{ 'boxeup_sections.home_sale' | t }}</span>{% elsif product.available == false %}<span class="bxv2-product__badge bxv2-product__badge--neutral">{{ 'boxeup_sections.home_sold_out' | t }}</span>{% endif %}
-              </a>
-              <div class="bxv2-product__info">
-                {%- assign bx_home_parts = product.title | split: ' — ' -%}
-                {%- if bx_home_parts.size == 1 -%}{%- assign bx_home_parts = product.title | split: ' | ' -%}{%- endif -%}
-                <a href="{{ product.url }}" class="bxv2-product__title" aria-label="{{ product.title | escape }}">{% if bx_home_parts.size > 1 %}{{ bx_home_parts.first | escape }}{% else %}{{ product.title | escape }}{% endif %}</a>
-                {% if bx_home_parts.size > 1 %}
-                  <p class="bxv2-product__subtitle">{{ bx_home_parts[1] | strip | escape }}</p>
-                {% elsif product.vendor != blank %}
-                  <p class="bxv2-product__subtitle">{{ product.vendor | escape }}</p>
-                {% endif %}
-                {% render 'boxeup-real-swatches', product: product %}
-                <div class="bxv2-product__bottom">
-                  <div class="bxv2-product__prices">
-                    <strong>{{ product.price | money }}</strong>
-                    {% if product.compare_at_price > product.price %}<del>{{ product.compare_at_price | money }}</del>{% endif %}
-                  </div>
-                  <div class="boxeup-home-card-actions">
-                    <a class="bxv2-product__view" href="{{ product.url }}" aria-label="{{ 'boxeup_sections.view_item' | t }} {{ product.title | escape }}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></a>
-                    {% if product.available %}
-                      <modal-opener data-modal="#HomeQuickAdd-{{ product.id }}">
-                        <button type="button" class="bxv2-product__add" aria-haspopup="dialog" aria-label="{{ 'boxeup_sections.choose_variant' | t }}: {{ product.title | escape }}" data-product-url="{{ product.url }}">
-                          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3.5h2.8l2.2 11.3h11.6l2-8.2H6.2"/><circle cx="9.2" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>
-                          {% render 'loading-spinner' %}
-                        </button>
-                      </modal-opener>
-                      <quick-add-modal id="HomeQuickAdd-{{ product.id }}" class="quick-add-modal">
-                        <div role="dialog" aria-label="{{ 'products.product.choose_product_options' | t: product_name: product.title | escape }}" aria-modal="true" class="quick-add-modal__content global-settings-popup" tabindex="-1">
-                          <button type="button" id="ModalClose-Home-{{ product.id }}" class="quick-add-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{{- 'icon-close.svg' | inline_asset_content -}}</button>
-                          <div id="QuickAddInfo-Home-{{ product.id }}" class="quick-add-modal__content-info"></div>
-                        </div>
-                      </quick-add-modal>
-                    {% else %}
-                      <span class="bxv2-product__add bxv2-product__add--disabled" role="img" aria-label="{{ 'boxeup_sections.home_sold_out' | t }}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3.5h2.8l2.2 11.3h11.6l2-8.2H6.2"/><circle cx="9.2" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg></span>
-                    {% endif %}
-                  </div>
-                </div>
-              </div>
-            </article>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="bxv2-empty">{{ 'boxeup_sections.home_empty' | t }} <a href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_empty_catalog' | t }}</a>.</div>
-      {% endif %}
-    </div>
+      <div class="vh-grid">
+        {%- assign vh_featured_ids = '|' -%}
+        {%- assign vh_featured_count = 0 -%}
+        {%- for product in vh_featured_products -%}
+          {%- assign vh_vendor = product.vendor | downcase | strip -%}
+          {%- assign vh_product_title = product.title | downcase | strip -%}
+          {%- if product.price == 0 or vh_vendor == 'my store' or product.tags contains 'boxeup:hidden' or vh_product_title == 'test' or vh_product_title == 'teste' -%}{%- continue -%}{%- endif -%}
+          {%- capture vh_id_marker -%}|{{ product.id }}|{%- endcapture -%}
+          {%- if vh_featured_ids contains vh_id_marker -%}{%- continue -%}{%- endif -%}
+          {% render 'boxeup-home-card', product: product, section_id: section.id %}
+          {%- assign vh_featured_ids = vh_featured_ids | append: product.id | append: '|' -%}
+          {%- assign vh_featured_count = vh_featured_count | plus: 1 -%}
+          {%- if vh_featured_count >= 5 -%}{%- break -%}{%- endif -%}
+        {%- endfor -%}
+      </div>
+      {%- if vh_featured_count == 0 -%}<p class="vh-empty">{{ 'boxeup_sections.home_empty' | t }}</p>{%- endif -%}
+    </section>
+
+    <section class="vh-products" id="VHomeNew" aria-labelledby="VHomeNewTitle">
+      <div class="vh-products__heading">
+        <h2 id="VHomeNewTitle">{{ vh_new }}</h2>
+        <a class="vh-products__all" href="{{ routes.all_products_collection_url }}?sort_by=created-descending">{{ vh_all }} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+      </div>
+      <div class="vh-grid">
+        {%- assign vh_new_count = 0 -%}
+        {%- for product in vh_latest_products -%}
+          {%- assign vh_vendor = product.vendor | downcase | strip -%}
+          {%- assign vh_product_title = product.title | downcase | strip -%}
+          {%- if product.price == 0 or vh_vendor == 'my store' or product.tags contains 'boxeup:hidden' or vh_product_title == 'test' or vh_product_title == 'teste' -%}{%- continue -%}{%- endif -%}
+          {%- capture vh_id_marker -%}|{{ product.id }}|{%- endcapture -%}
+          {%- if vh_featured_ids contains vh_id_marker -%}{%- continue -%}{%- endif -%}
+          {% render 'boxeup-home-card', product: product, section_id: section.id %}
+          {%- assign vh_new_count = vh_new_count | plus: 1 -%}
+          {%- if vh_new_count >= 5 -%}{%- break -%}{%- endif -%}
+        {%- endfor -%}
+      </div>
+      {%- if vh_new_count == 0 -%}<p class="vh-empty">{{ 'boxeup_sections.home_empty' | t }}</p>{%- endif -%}
+    </section>
   </div>
 
-  <div class="bxv2-wrap">
-    <div class="bxv2-block bxv2-block--modalities" id="bxv2-modalidades">
-      <div class="bxv2-heading">
-        <div><p class="bxv2-kicker">{{ 'boxeup_sections.home_sport_label' | t }}</p><h2>{{ 'boxeup_sections.home_sport_heading' | t }}<span class="bxv2-red">.</span></h2></div>
-        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_explore_catalog' | t }} <span class="bx-inline-arrow" aria-hidden="true"><svg class="bxv2-arrow-svg bxv2-arrow-svg--right" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a>
-      </div>
-      <div class="bxv2-mod-grid">
-        {% for block in section.blocks %}
-          {% if block.type == 'category' %}
-            {% assign bx_modality_handle = block.settings.title | handleize %}
-            {% if bx_modality_handle == 'mma' or bx_modality_handle == 'jiu-jitsu' %}{% continue %}{% endif %}
-            {% if bx_modality_handle == 'muay-thai' %}{% assign bx_modality_handle = 'muay-thai-e-kickboxing' %}{% endif %}
-            {% assign bx_modality = collections[bx_modality_handle] %}
-            <a class="bxv2-mod{% if bx_modality_handle == 'mma' or bx_modality_handle == 'jiu-jitsu' %} bxv2-mod--coming{% endif %}" {% if bx_modality_handle == 'mma' or bx_modality_handle == 'jiu-jitsu' %}role="link" aria-disabled="true"{% else %}href="{{ bx_modality.url | default: routes.all_products_collection_url }}"{% endif %} {{ block.shopify_attributes }}>
-              <div class="bxv2-mod__image">
-                {% if block.settings.image != blank %}
-                  {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400,600,800,1000', sizes: '(min-width:990px) 25vw, (min-width:750px) 50vw, 90vw', alt: block.settings.title }}
-                {% else %}
-                  <span class="bxv2-mod__fallback" aria-hidden="true">{{ block.settings.title | slice: 0, 1 }}</span>
-                {% endif %}
-              </div>
-              <span class="bxv2-mod__body"><strong>{{ block.settings.title | escape }}</strong><small>{% if bx_modality_handle == 'mma' or bx_modality_handle == 'jiu-jitsu' %}{{ 'boxeup_experience.coming' | t }}{% else %}{{ block.settings.subtitle | escape }}{% endif %}</small></span>
-              <span class="bxv2-mod__arrow" aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span>
-            </a>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </div>
-
-    <div class="bxv2-block bxv2-block--brands" id="BxHomeBrands">
-      <div class="bxv2-heading"><div><p class="bxv2-kicker">{{ 'boxeup_sections.home_brands_kicker' | t }}</p><h2>{{ 'boxeup_sections.home_brands_heading' | t }}<span class="bxv2-red">.</span></h2></div><a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_catalog' | t }} <span class="bx-inline-arrow" aria-hidden="true"><svg class="bxv2-arrow-svg bxv2-arrow-svg--right" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a></div>
-      <div class="bxv2-brand-grid">
-        {% assign bx_brand = collections['fairtex'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/fairtex" aria-label="{{ 'boxeup_sections.view_brand' | t }} Fairtex"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-fairtex-white.png?v=1793040787" alt="Fairtex" width="140" height="72" loading="lazy"></a>{% endif %}
-        {% assign bx_brand = collections['charlie'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/charlie" aria-label="{{ 'boxeup_sections.view_brand' | t }} Charlie"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-charlie-white.png?v=1793040801" alt="Charlie" width="140" height="72" loading="lazy"></a>{% endif %}
-        {% assign bx_brand = collections['buddha'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/buddha" aria-label="{{ 'boxeup_sections.view_brand' | t }} Buddha"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-buddha-white.png?v=1793040808" alt="Buddha" width="140" height="72" loading="lazy"></a>{% endif %}
-        {% assign bx_brand = collections['venum'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/venum" aria-label="{{ 'boxeup_sections.view_brand' | t }} Venum"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-venum-white.png?v=1793040818" alt="Venum" width="140" height="72" loading="lazy"></a>{% endif %}
-        {% assign bx_brand = collections['cleto-reyes'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/cleto-reyes" aria-label="{{ 'boxeup_sections.view_brand' | t }} Cleto Reyes"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-reyes-white.png?v=1793040826" alt="Cleto Reyes" width="140" height="72" loading="lazy"></a>{% endif %}
-        {% assign bx_brand = collections['rival'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/rival" aria-label="{{ 'boxeup_sections.view_brand' | t }} Rival"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-rival-white.png?v=1793040835" alt="Rival" width="140" height="72" loading="lazy"></a>{% endif %}
-        {% assign bx_brand = collections['twins'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/twins" aria-label="{{ 'boxeup_sections.view_brand' | t }} Twins"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-twins-white.png?v=1793040843" alt="Twins" width="140" height="72" loading="lazy"></a>{% endif %}
-        {% assign bx_brand = collections['everlast'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/everlast" aria-label="{{ 'boxeup_sections.view_brand' | t }} Everlast"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-everlast-white.png?v=1793040849" alt="Everlast" width="140" height="72" loading="lazy"></a>{% endif %}
-      </div>
-    </div>
-  </div>
-
-  <div class="bxv2-story">
-    <div class="bxv2-story__art"><img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-comunidade.webp?v=1793121082" alt="Ginásio de boxe com sacos de treino BOXEUP" width="2048" height="682" loading="lazy"></div>
-    <div class="bxv2-story__copy">
-      <p class="bxv2-kicker">{{ 'boxeup_sections.home_history_kicker' | t }}</p>
-      <h2>{{ 'boxeup_sections.home_history_a' | t }}<br><em>{{ 'boxeup_sections.home_history_b' | t }}</em></h2>
-      <p>{{ 'boxeup_sections.home_history_desc' | t }}</p>
-      <a class="bxv2-more bxv2-more--light" href="{{ routes.root_url }}pages/sobre-a-boxeup">{{ 'boxeup_sections.home_learn' | t }} <span class="bx-inline-arrow" aria-hidden="true"><svg class="bxv2-arrow-svg bxv2-arrow-svg--right" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a>
-    </div>
-  </div>
-
-  <div class="bxv2-wrap bx-choice-section">
-    <p class="bxv2-kicker">{{ 'boxeup_experience.new_here' | t }}</p>
-    <h2>{{ 'boxeup_experience.help_title' | t }}</h2>
-    <p>{{ 'boxeup_experience.new_here_intro' | t }}</p>
-    <div class="bx-choice-grid">
-      <button type="button" class="bx-choice-card" data-bx-open="BxGuide"><strong>{{ 'boxeup_experience.first_gloves' | t }}</strong><span>{{ 'boxeup_experience.first_gloves_text' | t }}</span><span aria-hidden="true">↗</span></button>
-      <a class="bx-choice-card" href="{{ collections['muay-thai-e-kickboxing'].url | default: routes.all_products_collection_url }}"><strong>{{ 'boxeup_experience.thai_kit' | t }}</strong><span>{{ 'boxeup_experience.thai_kit_text' | t }}</span><span aria-hidden="true">↗</span></a>
-      <button type="button" class="bx-choice-card" data-bx-open="BxSizeGuide"><strong>{{ 'boxeup_experience.size_guide' | t }}</strong><span>{{ 'boxeup_experience.help_text' | t }}</span><span aria-hidden="true">↗</span></button>
-    </div>
-  </div>
-  <div class="bxv2-wrap bxv2-wrap--newsletter">
-    <div class="bxv2-news">
-      <div><p class="bxv2-kicker">{{ 'boxeup_sections.home_join' | t }}</p><h2>{{ 'boxeup_sections.home_newsletter_heading' | t }}</h2><p>{{ 'boxeup_sections.home_newsletter_desc' | t }}</p></div>
-      {% form 'customer', class: 'bxv2-news__form' %}
-        <input type="hidden" name="contact[tags]" value="newsletter">
-        <label class="visually-hidden" for="bxv2-email-{{ section.id }}">{{ 'boxeup_sections.home_your_email' | t }}</label>
-        <input id="bxv2-email-{{ section.id }}" type="email" name="contact[email]" autocomplete="email" placeholder="{{ 'boxeup_sections.home_your_email' | t }}" required aria-required="true" value="{{ form.email | escape }}">
-        <button type="submit" aria-label="{{ 'boxeup_sections.aria_subscribe' | t }}">{{ 'boxeup_sections.home_subscribe' | t }}</button>
-        {% if form.posted_successfully? %}<p class="bxv2-news__feedback" role="status">{{ 'boxeup_sections.home_success' | t }}</p>{% elsif form.errors %}<p class="bxv2-news__feedback" role="alert">{{ form.errors | default_errors }}</p>{% endif %}
-      {% endform %}
+  <div class="vh-trust">
+    <div class="vh-frame vh-trust__inner">
+      <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6h12v11H2zM14 10h4l4 4v3h-8M6 19a2 2 0 1 0 4 0 2 2 0 0 0-4 0Zm10 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"/></svg><span><strong>{{ vh_shipping }}</strong><small>{{ vh_shipping_desc }}</small></span></div>
+      <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/></svg><span><strong>{{ vh_delivery }}</strong><small>{{ 'boxeup_experience.shipping' | t }}</small></span></div>
+      <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 8 4v7c0 5-4 8-8 9-4-1-8-4-8-9V6zM8 12l3 3 5-6"/></svg><span><strong>{{ vh_returns }}</strong><small>{{ vh_returns_desc }}</small></span></div>
+      <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15v-4a8 8 0 0 1 16 0v4M4 14H2v5h4v-5zM20 14h2v5h-4v-5zM18 20c-1 2-4 2-6 2"/></svg><span><strong>{{ vh_support }}</strong><small>{{ vh_support_desc }}</small></span></div>
     </div>
   </div>
 </section>
@@ -313,6 +296,7 @@
   "settings": [
     {"type":"product_list","id":"featured_products","label":"Seleção manual de produtos","limit":10},
     {"type":"collection","id":"featured_collection","label":"Coleção de produtos em destaque"},
+    {"type":"image_picker","id":"hero_image","label":"Fotografia do hero (recomendado)","info":"Imagem horizontal com atleta à direita e espaço para texto à esquerda."},
     {"type":"video","id":"hero_video","label":"Vídeo do destaque (Shopify)","info":"Opcional. Por defeito, é apresentada uma animação otimizada do vídeo enviado."},
     {"type":"image_picker","id":"editorial_image","label":"Fotografia da secção Disciplina","info":"Opcional: substitui a fotografia editorial da BOXEUP."}
   ],

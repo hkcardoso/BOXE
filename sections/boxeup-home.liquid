@@ -586,6 +586,7 @@
   }
 </style>
 {{ 'boxeup-product-tiles.css' | asset_url | stylesheet_tag }}
+{{ 'viriatto-benefits.css' | asset_url | stylesheet_tag }}
 
 <section class="vh-home" aria-label="{{ 'boxeup_sections.aria_home' | t }}">
   <div class="vh-hero">
@@ -700,14 +701,26 @@
     </section>
   </div>
 
-  <div class="vh-trust">
-    <div class="vh-frame vh-trust__inner">
-      <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6h12v11H2zM14 10h4l4 4v3h-8M6 19a2 2 0 1 0 4 0 2 2 0 0 0-4 0Zm10 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"/></svg><span><strong>{{ vh_shipping }}</strong><small>{{ vh_shipping_desc }}</small></span></div>
-      <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/></svg><span><strong>{{ vh_delivery }}</strong><small>{{ vh_delivery_desc }}</small></span></div>
-      <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 8 4v7c0 5-4 8-8 9-4-1-8-4-8-9V6zM8 12l3 3 5-6"/></svg><span><strong>{{ vh_returns }}</strong><small>{{ vh_returns_desc }}</small></span></div>
-      <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15v-4a8 8 0 0 1 16 0v4M4 14H2v5h4v-5zM20 14h2v5h-4v-5zM18 20c-1 2-4 2-6 2"/></svg><span><strong>{{ vh_support }}</strong><small>{{ vh_support_desc }}</small></span></div>
+  <aside class="viri-benefits" aria-label="{{ vh_shipping | escape }}, {{ vh_delivery | escape }}, {{ vh_returns | escape }}, {{ vh_support | escape }}">
+    <div class="viri-benefits__grid">
+      <div class="viri-benefits__item">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h12v11H2zM14 10h4l4 4v3h-8M6 19a2 2 0 1 0 4 0 2 2 0 0 0-4 0Zm10 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"/></svg>
+        <span class="viri-benefits__copy"><strong>{{ vh_shipping | escape }}</strong><small>{{ vh_shipping_desc | escape }}</small></span>
+      </div>
+      <div class="viri-benefits__item">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/></svg>
+        <span class="viri-benefits__copy"><strong>{{ vh_delivery | escape }}</strong><small>{{ vh_delivery_desc | escape }}</small></span>
+      </div>
+      <div class="viri-benefits__item">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 8 4v7c0 5-4 8-8 9-4-1-8-4-8-9V6zM8 12l3 3 5-6"/></svg>
+        <span class="viri-benefits__copy"><strong>{{ vh_returns | escape }}</strong><small>{{ vh_returns_desc | escape }}</small></span>
+      </div>
+      <div class="viri-benefits__item">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v-4a8 8 0 0 1 16 0v4M4 14H2v5h4v-5zM20 14h2v5h-4v-5zM18 20c-1 2-4 2-6 2"/></svg>
+        <span class="viri-benefits__copy"><strong>{{ vh_support | escape }}</strong><small>{{ vh_support_desc | escape }}</small></span>
+      </div>
     </div>
-  </div>
+  </aside>
 </section>
 
 {% schema %}

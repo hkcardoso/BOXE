@@ -402,7 +402,16 @@
       tabindex="-1"
       data-template="{{ template.name }}"
     >
-      {{ content_for_layout }}
+      {%- comment -%}
+        BOXEUP Contact: render the dedicated contact section directly on its page.
+        Keeps the redesign visible even when a stale page.contact template is cached.
+        Other pages continue to use their normal Shopify template.
+      {%- endcomment -%}
+      {%- if request.page_type == 'page' and page.handle == 'contact' -%}
+        {% section 'boxeup-contact' %}
+      {%- else -%}
+        {{ content_for_layout }}
+      {%- endif -%}
     </main>
 
     {% sections 'footer-group' %}

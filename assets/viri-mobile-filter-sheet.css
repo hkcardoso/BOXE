@@ -3,7 +3,7 @@
 @media screen and (max-width:749px){
   body #MainContent .facets-container{align-items:center!important}
   body #MainContent .mobile-facets__wrapper{flex:0 0 auto!important;margin:0!important;z-index:101}
-  /* Mobile collection toolbar: Filters, Brands, then product count on one line. */
+  /* Mobile collection toolbar: Filters and Brands, without a product counter. */
   body #MainContent[data-template="collection"] .facets-container{
     grid-template-columns:max-content max-content minmax(0,1fr)!important;
     grid-template-rows:auto auto!important;
@@ -17,10 +17,9 @@
   body #MainContent[data-template="collection"] .facets-container>.viri-brands__trigger{
     grid-column:2!important;grid-row:1!important;
   }
+  /* Keep the count in the DOM for Shopify faceting, but hide it from the mobile catalogue toolbar. */
   body #MainContent[data-template="collection"] .facets-container>.product-count{
-    grid-column:3!important;grid-row:1!important;
-    min-width:0!important;justify-self:end!important;
-    margin:0!important;text-align:right!important;
+    display:none!important;
   }
   body #MainContent[data-template="collection"] .facets-container>.active-facets-mobile{
     grid-column:1/-1!important;grid-row:2!important;

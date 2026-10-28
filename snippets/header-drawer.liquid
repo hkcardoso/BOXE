@@ -23,23 +23,57 @@
     <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
       <div class="menu-drawer__inner-container">
         <div class="menu-drawer__navigation-container">
+          {%- liquid
+            assign bx_mobile_view_all = 'Ver tudo'
+            assign bx_mobile_language = request.locale.iso_code | slice: 0, 2
+            if bx_mobile_language == 'en'
+              assign bx_mobile_view_all = 'View all'
+            elsif bx_mobile_language == 'es'
+              assign bx_mobile_view_all = 'Ver todo'
+            endif
+          -%}
           <nav class="menu-drawer__navigation">
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
               {%- for link in section.settings.menu.links -%}
                 <li>
                   {%- if link.handle == 'modalidades' -%}
-                    <a id="HeaderDrawer-{{ link.handle }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.all_products_collection_url }}#main-collection-filters">
-                      {{ link.title | escape }}
-                    </a>
-                    <ul class="menu-drawer__menu list-menu boxeup-mobile-modalities" role="list">
-                      <li><a class="menu-drawer__menu-item list-menu__item link link--text" href="{{ collections['boxe'].url }}#main-collection-filters">{{ 'boxeup_navigation.boxe' | t }}</a></li>
-                      <li><a class="menu-drawer__menu-item list-menu__item link link--text" href="{{ collections['muay-thai-e-kickboxing'].url }}#main-collection-filters">{{ 'boxeup_navigation.muay_thai' | t }}</a></li>
-                    </ul>
+                    <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
+                      <summary
+                        id="HeaderDrawer-{{ link.handle }}"
+                        class="menu-drawer__menu-item bx-mobile-nav__section list-menu__item link link--text focus-inset"
+                        aria-expanded="false"
+                      >
+                        {{ link.title | escape }}
+                        <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+                      </summary>
+                      <div id="link-{{ link.handle | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce" tabindex="-1">
+                        <div class="menu-drawer__inner-submenu">
+                          <button type="button" class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                            <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+                            {{ link.title | escape }}
+                          </button>
+                          <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                            <li>
+                              <a class="menu-drawer__menu-item bx-mobile-nav__all list-menu__item link link--text" href="{{ routes.all_products_collection_url }}#main-collection-filters">{{ bx_mobile_view_all }}</a>
+                            </li>
+                            <li>
+                              <a class="menu-drawer__menu-item list-menu__item link link--text{% if collection.handle == 'boxe' %} menu-drawer__menu-item--active{% endif %}" href="{{ collections['boxe'].url }}#main-collection-filters"{% if collection.handle == 'boxe' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.boxe' | t }}</a>
+                            </li>
+                            <li>
+                              <a class="menu-drawer__menu-item list-menu__item link link--text{% if collection.handle == 'muay-thai-e-kickboxing' %} menu-drawer__menu-item--active{% endif %}" href="{{ collections['muay-thai-e-kickboxing'].url }}#main-collection-filters"{% if collection.handle == 'muay-thai-e-kickboxing' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.muay_thai' | t }}</a>
+                            </li>
+                            <li class="bx-mobile-nav__divider" role="separator"></li>
+                            <li><span class="menu-drawer__menu-item bx-mobile-nav__disabled list-menu__item" aria-disabled="true">MMA <small>{{ 'boxeup_navigation.coming_soon' | t }}</small></span></li>
+                            <li><span class="menu-drawer__menu-item bx-mobile-nav__disabled list-menu__item" aria-disabled="true">Jiu-Jitsu <small>{{ 'boxeup_navigation.coming_soon' | t }}</small></span></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </details>
                   {%- elsif link.links != blank -%}
                     <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
                       <summary
                         id="HeaderDrawer-{{ link.handle }}"
-                        class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}"
+                        class="menu-drawer__menu-item bx-mobile-nav__section list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}"
                       >
                         {{ link.title | escape }}
                         <span class="svg-wrapper">
@@ -62,6 +96,11 @@
                             {{ link.title | escape }}
                           </button>
                           <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                            <li>
+                              <a class="menu-drawer__menu-item bx-mobile-nav__all list-menu__item link link--text focus-inset" href="{% if link.handle == 'marcas' %}{{ routes.all_products_collection_url }}#BxBrands{% else %}{{ link.url }}{% endif %}">
+                                {{ bx_mobile_view_all }}
+                              </a>
+                            </li>
                             {%- for childlink in link.links -%}
               {% if link.handle == 'marcas' %}
                 {% assign bx_brand_visible = false %}
@@ -140,7 +179,7 @@
                     <a
                       id="HeaderDrawer-{{ link.handle }}"
                       href="{{ link.url }}"
-                      class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"
+                      class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}{% assign bx_promo_title = link.title | downcase %}{% if bx_promo_title contains 'promo' or link.handle == 'promocoes' %} bx-mobile-nav__promotion{% endif %}"
                       {% if link.current %}
                         aria-current="page"
                       {% endif %}
@@ -282,3 +321,140 @@
     </div>
   </details>
 </header-drawer>
+
+
+<style>
+  /* VIRIATTO — mobile navigation follows the same desktop menu hierarchy. */
+  @media (max-width:989px) {
+    body .header-wrapper #menu-drawer {
+      width:min(92vw,420px)!important;
+      max-width:100vw!important;
+      background:#111316!important;
+      color:#f5f5f7!important;
+      border-right:1px solid #34373d!important;
+      box-shadow:18px 0 52px #0006!important;
+    }
+    body .header-wrapper #menu-drawer .menu-drawer__inner-container,
+    body .header-wrapper #menu-drawer .menu-drawer__submenu {
+      background:#111316!important;
+      color:#f5f5f7!important;
+    }
+    body .header-wrapper #menu-drawer .menu-drawer__navigation {
+      padding:18px 12px 24px!important;
+    }
+    body .header-wrapper #menu-drawer .menu-drawer__menu > li {
+      border-bottom:1px solid rgba(255,255,255,.075);
+      margin:0!important;
+    }
+    body .header-wrapper #menu-drawer .menu-drawer__menu-item {
+      box-sizing:border-box!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:space-between!important;
+      gap:14px!important;
+      width:100%!important;
+      padding:17px 15px!important;
+      min-height:55px!important;
+      color:#f4f4f6!important;
+      font-family:"Helvetica Neue","Segoe UI",Arial,sans-serif!important;
+      font-size:15px!important;
+      font-weight:650!important;
+      line-height:1.35!important;
+      letter-spacing:0!important;
+      text-transform:none!important;
+      text-decoration:none!important;
+      background:transparent!important;
+      border:0!important;
+      transition:background .18s ease,color .18s ease;
+    }
+    body .header-wrapper #menu-drawer .menu-drawer__menu-item:hover,
+    body .header-wrapper #menu-drawer .menu-drawer__menu-item:focus-visible {
+      background:#23262b!important;
+    }
+    body .header-wrapper #menu-drawer .menu-drawer__menu-item--active,
+    body .header-wrapper #menu-drawer .menu-drawer__menu-item[aria-current="page"] {
+      color:#fff!important;
+      background:#292329!important;
+      box-shadow:inset 3px 0 #ed2437;
+    }
+    body .header-wrapper #menu-drawer .menu-drawer__menu-item > .svg-wrapper {
+      position:static!important;
+      transform:none!important;
+      margin-left:auto!important;
+      flex:0 0 19px!important;
+      width:19px!important;height:19px!important;
+      display:inline-flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      color:#b3b5bb!important;
+    }
+    body .header-wrapper #menu-drawer .menu-drawer__menu-item .icon-arrow {
+      width:16px!important;height:16px!important;
+    }
+    body .header-wrapper #menu-drawer .menu-drawer__menu-item .icon-caret {
+      display:none!important;
+    }
+    body .header-wrapper #menu-drawer .menu-drawer__submenu {
+      border-left:0!important;
+    }
+    body .header-wrapper #menu-drawer .menu-drawer__inner-submenu {
+      padding:0 12px 24px!important;
+    }
+    body .header-wrapper #menu-drawer .menu-drawer__close-button {
+      display:flex!important;
+      align-items:center!important;
+      gap:11px!important;
+      width:100%!important;
+      min-height:57px!important;
+      margin:0!important;
+      padding:16px 15px!important;
+      background:#1b1e23!important;
+      border-bottom:1px solid #34373d!important;
+      color:#fff!important;
+      font-size:15px!important;
+      font-weight:700!important;
+    }
+    body .header-wrapper #menu-drawer .menu-drawer__close-button .svg-wrapper {
+      width:18px!important;height:18px!important;
+      flex:0 0 18px!important;
+    }
+    body .header-wrapper #menu-drawer .menu-drawer__submenu .menu-drawer__menu-item {
+      font-size:14px!important;
+      font-weight:550!important;
+      padding:14px 15px!important;
+      min-height:48px!important;
+    }
+    body .header-wrapper #menu-drawer .bx-mobile-nav__all {
+      color:#f36b7a!important;
+      font-weight:650!important;
+    }
+    body .header-wrapper #menu-drawer .bx-mobile-nav__promotion {
+      color:#ed4156!important;
+    }
+    body .header-wrapper #menu-drawer .bx-mobile-nav__disabled {
+      opacity:.48!important;
+      cursor:default!important;
+      pointer-events:none!important;
+      gap:12px!important;
+    }
+    body .header-wrapper #menu-drawer .bx-mobile-nav__disabled small {
+      font-size:11px!important;
+      line-height:1.2!important;
+      font-weight:500!important;
+      color:#c8c9ce!important;
+    }
+    body .header-wrapper #menu-drawer .bx-mobile-nav__divider {
+      margin:6px 15px!important;
+      height:1px;
+      background:#373a41!important;
+      border:0!important;
+    }
+    body .header-wrapper #menu-drawer .menu-drawer__utility-links {
+      background:#191c21!important;
+      border-top:1px solid #34373d!important;
+    }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    body .header-wrapper #menu-drawer .menu-drawer__menu-item {transition:none!important;}
+  }
+</style>

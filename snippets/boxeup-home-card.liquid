@@ -1,46 +1,58 @@
 {% comment %}
-  VIRIATTO / BOXEUP home merchandise card.
-  Uses live Shopify product, price and quick-add modal.
+  VIRIATTO homepage tile, minimal product presentation.
+  Actual discounts come from Shopify compare-at price, never invented.
+  The "+" opens the existing Shopify quick-add modal, including variants.
 {% endcomment %}
 {%- if product != blank -%}
-<article class="vh-card">
-  <a class="vh-card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
-    {%- if product.featured_image -%}
-      {{ product.featured_image | image_url: width: 720 | image_tag: loading: 'lazy', widths: '240,360,480,720', sizes: '(min-width: 1100px) 18vw, (min-width: 750px) 31vw, 48vw', alt: product.title, class: 'vh-card__image' }}
-    {%- else -%}
-      {{ 'product-1' | placeholder_svg_tag: 'vh-card__placeholder' }}
-    {%- endif -%}
-    {%- if product.compare_at_price > product.price -%}<span class="vh-card__badge">{{ 'boxeup_sections.home_sale' | t }}</span>
-    {%- elsif product.available == false -%}<span class="vh-card__badge vh-card__badge--muted">{{ 'boxeup_sections.home_sold_out' | t }}</span>{%- endif -%}
-  </a>
-  <div class="vh-card__body">
-    <div class="vh-card__vendor">{{ product.vendor | escape }}</div>
-    <a class="vh-card__title" href="{{ product.url }}">{{ product.title | escape }}</a>
-    {%- if product.type != blank -%}<div class="vh-card__type">{{ product.type | escape }}</div>{%- endif -%}
-    <div class="vh-card__end">
-      <div class="vh-card__price">
-        <strong>{{ product.price | money }}</strong>
-        {%- if product.compare_at_price > product.price -%}<del>{{ product.compare_at_price | money }}</del>{%- endif -%}
-      </div>
-      {%- if product.available -%}
-        <modal-opener data-modal="#VHomeQuick-{{ section_id }}-{{ product.id }}">
-          <button class="vh-card__add" type="button" aria-haspopup="dialog" aria-label="{{ 'boxeup_sections.choose_variant' | t }}: {{ product.title | escape }}" data-product-url="{{ product.url }}">
-            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11h11.8L21 8H6"/><circle cx="9" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/></svg>
-            {% render 'loading-spinner' %}
-          </button>
-        </modal-opener>
-        <quick-add-modal id="VHomeQuick-{{ section_id }}-{{ product.id }}" class="quick-add-modal">
-          <div role="dialog" aria-label="{{ 'products.product.choose_product_options' | t: product_name: product.title | escape }}" aria-modal="true" class="quick-add-modal__content global-settings-popup" tabindex="-1">
-            <button type="button" class="quick-add-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{{- 'icon-close.svg' | inline_asset_content -}}</button>
-            <div id="QuickAddInfo-VHome-{{ section_id }}-{{ product.id }}" class="quick-add-modal__content-info"></div>
-          </div>
-        </quick-add-modal>
+  {%- liquid
+    assign vh_discount = 0
+    if product.compare_at_price > product.price
+      assign vh_discount = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round
+    endif
+  -%}
+  <article class="vh-tile">
+    <a class="vh-tile__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+      {%- if product.featured_image -%}
+        {{ product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '240,360,480,720,900', sizes: '(min-width: 1100px) 18vw, (min-width: 750px) 31vw, 48vw', alt: product.title, class: 'vh-tile__photo' }}
       {%- else -%}
-        <a class="vh-card__add vh-card__add--disabled" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
-          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11h11.8L21 8H6"/><circle cx="9" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/></svg>
-        </a>
+        {{ 'product-1' | placeholder_svg_tag: 'vh-tile__photo' }}
       {%- endif -%}
-    </div>
-  </div>
-</article>
+      <span class="vh-tile__shade" aria-hidden="true"></span>
+      {%- if vh_discount > 0 -%}
+        <span class="vh-tile__discount" aria-label="{{ vh_discount }}%">{{ vh_discount }}%</span>
+      {%- elsif product.available == false -%}
+        <span class="vh-tile__discount vh-tile__discount--sold">{{ 'boxeup_sections.home_sold_out' | t }}</span>
+      {%- endif -%}
+      <span class="vh-tile__details">
+        <span class="vh-tile__name">{{ product.title | escape }}</span>
+        <span class="vh-tile__prices">
+          {%- if product.compare_at_price > product.price -%}
+            <del>{{ product.compare_at_price | money }}</del>
+          {%- endif -%}
+          <strong>{{ product.price | money }}</strong>
+        </span>
+      </span>
+    </a>
+    {%- if product.available -%}
+      <modal-opener class="vh-tile__opener" data-modal="#VHomeQuick-{{ section_id }}-{{ product.id }}">
+        <button class="vh-tile__plus" type="button"
+          aria-haspopup="dialog"
+          aria-label="{{ 'boxeup_sections.choose_variant' | t }}: {{ product.title | escape }}"
+          data-product-url="{{ product.url }}">
+          <span class="vh-tile__plus-icon" aria-hidden="true">+</span>
+          {% render 'loading-spinner' %}
+        </button>
+      </modal-opener>
+      <quick-add-modal id="VHomeQuick-{{ section_id }}-{{ product.id }}" class="quick-add-modal">
+        <div role="dialog"
+          aria-label="{{ 'products.product.choose_product_options' | t: product_name: product.title | escape }}"
+          aria-modal="true" class="quick-add-modal__content global-settings-popup" tabindex="-1">
+          <button type="button" class="quick-add-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">
+            {{- 'icon-close.svg' | inline_asset_content -}}
+          </button>
+          <div id="QuickAddInfo-VHome-{{ section_id }}-{{ product.id }}" class="quick-add-modal__content-info"></div>
+        </div>
+      </quick-add-modal>
+    {%- endif -%}
+  </article>
 {%- endif -%}

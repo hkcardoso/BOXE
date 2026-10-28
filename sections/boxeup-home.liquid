@@ -556,8 +556,9 @@
     .vh-home .vh-tile:focus-within .vh-tile__photo--secondary{opacity:1!important}
     .vh-home .vh-tile--has-alt:hover .vh-tile__photo--primary,
     .vh-home .vh-tile--has-alt:focus-within .vh-tile__photo--primary{opacity:0!important}
-    .vh-home .vh-tile:hover .vh-tile__name,
-    .vh-home .vh-tile:focus-within .vh-tile__name{opacity:1!important;transform:translateY(0)!important}
+
+    .vh-home .vh-tile:hover .vh-tile__opener,
+    .vh-home .vh-tile:focus-within .vh-tile__opener{opacity:1!important;transform:translateY(0)!important;pointer-events:auto!important}
   }
   .vh-home .vh-tile__shade{
     display:block;position:absolute;
@@ -596,7 +597,7 @@
   }
   .vh-home .vh-tile__name{
     position:absolute;z-index:4;
-    bottom:46px;right:12px;left:54px;
+    bottom:13px;left:13px;right:43%;
     width:auto;max-width:none;
     display:-webkit-box;
     -webkit-box-orient:vertical;
@@ -604,17 +605,19 @@
     overflow:hidden;
     color:#fff;
     font:600 12px/1.3 var(--font-body-family,Arial,sans-serif);
-    text-align:right;
+    text-align:left;
     text-shadow:0 1px 8px rgba(0,0,0,.65);
-    opacity:0;transform:translateY(5px);
-    pointer-events:none;
-    transition:opacity .2s ease,transform .2s ease
+    opacity:1;transform:none;
+    pointer-events:none
   }
   .vh-home .vh-tile__opener{
     display:block;position:absolute;
     z-index:5;
-    left:10px;bottom:7px;right:auto;top:auto;
-    width:44px;height:44px
+    left:10px;bottom:53px;right:auto;top:auto;
+    width:44px;height:44px;
+    opacity:0;transform:translateY(6px);
+    pointer-events:none;
+    transition:opacity .2s ease,transform .2s ease
   }
   .vh-home .vh-tile__plus{
     position:relative;
@@ -654,14 +657,14 @@
     .vh-home .vh-tile__prices{bottom:10px;right:8px;top:auto}
     .vh-home .vh-tile__prices del{font-size:10px}
     .vh-home .vh-tile__prices strong{font-size:12px}
-    .vh-home .vh-tile__opener{left:4px;bottom:3px;width:39px;height:39px}
+    .vh-home .vh-tile__opener{left:4px;bottom:45px;width:39px;height:39px;opacity:1!important;transform:none!important;pointer-events:auto!important}
     .vh-home .vh-tile__plus{width:39px;height:39px}
     .vh-home .vh-tile__plus-icon{font-size:27px}
-    .vh-home .vh-tile__name{opacity:1!important;transform:none!important;right:8px;left:42px;bottom:39px;font-size:10px}
+    .vh-home .vh-tile__name{opacity:1!important;transform:none!important;left:9px;right:43%;bottom:10px;font-size:10px;text-align:left}
   }
-  @media(hover:none){.vh-home .vh-tile__name{opacity:1!important;transform:none!important}}
+  @media(hover:none){.vh-home .vh-tile__opener{opacity:1!important;transform:none!important;pointer-events:auto!important}}
   @media(prefers-reduced-motion:reduce){
-    .vh-home .vh-tile__photo,.vh-home .vh-tile__plus,.vh-home .vh-tile__name{transition:none!important}
+    .vh-home .vh-tile__photo,.vh-home .vh-tile__plus,.vh-home .vh-tile__opener{transition:none!important}
   }
 
 </style>

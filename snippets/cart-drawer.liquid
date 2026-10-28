@@ -62,7 +62,16 @@
         </div>
       {%- endif -%}
       <div class="drawer__header">
-        <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
+        <h2 class="drawer__heading">
+          <span class="viri-cart-desktop-title">{{ 'sections.cart.title' | t }}</span>
+          <span class="viri-cart-mobile-title">
+            {%- assign viri_cart_heading_lang = request.locale.iso_code | slice: 0, 2 -%}
+            {%- if viri_cart_heading_lang == 'en' -%}Shopping cart
+            {%- elsif viri_cart_heading_lang == 'es' -%}Carrito de compras
+            {%- else -%}Carrinho de compras{%- endif -%}
+          </span>
+          <span class="viri-cart-count">{{ cart.item_count }} {% if cart.item_count == 1 %}{% if viri_cart_heading_lang == 'en' %}item{% elsif viri_cart_heading_lang == 'es' %}artículo{% else %}artigo{% endif %}{% else %}{% if viri_cart_heading_lang == 'en' %}items{% elsif viri_cart_heading_lang == 'es' %}artículos{% else %}artigos{% endif %}{% endif %}</span>
+        </h2>
         <button
           class="drawer__close"
           type="button"

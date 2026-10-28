@@ -514,10 +514,10 @@ body #MainContent .bx-about h1,body #MainContent .bx-about h2,body #MainContent 
 /* VIRIATTO | Catálogo consistente entre desktop e mobile.
    Mantém os mesmos cartões e fotografias; adapta apenas a grelha e a navegação. */
 
-/* O diretório de marcas utiliza os mesmos SVG claros da homepage. */
+/* O diretório de marcas utiliza os mesmos logótipos PNG da homepage. */
 #MainContent .bx-brand-directory > nav {
   display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-columns: repeat(9, minmax(0, 1fr));
   gap: 9px;
   padding: 4px 0 18px;
 }
@@ -722,7 +722,7 @@ body #MainContent .bx-about h1,body #MainContent .bx-about h2,body #MainContent 
   }
   body #MainContent[data-template="collection"] .bx-mobile-brand-strip {
     display:grid !important;
-    grid-template-columns:repeat(4,minmax(0,1fr));
+    grid-template-columns:repeat(3,minmax(0,1fr));
     gap:7px;
     padding:9px 0 10px;
     width:100%;

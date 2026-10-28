@@ -100,6 +100,13 @@
       assign bx_secure_desc = 'Pagamentos processados de forma segura.'
       assign bx_character_count = 'caracteres'
   endcase
+  if bx_language == 'pt'
+    assign bx_hero_tagline = section.settings.eyebrow | default: bx_hero_tagline
+    assign bx_hero_title = section.settings.heading | default: bx_hero_title
+    assign bx_hero_description = section.settings.description | default: bx_hero_description
+    assign bx_form_title = section.settings.form_heading | default: bx_form_title
+    assign bx_form_intro = section.settings.form_intro | default: bx_form_intro
+  endif
 %}
 
 <section class="boxeup-contact bx-contact" aria-labelledby="BxContactTitle">
@@ -117,9 +124,9 @@
         <span aria-current="page">{{ 'boxeup_sections.contact_contact' | t }}</span>
       </nav>
       <div class="bx-contact__headline">
-        <p class="bx-contact__eyebrow">{{ bx_hero_tagline }}</p>
-        <h1 id="BxContactTitle">{{ bx_hero_title | remove: '.' }}<span aria-hidden="true">.</span></h1>
-        <p class="bx-contact__hero-description">{{ bx_hero_description }}</p>
+        <p class="bx-contact__eyebrow">{{ bx_hero_tagline | escape }}</p>
+        <h1 id="BxContactTitle">{{ bx_hero_title | remove: '.' | escape }}<span aria-hidden="true">.</span></h1>
+        <p class="bx-contact__hero-description">{{ bx_hero_description | escape }}</p>
       </div>
     </div>
   </div>
@@ -175,8 +182,8 @@
 
       <div class="boxeup-contact__form-wrap bx-contact__form-panel" id="BxContactFormPanel">
         <p class="bx-contact__eyebrow">{{ bx_form_tagline }}</p>
-        <h2>{{ bx_form_title }}</h2>
-        <p class="bx-contact__form-intro">{{ bx_form_intro }}</p>
+        <h2>{{ bx_form_title | escape }}</h2>
+        <p class="bx-contact__form-intro">{{ bx_form_intro | escape }}</p>
         {% form 'contact', id: 'BoxeupContactForm', class: 'bx-contact__form' %}
           {% if form.posted_successfully? %}
             <div class="bx-contact__feedback bx-contact__feedback--success" role="status" tabindex="-1">

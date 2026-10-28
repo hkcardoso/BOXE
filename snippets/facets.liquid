@@ -23,11 +23,14 @@
   assign bx_filter_language = request.locale.iso_code | slice: 0, 2
   assign bx_filter_mobile_label = 'Filtros'
   assign bx_filter_close_label = 'Fechar filtros'
+  assign bx_brand_close_label = 'Fechar marcas'
   if bx_filter_language == 'en'
     assign bx_filter_mobile_label = 'Filters'
     assign bx_filter_close_label = 'Close filters'
+    assign bx_brand_close_label = 'Close brands'
   elsif bx_filter_language == 'es'
     assign bx_filter_close_label = 'Cerrar filtros'
+    assign bx_brand_close_label = 'Cerrar marcas'
   endif
   if results.url
     assign results_url = results.url
@@ -507,7 +510,6 @@
               class="mobile-facets__main has-submenu gradient"
             >
               {%- if template.name == 'collection' -%}
-                {% render 'viri-mobile-filter-brands' %}
                 {% render 'boxeup-modality-filter', variant: 'mobile' %}
               {%- endif -%}
               {%- if enable_filtering -%}
@@ -787,6 +789,38 @@
       </facet-filters-form>
     </details>
   </menu-drawer>
+
+  {%- if template.name == 'collection' -%}
+    <button
+      type="button"
+      class="viri-brands__trigger medium-hide large-up-hide"
+      aria-haspopup="dialog"
+      aria-controls="ViriBrandDialog-{{ section.id }}"
+      onclick="document.getElementById('ViriBrandDialog-{{ section.id }}').showModal()"
+    >
+      <svg class="viri-brands__trigger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 7.5V4h8l10 10-7 7L3 10.5v-3Z"></path>
+        <circle cx="7.5" cy="8" r="1"></circle>
+      </svg>
+      <span>{{ 'boxeup_experience.brands' | t | escape }}</span>
+    </button>
+    <dialog
+      class="viri-brands__dialog"
+      id="ViriBrandDialog-{{ section.id }}"
+      aria-labelledby="ViriBrandDialogTitle-{{ section.id }}"
+      onclick="if(event.target === this) this.close()"
+    >
+      <div class="viri-brands__header">
+        <h2 id="ViriBrandDialogTitle-{{ section.id }}">{{ 'boxeup_experience.brands' | t | escape }}</h2>
+        <button type="button" class="viri-brands__close" aria-label="{{ bx_brand_close_label | escape }}" onclick="this.closest('dialog').close()">
+          {{- 'icon-close.svg' | inline_asset_content -}}
+        </button>
+      </div>
+      <div class="viri-brands__body">
+        {% render 'viri-mobile-filter-brands' %}
+      </div>
+    </dialog>
+  {%- endif -%}
 
   <div class="active-facets active-facets-mobile medium-hide large-up-hide">
     {%- for filter in results.filters -%}

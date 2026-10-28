@@ -2,11 +2,6 @@
   Mobile-only collection brand navigation, compact and accessible.
   Uses the same brand images and collections as the catalogue directory.
 {%- endcomment -%}
-<details class="viri-filters__brands">
-  <summary class="viri-filters__section-title">
-    <span>{{ 'boxeup_experience.brands' | t | escape }}</span>
-    <span class="viri-filters__chevron" aria-hidden="true">{{ 'icon-caret.svg' | inline_asset_content }}</span>
-  </summary>
   <nav class="viri-filters__brand-grid" aria-label="{{ 'boxeup_experience.brand_navigation' | t | escape }}">
     {%- assign bx_brand_handles = 'fairtex,venum,everlast,leone-1947,charlie,rdx,cleto-reyes,rival,twins' | split: ',' -%}
     {%- for bx_brand_handle in bx_brand_handles -%}
@@ -32,4 +27,3 @@
       </a>
     {%- endfor -%}
   </nav>
-</details>

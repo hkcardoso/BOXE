@@ -3,6 +3,101 @@
 @media screen and (max-width:749px){
   body #MainContent .facets-container{align-items:center!important}
   body #MainContent .mobile-facets__wrapper{flex:0 0 auto!important;margin:0!important;z-index:101}
+  /* Mobile collection toolbar: Filters, Brands, then product count on one line. */
+  body #MainContent[data-template="collection"] .facets-container{
+    grid-template-columns:max-content max-content minmax(0,1fr)!important;
+    grid-template-rows:auto auto!important;
+    column-gap:8px!important;
+    row-gap:0!important;
+    align-items:center!important;
+  }
+  body #MainContent[data-template="collection"] .facets-container>.mobile-facets__wrapper{
+    grid-column:1!important;grid-row:1!important;
+  }
+  body #MainContent[data-template="collection"] .facets-container>.viri-brands__trigger{
+    grid-column:2!important;grid-row:1!important;
+  }
+  body #MainContent[data-template="collection"] .facets-container>.product-count{
+    grid-column:3!important;grid-row:1!important;
+    min-width:0!important;justify-self:end!important;
+    margin:0!important;text-align:right!important;
+  }
+  body #MainContent[data-template="collection"] .facets-container>.active-facets-mobile{
+    grid-column:1/-1!important;grid-row:2!important;
+  }
+  body #MainContent .viri-brands__trigger{
+    display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    gap:7px!important;min-height:40px!important;
+    margin:0!important;padding:9px 12px!important;
+    border:1px solid #474950!important;border-radius:9px!important;
+    background:#22242a!important;color:#f6f6f7!important;
+    font:650 12px/1.25 var(--font-body-family,Arial,sans-serif)!important;
+    letter-spacing:0!important;text-decoration:none!important;
+    white-space:nowrap!important;cursor:pointer;
+  }
+  body #MainContent .viri-brands__trigger-icon{
+    display:block;width:17px;height:17px;flex:0 0 17px;
+  }
+  body #MainContent .viri-brands__trigger:focus-visible{
+    outline:2px solid #ed2437!important;outline-offset:3px!important;
+  }
+  body #MainContent .viri-brands__dialog[open]{
+    display:flex!important;flex-direction:column!important;
+    position:fixed!important;inset:auto 0 0 0!important;
+    box-sizing:border-box!important;width:100%!important;max-width:100%!important;
+    height:auto!important;max-height:min(78dvh,660px)!important;
+    margin:0!important;padding:0!important;
+    overflow:hidden!important;
+    border:1px solid #393b42!important;border-bottom:0!important;
+    border-radius:20px 20px 0 0!important;
+    background:#17181c!important;color:#f7f7f8!important;
+    box-shadow:0 -20px 65px rgba(0,0,0,.45)!important;
+    animation:viriBrandsOpen .3s cubic-bezier(.23,.77,.28,1) both;
+  }
+  body #MainContent .viri-brands__dialog::backdrop{
+    background:rgba(0,0,0,.70)!important;
+    -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+  }
+  body #MainContent .viri-brands__header{
+    display:flex!important;align-items:center!important;justify-content:space-between!important;
+    flex:none!important;gap:12px!important;
+    padding:18px 18px 15px!important;
+    background:#17181c!important;border-bottom:1px solid #373940!important;
+  }
+  body #MainContent .viri-brands__header h2{
+    margin:0!important;color:#fff!important;
+    font:700 19px/1.25 var(--font-body-family,Arial,sans-serif)!important;
+  }
+  body #MainContent .viri-brands__close{
+    display:grid!important;place-items:center!important;
+    width:36px!important;height:36px!important;flex:0 0 36px!important;
+    margin:0!important;padding:9px!important;border:1px solid #42444b!important;
+    border-radius:50%!important;background:#292b31!important;color:#f5f5f7!important;
+    cursor:pointer;
+  }
+  body #MainContent .viri-brands__close .svg-wrapper{
+    display:block;width:17px;height:17px;
+  }
+  body #MainContent .viri-brands__close svg{width:17px;height:17px}
+  body #MainContent .viri-brands__body{
+    min-height:0!important;overflow-y:auto!important;
+    padding:12px 0 max(20px,env(safe-area-inset-bottom))!important;
+    -webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  }
+  body #MainContent .viri-brands__body .viri-filters__brand-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:9px!important;padding:0 18px 10px!important;
+  }
+  body #MainContent .viri-brands__body .viri-filters__brand-grid a{
+    min-height:72px!important;border-radius:9px!important;
+  }
+  body #MainContent .viri-brands__body .viri-filters__brand-grid img{
+    max-width:100px!important;height:36px!important;
+  }
+  @keyframes viriBrandsOpen{
+    from{opacity:.8;transform:translateY(100%)}
+    to{opacity:1;transform:translateY(0)}
+  }
   body #MainContent .mobile-facets__open-wrapper{
     display:inline-flex!important;align-items:center!important;
     min-height:40px!important;padding:0!important;
@@ -187,7 +282,12 @@
 }
 @media screen and (max-width:360px){
   body #MainContent .viri-filters__brand-grid{gap:5px;padding-inline:12px}
+  body #MainContent .viri-brands__trigger,
+  body #MainContent .mobile-facets__open{padding-inline:9px!important;gap:5px!important;font-size:11px!important}
+  body #MainContent[data-template="collection"] .facets-container{column-gap:6px!important}
+  body #MainContent[data-template="collection"] .facets-container>.product-count{font-size:11px!important}
 }
 @media (prefers-reduced-motion:reduce){
   body #MainContent .mobile-facets__inner{transition:none!important}
+  body #MainContent .viri-brands__dialog{animation:none!important}
 }

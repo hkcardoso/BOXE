@@ -575,6 +575,12 @@
         <!-- CTAs -->
 
         <div class="cart__ctas" {{ block.shopify_attributes }}>
+          <a href="{{ routes.cart_url }}" class="viri-cart-view">
+            {%- assign viri_cart_language = request.locale.iso_code | slice: 0, 2 -%}
+            {%- if viri_cart_language == 'en' -%}View cart
+            {%- elsif viri_cart_language == 'es' -%}Ver carrito
+            {%- else -%}Ver carrinho{%- endif -%}
+          </a>
           <button
             type="submit"
             id="CartDrawer-Checkout"

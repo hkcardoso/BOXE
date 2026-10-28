@@ -509,7 +509,7 @@ cart-drawer .cart-item__image{border-radius:3px}
 }
 
 
-/* VIRIATTO | compact mobile cart modal, based on the desktop cart preview.
+/* VIRIATTO | compact mobile cart modal, based on the desktop cart preview.\n   Synced with the Shopify-published theme via the connected GitHub branch.
    Uses the existing Shopify Dawn drawer, quantities, removal and checkout. */
 .viri-cart-view,.viri-cart-mobile-title,.viri-cart-count{display:none}
 @media screen and (max-width:749px){

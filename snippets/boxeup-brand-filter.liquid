@@ -10,7 +10,11 @@
     {% assign bx_brands = 'fairtex,charlie,buddha,venum,cleto-reyes,rival,twins,everlast' | split: ',' %}
     {% for handle in bx_brands %}
       {% assign bx_brand = collections[handle] %}
-      {% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a data-boxeup-catalog href="{{ bx_brand.url }}"{% if collection.handle == handle %} aria-current="page"{% endif %}>{{ bx_brand.title | escape }}</a>{% endif %}
+      {% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}
+        {% assign bx_logo_handle = handle | replace: 'cleto-reyes', 'reyes' %}
+        {% assign bx_brand_logo = 'boxeup-brand-' | append: bx_logo_handle | append: '.svg' %}
+        <a data-boxeup-catalog href="{{ bx_brand.url }}" aria-label="{{ bx_brand.title | escape }}"{% if collection.handle == handle %} aria-current="page"{% endif %}><img class="bx-brand-directory__logo" src="{{ bx_brand_logo | asset_url }}" alt="{{ bx_brand.title | escape }}" width="120" height="64" loading="lazy"></a>
+      {% endif %}
     {% endfor %}
   </nav>
 </details>

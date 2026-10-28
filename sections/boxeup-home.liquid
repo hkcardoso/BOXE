@@ -14,6 +14,7 @@
   assign vh_new = 'NOVIDADES'
   assign vh_all = 'VER TODOS'
   assign vh_delivery = 'ENTREGA EM PORTUGAL'
+  assign vh_delivery_desc = 'Portugal Continental'
   assign vh_returns = 'DEVOLUÇÕES'
   assign vh_returns_desc = 'Consulta as condições'
   assign vh_support = 'APOIO AO CLIENTE'
@@ -31,6 +32,7 @@
     assign vh_new = 'NEW ARRIVALS'
     assign vh_all = 'VIEW ALL'
     assign vh_delivery = 'DELIVERY IN PORTUGAL'
+    assign vh_delivery_desc = 'Mainland Portugal'
     assign vh_returns = 'RETURNS'
     assign vh_returns_desc = 'See our policy'
     assign vh_support = 'CUSTOMER SUPPORT'
@@ -48,6 +50,7 @@
     assign vh_new = 'NOVEDADES'
     assign vh_all = 'VER TODOS'
     assign vh_delivery = 'ENTREGAS EN PORTUGAL'
+    assign vh_delivery_desc = 'Portugal continental'
     assign vh_returns = 'DEVOLUCIONES'
     assign vh_returns_desc = 'Consulta las condiciones'
     assign vh_support = 'ATENCIÓN AL CLIENTE'
@@ -487,7 +490,7 @@
   <div class="vh-trust">
     <div class="vh-frame vh-trust__inner">
       <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6h12v11H2zM14 10h4l4 4v3h-8M6 19a2 2 0 1 0 4 0 2 2 0 0 0-4 0Zm10 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"/></svg><span><strong>{{ vh_shipping }}</strong><small>{{ vh_shipping_desc }}</small></span></div>
-      <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/></svg><span><strong>{{ vh_delivery }}</strong><small>{{ 'boxeup_experience.shipping' | t }}</small></span></div>
+      <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/></svg><span><strong>{{ vh_delivery }}</strong><small>{{ vh_delivery_desc }}</small></span></div>
       <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 8 4v7c0 5-4 8-8 9-4-1-8-4-8-9V6zM8 12l3 3 5-6"/></svg><span><strong>{{ vh_returns }}</strong><small>{{ vh_returns_desc }}</small></span></div>
       <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15v-4a8 8 0 0 1 16 0v4M4 14H2v5h4v-5zM20 14h2v5h-4v-5zM18 20c-1 2-4 2-6 2"/></svg><span><strong>{{ vh_support }}</strong><small>{{ vh_support_desc }}</small></span></div>
     </div>

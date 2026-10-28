@@ -503,7 +503,7 @@
   /* VIRIATTO / full-bleed product tiles (second image on hover) */
   .vh-home .vh-grid{
     display:grid!important;
-    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
     gap:14px!important;
     align-items:stretch
   }
@@ -566,7 +566,7 @@
   }
   .vh-home .vh-tile__discount{
     position:absolute;z-index:4;
-    top:11px;left:11px;right:auto;
+    top:11px;right:11px;left:auto;
     display:inline-flex;align-items:center;justify-content:center;
     min-height:24px;padding:5px 9px;
     background:rgba(37,38,42,.84);color:#fff;
@@ -577,7 +577,7 @@
   .vh-home .vh-tile__discount--sold{font-size:10px}
   .vh-home .vh-tile__prices{
     position:absolute;z-index:4;
-    top:12px;right:12px;bottom:auto;left:auto;
+    bottom:14px;right:12px;top:auto;left:auto;
     display:flex;flex-direction:column;align-items:flex-end;
     gap:3px;
     max-width:70%;pointer-events:none;
@@ -591,12 +591,12 @@
   }
   .vh-home .vh-tile__prices strong{
     color:#fff;
-    font:500 14px/1.2 var(--font-body-family,Arial,sans-serif);
+    font:450 15px/1.2 var(--font-body-family,Arial,sans-serif);
     white-space:nowrap
   }
   .vh-home .vh-tile__name{
     position:absolute;z-index:4;
-    bottom:15px;right:14px;left:54px;
+    bottom:46px;right:12px;left:54px;
     width:auto;max-width:none;
     display:-webkit-box;
     -webkit-box-orient:vertical;
@@ -650,14 +650,14 @@
     .vh-home .vh-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
     .vh-home .vh-tile,.vh-home .vh-tile__media{border-radius:8px}
     .vh-home .vh-tile__media{aspect-ratio:1/1.12}
-    .vh-home .vh-tile__discount{top:8px;left:8px;padding:5px 7px;font-size:10px}
-    .vh-home .vh-tile__prices{top:8px;right:8px}
+    .vh-home .vh-tile__discount{top:8px;right:8px;left:auto;padding:5px 7px;font-size:10px}
+    .vh-home .vh-tile__prices{bottom:10px;right:8px;top:auto}
     .vh-home .vh-tile__prices del{font-size:10px}
     .vh-home .vh-tile__prices strong{font-size:12px}
     .vh-home .vh-tile__opener{left:4px;bottom:3px;width:39px;height:39px}
     .vh-home .vh-tile__plus{width:39px;height:39px}
     .vh-home .vh-tile__plus-icon{font-size:27px}
-    .vh-home .vh-tile__name{opacity:1!important;transform:none!important;right:8px;left:42px;bottom:11px;font-size:10px}
+    .vh-home .vh-tile__name{opacity:1!important;transform:none!important;right:8px;left:42px;bottom:39px;font-size:10px}
   }
   @media(hover:none){.vh-home .vh-tile__name{opacity:1!important;transform:none!important}}
   @media(prefers-reduced-motion:reduce){
@@ -731,7 +731,7 @@
           {% render 'boxeup-home-card', product: product, section_id: section.id %}
           {%- assign vh_featured_ids = vh_featured_ids | append: product.id | append: '|' -%}
           {%- assign vh_featured_count = vh_featured_count | plus: 1 -%}
-          {%- if vh_featured_count >= 5 -%}{%- break -%}{%- endif -%}
+          {%- if vh_featured_count >= 8 -%}{%- break -%}{%- endif -%}
         {%- endfor -%}
       </div>
       {%- if vh_featured_count == 0 -%}<p class="vh-empty">{{ 'boxeup_sections.home_empty' | t }}</p>{%- endif -%}
@@ -752,7 +752,7 @@
           {%- if vh_featured_ids contains vh_id_marker -%}{%- continue -%}{%- endif -%}
           {% render 'boxeup-home-card', product: product, section_id: section.id %}
           {%- assign vh_new_count = vh_new_count | plus: 1 -%}
-          {%- if vh_new_count >= 5 -%}{%- break -%}{%- endif -%}
+          {%- if vh_new_count >= 8 -%}{%- break -%}{%- endif -%}
         {%- endfor -%}
       </div>
       {%- if vh_new_count == 0 -%}<p class="vh-empty">{{ 'boxeup_sections.home_empty' | t }}</p>{%- endif -%}

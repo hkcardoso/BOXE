@@ -916,3 +916,72 @@
     grid-template-columns:minmax(0,1fr)!important;
   }
 }
+
+/* VIRIATTO | Match the mobile newsletter left edge with the Contactos footer block.
+   Keep the input and the Shop follow button on that same content rail. */
+@media screen and (max-width:749px){
+  .footer .footer__content-top.page-width .footer-block--newsletter{
+    box-sizing:border-box!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    justify-content:flex-start!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    margin:22px 0 0!important;
+    padding:0!important;
+    gap:14px!important;
+  }
+  .footer .footer__content-top .footer-block--newsletter .footer-block__newsletter{
+    box-sizing:border-box!important;
+    display:block!important;
+    flex:0 0 auto!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    margin:0!important;
+    padding:0!important;
+    text-align:left!important;
+  }
+  .footer .footer__content-top .footer-block--newsletter .footer-block__newsletter>.footer-block__heading{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin:0 0 14px!important;
+    padding:0!important;
+    text-align:left!important;
+  }
+  .footer .footer__content-top .footer-block--newsletter .footer__newsletter.newsletter-form{
+    display:block!important;
+    box-sizing:border-box!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  .footer .footer__content-top .footer-block--newsletter .newsletter-form__field-wrapper,
+  .footer .footer__content-top .footer-block--newsletter .newsletter-form__field-wrapper .field{
+    box-sizing:border-box!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    margin:0!important;
+  }
+  .footer .footer__content-top .footer-block--newsletter .newsletter-form__field-wrapper .field__input{
+    box-sizing:border-box!important;
+    width:100%!important;
+    max-width:100%!important;
+  }
+  .footer .footer__content-top .footer-block--newsletter .footer__follow-on-shop{
+    box-sizing:border-box!important;
+    display:flex!important;
+    align-self:stretch!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    width:100%!important;
+    margin:0!important;
+    padding:0!important;
+    text-align:left!important;
+  }
+}

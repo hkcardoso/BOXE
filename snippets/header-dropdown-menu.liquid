@@ -4,10 +4,15 @@
 {% enddoc %}
 {%- assign bx_nav_prefix = 'HeaderMenu' -%}
 {%- if mobile -%}{%- assign bx_nav_prefix = 'HeaderDrawer' -%}{%- endif -%}
+{%- assign bx_nav_has_news = false -%}
+{%- assign bx_nav_has_sale = false -%}
+{%- assign bx_nav_language = request.locale.iso_code | slice: 0, 2 -%}
 
 <nav class="{% if mobile %}bx-mobile-shared-nav{% else %}header__inline-menu{% endif %}">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
+      {%- if link.handle == 'novidades' or link.url contains 'sort_by=created-descending' -%}{%- assign bx_nav_has_news = true -%}{%- endif -%}
+      {%- if link.handle contains 'promo' or link.url contains '/collections/promocoes' -%}{%- assign bx_nav_has_sale = true -%}{%- endif -%}
       {%- if link.handle == 'sobre-nos' or link.handle == 'contactos' -%}
         {%- continue -%}
       {%- endif -%}
@@ -104,5 +109,21 @@
         {%- endif -%}
       </li>
     {%- endfor -%}
+    {%- if mobile -%}
+      {%- unless bx_nav_has_news -%}
+        <li class="bx-mobile-shared-nav__shortcut">
+          <a id="HeaderDrawer-novidades" href="{{ routes.all_products_collection_url }}?sort_by=created-descending" class="header__menu-item list-menu__item link link--text focus-inset">
+            <span>{% if bx_nav_language == 'en' %}New arrivals{% elsif bx_nav_language == 'es' %}Novedades{% else %}Novidades{% endif %}</span>
+          </a>
+        </li>
+      {%- endunless -%}
+      {%- unless bx_nav_has_sale -%}
+        <li class="bx-mobile-shared-nav__shortcut">
+          <a id="HeaderDrawer-promocoes" href="{{ collections['promocoes'].url | default: '/collections/promocoes' }}" class="header__menu-item list-menu__item link link--text focus-inset bx-mobile-nav__promotion">
+            <span>{% if bx_nav_language == 'en' %}Sale{% elsif bx_nav_language == 'es' %}Promociones{% else %}Promoções{% endif %}</span>
+          </a>
+        </li>
+      {%- endunless -%}
+    {%- endif -%}
   </ul>
 </nav>

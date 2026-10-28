@@ -829,3 +829,72 @@ cart-drawer .cart-item__image{border-radius:3px}
 @media(prefers-reduced-motion:reduce){
   body cart-drawer.drawer .drawer__inner{transition:none!important}
 }
+
+/* VIRIATTO | consistent, flush product thumbnails on mobile cart.
+   A fixed square prevents image aspect ratios from stretching a cart row. */
+@media screen and (max-width:749px){
+  body cart-drawer.drawer .cart-drawer .cart-item{
+    grid-template-columns:82px minmax(0,1fr) auto!important;
+    align-items:start!important;
+    column-gap:12px!important;
+  }
+  body cart-drawer.drawer .cart-item__media{
+    box-sizing:border-box!important;
+    display:block!important;
+    width:82px!important;
+    height:82px!important;
+    min-height:0!important;
+    max-height:82px!important;
+    aspect-ratio:1/1!important;
+    align-self:start!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:9px!important;
+    overflow:hidden!important;
+    background:#17181b!important;
+  }
+  body cart-drawer.drawer .cart-item__image{
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    object-fit:cover!important;
+    object-position:center!important;
+  }
+  body cart-drawer.drawer .cart-item__details{align-self:start!important;padding-top:0!important}
+  #MainContent[data-template="cart"] .cart-item__media{
+    align-self:start;
+    width:clamp(76px,24vw,110px);
+    min-width:0;
+    padding:0!important;
+  }
+  #MainContent[data-template="cart"] .cart-item__image-container,
+  #MainContent[data-template="cart"] .cart-item__image{
+    display:block;
+    width:100%!important;
+    max-width:100%!important;
+    aspect-ratio:1/1;
+    height:auto!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden;
+    object-fit:cover;
+    object-position:center;
+    border-radius:8px;
+  }
+}
+@media screen and (max-width:370px){
+  body cart-drawer.drawer .cart-drawer .cart-item{
+    grid-template-columns:70px minmax(0,1fr) auto!important;
+    column-gap:8px!important;
+  }
+  body cart-drawer.drawer .cart-item__media{
+    width:70px!important;
+    height:70px!important;
+    max-height:70px!important;
+  }
+}

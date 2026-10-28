@@ -38,11 +38,11 @@
       {%- endfor -%}
     </ul>
   </div>
-  {%- if localPosition == 'FooterLanguage' -%}
+  {%- if localPosition == 'FooterLanguage' or localPosition == 'HeaderLanguageMobile' -%}
     {%- comment -%}
-      Mobile footer: show every available language in one stable row instead of
-      a floating popover that separates the selected language from the options.
-      The existing localization-form JS handles clicks on these links.
+      Mobile footer and mobile drawer: expose languages in one aligned row.
+      Keep the original picker for the desktop. Shopify's existing
+      localization-form JS submits these language option links.
     {%- endcomment -%}
     <div class="boxeup-lang-mobile" role="group" aria-label="{{ 'localization.language_label' | t | escape }}">
       {%- for language in localization.available_languages -%}

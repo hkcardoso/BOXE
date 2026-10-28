@@ -500,7 +500,7 @@
 
 
 
-  .vh-brands__viewport{overflow:hidden}
+  .vh-brands__viewport{overflow:hidden;touch-action:pan-y}
   .vh-brands__track{display:flex;width:max-content;animation:vh-brands-scroll 40s linear infinite}
   .vh-brands__group{display:flex;align-items:center;gap:32px;padding:12px 16px;flex-shrink:0}
   .vh-home .vh-brands__group .vh-brand{flex:0 0 120px;width:120px;min-width:120px}
@@ -512,7 +512,7 @@
   }
   @media(prefers-reduced-motion:reduce){
     .vh-brands__track{animation:none}
-    .vh-brands__viewport{overflow-x:auto}
+    .vh-brands__viewport{overflow-x:auto;touch-action:auto}
     .vh-brands__group[aria-hidden]{display:none}
   }
 </style>
@@ -539,6 +539,7 @@
     
   </div>
 
+  <script src="{{ 'boxeup-brand-touch.js' | asset_url }}" defer="defer"></script>
   <nav class="vh-brands" id="VHomeBrands" aria-label="{{ vh_brands }}">
     <div class="vh-brands__viewport">
     <div class="vh-brands__track">
@@ -566,7 +567,7 @@
       {%- endfor -%}
       {%- endcapture -%}
       <div class="vh-brands__group">{{ vh_brand_items }}</div>
-      <div class="vh-brands__group" aria-hidden="true" inert>{{ vh_brand_items }}</div>
+      <div class="vh-brands__group" aria-hidden="true">{{ vh_brand_items | replace: '<a ', '<a tabindex="-1" ' }}</div>
     </div>
     </div>
   </nav>

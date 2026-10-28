@@ -159,6 +159,15 @@
 <style>
   /* VIRIATTO — mobile navigation follows the same desktop menu hierarchy. */
   @media (max-width:989px) {
+    /* Open navigation must sit above sticky catalogue controls on mobile. */
+    body:has(#Details-menu-drawer-container[open]) .section-header {
+      z-index:1201!important;
+    }
+    /* Prevent the catalogue filter trigger from appearing through the drawer. */
+    body:has(#Details-menu-drawer-container[open]) #MainContent .mobile-facets__wrapper {
+      visibility:hidden!important;
+      pointer-events:none!important;
+    }
     body .header-wrapper #menu-drawer {
       width:min(92vw,420px)!important;
       max-width:100vw!important;

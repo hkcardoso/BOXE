@@ -672,6 +672,17 @@
       height:auto!important;max-height:47px!important;object-fit:contain!important
     }
   }
+  /* Search icon: explicit SVG dimensions avoid an oversized black circle. */
+  body.boxeup-page-home .vh-header-search__form > svg {
+    display: block !important;
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    flex: 0 0 20px !important;
+    fill: none !important;
+    stroke: currentColor !important;
+    color: #bfc2c9 !important;
+  }
   @media(max-width:989px){
     body.boxeup-page-home #MainContent[data-template="index"]{margin-top:0!important}
     body.boxeup-page-home .header-wrapper .header .vh-header-search{display:none!important}
@@ -830,7 +841,7 @@
       <form class="vh-header-search" action="{{ routes.search_url }}" method="get" role="search">
         <label class="vh-header-search__form">
           <span class="visually-hidden">{{ 'general.search.search' | t }}</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 5 5"/></svg>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 5 5"/></svg>
           <input type="search" name="q" placeholder="{% assign vh_header_lang = request.locale.iso_code | slice: 0, 2 %}{% case vh_header_lang %}{% when 'en' %}Search products, brands...{% when 'es' %}Buscar productos, marcas...{% else %}Pesquisar produtos, marcas...{% endcase %}" autocomplete="off">
           <input type="hidden" name="options[prefix]" value="last">
         </label>

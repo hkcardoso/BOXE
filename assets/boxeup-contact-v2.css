@@ -143,3 +143,73 @@ body #MainContent .viri-contact__submit:hover{background:#cf1f31}
  body #MainContent .viri-contact__submit{justify-content:space-between;width:100%;min-width:0;min-height:46px}
 }
 @media(prefers-reduced-motion:reduce){#MainContent .viri-contact .viri-link-arrow,#MainContent .viri-contact__detail a,body #MainContent .viri-contact__submit,body #MainContent .viri-contact__field input,body #MainContent .viri-contact__field select,body #MainContent .viri-contact__field textarea{transition:none}}
+
+/* VIRIATTO | Compact desktop contact layout, without changing mobile form flow. */
+@media(min-width:981px){
+  #MainContent .viri-contact{padding:35px 0 49px!important}
+  #MainContent .viri-contact__container{
+    width:min(1080px,calc(100% - 72px))!important;
+  }
+  #MainContent .viri-contact__grid{
+    grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;
+    align-items:start!important;
+    gap:clamp(28px,3.3vw,48px)!important;
+  }
+  #MainContent .viri-contact__intro{padding-top:4px!important}
+  #MainContent .viri-contact__eyebrow{margin-bottom:13px!important}
+  body #MainContent .viri-contact h1{
+    max-width:none!important;
+    margin-bottom:14px!important;
+    font-size:clamp(35px,3vw,44px)!important;
+    line-height:1.12!important;
+  }
+  #MainContent .viri-contact__lead{
+    max-width:42ch!important;
+    margin-bottom:22px!important;
+    font-size:14px!important;
+    line-height:1.6!important;
+  }
+  #MainContent .viri-contact__details{max-width:100%!important}
+  #MainContent .viri-contact__detail{
+    gap:8px!important;
+    padding:14px 0!important;
+  }
+  #MainContent .viri-contact__panel{
+    padding:24px 27px!important;
+    border-radius:7px!important;
+  }
+  body #MainContent .viri-contact__panel h2{
+    margin-bottom:8px!important;
+    font-size:clamp(18px,1.65vw,23px)!important;
+  }
+  #MainContent .viri-contact__form-lead{
+    margin-bottom:17px!important;
+    line-height:1.5!important;
+  }
+  #MainContent .viri-contact__fields{gap:13px 12px!important}
+  #MainContent .viri-contact__field label{margin-bottom:6px!important}
+  body #MainContent .viri-contact__field :is(input,select){
+    min-height:43px!important;
+    padding:9px 12px!important;
+  }
+  body #MainContent .viri-contact__field textarea{
+    min-height:102px!important;
+    padding:10px 12px 23px!important;
+  }
+  #MainContent .viri-contact__form-actions{
+    gap:12px!important;
+    margin-top:16px!important;
+  }
+  body #MainContent .viri-contact__submit{min-height:43px!important}
+}
+@media(min-width:751px) and (max-width:980px){
+  #MainContent .viri-contact{padding:32px 0 44px!important}
+  #MainContent .viri-contact__grid{
+    grid-template-columns:minmax(0,.83fr) minmax(0,1.17fr)!important;
+    gap:25px!important;
+  }
+  #MainContent .viri-contact__lead{margin-bottom:18px!important}
+  #MainContent .viri-contact__panel{padding:21px!important}
+  #MainContent .viri-contact__detail{padding:14px 0!important}
+  #MainContent .viri-contact__form-lead{margin-bottom:16px!important}
+}

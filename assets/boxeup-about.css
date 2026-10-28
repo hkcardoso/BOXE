@@ -136,3 +136,57 @@ body #MainContent .viri-about__help h2{
  #MainContent .viri-about__help>a{min-height:44px;width:100%;justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){#MainContent .viri-about .viri-link-arrow,#MainContent .viri-about__catalog-link,#MainContent .viri-about__help>a{transition:none}}
+
+/* VIRIATTO | Desktop density: tighter introduction, cards and CTA. */
+@media(min-width:901px){
+  #MainContent .viri-about{padding:34px 0 45px!important}
+  #MainContent .viri-about__container{
+    width:min(1080px,calc(100% - 72px))!important;
+  }
+  #MainContent .viri-about__intro{
+    grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)!important;
+    align-items:center!important;
+    gap:clamp(28px,3vw,46px)!important;
+    padding-bottom:25px!important;
+  }
+  #MainContent .viri-about__eyebrow{margin-bottom:13px!important}
+  body #MainContent .viri-about__heading h1{
+    font-size:clamp(34px,3.35vw,49px)!important;
+    line-height:1.12!important;
+  }
+  #MainContent .viri-about__summary{max-width:100%!important}
+  #MainContent .viri-about__summary p{
+    margin-bottom:9px!important;
+    font-size:14px!important;
+    line-height:1.6!important;
+  }
+  #MainContent .viri-about__catalog-link{
+    margin-top:6px!important;
+    padding-bottom:7px!important;
+  }
+  #MainContent .viri-about__process{padding-top:24px!important}
+  #MainContent .viri-about__process-heading{
+    margin-bottom:16px!important;
+    gap:16px!important;
+  }
+  #MainContent .viri-about__steps{gap:11px!important}
+  #MainContent .viri-about__step{
+    min-height:132px!important;
+    padding:19px 21px!important;
+  }
+  #MainContent .viri-about__step-number{margin-bottom:13px!important}
+  #MainContent .viri-about__step p{font-size:12px!important;line-height:1.5!important}
+  #MainContent .viri-about__help{
+    gap:18px!important;
+    margin-top:22px!important;
+    padding-top:19px!important;
+  }
+  #MainContent .viri-about__help>a{padding:11px 15px!important}
+}
+@media(min-width:601px) and (max-width:900px){
+  #MainContent .viri-about{padding:34px 0 43px!important}
+  #MainContent .viri-about__intro{padding-bottom:28px!important}
+  #MainContent .viri-about__process{padding-top:26px!important}
+  #MainContent .viri-about__step{min-height:139px!important}
+  #MainContent .viri-about__help{margin-top:24px!important;padding-top:21px!important}
+}

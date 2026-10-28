@@ -504,3 +504,275 @@ body #MainContent .bx-about h1,body #MainContent .bx-about h2,body #MainContent 
 }
 
 /* BOXEUP mobile QA: touch targets and arrow SVGs finalised 28 Oct 2026. */
+
+
+/* VIRIATTO LIVE MOBILE CATALOG - FALLBACK FOR THE CONNECTED THEME
+   Existing assets/boxeup-experience.css is loaded by the published theme.
+   Copying these responsive rules here avoids dependence on layout/theme.liquid
+   receiving its separate stylesheet-tag commit in the Shopify GitHub sync.
+   2026-10-28 */
+/* VIRIATTO | Catálogo consistente entre desktop e mobile.
+   Mantém os mesmos cartões e fotografias; adapta apenas a grelha e a navegação. */
+
+/* O diretório de marcas utiliza os mesmos SVG claros da homepage. */
+#MainContent .bx-brand-directory > nav {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 9px;
+  padding: 4px 0 18px;
+}
+#MainContent .bx-brand-directory > nav > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 72px;
+  padding: 10px;
+  background: #191b20;
+  border: 1px solid #383b43;
+  border-radius: 6px;
+  transition: border-color .2s ease, background .2s ease;
+}
+#MainContent .bx-brand-directory > nav > a:hover,
+#MainContent .bx-brand-directory > nav > a[aria-current="page"] {
+  border-color: #ed2437;
+  background: #24262c;
+}
+#MainContent .bx-brand-directory__logo {
+  display: block;
+  width: 100%;
+  max-width: 110px;
+  height: 46px;
+  max-height: 46px;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Direção visual idêntica nos filtros nativos de marca, incluindo a gaveta mobile. */
+#MainContent .bx-brand-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  width: min(350px, 90vw);
+}
+#MainContent .bx-brand-panel a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 56px;
+  padding: 8px;
+  border: 1px solid #383b43;
+  border-radius: 5px;
+  background: #191b20;
+}
+#MainContent .bx-brand-panel .bx-brand-directory__logo {
+  max-width: 100px;
+  height: 36px;
+}
+@media (min-width: 750px) and (max-width: 1199px) {
+  #MainContent .bx-brand-directory > nav {grid-template-columns: repeat(4, minmax(0, 1fr));}
+}
+@media (max-width: 749px) {
+  /* Categorias e marcas compactas, sem botões enormes ou cortes laterais. */
+  body #MainContent .boxeup-catalog-controls {
+    padding-top: 10px !important;
+    padding-bottom: 8px !important;
+  }
+  body #MainContent .boxeup-chip-list {
+    gap: 6px !important;
+    padding: 4px 0 10px !important;
+    scroll-snap-type: x proximity;
+  }
+  body #MainContent .boxeup-chip {
+    min-height: 40px !important;
+    padding: 8px 12px !important;
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+    scroll-snap-align: start;
+    white-space: nowrap;
+  }
+  #MainContent .bx-brand-directory {
+    margin: 8px 0 6px;
+  }
+  #MainContent .bx-brand-directory > summary {
+    min-height: 45px;
+    font-size: 13px;
+  }
+  #MainContent .bx-brand-directory > nav {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 7px;
+    padding: 4px 0 12px;
+  }
+  #MainContent .bx-brand-directory > nav > a {
+    min-height: 58px;
+    padding: 7px 5px;
+    border-radius: 5px;
+  }
+  #MainContent .bx-brand-directory__logo {
+    max-width: 100%;
+    height: 35px;
+    max-height: 35px;
+  }
+  #MainContent .bx-brand-panel {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #MainContent .bx-brand-panel a {min-height: 56px;}
+  #MainContent .bx-brand-filter--mobile {
+    padding: 12px 18px;
+  }
+  #MainContent .bx-brand-filter--mobile .bx-brand-panel {
+    margin-top: 12px;
+  }
+
+  /* Já existe um controlo de filtros antes da grelha; retira o duplicado flutuante
+     que tapa preços e botões dos produtos enquanto se percorre o catálogo. */
+  .bx-mobile-filters {display: none !important;}
+  #MainContent .mobile-facets__open {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  /* Os mesmos cartões dark studio do desktop, com duas colunas e texto legível. */
+  #MainContent[data-template="collection"] #ProductGridContainer {
+    padding-top: 6px !important;
+  }
+  #MainContent[data-template="collection"] #product-grid.product-grid:not(.slider) {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+    gap: 14px 8px !important;
+  }
+  #MainContent[data-template="collection"] #product-grid > .grid__item {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  #MainContent[data-template="collection"] .product-card-wrapper {
+    min-width: 0 !important;
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+  #MainContent[data-template="collection"] .product-card-wrapper .card--media > .card__inner {
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+  }
+  #MainContent[data-template="collection"] .product-card-wrapper .card--media > .card__content > .card__information {
+    min-height: 128px !important;
+    padding: 10px 9px 44px !important;
+  }
+  #MainContent[data-template="collection"] .product-card-wrapper .card__heading a {
+    font-size: clamp(10px, 2.8vw, 12px) !important;
+    line-height: 1.3 !important;
+    overflow-wrap: anywhere;
+  }
+  #MainContent[data-template="collection"] .product-card-wrapper .boxeup-card__subtitle {
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+  }
+  #MainContent[data-template="collection"] .product-card-wrapper .card-information {
+    margin-top: auto !important;
+    padding-top: 8px !important;
+  }
+  #MainContent[data-template="collection"] .product-card-wrapper .card-information .price {
+    padding-right: 0 !important;
+  }
+  #MainContent[data-template="collection"] .product-card-wrapper .price,
+  #MainContent[data-template="collection"] .product-card-wrapper .price .price-item {
+    font-size: clamp(11px, 2.8vw, 13px) !important;
+    line-height: 1.25 !important;
+    white-space: nowrap;
+  }
+  #MainContent[data-template="collection"] .product-card-wrapper .boxeup-card__view {
+    bottom: 9px !important;
+    right: 48px !important;
+  }
+  #MainContent[data-template="collection"] .product-card-wrapper .boxeup-card__cart-link,
+  #MainContent[data-template="collection"] .product-card-wrapper .quick-add {
+    bottom: 9px !important;
+    right: 9px !important;
+  }
+  #MainContent[data-template="collection"] .product-card-wrapper .boxeup-card__view,
+  #MainContent[data-template="collection"] .product-card-wrapper .boxeup-card__cart-link,
+  #MainContent[data-template="collection"] .product-card-wrapper .quick-add__submit {
+    width: 34px !important;
+    min-width: 34px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+  }
+  #MainContent[data-template="collection"] .product-card-wrapper .quick-add {
+    width: 34px !important;
+  }
+}
+
+
+
+/* Direct brand strip on phones; desktop keeps its original disclosure. */
+#MainContent .bx-mobile-brand-strip {
+  display:none !important;
+}
+@media (max-width:749px) {
+  body #MainContent[data-template="collection"] .bx-brand-directory {
+    display:none !important;
+  }
+  body #MainContent[data-template="collection"] .bx-mobile-brand-strip {
+    display:grid !important;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:7px;
+    padding:9px 0 10px;
+    width:100%;
+  }
+  body #MainContent[data-template="collection"] .bx-mobile-brand-strip > a {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-width:0;
+    min-height:56px;
+    padding:8px 5px;
+    border:1px solid #383b43;
+    border-radius:6px;
+    background:#191b20;
+    transition:border-color .2s ease,background .2s ease;
+  }
+  body #MainContent[data-template="collection"] .bx-mobile-brand-strip > a[aria-current="page"] {
+    border-color:#ed2437;
+    background:#282229;
+  }
+  body #MainContent[data-template="collection"] .bx-mobile-brand-strip img {
+    display:block;
+    object-fit:contain;
+    object-position:center;
+    max-width:100%;
+    width:100%;
+    height:35px;
+  }
+  body #MainContent[data-template="collection"] .facets-wrapper {
+    padding-top:10px !important;
+    padding-bottom:10px !important;
+  }
+  body #MainContent[data-template="collection"] .mobile-facets__open {
+    display:inline-flex !important;
+    align-items:center !important;
+    min-height:44px !important;
+    padding:9px 12px !important;
+    border:1px solid #454951;
+    border-radius:6px;
+    color:#f5f5f7 !important;
+  }
+  body #MainContent[data-template="collection"] .facets-container {
+    align-items:center;
+  }
+  body #MainContent[data-template="collection"] .product-count__text {
+    color:#e9e9ec !important;
+    font-size:12px !important;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  #MainContent .bx-mobile-brand-strip > a {transition:none;}
+}
+

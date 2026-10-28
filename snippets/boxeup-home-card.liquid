@@ -1,7 +1,7 @@
 {% comment %}
-  VIRIATTO homepage tile, minimal product presentation.
-  Actual discounts come from Shopify compare-at price, never invented.
-  The "+" opens the existing Shopify quick-add modal, including variants.
+  VIRIATTO / homepage image-first product tile.
+  Shopify compare-at prices and discounts are never invented.
+  The existing quick-add popup remains connected to the plus button.
 {% endcomment %}
 {%- if product != blank -%}
   {%- liquid
@@ -9,29 +9,34 @@
     if product.compare_at_price > product.price
       assign vh_discount = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round
     endif
+    assign vh_second_image = blank
+    if product.images.size > 1
+      assign vh_second_image = product.images[1]
+    endif
   -%}
   <article class="vh-tile">
     <a class="vh-tile__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
       {%- if product.featured_image -%}
-        {{ product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '240,360,480,720,900', sizes: '(min-width: 1100px) 18vw, (min-width: 750px) 31vw, 48vw', alt: product.title, class: 'vh-tile__photo' }}
+        {{ product.featured_image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '300,450,650,800,1000', sizes: '(min-width: 1100px) 19vw, (min-width: 750px) 31vw, 48vw', alt: product.title, class: 'vh-tile__photo vh-tile__photo--primary' }}
+        {%- if vh_second_image != blank -%}
+          {{ vh_second_image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '300,450,650,800,1000', sizes: '(min-width: 1100px) 19vw, (min-width: 750px) 31vw, 48vw', alt: '', class: 'vh-tile__photo vh-tile__photo--secondary' }}
+        {%- endif -%}
       {%- else -%}
-        {{ 'product-1' | placeholder_svg_tag: 'vh-tile__photo' }}
+        {{ 'product-1' | placeholder_svg_tag: 'vh-tile__photo vh-tile__photo--primary' }}
       {%- endif -%}
       <span class="vh-tile__shade" aria-hidden="true"></span>
       {%- if vh_discount > 0 -%}
-        <span class="vh-tile__discount" aria-label="{{ vh_discount }}%">{{ vh_discount }}%</span>
+        <span class="vh-tile__discount">−{{ vh_discount }}%</span>
       {%- elsif product.available == false -%}
         <span class="vh-tile__discount vh-tile__discount--sold">{{ 'boxeup_sections.home_sold_out' | t }}</span>
       {%- endif -%}
-      <span class="vh-tile__details">
-        <span class="vh-tile__name">{{ product.title | escape }}</span>
-        <span class="vh-tile__prices">
-          {%- if product.compare_at_price > product.price -%}
-            <del>{{ product.compare_at_price | money }}</del>
-          {%- endif -%}
-          <strong>{{ product.price | money }}</strong>
-        </span>
+      <span class="vh-tile__prices">
+        {%- if product.compare_at_price > product.price -%}
+          <del>{{ product.compare_at_price | money }}</del>
+        {%- endif -%}
+        <strong>{{ product.price | money }}</strong>
       </span>
+      <span class="vh-tile__name">{{ product.title | escape }}</span>
     </a>
     {%- if product.available -%}
       <modal-opener class="vh-tile__opener" data-modal="#VHomeQuick-{{ section_id }}-{{ product.id }}">

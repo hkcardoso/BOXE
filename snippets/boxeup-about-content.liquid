@@ -67,7 +67,7 @@
       <div class="viri-about__summary">
         <p>{{ bx_about_intro | escape }}</p>
         <p>{{ bx_about_second | escape }}</p>
-        <a class="viri-about__catalog-link" href="{{ routes.all_products_collection_url }}">{{ bx_about_catalog | escape }} <span aria-hidden="true">↗</span></a>
+        <a class="viri-about__catalog-link" href="{{ routes.all_products_collection_url }}">{{ bx_about_catalog | escape }} {% render 'viri-link-arrow' %}</a>
       </div>
     </div>
 
@@ -100,7 +100,7 @@
         <h2>{{ bx_about_help_title | escape }}</h2>
         <p>{{ bx_about_help_text | escape }}</p>
       </div>
-      <a href="{{ pages['contact'].url | default: '/pages/contact' }}">{{ bx_about_contact | escape }} <span aria-hidden="true">↗</span></a>
+      <a href="{{ pages['contact'].url | default: '/pages/contact' }}">{{ bx_about_contact | escape }} {% render 'viri-link-arrow' %}</a>
     </div>
   </div>
 </section>

@@ -56,12 +56,12 @@
         <div class="viri-contact__details">
           <div class="viri-contact__detail">
             <p class="viri-contact__detail-title">{{ bx_contact_email_label | escape }}</p>
-            <a href="mailto:business@boxeup.com">business@boxeup.com <span aria-hidden="true">↗</span></a>
+            <a href="mailto:business@boxeup.com">business@boxeup.com {% render 'viri-link-arrow' %}</a>
           </div>
           <div class="viri-contact__detail">
             <p class="viri-contact__detail-title">{{ bx_contact_links_label | escape }}</p>
-            <a href="{{ pages['envios-e-entregas'].url | default: '/pages/envios-e-entregas' }}">{{ bx_contact_shipping | escape }} <span aria-hidden="true">↗</span></a>
-            <a href="{{ pages['devolucoes-e-garantias'].url | default: '/pages/devolucoes-e-garantias' }}">{{ bx_contact_returns | escape }} <span aria-hidden="true">↗</span></a>
+            <a href="{{ pages['envios-e-entregas'].url | default: '/pages/envios-e-entregas' }}">{{ bx_contact_shipping | escape }} {% render 'viri-link-arrow' %}</a>
+            <a href="{{ pages['devolucoes-e-garantias'].url | default: '/pages/devolucoes-e-garantias' }}">{{ bx_contact_returns | escape }} {% render 'viri-link-arrow' %}</a>
           </div>
         </div>
       </aside>
@@ -107,7 +107,7 @@
             </div>
           </div>
           <div class="viri-contact__form-actions">
-            <button class="viri-contact__submit" type="submit">{{ bx_contact_send | escape }} <span aria-hidden="true">↗</span></button>
+            <button class="viri-contact__submit" type="submit">{{ bx_contact_send | escape }} {% render 'viri-link-arrow' %}</button>
             <p><span aria-hidden="true">*</span> {{ bx_contact_required | escape }}{% if shop.privacy_policy != blank %} · <a href="{{ shop.privacy_policy.url }}">{{ 'boxeup_sections.contact_policy' | t }}</a>{% endif %}</p>
           </div>
         {% endform %}

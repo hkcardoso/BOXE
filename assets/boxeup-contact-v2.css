@@ -42,7 +42,16 @@ body #MainContent .viri-contact h1{
   overflow-wrap:anywhere;transition:color .15s ease;
 }
 #MainContent .viri-contact__detail a:hover{color:#fff!important}
-#MainContent .viri-contact__detail a span{font-size:14px;color:#ed4156}
+#MainContent .viri-contact__detail a .viri-link-arrow{
+  display:inline-flex;align-items:center;justify-content:center;
+  flex:0 0 16px;width:16px;height:16px;
+  color:#bdc0c8;line-height:0;
+  transition:color .18s ease,transform .18s ease;
+}
+#MainContent .viri-contact__detail a:hover .viri-link-arrow,
+#MainContent .viri-contact__detail a:focus-visible .viri-link-arrow{
+  color:#f0f0f2;transform:translate(2px,-2px);
+}
 #MainContent .viri-contact__panel{
   min-width:0;background:#191b1f;
   border:1px solid #34373d;border-radius:9px;
@@ -89,7 +98,13 @@ body #MainContent .viri-contact__submit{
   cursor:pointer;font:700 12px/1.25 var(--font-body-family,Arial,sans-serif);transition:background .15s ease;
 }
 body #MainContent .viri-contact__submit:hover{background:#cf1f31}
-#MainContent .viri-contact__submit span{font-size:16px}
+#MainContent .viri-contact__submit .viri-link-arrow{
+  display:inline-flex;align-items:center;justify-content:center;
+  flex:0 0 17px;width:17px;height:17px;color:#fff;line-height:0;
+  transition:transform .18s ease;
+}
+#MainContent .viri-contact__submit:hover .viri-link-arrow{transform:translate(2px,-2px)}
+#MainContent .viri-contact .viri-link-arrow svg{display:block;width:16px;height:16px;stroke:currentColor}
 #MainContent .viri-contact__form-actions p{margin:0;color:#9699a2;font:400 11px/1.6 var(--font-body-family,Arial,sans-serif)}
 #MainContent .viri-contact__form-actions p a{color:#c5c6ca;text-decoration:underline;text-underline-offset:2px}
 #MainContent .viri-contact__feedback{padding:15px;margin:0 0 20px;border:1px solid #555;border-radius:5px;font:400 13px/1.5 var(--font-body-family,Arial,sans-serif)}
@@ -127,4 +142,4 @@ body #MainContent .viri-contact__submit:hover{background:#cf1f31}
  #MainContent .viri-contact__form-actions{align-items:stretch;flex-direction:column;gap:11px;margin-top:20px}
  body #MainContent .viri-contact__submit{justify-content:space-between;width:100%;min-width:0;min-height:46px}
 }
-@media(prefers-reduced-motion:reduce){#MainContent .viri-contact__detail a,body #MainContent .viri-contact__submit,body #MainContent .viri-contact__field input,body #MainContent .viri-contact__field select,body #MainContent .viri-contact__field textarea{transition:none}}
+@media(prefers-reduced-motion:reduce){#MainContent .viri-contact .viri-link-arrow,#MainContent .viri-contact__detail a,body #MainContent .viri-contact__submit,body #MainContent .viri-contact__field input,body #MainContent .viri-contact__field select,body #MainContent .viri-contact__field textarea{transition:none}}

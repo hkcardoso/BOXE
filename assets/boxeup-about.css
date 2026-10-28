@@ -59,7 +59,18 @@ body #MainContent .viri-about__heading h1{
 }
 #MainContent .viri-about__catalog-link{margin-top:14px;padding:0 0 9px;border-bottom:1px solid #ed4156}
 #MainContent .viri-about__catalog-link:hover{color:#ed6575!important}
-#MainContent .viri-about__catalog-link span,#MainContent .viri-about__help>a span{font-size:17px;line-height:1}
+#MainContent .viri-about__catalog-link .viri-link-arrow,
+#MainContent .viri-about__help>a .viri-link-arrow{
+  display:inline-flex;align-items:center;justify-content:center;
+  flex:0 0 17px;width:17px;height:17px;
+  color:currentColor;line-height:0;
+  transition:transform .18s ease;
+}
+#MainContent .viri-about .viri-link-arrow svg{
+  display:block;width:16px;height:16px;stroke:currentColor;
+}
+#MainContent .viri-about__catalog-link:hover .viri-link-arrow,
+#MainContent .viri-about__help>a:hover .viri-link-arrow{transform:translate(2px,-2px)}
 #MainContent .viri-about__process{padding-top:clamp(36px,4vw,58px)}
 #MainContent .viri-about__process-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin:0 0 21px}
 #MainContent .viri-about__process-heading .viri-about__eyebrow{margin:0}
@@ -124,4 +135,4 @@ body #MainContent .viri-about__help h2{
  #MainContent .viri-about__help{align-items:flex-start;flex-direction:column;gap:18px;margin-top:25px;padding-top:25px}
  #MainContent .viri-about__help>a{min-height:44px;width:100%;justify-content:center}
 }
-@media(prefers-reduced-motion:reduce){#MainContent .viri-about__catalog-link,#MainContent .viri-about__help>a{transition:none}}
+@media(prefers-reduced-motion:reduce){#MainContent .viri-about .viri-link-arrow,#MainContent .viri-about__catalog-link,#MainContent .viri-about__help>a{transition:none}}

@@ -9,6 +9,8 @@
   assign vh_title_b = 'TREINA.'
   assign vh_intro = 'Luvas, proteções, vestuário e acessórios das melhores marcas de desportos de combate.'
   assign vh_shop = 'VER PRODUTOS'
+  assign vh_video_play = 'Reproduzir vídeo'
+  assign vh_video_pause = 'Pausar vídeo'
   assign vh_brands = 'EXPLORAR MARCAS'
   assign vh_featured = 'EM DESTAQUE'
   assign vh_new = 'NOVIDADES'
@@ -27,6 +29,8 @@
     assign vh_title_b = 'TRAIN.'
     assign vh_intro = 'Gloves, protection, clothing and accessories from leading combat sports brands.'
     assign vh_shop = 'SHOP PRODUCTS'
+    assign vh_video_play = 'Play video'
+    assign vh_video_pause = 'Pause video'
     assign vh_brands = 'EXPLORE BRANDS'
     assign vh_featured = 'FEATURED'
     assign vh_new = 'NEW ARRIVALS'
@@ -45,6 +49,8 @@
     assign vh_title_b = 'ENTRENAN.'
     assign vh_intro = 'Guantes, protecciones, ropa y accesorios de las mejores marcas de deportes de combate.'
     assign vh_shop = 'VER PRODUCTOS'
+    assign vh_video_play = 'Reproducir vídeo'
+    assign vh_video_pause = 'Pausar vídeo'
     assign vh_brands = 'EXPLORAR MARCAS'
     assign vh_featured = 'DESTACADOS'
     assign vh_new = 'NOVEDADES'
@@ -70,7 +76,16 @@
   .vh-home a{color:inherit;text-decoration:none}
   .vh-frame{width:min(100%,1440px);margin-inline:auto;padding-inline:clamp(18px,8vw,120px)}
   .vh-hero{height:clamp(390px,34vw,530px);min-height:390px;position:relative;isolation:isolate;display:flex;align-items:center;overflow:hidden;background:#08090b}
-  .vh-hero__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 43%;z-index:-2}
+  .vh-hero__media{position:absolute;inset:0;z-index:-2;overflow:hidden;background:#08090b}
+  .vh-hero__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 43%;z-index:0}
+  .vh-hero__video{display:block;position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;object-position:center 43%;background:transparent;opacity:0;transition:opacity .3s ease;pointer-events:none}
+  .vh-hero--video-ready .vh-hero__video{opacity:1}
+  .vh-hero__video-toggle{position:absolute;z-index:5;right:clamp(18px,3vw,40px);bottom:20px;display:grid;place-items:center;width:42px;height:42px;padding:10px;color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:50%;background:rgba(12,14,17,.6);cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .2s,border-color .2s}
+  .vh-hero__video-toggle:hover,.vh-hero__video-toggle:focus-visible{background:rgba(32,35,41,.85);border-color:#fff}
+  .vh-hero__video-toggle svg{display:block;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .vh-hero__video-toggle .vh-hero__icon-pause{display:none}
+  .vh-hero__video-toggle[data-state="playing"] .vh-hero__icon-play{display:none}
+  .vh-hero__video-toggle[data-state="playing"] .vh-hero__icon-pause{display:block}
   .vh-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(1,2,4,.95) 0%,rgba(1,2,4,.85) 25%,rgba(1,2,4,.55) 47%,rgba(1,2,4,.07) 79%),linear-gradient(0deg,rgba(0,0,0,.48),transparent 34%);z-index:-1}
   .vh-hero__inner{position:relative;width:100%;padding-block:56px 64px}
   .vh-hero__copy{max-width:700px}
@@ -162,7 +177,8 @@
   }
   @media(max-width:749px){
     .vh-hero{height:clamp(490px,130vw,620px);min-height:490px;align-items:flex-end}
-    .vh-hero__image{object-position:66% center}
+    .vh-hero__image,.vh-hero__video{object-position:66% center}
+    .vh-hero__video-toggle{right:18px;bottom:16px;width:40px;height:40px}
     .vh-hero:before{background:linear-gradient(0deg,rgba(1,2,4,.95) 0%,rgba(1,2,4,.81) 25%,rgba(1,2,4,.48) 59%,rgba(1,2,4,.12) 100%)}
     .vh-hero__inner{padding-bottom:70px;padding-top:40px}
     .vh-hero__copy{max-width:100%}
@@ -589,11 +605,22 @@
 {{ 'viriatto-benefits.css' | asset_url | stylesheet_tag }}
 
 <section class="vh-home" aria-label="{{ 'boxeup_sections.aria_home' | t }}">
-  <div class="vh-hero">
-    {%- if section.settings.hero_image != blank -%}
-      {{ section.settings.hero_image | image_url: width: 2200 | image_tag: class: 'vh-hero__image', widths: '800,1200,1600,2200', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: '' }}
-    {%- else -%}
-      <img class="vh-hero__image" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1920" height="1080" loading="eager" fetchpriority="high">
+  <div class="vh-hero" id="ViriattoHero-{{ section.id }}">
+    <div class="vh-hero__media" aria-hidden="true">
+      {%- if section.settings.hero_image != blank -%}
+        {{ section.settings.hero_image | image_url: width: 2200 | image_tag: class: 'vh-hero__image', widths: '800,1200,1600,2200', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: '' }}
+      {%- else -%}
+        <img class="vh-hero__image" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1920" height="1080" loading="eager" fetchpriority="high">
+      {%- endif -%}
+      {%- if section.settings.hero_video != blank -%}
+        {{ section.settings.hero_video | video_tag: class: 'vh-hero__video', autoplay: true, muted: true, loop: true, playsinline: true, controls: false, preload: 'metadata', image_size: '1600x' }}
+      {%- endif -%}
+    </div>
+    {%- if section.settings.hero_video != blank -%}
+      <button type="button" class="vh-hero__video-toggle" data-state="paused" aria-label="{{ vh_video_play | escape }}" data-play-label="{{ vh_video_play | escape }}" data-pause-label="{{ vh_video_pause | escape }}">
+        <svg class="vh-hero__icon-play" aria-hidden="true" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z"/></svg>
+        <svg class="vh-hero__icon-pause" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>
+      </button>
     {%- endif -%}
     <div class="vh-frame vh-hero__inner">
       <div class="vh-hero__copy">
@@ -608,6 +635,72 @@
     </div>
     
   </div>
+
+  {%- if section.settings.hero_video != blank -%}
+    <script>
+      (() => {
+        const hero = document.getElementById('ViriattoHero-{{ section.id }}');
+        const video = hero?.querySelector('.vh-hero__video');
+        const button = hero?.querySelector('.vh-hero__video-toggle');
+        if (!hero || !video || !button) return;
+
+        // iOS Safari autoplay needs muted + playsinline. Keep the poster visible
+        // until a video frame plays, and allow an explicit tap in Low Power Mode.
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.setAttribute('playsinline', '');
+        video.setAttribute('webkit-playsinline', '');
+        let manuallyPaused = false;
+        let inViewport = true;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const update = () => {
+          const playing = !video.paused && !video.ended;
+          button.dataset.state = playing ? 'playing' : 'paused';
+          button.setAttribute('aria-label', button.dataset[playing ? 'pauseLabel' : 'playLabel']);
+          button.setAttribute('aria-pressed', String(playing));
+        };
+        const tryPlay = () => {
+          if (document.hidden || !inViewport || manuallyPaused || reduceMotion.matches) {
+            update();
+            return;
+          }
+          const attempt = video.play();
+          if (attempt && typeof attempt.catch === 'function') attempt.catch(update);
+        };
+        video.addEventListener('playing', () => {
+          hero.classList.add('vh-hero--video-ready');
+          update();
+        });
+        video.addEventListener('pause', update);
+        video.addEventListener('error', update);
+        button.addEventListener('click', () => {
+          if (video.paused) {
+            manuallyPaused = false;
+            const attempt = video.play();
+            if (attempt && typeof attempt.catch === 'function') attempt.catch(update);
+          } else {
+            manuallyPaused = true;
+            video.pause();
+          }
+        });
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver(([entry]) => {
+            inViewport = !!entry?.isIntersecting;
+            if (!inViewport) video.pause();
+            else tryPlay();
+          }, { threshold: .05 }).observe(hero);
+        }
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) video.pause();
+          else tryPlay();
+        });
+        window.addEventListener('pageshow', tryPlay);
+        tryPlay();
+        update();
+      })();
+    </script>
+  {%- endif -%}
 
   <script src="{{ 'boxeup-brand-touch.js' | asset_url }}" defer="defer"></script>
   <nav class="vh-brands" id="VHomeBrands" aria-label="{{ vh_brands }}">

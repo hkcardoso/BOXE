@@ -729,6 +729,39 @@
     stroke: currentColor !important;
   }
 
+
+  /* VIRIATTO: CSS magnifier removes the oversized dark SVG circle. */
+  body .header-wrapper .vh-header-search__form > .vh-header-search__magnifier {
+    display:inline-block!important;
+    position:relative!important;
+    box-sizing:border-box!important;
+    width:20px!important;
+    min-width:20px!important;
+    height:20px!important;
+    flex:0 0 20px!important;
+    overflow:visible!important;
+  }
+  body .header-wrapper .vh-header-search__magnifier::before {
+    content:""!important;
+    position:absolute!important;
+    left:1px;top:1px;
+    box-sizing:border-box!important;
+    width:13px;height:13px;
+    border:1.8px solid #bfc2c9!important;
+    border-radius:50%!important;
+    background:transparent!important;
+  }
+  body .header-wrapper .vh-header-search__magnifier::after {
+    content:""!important;
+    position:absolute!important;
+    left:13px;top:14px;
+    width:8px;height:1.8px;
+    background:#bfc2c9!important;
+    border:0!important;border-radius:3px!important;
+    transform:rotate(45deg)!important;
+    transform-origin:0 50%;
+  }
+
 </style>
 
 {%- style -%}
@@ -882,7 +915,7 @@
       <form class="vh-header-search" action="{{ routes.search_url }}" method="get" role="search">
         <label class="vh-header-search__form">
           <span class="visually-hidden">{{ 'general.search.search' | t }}</span>
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 5 5"/></svg>
+          <span class="vh-header-search__magnifier" aria-hidden="true"></span>
           <input type="search" name="q" placeholder="{% assign vh_header_lang = request.locale.iso_code | slice: 0, 2 %}{% case vh_header_lang %}{% when 'en' %}Search products, brands...{% when 'es' %}Buscar productos, marcas...{% else %}Pesquisar produtos, marcas...{% endcase %}" autocomplete="off">
           <input type="hidden" name="options[prefix]" value="last">
         </label>

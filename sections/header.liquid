@@ -688,6 +688,47 @@
     body.boxeup-page-home .header-wrapper .header .vh-header-search{display:none!important}
   }
 
+
+  /* VIRIATTO 2026-10-28 / GitHub-to-Shopify visual sync fallback */
+  /* The product breadcrumb must remain legible over the dark detail-page background. */
+  body #MainContent[data-template="product"] nav.boxeup-breadcrumb.boxeup-breadcrumb--product > span[aria-current="page"] {
+    color: #f0f0f3 !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+  }
+  /* Show the real compare-at-price percentage more prominently on product cards. */
+  body #MainContent .vh-home .vh-tile .vh-tile__discount:not(.vh-tile__discount--sold) {
+    min-height: 34px !important;
+    padding: 8px 13px !important;
+    border: 1px solid #ff6577 !important;
+    border-radius: 5px !important;
+    background: #e8213f !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    font-weight: 850 !important;
+    line-height: 1 !important;
+    letter-spacing: .01em !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,.18);
+    box-shadow: 0 5px 17px rgba(0,0,0,.34);
+  }
+  @media(max-width: 749px) {
+    body #MainContent .vh-home .vh-tile .vh-tile__discount:not(.vh-tile__discount--sold) {
+      min-height: 29px !important;
+      padding: 6px 10px !important;
+      font-size: 12px !important;
+    }
+  }
+  /* Ensure the search magnifier remains an outline instead of a filled circle. */
+  body .header-wrapper .vh-header-search__form svg {
+    display: block !important;
+    flex: 0 0 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+    color: #bfc2c9 !important;
+    fill: none !important;
+    stroke: currentColor !important;
+  }
+
 </style>
 
 {%- style -%}

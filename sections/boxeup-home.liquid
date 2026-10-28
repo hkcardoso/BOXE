@@ -118,7 +118,7 @@
           <p class="bxv2-kicker">{{ 'boxeup_sections.home_choose_gear' | t }}</p>
           <h2>{{ 'boxeup_sections.home_start' | t }}<span class="bxv2-red">.</span></h2>
         </div>
-        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_all_catalog' | t }} <span aria-hidden="true">→</span></a>
+        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_all_catalog' | t }} <span class="bx-inline-arrow" aria-hidden="true"><svg class="bxv2-arrow-svg bxv2-arrow-svg--right" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a>
       </div>
       <div class="bxv2-cat-grid">
         <a href="{{ collections['luvas-de-boxe-e-muay-thai'].url }}#boxeup-catalog-filters" class="bxv2-cat bxv2-cat--1" aria-label="{{ 'boxeup_sections.aria_gloves' | t }}">
@@ -133,8 +133,8 @@
           {% render 'boxeup-category-product', product_handle: 'venum-challenger-boqueira-com-caixa', alt: 'Boqueira Venum Challenger' %}
           <span class="bxv2-cat__label"><strong>{{ 'boxeup_sections.home_mouthguards' | t }}</strong><span class="bxv2-cat__arrow" aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></span>
         </a>
-        <a href="{{ collections['calcoes-e-roupa-de-combate'].url }}#boxeup-catalog-filters" class="bxv2-cat bxv2-cat--4" aria-label="{{ 'boxeup_sections.aria_apparel' | t }}">
-          {% render 'boxeup-category-product', product_handle: 'fluory-calcoes-de-muay-thai-vermelho-e-preto', alt: 'Calções FLUORY de Muay Thai' %}
+        <a href="{{ collections['vestuario-e-fightwear'].url }}#boxeup-catalog-filters" class="bxv2-cat bxv2-cat--4" aria-label="{{ 'boxeup_sections.aria_apparel' | t }}">
+          {% render 'boxeup-category-product', product_handle: 'charlie-tss-muay-thai-calcoes-de-muay-thai', alt: 'Calções FLUORY de Muay Thai' %}
           <span class="bxv2-cat__label"><strong>{{ 'boxeup_sections.home_apparel' | t }}</strong><span class="bxv2-cat__arrow" aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10"/></svg></span></span>
         </a>
         <a href="{{ collections['mochilas-e-sacos-de-treino-1'].url }}#boxeup-catalog-filters" class="bxv2-cat bxv2-cat--5" aria-label="{{ 'boxeup_sections.aria_bags' | t }}">
@@ -151,7 +151,7 @@
     <div class="bxv2-block bxv2-block--products" id="bxv2-destaques">
       <div class="bxv2-heading">
         <div><p class="bxv2-kicker">{{ 'boxeup_sections.home_featured' | t }}</p><h2>{{ 'boxeup_sections.home_featured_title' | t }}<span class="bxv2-red">.</span></h2><p>{{ 'boxeup_sections.home_featured_desc' | t }}</p></div>
-        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_all_products' | t }} <span aria-hidden="true">→</span></a>
+        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_all_products' | t }} <span class="bx-inline-arrow" aria-hidden="true"><svg class="bxv2-arrow-svg bxv2-arrow-svg--right" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a>
       </div>
       {% if bx_products.size > 0 %}
         <div class="bxv2-product-grid">
@@ -231,7 +231,7 @@
     <div class="bxv2-block bxv2-block--modalities" id="bxv2-modalidades">
       <div class="bxv2-heading">
         <div><p class="bxv2-kicker">{{ 'boxeup_sections.home_sport_label' | t }}</p><h2>{{ 'boxeup_sections.home_sport_heading' | t }}<span class="bxv2-red">.</span></h2></div>
-        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_explore_catalog' | t }} <span aria-hidden="true">→</span></a>
+        <a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_explore_catalog' | t }} <span class="bx-inline-arrow" aria-hidden="true"><svg class="bxv2-arrow-svg bxv2-arrow-svg--right" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a>
       </div>
       <div class="bxv2-mod-grid">
         {% for block in section.blocks %}
@@ -257,7 +257,7 @@
     </div>
 
     <div class="bxv2-block bxv2-block--brands" id="BxHomeBrands">
-      <div class="bxv2-heading"><div><p class="bxv2-kicker">{{ 'boxeup_sections.home_brands_kicker' | t }}</p><h2>{{ 'boxeup_sections.home_brands_heading' | t }}<span class="bxv2-red">.</span></h2></div><a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_catalog' | t }} <span aria-hidden="true">→</span></a></div>
+      <div class="bxv2-heading"><div><p class="bxv2-kicker">{{ 'boxeup_sections.home_brands_kicker' | t }}</p><h2>{{ 'boxeup_sections.home_brands_heading' | t }}<span class="bxv2-red">.</span></h2></div><a class="bxv2-more" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.home_catalog' | t }} <span class="bx-inline-arrow" aria-hidden="true"><svg class="bxv2-arrow-svg bxv2-arrow-svg--right" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a></div>
       <div class="bxv2-brand-grid">
         {% assign bx_brand = collections['fairtex'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/fairtex" aria-label="{{ 'boxeup_sections.view_brand' | t }} Fairtex"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-fairtex-white.png?v=1793040787" alt="Fairtex" width="140" height="72" loading="lazy"></a>{% endif %}
         {% assign bx_brand = collections['charlie'] %}{% assign bx_brand_visible = false %}{% for bx_item in bx_brand.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}{% if bx_brand_visible %}<a class="bxv2-brand bxv2-brand--with-logo" href="{{ routes.root_url }}collections/charlie" aria-label="{{ 'boxeup_sections.view_brand' | t }} Charlie"><img class="bxv2-brand__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-charlie-white.png?v=1793040801" alt="Charlie" width="140" height="72" loading="lazy"></a>{% endif %}
@@ -277,7 +277,7 @@
       <p class="bxv2-kicker">{{ 'boxeup_sections.home_history_kicker' | t }}</p>
       <h2>{{ 'boxeup_sections.home_history_a' | t }}<br><em>{{ 'boxeup_sections.home_history_b' | t }}</em></h2>
       <p>{{ 'boxeup_sections.home_history_desc' | t }}</p>
-      <a class="bxv2-more bxv2-more--light" href="{{ routes.root_url }}pages/sobre-a-boxeup">{{ 'boxeup_sections.home_learn' | t }} <span aria-hidden="true">→</span></a>
+      <a class="bxv2-more bxv2-more--light" href="{{ routes.root_url }}pages/sobre-a-boxeup">{{ 'boxeup_sections.home_learn' | t }} <span class="bx-inline-arrow" aria-hidden="true"><svg class="bxv2-arrow-svg bxv2-arrow-svg--right" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></a>
     </div>
   </div>
 

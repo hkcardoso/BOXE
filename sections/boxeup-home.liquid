@@ -667,6 +667,30 @@
     .vh-home .vh-tile__photo,.vh-home .vh-tile__plus,.vh-home .vh-tile__opener{transition:none!important}
   }
 
+
+  /* VIRIATTO — percentagem de desconto mais visível nos cartões. */
+  .vh-home .vh-tile__discount:not(.vh-tile__discount--sold) {
+    min-height: 34px;
+    padding: 8px 13px;
+    border: 1px solid #ff6577;
+    border-radius: 5px;
+    background: #e51f3d;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 850;
+    line-height: 1;
+    letter-spacing: .01em;
+    text-shadow: 0 1px 2px rgba(0,0,0,.18);
+    box-shadow: 0 5px 17px rgba(0,0,0,.34);
+  }
+  @media (max-width: 749px) {
+    .vh-home .vh-tile__discount:not(.vh-tile__discount--sold) {
+      min-height: 29px;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+  }
+
 </style>
 
 <section class="vh-home" aria-label="{{ 'boxeup_sections.aria_home' | t }}">

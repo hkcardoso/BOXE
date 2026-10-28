@@ -47,9 +47,13 @@
   endif
   assign viri_account_parts = routes.account_url | split: '?'
 -%}
-<dialog
+<div
   id="ViriattoAuthDialog-{{ section.id }}"
   class="viriatto-auth"
+  role="dialog"
+  aria-modal="false"
+  aria-hidden="true"
+  inert
   aria-labelledby="ViriattoAuthTitle-{{ section.id }}"
   aria-describedby="ViriattoAuthIntro-{{ section.id }}"
   data-viri-auth
@@ -105,12 +109,41 @@
       </a>
     </div>
   </div>
-</dialog>
+</div>
 
 <style>
   /* Branded custom shell. Shopify continues to own sign-in and the account session. */
-  .viriatto-auth{position:fixed;inset:0;margin:auto;padding:0;width:min(430px,calc(100% - 24px));max-width:100%;max-height:min(690px,calc(100dvh - 24px));overflow-y:auto;background:#151618;color:#f9f9f9;border:1px solid #303236;border-radius:18px;box-shadow:0 30px 95px rgba(0,0,0,.52);font-family:var(--font-body-family,Arial,sans-serif)}
-  .viriatto-auth::backdrop{background:rgba(0,0,0,.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  /* Click-only account dropdown below header, matching the cart's downward reveal. */
+  .viriatto-auth{
+    position:fixed;
+    top:var(--viri-auth-top,100px);
+    right:var(--viri-auth-right,24px);
+    z-index:9999;
+    width:min(430px,calc(100vw - 24px));
+    max-width:calc(100vw - 24px);
+    max-height:calc(100dvh - var(--viri-auth-top,100px) - 12px);
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
+    overflow-y:auto;
+    background:#151618;
+    color:#f9f9f9;
+    border:1px solid #303236;
+    border-radius:16px;
+    box-shadow:0 22px 50px rgba(0,0,0,.55);
+    font-family:var(--font-body-family,Arial,sans-serif);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-14px);
+    pointer-events:none;
+    transition:opacity .22s ease,transform .25s cubic-bezier(.2,.8,.2,1),visibility .25s;
+  }
+  .viriatto-auth.is-open{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+    pointer-events:auto;
+  }
   .viriatto-auth__shell{padding:27px 28px 24px}
   .viriatto-auth__top{display:flex;align-items:flex-start;justify-content:space-between;gap:15px}
   .viriatto-auth__eyebrow{display:block;margin-bottom:8px;font-size:10px;letter-spacing:.18em;font-weight:650;color:#aeb0b6}
@@ -141,48 +174,89 @@
   .viriatto-auth__links a:hover{background:#282a2e}
   .viriatto-auth__links svg{width:17px;height:17px}
   .viriatto-auth__input:focus-visible,.viriatto-auth__button:focus-visible,.viriatto-auth__close:focus-visible,.viriatto-auth__links a:focus-visible{outline:2px solid #fff!important;outline-offset:3px!important}
-  @media(max-width:480px){.viriatto-auth__shell{padding:23px 19px 20px}.viriatto-auth__title{font-size:21px}.viriatto-auth__intro{margin-bottom:19px}}
-  @media(prefers-reduced-motion:reduce){.viriatto-auth__button,.viriatto-auth__links a{transition:none}}
+  @media(max-width:480px){.viriatto-auth{right:12px!important;left:12px!important;width:auto;max-width:none}.viriatto-auth__shell{padding:23px 19px 20px}.viriatto-auth__title{font-size:21px}.viriatto-auth__intro{margin-bottom:19px}}
+  @media(prefers-reduced-motion:reduce){.viriatto-auth,.viriatto-auth__button,.viriatto-auth__links a{transition:none}}
 </style>
 
 <script>
   (function() {
     const sectionId = {{ section.id | json }};
-    const modal = document.getElementById('ViriattoAuthDialog-' + sectionId);
-    if (!modal || modal.dataset.viriReady === 'true') return;
-    modal.dataset.viriReady = 'true';
+    const panel = document.getElementById('ViriattoAuthDialog-' + sectionId);
+    if (!panel || panel.dataset.viriReady === 'true') return;
+    panel.dataset.viriReady = 'true';
     let opener = null;
+    let isOpen = false;
+
+    function positionPanel() {
+      if (!opener || !opener.isConnected) return;
+      const header = opener.closest('.header-wrapper') || opener;
+      const headerBottom = header.getBoundingClientRect().bottom;
+      const viewportWidth = window.innerWidth;
+      const triggerRight = opener.getBoundingClientRect().right;
+      const top = Math.max(8, Math.round(headerBottom) + 5);
+      const right = Math.max(12, Math.round(viewportWidth - triggerRight));
+      panel.style.setProperty('--viri-auth-top', top + 'px');
+      panel.style.setProperty('--viri-auth-right', right + 'px');
+    }
+
+    function openPanel(trigger) {
+      if (isOpen) return;
+      opener = trigger;
+      positionPanel();
+      panel.inert = false;
+      panel.setAttribute('aria-hidden', 'false');
+      panel.classList.add('is-open');
+      opener.setAttribute('aria-expanded', 'true');
+      isOpen = true;
+      const emailInput = panel.querySelector('input[type="email"]');
+      if (emailInput) emailInput.focus({preventScroll: true});
+    }
+
+    function closePanel(restoreFocus) {
+      if (!isOpen) return;
+      panel.classList.remove('is-open');
+      panel.setAttribute('aria-hidden', 'true');
+      panel.inert = true;
+      isOpen = false;
+      if (opener && opener.isConnected) {
+        opener.setAttribute('aria-expanded', 'false');
+        if (restoreFocus) opener.focus({preventScroll: true});
+      }
+    }
 
     document.addEventListener('click', function(event) {
-      const trigger = event.target.closest('[data-viri-auth-open]');
-      if (trigger && trigger.getAttribute('aria-controls') === modal.id) {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      const trigger = target.closest('[data-viri-auth-open]');
+      if (trigger && trigger.getAttribute('aria-controls') === panel.id) {
         event.preventDefault();
-        opener = trigger;
-        if (typeof modal.showModal === 'function') {
-          if (!modal.open) modal.showModal();
-        } else {
-          window.location.assign({{ routes.storefront_login_url | json }});
-          return;
-        }
-        const field = modal.querySelector('input[type="email"]');
-        if (field) field.focus({preventScroll: true});
+        if (isOpen) closePanel(true);
+        else openPanel(trigger);
         return;
       }
-      if (event.target.closest('[data-viri-auth-close]') && modal.contains(event.target)) {
-        modal.close();
+      if (!isOpen) return;
+      if (target.closest('[data-viri-auth-close]') && panel.contains(target)) {
+        closePanel(true);
+        return;
+      }
+      if (!panel.contains(target)) closePanel(false);
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (isOpen && event.key === 'Escape') {
+        event.preventDefault();
+        closePanel(true);
       }
     });
 
-    modal.addEventListener('click', function(event) {
-      const rect = modal.getBoundingClientRect();
-      if (event.clientX < rect.left || event.clientX > rect.right ||
-          event.clientY < rect.top || event.clientY > rect.bottom) modal.close();
+    window.addEventListener('resize', function() {
+      if (isOpen) positionPanel();
     });
-    modal.addEventListener('close', function() {
-      if (opener && opener.isConnected) opener.focus({preventScroll: true});
-    });
+    window.addEventListener('scroll', function() {
+      if (isOpen) positionPanel();
+    }, {passive: true});
 
-    const emailForm = modal.querySelector('[data-viri-auth-email-form]');
+    const emailForm = panel.querySelector('[data-viri-auth-email-form]');
     if (emailForm) {
       emailForm.addEventListener('submit', function(event) {
         event.preventDefault();

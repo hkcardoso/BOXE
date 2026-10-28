@@ -3,17 +3,17 @@
    Full-bleed hero/backgrounds remain full width; their copy aligns to the grid. */
 :root{
   --boxeup-content-max:190rem;
-  --boxeup-content-gutter:clamp(3rem,4.5vw,9rem);
+  --boxeup-content-gutter:clamp(2.55rem,3.825vw,7.65rem);
   --boxeup-content-outer:max(
     var(--boxeup-content-gutter),
     calc((100vw - var(--boxeup-content-max))/2 + var(--boxeup-content-gutter))
   );
 }
 @media (min-width:750px) and (max-width:989px){
-  :root{--boxeup-content-gutter:5rem}
+  :root{--boxeup-content-gutter:4.25rem}
 }
 @media (max-width:749px){
-  :root{--boxeup-content-gutter:1.5rem}
+  :root{--boxeup-content-gutter:1.3rem}
 }
 /* Use one grid for catalogue cards, section headings and other pages. */
 #MainContent .page-width:not(.page-width--narrow),

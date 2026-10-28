@@ -11,51 +11,37 @@
       {% if category != blank %}<a class="boxeup-chip" data-boxeup-catalog href="{{ category.url }}"{% if collection.handle == category_handle %} aria-current="page"{% endif %}>{{ label_key | t }}</a>{% endif %}
     {% endfor %}
   </nav>
-  <details class="bx-brand-directory" id="BxBrands"><summary>{{ 'boxeup_experience.brands' | t }} <span aria-hidden="true">+</span></summary><nav aria-label="{{ 'boxeup_experience.brand_navigation' | t }}">
-    {% assign bx_brand_handles = 'fairtex,charlie,buddha,venum,cleto-reyes,rival,twins,everlast' | split: ',' %}
-    {% for handle in bx_brand_handles %}
-      {% assign bx_brand = collections[handle] %}
-      {% assign bx_brand_visible = false %}
-      {% for bx_item in bx_brand.products %}
-        {% assign bx_vendor = bx_item.vendor | downcase %}
-        {% unless bx_item.price == 0 or bx_vendor == 'my store' or bx_item.tags contains 'boxeup:hidden' %}
-          {% assign bx_brand_visible = true %}
-          {% break %}
-        {% endunless %}
-      {% endfor %}
-      {% if bx_brand_visible %}
-        {% assign bx_logo_handle = handle | replace: 'cleto-reyes', 'reyes' %}
-        {% assign bx_brand_logo = 'boxeup-brand-' | append: bx_logo_handle | append: '.svg' %}
-        <a data-boxeup-catalog href="{{ bx_brand.url }}" aria-label="{{ bx_brand.title | escape }}"{% if collection.handle == handle %} aria-current="page"{% endif %}>
-          <img class="bx-brand-directory__logo" src="{{ bx_brand_logo | asset_url }}" alt="{{ bx_brand.title | escape }}" width="120" height="64" loading="lazy">
-        </a>
-      {% endif %}
-    {% endfor %}
-  </nav></details>
   {% comment %}
-    On phones, display the same brand logo links directly above the filters.
-    Desktop retains the existing collapsible brand directory.
+    Match exactly the brand artwork and order shown on the VIRIATTO homepage.
+    A single captured set supplies both the desktop directory and mobile strip.
   {% endcomment %}
-  <nav class="bx-mobile-brand-strip" aria-label="{{ 'boxeup_experience.brand_navigation' | t }}">
-    {% for handle in bx_brand_handles %}
-      {% assign bx_brand = collections[handle] %}
-      {% assign bx_brand_visible = false %}
-      {% for bx_item in bx_brand.products %}
-        {% assign bx_vendor = bx_item.vendor | downcase %}
-        {% unless bx_item.price == 0 or bx_vendor == 'my store' or bx_item.tags contains 'boxeup:hidden' %}
-          {% assign bx_brand_visible = true %}
-          {% break %}
-        {% endunless %}
-      {% endfor %}
-      {% if bx_brand_visible %}
-        {% assign bx_logo_handle = handle | replace: 'cleto-reyes', 'reyes' %}
-        {% assign bx_brand_logo = 'boxeup-brand-' | append: bx_logo_handle | append: '.svg' %}
-        <a data-boxeup-catalog href="{{ bx_brand.url }}" aria-label="{{ bx_brand.title | escape }}"{% if collection.handle == handle %} aria-current="page"{% endif %}>
-          <img src="{{ bx_brand_logo | asset_url }}" alt="{{ bx_brand.title | escape }}" width="120" height="64" loading="lazy">
-        </a>
-      {% endif %}
-    {% endfor %}
-  </nav>
+  {%- assign bx_brand_handles = 'fairtex,venum,everlast,leone-1947,charlie,rdx,cleto-reyes,rival,twins' | split: ',' -%}
+  {%- capture bx_catalog_brand_links -%}
+    {%- for bx_brand_handle in bx_brand_handles -%}
+      {%- assign bx_brand_collection = collections[bx_brand_handle] -%}
+      {%- assign bx_brand_name = bx_brand_handle | replace: '-', ' ' | capitalize -%}
+      {%- assign bx_brand_logo = '' -%}
+        {%- case bx_brand_handle -%}
+          {%- when 'fairtex' -%}{%- assign bx_brand_name = 'Fairtex' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-fairtex-white.png?v=1793040787' -%}
+          {%- when 'venum' -%}{%- assign bx_brand_name = 'Venum' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-venum-white.png?v=1793040818' -%}
+          {%- when 'everlast' -%}{%- assign bx_brand_name = 'Everlast' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-everlast-white.png?v=1793040849' -%}
+          {%- when 'leone-1947' -%}{%- assign bx_brand_name = 'Leone 1947' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-leone-1947-logo-white.png?v=1793191434' -%}
+          {%- when 'charlie' -%}{%- assign bx_brand_name = 'Charlie' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-charlie-white.png?v=1793040801' -%}
+          {%- when 'rdx' -%}{%- assign bx_brand_name = 'RDX' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-rdx-logo-white.png?v=1793191429' -%}
+          {%- when 'cleto-reyes' -%}{%- assign bx_brand_name = 'Cleto Reyes' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-reyes-white.png?v=1793040826' -%}
+          {%- when 'rival' -%}{%- assign bx_brand_name = 'Rival' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-rival-white.png?v=1793040835' -%}
+          {%- when 'twins' -%}{%- assign bx_brand_name = 'Twins' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-twins-white.png?v=1793040843' -%}
+        {%- endcase -%}
+      <a {% if bx_brand_collection != blank %}data-boxeup-catalog {% endif %}href="{% if bx_brand_collection != blank %}{{ bx_brand_collection.url }}{% else %}{{ routes.search_url }}?q={{ bx_brand_name | url_encode }}{% endif %}" aria-label="{{ bx_brand_name | escape }}"{% if collection.handle == bx_brand_handle %} aria-current="page"{% endif %}>
+        <img class="bx-brand-directory__logo" src="{{ bx_brand_logo }}" alt="{{ bx_brand_name | escape }}" width="120" height="50" loading="lazy">
+      </a>
+    {%- endfor -%}
+  {%- endcapture -%}
+  <details class="bx-brand-directory" id="BxBrands">
+    <summary>{{ 'boxeup_experience.brands' | t }} <span aria-hidden="true">+</span></summary>
+    <nav aria-label="{{ 'boxeup_experience.brand_navigation' | t }}">{{ bx_catalog_brand_links }}</nav>
+  </details>
+  <nav class="bx-mobile-brand-strip" aria-label="{{ 'boxeup_experience.brand_navigation' | t }}">{{ bx_catalog_brand_links }}</nav>
   <div class="bx-tools-row">
     <button type="button" class="bx-text-button" data-bx-open="BxGuide">{{ 'boxeup_experience.guide' | t }} <span class="bx-inline-arrow" aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 19 19 5M8 5h11v11"/></svg></span></button>
     <button type="button" class="bx-text-button" data-bx-open="BxSizeGuide">{{ 'boxeup_experience.size_guide' | t }}</button>

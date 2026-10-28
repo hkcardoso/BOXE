@@ -1069,6 +1069,6 @@ body.boxeup-product-view .footer .footer__content-bottom-wrapper.page-width{
 
 /* VIRIATTO — legibilidade do nome do produto no breadcrumb escuro. */
 body #MainContent[data-template="product"] .boxeup-breadcrumb--product > span[aria-current="page"] {
-  color: #d5d6dc !important;
+  color: #f0f0f3 !important;
   opacity: 1 !important;
 }

@@ -20,6 +20,15 @@
   assign sort_by = results.sort_by | default: results.default_sort_by
   assign total_active_values = 0
   assign default_presentation = 'text'
+  assign bx_filter_language = request.locale.iso_code | slice: 0, 2
+  assign bx_filter_mobile_label = 'Filtros'
+  assign bx_filter_close_label = 'Fechar filtros'
+  if bx_filter_language == 'en'
+    assign bx_filter_mobile_label = 'Filters'
+    assign bx_filter_close_label = 'Close filters'
+  elsif bx_filter_language == 'es'
+    assign bx_filter_close_label = 'Cerrar filtros'
+  endif
   if results.url
     assign results_url = results.url
   else
@@ -460,13 +469,7 @@
             {{- 'icon-filter.svg' | inline_asset_content -}}
           </span>
           <span class="mobile-facets__open-label button-label medium-hide large-up-hide">
-            {%- if enable_filtering and enable_sorting -%}
-              {{ 'products.facets.filter_and_sort' | t }}
-            {%- elsif enable_filtering -%}
-              {{ 'products.facets.filter_button' | t }}
-            {%- elsif enable_sorting -%}
-              {{ 'products.facets.sort_button' | t }}
-            {%- endif -%}
+            {{ bx_filter_mobile_label | escape }}
           </span>
           <span class="mobile-facets__open-label button-label small-hide">
             {%- if enable_filtering -%}
@@ -485,15 +488,10 @@
           <div class="mobile-facets__inner gradient">
             <div class="mobile-facets__header">
               <div class="mobile-facets__header-inner">
-                <h2 class="mobile-facets__heading medium-hide large-up-hide">
-                  {%- if enable_filtering and enable_sorting -%}
-                    {{ 'products.facets.filter_and_sort' | t }}
-                  {%- elsif enable_filtering -%}
-                    {{ 'products.facets.filter_button' | t }}
-                  {%- elsif enable_sorting -%}
-                    {{ 'products.facets.sort_button' | t }}
-                  {%- endif -%}
-                </h2>
+                <button class="viri-filters__close" type="button" aria-label="{{ bx_filter_close_label | escape }}" onclick="this.closest('.mobile-facets__wrapper').querySelector('.mobile-facets__open-wrapper').click()">
+                  {{- 'icon-close.svg' | inline_asset_content -}}
+                </button>
+                <h2 class="mobile-facets__heading medium-hide large-up-hide">{{ bx_filter_mobile_label | escape }}</h2>
                 <h2 class="mobile-facets__heading small-hide">
                   {%- if enable_filtering -%}
                     {{ 'products.facets.filter_button' | t }}
@@ -509,11 +507,14 @@
               class="mobile-facets__main has-submenu gradient"
             >
               {%- if template.name == 'collection' -%}
-                {% render 'boxeup-brand-filter', variant: 'mobile' %}
+                {% render 'viri-mobile-filter-brands' %}
                 {% render 'boxeup-modality-filter', variant: 'mobile' %}
               {%- endif -%}
               {%- if enable_filtering -%}
                 {%- for filter in results.filters -%}
+                  {%- if template.name == 'collection' and filter.param_name == 'filter.p.vendor' -%}
+                    {%- continue -%}
+                  {%- endif -%}
                   {% liquid
                     assign presentation = filter.presentation | default: default_presentation
                     if presentation == 'image'

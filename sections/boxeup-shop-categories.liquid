@@ -6,6 +6,37 @@
   body [data-bx-mobile-filters]:not([hidden]) {
     display:none!important;
   }
+  @media screen and (max-width:749px){
+    /* Brand logos now live inside the bottom sheet; keep category chips compact. */
+    body #MainContent .section-boxeup-shop-categories .bx-mobile-brand-strip,
+    body #MainContent #boxeup-catalog-filters .bx-mobile-brand-strip{
+      display:none!important;
+    }
+    body #MainContent #boxeup-catalog-filters{
+      padding-block:8px 4px!important;
+      margin-bottom:0!important;
+    }
+    body #MainContent #boxeup-catalog-filters .boxeup-chip-list{
+      gap:6px!important;
+      padding-block:2px 6px!important;
+      margin-bottom:0!important;
+    }
+    body #MainContent #boxeup-catalog-filters .boxeup-chip{
+      min-height:35px!important;
+      padding:7px 11px!important;
+      font-size:11px!important;
+    }
+    body #MainContent #boxeup-catalog-filters .bx-tools-row{
+      gap:16px!important;
+      margin:5px 0 0!important;
+      padding:0!important;
+    }
+    body #MainContent #boxeup-catalog-filters .bx-text-button{
+      min-height:34px!important;
+      padding-block:6px!important;
+      font-size:11px!important;
+    }
+  }
 </style>
 <section id="boxeup-catalog-filters" class="boxeup-catalog-controls page-width" aria-label="{{ 'boxeup_navigation.categories' | t }}">
   <h2 class="visually-hidden">{{ 'boxeup_navigation.heading' | t }}</h2>

@@ -128,3 +128,161 @@
  .bx-about__benefit strong{font-size:11px}
  .bx-about__benefit span{font-size:11px}
 }
+
+/* VIRIATTO | tighter About-page composition and readable mobile cards. */
+#MainContent .bx-about .bx-about__container{
+  width:min(1180px,calc(100% - 52px));
+}
+#MainContent .bx-about .bx-about__hero{
+  min-height:clamp(390px,39vw,500px);
+}
+#MainContent .bx-about .bx-about__hero-content{padding-block:58px 64px}
+#MainContent .bx-about .bx-about__hero-description{margin-block:17px 23px!important;max-width:49ch!important}
+#MainContent .bx-about .bx-about__mission{
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:clamp(27px,5vw,72px);
+  padding-block:65px;
+}
+#MainContent .bx-about .bx-about__mission-copy{max-width:520px}
+#MainContent .bx-about .bx-about__mosaic{height:330px}
+#MainContent .bx-about .bx-about__categories{padding-block:54px 64px}
+#MainContent .bx-about .bx-about__category{border-radius:10px;overflow:hidden;background:#191a1e}
+#MainContent .bx-about .bx-about__category>span{line-height:1.35}
+#MainContent .bx-about .bx-about__contact{min-height:260px}
+#MainContent .bx-about .bx-about__contact-inner{padding-block:47px}
+@media(max-width:989px){
+  #MainContent .bx-about .bx-about__mission{grid-template-columns:1fr;gap:27px}
+  #MainContent .bx-about .bx-about__mission-copy{max-width:670px}
+  #MainContent .bx-about .bx-about__categories-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:749px){
+  #MainContent .bx-about .bx-about__container{
+    width:calc(100% - 32px);
+  }
+  #MainContent .bx-about .bx-about__hero{
+    min-height:385px;
+    align-items:flex-end;
+  }
+  #MainContent .bx-about .bx-about__hero-image{
+    object-position:65% center;
+  }
+  #MainContent .bx-about .bx-about__hero-content{
+    padding-block:42px 36px;
+  }
+  #MainContent .bx-about .bx-about__hero h1{
+    font-size:clamp(32px,8.5vw,45px)!important;
+    max-width:12ch;
+    line-height:1.08!important;
+  }
+  #MainContent .bx-about .bx-about__hero-description{
+    margin:14px 0 18px!important;
+    max-width:34ch!important;
+    font-size:13px;
+    line-height:1.55;
+  }
+  #MainContent .bx-about .bx-about__trust-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+    padding-block:14px;
+  }
+  #MainContent .bx-about .bx-about__benefit{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:9px;
+    min-height:78px;
+    padding:11px!important;
+    background:#191b1f;
+    border:1px solid #33363d!important;
+    border-radius:9px;
+  }
+  #MainContent .bx-about .bx-about__benefit svg{
+    flex:0 0 23px;
+    width:23px;height:23px;
+  }
+  #MainContent .bx-about .bx-about__benefit strong{
+    font-size:10px!important;
+    line-height:1.3;
+    text-transform:none;
+  }
+  #MainContent .bx-about .bx-about__benefit span{
+    font-size:10px!important;
+    line-height:1.4;
+  }
+  #MainContent .bx-about .bx-about__mission{
+    gap:22px;
+    padding-block:43px 38px;
+  }
+  #MainContent .bx-about .bx-about__mission h2{
+    font-size:clamp(27px,7vw,36px)!important;
+    line-height:1.12;
+    margin-bottom:15px;
+  }
+  #MainContent .bx-about .bx-about__mission-copy>p:not(.bx-about__eyebrow){
+    font-size:13px;
+    line-height:1.6;
+    margin-bottom:11px;
+  }
+  #MainContent .bx-about .bx-about__mosaic{
+    height:240px;gap:6px;
+  }
+  #MainContent .bx-about .bx-about__community-photo{
+    min-height:0;max-height:none;aspect-ratio:1.7;
+  }
+  #MainContent .bx-about .bx-about__community-copy{
+    padding:25px 16px 30px;
+  }
+  #MainContent .bx-about .bx-about__community h2{
+    font-size:clamp(26px,7vw,35px)!important;
+    margin-bottom:12px;
+  }
+  #MainContent .bx-about .bx-about__categories{
+    padding-block:42px 48px;
+  }
+  #MainContent .bx-about .bx-about__categories-heading{
+    display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:17px;
+  }
+  #MainContent .bx-about .bx-about__categories h2{
+    font-size:clamp(25px,6.5vw,34px)!important;
+  }
+  #MainContent .bx-about .bx-about__text-link{
+    margin:0;padding:5px 0;font-size:11px;text-align:left;
+  }
+  #MainContent .bx-about .bx-about__categories-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;
+  }
+  #MainContent .bx-about .bx-about__category>img{
+    aspect-ratio:1.23;
+  }
+  #MainContent .bx-about .bx-about__category>span{
+    padding:12px 10px;
+    font-size:11px;
+    line-height:1.3;
+    min-height:55px;
+  }
+  #MainContent .bx-about .bx-about__category:last-child:nth-child(odd){
+    grid-column:1 / -1;
+    flex-direction:row;
+    align-items:stretch;
+  }
+  #MainContent .bx-about .bx-about__category:last-child:nth-child(odd)>img{
+    width:43%;height:auto;aspect-ratio:1.3;
+    object-fit:cover;
+  }
+  #MainContent .bx-about .bx-about__category:last-child:nth-child(odd)>span{
+    flex:1;
+  }
+  #MainContent .bx-about .bx-about__contact{
+    min-height:260px;
+  }
+  #MainContent .bx-about .bx-about__contact-inner{padding-block:32px}
+  #MainContent .bx-about .bx-about__contact h2{font-size:clamp(28px,7.5vw,38px)!important}
+  #MainContent .bx-about .bx-about__contact-inner>p:not(.bx-about__eyebrow){
+    margin:12px 0 16px;font-size:13px;
+  }
+}
+@media(max-width:350px){
+  #MainContent .bx-about .bx-about__trust-grid{grid-template-columns:1fr}
+  #MainContent .bx-about .bx-about__benefit{min-height:65px}
+}

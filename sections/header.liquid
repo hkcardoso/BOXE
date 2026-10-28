@@ -75,19 +75,32 @@
     }
   }
 
+  /* VIRIATTO / native customer-account sheet. Authentication is Shopify-controlled. */
   shopify-account.header__icon {
-    --shopify-account-font-heading: var(--font-heading-family);
-    --shopify-account-font-heading-weight: var(--font-heading-weight);
-    --shopify-account-font-body: var(--font-body-family);
-    --shopify-account-font-body-weight: var(--font-body-weight);
-    --shopify-account-radius-base: var(--popup-corner-radius);
-    --shopify-account-radius-button: var(--buttons-radius);
-    --shopify-account-radius-button-small: var(--buttons-radius);
-    --shopify-account-radius-input: var(--inputs-radius);
-    --shopify-account-color-background: rgb(var(--color-background));
-    --shopify-account-color-text: rgb(var(--color-foreground));
-    --shopify-account-color-accent: rgb(var(--color-button));
-    --shopify-account-color-accent-text: rgb(var(--color-button-text));
+    --shopify-account-font-heading: var(--font-body-family, Arial, sans-serif);
+    --shopify-account-font-heading-weight: 600;
+    --shopify-account-font-body: var(--font-body-family, Arial, sans-serif);
+    --shopify-account-font-body-weight: 400;
+    --shopify-account-font-heading-transform: none;
+    --shopify-account-font-body-transform: none;
+    --shopify-account-color-background: #f7f7f8;
+    --shopify-account-color-background-subdued: #ececee;
+    --shopify-account-color-text: #212124;
+    --shopify-account-color-text-subdued: #626267;
+    --shopify-account-color-accent: #272729;
+    --shopify-account-color-accent-hover: #111113;
+    --shopify-account-color-accent-text: #ffffff;
+    --shopify-account-color-border: #c8c9cc;
+    --shopify-account-color-card-background: #ffffff;
+    --shopify-account-color-card-text: #212124;
+    --shopify-account-color-control-background: #ffffff;
+    --shopify-account-color-control-text: #212124;
+    --shopify-account-color-shadow: rgba(0, 0, 0, .23);
+    --shopify-account-radius-base: 18px;
+    --shopify-account-radius-dialog: 18px;
+    --shopify-account-radius-button: 999px;
+    --shopify-account-radius-button-small: 999px;
+    --shopify-account-radius-input: 24px;
     --shopify-account-dialog-position-top: var(--account-dialog-top, var(--header-height, 0px));
   }
 
@@ -999,15 +1012,14 @@
   }
 
   // The account `open` event is composed but does not bubble, so listen during capture.
-  // Anchor the dialog to the bottom of the account button itself. The header group can be
-  // much taller than the button's row (for example, a top-left logo pushes the menu to a
-  // second row), so anchoring to the section bottom drops the dialog too low.
+  // Anchor the account sheet below the full header, including the second navigation row.
   document.addEventListener(
     'open',
     (event) => {
       if (!(event.target instanceof HTMLElement) || !event.target.matches('shopify-account')) return;
 
-      const bottom = Math.max(0, Math.round(event.target.getBoundingClientRect().bottom));
+      const header = event.target.closest('.header-wrapper') || event.target;
+      const bottom = Math.max(0, Math.round(header.getBoundingClientRect().bottom));
       event.target.style.setProperty('--account-dialog-top', `${bottom}px`);
     },
     true

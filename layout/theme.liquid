@@ -96,6 +96,41 @@
       {{ body_font_italic | font_face: font_display: 'swap' }}
       {{ body_font_bold_italic | font_face: font_display: 'swap' }}
       {{ settings.type_header_font | font_face: font_display: 'swap' }}
+      @font-face {
+        font-family: 'Benzin';
+        src: url('{{ 'Benzin-Regular.ttf' | asset_url }}') format('truetype');
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Benzin';
+        src: url('{{ 'Benzin-Medium.ttf' | asset_url }}') format('truetype');
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Benzin';
+        src: url('{{ 'Benzin-Semibold.ttf' | asset_url }}') format('truetype');
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Benzin';
+        src: url('{{ 'Benzin-Bold.ttf' | asset_url }}') format('truetype');
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Benzin';
+        src: url('{{ 'Benzin-ExtraBold.ttf' | asset_url }}') format('truetype');
+        font-style: normal;
+        font-weight: 800;
+        font-display: swap;
+      }
 
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
@@ -305,6 +340,7 @@
     {{ 'boxeup-editorial-v2.css' | asset_url | stylesheet_tag }}
     {{ 'boxeup-layout-unified.css' | asset_url | stylesheet_tag }}
     {{ 'boxeup-experience.css' | asset_url | stylesheet_tag }}
+    {{ 'boxeup-typography.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'boxeup-catalog.js' | asset_url }}" defer></script>
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 

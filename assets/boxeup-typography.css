@@ -1,0 +1,161 @@
+/* BOXEUP / Benzin typography
+   Font files copied from hkcardoso/PAPOA (fonts/Benzin-*.ttf).
+   Display typography uses Benzin; body text, form controls and navigation
+   retain the more readable UI font. */
+
+:root {
+  --boxeup-display-font: "Benzin", Arial, Helvetica, sans-serif;
+  --font-heading-family: var(--boxeup-display-font);
+  --font-heading-style: normal;
+  --font-heading-weight: 700;
+}
+body.boxeup-product-view {
+  --bxp-display: var(--boxeup-display-font) !important;
+}
+
+/* Heading hierarchy across Shopify templates and custom sections. */
+#MainContent h1,
+#MainContent h2,
+#MainContent h3,
+#MainContent .h0,
+#MainContent .h1,
+#MainContent .h2,
+#MainContent .h3,
+#MainContent .title,
+#MainContent .title--primary,
+#MainContent .main-page-title,
+#MainContent .collection-hero__title,
+#MainContent .bxp-story__headline,
+#MainContent .related-products__heading,
+#MainContent .bxp-related-heading,
+#MainContent .bxv2-story__art > span,
+#MainContent .bxv2-mod__body strong,
+#MainContent .bxv2-cat__label strong,
+#MainContent .bxv2-product__title,
+#MainContent .card__heading,
+#MainContent .card__heading a,
+#MainContent .boxeup-sport-label,
+#MainContent .boxeup-catalog-controls h2,
+.footer-block__heading,
+.boxeup-wordmark {
+  font-family: var(--boxeup-display-font) !important;
+  font-style: normal;
+}
+#MainContent h1,
+#MainContent h2,
+#MainContent .h0,
+#MainContent .h1,
+#MainContent .h2 {
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+/* The previous ultra-condensed display fonts allowed larger sizes.
+   Benzin is wider, so headings have controlled sizes and line heights. */
+body #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero h1 {
+  font-family: var(--boxeup-display-font) !important;
+  font-size: clamp(39px, 4.6vw, 76px) !important;
+  font-weight: 800 !important;
+  line-height: 1.07 !important;
+  letter-spacing: -.048em !important;
+}
+body #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-heading h2,
+body #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-editorial__content h2,
+body #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-story__copy h2,
+body #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-news h2 {
+  font-family: var(--boxeup-display-font) !important;
+  font-size: clamp(26px, 3.1vw, 46px) !important;
+  font-weight: 700 !important;
+  line-height: 1.13 !important;
+  letter-spacing: -.035em !important;
+}
+#MainContent[data-template="index"] .bxv2-cat__label strong,
+#MainContent[data-template="index"] .bxv2-mod__body strong {
+  font-weight: 600 !important;
+  letter-spacing: -.025em !important;
+  line-height: 1.22 !important;
+}
+
+/* Product names remain readable in five-column product grids. */
+#MainContent .card__heading,
+#MainContent .card__heading a,
+#MainContent .bxv2-product__title {
+  font-weight: 500 !important;
+  letter-spacing: -.015em !important;
+  line-height: 1.4 !important;
+  overflow-wrap: anywhere;
+}
+#MainContent .card__heading,
+#MainContent .bxv2-product__title {
+  font-size: clamp(11px, .93vw, 13px) !important;
+}
+body #MainContent[data-template="product"] .product.bxp-product-grid .product__title h1 {
+  font-family: var(--boxeup-display-font) !important;
+  font-size: clamp(30px, 3vw, 53px) !important;
+  font-weight: 700 !important;
+  letter-spacing: -.035em !important;
+  line-height: 1.12 !important;
+  overflow-wrap: anywhere;
+}
+body #MainContent[data-template="product"] .bxp-story__headline,
+body #MainContent[data-template="product"] .related-products__heading {
+  font-family: var(--boxeup-display-font) !important;
+  font-weight: 700 !important;
+  line-height: 1.12 !important;
+  letter-spacing: -.035em !important;
+}
+body #MainContent[data-template="product"] .bxp-story__headline {
+  font-size: clamp(32px, 3.3vw, 58px) !important;
+}
+
+/* Bespoke About and Contact sections use stronger selectors and font shorthands. */
+body #MainContent .bx-about h1,
+body #MainContent .bx-about h2 {
+  font-family: var(--boxeup-display-font) !important;
+  font-weight: 700 !important;
+  letter-spacing: -.03em !important;
+  line-height: 1.13 !important;
+}
+body #MainContent .bx-about .bx-about__hero h1 {
+  font-size: clamp(38px, 4vw, 62px) !important;
+}
+body #MainContent .boxeup-contact__heading h1 {
+  font-family: var(--boxeup-display-font) !important;
+  font-size: clamp(32px, 3.7vw, 56px) !important;
+  font-weight: 700 !important;
+  letter-spacing: -.03em !important;
+  line-height: 1.14 !important;
+}
+body #MainContent .boxeup-contact__detail h2,
+body #MainContent .boxeup-contact__form-wrap h2 {
+  font-family: var(--boxeup-display-font) !important;
+  font-weight: 600 !important;
+  letter-spacing: -.02em !important;
+  line-height: 1.2 !important;
+}
+
+@media (max-width: 749px) {
+  body #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero h1 {
+    font-size: clamp(33px, 8.3vw, 50px) !important;
+    line-height: 1.09 !important;
+  }
+  body #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-heading h2,
+  body #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-editorial__content h2,
+  body #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-story__copy h2,
+  body #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-news h2 {
+    font-size: clamp(24px, 6.2vw, 34px) !important;
+  }
+  #MainContent .card__heading,
+  #MainContent .bxv2-product__title {
+    font-size: 11px !important;
+  }
+  body #MainContent[data-template="product"] .product.bxp-product-grid .product__title h1 {
+    font-size: clamp(28px, 7vw, 38px) !important;
+  }
+  body #MainContent .bx-about .bx-about__hero h1 {
+    font-size: clamp(35px, 8vw, 49px) !important;
+  }
+  body #MainContent .boxeup-contact__heading h1 {
+    font-size: clamp(31px, 8vw, 44px) !important;
+  }
+}

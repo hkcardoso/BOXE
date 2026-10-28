@@ -227,6 +227,10 @@
   }
 
 
+  /* Keep the native filter control; the old floating control must never cover tiles. */
+  body .bx-mobile-filters:not([hidden]) {
+    display:none!important;
+  }
   /* Match the homepage 4 / 3 / 2 product grid on every catalogue page. */
   body #MainContent[data-template="collection"] #product-grid.vh-grid {
     display:grid!important;

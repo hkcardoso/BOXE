@@ -350,3 +350,155 @@ body #MainContent .bx-about__hero h1{max-width:850px;text-wrap:balance}
 @media(max-width:749px){body #MainContent .bxv2-mod{aspect-ratio:1;min-height:180px}body #MainContent .bxv2-brand-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}body #MainContent .bx-information-page{padding-block:28px 42px!important}.bx-information-facts{padding:4px 16px}.bx-information-facts>div{grid-template-columns:minmax(0,1fr);gap:6px}body #MainContent .bx-information-page h2{font-size:21px}body #MainContent .bx-product-help{padding:20px}.bx-delivery-summary{font-size:13px}body #MainContent .bxp-details__copy .rte{font-size:14px;line-height:1.75}}
 @media(prefers-reduced-motion:reduce){.bx-brand-directory>summary>span{transition:none}}
 body #MainContent .bx-about h1,body #MainContent .bx-about h2,body #MainContent .bx-about__button,body #MainContent .bx-about__text-link,body #MainContent .bx-about__category>span{text-transform:none!important}
+
+/* BOXEUP | Mobile refinements: consistent SVG CTA arrows and responsive touch targets.
+   Keep this final override after the earlier home/secondary CSS layers. */
+#MainContent .bxv2-more .bxv2-arrow-svg,
+#MainContent .bxv2-btn .bxv2-arrow-svg,
+#MainContent .bx-text-button .bxv2-arrow-svg,
+#BxExperience .bx-text-button .bxv2-arrow-svg,
+#BxExperience .bx-button .bxv2-arrow-svg {
+  display:block;
+  width:16px;
+  height:16px;
+  flex:none;
+  stroke:currentColor;
+  fill:none;
+}
+#MainContent .bxv2-more .bx-inline-arrow,
+#MainContent .bx-text-button .bx-inline-arrow,
+#BxExperience .bx-text-button .bx-inline-arrow,
+#BxExperience .bx-button .bx-inline-arrow {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 16px;
+  width:16px;
+  height:16px;
+  margin:0;
+  line-height:1;
+}
+#MainContent .bxv2-more,
+#MainContent .bxv2-btn,
+#MainContent .bx-text-button,
+#BxExperience .bx-text-button,
+#BxExperience .bx-button {
+  text-decoration:none;
+}
+#MainContent .bxv2-more .bx-inline-arrow svg,
+#MainContent .bxv2-btn > span[aria-hidden="true"] svg,
+#MainContent .bx-text-button .bx-inline-arrow svg {
+  transition:transform .18s var(--bx-ease);
+}
+@media(hover:hover) and (pointer:fine) {
+  #MainContent .bxv2-more:hover .bx-inline-arrow svg,
+  #MainContent .bxv2-btn:hover > span[aria-hidden="true"] svg,
+  #MainContent .bx-text-button:hover .bx-inline-arrow svg {
+    transform:translateX(2px);
+  }
+}
+@media(max-width:749px) {
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-actions {
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px!important;
+    width:100%;
+    max-width:480px;
+  }
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-actions .bxv2-btn {
+    box-sizing:border-box;
+    min-width:0;
+    flex:1 1 155px;
+    min-height:48px!important;
+    display:inline-flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px!important;
+    padding:12px 14px!important;
+    white-space:normal;
+    text-align:left;
+    line-height:1.3;
+  }
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-actions .bxv2-btn > span[aria-hidden="true"] {
+    flex:0 0 16px;
+    margin-left:auto;
+  }
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-more {
+    box-sizing:border-box;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:10px!important;
+    max-width:100%;
+    min-height:44px!important;
+    padding:10px 13px!important;
+    white-space:normal!important;
+    line-height:1.3!important;
+    text-align:left!important;
+    overflow-wrap:anywhere;
+  }
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-more > .bx-inline-arrow {
+    flex:0 0 16px!important;
+    margin:0!important;
+    width:16px!important;
+    height:16px!important;
+  }
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-cat__label {
+    min-width:0;
+    max-width:100%;
+  }
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-cat__label strong {
+    display:block;
+    max-width:calc(100% - 36px);
+    overflow-wrap:break-word;
+    hyphens:auto;
+    line-height:1.2;
+  }
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-cat__arrow,
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-mod__arrow {
+    display:grid!important;
+    place-items:center!important;
+    width:28px!important;
+    height:28px!important;
+    min-width:28px;
+    font-size:0!important;
+    line-height:1!important;
+  }
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-cat__arrow svg,
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-mod__arrow svg {
+    display:block;
+    width:14px!important;
+    height:14px!important;
+    margin:auto;
+    flex:none;
+  }
+  #MainContent .bx-tools-row .bx-text-button,
+  #BxExperience .bx-text-button,
+  #BxExperience .bx-button {
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+  }
+  body #MainContent .boxeup-chip-list {
+    overscroll-behavior-x:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+  body #MainContent .boxeup-catalog-controls .bx-tools-row {
+    flex-wrap:wrap;
+  }
+}
+@media(max-width:360px) {
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-actions {
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+  }
+  #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-actions .bxv2-btn {
+    width:100%;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  #MainContent .bxv2-more .bx-inline-arrow svg,
+  #MainContent .bxv2-btn > span[aria-hidden="true"] svg,
+  #MainContent .bx-text-button .bx-inline-arrow svg {transition:none!important;transform:none!important}
+}

@@ -1,112 +1,278 @@
-<section class="boxeup-contact page-width">
-  <nav class="boxeup-breadcrumb" aria-label="{{ 'boxeup_sections.aria_breadcrumb' | t }}">
-    <a href="{{ routes.root_url }}">{{ 'boxeup_sections.contact_home' | t }}</a>
-    <span aria-hidden="true">/</span>
-    <span aria-current="page">{{ 'boxeup_sections.contact_contact' | t }}</span>
-  </nav>
-  <div class="boxeup-contact__heading">
-    <p class="boxeup-contact__eyebrow">{% if request.locale.iso_code == 'pt-PT' or request.locale.iso_code == 'pt' %}{{ section.settings.eyebrow | escape }}{% else %}{{ 'boxeup_experience.support' | t }}{% endif %}</p>
-    <h1>{{ 'boxeup_experience.about_contact_title' | t }}</h1>
-    <p>{{ 'boxeup_experience.contact_intro' | t }}</p>
-  </div>
-  <div class="boxeup-contact__grid">
-    <aside class="boxeup-contact__details">
-      <div class="boxeup-contact__detail">
-        <span class="boxeup-contact__detail-number">{{ 'boxeup_sections.contact_support' | t }}</span>
-        <h2>{{ 'boxeup_experience.help_title' | t }}</h2>
-        <p>{{ 'boxeup_experience.about_contact_text' | t }}</p>
-        <a class="boxeup-contact__email" href="mailto:business@boxeup.com">business@boxeup.com <span aria-hidden="true">→</span></a>
-      </div>
-      <div class="boxeup-contact__detail">
-        <span class="boxeup-contact__detail-number">{{ 'boxeup_sections.contact_explore' | t }}</span>
-        <h2>{{ 'boxeup_sections.contact_equipment' | t }}</h2>
-        <p>{{ 'boxeup_sections.contact_equipment_desc' | t }}</p>
-        <a class="boxeup-contact__link" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_sections.contact_catalog' | t }} <span aria-hidden="true">↗</span></a>
-      </div>
-      {% if page.content != blank %}
-        <div class="boxeup-contact__extra rte">
-          {{ page.content }}
-        </div>
-      {% endif %}
-    </aside>
+{{ 'boxeup-contact-v2.css' | asset_url | stylesheet_tag }}
 
-    <div class="boxeup-contact__form-wrap">
-      <span class="boxeup-contact__form-overline">{{ 'boxeup_sections.contact_send' | t }} </span>
-      <h2>{{ 'boxeup_experience.send' | t }}</h2>
-      <p class="boxeup-contact__form-intro">{{ 'boxeup_experience.contact_intro' | t }}</p>
-      {% form 'contact', id: 'BoxeupContactForm', class: 'boxeup-contact__form' %}
-        {% if form.posted_successfully? %}
-          <div class="boxeup-contact__success" role="status" tabindex="-1" autofocus>
-            <strong>{{ 'boxeup_sections.contact_sent' | t }}</strong>
-            <p>{{ 'boxeup_sections.contact_received' | t }}</p>
-          </div>
-        {% endif %}
-        {% if form.errors %}
-          <div class="boxeup-contact__error" role="alert" tabindex="-1" autofocus>
-            <strong>{{ 'boxeup_sections.contact_error' | t }}</strong>
-            {{ form.errors | default_errors }}
-          </div>
-        {% endif %}
-        <div class="boxeup-contact__fields">
-          <div class="boxeup-contact__field">
-            <label for="BoxeupContactName">{{ 'boxeup_sections.contact_name' | t }} <span aria-hidden="true">*</span></label>
-            <input type="text" id="BoxeupContactName" name="contact[name]" autocomplete="name"
-              value="{{ form.name | escape }}" placeholder="{{ 'boxeup_sections.contact_your_name' | t }}" required>
-          </div>
-          <div class="boxeup-contact__field">
-            <label for="BoxeupContactEmail">{{ 'boxeup_sections.contact_email' | t }} <span aria-hidden="true">*</span></label>
-            <input type="email" id="BoxeupContactEmail" name="contact[email]" autocomplete="email"
-              value="{{ form.email | escape }}" placeholder="exemplo@email.com" autocapitalize="off" spellcheck="false"
-              {% if form.errors contains 'email' %}aria-invalid="true" aria-describedby="BoxeupEmailError"{% endif %} required>
-            {% if form.errors contains 'email' %}
-              <span id="BoxeupEmailError" class="boxeup-contact__field-error">{{ 'boxeup_sections.contact_email_error' | t }}</span>
-            {% endif %}
-          </div>
-          <div class="boxeup-contact__field">
-            <label for="BoxeupContactSubject">{{ 'boxeup_experience.contact_subject' | t }} <span aria-hidden="true">*</span></label>
-            <select id="BoxeupContactSubject" name="contact[assunto]" required>
-              <option value="" disabled{% if form.assunto == blank %} selected{% endif %}>{{ 'boxeup_experience.subject_placeholder' | t }}</option>
-              {% assign bx_subjects = 'produto,encomenda,devolucao,parceria' | split: ',' %}
-              {% for value in bx_subjects %}{% assign bx_subject_key = 'boxeup_experience.subject_' | append: value %}<option value="{{ value }}"{% if form.assunto == value %} selected{% endif %}>{{ bx_subject_key | t }}</option>{% endfor %}
-            </select>
-          </div>
-          <div class="boxeup-contact__field">
-            <label for="BoxeupContactPhone">{{ 'boxeup_sections.contact_telephone' | t }} <span class="boxeup-contact__optional">{{ 'boxeup_sections.contact_optional' | t }}</span></label>
-            <input type="tel" id="BoxeupContactPhone" name="contact[phone]" autocomplete="tel"
-              value="{{ form.phone | escape }}" placeholder="+351">
-          </div>
-          <div class="boxeup-contact__field boxeup-contact__field--full">
-            <label for="BoxeupContactBody">{{ 'boxeup_sections.contact_message' | t }} <span aria-hidden="true">*</span></label>
-            <textarea id="BoxeupContactBody" name="contact[body]" rows="7" placeholder="{{ 'boxeup_sections.contact_message_help' | t }}" required>{{ form.body | escape }}</textarea>
-          </div>
-        </div>
-        <div class="boxeup-contact__submit-row">
-          <button type="submit">{{ 'boxeup_sections.contact_send_message' | t }} <span aria-hidden="true">↗</span></button>
-          <span>{{ 'boxeup_sections.contact_required' | t }}</span>
-        </div>
-        {% if shop.privacy_policy != blank %}
-          <p class="boxeup-contact__privacy">{{ 'boxeup_sections.contact_privacy' | t }} <a href="{{ shop.privacy_policy.url }}">{{ 'boxeup_sections.contact_policy' | t }}</a>.</p>
-        {% endif %}
-      {% endform %}
+{% liquid
+  assign bx_language = request.locale.iso_code | slice: 0, 2
+  case bx_language
+    when 'en'
+      assign bx_hero_tagline = 'WE ARE HERE TO HELP'
+      assign bx_hero_title = 'TALK TO US.'
+      assign bx_hero_description = 'Need help choosing equipment, have an order question or want to discuss a partnership? Our team is here to help.'
+      assign bx_support = 'Customer support'
+      assign bx_support_desc = 'Questions about products, sizes and recommendations? We can help.'
+      assign bx_orders = 'Orders'
+      assign bx_orders_desc = 'Questions about orders, shipping, delivery or returns.'
+      assign bx_partners = 'Business partnerships'
+      assign bx_partners_desc = 'Represent a brand, gym or event? Talk to us.'
+      assign bx_faq = 'FREQUENTLY ASKED QUESTIONS'
+      assign bx_faq_shipping = 'Shipping and delivery'
+      assign bx_faq_shipping_text = 'Shipping options and fees are confirmed at checkout.'
+      assign bx_faq_returns = 'Returns and warranty'
+      assign bx_faq_returns_text = 'Check the return conditions and warranty process.'
+      assign bx_faq_sizes = 'Sizes and equipment'
+      assign bx_faq_sizes_text = 'Tell us your discipline, intended use and the equipment you need.'
+      assign bx_faq_payments = 'Payments and billing'
+      assign bx_faq_payments_text = 'Available payment methods are shown at checkout. For billing questions, contact us.'
+      assign bx_faq_all = 'Need another answer? Contact us'
+      assign bx_form_tagline = 'SEND US A MESSAGE'
+      assign bx_form_title = 'Send us a message'
+      assign bx_form_intro = 'Fill in the form below and our team will get back to you as soon as possible.'
+      assign bx_reply = 'Reply from our team'
+      assign bx_reply_desc = 'We aim to reply as soon as possible.'
+      assign bx_help = 'Equipment advice'
+      assign bx_help_desc = 'Help with products and orders.'
+      assign bx_collab = 'Partnerships'
+      assign bx_collab_desc = 'Open to new collaborations.'
+      assign bx_secure = 'Secure checkout'
+      assign bx_secure_desc = 'Payments are processed securely.'
+      assign bx_character_count = 'characters'
+    when 'es'
+      assign bx_hero_tagline = 'ESTAMOS AQUÍ PARA AYUDAR'
+      assign bx_hero_title = 'HABLEMOS.'
+      assign bx_hero_description = '¿Necesitas ayuda para elegir equipo, tienes dudas sobre un pedido o quieres proponer una colaboración? Estamos aquí para ayudarte.'
+      assign bx_support = 'Atención al cliente'
+      assign bx_support_desc = '¿Dudas sobre productos, tallas o recomendaciones? Te ayudamos.'
+      assign bx_orders = 'Pedidos'
+      assign bx_orders_desc = 'Consultas sobre pedidos, envíos, entregas o devoluciones.'
+      assign bx_partners = 'Colaboraciones comerciales'
+      assign bx_partners_desc = '¿Representas una marca, gimnasio o evento? Contáctanos.'
+      assign bx_faq = 'PREGUNTAS FRECUENTES'
+      assign bx_faq_shipping = 'Envíos y entregas'
+      assign bx_faq_shipping_text = 'Las opciones y gastos de envío se confirman al pagar.'
+      assign bx_faq_returns = 'Devoluciones y garantías'
+      assign bx_faq_returns_text = 'Consulta las condiciones y el proceso de devolución.'
+      assign bx_faq_sizes = 'Tallas y equipamiento'
+      assign bx_faq_sizes_text = 'Dinos qué disciplina practicas y qué equipo necesitas.'
+      assign bx_faq_payments = 'Pagos y facturación'
+      assign bx_faq_payments_text = 'Los métodos disponibles aparecen al pagar. Para facturas, contáctanos.'
+      assign bx_faq_all = '¿Otra pregunta? Contáctanos'
+      assign bx_form_tagline = 'ENVÍANOS UN MENSAJE'
+      assign bx_form_title = 'Envíanos un mensaje'
+      assign bx_form_intro = 'Completa el formulario y nuestro equipo responderá lo antes posible.'
+      assign bx_reply = 'Respuesta del equipo'
+      assign bx_reply_desc = 'Intentamos responder lo antes posible.'
+      assign bx_help = 'Asesoramiento'
+      assign bx_help_desc = 'Ayuda con productos y pedidos.'
+      assign bx_collab = 'Colaboraciones'
+      assign bx_collab_desc = 'Abiertos a nuevos proyectos.'
+      assign bx_secure = 'Compra segura'
+      assign bx_secure_desc = 'Pagos procesados de forma segura.'
+      assign bx_character_count = 'caracteres'
+    else
+      assign bx_hero_tagline = 'ESTAMOS AQUI PARA AJUDAR'
+      assign bx_hero_title = 'FALA CONNOSCO.'
+      assign bx_hero_description = 'Precisas de ajuda a escolher equipamento, tens uma dúvida sobre uma encomenda ou queres propor uma parceria? A nossa equipa está pronta para ajudar.'
+      assign bx_support = 'Apoio ao cliente'
+      assign bx_support_desc = 'Dúvidas sobre produtos, tamanhos ou recomendações? Estamos aqui para ajudar.'
+      assign bx_orders = 'Encomendas'
+      assign bx_orders_desc = 'Questões sobre o teu pedido, envios, entregas ou devoluções.'
+      assign bx_partners = 'Parcerias comerciais'
+      assign bx_partners_desc = 'Representas uma marca, ginásio ou evento? Fala connosco.'
+      assign bx_faq = 'PERGUNTAS FREQUENTES'
+      assign bx_faq_shipping = 'Envios e entregas'
+      assign bx_faq_shipping_text = 'Os métodos e portes de envio são confirmados no checkout.'
+      assign bx_faq_returns = 'Devoluções e garantias'
+      assign bx_faq_returns_text = 'Consulta as condições de devolução e o processo de garantia.'
+      assign bx_faq_sizes = 'Tamanhos e equipamentos'
+      assign bx_faq_sizes_text = 'Diz-nos a modalidade, o tipo de treino e o equipamento que procuras.'
+      assign bx_faq_payments = 'Pagamentos e fatura'
+      assign bx_faq_payments_text = 'Os métodos de pagamento disponíveis aparecem no checkout. Para questões de faturação, contacta-nos.'
+      assign bx_faq_all = 'Ainda tens dúvidas? Contacta-nos'
+      assign bx_form_tagline = 'ENVIA-NOS UMA MENSAGEM'
+      assign bx_form_title = 'Envia-nos uma mensagem'
+      assign bx_form_intro = 'Preenche os campos abaixo e a nossa equipa responderá assim que possível.'
+      assign bx_reply = 'Resposta da equipa'
+      assign bx_reply_desc = 'Procuramos responder o mais depressa possível.'
+      assign bx_help = 'Apoio especializado'
+      assign bx_help_desc = 'Ajuda com produtos e encomendas.'
+      assign bx_collab = 'Parcerias comerciais'
+      assign bx_collab_desc = 'Abertos a novas colaborações.'
+      assign bx_secure = 'Compra segura'
+      assign bx_secure_desc = 'Pagamentos processados de forma segura.'
+      assign bx_character_count = 'caracteres'
+  endcase
+%}
+
+<section class="boxeup-contact bx-contact" aria-labelledby="BxContactTitle">
+  <div class="bx-contact__hero">
+    {% if section.settings.hero_image != blank %}
+      {{ section.settings.hero_image | image_url: width: 2200 | image_tag: class: 'bx-contact__hero-image', loading: 'eager', sizes: '100vw', alt: '' }}
+    {% else %}
+      <img class="bx-contact__hero-image" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-disciplina-banner.jpg?v=1793120726" alt="" width="2172" height="724" fetchpriority="high">
+    {% endif %}
+    <div class="bx-contact__hero-overlay" aria-hidden="true"></div>
+    <div class="bx-contact__wrap bx-contact__hero-inner">
+      <nav class="bx-contact__breadcrumb" aria-label="{{ 'boxeup_sections.aria_breadcrumb' | t }}">
+        <a href="{{ routes.root_url }}">{{ 'boxeup_sections.contact_home' | t }}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ 'boxeup_sections.contact_contact' | t }}</span>
+      </nav>
+      <div class="bx-contact__headline">
+        <p class="bx-contact__eyebrow">{{ bx_hero_tagline }}</p>
+        <h1 id="BxContactTitle">{{ bx_hero_title | remove: '.' }}<span aria-hidden="true">.</span></h1>
+        <p class="bx-contact__hero-description">{{ bx_hero_description }}</p>
+      </div>
     </div>
   </div>
-  {% render 'boxeup-faq', id: 'BxContactFaq' %}
+
+  <div class="bx-contact__wrap bx-contact__body">
+    <div class="bx-contact__grid">
+      <aside class="bx-contact__sidebar" aria-label="{{ bx_support }}">
+        <div class="bx-contact__quicklinks">
+          <button type="button" class="bx-contact__quicklink" data-bx-contact-subject="produto">
+            <span class="bx-contact__quicklink-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18v-3a10 10 0 0 1 20 0v3"/><rect x="3" y="16" width="6" height="10" rx="2"/><rect x="23" y="16" width="6" height="10" rx="2"/><path d="M26 26c0 3-3 4-10 4h-3"/></svg>
+            </span>
+            <span class="bx-contact__quicklink-copy"><strong>{{ bx_support }}</strong><small>{{ bx_support_desc }}</small></span>
+            <span class="bx-contact__quicklink-arrow" aria-hidden="true">→</span>
+          </button>
+          <button type="button" class="bx-contact__quicklink" data-bx-contact-subject="encomenda">
+            <span class="bx-contact__quicklink-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4 10 12-6 12 6v13l-12 6-12-6V10Z"/><path d="m4 10 12 7 12-7M16 17v12M10 7l12 7"/></svg>
+            </span>
+            <span class="bx-contact__quicklink-copy"><strong>{{ bx_orders }}</strong><small>{{ bx_orders_desc }}</small></span>
+            <span class="bx-contact__quicklink-arrow" aria-hidden="true">→</span>
+          </button>
+          <button type="button" class="bx-contact__quicklink" data-bx-contact-subject="parceria">
+            <span class="bx-contact__quicklink-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 12 7-6 7 4 5-4 7 6-6 9-7 7-7-7-6-9Z"/><path d="m11 17 5 5 4-4M7 16l5 9m14-9-5 9"/></svg>
+            </span>
+            <span class="bx-contact__quicklink-copy"><strong>{{ bx_partners }}</strong><small>{{ bx_partners_desc }}</small></span>
+            <span class="bx-contact__quicklink-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <div class="bx-contact__faq">
+          <p class="bx-contact__eyebrow">{{ bx_faq }}</p>
+          <details class="bx-contact__faq-item">
+            <summary><span class="bx-contact__faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="5" width="13" height="12" rx="1"/><path d="M15 9h4l3 4v4h-7M5 19h2m9 0h2"/><circle cx="9" cy="18" r="2"/><circle cx="19" cy="18" r="2"/></svg></span>{{ bx_faq_shipping }}<span class="bx-contact__faq-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="bx-contact__faq-answer"><p>{{ bx_faq_shipping_text }}</p><a href="{{ pages['envios-e-entregas'].url | default: '/pages/envios-e-entregas' }}">{{ 'boxeup_experience.shipping' | t }} →</a></div>
+          </details>
+          <details class="bx-contact__faq-item">
+            <summary><span class="bx-contact__faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 8a8 8 0 0 0-14-2L3 9M3 4v5h5M4 16a8 8 0 0 0 14 2l3-3m0 5v-5h-5"/></svg></span>{{ bx_faq_returns }}<span class="bx-contact__faq-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="bx-contact__faq-answer"><p>{{ bx_faq_returns_text }}</p><a href="{{ pages['devolucoes-e-garantias'].url | default: '/pages/devolucoes-e-garantias' }}">{{ 'boxeup_experience.returns' | t }} →</a></div>
+          </details>
+          <details class="bx-contact__faq-item">
+            <summary><span class="bx-contact__faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20 20 4M7 7l10 10M4 13l2 2m3-11 2 2m3 13 2 2M18 7l2 2"/></svg></span>{{ bx_faq_sizes }}<span class="bx-contact__faq-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="bx-contact__faq-answer"><p>{{ bx_faq_sizes_text }}</p><button type="button" data-bx-contact-subject="produto">{{ 'boxeup_experience.contact' | t }} →</button></div>
+          </details>
+          <details class="bx-contact__faq-item">
+            <summary><span class="bx-contact__faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h5"/></svg></span>{{ bx_faq_payments }}<span class="bx-contact__faq-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="bx-contact__faq-answer"><p>{{ bx_faq_payments_text }}</p></div>
+          </details>
+          <button class="bx-contact__faq-all" type="button" data-bx-contact-subject="produto">{{ bx_faq_all }} <span aria-hidden="true">→</span></button>
+        </div>
+      </aside>
+
+      <div class="boxeup-contact__form-wrap bx-contact__form-panel" id="BxContactFormPanel">
+        <p class="bx-contact__eyebrow">{{ bx_form_tagline }}</p>
+        <h2>{{ bx_form_title }}</h2>
+        <p class="bx-contact__form-intro">{{ bx_form_intro }}</p>
+        {% form 'contact', id: 'BoxeupContactForm', class: 'bx-contact__form' %}
+          {% if form.posted_successfully? %}
+            <div class="bx-contact__feedback bx-contact__feedback--success" role="status" tabindex="-1">
+              <strong>{{ 'boxeup_sections.contact_sent' | t }}</strong>
+              <p>{{ 'boxeup_sections.contact_received' | t }}</p>
+            </div>
+          {% endif %}
+          {% if form.errors %}
+            <div class="bx-contact__feedback bx-contact__feedback--error" role="alert" tabindex="-1">
+              <strong>{{ 'boxeup_sections.contact_error' | t }}</strong>
+              {{ form.errors | default_errors }}
+            </div>
+          {% endif %}
+          <div class="bx-contact__fields">
+            <div class="bx-contact__field">
+              <label for="BoxeupContactName">{{ 'boxeup_sections.contact_name' | t }} <span>*</span></label>
+              <input id="BoxeupContactName" type="text" name="contact[name]" autocomplete="name" value="{{ form.name | escape }}" placeholder="{{ 'boxeup_sections.contact_your_name' | t }}" required>
+            </div>
+            <div class="bx-contact__field">
+              <label for="BoxeupContactEmail">{{ 'boxeup_sections.contact_email' | t }} <span>*</span></label>
+              <input id="BoxeupContactEmail" type="email" name="contact[email]" autocomplete="email" autocapitalize="off" spellcheck="false" value="{{ form.email | escape }}" placeholder="exemplo@email.com" {% if form.errors contains 'email' %}aria-invalid="true" aria-describedby="BxContactEmailError"{% endif %} required>
+              {% if form.errors contains 'email' %}<small id="BxContactEmailError">{{ 'boxeup_sections.contact_email_error' | t }}</small>{% endif %}
+            </div>
+            <div class="bx-contact__field bx-contact__field--wide">
+              <label for="BoxeupContactSubject">{{ 'boxeup_experience.contact_subject' | t }} <span>*</span></label>
+              <select id="BoxeupContactSubject" name="contact[assunto]" required>
+                <option value="" disabled {% if form.assunto == blank %}selected{% endif %}>{{ 'boxeup_experience.subject_placeholder' | t }}</option>
+                {% assign bx_subjects = 'produto,encomenda,devolucao,parceria' | split: ',' %}
+                {% for value in bx_subjects %}
+                  {% assign bx_subject_key = 'boxeup_experience.subject_' | append: value %}
+                  <option value="{{ value }}" {% if form.assunto == value %}selected{% endif %}>{{ bx_subject_key | t }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="bx-contact__field bx-contact__field--wide">
+              <label for="BoxeupContactBody">{{ 'boxeup_sections.contact_message' | t }} <span>*</span></label>
+              <textarea id="BoxeupContactBody" name="contact[body]" rows="5" maxlength="1000" placeholder="{{ 'boxeup_sections.contact_message_help' | t }}" required>{{ form.body | escape }}</textarea>
+              <output class="bx-contact__counter" for="BoxeupContactBody" aria-live="off"><span data-bx-contact-count>0</span> / 1000</output>
+            </div>
+          </div>
+          <button type="submit" class="bx-contact__submit">{{ 'boxeup_sections.contact_send_message' | t }} <span aria-hidden="true">→</span></button>
+          <p class="bx-contact__form-note">{{ 'boxeup_sections.contact_required' | t }}
+            {% if shop.privacy_policy != blank %} · <a href="{{ shop.privacy_policy.url }}">{{ 'boxeup_sections.contact_policy' | t }}</a>{% endif %}
+          </p>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+
+  <div class="bx-contact__benefits">
+    <div class="bx-contact__wrap bx-contact__benefits-grid">
+      <div class="bx-contact__benefit"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="m18 2-12 17h9l-2 11 13-18h-9l1-10Z"/></svg><span><strong>{{ bx_reply }}</strong><small>{{ bx_reply_desc }}</small></span></div>
+      <div class="bx-contact__benefit"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="m16 2 12 5v9c0 7-5 11-12 14C9 27 4 23 4 16V7L16 2Z"/><path d="m11 16 3 3 7-7"/></svg><span><strong>{{ bx_help }}</strong><small>{{ bx_help_desc }}</small></span></div>
+      <div class="bx-contact__benefit"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="m4 14 8-7 5 4 5-4 6 7-7 12-5-4-5 4L4 14Z"/><path d="m12 16 4 4 5-5"/></svg><span><strong>{{ bx_collab }}</strong><small>{{ bx_collab_desc }}</small></span></div>
+      <div class="bx-contact__benefit"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="14" width="20" height="16" rx="2"/><path d="M10 14v-5a6 6 0 1 1 12 0v5"/></svg><span><strong>{{ bx_secure }}</strong><small>{{ bx_secure_desc }}</small></span></div>
+    </div>
+  </div>
 </section>
+
+<script>
+  (() => {
+    const root = document.querySelector('.bx-contact');
+    if (!root) return;
+    const subject = root.querySelector('#BoxeupContactSubject');
+    const panel = root.querySelector('#BxContactFormPanel');
+    root.querySelectorAll('[data-bx-contact-subject]').forEach(button => {
+      button.addEventListener('click', () => {
+        if (!subject || !panel) return;
+        subject.value = button.dataset.bxContactSubject;
+        panel.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+        subject.focus({ preventScroll: true });
+      });
+    });
+    const message = root.querySelector('#BoxeupContactBody');
+    const count = root.querySelector('[data-bx-contact-count]');
+    if (message && count) {
+      const updateCount = () => { count.textContent = message.value.length; };
+      message.addEventListener('input', updateCount);
+      updateCount();
+    }
+  })();
+</script>
+
 {% schema %}
 {
   "name": "BOXEUP | Contacto",
   "tag": "section",
   "class": "section-boxeup-contact",
   "settings": [
+    {"type": "image_picker", "id": "hero_image", "label": "Imagem do hero"},
     {"type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "ESTAMOS AQUI PARA AJUDAR"},
     {"type": "text", "id": "heading", "label": "Título principal", "default": "Fala connosco."},
     {"type": "textarea", "id": "description", "label": "Introdução", "default": "Precisas de ajuda a escolher equipamento, tens uma dúvida sobre um produto ou queres apresentar uma proposta de parceria? Envia-nos uma mensagem."},
-    {"type": "text", "id": "details_heading", "label": "Título do apoio", "default": "Como podemos ajudar?"},
-    {"type": "textarea", "id": "details_text", "label": "Texto de apoio", "default": "Dúvidas sobre produtos, encomendas e colaborações. Explica-nos o que precisas e responderemos através do contacto que indicares."},
     {"type": "text", "id": "form_heading", "label": "Título do formulário", "default": "Envia-nos uma mensagem"},
     {"type": "textarea", "id": "form_intro", "label": "Introdução ao formulário", "default": "Preenche os campos abaixo para entrar em contacto com a BOXEUP."}
   ],
   "presets": [{"name": "BOXEUP | Contacto"}]
 }
 {% endschema %}
-

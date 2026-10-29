@@ -1557,7 +1557,9 @@
     "no_reviews": "There are no published reviews for this product yet.",
     "from": "From",
     "about_brand": "About the brand",
-    "explore_brand": "Explore the brand"
+    "explore_brand": "Explore the brand",
+    "zoom_in": "Zoom in within the image frame",
+    "zoom_out": "Zoom out"
   },
   "viriatto_review_demo": {
     "item_1": {

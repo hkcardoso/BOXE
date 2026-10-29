@@ -1,0 +1,9 @@
+#MainContent viriatto-image-zoom { display: block; position: relative; overflow: hidden; isolation: isolate; }
+#MainContent viriatto-image-zoom .vzoom-image { transform-origin: var(--zoom-x, 50%) var(--zoom-y, 50%); transform: scale(1) !important; transition: transform 240ms ease; }
+#MainContent viriatto-image-zoom[data-zoomed] .vzoom-image { transform: scale(2.2) !important; }
+#MainContent viriatto-image-zoom .vzoom-toggle { position: absolute; inset: 0; z-index: 3; display: block; width: 100%; height: 100%; border: 0; padding: 0; background: transparent; cursor: zoom-in; touch-action: pan-y; border-radius: inherit; }
+#MainContent viriatto-image-zoom[data-zoomed] .vzoom-toggle { cursor: zoom-out; touch-action: none; }
+#MainContent viriatto-image-zoom .vzoom-toggle:focus-visible { outline: 2px solid #858892; outline-offset: -4px; }
+#MainContent viriatto-image-zoom .vzoom-indicator { display: grid; place-items: center; position: absolute; right: 12px; bottom: 12px; width: 38px; height: 38px; border: 1px solid #43464c; border-radius: 50%; background: rgba(8,9,12,.8); color: #fff; pointer-events: none; }
+#MainContent viriatto-image-zoom[data-zoomed] .vzoom-plus { visibility: hidden; }
+@media (prefers-reduced-motion: reduce) { #MainContent viriatto-image-zoom .vzoom-image { transition: none; } }

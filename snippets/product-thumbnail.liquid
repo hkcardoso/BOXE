@@ -53,6 +53,9 @@
   class="product-media-container media-type-{{ media.media_type }} media-fit-{{ media_fit }} global-media-settings gradient{% if constrain_to_viewport %} constrain-height{% endif %}"
   style="--ratio: {{ media.aspect_ratio | default: 1.0 }}; --preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};"
 >
+  {%- if request.page_type == 'product' and media.media_type == 'image' and section.settings.image_zoom != 'none' -%}
+    {% render 'viriatto-image-zoom', media: media, sizes: sizes, lazy: lazy %}
+  {%- else -%}
   <modal-opener
     class="product__modal-opener product__modal-opener--{{ media.media_type }}"
     data-modal="#ProductModal-{{ modal_id }}"
@@ -99,6 +102,7 @@
       </span>
     </button>
   </modal-opener>
+  {%- endif -%}
 
   {%- if media.media_type != 'image' -%}
     {%- if media.media_type == 'model' -%}

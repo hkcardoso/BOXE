@@ -902,7 +902,9 @@
     "no_reviews": "Ainda não existem avaliações publicadas para este produto.",
     "from": "Desde",
     "about_brand": "Sobre a marca",
-    "explore_brand": "Ver produtos da marca"
+    "explore_brand": "Ver produtos da marca",
+    "zoom_in": "Ampliar imagem na própria caixa",
+    "zoom_out": "Reduzir imagem"
   },
   "viriatto_review_demo": {
     "item_1": {

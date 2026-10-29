@@ -1,0 +1,16 @@
+{% doc %}
+  Renders a product image with an accessible inline zoom toggle.
+  @param {object} media - Product image media
+  @param {string} sizes - Responsive image sizes
+  @param {string} [lazy] - Image loading strategy
+{% enddoc %}
+<viriatto-image-zoom class="product__modal-opener product__modal-opener--image">
+  <div class="product__media media media--transparent">
+    {{ media.preview_image | image_url: width: 1946 | image_tag: class: 'vzoom-image', loading: lazy, sizes: sizes, widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946' }}
+  </div>
+  <button type="button" class="vzoom-toggle" aria-pressed="false" aria-label="{{ 'viriatto_product.zoom_in' | t }}" data-zoom-in="{{ 'viriatto_product.zoom_in' | t }}" data-zoom-out="{{ 'viriatto_product.zoom_out' | t }}">
+    <span class="vzoom-indicator" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5M7.5 10.5h6"/><path class="vzoom-plus" d="M10.5 7.5v6"/></svg>
+    </span>
+  </button>
+</viriatto-image-zoom>

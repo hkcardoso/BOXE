@@ -1363,5 +1363,241 @@
     "photo_boxing": "Boxing training",
     "photo_athlete": "Athlete during boxing training",
     "home_boxing": "BOXING"
+  },
+  "viriatto_product_copy": {
+    "charlie-bat-x-luvas-de-treino": {
+      "intro": "Natural buffalo leather, a wide hook-and-loop strap and classic Charlie identity. The Bat-X is designed for boxing, Muay Thai and kickboxing training.",
+      "description": "The Charlie Bat-X combines 100% natural buffalo leather with a wide hook-and-loop wrist strap. The closure offers a practical way to adjust the gloves between exercises.||Designed for regular boxing, Muay Thai and kickboxing training, this model features the Charlie wrist logo and embossed Bat-X details. Check the variant photographs for its colour and finish.",
+      "features": "100% natural buffalo leather|Wide hook-and-loop wrist strap|Embossed Charlie and Bat-X details|For boxing, Muay Thai and kickboxing training",
+      "fit": "Ounces describe the weight of a glove, not its hand size. Choose according to your body weight, training session and coach’s advice. Check the fit with hand wraps; for sparring, confirm your gym’s required glove weight.",
+      "care": "Wipe the outside with a slightly damp cloth after training and leave the gloves open in a ventilated place. Avoid machine washing, direct heat and sunlight. Store only when dry.",
+      "technical": "Material::100% natural buffalo leather||Closure::Wide hook-and-loop strap||Sports::Boxing, Muay Thai and kickboxing"
+    },
+    "charlie-gel-metallic-luvas-de-boxe": {
+      "intro": "Charlie boxing gloves in buffalo leather, with a Navy Blue metallic finish and hook-and-loop closure.",
+      "description": "The Charlie Gel Metallic pairs buffalo leather with a Navy Blue metallic finish, offering an alternative to classic glove finishes.||The hook-and-loop closure lets you adjust the wrist before training. Choose the glove weight according to the session and your coach’s recommendations.",
+      "features": "Buffalo leather construction|Metallic finish|Navy Blue colour|Hook-and-loop closure|Multiple glove weights",
+      "fit": "Ounces describe the weight of a glove, not its hand size. Choose according to your body weight, training session and coach’s advice. Check the fit with hand wraps; for sparring, confirm your gym’s required glove weight.",
+      "care": "Wipe the outside with a slightly damp cloth after training and leave the gloves open in a ventilated place. Avoid machine washing, direct heat and sunlight. Store only when dry.",
+      "technical": "Material::Buffalo leather||Closure::Hook-and-loop||Finish::Metallic||Listed colour::Navy Blue"
+    },
+    "fairtex-bgv9-heavy-hitter-luvas-de-boxe": {
+      "intro": "Fairtex Heavy Hitter gloves with a Mexican-inspired design and hook-and-loop closure.",
+      "description": "The Fairtex BGV9 belongs to the Heavy Hitter range and features a Mexican-inspired design. This black version keeps the presentation understated.||The hook-and-loop closure makes wrist adjustment practical between rounds. Choose the weight to suit bag work, pads or sparring and confirm the requirements with your coach.",
+      "features": "BGV9 Heavy Hitter model|Mexican-inspired design|Hook-and-loop closure|Black version",
+      "fit": "Ounces describe the weight of a glove, not its hand size. Choose according to your body weight, training session and coach’s advice. Check the fit with hand wraps; for sparring, confirm your gym’s required glove weight.",
+      "care": "Wipe the outside with a slightly damp cloth after training and leave the gloves open in a ventilated place. Avoid machine washing, direct heat and sunlight. Store only when dry.",
+      "technical": "Range::Heavy Hitter||Design::Mexican-inspired||Closure::Hook-and-loop||Listed colour::Black"
+    },
+    "everlast-powerlock-2r-luvas-de-treino": {
+      "intro": "Synthetic leather training gloves with multilayer foam and a wrist closure system. For bag work, pads and general training.",
+      "description": "The Everlast Powerlock 2R combines synthetic leather construction with multilayer foam. This model is intended for bag work, pads and general boxing training.||The wrist closure lets you adjust the gloves before the session. Wear hand wraps and select the glove weight according to the work planned.",
+      "features": "Synthetic leather construction|Multilayer foam|Wrist closure system|For bag work, pads and general training",
+      "fit": "Ounces describe the weight of a glove, not its hand size. Choose according to your body weight, training session and coach’s advice. Check the fit with hand wraps; for sparring, confirm your gym’s required glove weight.",
+      "care": "Wipe the outside with a slightly damp cloth after training and leave the gloves open in a ventilated place. Avoid machine washing, direct heat and sunlight. Store only when dry.",
+      "technical": "Material::Synthetic leather||Padding::Multilayer foam||Use::Bag work, pads and general training"
+    },
+    "twins-special-bgvl-3-luvas-de-muay-thai": {
+      "intro": "Classic Twins Special gloves, handmade in Thailand in genuine leather, with dense padding and a hook-and-loop strap.",
+      "description": "The Twins Special BGVL-3 is handmade in Thailand using genuine leather. Dense padding is part of the construction of this classic Muay Thai model.||The hook-and-loop strap allows wrist adjustment. Suitable for training and sparring when the selected weight meets your coach’s advice and gym rules.",
+      "features": "Handmade in Thailand|Genuine leather construction|Dense padding|Hook-and-loop strap|For Muay Thai training and sparring",
+      "fit": "Ounces describe the weight of a glove, not its hand size. Choose according to your body weight, training session and coach’s advice. Check the fit with hand wraps; for sparring, confirm your gym’s required glove weight.",
+      "care": "Wipe the outside with a slightly damp cloth after training and leave the gloves open in a ventilated place. Avoid machine washing, direct heat and sunlight. Store only when dry.",
+      "technical": "Material::Genuine leather||Manufacture::Handmade in Thailand||Padding::Dense||Closure::Hook-and-loop"
+    },
+    "cleto-reyes-luvas-de-treino-em-pele": {
+      "intro": "Cleto Reyes leather training gloves with a hook-and-loop closure and traditional Mexican construction.",
+      "description": "These Cleto Reyes training gloves bring together leather construction and the brand’s Mexican tradition. They are an option for technical sessions and bag work.||The hook-and-loop closure provides a practical wrist adjustment. Use hand wraps and confirm the appropriate weight with your coach.",
+      "features": "Leather construction|Hook-and-loop closure|Traditional Mexican construction|For technical training and bag work",
+      "fit": "Ounces describe the weight of a glove, not its hand size. Choose according to your body weight, training session and coach’s advice. Check the fit with hand wraps; for sparring, confirm your gym’s required glove weight.",
+      "care": "Wipe the outside with a slightly damp cloth after training and leave the gloves open in a ventilated place. Avoid machine washing, direct heat and sunlight. Store only when dry.",
+      "technical": "Material::Leather||Closure::Hook-and-loop||Construction::Traditional Mexican||Use::Technical training and bag work"
+    },
+    "fairtex-bgv1-luvas-de-boxe-e-muay-thai": {
+      "intro": "Genuine leather Fairtex gloves with an anatomical hand compartment and three-layer foam, for boxing and Muay Thai.",
+      "description": "The Fairtex BGV1 combines genuine leather, an anatomical hand compartment and three-layer foam for impact absorption. It is a classic Fairtex model for boxing and Muay Thai.||Training uses include bags, pads and sparring. Select the glove weight for the session; when training with a partner, follow your coach’s advice and gym rules.",
+      "features": "Genuine leather construction|Anatomical hand compartment|Three-layer foam|For boxing and Muay Thai|For bags, pads and sparring",
+      "fit": "Ounces describe the weight of a glove, not its hand size. Choose according to your body weight, training session and coach’s advice. Check the fit with hand wraps; for sparring, confirm your gym’s required glove weight.",
+      "care": "Wipe the outside with a slightly damp cloth after training and leave the gloves open in a ventilated place. Avoid machine washing, direct heat and sunlight. Store only when dry.",
+      "technical": "Material::Genuine leather||Foam::Three layers||Interior::Anatomical hand compartment||Sports::Boxing and Muay Thai"
+    },
+    "rival-rhg2-capacete-hibrido": {
+      "intro": "Compact Rival hybrid training headgear with cheek protection and a choice of sizes.",
+      "description": "The Rival RHG2 features a compact hybrid shape with cheek protection, designed as part of your contact training equipment.||The selected size should keep the headgear stable without restricting your vision. Headgear does not eliminate injury risk; always follow your coach’s guidance.",
+      "features": "Rival RHG2 model|Compact hybrid shape|Cheek protection|Sized fit",
+      "fit": "Compare your head measurement with the official Rival size chart. The headgear should stay stable without excessive pressure or restricted vision. Contact us for sizing information before ordering.",
+      "care": "Wipe with a slightly damp cloth after training and leave to air dry outside your bag. Check the padding and adjustments regularly.",
+      "technical": "Shape::Compact hybrid||Protection area::Cheeks||Use::Contact training"
+    },
+    "twins-special-sgl-10-caneleiras-de-muay-thai": {
+      "intro": "Genuine leather Twins Special shin guards with padded shin and foot protection for Muay Thai training and sparring.",
+      "description": "The Twins Special SGL-10 combines genuine leather with padding over the shin and foot. This classic Muay Thai model covers both contact areas.||Designed for training and sparring, the selected size should follow your leg without restricting ankle movement. Check the fit before each session.",
+      "features": "Genuine leather construction|Padded shin protection|Foot protection|For Muay Thai training and sparring",
+      "fit": "Compare your shin measurement with the official Twins Special chart. The guards should cover the contact area and allow ankle movement. Contact us if you are between sizes.",
+      "care": "Wipe with a slightly damp cloth and air dry after training. Avoid soaking, machine washing and direct heat. Inspect the protection before use.",
+      "technical": "Material::Genuine leather||Protection::Shin and instep||Use::Muay Thai training and sparring"
+    },
+    "fairtex-sp5-caneleiras-de-competicao": {
+      "intro": "Fairtex shin guards with high-density foam, a seamless connection to the foot protector and a metal-free design.",
+      "description": "The Fairtex SP5 features a seamless connection between the shin guard and foot protector. The construction includes high-density foam and no metal components.||Designed for training, sparring and amateur competition. Competition eligibility depends on the event rules and organiser’s approval, so check before competing.",
+      "features": "High-density foam|Seamless shin-to-foot connection|Metal-free design|For training, sparring and amateur competition",
+      "fit": "Use your shin measurement and the official Fairtex chart. Check that the foot protector is aligned and your ankle can move freely.",
+      "care": "Wipe with a slightly damp cloth and leave in a ventilated place. Do not store damp guards inside your bag. Avoid machine washing and direct heat.",
+      "technical": "Padding::High-density foam||Shin/foot connection::Seamless||Metal components::Metal-free||Competition::Subject to event rules"
+    },
+    "venum-challenger-boqueira-com-caixa": {
+      "intro": "Venum Challenger mouthguard with Nexfit gel, a high-density rubber inner layer and a storage case.",
+      "description": "The Venum Challenger combines Nexfit gel with a high-density rubber inner layer. A case is included for storage and transport between sessions.||The product listing specifies CE certification and use from age 11. Follow the manufacturer’s preparation instructions and check the fit before contact training.",
+      "features": "Nexfit gel|High-density rubber inner layer|Storage case included|CE certification stated in the product listing|Listed for ages 11 and over",
+      "fit": "Follow Venum’s preparation instructions. The mouthguard should stay in place without clenching. If you wear braces, confirm compatibility with your dentist before use.",
+      "care": "Rinse before and after each use and let it dry before closing the case. Avoid heat outside the manufacturer’s preparation process. Replace if damaged or no longer fitting correctly.",
+      "technical": "Lining::Nexfit gel||Inner layer::High-density rubber||Includes::Storage case||Listed age::11 and over"
+    },
+    "fairtex-mg3-boqueira-de-gel": {
+      "intro": "Mouldable Fairtex mouthguard with a Gel-Fit lining, an impact-absorbing structure and a storage case.",
+      "description": "The Fairtex MG3 is a mouldable mouthguard with a Gel-Fit lining and a structure designed for impact absorption during contact training.||The included case helps with transport and storage. Follow the manufacturer’s moulding instructions before first use.",
+      "features": "Mouldable design|Gel-Fit lining|Impact-absorbing structure|Storage case included|For contact training",
+      "fit": "Mould according to Fairtex’s instructions. Check that it stays stable and allows breathing. If you wear braces, ask your dentist before use.",
+      "care": "Rinse before and after use, let it dry and store in a clean case. Check the condition and fit regularly and replace if damaged.",
+      "technical": "Type::Mouldable mouthguard||Lining::Gel-Fit||Includes::Storage case||Use::Contact training"
+    },
+    "venum-challenger-pro-evo-mochila-22-5-l": {
+      "intro": "Approximately 22.5 litres of capacity, three compartments, side pockets and a padded back panel.",
+      "description": "The Venum Challenger Pro Evo provides approximately 22.5 litres of capacity for everyday and training essentials. Three compartments let you organise the contents to suit your routine.||Side pockets add easy-access storage. A padded back panel completes a backpack designed for trips to the gym.",
+      "features": "Approximately 22.5 L capacity|Three compartments|Side pockets|Padded back panel",
+      "fit": "Compare your equipment volume with the 22.5 L capacity before ordering. Gloves, shin guards and clothing may need more room when carried together.",
+      "care": "Remove damp equipment after training and air out the interior. Clean according to the manufacturer’s label and avoid leaving wet clothes inside.",
+      "technical": "Approximate capacity::22.5 L||Compartments::Three||Pockets::Side pockets||Back panel::Padded"
+    },
+    "fluory-calcoes-de-muay-thai-vermelho-e-preto": {
+      "intro": "Red, black and gold FLUORY shorts with a wide elastic waistband and Muay Thai-inspired decorative details.",
+      "description": "These FLUORY shorts combine red and black with gold decorative motifs. The satin-look finish and front and side graphics draw on traditional Muay Thai styling.||A wide elastic waistband is part of the design. Fabric composition, measurements and availability need confirmation before ordering.",
+      "features": "Wide elastic waistband|Red, black and gold|Satin-look finish|Decorative front and side motifs|For Muay Thai and kickboxing",
+      "fit": "A confirmed size chart is not yet available for this product. Contact us to confirm measurements, composition and availability before ordering.",
+      "care": "Follow the garment care label. Avoid direct heat on graphics and check the care instructions when the shorts arrive.",
+      "technical": "Waistband::Wide elastic||Colour::Red, black and gold||Finish::Satin look||Composition::To be confirmed"
+    },
+    "mens-rash-guard": {
+      "intro": "Long-sleeved rash guard with a close fit, four-way stretch and flat seams.",
+      "description": "This long-sleeved rash guard has a close-fitting cut and four-way stretch fabric. Flat seams and a slightly longer length help maintain comfort during movement.||Composition varies by production location: EU production uses 84% polyester and 16% elastane at 230 g/m²; US production uses 78% polyester and 22% elastane at 290 g/m². Check the label on the garment received.",
+      "features": "Long sleeves|Close-fitting cut|Four-way stretch|Flat seams|Slightly longer length|EU: 84% polyester, 16% elastane; 230 g/m²|US: 78% polyester, 22% elastane; 290 g/m²",
+      "fit": "This style runs small. Consider one size above your usual size for more comfort and check measurements before choosing. The cut is intended to fit close to the body.",
+      "care": "Rinse after use, especially after exposure to chlorine or salt water. Follow the care label and avoid leaving the damp garment inside your bag.",
+      "technical": "Sleeves::Long||Fit::Close-fitting||Stretch::Four-way||EU production::84% polyester, 16% elastane; 230 g/m²||US production::78% polyester, 22% elastane; 290 g/m²"
+    },
+    "all-over-print-gym-bag": {
+      "intro": "A 30-litre polyester gym bag with water-resistant fabric, two padded handles and an inside pocket.",
+      "description": "This printed gym bag offers 30 litres of capacity for clothes, shoes and accessories. Reinforced construction and a shape-retaining finish support everyday transport.||Two padded handles provide carrying comfort, while an inside pocket separates small items. The fabric is water-resistant; the bag is not described as waterproof.",
+      "features": "100% polyester|30 L capacity|Water-resistant fabric|Reinforced construction|Two padded handles|Inside pocket for small items",
+      "fit": "Check whether 30 L is enough for your regular equipment. Distribute the load evenly and avoid straining the zip.",
+      "care": "Remove damp clothes and equipment after training. Air out the bag and follow the care label for cleaning. Let it dry before storing.",
+      "technical": "Material::100% polyester||Capacity::30 L||Fabric::Water-resistant||Handles::Two, padded||Storage::Inside pocket"
+    },
+    "minimalist-backpack": {
+      "intro": "A 20-litre backpack with a laptop pocket for up to 15-inch devices, a hidden back pocket and adjustable padded straps.",
+      "description": "This minimalist backpack combines a spacious interior with a pocket for laptops up to 15 inches. A hidden zipped back pocket provides separate storage for small items.||Made from water-resistant polyester, it has a lined interior, soft mesh back and adjustable padded straps. Dimensions are 41 × 31 × 14 cm with a 20-litre capacity.",
+      "features": "100% water-resistant polyester|20 L capacity|41 × 31 × 14 cm dimensions|Listed maximum load: 20 kg|Laptop pocket for up to 15-inch devices|Hidden zipped back pocket|Adjustable padded straps",
+      "fit": "Check your laptop dimensions before ordering. Adjust the straps to distribute the load and do not exceed the listed 20 kg maximum.",
+      "care": "Follow the care label and allow to dry before storing. Water-resistant fabric does not make the backpack waterproof; protect electronics in rain.",
+      "technical": "Material::100% water-resistant polyester||Capacity::20 L||Dimensions::41 × 31 × 14 cm||Listed maximum load::20 kg||Laptop::Up to 15 inches"
+    },
+    "unisex-organic-cotton-creator-2-0-t-shirt": {
+      "intro": "A unisex 180 g/m² organic cotton T-shirt with a Portugal crest on the back and a subtle chest detail.",
+      "description": "This T-shirt represents Portugal with a prominent back crest and a subtle chest detail. Its regular unisex cut suits everyday wear and time before or after training.||The single jersey fabric is made from combed ring-spun organic cotton at 180 g/m². A ribbed collar, neck tape and double-stitched seams complete the finish.",
+      "features": "100% combed ring-spun organic cotton|180 g/m² fabric weight|Single jersey|Regular unisex medium fit|Ribbed collar and neck tape|Classic sleeves and double-stitched seams|Portugal crest on the back",
+      "fit": "Regular unisex fit. Compare measurements with a T-shirt that fits you well. Consider sizing up for a looser look.",
+      "care": "Follow the care label. Wash inside out to help preserve the print and avoid ironing directly on the design.",
+      "technical": "Material::100% combed ring-spun organic cotton||Fabric weight::180 g/m²||Fabric::Single jersey||Cut::Regular unisex medium fit||Collar::Ribbed, with neck tape"
+    }
+  },
+  "viriatto_product": {
+    "details": "Explore the product",
+    "details_intro": "Features, fit and care to help you choose with confidence.",
+    "description": "Description",
+    "highlights": "Key features",
+    "technical": "Technical details",
+    "model": "Model",
+    "fit": "Choosing and adjusting your fit",
+    "care": "Care and maintenance",
+    "empty_description": "Need more information about this product? Contact us before ordering.",
+    "features_fallback": "Check the product description and technical details. Contact us to confirm any specific feature.",
+    "fit_fallback": "Check the available options and confirm measurements with the brand before choosing. Contact us if you need help.",
+    "care_fallback": "Follow the care label and manufacturer instructions to maintain this product.",
+    "complements": "Goes well with",
+    "complements_intro": "Complete your equipment with products for the same training routine.",
+    "view_product": "View product",
+    "reviews": "Reviews",
+    "demo_notice": "Preview: 15 fictional reviews to test the section layout. These are not customer opinions and are not displayed on the public store.",
+    "demo_summary": "Demonstration rating",
+    "demo_count": "15 sample reviews",
+    "demo_badge": "Demo",
+    "fictional_profile": "Fictional profile",
+    "filter_rating": "Filter by rating",
+    "all_ratings": "All ratings",
+    "more_reviews": "Load more reviews",
+    "no_reviews": "There are no published reviews for this product yet.",
+    "from": "From"
+  },
+  "viriatto_review_demo": {
+    "item_1": {
+      "title": "Good first session",
+      "body": "The product arrived as expected. I tried it during one session and my first impression was good."
+    },
+    "item_2": {
+      "title": "Looks like the photographs",
+      "body": "The colour and details match the images. That was something I wanted to check."
+    },
+    "item_3": {
+      "title": "Check the fit",
+      "body": "I liked the product, but needed to adjust the fit before getting started."
+    },
+    "item_4": {
+      "title": "Easy to use",
+      "body": "It was straightforward to work out how to use it. It does what I need for my routine."
+    },
+    "item_5": {
+      "title": "Nicely presented",
+      "body": "A tidy finish and no marks on arrival. I will see how it performs with more use."
+    },
+    "item_6": {
+      "title": "Worth comparing the options",
+      "body": "I was between two options. I checked the measurements before choosing and it worked out."
+    },
+    "item_7": {
+      "title": "Positive first impression",
+      "body": "I have used it a few times and am happy so far. It is still too early to comment on durability."
+    },
+    "item_8": {
+      "title": "Matches the description",
+      "body": "I received the model I selected and the details match the product listing."
+    },
+    "item_9": {
+      "title": "Expected a different fit",
+      "body": "The product looks good, but the fit was not exactly what I imagined. Worth checking before ordering."
+    },
+    "item_10": {
+      "title": "Part of my training kit",
+      "body": "It now comes with me to the gym. I am happy with it for the use I have given it."
+    },
+    "item_11": {
+      "title": "Good choice with one note",
+      "body": "Overall I liked it. I needed some time to find the most comfortable way to use it."
+    },
+    "item_12": {
+      "title": "The model I wanted",
+      "body": "I already knew this model, which was why I chose it. The presentation met my expectations."
+    },
+    "item_13": {
+      "title": "Good finishing details",
+      "body": "I particularly liked the finish. The close-up photographs helped me choose."
+    },
+    "item_14": {
+      "title": "Happy so far",
+      "body": "It has done the job in the first few uses. I would rather review it again after a few more weeks."
+    },
+    "item_15": {
+      "title": "Would choose it again",
+      "body": "So far it suits what I needed. I checked the option before ordering and it worked out well."
+    }
   }
 }

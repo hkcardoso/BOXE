@@ -500,7 +500,7 @@
                   -%}
                 {%- when 'variant_picker' -%}
                   {%- if product.description != blank -%}
-                    <p class="bxp-product-intro">{{ product.description | strip_html | strip | truncatewords: 38, "…" }}</p>
+                    <p class="bxp-product-intro">{% render 'viriatto-product-copy', product: product, mode: 'intro' %}</p>
                   {%- endif -%}
                   {% render 'product-variant-picker',
                     product: product,

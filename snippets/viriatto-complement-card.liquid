@@ -1,0 +1,15 @@
+{% doc %}
+  Renders a compact complementary product card.
+  @param {product} item - Complementary product
+{% enddoc %}
+<a class="vpc-card" href="{{ item.url }}">
+  {%- if item.featured_image != blank -%}
+    {{ item.featured_image | image_url: width: 240 | image_tag: loading: 'lazy', widths: '120, 180, 240', sizes: '96px', alt: item.title }}
+  {%- endif -%}
+  <span>
+    <small>{{ item.vendor | escape }}</small>
+    <strong>{{ item.title | escape }}</strong>
+    <span class="vpc-card__price">{% if item.price_varies %}{{ 'viriatto_product.from' | t }} {% endif %}{{ item.price | money }}</span>
+    <span class="vpc-card__link">{{ 'viriatto_product.view_product' | t }} <span aria-hidden="true">→</span></span>
+  </span>
+</a>

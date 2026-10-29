@@ -1,0 +1,42 @@
+{% doc %}
+  Renders curated product copy with the merchant description as a fallback.
+  @param {product} product - Current product
+  @param {string} mode - intro, description, features, technical, fit or care
+{% enddoc %}
+{%- liquid
+  assign copy_handles = 'charlie-bat-x-luvas-de-treino,charlie-gel-metallic-luvas-de-boxe,fairtex-bgv9-heavy-hitter-luvas-de-boxe,everlast-powerlock-2r-luvas-de-treino,twins-special-bgvl-3-luvas-de-muay-thai,cleto-reyes-luvas-de-treino-em-pele,fairtex-bgv1-luvas-de-boxe-e-muay-thai,rival-rhg2-capacete-hibrido,twins-special-sgl-10-caneleiras-de-muay-thai,fairtex-sp5-caneleiras-de-competicao,venum-challenger-boqueira-com-caixa,fairtex-mg3-boqueira-de-gel,venum-challenger-pro-evo-mochila-22-5-l,fluory-calcoes-de-muay-thai-vermelho-e-preto,mens-rash-guard,all-over-print-gym-bag,minimalist-backpack,unisex-organic-cotton-creator-2-0-t-shirt' | split: ','
+  assign has_copy = false
+  if copy_handles contains product.handle
+    assign has_copy = true
+    assign copy_key = 'viriatto_product_copy.' | append: product.handle | append: '.' | append: mode
+    assign copy_text = copy_key | t
+  endif
+-%}
+{%- case mode -%}
+  {%- when 'intro' -%}
+    {%- if has_copy -%}{{ copy_text | escape }}{%- else -%}{{ product.description | replace: '</p>', '</p> ' | replace: '</li>', '</li> ' | strip_html | strip | truncatewords: 34 | escape }}{%- endif -%}
+  {%- when 'description' -%}
+    {%- if has_copy -%}
+      {%- assign paragraphs = copy_text | split: '||' -%}
+      {%- for paragraph in paragraphs -%}<p>{{ paragraph | escape }}</p>{%- endfor -%}
+    {%- elsif product.description != blank -%}
+      <div class="rte">{{ product.description }}</div>
+    {%- else -%}<p>{{ 'viriatto_product.empty_description' | t }}</p>{%- endif -%}
+  {%- when 'features' -%}
+    {%- if has_copy -%}
+      {%- assign features = copy_text | split: '|' -%}
+      <ul class="vpd-feature-list" role="list">{%- for feature in features -%}<li>{{ feature | escape }}</li>{%- endfor -%}</ul>
+    {%- else -%}
+      <p>{{ 'viriatto_product.features_fallback' | t }}</p>
+    {%- endif -%}
+  {%- when 'technical' -%}
+    {%- if has_copy -%}
+      {%- assign rows = copy_text | split: '||' -%}
+      {%- for row in rows -%}
+        {%- assign cells = row | split: '::' -%}
+        <tr><th scope="row">{{ cells.first | escape }}</th><td>{{ cells.last | escape }}</td></tr>
+      {%- endfor -%}
+    {%- endif -%}
+  {%- when 'fit', 'care' -%}
+    {%- if has_copy -%}<p>{{ copy_text | escape }}</p>{%- else -%}{%- assign fallback_key = 'viriatto_product.' | append: mode | append: '_fallback' -%}<p>{{ fallback_key | t }}</p>{%- endif -%}
+{%- endcase -%}

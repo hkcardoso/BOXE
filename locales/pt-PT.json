@@ -708,5 +708,241 @@
     "photo_boxing": "Treino de boxe",
     "photo_athlete": "Atleta durante uma sessão de boxe",
     "home_boxing": "BOXE"
+  },
+  "viriatto_product_copy": {
+    "charlie-bat-x-luvas-de-treino": {
+      "intro": "Pele de búfalo natural, velcro largo e a identidade clássica Charlie. As Bat-X acompanham o treino de boxe, Muay Thai e kickboxing.",
+      "description": "As Charlie Bat-X combinam uma construção em pele de búfalo 100% natural com um fecho de velcro largo. O ajuste no punho é prático para colocar e retirar as luvas entre exercícios.||O modelo destina-se a treinos regulares de boxe, Muay Thai e kickboxing. O logótipo Charlie no punho e os detalhes Bat-X em relevo marcam o design; consulta as fotografias da variante para confirmar a cor e os acabamentos.",
+      "features": "Pele de búfalo 100% natural|Fecho de velcro largo no punho|Detalhes Charlie e Bat-X em relevo|Para treino de boxe, Muay Thai e kickboxing",
+      "fit": "As onças indicam o peso da luva, não o tamanho da mão. Escolhe em função do teu peso, do tipo de treino e das indicações do treinador. Experimenta o ajuste com ligaduras; para sparring, confirma as onças exigidas pelo ginásio.",
+      "care": "Depois de cada sessão, limpa o exterior com um pano ligeiramente húmido e deixa as luvas abertas num local ventilado. Evita a máquina de lavar, fontes de calor e sol direto. Guarda-as apenas depois de secas.",
+      "technical": "Material::Pele de búfalo 100% natural||Fecho::Velcro largo||Modalidades::Boxe, Muay Thai e kickboxing"
+    },
+    "charlie-gel-metallic-luvas-de-boxe": {
+      "intro": "Luvas de boxe Charlie em pele de búfalo, com acabamento metálico Navy Blue e fecho de velcro.",
+      "description": "As Charlie Gel Metallic juntam a pele de búfalo a um acabamento metálico Navy Blue. São uma opção para quem procura uma luva de boxe com um visual diferente dos acabamentos clássicos.||O fecho de velcro permite ajustar o punho antes da sessão. O modelo existe em diferentes pesos: escolhe a opção de acordo com o trabalho previsto e as recomendações do teu treinador.",
+      "features": "Construção em pele de búfalo|Acabamento metálico|Cor Navy Blue|Fecho de velcro|Vários pesos em onças",
+      "fit": "As onças indicam o peso da luva, não o tamanho da mão. Escolhe em função do teu peso, do tipo de treino e das indicações do treinador. Experimenta o ajuste com ligaduras; para sparring, confirma as onças exigidas pelo ginásio.",
+      "care": "Depois de cada sessão, limpa o exterior com um pano ligeiramente húmido e deixa as luvas abertas num local ventilado. Evita a máquina de lavar, fontes de calor e sol direto. Guarda-as apenas depois de secas.",
+      "technical": "Material::Pele de búfalo||Fecho::Velcro||Acabamento::Metálico||Cor da versão::Navy Blue"
+    },
+    "fairtex-bgv9-heavy-hitter-luvas-de-boxe": {
+      "intro": "Modelo Heavy Hitter da Fairtex, com desenho de inspiração mexicana e fecho de velcro.",
+      "description": "As Fairtex BGV9 pertencem à linha Heavy Hitter e apresentam um desenho de inspiração mexicana. Esta versão em preto mantém uma apresentação sóbria, centrada na identidade da marca.||O fecho de velcro facilita o ajuste entre séries. Antes de escolheres as onças, distingue o trabalho de saco e manoplas do sparring e confirma o peso indicado para cada sessão.",
+      "features": "Modelo BGV9 Heavy Hitter|Desenho de inspiração mexicana|Fecho de velcro|Versão em preto",
+      "fit": "As onças indicam o peso da luva, não o tamanho da mão. Escolhe em função do teu peso, do tipo de treino e das indicações do treinador. Experimenta o ajuste com ligaduras; para sparring, confirma as onças exigidas pelo ginásio.",
+      "care": "Depois de cada sessão, limpa o exterior com um pano ligeiramente húmido e deixa as luvas abertas num local ventilado. Evita a máquina de lavar, fontes de calor e sol direto. Guarda-as apenas depois de secas.",
+      "technical": "Linha::Heavy Hitter||Desenho::Inspiração mexicana||Fecho::Velcro||Cor da versão::Preto"
+    },
+    "everlast-powerlock-2r-luvas-de-treino": {
+      "intro": "Luvas de treino em pele sintética, com espuma multicamada e sistema de fecho de pulso. Para saco, manoplas e treino geral.",
+      "description": "As Everlast Powerlock 2R combinam uma construção em pele sintética com espuma multicamada. O modelo destina-se ao trabalho de saco, manoplas e treino geral de boxe.||O sistema de fecho permite ajustar as luvas no pulso antes do treino. Usa ligaduras e escolhe as onças de acordo com a sessão que vais realizar.",
+      "features": "Construção em pele sintética|Espuma multicamada|Sistema de fecho de pulso|Para saco, manoplas e treino geral",
+      "fit": "As onças indicam o peso da luva, não o tamanho da mão. Escolhe em função do teu peso, do tipo de treino e das indicações do treinador. Experimenta o ajuste com ligaduras; para sparring, confirma as onças exigidas pelo ginásio.",
+      "care": "Depois de cada sessão, limpa o exterior com um pano ligeiramente húmido e deixa as luvas abertas num local ventilado. Evita a máquina de lavar, fontes de calor e sol direto. Guarda-as apenas depois de secas.",
+      "technical": "Material::Pele sintética||Acolchoamento::Espuma multicamada||Utilização::Saco, manoplas e treino geral"
+    },
+    "twins-special-bgvl-3-luvas-de-muay-thai": {
+      "intro": "Um clássico Twins Special, feito à mão na Tailândia em pele genuína, com acolchoamento denso e correia de velcro.",
+      "description": "As Twins Special BGVL-3 são feitas à mão na Tailândia em pele genuína. O acolchoamento denso faz parte da construção deste modelo clássico de Muay Thai.||A correia de velcro permite regular o ajuste no punho. O modelo pode acompanhar treino e sparring, desde que o peso escolhido corresponda às regras da sessão e às indicações do treinador.",
+      "features": "Feitas à mão na Tailândia|Construção em pele genuína|Acolchoamento denso|Correia de velcro|Modelo para treino e sparring de Muay Thai",
+      "fit": "As onças indicam o peso da luva, não o tamanho da mão. Escolhe em função do teu peso, do tipo de treino e das indicações do treinador. Experimenta o ajuste com ligaduras; para sparring, confirma as onças exigidas pelo ginásio.",
+      "care": "Depois de cada sessão, limpa o exterior com um pano ligeiramente húmido e deixa as luvas abertas num local ventilado. Evita a máquina de lavar, fontes de calor e sol direto. Guarda-as apenas depois de secas.",
+      "technical": "Material::Pele genuína||Fabrico::À mão, na Tailândia||Acolchoamento::Denso||Fecho::Velcro"
+    },
+    "cleto-reyes-luvas-de-treino-em-pele": {
+      "intro": "Luvas de treino Cleto Reyes em pele, com fecho de velcro e construção tradicional mexicana.",
+      "description": "Estas luvas de treino Cleto Reyes juntam a construção em pele à tradição mexicana da marca. São uma opção para sessões de técnica e trabalho de saco.||O fecho de velcro permite um ajuste prático no punho. Completa o equipamento com ligaduras e confirma com o treinador o peso adequado ao teu treino.",
+      "features": "Construção em pele|Fecho de velcro|Construção tradicional mexicana|Para treino técnico e trabalho de saco",
+      "fit": "As onças indicam o peso da luva, não o tamanho da mão. Escolhe em função do teu peso, do tipo de treino e das indicações do treinador. Experimenta o ajuste com ligaduras; para sparring, confirma as onças exigidas pelo ginásio.",
+      "care": "Depois de cada sessão, limpa o exterior com um pano ligeiramente húmido e deixa as luvas abertas num local ventilado. Evita a máquina de lavar, fontes de calor e sol direto. Guarda-as apenas depois de secas.",
+      "technical": "Material::Pele||Fecho::Velcro||Construção::Tradicional mexicana||Utilização::Treino técnico e saco"
+    },
+    "fairtex-bgv1-luvas-de-boxe-e-muay-thai": {
+      "intro": "Luvas Fairtex em pele genuína, com compartimento anatómico e espuma de três camadas. Um modelo versátil para boxe e Muay Thai.",
+      "description": "As Fairtex BGV1 combinam pele genuína, um compartimento anatómico para a mão e espuma de três camadas para absorção de impacto. É um modelo clássico da marca para boxe e Muay Thai.||A utilização pode incluir saco, pads e sparring. A escolha das onças deve acompanhar o objetivo da sessão; para treino com parceiro, segue as indicações do treinador e as regras do ginásio.",
+      "features": "Construção em pele genuína|Compartimento anatómico para a mão|Espuma de três camadas|Para boxe e Muay Thai|Utilização em saco, pads e sparring",
+      "fit": "As onças indicam o peso da luva, não o tamanho da mão. Escolhe em função do teu peso, do tipo de treino e das indicações do treinador. Experimenta o ajuste com ligaduras; para sparring, confirma as onças exigidas pelo ginásio.",
+      "care": "Depois de cada sessão, limpa o exterior com um pano ligeiramente húmido e deixa as luvas abertas num local ventilado. Evita a máquina de lavar, fontes de calor e sol direto. Guarda-as apenas depois de secas.",
+      "technical": "Material::Pele genuína||Espuma::Três camadas||Interior::Compartimento anatómico||Modalidades::Boxe e Muay Thai"
+    },
+    "rival-rhg2-capacete-hibrido": {
+      "intro": "Capacete de treino Rival com formato compacto, proteção das maçãs do rosto e escolha de tamanho.",
+      "description": "O Rival RHG2 apresenta um formato híbrido e compacto, com proteção na zona das maçãs do rosto. Foi pensado para integrar o equipamento de treino de contacto.||O ajuste depende do tamanho escolhido e deve manter o capacete estável sem limitar a visão. A utilização de capacete não elimina o risco de lesão; respeita sempre as orientações do treinador.",
+      "features": "Modelo Rival RHG2|Formato híbrido e compacto|Proteção das maçãs do rosto|Ajuste por tamanho",
+      "fit": "Confirma a medida da cabeça com a tabela oficial da Rival antes de escolher. O capacete deve ficar estável, sem apertar em excesso ou dificultar a visão. Se não tiveres a tabela, contacta-nos antes da encomenda.",
+      "care": "Limpa após o treino com um pano ligeiramente húmido. Deixa secar ao ar, fora da mala, e verifica regularmente o estado do acolchoamento e dos ajustes.",
+      "technical": "Formato::Híbrido compacto||Zona de proteção::Maçãs do rosto||Utilização::Treino de contacto"
+    },
+    "twins-special-sgl-10-caneleiras-de-muay-thai": {
+      "intro": "Caneleiras Twins Special em pele genuína, com proteção acolchoada de canela e pé para treino e sparring de Muay Thai.",
+      "description": "As Twins Special SGL-10 combinam pele genuína com acolchoamento na canela e no pé. A proteção cobre as duas zonas de contacto num modelo clássico de Muay Thai.||Destinam-se a treino e sparring. Escolhe um tamanho que acompanhe a tua perna sem prejudicar o movimento do tornozelo e verifica o ajuste antes de cada sessão.",
+      "features": "Construção em pele genuína|Proteção acolchoada da canela|Proteção do peito do pé|Para treino e sparring de Muay Thai",
+      "fit": "Compara a medida da tua canela com a tabela oficial da Twins Special. A proteção deve cobrir a zona de contacto e permitir movimento do tornozelo. Pede-nos ajuda se estiveres entre dois tamanhos.",
+      "care": "Limpa com um pano ligeiramente húmido e deixa secar ao ar depois do treino. Evita imersão, máquina de lavar e calor direto. Verifica o estado das proteções antes de cada utilização.",
+      "technical": "Material::Pele genuína||Proteção::Canela e peito do pé||Utilização::Treino e sparring de Muay Thai"
+    },
+    "fairtex-sp5-caneleiras-de-competicao": {
+      "intro": "Caneleiras Fairtex com espuma de alta densidade, ligação sem costuras ao protetor do pé e construção sem metal.",
+      "description": "As Fairtex SP5 apresentam uma ligação sem costuras entre a proteção da canela e o protetor do pé. A construção inclui espuma de alta densidade e um design sem componentes metálicos.||O modelo destina-se a treino, sparring e competição amadora. A admissão em prova depende do regulamento e da aprovação da organização, por isso confirma os requisitos antes de competir.",
+      "features": "Espuma de alta densidade|Ligação sem costuras entre canela e pé|Design sem metal|Para treino, sparring e competição amadora",
+      "fit": "Escolhe segundo a tabela oficial Fairtex e a medida da tua canela. Verifica se o protetor do pé fica alinhado e se o tornozelo mantém liberdade de movimento.",
+      "care": "Limpa com um pano ligeiramente húmido e deixa secar num local ventilado. Não guardes as caneleiras húmidas na mala. Evita máquina de lavar e calor direto.",
+      "technical": "Acolchoamento::Espuma de alta densidade||Ligação canela/pé::Sem costuras||Componentes metálicos::Sem metal||Competição::Sujeita ao regulamento da prova"
+    },
+    "venum-challenger-boqueira-com-caixa": {
+      "intro": "Boqueira Venum Challenger com gel Nexfit, camada interior de borracha de alta densidade e caixa de transporte.",
+      "description": "A Venum Challenger combina gel Nexfit com uma camada interior de borracha de alta densidade. Inclui uma caixa para guardar e transportar a boqueira entre sessões.||A ficha do produto indica certificação CE e utilização a partir dos 11 anos. Segue as instruções do fabricante para a preparação e confirma o ajuste antes de qualquer treino de contacto.",
+      "features": "Gel Nexfit|Camada interior de borracha de alta densidade|Caixa de transporte incluída|Certificação CE indicada na ficha do produto|Indicada a partir dos 11 anos",
+      "fit": "Segue as instruções de preparação da Venum. A boqueira deve permanecer estável sem precisares de cerrar os dentes. Se usares aparelho dentário, confirma a compatibilidade com o dentista antes de utilizar.",
+      "care": "Passa por água antes e depois de cada utilização e deixa secar antes de fechar a caixa. Evita calor fora do processo indicado pelo fabricante. Substitui a boqueira se apresentar danos ou perder o ajuste.",
+      "technical": "Revestimento::Gel Nexfit||Camada interior::Borracha de alta densidade||Inclui::Caixa de transporte||Idade indicada::A partir dos 11 anos"
+    },
+    "fairtex-mg3-boqueira-de-gel": {
+      "intro": "Boqueira moldável Fairtex com revestimento Gel-Fit, estrutura de absorção de impacto e caixa de transporte.",
+      "description": "A Fairtex MG3 é uma boqueira moldável com revestimento Gel-Fit. A sua estrutura foi concebida para absorção de impacto em treinos de contacto.||A caixa incluída facilita o transporte e a arrumação. Para um ajuste correto, segue as instruções de moldagem do fabricante antes da primeira utilização.",
+      "features": "Modelo moldável|Revestimento Gel-Fit|Estrutura de absorção de impacto|Caixa de transporte incluída|Para treino de contacto",
+      "fit": "Efetua a moldagem segundo as instruções Fairtex. Confirma que a boqueira fica estável e permite respirar. Se usares aparelho dentário, pede orientação ao dentista antes de utilizar.",
+      "care": "Lava com água antes e depois de usar, deixa secar e guarda na caixa limpa. Verifica o estado e o ajuste regularmente. Substitui a boqueira se estiver danificada.",
+      "technical": "Tipo::Boqueira moldável||Revestimento::Gel-Fit||Inclui::Caixa de transporte||Utilização::Treino de contacto"
+    },
+    "venum-challenger-pro-evo-mochila-22-5-l": {
+      "intro": "Mochila Venum de aproximadamente 22,5 litros, com três compartimentos, bolsos laterais e costas acolchoadas.",
+      "description": "A Venum Challenger Pro Evo oferece cerca de 22,5 litros de capacidade para organizar os essenciais do treino e do dia a dia. Os três compartimentos permitem separar o conteúdo de acordo com a tua rotina.||Os bolsos laterais acrescentam espaço de acesso rápido. As costas acolchoadas completam a construção de uma mochila pensada para acompanhar as deslocações ao ginásio.",
+      "features": "Capacidade aproximada de 22,5 L|Três compartimentos|Bolsos laterais|Costas acolchoadas",
+      "fit": "Antes de encomendar, compara o volume do teu equipamento com a capacidade de 22,5 L. Luvas, caneleiras e roupa podem exigir mais espaço quando transportadas em conjunto.",
+      "care": "Retira o equipamento húmido após o treino e deixa o interior arejar. Limpa de acordo com a etiqueta do fabricante e evita guardar roupa molhada durante longos períodos.",
+      "technical": "Capacidade aproximada::22,5 L||Compartimentos::Três||Bolsos::Laterais||Costas::Acolchoadas"
+    },
+    "fluory-calcoes-de-muay-thai-vermelho-e-preto": {
+      "intro": "Calções FLUORY em vermelho, preto e dourado, com cintura elástica larga e detalhes inspirados na estética do Muay Thai.",
+      "description": "Estes calções FLUORY combinam vermelho e preto com motivos decorativos dourados. O acabamento de aspeto acetinado e os grafismos frontais e laterais remetem para a estética tradicional do Muay Thai.||A cintura elástica larga faz parte do desenho do modelo. A composição, as medidas e a disponibilidade precisam de confirmação antes da encomenda.",
+      "features": "Cintura elástica larga|Vermelho, preto e dourado|Acabamento de aspeto acetinado|Motivos decorativos frontais e laterais|Modelo para Muay Thai e kickboxing",
+      "fit": "Este produto ainda não apresenta uma tabela de tamanhos confirmada. Contacta-nos para confirmar medidas, composição e disponibilidade antes de encomendar.",
+      "care": "Segue a etiqueta de lavagem do produto. Evita calor direto sobre os grafismos e confirma as instruções de manutenção após receberes a peça.",
+      "technical": "Cintura::Elástica larga||Cor::Vermelho, preto e dourado||Acabamento::Aspeto acetinado||Composição::Por confirmar"
+    },
+    "mens-rash-guard": {
+      "intro": "Rash guard de manga comprida com corte justo, elasticidade em quatro direções e costuras planas.",
+      "description": "Esta rash guard de manga comprida apresenta um corte ajustado ao corpo e tecido elástico em quatro direções. As costuras planas e o comprimento ligeiramente maior ajudam a manter o conforto durante o movimento.||A composição varia com o local de produção: na UE, 84% poliéster e 16% elastano, com 230 g/m²; nos EUA, 78% poliéster e 22% elastano, com 290 g/m². Consulta a etiqueta da peça recebida.",
+      "features": "Manga comprida|Corte justo|Elasticidade em quatro direções|Costuras planas|Comprimento ligeiramente maior|UE: 84% poliéster, 16% elastano; 230 g/m²|EUA: 78% poliéster, 22% elastano; 290 g/m²",
+      "fit": "Este modelo veste pequeno. Para maior conforto, considera um tamanho acima do habitual e confirma as medidas antes de escolher. O corte foi pensado para ficar justo ao corpo.",
+      "care": "Passa por água após a utilização, sobretudo depois de contacto com cloro ou água salgada. Segue a etiqueta de lavagem e evita guardar a peça húmida dentro da mala.",
+      "technical": "Mangas::Compridas||Corte::Justo||Elasticidade::Quatro direções||Produção UE::84% poliéster, 16% elastano; 230 g/m²||Produção EUA::78% poliéster, 22% elastano; 290 g/m²"
+    },
+    "all-over-print-gym-bag": {
+      "intro": "Saco de treino de 30 litros em poliéster, com tecido resistente à água, duas pegas acolchoadas e bolso interior.",
+      "description": "Este saco de ginásio oferece 30 litros de capacidade para roupa, calçado e acessórios. A estrutura reforçada e o acabamento ajudam a manter a forma durante as deslocações.||As duas pegas acolchoadas facilitam o transporte e o bolso interior permite separar pequenos objetos. O tecido é resistente à água; esta característica não significa que o saco seja impermeável.",
+      "features": "100% poliéster|Capacidade de 30 L|Tecido resistente à água|Estrutura reforçada|Duas pegas acolchoadas|Bolso interior para pequenos objetos",
+      "fit": "Confirma se a capacidade de 30 L corresponde ao equipamento que transportas habitualmente. Distribui o peso no interior e evita forçar o fecho.",
+      "care": "Retira roupa e equipamento húmidos depois do treino. Deixa o saco arejar e segue as instruções da etiqueta para a limpeza. Não guardes o saco ainda húmido.",
+      "technical": "Material::100% poliéster||Capacidade::30 L||Tecido::Resistente à água||Pegas::Duas, acolchoadas||Arrumação::Bolso interior"
+    },
+    "minimalist-backpack": {
+      "intro": "Mochila de 20 litros com bolso para portátil até 15 polegadas, bolso escondido nas costas e alças acolchoadas ajustáveis.",
+      "description": "A mochila minimalista combina um compartimento interior espaçoso com um bolso para portátil até 15 polegadas. O bolso escondido com fecho nas costas oferece um espaço separado para pequenos objetos.||É fabricada em poliéster resistente à água, com interior forrado, costas em malha macia e alças acolchoadas ajustáveis. Mede 41 × 31 × 14 cm e tem capacidade de 20 litros.",
+      "features": "100% poliéster resistente à água|Capacidade: 20 L|Dimensões: 41 × 31 × 14 cm|Carga máxima indicada: 20 kg|Bolso para portátil até 15 polegadas|Bolso escondido com fecho nas costas|Alças acolchoadas ajustáveis",
+      "fit": "Confirma as dimensões do teu portátil antes de encomendar. Ajusta as alças para distribuir a carga e não ultrapasses o limite indicado de 20 kg.",
+      "care": "Limpa segundo a etiqueta e deixa secar antes de guardar. O tecido resistente à água não torna a mochila impermeável; protege o equipamento eletrónico em caso de chuva.",
+      "technical": "Material::100% poliéster resistente à água||Capacidade::20 L||Dimensões::41 × 31 × 14 cm||Carga máxima indicada::20 kg||Portátil::Até 15 polegadas"
+    },
+    "unisex-organic-cotton-creator-2-0-t-shirt": {
+      "intro": "T-shirt unissexo em algodão orgânico de 180 g/m², com escudo de Portugal nas costas e detalhe discreto no peito.",
+      "description": "Esta t-shirt representa Portugal com um escudo em destaque nas costas e um detalhe discreto no peito. O corte unissexo regular acompanha o dia a dia e os momentos antes ou depois do treino.||O tecido jersey simples é de algodão orgânico penteado e fiado em anel, com 180 g/m². A gola canelada, a fita interior na gola e as costuras duplas completam os acabamentos.",
+      "features": "100% algodão orgânico penteado e fiado em anel|Gramagem: 180 g/m²|Jersey simples|Corte unissexo regular (medium fit)|Gola canelada e fita interior|Mangas clássicas e costuras duplas|Escudo de Portugal nas costas",
+      "fit": "Corte unissexo regular. Compara as medidas com uma t-shirt que te assente bem antes de escolher. Para um efeito mais largo, considera o tamanho acima.",
+      "care": "Segue a etiqueta de lavagem. Lava do avesso para ajudar a preservar a estampagem e evita passar o ferro diretamente sobre o desenho.",
+      "technical": "Material::100% algodão orgânico penteado e fiado em anel||Gramagem::180 g/m²||Tecido::Jersey simples||Corte::Unissexo regular (medium fit)||Gola::Canelada, com fita interior"
+    }
+  },
+  "viriatto_product": {
+    "details": "Conhece o produto",
+    "details_intro": "Características, ajuste e cuidados para escolheres com confiança.",
+    "description": "Descrição",
+    "highlights": "Características principais",
+    "technical": "Dados técnicos",
+    "model": "Modelo",
+    "fit": "Como escolher e ajustar",
+    "care": "Cuidados e manutenção",
+    "empty_description": "Precisas de mais informações sobre este produto? Contacta-nos antes de encomendar.",
+    "features_fallback": "Consulta a descrição e os dados técnicos deste produto. Se precisares de confirmar uma característica, contacta-nos.",
+    "fit_fallback": "Consulta as opções deste produto e confirma as medidas com a marca antes de escolher. Contacta-nos se precisares de ajuda.",
+    "care_fallback": "Segue as instruções da etiqueta e as recomendações do fabricante para conservar o produto.",
+    "complements": "Combina bem com",
+    "complements_intro": "Completa o teu equipamento com produtos para a mesma rotina de treino.",
+    "view_product": "Ver produto",
+    "reviews": "Avaliações",
+    "demo_notice": "Pré-visualização: 15 avaliações fictícias para testar o aspeto da secção. Não são opiniões de clientes e não aparecem na loja pública.",
+    "demo_summary": "Classificação de demonstração",
+    "demo_count": "15 exemplos de avaliação",
+    "demo_badge": "Demonstração",
+    "fictional_profile": "Perfil fictício",
+    "filter_rating": "Filtrar por classificação",
+    "all_ratings": "Todas as classificações",
+    "more_reviews": "Ver mais avaliações",
+    "no_reviews": "Ainda não existem avaliações publicadas para este produto.",
+    "from": "Desde"
+  },
+  "viriatto_review_demo": {
+    "item_1": {
+      "title": "Bom primeiro treino",
+      "body": "O produto chegou como esperava. Experimentei numa sessão e a primeira impressão foi boa."
+    },
+    "item_2": {
+      "title": "Aspeto igual às fotografias",
+      "body": "A cor e os detalhes correspondem às imagens. Era uma das coisas que queria confirmar."
+    },
+    "item_3": {
+      "title": "Confirmem o ajuste",
+      "body": "Gostei do produto, mas ainda tive de acertar o ajuste antes de começar o treino."
+    },
+    "item_4": {
+      "title": "Simples de usar",
+      "body": "Foi fácil perceber como o utilizar. Para a minha rotina, faz o que precisava."
+    },
+    "item_5": {
+      "title": "Boa apresentação",
+      "body": "Acabamentos cuidados e sem marcas à chegada. Vou ver como se comporta com mais utilização."
+    },
+    "item_6": {
+      "title": "Precisava de comparar opções",
+      "body": "Fiquei indeciso entre duas opções. Escolhi depois de confirmar as medidas e correu bem."
+    },
+    "item_7": {
+      "title": "Primeira impressão positiva",
+      "body": "Já o usei algumas vezes e até agora estou satisfeito. Ainda é cedo para falar de durabilidade."
+    },
+    "item_8": {
+      "title": "Corresponde à descrição",
+      "body": "Recebi o modelo que escolhi e os pormenores batem certo com a ficha do produto."
+    },
+    "item_9": {
+      "title": "Esperava um ajuste diferente",
+      "body": "O produto está bem apresentado, mas o ajuste não foi exatamente o que imaginava. Convém confirmar antes de comprar."
+    },
+    "item_10": {
+      "title": "Vai comigo para o treino",
+      "body": "Já faz parte da mala do ginásio. Para o uso que lhe tenho dado, estou contente com a escolha."
+    },
+    "item_11": {
+      "title": "Boa escolha com uma ressalva",
+      "body": "No geral gostei. Tive de experimentar com calma até encontrar a forma mais confortável de usar."
+    },
+    "item_12": {
+      "title": "Era este o modelo que procurava",
+      "body": "Já conhecia o modelo e foi esse o motivo da escolha. A apresentação correspondeu ao esperado."
+    },
+    "item_13": {
+      "title": "Detalhes bem conseguidos",
+      "body": "Gostei sobretudo do acabamento. As imagens de pormenor ajudaram a escolher."
+    },
+    "item_14": {
+      "title": "Satisfeito até agora",
+      "body": "Tem cumprido nas primeiras utilizações. Prefiro voltar a avaliar depois de mais algumas semanas."
+    },
+    "item_15": {
+      "title": "Voltava a escolher",
+      "body": "Até ao momento está de acordo com o que precisava. Confirmei a opção antes da encomenda e ficou bem."
+    }
   }
 }

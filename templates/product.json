@@ -98,11 +98,23 @@
         "padding_top": 56,
         "padding_bottom": 64
       }
+    },
+    "viriatto-complements": {
+      "type": "viriatto-product-complements",
+      "settings": {}
+    },
+    "viriatto-reviews": {
+      "type": "viriatto-product-reviews",
+      "settings": {
+        "show_demo": true
+      }
     }
   },
   "order": [
     "main",
+    "viriatto-complements",
     "boxeup-story",
+    "viriatto-reviews",
     "related-products",
     "disclosures"
   ]

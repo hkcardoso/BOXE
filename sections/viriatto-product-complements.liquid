@@ -1,0 +1,51 @@
+{{ 'viriatto-product-details.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign current_handle = product.handle
+  assign picks = section.settings.products
+  if picks == blank
+    if current_handle contains 'luvas'
+      assign pick_handles = 'venum-challenger-boqueira-com-caixa,fluory-calcoes-de-muay-thai-vermelho-e-preto,venum-challenger-pro-evo-mochila-22-5-l'
+    elsif current_handle contains 'caneleiras'
+      assign pick_handles = 'fairtex-bgv1-luvas-de-boxe-e-muay-thai,fairtex-mg3-boqueira-de-gel,fluory-calcoes-de-muay-thai-vermelho-e-preto'
+    elsif current_handle contains 'boqueira' or current_handle contains 'capacete'
+      assign pick_handles = 'charlie-bat-x-luvas-de-treino,twins-special-sgl-10-caneleiras-de-muay-thai,venum-challenger-pro-evo-mochila-22-5-l'
+    elsif current_handle contains 'mochila' or current_handle contains 'backpack' or current_handle contains 'bag'
+      assign pick_handles = 'charlie-bat-x-luvas-de-treino,venum-challenger-boqueira-com-caixa,mens-rash-guard'
+    else
+      assign pick_handles = 'fairtex-bgv1-luvas-de-boxe-e-muay-thai,venum-challenger-boqueira-com-caixa,all-over-print-gym-bag'
+    endif
+    assign handles = pick_handles | split: ','
+  endif
+-%}
+{%- capture complement_cards -%}
+  {%- if picks != blank -%}
+    {%- for item in picks limit: 3 -%}
+      {%- unless item.id == product.id -%}<li>{% render 'viriatto-complement-card', item: item %}</li>{%- endunless -%}
+    {%- endfor -%}
+  {%- else -%}
+    {%- for pick_handle in handles -%}
+      {%- assign item = all_products[pick_handle] -%}
+      {%- if item != blank and item.id != product.id -%}<li>{% render 'viriatto-complement-card', item: item %}</li>{%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- if complement_cards != blank -%}
+  <section class="vpc-section" aria-labelledby="vpc-title-{{ section.id }}">
+    <header class="vpc-header">
+      <h2 id="vpc-title-{{ section.id }}">{{ 'viriatto_product.complements' | t }}</h2>
+      <p>{{ 'viriatto_product.complements_intro' | t }}</p>
+    </header>
+    <ul class="vpc-grid" role="list">{{ complement_cards }}</ul>
+  </section>
+{%- endif -%}
+{% schema %}
+{
+  "name": "VIRIATTO | Combina bem",
+  "tag": "section",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "product_list", "id": "products", "label": "Produtos complementares", "limit": 3, "info": "Sem seleção, mostra complementos por tipo de produto. Esta seleção aplica-se a todos os produtos que usam este modelo." }
+  ],
+  "presets": [{ "name": "VIRIATTO | Combina bem" }]
+}
+{% endschema %}

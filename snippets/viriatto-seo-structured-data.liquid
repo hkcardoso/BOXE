@@ -1,0 +1,61 @@
+{%- comment -%}
+  VIRIATTO SEO: store identity and simple navigation trails.
+  Shopify already generates the Product schema via product | structured_data.
+  Do not duplicate Product or pricing structured data here.
+{%- endcomment -%}
+{%- if request.page_type == 'index' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": {{ request.origin | append: '/#organization' | json }},
+          "name": "VIRIATTO",
+          "url": {{ request.origin | append: routes.root_url | json }}
+          {%- if settings.logo != blank -%},
+          "logo": {{ settings.logo | image_url: width: 600 | prepend: 'https:' | json }}
+          {%- endif %}
+        },
+        {
+          "@type": "WebSite",
+          "@id": {{ request.origin | append: '/#website' | json }},
+          "url": {{ request.origin | append: routes.root_url | json }},
+          "name": "VIRIATTO",
+          "inLanguage": {{ request.locale.iso_code | json }},
+          "publisher": { "@id": {{ request.origin | append: '/#organization' | json }} }
+        }
+      ]
+    }
+  </script>
+{%- elsif request.page_type == 'collection' or request.page_type == 'product' -%}
+  {%- liquid
+    assign breadcrumb_home = 'Início'
+    assign seo_lang = request.locale.iso_code | slice: 0, 2
+    if seo_lang == 'en'
+      assign breadcrumb_home = 'Home'
+    elsif seo_lang == 'es'
+      assign breadcrumb_home = 'Inicio'
+    endif
+  -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": {{ breadcrumb_home | json }},
+          "item": {{ request.origin | append: routes.root_url | json }}
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {%- if request.page_type == 'product' -%}{{ product.title | json }}{%- else -%}{{ collection.title | json }}{%- endif -%},
+          "item": {{ canonical_url | json }}
+        }
+      ]
+    }
+  </script>
+{%- endif -%}

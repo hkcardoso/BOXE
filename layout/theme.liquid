@@ -19,19 +19,75 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
-    {%- assign viriatto_page_title = page_title | replace: 'BOXEUP', 'VIRIATTO' | replace: 'BoxeUp', 'VIRIATTO' | replace: 'Boxeup', 'VIRIATTO' -%}
+    {%- liquid
+      assign viriatto_lang = request.locale.iso_code | slice: 0, 2
+      assign viriatto_page_title = page_title | replace: 'BOXEUP', 'VIRIATTO' | replace: 'BoxeUp', 'VIRIATTO' | replace: 'Boxeup', 'VIRIATTO'
+      if request.page_type == 'index'
+        case viriatto_lang
+          when 'en'
+            assign viriatto_page_title = 'Boxing Gloves, Muay Thai, MMA & Fitness | VIRIATTO'
+          when 'es'
+            assign viriatto_page_title = 'Guantes de Boxeo, Muay Thai, MMA y Fitness | VIRIATTO'
+          else
+            assign viriatto_page_title = 'Luvas de Boxe, Muay Thai, MMA e Fitness | VIRIATTO'
+        endcase
+      endif
+
+      assign viriatto_meta_description = page_description | replace: 'BOXEUP', 'VIRIATTO' | replace: 'BoxeUp', 'VIRIATTO' | replace: 'Boxeup', 'VIRIATTO'
+      if viriatto_meta_description == blank or request.page_type == 'index'
+        case request.page_type
+          when 'index'
+            case viriatto_lang
+              when 'en'
+                assign viriatto_meta_description = 'Explore boxing gloves, shin guards, protective gear and training equipment for boxing, Muay Thai, MMA and fitness. Discover VIRIATTO.'
+              when 'es'
+                assign viriatto_meta_description = 'Descubre guantes de boxeo, espinilleras, protecciones y equipamiento para boxeo, Muay Thai, MMA y fitness en VIRIATTO.'
+              else
+                assign viriatto_meta_description = 'Explora luvas de boxe, caneleiras, proteções e equipamento para boxe, Muay Thai, MMA e fitness. Descobre a VIRIATTO em Portugal.'
+            endcase
+          when 'collection'
+            if collection.description != blank
+              assign viriatto_meta_description = collection.description | strip_html | strip | truncate: 155
+            else
+              capture viriatto_meta_description
+                echo 'Explora '
+                echo collection.title
+                echo ' na VIRIATTO. Descobre equipamento para boxe, Muay Thai, MMA e fitness em Portugal.'
+              endcapture
+            endif
+          when 'product'
+            if product.description != blank
+              assign viriatto_meta_description = product.description | strip_html | strip | truncate: 155
+            else
+              capture viriatto_meta_description
+                echo product.title
+                echo ' na VIRIATTO. Conhece o equipamento e as opções disponíveis.'
+              endcapture
+            endif
+          when 'page'
+            assign viriatto_meta_description = page.content | strip_html | strip | truncate: 155
+          when 'article'
+            assign viriatto_meta_description = article.excerpt_or_content | strip_html | strip | truncate: 155
+        endcase
+      endif
+      assign viriatto_meta_description = viriatto_meta_description | strip | truncate: 160
+    -%}
     <title>
-      {{ viriatto_page_title }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {{- viriatto_page_title | escape -}}
+      {%- if current_tags %} &ndash; {{ current_tags | join: ', ' | escape }}{% endif -%}
+      {%- if current_page != 1 %} &ndash; {{ current_page }}{% endif -%}
       {%- unless viriatto_page_title contains 'VIRIATTO' %} &ndash; VIRIATTO{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
-    {% endif %}
+    {%- if viriatto_meta_description != blank -%}
+      <meta name="description" content="{{ viriatto_meta_description | escape }}">
+    {%- endif -%}
+    {%- if request.page_type == 'search' or request.page_type == '404' -%}
+      <meta name="robots" content="noindex,follow">
+    {%- endif -%}
 
-    {% render 'meta-tags' %}
+    {% render 'meta-tags', seo_title: viriatto_page_title, seo_description: viriatto_meta_description %}
+    {% render 'viriatto-seo-structured-data' %}
 
     <script type="module">
       import * as StandardEvents from 'https://cdn.shopify.com/storefront/standard-events.js';

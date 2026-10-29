@@ -26,6 +26,16 @@
     }
   }
 
+  /* Small sample-review note on product pages only. */
+  .footer .vpr-footer-note {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(var(--color-foreground), .68);
+    margin-top: 8px;
+  }
+
   /* VIRIATTO footer | legible, compact country + language selectors. */
   .footer .footer__localization{
     display:flex;
@@ -461,6 +471,9 @@
               {%- endif -%}
             {%- endfor -%}
           </ul>
+        {%- endif -%}
+        {%- if request.page_type == 'product' -%}
+          <small class="copyright__content vpr-footer-note">{{ 'viriatto_product.demo_notice' | t }}</small>
         {%- endif -%}
       </div>
     </div>

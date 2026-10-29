@@ -118,16 +118,20 @@
   font: inherit;
   transition: border-color .2s ease, background .2s ease, transform .2s ease;
 }
-.bx-contact__quicklink:hover,
-.bx-contact__quicklink:focus-visible {
+.bx-contact__quicklink:hover {
   border-color: #a12b38;
+  background: #1a171b;
+  transform: translateY(-2px);
+}
+.bx-contact__quicklink:focus-visible {
+  border-color: #858892;
   background: #1a171b;
   transform: translateY(-2px);
 }
 .bx-contact__quicklink:focus-visible,
 .bx-contact__faq-item summary:focus-visible,
 .bx-contact__faq button:focus-visible,
-.bx-contact__faq a:focus-visible { outline: 2px solid #ed2437; outline-offset: 2px; }
+.bx-contact__faq a:focus-visible { outline: 1px solid #858892; outline-offset: 2px; }
 .bx-contact__quicklink-icon {
   display: grid;
   place-items: center;
@@ -284,9 +288,9 @@
   padding-bottom: 30px;
 }
 #MainContent .bx-contact .bx-contact__field :is(input,select,textarea):focus-visible {
-  outline: 2px solid #ed2437 !important;
-  outline-offset: 1px;
-  border-color: #ed2437 !important;
+  outline: 1px solid #858892 !important;
+  outline-offset: 2px;
+  border-color: #858892 !important;
 }
 .bx-contact__field small { font-size: 11px; color: #ff8591; margin-top: 5px; }
 .bx-contact__counter {

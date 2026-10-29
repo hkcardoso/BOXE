@@ -42,6 +42,7 @@
       }
     }
   {%- endstyle -%}
+  <link rel="stylesheet" href="{{ 'viriatto-mobile-recovered-core.css' | asset_url }}" media="(max-width: 989px)">
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -82,7 +83,7 @@
       <nav class="boxeup-breadcrumb boxeup-breadcrumb--product" aria-label="Percurso de navegação">
         <a href="{{ routes.root_url }}">Início</a><span aria-hidden="true">/</span>
         <a href="{{ routes.all_products_collection_url }}">Catálogo</a><span aria-hidden="true">/</span>
-        <span aria-current="page" class="boxeup-breadcrumb__current" style="color:#f3f4f6!important;opacity:1!important;text-shadow:none!important;">{{ product.title | escape }}</span>
+        <span aria-current="page" class="boxeup-breadcrumb__current" style="color:#f3f4f6!important;-webkit-text-fill-color:#f3f4f6!important;opacity:1!important;text-shadow:none!important;">{{ product.title | escape }}</span>
       </nav>
       <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} bxp-product-grid grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
         <div class="grid__item product__media-wrapper">
@@ -514,7 +515,6 @@
                     section_id: section.id,
                     show_pickup_availability: true
                   -%}
-                  {% render 'boxeup-product-support', product: product, product_form_id: product_form_id, section_id: section.id, delivery_note: section.settings.bx_delivery_note %}
                 {%- when 'rating' -%}
                   {%- if product.metafields.reviews.rating.value != blank -%}
                     <div class="rating-wrapper">
@@ -2350,14 +2350,7 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
-    },
-    {
-      "type": "textarea",
-      "id": "bx_delivery_note",
-      "label": "Nota de prazo e disponibilidade",
-      "info": "Usa apenas prazos confirmados para os produtos. Sem texto, a nota não aparece."
     }
   ]
 }
 {% endschema %}
-

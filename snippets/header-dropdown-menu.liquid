@@ -1,34 +1,33 @@
-{% doc %}
-  Renders the shared desktop and mobile navigation, including all submenu links.
-  @param {boolean} [mobile] - Render touch controls inside the mobile drawer.
-{% enddoc %}
-{%- assign bx_nav_prefix = 'HeaderMenu' -%}
-{%- if mobile -%}{%- assign bx_nav_prefix = 'HeaderDrawer' -%}{%- endif -%}
-{%- assign bx_nav_has_news = false -%}
-{%- assign bx_nav_has_sale = false -%}
-{%- assign bx_nav_language = request.locale.iso_code | slice: 0, 2 -%}
+{% comment %}
+  Renders a standard dropdown style menu for the header.
 
-<nav class="{% if mobile %}bx-mobile-shared-nav{% else %}header__inline-menu{% endif %}">
+  Usage:
+  {% render 'header-dropdown-menu' %}
+{% endcomment %}
+
+<nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
-      {%- if link.handle == 'novidades' or link.url contains 'sort_by=created-descending' -%}{%- assign bx_nav_has_news = true -%}{%- endif -%}
-      {%- if link.handle contains 'promo' or link.url contains '/collections/promocoes' -%}{%- assign bx_nav_has_sale = true -%}{%- endif -%}
-      {%- if link.handle == 'sobre-nos' or link.handle == 'contactos' -%}
-        {%- continue -%}
-      {%- endif -%}
+      {%- liquid
+        assign vi_hide_primary_link = false
+        assign vi_link_label = link.title | downcase | strip
+        if link.url contains '/pages/sobre-a-boxeup' or link.url contains '/pages/contact'
+          assign vi_hide_primary_link = true
+        elsif link.handle == 'sobre-nos' or link.handle == 'sobre-a-boxeup' or link.handle == 'about-us' or link.handle == 'about' or link.handle == 'contactos' or link.handle == 'contacto' or link.handle == 'contact' or link.handle == 'contact-us'
+          assign vi_hide_primary_link = true
+        elsif vi_link_label == 'sobre nós' or vi_link_label == 'about us' or vi_link_label == 'contactos' or vi_link_label == 'contacts' or vi_link_label == 'contact' or vi_link_label == 'contacto'
+          assign vi_hide_primary_link = true
+        endif
+      -%}
+      {%- unless vi_hide_primary_link -%}
       <li>
         {%- if link.handle == 'modalidades' -%}
           <div class="boxeup-nav-modalities">
-            <a id="{{ bx_nav_prefix }}-{{ link.handle }}" href="{{ routes.all_products_collection_url }}#main-collection-filters" class="header__menu-item list-menu__item link link--text focus-inset boxeup-nav-modalities__trigger">
+            <a id="HeaderMenu-{{ link.handle }}" href="{{ routes.all_products_collection_url }}#main-collection-filters" class="header__menu-item list-menu__item link link--text focus-inset boxeup-nav-modalities__trigger">
               <span>{{ link.title | escape }}</span>
-              {%- unless mobile -%}{{- 'icon-caret.svg' | inline_asset_content -}}{%- endunless -%}
+              {{- 'icon-caret.svg' | inline_asset_content -}}
             </a>
-            {%- if mobile -%}
-              <button type="button" class="bx-mobile-shared-nav__toggle" data-bx-nav-toggle aria-expanded="false" aria-controls="{{ bx_nav_prefix }}-MenuList-{{ forloop.index }}" aria-label="{{ link.title | escape }}">
-                {{- 'icon-caret.svg' | inline_asset_content -}}
-              </button>
-            {%- endif -%}
-            <ul id="{{ bx_nav_prefix }}-MenuList-{{ forloop.index }}" class="boxeup-nav-modalities__dropdown" role="list" aria-label="{{ link.title | escape }}">
+            <ul class="boxeup-nav-modalities__dropdown" role="list" aria-label="{{ link.title | escape }}">
               <li>
                 <a class="boxeup-nav-modalities__link focus-inset" href="{{ collections['boxe'].url }}#main-collection-filters"{% if collection.handle == 'boxe' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.boxe' | t }}</a>
               </li>
@@ -41,32 +40,25 @@
             </ul>
           </div>
         {%- elsif link.links != blank -%}
-
+          {% comment %}
+            BOXEUP: same hover/focus menu surface and animation as Modalidades.
+            Preserve the existing Shopify menu links, including third-level entries.
+          {% endcomment %}
           <div class="boxeup-nav-modalities">
             <a
-              id="{{ bx_nav_prefix }}-{{ link.handle }}"
-              href="{% if link.handle == 'marcas' %}{{ routes.all_products_collection_url }}#BxBrands{% else %}{{ link.url }}{% endif %}"
+              id="HeaderMenu-{{ link.handle }}"
+              href="{{ link.url }}"
               class="header__menu-item list-menu__item link link--text focus-inset boxeup-nav-modalities__trigger"
               {% if link.current %}aria-current="page"{% endif %}
             >
               <span{% if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
-              {%- unless mobile -%}{{- 'icon-caret.svg' | inline_asset_content -}}{%- endunless -%}
+              {{- 'icon-caret.svg' | inline_asset_content -}}
             </a>
-            {%- if mobile -%}
-              <button type="button" class="bx-mobile-shared-nav__toggle" data-bx-nav-toggle aria-expanded="false" aria-controls="{{ bx_nav_prefix }}-MenuList-{{ forloop.index }}" aria-label="{{ link.title | escape }}">
-                {{- 'icon-caret.svg' | inline_asset_content -}}
-              </button>
-            {%- endif -%}
-            <ul id="{{ bx_nav_prefix }}-MenuList-{{ forloop.index }}" class="boxeup-nav-modalities__dropdown" role="list" aria-label="{{ link.title | escape }}">
+            <ul id="HeaderMenu-MenuList-{{ forloop.index }}" class="boxeup-nav-modalities__dropdown" role="list" aria-label="{{ link.title | escape }}">
               {%- for childlink in link.links -%}
-              {% if link.handle == 'marcas' %}
-                {% assign bx_brand_visible = false %}
-                {% assign bx_link_handle = childlink.url | split: '/collections/' | last | split: '?' | first | split: '#' | first %}{% assign bx_menu_collection = childlink.object | default: collections[bx_link_handle] %}{% for bx_item in bx_menu_collection.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}
-                {% unless bx_brand_visible %}{% continue %}{% endunless %}
-              {% endif %}
                 <li>
                   <a
-                    id="{{ bx_nav_prefix }}-{{ link.handle }}-{{ childlink.handle }}"
+                    id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                     href="{{ childlink.url }}"
                     class="boxeup-nav-modalities__link focus-inset"
                     {% if childlink.current %}aria-current="page"{% endif %}
@@ -76,7 +68,7 @@
                       {%- for grandchildlink in childlink.links -%}
                         <li>
                           <a
-                            id="{{ bx_nav_prefix }}-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                            id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                             href="{{ grandchildlink.url }}"
                             class="boxeup-nav-modalities__link boxeup-nav-modalities__link--nested focus-inset"
                             {% if grandchildlink.current %}aria-current="page"{% endif %}
@@ -91,8 +83,8 @@
           </div>
         {%- else -%}
           <a
-            id="{{ bx_nav_prefix }}-{{ link.handle }}"
-            href="{% if link.handle == 'marcas' %}{{ routes.all_products_collection_url }}#BxBrands{% else %}{{ link.url }}{% endif %}"
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
             class="header__menu-item list-menu__item link link--text focus-inset"
             {% if link.current %}
               aria-current="page"
@@ -108,22 +100,8 @@
           </a>
         {%- endif -%}
       </li>
-    {%- endfor -%}
-    {%- if mobile -%}
-      {%- unless bx_nav_has_news -%}
-        <li class="bx-mobile-shared-nav__shortcut">
-          <a id="HeaderDrawer-novidades" href="{{ routes.all_products_collection_url }}?sort_by=created-descending" class="header__menu-item list-menu__item link link--text focus-inset">
-            <span>{% if bx_nav_language == 'en' %}New arrivals{% elsif bx_nav_language == 'es' %}Novedades{% else %}Novidades{% endif %}</span>
-          </a>
-        </li>
-      {%- endunless -%}
-      {%- unless bx_nav_has_sale -%}
-        <li class="bx-mobile-shared-nav__shortcut">
-          <a id="HeaderDrawer-promocoes" href="{{ collections['promocoes'].url | default: '/collections/promocoes' }}" class="header__menu-item list-menu__item link link--text focus-inset bx-mobile-nav__promotion">
-            <span>{% if bx_nav_language == 'en' %}Sale{% elsif bx_nav_language == 'es' %}Promociones{% else %}Promoções{% endif %}</span>
-          </a>
-        </li>
-      {%- endunless -%}
-    {%- endif -%}
+    {%- endunless -%}
+      {%- endfor -%}
+    {% render 'viriatto-nav-specials', mode: 'desktop' %}
   </ul>
 </nav>

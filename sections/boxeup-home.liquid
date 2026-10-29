@@ -4,14 +4,12 @@
 
 {%- liquid
   assign vh_locale = request.locale.iso_code | slice: 0, 2
-  assign vh_eyebrow = 'EQUIPAMENTO PARA'
+  assign vh_eyebrow = 'FEITO PARA'
   assign vh_title_a = 'QUEM'
   assign vh_title_b = 'TREINA.'
-  assign vh_intro = 'Luvas, proteções, vestuário e acessórios das melhores marcas de desportos de combate.'
-  assign vh_shop = 'VER PRODUTOS'
-  assign vh_video_play = 'Reproduzir vídeo'
-  assign vh_video_pause = 'Pausar vídeo'
-  assign vh_brands = 'EXPLORAR MARCAS'
+  assign vh_intro = 'Luvas, proteção e equipamento das melhores marcas. Tudo para o teu próximo treino.'
+  assign vh_shop = 'VER EQUIPAMENTO'
+  assign vh_brands = 'VER MARCAS'
   assign vh_featured = 'EM DESTAQUE'
   assign vh_new = 'NOVIDADES'
   assign vh_all = 'VER TODOS'
@@ -24,14 +22,12 @@
   assign vh_shipping = 'PORTES GRÁTIS'
   assign vh_shipping_desc = 'Em encomendas superiores a 79 €'
   if vh_locale == 'en'
-    assign vh_eyebrow = 'EQUIPMENT FOR'
+    assign vh_eyebrow = 'MADE FOR'
     assign vh_title_a = 'THOSE WHO'
     assign vh_title_b = 'TRAIN.'
-    assign vh_intro = 'Gloves, protection, clothing and accessories from leading combat sports brands.'
-    assign vh_shop = 'SHOP PRODUCTS'
-    assign vh_video_play = 'Play video'
-    assign vh_video_pause = 'Pause video'
-    assign vh_brands = 'EXPLORE BRANDS'
+    assign vh_intro = 'Gloves, protection and gear from leading brands. Everything for your next training session.'
+    assign vh_shop = 'SHOP EQUIPMENT'
+    assign vh_brands = 'VIEW BRANDS'
     assign vh_featured = 'FEATURED'
     assign vh_new = 'NEW ARRIVALS'
     assign vh_all = 'VIEW ALL'
@@ -44,14 +40,12 @@
     assign vh_shipping = 'FREE SHIPPING'
     assign vh_shipping_desc = 'On orders over €79'
   elsif vh_locale == 'es'
-    assign vh_eyebrow = 'EQUIPAMIENTO PARA'
+    assign vh_eyebrow = 'HECHO PARA'
     assign vh_title_a = 'QUIENES'
     assign vh_title_b = 'ENTRENAN.'
-    assign vh_intro = 'Guantes, protecciones, ropa y accesorios de las mejores marcas de deportes de combate.'
-    assign vh_shop = 'VER PRODUCTOS'
-    assign vh_video_play = 'Reproducir vídeo'
-    assign vh_video_pause = 'Pausar vídeo'
-    assign vh_brands = 'EXPLORAR MARCAS'
+    assign vh_intro = 'Guantes, protección y equipamiento de las mejores marcas. Todo para tu próximo entrenamiento.'
+    assign vh_shop = 'VER EQUIPAMIENTO'
+    assign vh_brands = 'VER MARCAS'
     assign vh_featured = 'DESTACADOS'
     assign vh_new = 'NOVEDADES'
     assign vh_all = 'VER TODOS'
@@ -68,6 +62,10 @@
   assign vh_latest_products = collections['all'].products | sort: 'created_at' | reverse
 -%}
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
 <style>
   /* 2026 VIRIATTO homepage — compact premium commerce layout */
   .section-boxeup-home{background:#0c0d0f!important}
@@ -76,16 +74,7 @@
   .vh-home a{color:inherit;text-decoration:none}
   .vh-frame{width:min(100%,1440px);margin-inline:auto;padding-inline:clamp(18px,8vw,120px)}
   .vh-hero{height:clamp(390px,34vw,530px);min-height:390px;position:relative;isolation:isolate;display:flex;align-items:center;overflow:hidden;background:#08090b}
-  .vh-hero__media{position:absolute;inset:0;z-index:-2;overflow:hidden;background:#08090b}
-  .vh-hero__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 43%;z-index:0}
-  .vh-hero__video{display:block;position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;object-position:center 43%;background:transparent;opacity:0;transition:opacity .3s ease;pointer-events:none}
-  .vh-hero--video-ready .vh-hero__video{opacity:1}
-  .vh-hero__video-toggle{position:absolute;z-index:5;right:clamp(18px,3vw,40px);bottom:20px;display:grid;place-items:center;width:42px;height:42px;padding:10px;color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:50%;background:rgba(12,14,17,.6);cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .2s,border-color .2s}
-  .vh-hero__video-toggle:hover,.vh-hero__video-toggle:focus-visible{background:rgba(32,35,41,.85);border-color:#fff}
-  .vh-hero__video-toggle svg{display:block;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-  .vh-hero__video-toggle .vh-hero__icon-pause{display:none}
-  .vh-hero__video-toggle[data-state="playing"] .vh-hero__icon-play{display:none}
-  .vh-hero__video-toggle[data-state="playing"] .vh-hero__icon-pause{display:block}
+  .vh-hero__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 43%;z-index:-2}
   .vh-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(1,2,4,.95) 0%,rgba(1,2,4,.85) 25%,rgba(1,2,4,.55) 47%,rgba(1,2,4,.07) 79%),linear-gradient(0deg,rgba(0,0,0,.48),transparent 34%);z-index:-1}
   .vh-hero__inner{position:relative;width:100%;padding-block:56px 64px}
   .vh-hero__copy{max-width:700px}
@@ -177,8 +166,7 @@
   }
   @media(max-width:749px){
     .vh-hero{height:clamp(490px,130vw,620px);min-height:490px;align-items:flex-end}
-    .vh-hero__image,.vh-hero__video{object-position:66% center}
-    .vh-hero__video-toggle{right:18px;bottom:16px;width:40px;height:40px}
+    .vh-hero__image{object-position:66% center}
     .vh-hero:before{background:linear-gradient(0deg,rgba(1,2,4,.95) 0%,rgba(1,2,4,.81) 25%,rgba(1,2,4,.48) 59%,rgba(1,2,4,.12) 100%)}
     .vh-hero__inner{padding-bottom:70px;padding-top:40px}
     .vh-hero__copy{max-width:100%}
@@ -349,8 +337,6 @@
 
   /* VIRIATTO 2026 — final layout consistency */
   .vh-home{--vh-rail-width:1600px;--vh-rail-gutter:clamp(18px,4.7vw,78px)}
-  /* Actual homepage content rail: 10% on each desktop side. */
-  @media(min-width:990px){.vh-home{--vh-rail-gutter:10vw}}
   .vh-home .vh-frame{
     box-sizing:border-box!important;display:block;
     width:100%!important;max-width:var(--vh-rail-width)!important;
@@ -390,7 +376,7 @@
   body.boxeup-page-home .footer .footer__content-top.page-width,
   body.boxeup-page-home .footer .footer__content-bottom-wrapper.page-width{
     max-width:1600px!important;
-    padding-inline:10vw!important
+    padding-inline:clamp(18px,4.7vw,78px)!important
   }
   @media(max-width:989px){
     .vh-home .vh-brands__inner{display:flex;overflow-x:auto;gap:23px}
@@ -429,7 +415,7 @@
       box-sizing:border-box!important;
       display:grid!important;width:100%!important;max-width:1600px!important;
       margin:0 auto!important;
-      padding:7px 10vw 5px!important;
+      padding:7px clamp(18px,4.7vw,78px) 5px!important;
       min-height:109px!important;
       grid-template-columns:minmax(175px,220px) minmax(0,1fr) minmax(135px,180px)!important;
       grid-template-rows:58px 39px!important;
@@ -513,121 +499,405 @@
   }
   @media(max-width:989px){
     body.boxeup-page-home #MainContent[data-template="index"]{margin-top:0!important}
-    body.boxeup-page-home .header-wrapper .header .vh-header-search{display:block!important}
+    body.boxeup-page-home .header-wrapper .header .vh-header-search{display:none!important}
   }
 
 
 
-  .vh-brands__viewport{overflow:hidden;touch-action:pan-y;overscroll-behavior-x:contain;-webkit-user-select:none;user-select:none}
-  .vh-brands__track{display:flex;width:max-content;animation:vh-brands-scroll 40s linear infinite}
-  .vh-brands__group{display:flex;align-items:center;gap:32px;padding:12px 16px;flex-shrink:0}
-  .vh-home .vh-brands__group .vh-brand{flex:0 0 120px;width:120px;min-width:120px}
-  .vh-brands:hover .vh-brands__track,.vh-brands:focus-within .vh-brands__track{animation-play-state:paused}
-  @keyframes vh-brands-scroll{to{transform:translateX(-50%)}}
-  /* Touch screens should not freeze the marquee because of sticky hover or link focus. */
-  @media(hover:none){
-    .vh-brands:hover .vh-brands__track,
-    .vh-brands:focus-within .vh-brands__track{animation-play-state:running}
-  }
-  @media(max-width:749px){
-    .vh-brands__group{gap:24px;padding:6px 12px}
-    .vh-home .vh-brands__group .vh-brand{flex-basis:100px;min-width:100px;width:100px}
-  }
-  @media(prefers-reduced-motion:reduce){
-    .vh-brands__track{animation:none}
-    .vh-brands__viewport{overflow-x:auto;touch-action:auto}
-    .vh-brands__group[aria-hidden]{display:none}
-  }
-
-  /* VIRIATTO responsive reassurance strip: readable 4/2-card grid. */
-  .vh-home .vh-trust{margin-top:18px;border-color:#292b30;background:#0e0f12}
-  .vh-home .vh-trust .vh-trust__inner{
-    box-sizing:border-box!important;
-    width:min(1200px,calc(100% - 48px))!important;
-    max-width:1200px!important;
-    min-height:0!important;
-    margin-inline:auto!important;
-    padding:19px 0!important;
+  /* VIRIATTO / full-bleed product tiles (second image on hover) */
+  .vh-home .vh-grid{
     display:grid!important;
     grid-template-columns:repeat(4,minmax(0,1fr))!important;
-    align-items:stretch!important;
-    gap:12px!important;
+    gap:14px!important;
+    align-items:stretch
   }
-  .vh-home .vh-trust .vh-trust__item{
-    min-width:0!important;
-    display:flex!important;
-    align-items:center!important;
-    justify-content:flex-start!important;
-    gap:12px!important;
-    padding:13px 14px!important;
-    border:1px solid #2e3036;
+  .vh-home .vh-tile{
+    position:relative;
+    display:block;
+    width:100%;min-width:0;
+    padding:0!important;
+    border:0!important;
     border-radius:10px;
-    background:#181a1e;
-    text-align:left!important;
+    background:#1c1e21;
+    overflow:hidden;
+    box-shadow:none!important
   }
-  .vh-home .vh-trust .vh-trust__item svg{
+  .vh-home .vh-tile__media{
+    display:block;
+    position:relative;
+    width:100%;height:auto;
+    aspect-ratio:1/1.07;
+    margin:0!important;padding:0!important;
+    border:0!important;border-radius:10px;
+    background:#202226;
+    overflow:hidden;
+    isolation:isolate;
+    color:#fff!important;
+    text-decoration:none!important;
+    outline-offset:3px
+  }
+  .vh-home .vh-tile__photo{
     display:block!important;
-    width:26px!important;
-    height:26px!important;
-    flex:0 0 26px!important;
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;height:100%!important;
+    min-width:100%!important;min-height:100%!important;
+    max-width:none!important;max-height:none!important;
+    margin:0!important;padding:0!important;
+    border:0!important;
+    object-fit:cover!important;object-position:center!important;
+    background:transparent!important;
+    mix-blend-mode:normal!important;
+    filter:none!important;
+    transform:none!important;
+    pointer-events:none;
+    transition:opacity .3s ease!important
   }
-  .vh-home .vh-trust .vh-trust__item span{display:grid!important;gap:3px!important;min-width:0}
-  .vh-home .vh-trust .vh-trust__item strong{
-    font-size:11px!important;line-height:1.3!important;font-weight:750!important;
-    letter-spacing:.02em;color:#f5f5f6!important;
+  .vh-home .vh-tile__photo--primary{opacity:1!important;z-index:0}
+  .vh-home .vh-tile__photo--secondary{opacity:0!important;z-index:1}
+  @media(hover:hover) and (pointer:fine){
+    .vh-home .vh-tile:hover .vh-tile__photo--secondary,
+    .vh-home .vh-tile:focus-within .vh-tile__photo--secondary{opacity:1!important}
+    .vh-home .vh-tile--has-alt:hover .vh-tile__photo--primary,
+    .vh-home .vh-tile--has-alt:focus-within .vh-tile__photo--primary{opacity:0!important}
+
+    .vh-home .vh-tile:hover .vh-tile__opener,
+    .vh-home .vh-tile:focus-within .vh-tile__opener{opacity:1!important;transform:translateY(0)!important;pointer-events:auto!important}
   }
-  .vh-home .vh-trust .vh-trust__item small{
-    font-size:10px!important;line-height:1.38!important;color:#adb0b8!important;
-    overflow-wrap:anywhere;
+  .vh-home .vh-tile__shade{
+    display:block;position:absolute;
+    z-index:2;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(0,0,0,.40) 0%,rgba(0,0,0,0) 28%,rgba(0,0,0,0) 58%,rgba(0,0,0,.42) 100%)
   }
+  .vh-home .vh-tile__discount{
+    position:absolute;z-index:4;
+    top:11px;right:11px;left:auto;
+    display:inline-flex;align-items:center;justify-content:center;
+    min-height:24px;padding:5px 9px;
+    background:rgba(37,38,42,.84);color:#fff;
+    border-radius:20px;
+    font:650 11px/1 var(--font-body-family,Arial,sans-serif);
+    white-space:nowrap
+  }
+  .vh-home .vh-tile__discount--sold{font-size:10px}
+  .vh-home .vh-tile__prices{
+    position:absolute;z-index:4;
+    bottom:14px;right:12px;top:auto;left:auto;
+    display:flex;flex-direction:column;align-items:flex-end;
+    gap:3px;
+    max-width:70%;pointer-events:none;
+    color:#fff;text-align:right;
+    text-shadow:0 1px 8px rgba(0,0,0,.55)
+  }
+  .vh-home .vh-tile__prices del{
+    color:rgba(255,255,255,.78);
+    font:400 11px/1.2 var(--font-body-family,Arial,sans-serif);
+    text-decoration:line-through
+  }
+  .vh-home .vh-tile__prices strong{
+    color:#fff;
+    font:450 15px/1.2 var(--font-body-family,Arial,sans-serif);
+    white-space:nowrap
+  }
+  .vh-home .vh-tile__name{
+    position:absolute;z-index:4;
+    bottom:13px;left:13px;right:43%;
+    width:auto;max-width:none;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    overflow:hidden;
+    color:#fff;
+    font:600 12px/1.3 var(--font-body-family,Arial,sans-serif);
+    text-align:left;
+    text-shadow:0 1px 8px rgba(0,0,0,.65);
+    opacity:1;transform:none;
+    pointer-events:none
+  }
+  .vh-home .vh-tile__opener{
+    display:block;position:absolute;
+    z-index:5;
+    left:10px;bottom:53px;right:auto;top:auto;
+    width:44px;height:44px;
+    opacity:0;transform:translateY(6px);
+    pointer-events:none;
+    transition:opacity .2s ease,transform .2s ease
+  }
+  .vh-home .vh-tile__plus{
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+    width:44px;height:44px;padding:0;
+    color:#fff;background:transparent!important;
+    border:0!important;border-radius:0!important;
+    box-shadow:none!important;
+    cursor:pointer;
+    transition:opacity .2s ease
+  }
+  .vh-home .vh-tile__plus:hover{opacity:.68;transform:none!important}
+  .vh-home .vh-tile__plus-icon{
+    display:block;
+    font:300 30px/1 Arial,sans-serif;
+    color:#fff;
+    transform:translateY(-2px);
+    text-shadow:0 1px 7px rgba(0,0,0,.65)
+  }
+  .vh-home .vh-tile__plus.loading .vh-tile__plus-icon{opacity:0}
+  .vh-home .vh-tile__plus .loading__spinner:not(.hidden){
+    display:block;position:absolute;
+    top:50%;left:50%;transform:translate(-50%,-50%);
+    width:17px;height:17px
+  }
+  .vh-home .vh-products{padding-block:22px 4px}
+  .vh-home .vh-products+.vh-products{padding-block:23px 28px}
+  .vh-home .vh-products__heading{margin-bottom:15px}
   @media(max-width:989px){
-    .vh-home .vh-trust .vh-trust__inner{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+    .vh-home .vh-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
   }
   @media(max-width:749px){
-    .vh-home .vh-trust{margin-top:12px}
-    .vh-home .vh-trust .vh-trust__inner{
-      width:calc(100% - 32px)!important;
-      padding:15px 0!important;
-      gap:8px!important;
-    }
-    .vh-home .vh-trust .vh-trust__item{
-      min-height:80px!important;
-      align-items:flex-start!important;
-      gap:9px!important;
-      padding:12px 10px!important;
-      border-radius:9px;
-    }
-    .vh-home .vh-trust .vh-trust__item svg{
-      width:23px!important;height:23px!important;flex-basis:23px!important;
-    }
-    .vh-home .vh-trust .vh-trust__item strong{font-size:10px!important;letter-spacing:0!important}
-    .vh-home .vh-trust .vh-trust__item small{font-size:10px!important}
+    .vh-home .vh-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+    .vh-home .vh-tile,.vh-home .vh-tile__media{border-radius:8px}
+    .vh-home .vh-tile__media{aspect-ratio:1/1.12}
+    .vh-home .vh-tile__discount{top:8px;right:8px;left:auto;padding:5px 7px;font-size:10px}
+    .vh-home .vh-tile__prices{bottom:10px;right:8px;top:auto}
+    .vh-home .vh-tile__prices del{font-size:10px}
+    .vh-home .vh-tile__prices strong{font-size:12px}
+    .vh-home .vh-tile__opener{left:4px;bottom:45px;width:39px;height:39px;opacity:1!important;transform:none!important;pointer-events:auto!important}
+    .vh-home .vh-tile__plus{width:39px;height:39px}
+    .vh-home .vh-tile__plus-icon{font-size:27px}
+    .vh-home .vh-tile__name{opacity:1!important;transform:none!important;left:9px;right:43%;bottom:10px;font-size:10px;text-align:left}
   }
-  @media(max-width:345px){
-    .vh-home .vh-trust .vh-trust__inner{grid-template-columns:1fr!important}
-    .vh-home .vh-trust .vh-trust__item{min-height:60px!important;align-items:center!important}
+  @media(hover:none){.vh-home .vh-tile__opener{opacity:1!important;transform:none!important;pointer-events:auto!important}}
+  @media(prefers-reduced-motion:reduce){
+    .vh-home .vh-tile__photo,.vh-home .vh-tile__plus,.vh-home .vh-tile__opener{transition:none!important}
   }
+
+
+  /* Restore the original Shopify hero video behind the new VIRIATTO hero. */
+  .vh-home .vh-hero__image {
+    z-index: -3;
+  }
+  .vh-home .vh-hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 43%;
+    z-index: -2;
+    display: block;
+    pointer-events: none;
+  }
+  @media (max-width: 749px) {
+    .vh-home .vh-hero__video { object-position: 66% center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .vh-home .vh-hero__video { display: none; }
+  }
+  /* VIRIATTO — true Benzin Bold for QUEM TREINA hero only */
+  @font-face {
+    font-family: 'Viriatto Hero Benzin';
+    src: url('{{ 'Benzin-Bold.ttf' | asset_url }}') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+  body #MainContent .section-boxeup-home .vh-home .vh-hero h1.vh-title {
+    font-family: 'Viriatto Hero Benzin', Arial, Helvetica, sans-serif !important;
+    font-weight: 700 !important;
+    font-size: clamp(45.05px, 5.1vw, 88.4px) !important;
+    letter-spacing: -.03em !important;
+    line-height: 1.055 !important;
+    font-synthesis: none;
+  }
+  @media (max-width: 749px) {
+    body #MainContent .section-boxeup-home .vh-home .vh-hero h1.vh-title {
+      font-size: clamp(34px, 8.5vw, 56.95px) !important;
+      letter-spacing: -.028em !important;
+      line-height: 1.08 !important;
+    }
+  }
+
+  /* VIRIATTO — condensed hero supporting copy (Barlow Condensed + Inter) */
+  .vh-home .vh-hero__copy .vh-eyebrow {
+    font-family: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .19em;
+    line-height: 1.15;
+    margin: 0 0 6px;
+    color: #eeeef0;
+    text-transform: uppercase;
+  }
+  .vh-home .vh-hero__copy .vh-intro {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-size: clamp(13px, 1.07vw, 15px);
+    font-weight: 400;
+    letter-spacing: -.012em;
+    line-height: 1.49;
+    color: #dedee1;
+    max-width: 460px;
+    margin: 10px 0 16px;
+  }
+  .vh-home .vh-hero__copy .vh-actions {
+    gap: 10px;
+    align-items: center;
+  }
+  .vh-home .vh-hero__copy .vh-button {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: 650;
+    letter-spacing: .008em;
+    line-height: 1.25;
+    min-height: 42px;
+    padding: 10px 17px;
+    gap: 12px;
+  }
+  @media (max-width: 749px) {
+    .vh-home .vh-hero__copy .vh-eyebrow {
+      font-size: 13px;
+      letter-spacing: .17em;
+      margin-bottom: 6px;
+    }
+    .vh-home .vh-hero__copy .vh-intro {
+      font-size: 13px;
+      max-width: 330px;
+      line-height: 1.46;
+      margin: 9px 0 15px;
+    }
+    .vh-home .vh-hero__copy .vh-button {
+      font-size: 10px;
+      min-height: 42px;
+      padding: 10px 13px;
+      gap: 8px;
+    }
+  }
+  /* VIRIATTO — Leone 1947 / RDX optical logo size matching */
+  .vh-home .vh-brand--leone-1947 img {
+    height: 40px;
+    max-height: 40px;
+  }
+  .vh-home .vh-brand--rdx img {
+    height: 39px;
+    max-height: 39px;
+  }
+
+  /* Featured + latest products: hover title on desktop, accessible on touch. */
+  #MainContent[data-template="index"] .section-boxeup-home .vh-home .vh-tile__name {
+    display: block !important;
+    position: absolute;
+    left: 13px;
+    right: clamp(100px, 30%, 150px);
+    bottom: 13px;
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    -webkit-line-clamp: unset !important;
+    overflow-wrap: normal !important;
+    font-size: 16px !important;
+    line-height: 1.3 !important;
+    font-weight: 750 !important;
+    letter-spacing: -.015em;
+    opacity: 0 !important;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+  }
+  #MainContent[data-template="index"] .section-boxeup-home .vh-home .vh-tile:hover .vh-tile__name,
+  #MainContent[data-template="index"] .section-boxeup-home .vh-home .vh-tile:focus-within .vh-tile__name {
+    opacity: 1 !important;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  /* The plus stays connected to the existing quick-add modal. */
+  #MainContent[data-template="index"] .section-boxeup-home .vh-home .vh-tile__opener {
+    top: 9px !important;
+    left: 9px !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+  #MainContent[data-template="index"] .section-boxeup-home .vh-home .vh-tile__plus {
+    width: 42px;
+    height: 42px;
+  }
+  /* Phones/tablets without a mouse need product names and quick add visible. */
+  @media (hover:none), (pointer:coarse) {
+    #MainContent[data-template="index"] .section-boxeup-home .vh-home .vh-tile__name {
+      left: 9px;
+      right: clamp(60px, 37%, 96px);
+      bottom: 10px;
+      font-size: 12px !important;
+      opacity: 1 !important;
+      visibility: visible;
+      transform: none;
+    }
+    #MainContent[data-template="index"] .section-boxeup-home .vh-home .vh-tile__opener {
+      top: 6px !important;
+      left: 6px !important;
+      bottom: auto !important;
+      opacity: 1 !important;
+      transform: none !important;
+      pointer-events: auto !important;
+    }
+  }
+  @media (max-width:749px) {
+    #MainContent[data-template="index"] .section-boxeup-home .vh-home .vh-tile__name {
+      left: 9px;
+      right: clamp(60px, 37%, 96px);
+      bottom: 10px;
+      font-size: 12px !important;
+    }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    #MainContent[data-template="index"] .section-boxeup-home .vh-home .vh-tile__name {
+      transition: none !important;
+      transform: none !important;
+    }
+  }
+
 </style>
-{{ 'boxeup-product-tiles.css' | asset_url | stylesheet_tag }}
-{{ 'viriatto-benefits.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'viriatto-mobile-recovered-core.css' | asset_url }}" media="(max-width: 989px)">
+<link rel="stylesheet" href="{{ 'viriatto-mobile-recovered-home.css' | asset_url }}" media="(max-width: 989px)">
+
 
 <section class="vh-home" aria-label="{{ 'boxeup_sections.aria_home' | t }}">
-  <div class="vh-hero" id="ViriattoHero-{{ section.id }}">
-    <div class="vh-hero__media" aria-hidden="true">
-      {%- if section.settings.hero_image != blank -%}
-        {{ section.settings.hero_image | image_url: width: 2200 | image_tag: class: 'vh-hero__image', widths: '800,1200,1600,2200', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: '' }}
-      {%- else -%}
-        <img class="vh-hero__image" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1920" height="1080" loading="eager" fetchpriority="high">
-      {%- endif -%}
-      {%- if section.settings.hero_video != blank -%}
-        {{ section.settings.hero_video | video_tag: class: 'vh-hero__video', autoplay: true, muted: true, loop: true, playsinline: true, controls: false, preload: 'metadata', image_size: '1600x' }}
-      {%- endif -%}
-    </div>
+  <div class="vh-hero">
+    {%- if section.settings.hero_image != blank -%}
+      {{ section.settings.hero_image | image_url: width: 2200 | image_tag: class: 'vh-hero__image', widths: '800,1200,1600,2200', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: '' }}
+    {%- else -%}
+      <img class="vh-hero__image" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1920" height="1080" loading="eager" fetchpriority="high">
+    {%- endif -%}
     {%- if section.settings.hero_video != blank -%}
-      <button type="button" class="vh-hero__video-toggle" data-state="paused" aria-label="{{ vh_video_play | escape }}" data-play-label="{{ vh_video_play | escape }}" data-pause-label="{{ vh_video_pause | escape }}">
-        <svg class="vh-hero__icon-play" aria-hidden="true" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z"/></svg>
-        <svg class="vh-hero__icon-pause" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>
-      </button>
+      {%- liquid
+        assign vh_video_desktop = blank
+        assign vh_video_mobile = blank
+        assign vh_video_fallback = blank
+        for vh_source in section.settings.hero_video.sources
+          if vh_source.format == 'mp4'
+            if vh_video_fallback == blank
+              assign vh_video_fallback = vh_source.url
+            endif
+            if vh_source.height == 1080
+              assign vh_video_desktop = vh_source.url
+            endif
+            if vh_source.height <= 720 and vh_source.height >= 360
+              assign vh_video_mobile = vh_source.url
+            endif
+          endif
+        endfor
+        assign vh_video_desktop = vh_video_desktop | default: vh_video_fallback
+        assign vh_video_mobile = vh_video_mobile | default: vh_video_desktop
+      -%}
+      {%- if vh_video_desktop != blank -%}
+        <video class="vh-hero__video" autoplay muted loop playsinline preload="metadata" poster="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+          <source src="{{ vh_video_mobile | escape }}" media="(max-width: 749px)" type="video/mp4">
+          <source src="{{ vh_video_desktop | escape }}" type="video/mp4">
+        </video>
+      {%- else -%}
+        {{ section.settings.hero_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, preload: 'metadata', class: 'vh-hero__video' }}
+      {%- endif -%}
     {%- endif -%}
     <div class="vh-frame vh-hero__inner">
       <div class="vh-hero__copy">
@@ -643,77 +913,8 @@
     
   </div>
 
-  {%- if section.settings.hero_video != blank -%}
-    <script>
-      (() => {
-        const hero = document.getElementById('ViriattoHero-{{ section.id }}');
-        const video = hero?.querySelector('.vh-hero__video');
-        const button = hero?.querySelector('.vh-hero__video-toggle');
-        if (!hero || !video || !button) return;
-
-        // iOS Safari autoplay needs muted + playsinline. Keep the poster visible
-        // until a video frame plays, and allow an explicit tap in Low Power Mode.
-        video.muted = true;
-        video.defaultMuted = true;
-        video.playsInline = true;
-        video.setAttribute('playsinline', '');
-        video.setAttribute('webkit-playsinline', '');
-        let manuallyPaused = false;
-        let inViewport = true;
-        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-        const update = () => {
-          const playing = !video.paused && !video.ended;
-          button.dataset.state = playing ? 'playing' : 'paused';
-          button.setAttribute('aria-label', button.dataset[playing ? 'pauseLabel' : 'playLabel']);
-          button.setAttribute('aria-pressed', String(playing));
-        };
-        const tryPlay = () => {
-          if (document.hidden || !inViewport || manuallyPaused || reduceMotion.matches) {
-            update();
-            return;
-          }
-          const attempt = video.play();
-          if (attempt && typeof attempt.catch === 'function') attempt.catch(update);
-        };
-        video.addEventListener('playing', () => {
-          hero.classList.add('vh-hero--video-ready');
-          update();
-        });
-        video.addEventListener('pause', update);
-        video.addEventListener('error', update);
-        button.addEventListener('click', () => {
-          if (video.paused) {
-            manuallyPaused = false;
-            const attempt = video.play();
-            if (attempt && typeof attempt.catch === 'function') attempt.catch(update);
-          } else {
-            manuallyPaused = true;
-            video.pause();
-          }
-        });
-        if ('IntersectionObserver' in window) {
-          new IntersectionObserver(([entry]) => {
-            inViewport = !!entry?.isIntersecting;
-            if (!inViewport) video.pause();
-            else tryPlay();
-          }, { threshold: .05 }).observe(hero);
-        }
-        document.addEventListener('visibilitychange', () => {
-          if (document.hidden) video.pause();
-          else tryPlay();
-        });
-        window.addEventListener('pageshow', tryPlay);
-        tryPlay();
-        update();
-      })();
-    </script>
-  {%- endif -%}
-
-  <script src="{{ 'boxeup-brand-touch.js' | asset_url }}" defer="defer"></script>
   <nav class="vh-brands" id="VHomeBrands" aria-label="{{ vh_brands }}">
-    <div class="vh-brands__viewport">
-    <div class="vh-brands__track">
-      {%- capture vh_brand_items -%}
+    <div class="vh-frame vh-brands__inner">
       {%- assign vh_brand_handles = 'fairtex,venum,everlast,leone-1947,charlie,rdx,cleto-reyes,rival,twins' | split: ',' -%}
       {%- for vh_brand_handle in vh_brand_handles -%}
         {%- assign vh_brand_collection = collections[vh_brand_handle] -%}
@@ -730,15 +931,11 @@
           {%- when 'rival' -%}{%- assign vh_brand_name = 'Rival' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-rival-white.png?v=1793040835' -%}
           {%- when 'twins' -%}{%- assign vh_brand_name = 'Twins' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-twins-white.png?v=1793040843' -%}
         {%- endcase -%}
-        <a class="vh-brand" href="{% if vh_brand_collection != blank %}{{ vh_brand_collection.url }}{% else %}{{ routes.search_url }}?q={{ vh_brand_name | url_encode }}{% endif %}" aria-label="{{ vh_brand_name | escape }}">
+        <a class="vh-brand vh-brand--{{ vh_brand_handle }}" href="{% if vh_brand_collection != blank %}{{ vh_brand_collection.url }}{% else %}{{ routes.search_url }}?q={{ vh_brand_name | url_encode }}{% endif %}" aria-label="{{ vh_brand_name | escape }}">
           {%- if vh_brand_logo != blank -%}<img src="{{ vh_brand_logo }}" alt="{{ vh_brand_name | escape }}" width="120" height="50" loading="lazy">
           {%- else -%}<span class="vh-brand__word">{{ vh_brand_name }}</span>{%- endif -%}
         </a>
       {%- endfor -%}
-      {%- endcapture -%}
-      <div class="vh-brands__group">{{ vh_brand_items }}</div>
-      <div class="vh-brands__group" aria-hidden="true">{{ vh_brand_items | replace: '<a ', '<a tabindex="-1" ' }}</div>
-    </div>
     </div>
   </nav>
 
@@ -801,26 +998,14 @@
     </section>
   </div>
 
-  <aside class="viri-benefits" aria-label="{{ vh_shipping | escape }}, {{ vh_delivery | escape }}, {{ vh_returns | escape }}, {{ vh_support | escape }}">
-    <div class="viri-benefits__grid">
-      <div class="viri-benefits__item">
-        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h12v11H2zM14 10h4l4 4v3h-8M6 19a2 2 0 1 0 4 0 2 2 0 0 0-4 0Zm10 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"/></svg>
-        <span class="viri-benefits__copy"><strong>{{ vh_shipping | escape }}</strong><small>{{ vh_shipping_desc | escape }}</small></span>
-      </div>
-      <div class="viri-benefits__item">
-        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/></svg>
-        <span class="viri-benefits__copy"><strong>{{ vh_delivery | escape }}</strong><small>{{ vh_delivery_desc | escape }}</small></span>
-      </div>
-      <div class="viri-benefits__item">
-        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 8 4v7c0 5-4 8-8 9-4-1-8-4-8-9V6zM8 12l3 3 5-6"/></svg>
-        <span class="viri-benefits__copy"><strong>{{ vh_returns | escape }}</strong><small>{{ vh_returns_desc | escape }}</small></span>
-      </div>
-      <div class="viri-benefits__item">
-        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v-4a8 8 0 0 1 16 0v4M4 14H2v5h4v-5zM20 14h2v5h-4v-5zM18 20c-1 2-4 2-6 2"/></svg>
-        <span class="viri-benefits__copy"><strong>{{ vh_support | escape }}</strong><small>{{ vh_support_desc | escape }}</small></span>
-      </div>
+  <div class="vh-trust">
+    <div class="vh-frame vh-trust__inner">
+      <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6h12v11H2zM14 10h4l4 4v3h-8M6 19a2 2 0 1 0 4 0 2 2 0 0 0-4 0Zm10 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"/></svg><span><strong>{{ vh_shipping }}</strong><small>{{ vh_shipping_desc }}</small></span></div>
+      <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/></svg><span><strong>{{ vh_delivery }}</strong><small>{{ vh_delivery_desc }}</small></span></div>
+      <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 8 4v7c0 5-4 8-8 9-4-1-8-4-8-9V6zM8 12l3 3 5-6"/></svg><span><strong>{{ vh_returns }}</strong><small>{{ vh_returns_desc }}</small></span></div>
+      <div class="vh-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15v-4a8 8 0 0 1 16 0v4M4 14H2v5h4v-5zM20 14h2v5h-4v-5zM18 20c-1 2-4 2-6 2"/></svg><span><strong>{{ vh_support }}</strong><small>{{ vh_support_desc }}</small></span></div>
     </div>
-  </aside>
+  </div>
 </section>
 
 {% schema %}

@@ -1,23 +1,15 @@
 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
 <div id="predictive-search-results" role="listbox">
   {%- if predictive_search.performed -%}
-{%- assign bx_predictive_count = 0 -%}
-{%- for bx_item in predictive_search.resources.products -%}
-{%- assign bx_vendor = bx_item.vendor | downcase | strip -%}
-{%- assign bx_title = bx_item.title | downcase | strip -%}
-{%- unless bx_vendor == 'my store' or bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}
-{%- assign bx_predictive_count = bx_predictive_count | plus: 1 -%}
-{%- endunless -%}
-{%- endfor -%}
     {% assign first_column_results_size = predictive_search.resources.queries.size
       | plus: predictive_search.resources.collections.size
       | plus: predictive_search.resources.pages.size
       | plus: predictive_search.resources.articles.size
     %}
-    {%- if first_column_results_size > 0 or bx_predictive_count > 0 -%}
+    {%- if first_column_results_size > 0 or predictive_search.resources.products.size > 0 -%}
       <div
         id="predictive-search-results-groups-wrapper"
-        class="predictive-search__results-groups-wrapper{% unless bx_predictive_count > 0 %} predictive-search__results-groups-wrapper--no-products{% endunless %}{% unless predictive_search.resources.queries.size > 0 or predictive_search.resources.collections.size > 0 %} predictive-search__results-groups-wrapper--no-suggestions{% endunless %}"
+        class="predictive-search__results-groups-wrapper{% unless predictive_search.resources.products.size > 0 %} predictive-search__results-groups-wrapper--no-products{% endunless %}{% unless predictive_search.resources.queries.size > 0 or predictive_search.resources.collections.size > 0 %} predictive-search__results-groups-wrapper--no-suggestions{% endunless %}"
       >
     {%- endif -%}
     {%- if first_column_results_size > 0 -%}
@@ -118,12 +110,12 @@
     {%- if first_column_results_size > 0 -%}
       </div>
     {%- endif -%}
-    {%- if bx_predictive_count > 0
+    {%- if predictive_search.resources.products.size > 0
       or predictive_search.resources.articles.size > 0
       or predictive_search.resources.pages.size > 0
     -%}
       <div class="predictive-search__result-group">
-        {%- if bx_predictive_count > 0 -%}
+        {%- if predictive_search.resources.products.size > 0 -%}
           <div>
             <h2
               id="predictive-search-products"
@@ -138,9 +130,6 @@
               aria-labelledby="predictive-search-products"
             >
               {%- for product in predictive_search.resources.products -%}
-                  {%- assign bx_vendor = product.vendor | downcase | strip -%}
-{%- assign bx_title = product.title | downcase | strip -%}
-{%- if bx_vendor == 'my store' or product.price == 0 or product.tags contains 'boxeup:hidden' or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}{%- continue -%}{%- endif -%}
                 <li
                   id="predictive-search-option-product-{{ forloop.index }}"
                   class="predictive-search__list-item"
@@ -228,7 +217,7 @@
         {%- endif -%}
       </div>
     {%- endif -%}
-    {%- if first_column_results_size > 0 or bx_predictive_count > 0 -%}
+    {%- if first_column_results_size > 0 or predictive_search.resources.products.size > 0 -%}
       </div>
     {%- endif -%}
 
@@ -253,10 +242,10 @@
     <span
       class="hidden"
       data-predictive-search-live-region-count-value
-      data-total-results="{{ bx_predictive_count | plus: first_column_results_size }}"
+      data-total-results="{{ predictive_search.resources.products.size | plus: first_column_results_size }}"
     >
       {% liquid
-        assign total_results = bx_predictive_count | plus: first_column_results_size
+        assign total_results = predictive_search.resources.products.size | plus: first_column_results_size
         if total_results == 0
           echo 'templates.search.no_results' | t: terms: predictive_search.terms
         else
@@ -269,12 +258,11 @@
             assign count = predictive_search.resources.pages.size | plus: predictive_search.resources.articles.size
             echo 'templates.search.results_pages_with_count' | t: count: count | append: ', '
           endif
-          if bx_predictive_count > 0
-            echo 'templates.search.results_products_with_count' | t: count: bx_predictive_count
+          if predictive_search.resources.products.size > 0
+            echo 'templates.search.results_products_with_count' | t: count: predictive_search.resources.products.size
           endif
         endif
       %}
     </span>
   {%- endif -%}
 </div>
-

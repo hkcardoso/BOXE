@@ -23,11 +23,8 @@
     </div>
   </details>
 {%- elsif variant == 'mobile' -%}
-  <details class="boxeup-mobile-modality-filter" aria-label="{{ 'boxeup_navigation.modality_filter' | t | escape }}">
-    <summary class="viri-filters__section-title">
-      <span>{{ 'boxeup_navigation.modality_filter' | t | escape }}</span>
-      <span class="viri-filters__chevron" aria-hidden="true">{{ 'icon-caret.svg' | inline_asset_content }}</span>
-    </summary>
+  <section class="boxeup-mobile-modality-filter" aria-label="{{ 'boxeup_navigation.modality_filter' | t }}">
+    <h3>{{ 'boxeup_navigation.modality_filter' | t }}</h3>
     <div class="boxeup-mobile-modality-filter__links">
       <a data-boxeup-catalog href="{{ routes.all_products_collection_url }}#main-collection-filters"{% if collection.handle == 'all' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.all_modalities' | t }}</a>
       {% if bx_boxe != blank %}<a data-boxeup-catalog href="{{ bx_boxe.url }}#main-collection-filters"{% if collection.handle == 'boxe' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.boxe' | t }}</a>{% endif %}
@@ -35,5 +32,5 @@
       <span aria-disabled="true">MMA · {{ 'boxeup_navigation.coming_soon' | t }}</span>
       <span aria-disabled="true">Jiu-Jitsu · {{ 'boxeup_navigation.coming_soon' | t }}</span>
     </div>
-  </details>
+  </section>
 {%- endif -%}

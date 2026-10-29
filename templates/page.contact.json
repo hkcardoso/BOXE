@@ -1,15 +1,22 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "boxeup_contact": {
       "type": "boxeup-contact",
       "settings": {
-        "eyebrow": "ESTAMOS AQUI PARA AJUDAR",
-        "heading": "Fala connosco.",
-        "description": "Precisas de ajuda a escolher equipamento, tens uma dúvida sobre um produto ou queres apresentar uma proposta de parceria? Envia-nos uma mensagem.",
-        "details_heading": "Como podemos ajudar?",
-        "details_text": "Dúvidas sobre produtos, encomendas e colaborações. Explica-nos o que precisas e responderemos através do contacto que indicares.",
+        "eyebrow": "CONTACTOS",
+        "heading": "CONTACTOS.",
+        "description": "Dúvidas sobre equipamento, encomendas ou parcerias? Envia-nos uma mensagem.",
         "form_heading": "Envia-nos uma mensagem",
-        "form_intro": "Preenche os campos abaixo para entrar em contacto com a BOXEUP."
+        "form_intro": "Preenche o formulário para nos contactar."
       }
     }
   },

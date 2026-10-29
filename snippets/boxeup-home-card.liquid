@@ -9,6 +9,14 @@
     if product.compare_at_price > product.price
       assign vh_discount = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round
     endif
+    comment
+      Short display-only product names for homepage tiles. Keep the full
+      Shopify product title in the link, alt text, quick-add and product page.
+    endcomment
+    assign vh_tile_name = product.title | split: ' — ' | first | split: ' – ' | first | split: ' - ' | first | strip
+    if vh_tile_name == blank
+      assign vh_tile_name = product.title
+    endif
     assign vh_second_image = blank
     if product.images.size > 1
       assign vh_second_image = product.images[1]
@@ -36,9 +44,8 @@
         {%- endif -%}
         <strong>{{ product.price | money }}</strong>
       </span>
-      <span class="vh-tile__name">{{ product.title | escape }}</span>
+      <span class="vh-tile__name" title="{{ product.title | escape }}">{{ vh_tile_name | escape }}</span>
     </a>
-    {% render 'boxeup-mobile-card-meta', product: product %}
     {%- if product.available -%}
       <modal-opener class="vh-tile__opener" data-modal="#VHomeQuick-{{ section_id }}-{{ product.id }}">
         <button class="vh-tile__plus" type="button"

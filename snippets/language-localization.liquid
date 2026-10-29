@@ -38,34 +38,5 @@
       {%- endfor -%}
     </ul>
   </div>
-  {%- if localPosition == 'FooterLanguage' or localPosition == 'HeaderLanguageMobile' -%}
-    {%- comment -%}
-      Mobile footer and mobile drawer: expose languages in one aligned row.
-      Keep the original picker for the desktop. Shopify's existing
-      localization-form JS submits these language option links.
-    {%- endcomment -%}
-    <div class="boxeup-lang-mobile" role="group" aria-label="{{ 'localization.language_label' | t | escape }}">
-      {%- for language in localization.available_languages -%}
-        {%- assign bxp_mobile_locale_code = language.iso_code | slice: 0, 2 | upcase -%}
-        {%- if language.iso_code == localization.language.iso_code -%}
-          <span class="boxeup-lang-mobile__option is-current" lang="{{ language.iso_code }}" aria-current="true" title="{{ language.endonym_name | escape }}">
-            <span class="boxeup-lang-flag">{% render 'boxeup-language-flag', language_code: language.iso_code %}</span>
-            <span class="boxeup-lang-code">{{ bxp_mobile_locale_code }}</span>
-          </span>
-        {%- else -%}
-          <a class="boxeup-lang-mobile__option link focus-inset"
-             href="#"
-             hreflang="{{ language.iso_code }}"
-             lang="{{ language.iso_code }}"
-             title="{{ language.endonym_name | escape }}"
-             aria-label="{{ language.endonym_name | escape }}"
-             data-value="{{ language.iso_code }}">
-            <span class="boxeup-lang-flag">{% render 'boxeup-language-flag', language_code: language.iso_code %}</span>
-            <span class="boxeup-lang-code">{{ bxp_mobile_locale_code }}</span>
-          </a>
-        {%- endif -%}
-      {%- endfor -%}
-    </div>
-  {%- endif -%}
 </div>
 <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">

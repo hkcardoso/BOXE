@@ -45,9 +45,6 @@
       >
         {% assign skip_card_product_styles = false %}
         {% for recommendation in recommendations.products %}
-                  {%- assign bx_vendor = recommendation.vendor | downcase | strip -%}
-{%- assign bx_title = recommendation.title | downcase | strip -%}
-{%- if bx_vendor == 'my store' or recommendation.price == 0 or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}{%- continue -%}{%- endif -%}
           <li class="grid__item">
             {% render 'card-product',
               card_product: recommendation,
@@ -266,4 +263,3 @@
   ]
 }
 {% endschema %}
-

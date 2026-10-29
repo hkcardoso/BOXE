@@ -1,8 +1,11 @@
+{%- assign bx_mobile_brand_nav_label = 'Marcas' -%}
+{%- assign bx_mobile_locale = request.locale.iso_code | slice: 0, 2 -%}
+{%- if bx_mobile_locale == 'en' -%}{%- assign bx_mobile_brand_nav_label = 'Brands' -%}{%- elsif bx_mobile_locale == 'es' -%}{%- assign bx_mobile_brand_nav_label = 'Marcas' -%}{%- endif -%}
 {%- comment -%}
   Mobile-only collection brand navigation, compact and accessible.
   Uses the same brand images and collections as the catalogue directory.
 {%- endcomment -%}
-  <nav class="viri-filters__brand-grid" aria-label="{{ 'boxeup_experience.brand_navigation' | t | escape }}">
+  <nav class="viri-filters__brand-grid" aria-label="{{ bx_mobile_brand_nav_label | escape }}">
     {%- assign bx_brand_handles = 'fairtex,venum,everlast,leone-1947,charlie,rdx,cleto-reyes,rival,twins' | split: ',' -%}
     {%- for bx_brand_handle in bx_brand_handles -%}
       {%- assign bx_brand_collection = collections[bx_brand_handle] -%}

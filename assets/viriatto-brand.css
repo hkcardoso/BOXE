@@ -1,0 +1,49 @@
+/* VIRIATTO — original user-supplied logo, cropped and made transparent.
+   No text imitation; preserves the exact contours and letter spacing. */
+.header-wrapper .header__heading-link .viriatto-site-logo {
+  display: block;
+  width: clamp(132px, 11.8vw, 185px);
+  height: auto;
+  max-width: none;
+  object-fit: contain;
+}
+.footer .boxeup-footer-brand__wordmark.viriatto-logo-wrap {
+  line-height: 1;
+  letter-spacing: normal;
+}
+.footer .viriatto-footer-logo {
+  display: block;
+  width: clamp(190px, 21vw, 280px);
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+@media (max-width: 749px) {
+  .header-wrapper .header__heading-link .viriatto-site-logo {
+    width: 136px;
+  }
+  .footer .viriatto-footer-logo {
+    width: 215px;
+  }
+}
+
+/* VIRIATTO: simple navigation links for new arrivals and promotions. */
+body .header-wrapper .header__inline-menu .viri-nav-special {
+  white-space: nowrap;
+}
+body .header-wrapper .header__inline-menu .viri-nav-special--promo,
+body .header-wrapper .header__inline-menu .viri-nav-special--promo > span {
+  color: #f05a68 !important;
+}
+body .header-wrapper .header__inline-menu .viri-nav-special--promo:hover,
+body .header-wrapper .header__inline-menu .viri-nav-special--promo:hover > span,
+body .header-wrapper .header__inline-menu .viri-nav-special--promo:focus-visible > span {
+  color: #ff8993 !important;
+}
+body .menu-drawer .viri-nav-special--promo {
+  color: #f05a68 !important;
+}
+body .menu-drawer .viri-nav-special--promo:hover,
+body .menu-drawer .viri-nav-special--promo:focus-visible {
+  color: #ff8993 !important;
+}

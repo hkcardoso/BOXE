@@ -1,41 +1,79 @@
 {%- if page.handle == 'sobre-a-boxeup' -%}
-  {{ 'boxeup-about.css' | asset_url | stylesheet_tag }}
   {% render 'boxeup-about-content' %}
 {%- else -%}
-{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
-<div class="bx-information-page page-width page-width--narrow section-{{ section.id }}-padding">
-  <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-    {% if page.handle == 'envios-e-entregas' %}{{ 'boxeup_experience.shipping' | t }}{% elsif page.handle == 'devolucoes-e-garantias' %}{{ 'boxeup_experience.returns' | t }}{% else %}{{ page.title | escape }}{% endif %}
-  </h1>
-  <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-    {% if page.handle == 'envios-e-entregas' %}
-      <p class="bx-information-intro">{{ 'boxeup_experience.shipping_intro' | t }}</p>
-      <dl class="bx-information-facts">
-        <div><dt>{{ 'boxeup_experience.shipping_cost' | t }}</dt><dd>{{ 'boxeup_experience.shipping_cost_value' | t }}</dd></div>
-        <div><dt>{{ 'boxeup_experience.shipping_time' | t }}</dt><dd>{{ 'boxeup_experience.shipping_time_value' | t }}</dd></div>
-        <div><dt>{{ 'boxeup_experience.shipping_destination' | t }}</dt><dd>{{ 'boxeup_experience.shipping_destination_value' | t }}</dd></div>
-      </dl>
-    {% elsif page.handle == 'devolucoes-e-garantias' %}<p class="bx-information-intro">{{ 'boxeup_experience.returns_intro' | t }}</p>{% endif %}
-    {{ page.content }}
-    {% if page.handle == 'envios-e-entregas' or page.handle == 'devolucoes-e-garantias' or page.handle == 'politica-de-privacidade' %}<aside class="bx-information-help"><h2>{{ 'boxeup_experience.policy_question' | t }}</h2><a class="bx-button" href="{{ routes.root_url }}pages/contact">{{ 'boxeup_experience.ask_support' | t }}</a></aside>{% endif %}
-  </div>
-</div>
-
+  {{ 'viriatto-footer-pages.css' | asset_url | stylesheet_tag }}
+  {% liquid
+    assign info_lang = request.locale.iso_code | slice: 0, 2
+    case info_lang
+      when 'en'
+        assign info_eyebrow = 'VIRIATTO / SUPPORT'
+        assign info_home = 'Home'
+        assign info_section = 'Information'
+        assign info_navigation = 'Useful information'
+        assign info_shipping = 'Shipping and delivery'
+        assign info_returns = 'Returns and warranties'
+        assign info_terms = 'Terms of sale'
+        assign info_privacy = 'Privacy policy'
+        assign info_contact = 'Contact us'
+        assign info_back = 'Explore catalogue'
+      when 'es'
+        assign info_eyebrow = 'VIRIATTO / AYUDA'
+        assign info_home = 'Inicio'
+        assign info_section = 'Información'
+        assign info_navigation = 'Información útil'
+        assign info_shipping = 'Envíos y entregas'
+        assign info_returns = 'Devoluciones y garantías'
+        assign info_terms = 'Condiciones de venta'
+        assign info_privacy = 'Política de privacidad'
+        assign info_contact = 'Contacto'
+        assign info_back = 'Explorar catálogo'
+      else
+        assign info_eyebrow = 'VIRIATTO / APOIO'
+        assign info_home = 'Início'
+        assign info_section = 'Informações'
+        assign info_navigation = 'Informações úteis'
+        assign info_shipping = 'Envios e entregas'
+        assign info_returns = 'Devoluções e garantias'
+        assign info_terms = 'Condições de venda'
+        assign info_privacy = 'Política de privacidade'
+        assign info_contact = 'Contactos'
+        assign info_back = 'Explorar catálogo'
+    endcase
+  %}
+  <section class="vi-support-page" aria-labelledby="ViriSupportHeading">
+    <header class="vi-support-page__hero">
+      <div class="vi-support-page__wrap">
+        <nav class="vi-support-page__breadcrumb" aria-label="{{ info_section | escape }}">
+          <a href="{{ routes.root_url }}">{{ info_home }}</a>
+          <span aria-hidden="true">/</span>
+          <span>{{ info_section }}</span>
+        </nav>
+        <p class="vi-support-page__eyebrow">{{ info_eyebrow }}</p>
+        <h1 id="ViriSupportHeading">{{ page.title | escape }}</h1>
+      </div>
+    </header>
+    <div class="vi-support-page__wrap vi-support-page__layout">
+      <aside class="vi-support-page__sidebar" aria-label="{{ info_navigation | escape }}">
+        <p>{{ info_navigation }}</p>
+        <nav class="vi-support-page__nav">
+          <a href="{{ pages['envios-e-entregas'].url | default: '/pages/envios-e-entregas' }}"{% if page.handle == 'envios-e-entregas' %} aria-current="page"{% endif %}>{{ info_shipping }} <span aria-hidden="true">↗</span></a>
+          <a href="{{ pages['devolucoes-e-garantias'].url | default: '/pages/devolucoes-e-garantias' }}"{% if page.handle == 'devolucoes-e-garantias' %} aria-current="page"{% endif %}>{{ info_returns }} <span aria-hidden="true">↗</span></a>
+          <a href="{{ pages['condicoes-gerais-de-venda'].url | default: '/pages/condicoes-gerais-de-venda' }}"{% if page.handle == 'condicoes-gerais-de-venda' %} aria-current="page"{% endif %}>{{ info_terms }} <span aria-hidden="true">↗</span></a>
+          <a href="{{ pages['politica-de-privacidade'].url | default: '/pages/politica-de-privacidade' }}"{% if page.handle == 'politica-de-privacidade' %} aria-current="page"{% endif %}>{{ info_privacy }} <span aria-hidden="true">↗</span></a>
+          <a href="{{ pages['contact'].url | default: '/pages/contact' }}">{{ info_contact }} <span aria-hidden="true">↗</span></a>
+        </nav>
+      </aside>
+      <article class="vi-support-page__article">
+        <div class="vi-support-page__content rte">
+          {{ page.content }}
+        </div>
+        <footer class="vi-support-page__article-footer">
+          <a href="{{ routes.all_products_collection_url }}">{{ info_back }} <span aria-hidden="true">→</span></a>
+          <a href="{{ pages['contact'].url | default: '/pages/contact' }}">{{ info_contact }} <span aria-hidden="true">→</span></a>
+        </footer>
+      </article>
+    </div>
+  </section>
 {%- endif -%}
 
 {% schema %}

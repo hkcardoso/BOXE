@@ -3,17 +3,17 @@
    Full-bleed hero/backgrounds remain full width; their copy aligns to the grid. */
 :root{
   --boxeup-content-max:190rem;
-  --boxeup-content-gutter:clamp(4rem,10vw,22rem);
+  --boxeup-content-gutter:clamp(3.366rem,5.049vw,10.098rem);
   --boxeup-content-outer:max(
     var(--boxeup-content-gutter),
     calc((100vw - var(--boxeup-content-max))/2 + var(--boxeup-content-gutter))
   );
 }
 @media (min-width:750px) and (max-width:989px){
-  :root{--boxeup-content-gutter:4.25rem}
+  :root{--boxeup-content-gutter:5.61rem}
 }
 @media (max-width:749px){
-  :root{--boxeup-content-gutter:1.3rem}
+  :root{--boxeup-content-gutter:1.68rem}
 }
 /* Use one grid for catalogue cards, section headings and other pages. */
 #MainContent .page-width:not(.page-width--narrow),
@@ -56,8 +56,8 @@ body .header-wrapper .header:not(.drawer-menu).page-width {
 @media(max-width:749px){
   body .header-wrapper .header.page-width,
   body .header-wrapper .header:not(.drawer-menu).page-width{
-    padding-left:1.5rem!important;
-    padding-right:1.5rem!important;
+    padding-left:var(--boxeup-content-gutter)!important;
+    padding-right:var(--boxeup-content-gutter)!important;
   }
 }
 
@@ -74,7 +74,7 @@ body .header-wrapper .header:not(.drawer-menu).page-width {
   max-width:none!important;padding-left:0!important;padding-right:0!important;
 }
 #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero{
-  --boxeup-hero-inset:var(--boxeup-content-outer);
+  --boxeup-hero-inset:clamp(33px,5.28vw,102.96px);
   margin-left:0!important;margin-right:0!important;border-radius:0!important;
 }
 #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero__inner{
@@ -112,7 +112,7 @@ body .footer .footer__content-bottom-wrapper.page-width{
 }
 @media(max-width:749px){
   #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero{
-    --boxeup-hero-inset:20px;
+    --boxeup-hero-inset:26.4px;
   }
   #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero__inner{
     width:100%!important;
@@ -150,4 +150,31 @@ body .footer .footer__content-bottom-wrapper.page-width{
   #MainContent[data-template="index"] .section-boxeup-home .bxv2-wrap--merchandising .bxv2-block--products{
     padding-top:38px!important;
   }
+}
+
+
+/* VIRIATTO: unified homepage-width content rails on every storefront page.
+   Background imagery / full-bleed heroes remain edge-to-edge; text aligns
+   with the homepage's 1600px content grid. */
+:root {
+  --boxeup-content-max: 1600px;
+  --boxeup-content-gutter: clamp(18px, 4.7vw, 78px);
+}
+#MainContent .bx-about__container,
+#MainContent .bx-contact__wrap,
+#MainContent .bx-cart-page__wrap {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: var(--boxeup-content-max) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: var(--boxeup-content-gutter) !important;
+  padding-right: var(--boxeup-content-gutter) !important;
+}
+body.viri-layout-unified #MainContent[data-template="product"] [id^="MainProduct-"] > .page-width,
+body.viri-layout-unified #MainContent[data-template="product"] [id^="MainProduct-"] product-component > .page-width {
+  max-width: var(--boxeup-content-max) !important;
+}
+@media (max-width: 749px) {
+  :root { --boxeup-content-gutter: 18px; }
 }

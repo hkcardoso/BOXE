@@ -3,7 +3,7 @@
    Full-bleed hero/backgrounds remain full width; their copy aligns to the grid. */
 :root{
   --boxeup-content-max:190rem;
-  --boxeup-content-gutter:clamp(2.55rem,3.825vw,7.65rem);
+  --boxeup-content-gutter:clamp(2.8rem,4.2vw,8.4rem);
   --boxeup-content-outer:max(
     var(--boxeup-content-gutter),
     calc((100vw - var(--boxeup-content-max))/2 + var(--boxeup-content-gutter))

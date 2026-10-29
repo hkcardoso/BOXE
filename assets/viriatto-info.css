@@ -330,7 +330,7 @@ body.viriatto-info-page #MainContent .vi-min-contact #BoxeupContactSubject{
 }
 body.viriatto-info-page #MainContent .vi-min-contact #BoxeupContactSubject:invalid{color:#a3a4aa!important}
 body.viriatto-info-page #MainContent .vi-min-contact #BoxeupContactSubject option{background:#191a1f!important;color:#f4f4f5!important}
-body.viriatto-info-page #MainContent .vi-min-contact .bx-contact__field :is(input,select,textarea):focus-visible{border-color:#ec3449!important;outline:1px solid #ec3449!important}
+body.viriatto-info-page #MainContent .vi-min-contact .bx-contact__field :is(input,select,textarea):focus-visible{border-color:#858892!important;outline:1px solid #858892!important}
 body.viriatto-info-page #MainContent .vi-min-contact .bx-contact__submit{transition:background .2s,border-color .2s,transform .2s}
 body.viriatto-info-page #MainContent .vi-min-contact .bx-contact__submit:hover{background:#ec3449!important;border-color:#ec3449!important;color:#fff!important;transform:translateY(-1px)}
 @media(max-width:749px){

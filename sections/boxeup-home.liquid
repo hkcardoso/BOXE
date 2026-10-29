@@ -342,6 +342,53 @@
     width:100%!important;max-width:var(--vh-rail-width)!important;
     margin-inline:auto!important;padding-inline:var(--vh-rail-gutter)!important
   }
+
+  /* Benefits rail: keep the four items in a genuine grid.
+     .vh-frame is display:block!important above; this component is the exception. */
+  .vh-home .vh-trust .vh-frame.vh-trust__inner{
+    display:grid!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    align-items:center!important;
+    column-gap:clamp(16px,2vw,32px)!important;
+    row-gap:16px!important;
+    padding-block:18px!important;
+  }
+  .vh-home .vh-trust .vh-trust__item{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start;
+    gap:12px;
+    min-width:0;
+  }
+  .vh-home .vh-trust .vh-trust__item > span{display:block;min-width:0}
+  .vh-home .vh-trust .vh-trust__item strong{
+    font-size:clamp(10px,.85vw,13px);
+    line-height:1.3;
+  }
+  .vh-home .vh-trust .vh-trust__item small{
+    margin-top:3px;
+    font-size:clamp(9px,.75vw,11px);
+    line-height:1.4;
+  }
+  @media(max-width:989px){
+    .vh-home .vh-trust .vh-frame.vh-trust__inner{
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+      column-gap:22px!important;
+      row-gap:16px!important;
+    }
+  }
+  @media(max-width:749px){
+    .vh-home .vh-trust .vh-frame.vh-trust__inner{
+      column-gap:12px!important;
+      row-gap:16px!important;
+      padding-block:18px!important;
+    }
+  }
+  @media(max-width:345px){
+    .vh-home .vh-trust .vh-frame.vh-trust__inner{
+      grid-template-columns:1fr!important;
+    }
+  }
   .vh-home .vh-hero__inner{padding-block:73px!important}
   .vh-home .vh-hero__copy{max-width:760px}
   .vh-home .vh-brands__inner{

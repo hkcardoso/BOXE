@@ -35,7 +35,8 @@ body.boxeup-product-view #MainContent .vpd-technical th { width: 34%; color: #ae
 body.boxeup-product-view #MainContent .vpd-prose { max-width: 820px; padding: 0 0 28px; }
 body.boxeup-product-view #MainContent .vpd-prose p { margin: 0 0 12px; }
 body.boxeup-product-view #MainContent .vpd-prose a { color: #fff; text-underline-offset: 4px; }
-body.boxeup-product-view #MainContent :is(.vpd-accordion > summary, .vpr-more, .vpr-filter):focus-visible { outline: 2px solid #fa2445; outline-offset: 5px; }
+body.boxeup-product-view #MainContent :is(.vpd-accordion > summary, .vpr-more):focus-visible { outline: 2px solid #fa2445; outline-offset: 5px; }
+body.boxeup-product-view #MainContent .vpr-filter:focus-visible { outline: 1px solid #858892; outline-offset: 2px; box-shadow: none; }
 body.boxeup-product-view #MainContent .vpc-section { border-bottom: 1px solid #292a30; padding-top: 28px; padding-bottom: 40px; }
 body.boxeup-product-view #MainContent .vpc-header { margin-bottom: 24px; }
 body.boxeup-product-view #MainContent .vpc-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; padding: 0; margin: 0; gap: 16px; }

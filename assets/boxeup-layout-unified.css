@@ -3,7 +3,7 @@
    Full-bleed hero/backgrounds remain full width; their copy aligns to the grid. */
 :root{
   --boxeup-content-max:190rem;
-  --boxeup-content-gutter:clamp(2.8rem,4.2vw,8.4rem);
+  --boxeup-content-gutter:clamp(4rem,10vw,22rem);
   --boxeup-content-outer:max(
     var(--boxeup-content-gutter),
     calc((100vw - var(--boxeup-content-max))/2 + var(--boxeup-content-gutter))
@@ -74,7 +74,7 @@ body .header-wrapper .header:not(.drawer-menu).page-width {
   max-width:none!important;padding-left:0!important;padding-right:0!important;
 }
 #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero{
-  --boxeup-hero-inset:clamp(25px,4vw,78px);
+  --boxeup-hero-inset:var(--boxeup-content-outer);
   margin-left:0!important;margin-right:0!important;border-radius:0!important;
 }
 #MainContent[data-template="index"] .section-boxeup-home .bxv2 .bxv2-hero__inner{

@@ -1,0 +1,71 @@
+/* VIRIATTO — live catalogue search. Only affects the search layer and trigger. */
+.vs-search[hidden], .vs-search [hidden]{display:none!important}
+.vs-search{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:flex-start;justify-content:center;padding:clamp(12px,3vh,36px) 22px;color:#f7f7f8;font-family:var(--font-body-family),Arial,sans-serif}
+.vs-search__backdrop{position:absolute;inset:0;border:0;background:rgba(0,0,0,.76);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);cursor:default}
+.vs-search__dialog{position:relative;z-index:1;display:flex;flex-direction:column;width:min(1120px,100%);max-height:calc(100dvh - 45px);min-height:220px;background:#151619;border:1px solid #424448;border-radius:15px;overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.65);outline:0}
+.vs-search__top{padding:20px 24px 19px;display:flex;align-items:flex-start;gap:18px;border-bottom:1px solid #35373c;flex:none}
+.vs-search__form-area{flex:1;min-width:0}
+.vs-search__overline{color:#b4b5bb;text-transform:uppercase;font-size:10px!important;font-weight:750;letter-spacing:.13em;margin:0 0 9px}
+.vs-search__form{height:51px;display:flex;align-items:center;gap:13px;background:#24262a;border:1px solid #62656b;border-radius:7px;padding:0 15px;transition:border-color .15s,background .15s}
+.vs-search__form:focus-within{border-color:#fff;background:#282a2e}
+.vs-search__magnify{height:21px;width:21px;flex:0 0 21px;color:#fff}
+.vs-search__form input[type=search]{width:100%;min-width:0;background:transparent;border:0;box-shadow:none!important;outline:none!important;color:#fff;font:500 15px/1.4 var(--font-body-family),Arial,sans-serif;padding:0!important;margin:0;-webkit-appearance:none;appearance:none}
+.vs-search__form input::placeholder{color:#aeb0b6;opacity:1}
+.vs-search__form input::-webkit-search-cancel-button{display:none}
+.vs-search__clear{flex:none;display:grid;place-items:center;border:0;background:transparent;color:#c2c3c6;font-size:27px;line-height:1;cursor:pointer;padding:0 4px}
+.vs-search__exit{border:1px solid #494b50;border-radius:7px;background:#24262a;color:#fff;display:grid;place-items:center;width:45px;height:45px;cursor:pointer;margin-top:24px;flex:0 0 45px}
+.vs-search__exit:hover,.vs-search__clear:hover{background:#37393e}
+.vs-search__scroll{overflow-y:auto;min-height:0;overscroll-behavior:contain;padding:23px 24px 29px;scrollbar-color:#62656b #191b1e}
+.vs-search__head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:17px}
+.vs-search__head h2{font:700 16px/1.3 var(--font-body-family),Arial,sans-serif!important;color:#fff!important;letter-spacing:-.02em;margin:0}
+.vs-search__head>span{color:#999ca3;font-size:12px}
+.vs-search__suggestions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.vs-search__suggestion{display:flex;align-items:center;gap:13px;padding:8px;background:#202226;border:1px solid #33353b;border-radius:7px;color:#f7f7f8!important;text-decoration:none!important;min-width:0;transition:border-color .17s,background .17s}
+.vs-search__suggestion:hover,.vs-search__suggestion:focus-visible{background:#292c31;border-color:#8d9096}
+.vs-search__suggestion-media{display:grid;place-items:center;width:66px;height:66px;flex:0 0 66px;background:#303238;border-radius:5px;overflow:hidden;color:#9ea0a6}
+.vs-search__suggestion-media img{width:100%;height:100%;object-fit:contain;display:block}
+.vs-search__suggestion-info{display:flex;flex-direction:column;gap:3px;min-width:0}
+.vs-search__suggestion-info small{font-size:10px;color:#aeb0b8;letter-spacing:.05em;text-transform:uppercase}
+.vs-search__suggestion-info strong{font-size:12px;line-height:1.35;font-weight:650;color:#f8f8f8;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.vs-search__suggestion-info b{font-size:12px;font-weight:750}
+.vs-search__chips{border-top:1px solid #33353a;margin-top:20px;padding-top:17px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.vs-search__chips>span{font-size:11px;color:#a7a9af}
+.vs-search__chips>div{display:flex;gap:7px;flex-wrap:wrap}
+.vs-search__chips button{background:#282a2f;color:#f3f3f5;border:1px solid #484a50;border-radius:99px;padding:8px 13px;font-size:11px;font-weight:650;cursor:pointer}
+.vs-search__chips button:hover{background:#fff;border-color:#fff;color:#151619}
+.vs-search__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;min-height:100px}
+.vs-search__card{display:flex;flex-direction:column;min-width:0;background:#202226;border:1px solid #37393d;border-radius:7px;overflow:hidden;color:#fff!important;text-decoration:none!important;transition:border-color .17s,transform .17s}
+.vs-search__card:hover,.vs-search__card:focus-visible{border-color:#a6a8ac;transform:translateY(-2px)}
+.vs-search__card-media{display:grid;place-items:center;aspect-ratio:1/1;background:#303237;overflow:hidden}
+.vs-search__card-media img{display:block;width:100%;height:100%;object-fit:contain}
+.vs-search__card-body{display:flex;flex:1;flex-direction:column;gap:6px;padding:11px 12px 14px}
+.vs-search__card-brand{font-size:10px;color:#b0b2b8;text-transform:uppercase;letter-spacing:.06em}
+.vs-search__card-title{font-size:12px;font-weight:650;line-height:1.4;color:#f6f6f8;min-height:34px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vs-search__card-price{font-size:13px;font-weight:750;color:#fff;margin-top:auto}
+.vs-search__card-price del{font-size:11px;font-weight:400;color:#a6a7ae;margin-left:6px}
+.vs-search__status{font-size:12px;color:#b7b9c0!important}
+.vs-search__empty{margin:10px 0 18px;color:#c8c9ce;font-size:14px;border:1px dashed #45474c;border-radius:7px;padding:25px 18px}
+.vs-search__all{display:inline-flex;align-items:center;gap:12px;color:#fff!important;text-decoration:none!important;border-bottom:1px solid #b9bbc0;margin-top:21px;padding-bottom:5px;font-size:12px;font-weight:700}
+.vs-search__all:hover{color:#d5d7dd!important}
+body.vs-search-open{overflow:hidden}
+.vs-header-search-trigger{background:transparent;border:0;color:inherit;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+@media(min-width:990px){body.boxeup-page-home .vs-header-search-trigger{display:none!important}}
+@media(max-width:749px){
+ .vs-search{padding:7px}
+ .vs-search__dialog{width:100%;max-height:calc(100dvh - 14px);border-radius:10px}
+ .vs-search__top{padding:12px;gap:8px}
+ .vs-search__overline{font-size:9px!important;margin:0 0 7px}
+ .vs-search__form{height:47px;padding:0 11px;gap:9px}
+ .vs-search__form input[type=search]{font-size:13px}
+ .vs-search__exit{width:42px;height:42px;flex-basis:42px;margin-top:19px}
+ .vs-search__scroll{padding:17px 13px 20px}
+ .vs-search__head{display:block}
+ .vs-search__head>span{display:block;margin-top:6px}
+ .vs-search__suggestions{grid-template-columns:1fr;gap:7px}
+ .vs-search__suggestion-media{width:56px;height:56px;flex-basis:56px}
+ .vs-search__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .vs-search__card-body{padding:9px 8px 11px}
+ .vs-search__card-title{font-size:11px}
+ .vs-search__chips{align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){.vs-search__card,.vs-search__suggestion{transition:none;transform:none!important}}

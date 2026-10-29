@@ -1,0 +1,110 @@
+{% comment %}
+ VIRIATTO – signed-in account dropdown for Shopify customer account sessions.
+ Uses Shopify's official routes for orders, profile and logout.
+ Sign-in (signed out) remains handled by the existing secure Shopify login.
+{% endcomment %}
+{%- liquid
+  assign va_language = request.locale.iso_code | slice: 0, 2
+  case va_language
+    when 'en'
+      assign va_menu_title = 'My account'
+      assign va_orders = 'Orders'
+      assign va_profile = 'Profile'
+      assign va_logout = 'Sign out'
+    when 'es'
+      assign va_menu_title = 'Mi cuenta'
+      assign va_orders = 'Pedidos'
+      assign va_profile = 'Perfil'
+      assign va_logout = 'Cerrar sesión'
+    else
+      assign va_menu_title = 'A minha conta'
+      assign va_orders = 'Encomendas'
+      assign va_profile = 'Perfil'
+      assign va_logout = 'Terminar sessão'
+  endcase
+-%}
+<div class="viri-account-session" data-viri-account-session>
+  <button class="header__icon header__icon--account link focus-inset viri-account-session__trigger"
+    type="button" aria-haspopup="true" aria-controls="ViriAccountMenu-{{ section_id }}"
+    aria-expanded="false" aria-label="{{ va_menu_title | escape }}" data-viri-session-trigger>
+    <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
+  </button>
+  <div class="viri-account-session__menu" id="ViriAccountMenu-{{ section_id }}" data-viri-session-menu hidden>
+    <div class="viri-account-session__heading">
+      <span class="viri-account-session__eyebrow">VIRIATTO / ACCOUNT</span>
+      <strong>{{ va_menu_title }}</strong>
+      {% if customer.first_name != blank %}
+        <small>{{ customer.first_name | escape }}</small>
+      {% endif %}
+    </div>
+    <nav class="viri-account-session__links" aria-label="{{ va_menu_title | escape }}">
+      <a href="{{ routes.account_url }}" class="viri-account-session__link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg>
+        <span>{{ va_orders }}</span>
+        <span class="viri-account-session__arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="{{ routes.account_profile_url }}" class="viri-account-session__link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="9" r="3"/><path d="M6.5 19c.8-3.2 3-4.8 5.5-4.8s4.7 1.6 5.5 4.8"/></svg>
+        <span>{{ va_profile }}</span>
+        <span class="viri-account-session__arrow" aria-hidden="true">→</span>
+      </a>
+    </nav>
+    <a class="viri-account-session__logout" href="{{ routes.account_logout_url }}" rel="nofollow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5"/><path d="M14 7l5 5-5 5M19 12H8"/></svg>
+      <span>{{ va_logout }}</span>
+    </a>
+  </div>
+</div>
+<style>
+  /* Render only for signed-in customers; align under their account icon. */
+  .viri-account-session{position:relative;display:flex;align-items:center;justify-content:center;flex:none}
+  .viri-account-session__trigger{color:#f4f4f5;cursor:pointer}
+  .viri-account-session__menu{
+    position:absolute;z-index:1050;
+    top:calc(100% + 11px);right:-35px;
+    width:min(330px,calc(100vw - 24px));
+    padding:0;
+    background:#151618;border:1px solid #36383e;border-radius:14px;
+    box-shadow:0 20px 55px rgba(0,0,0,.55);
+    color:#f7f7f8;overflow:hidden;
+    transform-origin:top right;
+    animation:viri-account-session-drop .18s ease-out both;
+  }
+  .viri-account-session__menu[hidden]{display:none!important}
+  @keyframes viri-account-session-drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+  .viri-account-session__heading{display:grid;gap:6px;padding:21px 21px 16px;border-bottom:1px solid #36383e}
+  .viri-account-session__eyebrow{font-size:10px;letter-spacing:.15em;color:#abacb3;font-weight:750}
+  .viri-account-session__heading strong{font-size:20px;font-weight:800;letter-spacing:-.04em;color:#fff}
+  .viri-account-session__heading small{font-size:12px;color:#bcbec5}
+  .viri-account-session__links{padding:8px 10px;display:grid;gap:2px}
+  .viri-account-session__link,.viri-account-session__logout{display:flex;align-items:center;gap:12px;min-height:44px;padding:11px 12px;border-radius:7px;font-size:13px;font-weight:650;color:#f4f4f5!important;text-decoration:none!important;transition:background .15s}
+  .viri-account-session__link:hover,.viri-account-session__logout:hover{background:#28292e}
+  .viri-account-session__link svg,.viri-account-session__logout svg{width:18px;height:18px;flex:0 0 18px}
+  .viri-account-session__arrow{margin-left:auto;color:#a5a6ad}
+  .viri-account-session__logout{margin:0 10px 10px;border-top:1px solid #34353a;border-radius:0;padding-top:16px;color:#f4c6cb!important}
+  .viri-account-session__logout:hover{color:#fff!important}
+  .viri-account-session__link:focus-visible,.viri-account-session__logout:focus-visible{outline:2px solid white;outline-offset:-3px}
+  @media(max-width:749px){.viri-account-session__menu{right:-43px;width:min(310px,calc(100vw - 24px))}}
+  @media(prefers-reduced-motion:reduce){.viri-account-session__menu{animation:none}.viri-account-session__link,.viri-account-session__logout{transition:none}}
+</style>
+<script>
+  (() => {
+    const menu = document.getElementById('ViriAccountMenu-{{ section_id }}');
+    if (!menu || menu.dataset.viriSessionReady === 'true') return;
+    menu.dataset.viriSessionReady = 'true';
+    const root = menu.closest('[data-viri-account-session]');
+    const trigger = root.querySelector('[data-viri-session-trigger]');
+    const setOpen = next => {
+      menu.hidden = !next;
+      trigger.setAttribute('aria-expanded',String(next));
+    };
+    trigger.addEventListener('click', e => {
+      e.stopPropagation();
+      setOpen(menu.hidden);
+    });
+    document.addEventListener('click',e => {if(!root.contains(e.target))setOpen(false);});
+    document.addEventListener('keydown',e => {
+      if(e.key==='Escape' && !menu.hidden){setOpen(false);trigger.focus({preventScroll:true});}
+    });
+  })();
+</script>

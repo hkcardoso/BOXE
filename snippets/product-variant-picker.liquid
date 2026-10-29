@@ -98,7 +98,4 @@
       {{ product.selected_or_first_available_variant | json }}
     </script>
   </variant-selects>
-  {% assign bx_product_type = product.type | downcase %}
-  {% if bx_product_type contains 'luva' or bx_product_type contains 'glove' %}<button type="button" class="bx-text-button bx-size-link" data-bx-open="BxSizeGuide">{{ 'boxeup_experience.size_guide' | t }} ↗</button>{% endif %}
 {%- endunless -%}
-

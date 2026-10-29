@@ -23,7 +23,144 @@
     <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
       <div class="menu-drawer__inner-container">
         <div class="menu-drawer__navigation-container">
-          {% render 'header-dropdown-menu', mobile: true %}
+          <nav class="menu-drawer__navigation">
+            <ul class="menu-drawer__menu has-submenu list-menu" role="list">
+              {%- for link in section.settings.menu.links -%}
+      {%- liquid
+        assign vi_hide_primary_link = false
+        assign vi_link_label = link.title | downcase | strip
+        if link.url contains '/pages/sobre-a-boxeup' or link.url contains '/pages/contact'
+          assign vi_hide_primary_link = true
+        elsif link.handle == 'sobre-nos' or link.handle == 'sobre-a-boxeup' or link.handle == 'about-us' or link.handle == 'about' or link.handle == 'contactos' or link.handle == 'contacto' or link.handle == 'contact' or link.handle == 'contact-us'
+          assign vi_hide_primary_link = true
+        elsif vi_link_label == 'sobre nós' or vi_link_label == 'about us' or vi_link_label == 'contactos' or vi_link_label == 'contacts' or vi_link_label == 'contact' or vi_link_label == 'contacto'
+          assign vi_hide_primary_link = true
+        endif
+      -%}
+      {%- unless vi_hide_primary_link -%}
+                <li>
+                  {%- if link.handle == 'modalidades' -%}
+                    <a id="HeaderDrawer-{{ link.handle }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset" href="{{ routes.all_products_collection_url }}#main-collection-filters">
+                      {{ link.title | escape }}
+                    </a>
+                    <ul class="menu-drawer__menu list-menu boxeup-mobile-modalities" role="list">
+                      <li><a class="menu-drawer__menu-item list-menu__item link link--text" href="{{ collections['boxe'].url }}#main-collection-filters">{{ 'boxeup_navigation.boxe' | t }}</a></li>
+                      <li><a class="menu-drawer__menu-item list-menu__item link link--text" href="{{ collections['muay-thai-e-kickboxing'].url }}#main-collection-filters">{{ 'boxeup_navigation.muay_thai' | t }}</a></li>
+                    </ul>
+                  {%- elsif link.links != blank -%}
+                    <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
+                      <summary
+                        id="HeaderDrawer-{{ link.handle }}"
+                        class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}"
+                      >
+                        {{ link.title | escape }}
+                        <span class="svg-wrapper">
+                          {{- 'icon-arrow.svg' | inline_asset_content -}}
+                        </span>
+                        <span class="svg-wrapper">
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </span>
+                      </summary>
+                      <div
+                        id="link-{{ link.handle | escape }}"
+                        class="menu-drawer__submenu has-submenu gradient motion-reduce"
+                        tabindex="-1"
+                      >
+                        <div class="menu-drawer__inner-submenu">
+                          <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                            <span class="svg-wrapper">
+                              {{- 'icon-arrow.svg' | inline_asset_content -}}
+                            </span>
+                            {{ link.title | escape }}
+                          </button>
+                          <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                            {%- for childlink in link.links -%}
+                              <li>
+                                {%- if childlink.links == blank -%}
+                                  <a
+                                    id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
+                                    href="{{ childlink.url }}"
+                                    class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                    {% if childlink.current %}
+                                      aria-current="page"
+                                    {% endif %}
+                                  >
+                                    {{ childlink.title | escape }}
+                                  </a>
+                                {%- else -%}
+                                  <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
+                                    <summary
+                                      id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
+                                      class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
+                                    >
+                                      {{ childlink.title | escape }}
+                                      <span class="svg-wrapper">
+                                        {{- 'icon-arrow.svg' | inline_asset_content -}}
+                                      </span>
+                                      <span class="svg-wrapper">
+                                        {{- 'icon-caret.svg' | inline_asset_content -}}
+                                      </span>
+                                    </summary>
+                                    <div
+                                      id="childlink-{{ childlink.handle | escape }}"
+                                      class="menu-drawer__submenu has-submenu gradient motion-reduce"
+                                    >
+                                      <button
+                                        class="menu-drawer__close-button link link--text focus-inset"
+                                        aria-expanded="true"
+                                      >
+                                        <span class="svg-wrapper">
+                                          {{- 'icon-arrow.svg' | inline_asset_content -}}
+                                        </span>
+                                        {{ childlink.title | escape }}
+                                      </button>
+                                      <ul
+                                        class="menu-drawer__menu list-menu"
+                                        role="list"
+                                        tabindex="-1"
+                                      >
+                                        {%- for grandchildlink in childlink.links -%}
+                                          <li>
+                                            <a
+                                              id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                              href="{{ grandchildlink.url }}"
+                                              class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                              {% if grandchildlink.current %}
+                                                aria-current="page"
+                                              {% endif %}
+                                            >
+                                              {{ grandchildlink.title | escape }}
+                                            </a>
+                                          </li>
+                                        {%- endfor -%}
+                                      </ul>
+                                    </div>
+                                  </details>
+                                {%- endif -%}
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                      </div>
+                    </details>
+                  {%- else -%}
+                    <a
+                      id="HeaderDrawer-{{ link.handle }}"
+                      href="{{ link.url }}"
+                      class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"
+                      {% if link.current %}
+                        aria-current="page"
+                      {% endif %}
+                    >
+                      {{ link.title | escape }}
+                    </a>
+                  {%- endif -%}
+                </li>
+              {%- endunless -%}
+      {%- endfor -%}
+              {% render 'viriatto-nav-specials', mode: 'mobile' %}
+            </ul>
+          </nav>
           <div class="menu-drawer__utility-links">
             {%- if show_country_selector or show_language_selector -%}
               <div class="menu-drawer__localization header-localization">
@@ -154,250 +291,3 @@
     </div>
   </details>
 </header-drawer>
-
-
-<style>
-  /* VIRIATTO — mobile navigation follows the same desktop menu hierarchy. */
-  @media (max-width:989px) {
-    /* Open navigation must sit above sticky catalogue controls on mobile. */
-    body:has(#Details-menu-drawer-container[open]) .section-header {
-      z-index:1201!important;
-    }
-    /* Prevent the catalogue filter trigger from appearing through the drawer. */
-    body:has(#Details-menu-drawer-container[open]) #MainContent .mobile-facets__wrapper {
-      visibility:hidden!important;
-      pointer-events:none!important;
-    }
-    body .header-wrapper #menu-drawer {
-      width:min(92vw,420px)!important;
-      max-width:100vw!important;
-      background:#111316!important;
-      color:#f5f5f7!important;
-      border-right:1px solid #34373d!important;
-      box-shadow:18px 0 52px #0006!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__inner-container,
-    body .header-wrapper #menu-drawer .menu-drawer__submenu {
-      background:#111316!important;
-      color:#f5f5f7!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__navigation {
-      padding:18px 12px 24px!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__menu > li {
-      border-bottom:1px solid rgba(255,255,255,.075);
-      margin:0!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__menu-item {
-      box-sizing:border-box!important;
-      display:flex!important;
-      align-items:center!important;
-      justify-content:space-between!important;
-      gap:14px!important;
-      width:100%!important;
-      padding:17px 15px!important;
-      min-height:55px!important;
-      color:#f4f4f6!important;
-      font-family:"Helvetica Neue","Segoe UI",Arial,sans-serif!important;
-      font-size:15px!important;
-      font-weight:650!important;
-      line-height:1.35!important;
-      letter-spacing:0!important;
-      text-transform:none!important;
-      text-decoration:none!important;
-      background:transparent!important;
-      border:0!important;
-      transition:background .18s ease,color .18s ease;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__menu-item:hover,
-    body .header-wrapper #menu-drawer .menu-drawer__menu-item:focus-visible {
-      background:#23262b!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__menu-item--active,
-    body .header-wrapper #menu-drawer .menu-drawer__menu-item[aria-current="page"] {
-      color:#fff!important;
-      background:#292329!important;
-      box-shadow:inset 3px 0 #ed2437;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__menu-item > .svg-wrapper {
-      position:static!important;
-      transform:none!important;
-      margin-left:auto!important;
-      flex:0 0 19px!important;
-      width:19px!important;height:19px!important;
-      display:inline-flex!important;
-      align-items:center!important;
-      justify-content:center!important;
-      color:#b3b5bb!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__menu-item .icon-arrow {
-      width:16px!important;height:16px!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__menu-item .icon-caret {
-      display:none!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__submenu {
-      border-left:0!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__inner-submenu {
-      padding:0 12px 24px!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__close-button {
-      display:flex!important;
-      align-items:center!important;
-      gap:11px!important;
-      width:100%!important;
-      min-height:57px!important;
-      margin:0!important;
-      padding:16px 15px!important;
-      background:#1b1e23!important;
-      border-bottom:1px solid #34373d!important;
-      color:#fff!important;
-      font-size:15px!important;
-      font-weight:700!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__close-button .svg-wrapper {
-      width:18px!important;height:18px!important;
-      flex:0 0 18px!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__submenu .menu-drawer__menu-item {
-      font-size:14px!important;
-      font-weight:550!important;
-      padding:14px 15px!important;
-      min-height:48px!important;
-    }
-    body .header-wrapper #menu-drawer .bx-mobile-nav__all {
-      color:#f36b7a!important;
-      font-weight:650!important;
-    }
-    body .header-wrapper #menu-drawer .bx-mobile-nav__promotion {
-      color:#ed4156!important;
-    }
-    body .header-wrapper #menu-drawer .bx-mobile-nav__disabled {
-      opacity:.48!important;
-      cursor:default!important;
-      pointer-events:none!important;
-      gap:12px!important;
-    }
-    body .header-wrapper #menu-drawer .bx-mobile-nav__disabled small {
-      font-size:11px!important;
-      line-height:1.2!important;
-      font-weight:500!important;
-      color:#c8c9ce!important;
-    }
-    body .header-wrapper #menu-drawer .bx-mobile-nav__divider {
-      margin:6px 15px!important;
-      height:1px;
-      background:#373a41!important;
-      border:0!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__utility-links {
-      background:#191c21!important;
-      border-top:1px solid #34373d!important;
-    }
-    /* Mobile menu languages: show all locales in one centered row at the drawer footer. */
-    body .header-wrapper #menu-drawer .menu-drawer__localization{
-      display:flex!important;
-      flex-direction:column!important;
-      align-items:stretch!important;
-      justify-content:center!important;
-      width:100%!important;
-      gap:9px!important;
-      margin:0!important;
-      padding:0!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__localization localization-form,
-    body .header-wrapper #menu-drawer .menu-drawer__localization .localization-form,
-    body .header-wrapper #menu-drawer .menu-drawer__localization .localization-form>div,
-    body .header-wrapper #menu-drawer .menu-drawer__localization .boxeup-language-disclosure{
-      display:block!important;
-      box-sizing:border-box!important;
-      width:100%!important;
-      min-width:0!important;
-      margin:0!important;
-      padding:0!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__localization .boxeup-language-disclosure>.boxeup-lang-trigger,
-    body .header-wrapper #menu-drawer .menu-drawer__localization .boxeup-lang-panel{
-      display:none!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__localization .boxeup-lang-mobile{
-      box-sizing:border-box!important;
-      display:flex!important;
-      align-items:stretch!important;
-      justify-content:center!important;
-      gap:6px!important;
-      width:100%!important;
-      margin:0!important;
-      padding:0!important;
-      border:0!important;
-      background:transparent!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__localization .boxeup-lang-mobile__option{
-      box-sizing:border-box!important;
-      display:inline-flex!important;
-      flex:1 1 0!important;
-      align-items:center!important;
-      justify-content:center!important;
-      gap:7px!important;
-      min-width:0!important;
-      min-height:44px!important;
-      margin:0!important;
-      padding:10px 7px!important;
-      border:1px solid #3d4149!important;
-      border-radius:7px!important;
-      background:#22252b!important;
-      color:#dedfe3!important;
-      font-family:var(--font-body-family,Arial,sans-serif)!important;
-      font-size:12px!important;
-      line-height:1!important;
-      text-decoration:none!important;
-      white-space:nowrap!important;
-      transition:background .2s ease,border-color .2s ease!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__localization .boxeup-lang-mobile__option.is-current{
-      border-color:#a33948!important;
-      background:#30242a!important;
-      color:#fff!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__localization a.boxeup-lang-mobile__option:hover,
-    body .header-wrapper #menu-drawer .menu-drawer__localization a.boxeup-lang-mobile__option:focus-visible{
-      border-color:#8a8d96!important;
-      background:#34363c!important;
-      color:#fff!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__localization .boxeup-lang-mobile .boxeup-lang-flag{
-      display:inline-flex!important;
-      align-items:center!important;
-      justify-content:center!important;
-      flex:0 0 22px!important;
-      width:22px!important;
-      height:16px!important;
-      margin:0!important;
-      padding:0!important;
-      line-height:0!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__localization .boxeup-lang-mobile .boxeup-language-flag{
-      display:block!important;
-      width:22px!important;
-      height:16px!important;
-      flex:none!important;
-    }
-    body .header-wrapper #menu-drawer .menu-drawer__localization .boxeup-lang-mobile .boxeup-lang-code{
-      display:inline-block!important;
-      flex:0 0 auto!important;
-      width:auto!important;
-      margin:0!important;
-      padding:0!important;
-      color:inherit!important;
-      font-size:12px!important;
-      font-weight:700!important;
-      line-height:1!important;
-      text-align:center!important;
-    }
-  }
-  @media (prefers-reduced-motion:reduce) {
-    body .header-wrapper #menu-drawer .menu-drawer__menu-item,
-    body .header-wrapper #menu-drawer .boxeup-lang-mobile__option {transition:none!important;}
-  }
-</style>

@@ -1,98 +1,130 @@
 {% comment %}BOXEUP — full-bleed dark background behind the centered category controls.{% endcomment %}
 <style>
-  /* Catalogue uses Shopify's accessible filter drawer above the products.
-     Never overlay a second floating filter button on product cards. */
-  body .bx-mobile-filters:not([hidden]),
-  body [data-bx-mobile-filters]:not([hidden]) {
-    display:none!important;
+  #MainContent .shopify-section.section-boxeup-shop-categories,
+  #MainContent .section-boxeup-shop-categories {
+    background: #111214 !important;
   }
-  @media screen and (max-width:749px){
-    /* Brand logos now live inside the bottom sheet; keep category chips compact. */
-    body #MainContent .section-boxeup-shop-categories .bx-mobile-brand-strip,
-    body #MainContent #boxeup-catalog-filters .bx-mobile-brand-strip{
-      display:none!important;
-    }
-    body #MainContent #boxeup-catalog-filters{
-      padding-block:8px 4px!important;
-      margin-bottom:0!important;
-    }
-    body #MainContent #boxeup-catalog-filters .boxeup-chip-list{
-      gap:6px!important;
-      padding-block:2px 6px!important;
-      margin-bottom:0!important;
-    }
-    body #MainContent #boxeup-catalog-filters .boxeup-chip{
-      min-height:35px!important;
-      padding:7px 11px!important;
-      font-size:11px!important;
-    }
-    body #MainContent #boxeup-catalog-filters .bx-tools-row{
-      gap:16px!important;
-      margin:5px 0 0!important;
-      padding:0!important;
-    }
-    /* Mobile catalogue: keep only category chips and the native filter/brand controls. */
-    body #MainContent #boxeup-catalog-filters .bx-tools-row{
-      display:none!important;
-    }
-    /* Keep ProductCount available for Dawn's AJAX facet updates, but do not show it. */
-    body #MainContent[data-template="collection"] #main-collection-filters .facets-container > .product-count,
-    body #MainContent[data-template="collection"] #main-collection-filters .facets-container #ProductCount{
-      display:none!important;
-    }
+  #MainContent .section-boxeup-shop-categories > .boxeup-catalog-controls {
+    background: #111214 !important;
+  }
+  #boxeup-catalog-filters { scroll-margin-top: 96px; }
+
+  /* BOXEUP | Third catalog filter, by combat discipline. */
+  #boxeup-modalities-filter {scroll-margin-top:96px;margin:20px 0 0}
+  #MainContent .boxeup-modalities-filter__heading{
+    margin:0 0 12px;color:#e1e1e5;font-size:14px;line-height:1.4;font-weight:600;letter-spacing:0
+  }
+  #MainContent .boxeup-modalities-list{display:flex;flex-wrap:wrap;gap:9px}
+  #MainContent .boxeup-modality-chip{
+    min-height:41px;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:10px 18px;border-radius:5px;background:#1e1f23;border:1px solid #393b43;
+    color:#f5f5f7!important;font-size:12px;font-weight:750;line-height:1.3;
+    text-decoration:none;transition:border-color .18s,background .18s,transform .18s
+  }
+  #MainContent a.boxeup-modality-chip:hover{background:#27292f;border-color:#767984;transform:translateY(-1px)}
+  #MainContent a.boxeup-modality-chip[aria-current="page"]{background:#292126;border-color:#ed2437;color:#fff!important}
+  #MainContent a.boxeup-modality-chip:focus-visible{outline:2px solid white;outline-offset:2px}
+  #MainContent .boxeup-modality-chip--coming{
+    opacity:.46;cursor:not-allowed;user-select:none
+  }
+  #MainContent .boxeup-modality-chip--coming small{font-size:10px;font-weight:500}
+  @media(max-width:749px){
+    #boxeup-modalities-filter{margin-top:18px;scroll-margin-top:74px}
+    #MainContent .boxeup-modalities-filter__heading{font-size:13px;margin-bottom:9px}
+    #MainContent .boxeup-modalities-list{gap:7px}
+    #MainContent .boxeup-modality-chip{min-height:38px;padding:9px 12px;font-size:11px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    #MainContent .boxeup-modality-chip{transition:none}
+    #MainContent a.boxeup-modality-chip:hover{transform:none}
+  }
+
+
+  /* BOXEUP | Always-visible brand logos on the collection navigation. */
+  #MainContent .boxeup-brands-always-open { margin: 19px 0 0; }
+  #MainContent .boxeup-brands-always-open__heading {
+    color:#e1e1e5!important;
+    font-size:14px;
+    font-weight:600;
+    line-height:1.4;
+    margin:0 0 12px;
+    letter-spacing:0;
+  }
+  #MainContent .boxeup-brand-grid {
+    display:grid;
+    grid-template-columns:repeat(8,minmax(0,1fr));
+    gap:9px;
+    margin:0;
+  }
+  #MainContent .boxeup-brand-card {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-width:0;
+    min-height:77px;
+    padding:11px 12px;
+    border:1px solid #34363c;
+    border-radius:6px;
+    background:#191a1e;
+    text-decoration:none;
+    transition:background .18s ease,border-color .18s ease,transform .18s ease;
+  }
+  #MainContent .boxeup-brand-card:hover {
+    background:#23252a;
+    border-color:#666972;
+    transform:translateY(-2px);
+  }
+  #MainContent .boxeup-brand-card[aria-current="page"] {
+    border-color:#ed2437;
+    background:#242025;
+  }
+  #MainContent .boxeup-brand-card:focus-visible {
+    outline:2px solid #fff;
+    outline-offset:2px;
+  }
+  #MainContent .boxeup-brand-card__logo {
+    display:block;
+    width:100%;
+    max-width:115px;
+    height:51px;
+    object-fit:contain;
+    object-position:center;
+    background:transparent;
+    /* Reproduce the monochrome white styling from the homepage. */
+    filter:brightness(0) saturate(100%) invert(100%);
+    opacity:.94;
+  }
+  #MainContent .boxeup-brand-card:hover .boxeup-brand-card__logo {opacity:1}
+  @media(max-width:989px){
+    #MainContent .boxeup-brand-grid {grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+  }
+  @media(max-width:749px){
+    #MainContent .boxeup-brands-always-open {margin-top:16px}
+    #MainContent .boxeup-brands-always-open__heading {font-size:13px;margin-bottom:9px}
+    #MainContent .boxeup-brand-card {min-height:62px;padding:9px 8px}
+    #MainContent .boxeup-brand-card__logo {height:39px;max-width:96px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    #MainContent .boxeup-brand-card {transition:none}
+    #MainContent .boxeup-brand-card:hover {transform:none}
   }
 </style>
 <section id="boxeup-catalog-filters" class="boxeup-catalog-controls page-width" aria-label="{{ 'boxeup_navigation.categories' | t }}">
-  <h2 class="visually-hidden">{{ 'boxeup_navigation.heading' | t }}</h2>
-  <nav class="boxeup-chip-list" aria-label="{{ 'boxeup_navigation.categories' | t }}">
-    <a class="boxeup-chip" data-boxeup-catalog href="{{ routes.all_products_collection_url }}"{% if collection.handle == 'all' %} aria-current="page"{% endif %}>{{ 'boxeup_navigation.all' | t }}</a>
-    {% assign category_handles = 'luvas-de-boxe-e-muay-thai,caneleiras-de-muay-thai-e-kickboxing,boqueiras-e-protecoes,vestuario-e-fightwear,mochilas-e-sacos-de-treino-1,equipamento-de-treino' | split: ',' %}
-    {% assign category_labels = 'luvas,caneleiras,boqueiras,roupa,mochilas,treino' | split: ',' %}
-    {% for category_handle in category_handles %}
-      {% assign category = collections[category_handle] %}
-      {% assign label_key = 'boxeup_navigation.' | append: category_labels[forloop.index0] %}
-      {% if category != blank %}<a class="boxeup-chip" data-boxeup-catalog href="{{ category.url }}"{% if collection.handle == category_handle %} aria-current="page"{% endif %}>{{ label_key | t }}</a>{% endif %}
-    {% endfor %}
-  </nav>
-  {% comment %}
-    Match exactly the brand artwork and order shown on the VIRIATTO homepage.
-    A single captured set supplies both the desktop directory and mobile strip.
-  {% endcomment %}
-  {%- assign bx_brand_handles = 'fairtex,venum,everlast,leone-1947,charlie,rdx,cleto-reyes,rival,twins' | split: ',' -%}
-  {%- capture bx_catalog_brand_links -%}
-    {%- for bx_brand_handle in bx_brand_handles -%}
-      {%- assign bx_brand_collection = collections[bx_brand_handle] -%}
-      {%- assign bx_brand_name = bx_brand_handle | replace: '-', ' ' | capitalize -%}
-      {%- assign bx_brand_logo = '' -%}
-        {%- case bx_brand_handle -%}
-          {%- when 'fairtex' -%}{%- assign bx_brand_name = 'Fairtex' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-fairtex-white.png?v=1793040787' -%}
-          {%- when 'venum' -%}{%- assign bx_brand_name = 'Venum' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-venum-white.png?v=1793040818' -%}
-          {%- when 'everlast' -%}{%- assign bx_brand_name = 'Everlast' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-everlast-white.png?v=1793040849' -%}
-          {%- when 'leone-1947' -%}{%- assign bx_brand_name = 'Leone 1947' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-leone-1947-logo-white.png?v=1793191434' -%}
-          {%- when 'charlie' -%}{%- assign bx_brand_name = 'Charlie' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-charlie-white.png?v=1793040801' -%}
-          {%- when 'rdx' -%}{%- assign bx_brand_name = 'RDX' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-rdx-logo-white.png?v=1793191429' -%}
-          {%- when 'cleto-reyes' -%}{%- assign bx_brand_name = 'Cleto Reyes' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-reyes-white.png?v=1793040826' -%}
-          {%- when 'rival' -%}{%- assign bx_brand_name = 'Rival' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-rival-white.png?v=1793040835' -%}
-          {%- when 'twins' -%}{%- assign bx_brand_name = 'Twins' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-twins-white.png?v=1793040843' -%}
-        {%- endcase -%}
-      <a {% if bx_brand_collection != blank %}data-boxeup-catalog {% endif %}href="{% if bx_brand_collection != blank %}{{ bx_brand_collection.url }}{% else %}{{ routes.search_url }}?q={{ bx_brand_name | url_encode }}{% endif %}" aria-label="{{ bx_brand_name | escape }}"{% if collection.handle == bx_brand_handle %} aria-current="page"{% endif %}>
-        <img class="bx-brand-directory__logo" src="{{ bx_brand_logo }}" alt="{{ bx_brand_name | escape }}" width="120" height="50" loading="lazy">
-      </a>
-    {%- endfor -%}
-  {%- endcapture -%}
-  <details class="bx-brand-directory" id="BxBrands">
-    <summary>{{ 'boxeup_experience.brands' | t }} <span aria-hidden="true">+</span></summary>
-    <nav aria-label="{{ 'boxeup_experience.brand_navigation' | t }}">{{ bx_catalog_brand_links }}</nav>
-  </details>
-  <nav class="bx-mobile-brand-strip" aria-label="{{ 'boxeup_experience.brand_navigation' | t }}">{{ bx_catalog_brand_links }}</nav>
-  <div class="bx-tools-row">
-    <button type="button" class="bx-text-button" data-bx-open="BxGuide">{{ 'boxeup_experience.guide' | t }} <span class="bx-inline-arrow" aria-hidden="true"><svg class="bxv2-arrow-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 19 19 5M8 5h11v11"/></svg></span></button>
-    <button type="button" class="bx-text-button" data-bx-open="BxSizeGuide">{{ 'boxeup_experience.size_guide' | t }}</button>
+  <div class="boxeup-brands-always-open">
+    <nav class="boxeup-brand-grid" aria-label="{{ 'boxeup_navigation.brands' | t }}">
+    <a class="boxeup-brand-card" data-boxeup-catalog href="{{ routes.root_url }}collections/fairtex" aria-label="{{ 'boxeup_sections.view_brand' | t }} Fairtex"{% if collection.handle == 'fairtex' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-fairtex-white.png?v=1793040787" alt="Fairtex" loading="lazy" width="140" height="72"></a>
+    <a class="boxeup-brand-card" data-boxeup-catalog href="{{ routes.root_url }}collections/charlie" aria-label="{{ 'boxeup_sections.view_brand' | t }} Charlie"{% if collection.handle == 'charlie' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-charlie-white.png?v=1793040801" alt="Charlie" loading="lazy" width="140" height="72"></a>
+    <a class="boxeup-brand-card" data-boxeup-catalog href="{{ routes.root_url }}collections/buddha" aria-label="{{ 'boxeup_sections.view_brand' | t }} Buddha"{% if collection.handle == 'buddha' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-buddha-white.png?v=1793040808" alt="Buddha" loading="lazy" width="140" height="72"></a>
+    <a class="boxeup-brand-card" data-boxeup-catalog href="{{ routes.root_url }}collections/venum" aria-label="{{ 'boxeup_sections.view_brand' | t }} Venum"{% if collection.handle == 'venum' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-venum-white.png?v=1793040818" alt="Venum" loading="lazy" width="140" height="72"></a>
+    <a class="boxeup-brand-card" data-boxeup-catalog href="{{ routes.root_url }}collections/cleto-reyes" aria-label="{{ 'boxeup_sections.view_brand' | t }} Cleto Reyes"{% if collection.handle == 'cleto-reyes' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-reyes-white.png?v=1793040826" alt="Cleto Reyes" loading="lazy" width="140" height="72"></a>
+    <a class="boxeup-brand-card" data-boxeup-catalog href="{{ routes.root_url }}collections/rival" aria-label="{{ 'boxeup_sections.view_brand' | t }} Rival"{% if collection.handle == 'rival' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-rival-white.png?v=1793040835" alt="Rival" loading="lazy" width="140" height="72"></a>
+    <a class="boxeup-brand-card" data-boxeup-catalog href="{{ routes.root_url }}collections/twins" aria-label="{{ 'boxeup_sections.view_brand' | t }} Twins"{% if collection.handle == 'twins' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-twins-white.png?v=1793040843" alt="Twins" loading="lazy" width="140" height="72"></a>
+    <a class="boxeup-brand-card" data-boxeup-catalog href="{{ routes.root_url }}collections/everlast" aria-label="{{ 'boxeup_sections.view_brand' | t }} Everlast"{% if collection.handle == 'everlast' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-everlast-white.png?v=1793040849" alt="Everlast" loading="lazy" width="140" height="72"></a>
+    </nav>
   </div>
   <p class="boxeup-catalog-message" role="status" aria-live="polite" data-loading="{{ 'boxeup_navigation.loading' | t }}" data-loaded="{{ 'boxeup_navigation.loaded' | t }}" data-error="{{ 'boxeup_navigation.error' | t }}"></p>
 </section>
 {% schema %}
 {"name":"BOXEUP | Categorias","tag":"section","class":"section-boxeup-shop-categories","settings":[],"presets":[{"name":"BOXEUP | Categorias"}]}
 {% endschema %}
-
 

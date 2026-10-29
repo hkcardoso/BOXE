@@ -95,10 +95,12 @@
     <p class="viriatto-auth__provider-note">{{ viri_google_note }}</p>
 
     <div class="viriatto-auth__shop">
-      {{ shop | login_button: action: 'default' }}
-      <div class="viriatto-auth__shop-face" aria-hidden="true">
-        <span class="viriatto-auth__shop-icon">S</span>
+      <span class="viriatto-auth__shop-face" aria-hidden="true">
+        <svg class="viriatto-auth__shop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l1 12H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
         <span>{{ viri_shop }}</span>
+      </span>
+      <div class="viriatto-auth__shop-native">
+        {{ shop | login_button: action: 'default' }}
       </div>
     </div>
 
@@ -170,22 +172,72 @@
   .viriatto-auth__google-icon{width:19px;height:19px;flex:0 0 19px}
   .viriatto-auth__separator{display:flex;align-items:center;gap:12px;margin:20px 0;color:#a4a5ad;font-size:11px;text-transform:uppercase}
   .viriatto-auth__separator:before,.viriatto-auth__separator:after{content:"";height:1px;flex:1;background:#373940}
-  .viriatto-auth__provider-note{margin:8px 0 19px;color:#8c8f98;font-size:10px;line-height:1.5;text-align:center}
-  /* Keep Shopify's native sign-in element as the real click/keyboard target.
-     The branded face only changes its appearance, never its authentication flow. */
-  .viriatto-auth__shop{position:relative;width:100%;height:46px;min-height:46px;border-radius:9px}
-  .viriatto-auth__shop>:not(.viriatto-auth__shop-face){position:absolute!important;inset:0!important;width:100%!important;max-width:100%!important;height:100%!important;min-height:46px!important;z-index:2;opacity:0}
-  .viriatto-auth__shop-face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:12px;padding:10px 16px;border:1px solid #4a4d53;border-radius:9px;background:#222428;color:#f6f6f8;font-family:inherit;font-size:12px;font-weight:680;line-height:1.35;pointer-events:none;transition:background .2s,border-color .2s}
-  .viriatto-auth__shop:hover .viriatto-auth__shop-face{background:#2b2d32;border-color:#666970}
-  .viriatto-auth__shop:focus-within .viriatto-auth__shop-face{outline:2px solid #fff;outline-offset:3px}
-  .viriatto-auth__shop-icon{display:grid;place-items:center;width:19px;height:19px;border-radius:5px;background:#6340e9;color:#fff;font-size:12px;font-weight:800;line-height:1}
+  .viriatto-auth__provider-note{margin:8px 0 15px;color:#8c8f98;font-size:10px;line-height:1.5;text-align:center}
+  /* Keep the native Shopify sign-in button clickable; style its visible surface like Google. */
+  .viriatto-auth__shop {
+    position:relative;
+    display:block;
+    width:100%;
+    min-height:46px;
+    border-radius:9px;
+  }
+  .viriatto-auth__shop-face {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    width:100%;
+    min-height:46px;
+    padding:10px 16px;
+    border:1px solid #4a4d53;
+    border-radius:9px;
+    background:#222428;
+    color:#f6f6f8;
+    font:680 12px/1.35 var(--font-body-family,Arial,sans-serif);
+    transition:background .2s,border-color .2s;
+    pointer-events:none;
+  }
+  .viriatto-auth__shop-icon {
+    width:19px;
+    height:19px;
+    flex:0 0 19px;
+    color:#f6f6f8;
+  }
+  .viriatto-auth__shop:hover .viriatto-auth__shop-face {
+    background:#2b2d32;
+    border-color:#666970;
+  }
+  .viriatto-auth__shop:focus-within .viriatto-auth__shop-face {
+    outline:2px solid #fff;
+    outline-offset:3px;
+  }
+  .viriatto-auth__shop-native {
+    position:absolute!important;
+    inset:0!important;
+    z-index:2;
+    display:block;
+    width:100%!important;
+    height:100%!important;
+    min-height:46px!important;
+    opacity:0;
+    overflow:hidden;
+    cursor:pointer;
+  }
+  .viriatto-auth__shop-native>* {
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:46px!important;
+    max-width:100%!important;
+    cursor:pointer;
+  }
   .viriatto-auth__links{display:grid;grid-template-columns:1fr 1fr;gap:11px;border-top:1px solid #36383d;margin-top:22px;padding-top:22px}
   .viriatto-auth__links a{display:flex;align-items:center;justify-content:center;gap:9px;min-height:41px;border:1px solid #484b51;border-radius:10px;text-decoration:none!important;color:#f4f4f5!important;font-weight:550;font-size:11px;transition:background .2s}
   .viriatto-auth__links a:hover{background:#282a2e}
   .viriatto-auth__links svg{width:17px;height:17px}
   .viriatto-auth__input:focus-visible,.viriatto-auth__button:focus-visible,.viriatto-auth__close:focus-visible,.viriatto-auth__links a:focus-visible{outline:2px solid #fff!important;outline-offset:3px!important}
   @media(max-width:480px){.viriatto-auth{right:12px!important;left:12px!important;width:auto;max-width:none}.viriatto-auth__shell{padding:23px 19px 20px}.viriatto-auth__title{font-size:21px}.viriatto-auth__intro{margin-bottom:19px}}
-  @media(prefers-reduced-motion:reduce){.viriatto-auth,.viriatto-auth__button,.viriatto-auth__links a{transition:none}}
+  @media(prefers-reduced-motion:reduce){.viriatto-auth,.viriatto-auth__button,.viriatto-auth__links a,.viriatto-auth__shop-face{transition:none}}
 </style>
 
 <script>
@@ -199,12 +251,11 @@
 
     function positionPanel() {
       if (!opener || !opener.isConnected) return;
-      const header = opener.closest('.header-wrapper') || opener;
-      const headerBottom = header.getBoundingClientRect().bottom;
+      // Position immediately below the account icon, even with a tall/sticky header.
+      const triggerBounds = opener.getBoundingClientRect();
       const viewportWidth = window.innerWidth;
-      const triggerRight = opener.getBoundingClientRect().right;
-      const top = Math.max(8, Math.round(headerBottom) + 5);
-      const right = Math.max(12, Math.round(viewportWidth - triggerRight));
+      const top = Math.max(8, Math.round(triggerBounds.bottom) + 11);
+      const right = Math.max(12, Math.round(viewportWidth - triggerBounds.right));
       panel.style.setProperty('--viri-auth-top', top + 'px');
       panel.style.setProperty('--viri-auth-right', right + 'px');
     }

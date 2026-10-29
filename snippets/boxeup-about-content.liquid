@@ -1,106 +1,82 @@
 {%- liquid
-  assign bx_lang = request.locale.iso_code | slice: 0, 2
-  case bx_lang
-    when 'en'
-      assign bx_about_tag = 'ABOUT US'
-      assign bx_about_title_a = 'MADE FOR'
-      assign bx_about_title_b = 'THOSE WHO TRAIN.'
-      assign bx_about_intro = 'VIRIATTO is a Portuguese multi-brand store dedicated to combat sports. We bring equipment and brands together to make choosing gear simpler.'
-      assign bx_about_second = 'From boxing to Muay Thai, our goal is to help you find what you need and get back to training.'
-      assign bx_about_catalog = 'Explore the catalogue'
-      assign bx_about_steps_tag = 'HOW IT WORKS'
-      assign bx_about_steps_title = 'FROM BROWSING TO TRAINING'
-      assign bx_about_step_1 = 'Explore'
-      assign bx_about_step_1_text = 'Browse equipment by category, brand or combat sport.'
-      assign bx_about_step_2 = 'Choose'
-      assign bx_about_step_2_text = 'Compare products and find the right option for your training.'
-      assign bx_about_step_3 = 'Train'
-      assign bx_about_step_3_text = 'Choose your gear and focus on the next session.'
-      assign bx_about_help_title = 'NEED SOME HELP CHOOSING?'
-      assign bx_about_help_text = 'Ask us about products, orders or partnerships.'
-      assign bx_about_contact = 'Contact us'
-    when 'es'
-      assign bx_about_tag = 'SOBRE NOSOTROS'
-      assign bx_about_title_a = 'HECHO PARA'
-      assign bx_about_title_b = 'QUIEN ENTRENA.'
-      assign bx_about_intro = 'VIRIATTO es una tienda online portuguesa multimarca dedicada a los deportes de combate. Reunimos equipamiento y marcas para que elegir sea más sencillo.'
-      assign bx_about_second = 'Del boxeo al Muay Thai, queremos ayudarte a encontrar lo que necesitas y volver al entrenamiento.'
-      assign bx_about_catalog = 'Ver catálogo'
-      assign bx_about_steps_tag = 'CÓMO FUNCIONA'
-      assign bx_about_steps_title = 'DE LA ELECCIÓN AL ENTRENAMIENTO'
-      assign bx_about_step_1 = 'Explora'
-      assign bx_about_step_1_text = 'Descubre productos por categoría, marca o modalidad.'
-      assign bx_about_step_2 = 'Elige'
-      assign bx_about_step_2_text = 'Compara productos y encuentra el equipo adecuado.'
-      assign bx_about_step_3 = 'Entrena'
-      assign bx_about_step_3_text = 'Prepara tu equipo y céntrate en el próximo entrenamiento.'
-      assign bx_about_help_title = '¿NECESITAS AYUDA PARA ELEGIR?'
-      assign bx_about_help_text = 'Consúltanos sobre productos, pedidos o colaboraciones.'
-      assign bx_about_contact = 'Contactar'
-    else
-      assign bx_about_tag = 'SOBRE NÓS'
-      assign bx_about_title_a = 'FEITO PARA'
-      assign bx_about_title_b = 'QUEM TREINA.'
-      assign bx_about_intro = 'A VIRIATTO é uma loja online portuguesa multimarca dedicada aos desportos de combate. Reunimos equipamento e marcas num só lugar para simplificar a tua escolha.'
-      assign bx_about_second = 'Do Boxe ao Muay Thai, queremos que percas menos tempo à procura e tenhas mais tempo para treinar.'
-      assign bx_about_catalog = 'Explorar catálogo'
-      assign bx_about_steps_tag = 'COMO FUNCIONA'
-      assign bx_about_steps_title = 'DO CLIQUE AO TREINO'
-      assign bx_about_step_1 = 'Explora'
-      assign bx_about_step_1_text = 'Procura equipamento por categoria, marca ou modalidade.'
-      assign bx_about_step_2 = 'Escolhe'
-      assign bx_about_step_2_text = 'Compara produtos e encontra a opção certa para o teu treino.'
-      assign bx_about_step_3 = 'Treina'
-      assign bx_about_step_3_text = 'Prepara o equipamento e foca-te no próximo treino.'
-      assign bx_about_help_title = 'PRECISAS DE AJUDA A ESCOLHER?'
-      assign bx_about_help_text = 'Fala connosco sobre produtos, encomendas ou parcerias.'
-      assign bx_about_contact = 'Contactar'
-  endcase
+  assign vi_lang = request.locale.iso_code | slice: 0, 2
+  assign vi_tagline = 'SOBRE NÓS'
+  assign vi_title_prefix = 'FEITO PARA'
+  assign vi_title_emphasis = 'QUEM TREINA.'
+  assign vi_paragraph_1 = 'A VIRIATTO é uma loja online portuguesa multimarca dedicada aos desportos de combate.'
+  assign vi_paragraph_2 = 'Boxe, Muay Thai, MMA ou jiu-jitsu. As marcas que procuras, num só lugar.'
+  assign vi_paragraph_3 = 'Menos tempo à procura. Mais tempo a treinar.'
+  assign vi_steps = 'DO CLIQUE AO TREINO'
+  assign vi_s1 = 'Explora'
+  assign vi_s1d = 'Encontra equipamento por marca ou modalidade.'
+  assign vi_s2 = 'Escolhe'
+  assign vi_s2d = 'Compara os produtos e seleciona o que precisas.'
+  assign vi_s3 = 'Encomenda'
+  assign vi_s3d = 'Faz a tua compra de forma simples e segura.'
+  assign vi_s4 = 'Treina'
+  assign vi_s4d = 'Prepara o próximo treino com o teu equipamento.'
+  assign vi_contact = 'CONTACTOS'
+  assign vi_catalog = 'Ver catálogo'
+  if vi_lang == 'en'
+    assign vi_tagline = 'ABOUT US'
+    assign vi_title_prefix = 'MADE FOR'
+    assign vi_title_emphasis = 'THOSE WHO TRAIN.'
+    assign vi_paragraph_1 = 'VIRIATTO is a Portuguese multibrand online store dedicated to combat sports.'
+    assign vi_paragraph_2 = 'Boxing, Muay Thai, MMA or jiu-jitsu. All the brands you need, in one place.'
+    assign vi_paragraph_3 = 'Less time searching. More time training.'
+    assign vi_steps = 'FROM CLICK TO TRAINING'
+    assign vi_s1 = 'Explore'
+    assign vi_s1d = 'Browse equipment by brand or discipline.'
+    assign vi_s2 = 'Choose'
+    assign vi_s2d = 'Compare products and find what you need.'
+    assign vi_s3 = 'Order'
+    assign vi_s3d = 'Complete your purchase simply and securely.'
+    assign vi_s4 = 'Train'
+    assign vi_s4d = 'Get ready for your next session.'
+    assign vi_contact = 'CONTACT'
+    assign vi_catalog = 'Shop catalogue'
+  elsif vi_lang == 'es'
+    assign vi_tagline = 'SOBRE NOSOTROS'
+    assign vi_title_prefix = 'HECHO PARA'
+    assign vi_title_emphasis = 'QUIENES ENTRENAN.'
+    assign vi_paragraph_1 = 'VIRIATTO es una tienda online portuguesa multimarca dedicada a los deportes de combate.'
+    assign vi_paragraph_2 = 'Boxeo, Muay Thai, MMA o jiu-jitsu. Las marcas que buscas, en un solo lugar.'
+    assign vi_paragraph_3 = 'Menos tiempo buscando. Más tiempo entrenando.'
+    assign vi_steps = 'DEL CLIC AL ENTRENAMIENTO'
+    assign vi_s1 = 'Explora'
+    assign vi_s1d = 'Busca equipamiento por marca o disciplina.'
+    assign vi_s2 = 'Elige'
+    assign vi_s2d = 'Compara productos y selecciona lo que necesitas.'
+    assign vi_s3 = 'Compra'
+    assign vi_s3d = 'Realiza tu pedido de forma sencilla y segura.'
+    assign vi_s4 = 'Entrena'
+    assign vi_s4d = 'Prepárate para tu próximo entrenamiento.'
+    assign vi_contact = 'CONTACTO'
+    assign vi_catalog = 'Ver catálogo'
+  endif
 -%}
-<section class="viri-about" aria-labelledby="ViriAboutTitle">
-  <div class="viri-about__container">
-    <div class="viri-about__intro">
-      <div class="viri-about__heading">
-        <p class="viri-about__eyebrow">{{ bx_about_tag | escape }}</p>
-        <h1 id="ViriAboutTitle">{{ bx_about_title_a | escape }}<span>{{ bx_about_title_b | escape }}</span></h1>
-      </div>
-      <div class="viri-about__summary">
-        <p>{{ bx_about_intro | escape }}</p>
-        <p>{{ bx_about_second | escape }}</p>
-        <a class="viri-about__catalog-link" href="{{ routes.all_products_collection_url }}">{{ bx_about_catalog | escape }} {% render 'viri-link-arrow' %}</a>
-      </div>
-    </div>
-
-    <div class="viri-about__process">
-      <div class="viri-about__process-heading">
-        <p class="viri-about__eyebrow">{{ bx_about_steps_tag | escape }}</p>
-        <h2>{{ bx_about_steps_title | escape }}</h2>
-      </div>
-      <div class="viri-about__steps">
-        <article class="viri-about__step">
-          <span class="viri-about__step-number" aria-hidden="true">01</span>
-          <h3>{{ bx_about_step_1 | escape }}</h3>
-          <p>{{ bx_about_step_1_text | escape }}</p>
-        </article>
-        <article class="viri-about__step">
-          <span class="viri-about__step-number" aria-hidden="true">02</span>
-          <h3>{{ bx_about_step_2 | escape }}</h3>
-          <p>{{ bx_about_step_2_text | escape }}</p>
-        </article>
-        <article class="viri-about__step">
-          <span class="viri-about__step-number" aria-hidden="true">03</span>
-          <h3>{{ bx_about_step_3 | escape }}</h3>
-          <p>{{ bx_about_step_3_text | escape }}</p>
-        </article>
+<section class="vi-min-about" aria-labelledby="ViAboutTitle">
+  <div class="vi-min-about__inner vi-info-rail">
+    <header class="vi-min-about__intro">
+      <p class="vi-min-eyebrow">{{ vi_tagline }}</p>
+      <h1 id="ViAboutTitle">{{ vi_title_prefix }} <span>{{ vi_title_emphasis }}</span></h1>
+      <p>{{ vi_paragraph_1 }}</p>
+      <p>{{ vi_paragraph_2 }}</p>
+      <p>{{ vi_paragraph_3 }}</p>
+    </header>
+    <div class="vi-min-about__process">
+      <h2>{{ vi_steps }}</h2>
+      <div class="vi-min-about__grid">
+        <div class="vi-min-about__step"><span>01</span><h3>{{ vi_s1 }}</h3><p>{{ vi_s1d }}</p></div>
+        <div class="vi-min-about__step"><span>02</span><h3>{{ vi_s2 }}</h3><p>{{ vi_s2d }}</p></div>
+        <div class="vi-min-about__step"><span>03</span><h3>{{ vi_s3 }}</h3><p>{{ vi_s3d }}</p></div>
+        <div class="vi-min-about__step"><span>04</span><h3>{{ vi_s4 }}</h3><p>{{ vi_s4d }}</p></div>
       </div>
     </div>
-
-    <div class="viri-about__help">
-      <div>
-        <h2>{{ bx_about_help_title | escape }}</h2>
-        <p>{{ bx_about_help_text | escape }}</p>
-      </div>
-      <a href="{{ pages['contact'].url | default: '/pages/contact' }}">{{ bx_about_contact | escape }} {% render 'viri-link-arrow' %}</a>
+    <div class="vi-min-about__bottom">
+      <span>{{ vi_contact }}</span>
+      <a href="mailto:business@boxeup.com">business@boxeup.com</a>
+      <a href="{{ routes.all_products_collection_url }}" class="vi-min-about__shop">{{ vi_catalog }} <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>

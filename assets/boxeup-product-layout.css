@@ -641,12 +641,10 @@
    Only active on the Shopify product template. */
 body.boxeup-product-view{
   --bxp-gutter:clamp(22px,4.3vw,104px);
-  /* Desktop content rails gain about 10%; mobile and tablet stay unchanged. */
   --bxp-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
   --bxp-ui:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 @media(min-width:990px){
-  body.boxeup-product-view{--bxp-gutter:clamp(24px,4.75vw,114px)}
   body.boxeup-product-view .header-wrapper .header{
     width:100%!important;
     max-width:var(--boxeup-content-max)!important;
@@ -1066,11 +1064,4 @@ body.boxeup-product-view .footer .footer__content-bottom-wrapper.page-width{
   #MainContent[data-template="product"] .related-products{
     padding-top:24px!important;padding-bottom:32px!important;
   }
-}
-
-
-/* VIRIATTO — legibilidade do nome do produto no breadcrumb escuro. */
-body #MainContent[data-template="product"] .boxeup-breadcrumb--product > span[aria-current="page"] {
-  color: #f0f0f3 !important;
-  opacity: 1 !important;
 }

@@ -74,7 +74,7 @@
                     {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
                   "
                   src="{{ card_product.featured_media | image_url: width: 533 }}"
-                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 5 }}px, (min-width: 990px) calc((100vw - 130px) / 5), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
                   alt="{{ card_product.featured_media.alt | escape }}"
                   class="motion-reduce"
                   {% unless lazy_load == false %}
@@ -97,7 +97,7 @@
                       {{ card_product.media[1] | image_url }} {{ card_product.media[1].width }}w
                     "
                     src="{{ card_product.media[1] | image_url: width: 533 }}"
-                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 5 }}px, (min-width: 990px) calc((100vw - 130px) / 5), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
                     alt="{{ card_product.media[1].alt | escape }}"
                     class="motion-reduce"
                     loading="lazy"
@@ -137,7 +137,7 @@
               {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
                 <span
                   id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                  class="badge bx-card-sale badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+                  class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
                 >
                   {{- 'products.product.on_sale' | t -}}
                 </span>
@@ -149,7 +149,6 @@
           {%- assign bx_title_parts = card_product.title | split: ' — ' -%}
           {%- if bx_title_parts.size == 1 -%}{%- assign bx_title_parts = card_product.title | split: ' | ' -%}{%- endif -%}
           <div class="card__information">
-            {% render 'boxeup-mobile-card-meta', product: card_product %}
             <h3
               class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
               {% if card_product.featured_media or settings.card_style == 'card' %}
@@ -502,7 +501,7 @@
                                     {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
                                   "
                                   src="{{ card_product.featured_media | image_url: width: 533 }}"
-                                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 5 }}px, (min-width: 990px) calc((100vw - 130px) / 5), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
                                   alt="{{ card_product.featured_media.alt | escape }}"
                                   class="motion-reduce"
                                   {% unless lazy_load == false %}
@@ -578,7 +577,7 @@
             {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
               <span
                 id="Badge-{{ section_id }}-{{ card_product.id }}"
-                class="badge bx-card-sale badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
               >
                 {{- 'products.product.on_sale' | t -}}
               </span>
@@ -651,4 +650,3 @@
     </div>
   </div>
 {%- endif -%}
-

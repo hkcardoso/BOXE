@@ -1,14 +1,28 @@
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'viriatto-catalog-cards.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
-{{ 'quick-add.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign viriatto_filter_title = 'Encontra o teu equipamento'
+  assign viriatto_filter_lang = request.locale.iso_code | slice: 0, 2
+  if viriatto_filter_lang == 'en'
+    assign viriatto_filter_title = 'Find your equipment'
+  elsif viriatto_filter_lang == 'es'
+    assign viriatto_filter_title = 'Encuentra tu equipamiento'
+  endif
+-%}
 
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
 
+{%- unless section.settings.quick_add == 'none' -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+{%- endunless -%}
+
 {%- if section.settings.quick_add == 'standard' -%}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
@@ -33,74 +47,12 @@
   }
 {%- endstyle -%}
 
-{{ 'boxeup-product-tiles.css' | asset_url | stylesheet_tag }}
-<style>
-  /* Keep the native filter control; the old floating control must never cover tiles. */
-  body .bx-mobile-filters:not([hidden]) {
-    display:none!important;
-  }
-  /* Match the homepage 4 / 3 / 2 product grid on every catalogue page. */
-  body #MainContent[data-template="collection"] #product-grid.vh-grid {
-    display:grid!important;
-    grid-template-columns:repeat(4,minmax(0,1fr))!important;
-    align-items:stretch!important;
-    gap:14px!important;
-    list-style:none!important;
-    width:100%!important;
-    max-width:100%!important;
-    padding:0!important;
-    margin:0!important;
-  }
-  body #MainContent[data-template="collection"] #product-grid.vh-grid > li.grid__item {
-    display:block!important;
-    min-width:0!important;
-    width:100%!important;
-    max-width:none!important;
-    padding:0!important;
-    margin:0!important;
-  }
-  body #MainContent[data-template="collection"] #product-grid.vh-grid .vh-tile {
-    height:100%!important;
-  }
-  @media (min-width:750px) and (max-width:989px) {
-    body #MainContent[data-template="collection"] #product-grid.vh-grid {
-      grid-template-columns:repeat(3,minmax(0,1fr))!important;
-      gap:12px!important;
-    }
-  }
-  @media (max-width:749px) {
-    body #MainContent[data-template="collection"] #product-grid.vh-grid {
-      grid-template-columns:repeat(2,minmax(0,1fr))!important;
-      gap:22px 10px!important;
-    }
-    body #MainContent[data-template="collection"] #product-grid.vh-grid .vh-tile {
-      min-width:0!important;
-    }
-    body #MainContent[data-template="collection"] #product-grid.vh-grid .vh-tile__name {
-      color:#fff!important;
-      opacity:1!important;
-    }
-    body #MainContent[data-template="collection"] #product-grid.vh-grid .vh-tile__prices strong {
-      color:#fff!important;
-    }
-  }
-</style>
-
-
 <collection-component
   view-event-payload="{{ collection | standard_event_data: 'view' | escape }}"
   data-collection-id="{{ collection.id }}"
 >
   <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
     {%- paginate collection.products by section.settings.products_per_page -%}
-      {%- assign bx_visible_count = 0 -%}
-{%- for bx_item in collection.products -%}
-{%- assign bx_vendor = bx_item.vendor | downcase | strip -%}
-{%- assign bx_title = bx_item.title | downcase | strip -%}
-{%- unless bx_vendor == 'my store' or bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}
-{%- assign bx_visible_count = bx_visible_count | plus: 1 -%}
-{%- endunless -%}
-{%- endfor -%}
       {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
       {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
         <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
@@ -162,7 +114,6 @@
 
       <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
         {{ 'component-facets.css' | asset_url | stylesheet_tag }}
-        {{ 'viri-mobile-filter-sheet.css' | asset_url | stylesheet_tag }}
         <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
         {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
           <aside
@@ -171,7 +122,9 @@
             id="main-collection-filters"
             data-id="{{ section.id }}"
           >
+            <h2 class="viriatto-filter-title viriatto-filter-title--mobile">{{ viriatto_filter_title }}</h2>
             {% render 'facets',
+              filter_heading: viriatto_filter_title,
               results: collection,
               enable_filtering: section.settings.enable_filtering,
               enable_sorting: section.settings.enable_sorting,
@@ -188,43 +141,40 @@
             data-cascade
           {% endif %}
         >
-          {%- if bx_visible_count == 0 -%}
+          {%- if collection.products.size == 0 -%}
             <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
               <div class="loading-overlay gradient"></div>
               <div class="title-wrapper center">
-                {% assign bx_filter_active = false %}
-                {% if collection.filters != empty %}
-                  {% assign bx_filter_active = false %}
-                  {% for filter in collection.filters %}{% if filter.active_values.size > 0 or filter.min_value.value or filter.max_value.value %}{% assign bx_filter_active = true %}{% endif %}{% endfor %}
-                {% endif %}
-                {% if bx_filter_active %}
-                  <h2 class="title title--primary">{{ 'sections.collection_template.empty' | t }}</h2>
-                  <p>{{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: 'underlined-link link' }}</p>
-                {% else %}
-                  <h2 class="title title--primary">{{ 'boxeup_experience.empty_collection' | t }}</h2>
-                  <p>{{ 'boxeup_experience.empty_collection_help' | t }}</p>
-                  <div class="bx-empty-actions"><a class="bx-button" href="{{ routes.all_products_collection_url }}">{{ 'boxeup_experience.catalog' | t }}</a><a class="bx-text-button" href="{{ routes.root_url }}pages/contact">{{ 'boxeup_experience.contact' | t }} →</a></div>
-                {% endif %}
+                <h2 class="title title--primary">
+                  {{ 'sections.collection_template.empty' | t -}}
+                  <br>
+                  {{
+                    'sections.collection_template.use_fewer_filters_html'
+                    | t: link: collection.url, class: 'underlined-link link'
+                  }}
+                </h2>
               </div>
             </div>
           {%- else -%}
             <div
-              class="collection vh-home{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+              class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
             >
               <div class="loading-overlay gradient"></div>
               <ul
                 id="product-grid"
                 data-id="{{ section.id }}"
                 class="
-                  grid product-grid vh-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
+                  grid product-grid vcat-card-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
                   grid--{{ section.settings.columns_desktop }}-col-desktop
                   {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}
                 "
               >
+                {% assign skip_card_product_styles = false %}
                 {%- for product in collection.products -%}
-                  {%- assign bx_vendor = product.vendor | downcase | strip -%}
-{%- assign bx_title = product.title | downcase | strip -%}
-{%- if bx_vendor == 'my store' or product.price == 0 or product.tags contains 'boxeup:hidden' or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}{%- continue -%}{%- endif -%}
+                  {% assign lazy_load = false %}
+                  {%- if forloop.index > 2 -%}
+                    {%- assign lazy_load = true -%}
+                  {%- endif -%}
                   <li
                     class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                     {% if settings.animations_reveal_on_scroll %}
@@ -234,6 +184,7 @@
                   >
                     {% render 'boxeup-home-card', product: product, section_id: section.id %}
                   </li>
+                  {%- assign skip_card_product_styles = true -%}
                 {%- endfor -%}
               </ul>
 
@@ -259,10 +210,10 @@
     {
       "type": "range",
       "id": "products_per_page",
-      "min": 10,
-      "max": 50,
-      "step": 5,
-      "default": 25,
+      "min": 8,
+      "max": 36,
+      "step": 4,
+      "default": 16,
       "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
     },
     {
@@ -464,4 +415,3 @@
   ]
 }
 {% endschema %}
-

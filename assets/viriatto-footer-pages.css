@@ -1,0 +1,200 @@
+/* VIRIATTO / Support, legal and information pages.
+   Matches the home header / content rails, without changing policy text. */
+#MainContent[data-template="page"] .vi-support-page,
+#MainContent .vi-support-page {
+  --vi-ink:#0b0c0e;
+  --vi-panel:#151619;
+  --vi-line:#323338;
+  --vi-copy:#bdc0c6;
+  --vi-white:#f5f5f6;
+  --vi-red:#ed2437;
+  background:var(--vi-ink);
+  color:var(--vi-white);
+  min-height:65vh;
+}
+.vi-support-page * {box-sizing:border-box}
+#MainContent .vi-support-page__wrap {
+  max-width:1600px!important;
+  width:100%!important;
+  margin-inline:auto!important;
+  padding-inline:clamp(18px,4.7vw,78px)!important;
+}
+.vi-support-page__hero {
+  background:linear-gradient(110deg,#101115 0%,#0b0c0e 62%,#141518 100%);
+  border-bottom:1px solid #282a30;
+}
+.vi-support-page__hero .vi-support-page__wrap {
+  padding-block:28px 46px!important;
+}
+.vi-support-page__breadcrumb {
+  display:flex;
+  align-items:center;
+  gap:11px;
+  margin-bottom:clamp(40px,5vw,72px);
+  color:#888b94;
+  font-size:11px;
+  line-height:1.6;
+}
+.vi-support-page__breadcrumb a{color:#b8bbc2;text-decoration:none}
+.vi-support-page__breadcrumb a:hover{color:#fff}
+.vi-support-page__eyebrow {
+  margin:0 0 13px;
+  color:var(--vi-red);
+  text-transform:uppercase;
+  font-size:10px;
+  font-weight:800;
+  line-height:1.4;
+  letter-spacing:.16em;
+}
+#MainContent .vi-support-page__hero h1 {
+  margin:0!important;
+  max-width:1100px;
+  color:#fff!important;
+  font-family:'Benzin',var(--font-heading-family),Arial,sans-serif;
+  text-transform:uppercase;
+  font-weight:800!important;
+  letter-spacing:-.045em!important;
+  font-size:clamp(26px,3.3vw,48px)!important;
+  line-height:1.17!important;
+  text-wrap:balance;
+}
+#MainContent .vi-support-page__layout {
+  display:grid;
+  grid-template-columns:minmax(190px,255px) minmax(0,880px);
+  justify-content:space-between;
+  gap:clamp(42px,6vw,120px);
+  align-items:start;
+  padding-block:43px 82px!important;
+}
+.vi-support-page__sidebar {
+  position:sticky;
+  top:clamp(30px,10vw,155px);
+  background:#141518;
+  border:1px solid var(--vi-line);
+  border-radius:8px;
+  padding:23px 14px 16px;
+}
+.vi-support-page__sidebar > p {
+  color:#92959d;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font-size:10px;
+  font-weight:800;
+  margin:0 11px 14px;
+}
+.vi-support-page__nav{display:grid;gap:2px}
+.vi-support-page__nav a {
+  padding:12px 11px;
+  border-radius:4px;
+  color:#c4c6cb!important;
+  text-decoration:none!important;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-size:12px;
+  font-weight:650;
+  line-height:1.4;
+}
+.vi-support-page__nav a span {font-size:14px;opacity:.6}
+.vi-support-page__nav a:hover {
+  color:#fff!important;
+  background:#24252a;
+}
+.vi-support-page__nav a[aria-current="page"] {
+  color:#fff!important;
+  background:#292025;
+  border-left:2px solid var(--vi-red);
+}
+.vi-support-page__nav a:focus-visible,
+.vi-support-page__article-footer a:focus-visible {
+  outline:2px solid var(--vi-red);
+  outline-offset:2px;
+}
+.vi-support-page__article{min-width:0;color:#cacbd0}
+#MainContent .vi-support-page .vi-support-page__content {
+  color:#c5c7cd!important;
+  font-family:var(--font-body-family),Arial,sans-serif;
+  font-size:14px;
+  line-height:1.8;
+  overflow-wrap:anywhere;
+}
+#MainContent .vi-support-page__content :is(h2,h3,h4) {
+  color:#f6f6f7!important;
+  font-family:var(--font-heading-family),Arial,sans-serif;
+  text-transform:none;
+  letter-spacing:-.025em!important;
+  font-weight:800!important;
+  line-height:1.35!important;
+}
+#MainContent .vi-support-page__content h2 {
+  font-size:clamp(19px,1.75vw,25px)!important;
+  margin:37px 0 13px!important;
+}
+#MainContent .vi-support-page__content :is(h3,h4) {
+  font-size:16px!important;
+  margin:23px 0 10px!important;
+}
+#MainContent .vi-support-page__content :is(h2,h3):first-child{margin-top:0!important}
+#MainContent .vi-support-page__content p {margin:0 0 16px!important;color:#c5c7cd!important}
+#MainContent .vi-support-page__content :is(ul,ol) {
+  color:#c5c7cd;
+  margin:0 0 19px!important;
+  padding-left:24px!important;
+}
+#MainContent .vi-support-page__content li {margin-bottom:7px;color:#c5c7cd}
+#MainContent .vi-support-page__content a {
+  color:#f2f3f4!important;
+  text-decoration:underline!important;
+  text-underline-offset:3px;
+}
+#MainContent .vi-support-page__content a:hover{color:#ff7584!important}
+#MainContent .vi-support-page__content :is(strong,b){color:#f3f3f4}
+#MainContent .vi-support-page__content :is(table,blockquote) {
+  max-width:100%;
+  background:#17181b;
+  border:1px solid #35363b;
+}
+#MainContent .vi-support-page__content table{display:block;overflow-x:auto}
+#MainContent .vi-support-page__content :is(td,th){color:#eee;border-color:#393b40;padding:12px}
+#MainContent .vi-support-page__content blockquote{padding:18px 22px}
+.vi-support-page__article-footer {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  border-top:1px solid #34363c;
+  margin-top:48px;
+  padding-top:23px;
+}
+.vi-support-page__article-footer a {
+  color:#f4f4f5!important;
+  font-size:12px;
+  font-weight:750;
+  text-decoration:none!important;
+  display:inline-flex;
+  align-items:center;
+  gap:15px;
+}
+.vi-support-page__article-footer a:hover{color:#ff7584!important}
+@media (max-width:900px) {
+  #MainContent .vi-support-page__layout {
+    grid-template-columns:1fr;
+    gap:27px;
+    padding-block:28px 60px!important;
+  }
+  .vi-support-page__sidebar {position:static;padding:18px 14px}
+  .vi-support-page__nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 8px}
+  .vi-support-page__hero .vi-support-page__wrap{padding-block:22px 32px!important}
+  .vi-support-page__breadcrumb{margin-bottom:42px}
+}
+@media (max-width:520px) {
+  .vi-support-page__nav{grid-template-columns:1fr}
+  .vi-support-page__sidebar{padding:17px 10px}
+  .vi-support-page__article-footer{flex-direction:column;align-items:flex-start;gap:17px}
+  #MainContent .vi-support-page__content{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){
+  .vi-support-page__nav a{scroll-behavior:auto}
+}

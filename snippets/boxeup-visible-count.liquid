@@ -1,9 +1,0 @@
-{% doc %}
-  @param {array} items - Paginated products or search results.
-{% enddoc %}
-{%- assign bx_count = 0 -%}
-{%- for item in items -%}
-  {%- capture bx_visible -%}{%- render 'boxeup-product-visible', product: item -%}{%- endcapture -%}
-  {%- if bx_visible == 'true' -%}{%- assign bx_count = bx_count | plus: 1 -%}{%- endif -%}
-{%- endfor -%}
-{{- bx_count -}}

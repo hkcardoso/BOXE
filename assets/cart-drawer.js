@@ -10,6 +10,9 @@ class CartDrawer extends HTMLElement {
   setHeaderCartIconAccessibility() {
     const cartLink = document.querySelector('#cart-icon-bubble');
     if (!cartLink) return;
+    // BOXEUP: the header cart icon navigates to the full cart page.
+    // Keep the drawer available for product quick-add interactions.
+    if (cartLink.hasAttribute('data-bx-cart-direct')) return;
 
     cartLink.setAttribute('role', 'button');
     cartLink.setAttribute('aria-haspopup', 'dialog');
@@ -33,18 +36,19 @@ class CartDrawer extends HTMLElement {
     // here the animation doesn't seem to always get triggered. A timeout seem to help
     setTimeout(() => {
       this.classList.add('animate', 'active');
-      requestAnimationFrame(focusDrawer);
-      setTimeout(focusDrawer, 320);
     });
 
-    const focusDrawer = () => {
-      if (!this.classList.contains('active')) return;
-      const container = this.classList.contains('is-empty')
-        ? this.querySelector('.drawer__inner-empty')
-        : this.querySelector('#CartDrawer');
-      const focusElement = container?.querySelector('.drawer__close') || container;
-      if (container && focusElement) trapFocus(container, focusElement);
-    };
+    this.addEventListener(
+      'transitionend',
+      () => {
+        const containerToTrapFocusOn = this.classList.contains('is-empty')
+          ? this.querySelector('.drawer__inner-empty')
+          : document.getElementById('CartDrawer');
+        const focusElement = this.querySelector('.drawer__inner') || this.querySelector('.drawer__close');
+        trapFocus(containerToTrapFocusOn, focusElement);
+      },
+      { once: true },
+    );
 
     document.body.classList.add('overflow-hidden');
 
@@ -56,7 +60,6 @@ class CartDrawer extends HTMLElement {
 
   close() {
     this.classList.remove('active');
-    this.querySelector('.bx-cart-feedback')?.remove();
     removeTrapFocus(this.activeElement);
     document.body.classList.remove('overflow-hidden');
   }
@@ -92,7 +95,6 @@ class CartDrawer extends HTMLElement {
     setTimeout(() => {
       this.querySelector('#CartDrawer-Overlay').addEventListener('click', this.close.bind(this));
       this.open();
-      document.dispatchEvent(new CustomEvent('boxeup:cart-added'));
     });
   }
 
@@ -141,4 +143,3 @@ class CartDrawerItems extends CartItems {
 }
 
 customElements.define('cart-drawer-items', CartDrawerItems);
-

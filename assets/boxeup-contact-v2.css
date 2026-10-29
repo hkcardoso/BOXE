@@ -287,10 +287,11 @@
   resize: vertical;
   padding-bottom: 30px;
 }
-#MainContent .bx-contact .bx-contact__field :is(input,select,textarea):focus-visible {
+#MainContent .bx-contact .bx-contact__field :is(input,select,textarea):is(:focus,:focus-visible) {
   outline: 1px solid #858892 !important;
-  outline-offset: 2px;
+  outline-offset: 2px !important;
   border-color: #858892 !important;
+  box-shadow: none !important;
 }
 .bx-contact__field small { font-size: 11px; color: #ff8591; margin-top: 5px; }
 .bx-contact__counter {

@@ -349,6 +349,8 @@
 
   /* VIRIATTO 2026 — final layout consistency */
   .vh-home{--vh-rail-width:1600px;--vh-rail-gutter:clamp(18px,4.7vw,78px)}
+  /* Actual homepage content rail: 10% on each desktop side. */
+  @media(min-width:990px){.vh-home{--vh-rail-gutter:10vw}}
   .vh-home .vh-frame{
     box-sizing:border-box!important;display:block;
     width:100%!important;max-width:var(--vh-rail-width)!important;
@@ -388,7 +390,7 @@
   body.boxeup-page-home .footer .footer__content-top.page-width,
   body.boxeup-page-home .footer .footer__content-bottom-wrapper.page-width{
     max-width:1600px!important;
-    padding-inline:clamp(18px,4.7vw,78px)!important
+    padding-inline:10vw!important
   }
   @media(max-width:989px){
     .vh-home .vh-brands__inner{display:flex;overflow-x:auto;gap:23px}
@@ -427,7 +429,7 @@
       box-sizing:border-box!important;
       display:grid!important;width:100%!important;max-width:1600px!important;
       margin:0 auto!important;
-      padding:7px clamp(18px,4.7vw,78px) 5px!important;
+      padding:7px 10vw 5px!important;
       min-height:109px!important;
       grid-template-columns:minmax(175px,220px) minmax(0,1fr) minmax(135px,180px)!important;
       grid-template-rows:58px 39px!important;

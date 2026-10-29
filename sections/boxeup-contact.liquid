@@ -1,133 +1,128 @@
+{{ 'boxeup-contact-v2.css' | asset_url | stylesheet_tag }}
 {%- liquid
-  assign vi_lang = request.locale.iso_code | slice: 0, 2
-  assign vi_tagline = 'CONTACTOS'
-  assign vi_title = 'FALA CONNOSCO.'
-  assign vi_intro = 'Dúvidas sobre produtos, encomendas ou parcerias? Envia-nos uma mensagem.'
-  assign vi_location = 'LOCALIZAÇÃO'
-  assign vi_location_value = 'Portugal · Loja online'
-  assign vi_contact = 'CONTACTO'
-  assign vi_form_title = 'DIZ-NOS O QUE PRECISAS.'
-  assign vi_faq_shipping = 'Envios e entregas'
-  assign vi_faq_returns = 'Devoluções e garantias'
-  assign vi_subject_label = 'Assunto'
-  assign vi_subject_prompt = 'Seleciona o assunto'
-  assign vi_subject_product = 'Equipamento e tamanhos'
-  assign vi_subject_order = 'Encomendas e entregas'
-  assign vi_subject_returns = 'Trocas, devoluções e garantias'
-  assign vi_subject_partner = 'Parcerias e distribuição'
-  assign vi_subject_other = 'Outro assunto'
-  if vi_lang == 'en'
-    assign vi_tagline = 'CONTACT'
-    assign vi_title = 'LET’S TALK.'
-    assign vi_intro = 'Questions about products, orders or partnerships? Send us a message.'
-    assign vi_location = 'LOCATION'
-    assign vi_location_value = 'Portugal · Online store'
-    assign vi_contact = 'CONTACT'
-    assign vi_form_title = 'TELL US WHAT YOU NEED.'
-    assign vi_faq_shipping = 'Shipping and delivery'
-    assign vi_faq_returns = 'Returns and warranty'
-    assign vi_subject_label = 'Subject'
-    assign vi_subject_prompt = 'Choose a subject'
-    assign vi_subject_product = 'Equipment and sizing'
-    assign vi_subject_order = 'Orders and delivery'
-    assign vi_subject_returns = 'Exchanges, returns and warranty'
-    assign vi_subject_partner = 'Partnerships and distribution'
-    assign vi_subject_other = 'Other enquiry'
-  elsif vi_lang == 'es'
-    assign vi_tagline = 'CONTACTO'
-    assign vi_title = 'HABLEMOS.'
-    assign vi_intro = '¿Dudas sobre productos, pedidos o colaboraciones? Envíanos un mensaje.'
-    assign vi_location = 'UBICACIÓN'
-    assign vi_location_value = 'Portugal · Tienda online'
-    assign vi_contact = 'CONTACTO'
-    assign vi_form_title = 'CUÉNTANOS QUÉ NECESITAS.'
-    assign vi_faq_shipping = 'Envíos y entregas'
-    assign vi_faq_returns = 'Devoluciones y garantías'
-    assign vi_subject_label = 'Asunto'
-    assign vi_subject_prompt = 'Selecciona el asunto'
-    assign vi_subject_product = 'Equipamiento y tallas'
-    assign vi_subject_order = 'Pedidos y entregas'
-    assign vi_subject_returns = 'Cambios, devoluciones y garantías'
-    assign vi_subject_partner = 'Colaboraciones y distribución'
-    assign vi_subject_other = 'Otra consulta'
-  endif
+  assign bx_lang = request.locale.iso_code | slice: 0, 2
+  case bx_lang
+    when 'en'
+      assign bx_contact_tag = 'CONTACT'
+      assign bx_contact_heading = 'TALK TO US.'
+      assign bx_contact_intro = 'Need help with a product, an order or a partnership? Send us a message.'
+      assign bx_contact_email_label = 'DIRECT CONTACT'
+      assign bx_contact_links_label = 'USEFUL LINKS'
+      assign bx_contact_shipping = 'Shipping and delivery'
+      assign bx_contact_returns = 'Returns and warranty'
+      assign bx_contact_form_title = 'TELL US WHAT YOU NEED.'
+      assign bx_contact_form_intro = 'Fill in the form and we will get back to you as soon as possible.'
+      assign bx_contact_send = 'Send message'
+      assign bx_contact_required = 'Required fields'
+      assign bx_contact_placeholder_email = 'you@example.com'
+      assign bx_contact_count = 'characters'
+    when 'es'
+      assign bx_contact_tag = 'CONTACTO'
+      assign bx_contact_heading = 'HABLEMOS.'
+      assign bx_contact_intro = '¿Tienes dudas sobre un producto, un pedido o una colaboración? Envíanos un mensaje.'
+      assign bx_contact_email_label = 'CONTACTO DIRECTO'
+      assign bx_contact_links_label = 'ENLACES ÚTILES'
+      assign bx_contact_shipping = 'Envíos y entregas'
+      assign bx_contact_returns = 'Devoluciones y garantías'
+      assign bx_contact_form_title = 'CUÉNTANOS QUÉ NECESITAS.'
+      assign bx_contact_form_intro = 'Completa el formulario y responderemos lo antes posible.'
+      assign bx_contact_send = 'Enviar mensaje'
+      assign bx_contact_required = 'Campos obligatorios'
+      assign bx_contact_placeholder_email = 'ejemplo@email.com'
+      assign bx_contact_count = 'caracteres'
+    else
+      assign bx_contact_tag = 'CONTACTOS'
+      assign bx_contact_heading = 'FALA CONNOSCO.'
+      assign bx_contact_intro = 'Dúvidas sobre produtos, encomendas ou parcerias? Envia-nos uma mensagem.'
+      assign bx_contact_email_label = 'CONTACTO DIRETO'
+      assign bx_contact_links_label = 'INFORMAÇÕES ÚTEIS'
+      assign bx_contact_shipping = 'Envios e entregas'
+      assign bx_contact_returns = 'Devoluções e garantias'
+      assign bx_contact_form_title = 'DIZ-NOS O QUE PRECISAS.'
+      assign bx_contact_form_intro = 'Preenche o formulário e responderemos assim que possível.'
+      assign bx_contact_send = 'Enviar mensagem'
+      assign bx_contact_required = 'Campos obrigatórios'
+      assign bx_contact_placeholder_email = 'exemplo@email.com'
+      assign bx_contact_count = 'caracteres'
+  endcase
 -%}
-<section class="boxeup-contact bx-contact vi-min-contact" aria-labelledby="BxContactTitle">
-  <div class="vi-min-contact__layout vi-info-rail">
-    <aside class="vi-min-contact__details">
-      <p class="vi-min-eyebrow">{{ vi_tagline }}</p>
-      <h1 id="BxContactTitle">{{ vi_title }}</h1>
-      <p class="vi-min-contact__intro">{{ vi_intro }}</p>
-      <div class="vi-min-contact__info">
-        <div><strong>{{ vi_location }}:</strong><span>{{ vi_location_value }}</span></div>
-        <div><strong>{{ vi_contact }}:</strong><a href="mailto:business@boxeup.com">business@boxeup.com</a></div>
-      </div>
-      <nav class="vi-min-contact__links" aria-label="{{ vi_contact }}">
-        <a href="{{ pages['envios-e-entregas'].url | default: '/pages/envios-e-entregas' }}">{{ vi_faq_shipping }} <span aria-hidden="true">→</span></a>
-        <a href="{{ pages['devolucoes-e-garantias'].url | default: '/pages/devolucoes-e-garantias' }}">{{ vi_faq_returns }} <span aria-hidden="true">→</span></a>
-      </nav>
-    </aside>
-    <div class="vi-min-contact__form" id="BxContactFormPanel">
-      <h2>{{ vi_form_title }}</h2>
-      {% form 'contact', id: 'BoxeupContactForm', class: 'bx-contact__form' %}
+<section class="viri-contact" aria-labelledby="ViriContactTitle">
+  <div class="viri-contact__container">
+    <div class="viri-contact__grid">
+      <aside class="viri-contact__intro">
+        <p class="viri-contact__eyebrow">{{ bx_contact_tag | escape }}</p>
+        <h1 id="ViriContactTitle">{{ bx_contact_heading | escape }}</h1>
+        <p class="viri-contact__lead">{{ bx_contact_intro | escape }}</p>
+        <div class="viri-contact__details">
+          <div class="viri-contact__detail">
+            <p class="viri-contact__detail-title">{{ bx_contact_email_label | escape }}</p>
+            <a href="mailto:business@boxeup.com">business@boxeup.com {% render 'viri-link-arrow' %}</a>
+          </div>
+          <div class="viri-contact__detail">
+            <p class="viri-contact__detail-title">{{ bx_contact_links_label | escape }}</p>
+            <a href="{{ pages['envios-e-entregas'].url | default: '/pages/envios-e-entregas' }}">{{ bx_contact_shipping | escape }} {% render 'viri-link-arrow' %}</a>
+            <a href="{{ pages['devolucoes-e-garantias'].url | default: '/pages/devolucoes-e-garantias' }}">{{ bx_contact_returns | escape }} {% render 'viri-link-arrow' %}</a>
+          </div>
+        </div>
+      </aside>
+      <div class="viri-contact__panel">
+        <h2>{{ bx_contact_form_title | escape }}</h2>
+        <p class="viri-contact__form-lead">{{ bx_contact_form_intro | escape }}</p>
+        {% form 'contact', id: 'ViriContactForm', class: 'viri-contact__form' %}
           {% if form.posted_successfully? %}
-            <div class="bx-contact__feedback bx-contact__feedback--success" role="status" tabindex="-1">
-              <strong>{{ 'boxeup_sections.contact_sent' | t }}</strong>
+            <div class="viri-contact__feedback viri-contact__feedback--success" role="status" tabindex="-1">
+              {{ 'boxeup_sections.contact_sent' | t }}
               <p>{{ 'boxeup_sections.contact_received' | t }}</p>
             </div>
           {% endif %}
           {% if form.errors %}
-            <div class="bx-contact__feedback bx-contact__feedback--error" role="alert" tabindex="-1">
-              <strong>{{ 'boxeup_sections.contact_error' | t }}</strong>
+            <div class="viri-contact__feedback viri-contact__feedback--error" role="alert">
               {{ form.errors | default_errors }}
             </div>
           {% endif %}
-          <div class="bx-contact__fields">
-            <div class="bx-contact__field">
-              <label for="BoxeupContactName">{{ 'boxeup_sections.contact_name' | t }} <span>*</span></label>
-              <input id="BoxeupContactName" type="text" name="contact[name]" autocomplete="name" value="{{ form.name | escape }}" placeholder="{{ 'boxeup_sections.contact_your_name' | t }}" required>
+          <div class="viri-contact__fields">
+            <div class="viri-contact__field">
+              <label for="ViriContactName">{{ 'boxeup_sections.contact_name' | t }} <span aria-hidden="true">*</span></label>
+              <input id="ViriContactName" name="contact[name]" type="text" autocomplete="name" placeholder="{{ 'boxeup_sections.contact_your_name' | t | escape }}" value="{{ form.name | escape }}" required>
             </div>
-            <div class="bx-contact__field">
-              <label for="BoxeupContactEmail">{{ 'boxeup_sections.contact_email' | t }} <span>*</span></label>
-              <input id="BoxeupContactEmail" type="email" name="contact[email]" autocomplete="email" autocapitalize="off" spellcheck="false" value="{{ form.email | escape }}" placeholder="exemplo@email.com" {% if form.errors contains 'email' %}aria-invalid="true" aria-describedby="BxContactEmailError"{% endif %} required>
-              {% if form.errors contains 'email' %}<small id="BxContactEmailError">{{ 'boxeup_sections.contact_email_error' | t }}</small>{% endif %}
+            <div class="viri-contact__field">
+              <label for="ViriContactEmail">{{ 'boxeup_sections.contact_email' | t }} <span aria-hidden="true">*</span></label>
+              <input id="ViriContactEmail" name="contact[email]" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" placeholder="{{ bx_contact_placeholder_email | escape }}" value="{{ form.email | escape }}" required {% if form.errors contains 'email' %}aria-invalid="true"{% endif %}>
             </div>
-            <div class="bx-contact__field bx-contact__field--wide">
-              <label for="BoxeupContactSubject">{{ vi_subject_label }} <span>*</span></label>
-              <select id="BoxeupContactSubject" name="contact[assunto]" required aria-required="true">
-                <option value="" disabled {% if form.assunto == blank %}selected{% endif %}>{{ vi_subject_prompt }}</option>
-                <option value="{{ vi_subject_product | escape }}" {% if form.assunto == vi_subject_product %}selected{% endif %}>{{ vi_subject_product }}</option>
-                <option value="{{ vi_subject_order | escape }}" {% if form.assunto == vi_subject_order %}selected{% endif %}>{{ vi_subject_order }}</option>
-                <option value="{{ vi_subject_returns | escape }}" {% if form.assunto == vi_subject_returns %}selected{% endif %}>{{ vi_subject_returns }}</option>
-                <option value="{{ vi_subject_partner | escape }}" {% if form.assunto == vi_subject_partner %}selected{% endif %}>{{ vi_subject_partner }}</option>
-                <option value="{{ vi_subject_other | escape }}" {% if form.assunto == vi_subject_other %}selected{% endif %}>{{ vi_subject_other }}</option>
+            <div class="viri-contact__field viri-contact__field--full">
+              <label for="ViriContactSubject">{{ 'boxeup_experience.contact_subject' | t }} <span aria-hidden="true">*</span></label>
+              <select id="ViriContactSubject" name="contact[assunto]" required>
+                <option value="" disabled {% if form.assunto == blank %}selected{% endif %}>{{ 'boxeup_experience.subject_placeholder' | t }}</option>
+                {%- assign bx_subjects = 'produto,encomenda,devolucao,parceria' | split: ',' -%}
+                {%- for value in bx_subjects -%}
+                  {%- assign bx_subject_label = 'boxeup_experience.subject_' | append: value -%}
+                  <option value="{{ value }}" {% if form.assunto == value %}selected{% endif %}>{{ bx_subject_label | t }}</option>
+                {%- endfor -%}
               </select>
             </div>
-            <div class="bx-contact__field bx-contact__field--wide">
-              <label for="BoxeupContactBody">{{ 'boxeup_sections.contact_message' | t }} <span>*</span></label>
-              <textarea id="BoxeupContactBody" name="contact[body]" rows="5" maxlength="1000" placeholder="{{ 'boxeup_sections.contact_message_help' | t }}" required>{{ form.body | escape }}</textarea>
-              <output class="bx-contact__counter" for="BoxeupContactBody" aria-live="off"><span data-bx-contact-count>0</span> / 1000</output>
+            <div class="viri-contact__field viri-contact__field--full">
+              <label for="ViriContactMessage">{{ 'boxeup_sections.contact_message' | t }} <span aria-hidden="true">*</span></label>
+              <textarea id="ViriContactMessage" name="contact[body]" rows="5" maxlength="1000" placeholder="{{ 'boxeup_sections.contact_message_help' | t | escape }}" required>{{ form.body | escape }}</textarea>
+              <output class="viri-contact__counter" for="ViriContactMessage"><span id="ViriContactCount">0</span> / 1000</output>
             </div>
           </div>
-          <button type="submit" class="bx-contact__submit">{{ 'boxeup_sections.contact_send_message' | t }} <span aria-hidden="true">→</span></button>
-          <p class="bx-contact__form-note">{{ 'boxeup_sections.contact_required' | t }}
-            {% if shop.privacy_policy != blank %} · <a href="{{ shop.privacy_policy.url }}">{{ 'boxeup_sections.contact_policy' | t }}</a>{% endif %}
-          </p>
+          <div class="viri-contact__form-actions">
+            <button class="viri-contact__submit" type="submit">{{ bx_contact_send | escape }} {% render 'viri-link-arrow' %}</button>
+            <p><span aria-hidden="true">*</span> {{ bx_contact_required | escape }}{% if shop.privacy_policy != blank %} · <a href="{{ shop.privacy_policy.url }}">{{ 'boxeup_sections.contact_policy' | t }}</a>{% endif %}</p>
+          </div>
         {% endform %}
+      </div>
     </div>
   </div>
 </section>
 <script>
   (() => {
-    const root = document.querySelector('.vi-min-contact');
-    if (!root) return;
-    const message = root.querySelector('#BoxeupContactBody');
-    const counter = root.querySelector('[data-bx-contact-count]');
-    if (message && counter) {
-      const updateCount = () => { counter.textContent = message.value.length; };
-      message.addEventListener('input', updateCount);
-      updateCount();
-    }
+    const field = document.getElementById('ViriContactMessage');
+    const count = document.getElementById('ViriContactCount');
+    if (!field || !count) return;
+    const update = () => { count.textContent = String(field.value.length); };
+    field.addEventListener('input', update);
+    update();
   })();
 </script>
 {% schema %}
@@ -135,7 +130,14 @@
   "name": "VIRIATTO | Contactos",
   "tag": "section",
   "class": "section-boxeup-contact",
-  "settings": [],
+  "settings": [
+    {"type": "image_picker", "id": "hero_image", "label": "Imagem do hero (legado)"},
+    {"type": "text", "id": "eyebrow", "label": "Etiqueta (legado)", "default": "ESTAMOS AQUI PARA AJUDAR"},
+    {"type": "text", "id": "heading", "label": "Título principal (legado)", "default": "Fala connosco."},
+    {"type": "textarea", "id": "description", "label": "Introdução (legado)", "default": "Precisas de ajuda a escolher equipamento, tens uma dúvida sobre um produto ou queres apresentar uma proposta de parceria? Envia-nos uma mensagem."},
+    {"type": "text", "id": "form_heading", "label": "Título do formulário (legado)", "default": "Envia-nos uma mensagem"},
+    {"type": "textarea", "id": "form_intro", "label": "Introdução ao formulário (legado)", "default": "Preenche os campos abaixo para entrar em contacto com a BOXEUP."}
+  ],
   "presets": [{"name": "VIRIATTO | Contactos"}]
 }
 {% endschema %}

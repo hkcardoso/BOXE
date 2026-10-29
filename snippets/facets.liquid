@@ -20,6 +20,18 @@
   assign sort_by = results.sort_by | default: results.default_sort_by
   assign total_active_values = 0
   assign default_presentation = 'text'
+  assign bx_filter_language = request.locale.iso_code | slice: 0, 2
+  assign bx_filter_mobile_label = 'Filtros'
+  assign bx_filter_close_label = 'Fechar filtros'
+  assign bx_brand_close_label = 'Fechar marcas'
+  if bx_filter_language == 'en'
+    assign bx_filter_mobile_label = 'Filters'
+    assign bx_filter_close_label = 'Close filters'
+    assign bx_brand_close_label = 'Close brands'
+  elsif bx_filter_language == 'es'
+    assign bx_filter_close_label = 'Cerrar filtros'
+    assign bx_brand_close_label = 'Cerrar marcas'
+  endif
   if results.url
     assign results_url = results.url
   else
@@ -28,6 +40,16 @@
   endif
 -%}
 
+{% assign bx_items = results.products | default: results.results %}
+{%- assign bx_visible_count = 0 -%}
+{%- for bx_item in bx_items -%}
+{%- assign bx_vendor = bx_item.vendor | downcase | strip -%}
+{%- assign bx_title = bx_item.title | downcase | strip -%}
+{%- unless bx_vendor == 'my store' or bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' -%}
+{%- assign bx_visible_count = bx_visible_count | plus: 1 -%}
+{%- endunless -%}
+{%- endfor -%}
+{% capture bx_count_label %}{% if paginate.pages > 1 %}{{ 'boxeup_experience.items_on_page' | t: count: bx_visible_count }}{% elsif results.terms != blank %}{{ 'templates.search.results_with_count' | t: terms: results.terms, count: bx_visible_count }}{% else %}{{ 'products.facets.product_count_simple' | t: count: bx_visible_count }}{% endif %}{% endcapture %}
 <div
   class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
   data-collection-id="{{ results.id }}"
@@ -53,9 +75,6 @@
               class="facets__wrapper"
             {% endif %}
           >
-            {%- if template.name == 'collection' and filter_type == 'horizontal' and filter_heading != blank -%}
-              <h2 class="viriatto-filter-title">{{ filter_heading | escape }}</h2>
-            {%- endif -%}
             {%- if filter_type == 'horizontal' and results.filters != empty -%}
               <h2 class="facets__heading caption-large text-body" id="verticalTitle" tabindex="-1">
                 {{ 'products.facets.filter_by_label' | t }}
@@ -343,6 +362,7 @@
               {% endcase %}
             {%- endfor -%}
             {%- if template.name == 'collection' -%}
+              {% render 'boxeup-brand-filter', variant: 'desktop' %}
               {% render 'boxeup-modality-filter', variant: 'desktop' %}
             {%- endif -%}
           </div>
@@ -431,16 +451,7 @@
           <div class="product-count light" role="status">
             <h2 class="product-count__text text-body">
               <span id="ProductCountDesktop">
-                {%- if results.results_count -%}
-                  {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
-                {%- elsif results.products_count == results.all_products_count -%}
-                  {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
-                {%- else -%}
-                  {{
-                    'products.facets.product_count'
-                    | t: product_count: results.products_count, count: results.all_products_count
-                  }}
-                {%- endif -%}
+                {{ bx_count_label }}
               </span>
             </h2>
             {%- render 'loading-spinner' -%}
@@ -461,13 +472,7 @@
             {{- 'icon-filter.svg' | inline_asset_content -}}
           </span>
           <span class="mobile-facets__open-label button-label medium-hide large-up-hide">
-            {%- if enable_filtering and enable_sorting -%}
-              {{ 'products.facets.filter_and_sort' | t }}
-            {%- elsif enable_filtering -%}
-              {{ 'products.facets.filter_button' | t }}
-            {%- elsif enable_sorting -%}
-              {{ 'products.facets.sort_button' | t }}
-            {%- endif -%}
+            {{ bx_filter_mobile_label | escape }}
           </span>
           <span class="mobile-facets__open-label button-label small-hide">
             {%- if enable_filtering -%}
@@ -486,31 +491,17 @@
           <div class="mobile-facets__inner gradient">
             <div class="mobile-facets__header">
               <div class="mobile-facets__header-inner">
-                <h2 class="mobile-facets__heading medium-hide large-up-hide">
-                  {%- if enable_filtering and enable_sorting -%}
-                    {{ 'products.facets.filter_and_sort' | t }}
-                  {%- elsif enable_filtering -%}
-                    {{ 'products.facets.filter_button' | t }}
-                  {%- elsif enable_sorting -%}
-                    {{ 'products.facets.sort_button' | t }}
-                  {%- endif -%}
-                </h2>
+                <button class="viri-filters__close" type="button" aria-label="{{ bx_filter_close_label | escape }}" onclick="this.closest('.mobile-facets__wrapper').querySelector('.mobile-facets__open-wrapper').click()">
+                  {{- 'icon-close.svg' | inline_asset_content -}}
+                </button>
+                <h2 class="mobile-facets__heading medium-hide large-up-hide">{{ bx_filter_mobile_label | escape }}</h2>
                 <h2 class="mobile-facets__heading small-hide">
                   {%- if enable_filtering -%}
                     {{ 'products.facets.filter_button' | t }}
                   {%- endif -%}
                 </h2>
                 <p class="mobile-facets__count">
-                  {%- if results.results_count -%}
-                    {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
-                  {%- elsif results.products_count == results.all_products_count -%}
-                    {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
-                  {%- else -%}
-                    {{
-                      'products.facets.product_count'
-                      | t: product_count: results.products_count, count: results.all_products_count
-                    }}
-                  {%- endif -%}
+                  {{ bx_count_label }}
                 </p>
               </div>
             </div>
@@ -523,6 +514,9 @@
               {%- endif -%}
               {%- if enable_filtering -%}
                 {%- for filter in results.filters -%}
+                  {%- if template.name == 'collection' and filter.param_name == 'filter.p.vendor' -%}
+                    {%- continue -%}
+                  {%- endif -%}
                   {% liquid
                     assign presentation = filter.presentation | default: default_presentation
                     if presentation == 'image'
@@ -796,6 +790,38 @@
     </details>
   </menu-drawer>
 
+  {%- if template.name == 'collection' -%}
+    <button
+      type="button"
+      class="viri-brands__trigger medium-hide large-up-hide"
+      aria-haspopup="dialog"
+      aria-controls="ViriBrandDialog-{{ section.id }}"
+      onclick="document.getElementById('ViriBrandDialog-{{ section.id }}').showModal()"
+    >
+      <svg class="viri-brands__trigger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 7.5V4h8l10 10-7 7L3 10.5v-3Z"></path>
+        <circle cx="7.5" cy="8" r="1"></circle>
+      </svg>
+      <span>{{ 'boxeup_experience.brands' | t | escape }}</span>
+    </button>
+    <dialog
+      class="viri-brands__dialog"
+      id="ViriBrandDialog-{{ section.id }}"
+      aria-labelledby="ViriBrandDialogTitle-{{ section.id }}"
+      onclick="if(event.target === this) this.close()"
+    >
+      <div class="viri-brands__header">
+        <h2 id="ViriBrandDialogTitle-{{ section.id }}">{{ 'boxeup_experience.brands' | t | escape }}</h2>
+        <button type="button" class="viri-brands__close" aria-label="{{ bx_brand_close_label | escape }}" onclick="this.closest('dialog').close()">
+          {{- 'icon-close.svg' | inline_asset_content -}}
+        </button>
+      </div>
+      <div class="viri-brands__body">
+        {% render 'viri-mobile-filter-brands' %}
+      </div>
+    </dialog>
+  {%- endif -%}
+
   <div class="active-facets active-facets-mobile medium-hide large-up-hide">
     {%- for filter in results.filters -%}
       {%- for value in filter.active_values -%}
@@ -883,25 +909,16 @@
     </facet-filters-form>
   {%- endif -%}
   <div
-    class="product-count light{% if filter_type == 'vertical' or filter_type == 'horizontal' %} medium-hide large-up-hide{% endif %}"
+    class="product-count light{% if filter_type == 'vertical' or filter_type == 'horizontal' %} medium-hide large-up-hide{% endif %}{% if template.name == 'collection' %} small-hide{% endif %}"
     role="status"
   >
     <h2 class="product-count__text text-body">
       <span
         id="ProductCount"
-        data-product-count="{{ results.products_count | default: results.results_count }}"
+        data-product-count="{{ bx_visible_count }}"
         data-total-count="{{ results.all_products_count | default: results.products_count | default: results.results_count }}"
       >
-        {%- if results.results_count -%}
-          {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
-        {%- elsif results.products_count == results.all_products_count -%}
-          {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
-        {%- else -%}
-          {{
-            'products.facets.product_count'
-            | t: product_count: results.products_count, count: results.all_products_count
-          }}
-        {%- endif -%}
+        {{ bx_count_label }}
       </span>
     </h2>
     {%- render 'loading-spinner' -%}
@@ -953,3 +970,4 @@
     </facet-filters-form>
   {%- endif -%}
 </div>
+

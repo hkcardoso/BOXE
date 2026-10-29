@@ -531,39 +531,6 @@
     }
   }
 
-  /* Outline pictograms only in the existing Catalogue and Modalidades items.
-     Brand names remain text-only. */
-  .header-wrapper .boxeup-nav-modalities__label-wrap{
-    display:inline-flex;
-    align-items:center;
-    gap:11px;
-    min-width:0;
-    text-align:left;
-  }
-  .header-wrapper .boxeup-nav-modalities__label-wrap > span{
-    min-width:0;
-  }
-  .header-wrapper .boxeup-nav-modalities__icon{
-    display:block;
-    width:21px;
-    height:21px;
-    flex:0 0 21px;
-    color:#c7c8ce;
-    opacity:.9;
-    transition:color .15s ease,opacity .15s ease;
-  }
-  .header-wrapper .boxeup-nav-modalities__link:hover .boxeup-nav-modalities__icon,
-  .header-wrapper .boxeup-nav-modalities__link:focus-visible .boxeup-nav-modalities__icon,
-  .header-wrapper .boxeup-nav-modalities__link[aria-current="page"] .boxeup-nav-modalities__icon{
-    color:#fff;
-    opacity:1;
-  }
-  .header-wrapper .boxeup-nav-modalities__link--disabled .boxeup-nav-modalities__icon{
-    opacity:.45;
-  }
-  @media (prefers-reduced-motion:reduce){
-    .header-wrapper .boxeup-nav-modalities__icon{transition:none;}
-  }
 
   /* BOXEUP | Refined navigation typography: distinct from the store's body font.
      Uses local system fonts; no remote font request or layout changes. */
@@ -603,7 +570,8 @@
     text-transform: none !important;
   }
 
-/* VIRIATTO — deterministic homepage header grid */
+
+  /* VIRIATTO — deterministic homepage header grid */
   body.boxeup-page-home #MainContent[data-template="index"]{
     margin-top:0!important;position:relative;z-index:1
   }
@@ -704,140 +672,97 @@
       height:auto!important;max-height:47px!important;object-fit:contain!important
     }
   }
+  /* Search icon: explicit SVG dimensions avoid an oversized black circle. */
+  body.boxeup-page-home .vh-header-search__form > svg {
+    display: block !important;
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    flex: 0 0 20px !important;
+    fill: none !important;
+    stroke: currentColor !important;
+    color: #bfc2c9 !important;
+  }
   @media(max-width:989px){
     body.boxeup-page-home #MainContent[data-template="index"]{margin-top:0!important}
-    body.boxeup-page-home .header-wrapper .header .vh-header-search{display:none!important}
+    body.boxeup-page-home .header-wrapper .header .vh-header-search{display:block!important}
   }
 
 
-
-/* VIRIATTO — homepage navigation grid, shared by ALL storefront pages */
-  body.viri-layout-unified #MainContent[data-template="index"]{
-    margin-top:0!important;position:relative;z-index:1
+  /* VIRIATTO 2026-10-28 / GitHub-to-Shopify visual sync fallback */
+  /* The product breadcrumb must remain legible over the dark detail-page background. */
+  body #MainContent[data-template="product"] nav.boxeup-breadcrumb.boxeup-breadcrumb--product > span[aria-current="page"] {
+    color: #f3f4f6 !important;
+    -webkit-text-fill-color: #f3f4f6 !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+    mix-blend-mode: normal !important;
+    filter: none !important;
   }
-  body.viri-layout-unified .section-header,
-  body.viri-layout-unified .shopify-section-header-sticky{z-index:220!important}
-  @media(min-width:990px){
-    body.viri-layout-unified .header-wrapper{
-      background:#090a0d!important;
-      border-bottom:1px solid rgba(255,255,255,.1)!important;
-      box-shadow:none!important;
-      backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-      overflow:visible!important
-    }
-    body.viri-layout-unified .header-wrapper .header.header--middle-left:not(.drawer-menu),
-    body.viri-layout-unified .header-wrapper .header:not(.drawer-menu){
-      box-sizing:border-box!important;
-      display:grid!important;width:100%!important;max-width:1600px!important;
-      margin:0 auto!important;
-      padding:7px clamp(18px,4.7vw,78px) 5px!important;
-      min-height:109px!important;
-      grid-template-columns:minmax(175px,220px) minmax(0,1fr) minmax(135px,180px)!important;
-      grid-template-rows:58px 39px!important;
-      grid-template-areas:"viri-logo viri-search viri-icons" "viri-nav viri-nav viri-nav"!important;
-      column-gap:clamp(18px,2.4vw,40px)!important;
-      row-gap:0!important;
-      align-items:center!important;
-      overflow:visible!important
-    }
-    body.viri-layout-unified .header-wrapper .header.header--middle-left .header__heading,
-    body.viri-layout-unified .header-wrapper .header:not(.drawer-menu) .header__heading,
-    body.viri-layout-unified .header-wrapper .header:not(.drawer-menu) > .header__heading-link{
-      grid-area:viri-logo!important;
-      grid-row:1!important;grid-column:1!important;
-      justify-self:start!important;align-self:center!important;
-      margin:0!important;min-width:0!important;padding:0!important
-    }
-    body.viri-layout-unified .header-wrapper .header.header--middle-left .vh-header-search,
-    body.viri-layout-unified .header-wrapper .header:not(.drawer-menu) .vh-header-search{
-      grid-area:viri-search!important;
-      grid-row:1!important;grid-column:2!important;
-      display:block!important;
-      box-sizing:border-box!important;
-      justify-self:center!important;align-self:center!important;
-      width:min(100%,610px)!important;min-width:0!important;max-width:100%!important;
-      margin:0!important;padding:0!important;
-      position:relative!important;z-index:3!important
-    }
-    body.viri-layout-unified .header-wrapper .header.header--middle-left .header__icons,
-    body.viri-layout-unified .header-wrapper .header:not(.drawer-menu) .header__icons{
-      grid-area:viri-icons!important;
-      grid-row:1!important;grid-column:3!important;
-      justify-self:end!important;align-self:center!important;
-      display:flex!important;align-items:center!important;
-      min-width:0!important;margin:0!important;padding:0!important;gap:5px!important
-    }
-    body.viri-layout-unified .header-wrapper .header.header--middle-left .header__inline-menu,
-    body.viri-layout-unified .header-wrapper .header:not(.drawer-menu) .header__inline-menu{
-      grid-area:viri-nav!important;
-      grid-row:2!important;grid-column:1/-1!important;
-      display:block!important;
-      justify-self:start!important;align-self:center!important;
-      position:relative!important;
-      margin:0!important;padding:0!important;
-      min-width:0!important;width:auto!important;
-      transform:none!important;z-index:6!important
-    }
-    body.viri-layout-unified .header-wrapper .header .header__inline-menu .list-menu--inline{
-      display:flex!important;flex-flow:row nowrap!important;justify-content:flex-start!important;
-      align-items:center!important;gap:clamp(14px,2.1vw,30px)!important
-    }
-    body.viri-layout-unified .header-wrapper .header__inline-menu .header__menu-item{
-      display:inline-flex!important;white-space:nowrap!important;
-      font-size:12px!important;padding:8px 2px!important;
-      font-weight:600!important;letter-spacing:.015em!important
-    }
-    body.viri-layout-unified .header-wrapper .header .header__search,
-    body.viri-layout-unified .header-wrapper .header .header__icon--search,
-    body.viri-layout-unified .header-wrapper .header .vs-header-search-trigger{
-      display:none!important;visibility:hidden!important
-    }
-    body.viri-layout-unified .header-wrapper .header .vh-header-search__form{
-      width:100%!important;height:42px!important;
-      display:flex!important;align-items:center!important;
-      padding:0 13px!important;gap:11px!important;
-      background:#222429!important;border:1px solid #474a50!important;
-      border-radius:5px!important
-    }
-    body.viri-layout-unified .header-wrapper .header .vh-header-search__form:focus-within{
-      border-color:#babdc4!important;background:#2a2c32!important
-    }
-    body.viri-layout-unified .header-wrapper .header .vh-header-search__form input{
-      display:block!important;width:100%!important;min-width:0!important;height:100%!important;
-      border:0!important;background:transparent!important;color:#fff!important;
-      padding:0!important;margin:0!important;font-size:13px!important;
-      outline:0!important;box-shadow:none!important
-    }
-    body.viri-layout-unified .header-wrapper .header .viriatto-site-logo{
-      width:clamp(165px,14vw,200px)!important;max-width:100%!important;
-      height:auto!important;max-height:47px!important;object-fit:contain!important
+  /* Show the real compare-at-price percentage more prominently on product cards. */
+  body #MainContent .vh-home .vh-tile .vh-tile__discount:not(.vh-tile__discount--sold) {
+    min-height: 34px !important;
+    padding: 8px 13px !important;
+    border: 1px solid #ff6577 !important;
+    border-radius: 5px !important;
+    background: #e8213f !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    font-weight: 850 !important;
+    line-height: 1 !important;
+    letter-spacing: .01em !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,.18);
+    box-shadow: 0 5px 17px rgba(0,0,0,.34);
+  }
+  @media(max-width: 749px) {
+    body #MainContent .vh-home .vh-tile .vh-tile__discount:not(.vh-tile__discount--sold) {
+      min-height: 29px !important;
+      padding: 6px 10px !important;
+      font-size: 12px !important;
     }
   }
-  @media(max-width:989px){
-    body.viri-layout-unified #MainContent[data-template="index"]{margin-top:0!important}
-    body.viri-layout-unified .header-wrapper .header .vh-header-search{display:none!important}
+  /* Ensure the search magnifier remains an outline instead of a filled circle. */
+  body .header-wrapper .vh-header-search__form svg {
+    display: block !important;
+    flex: 0 0 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+    color: #bfc2c9 !important;
+    fill: none !important;
+    stroke: currentColor !important;
   }
 
 
-
-
-  /* VIRIATTO: fixed CSS magnifier instead of an unbounded SVG circle. */
+  /* VIRIATTO: CSS magnifier removes the oversized dark SVG circle. */
   body .header-wrapper .vh-header-search__form > .vh-header-search__magnifier {
-    display:inline-block!important;position:relative!important;
-    box-sizing:border-box!important;width:20px!important;min-width:20px!important;
-    height:20px!important;flex:0 0 20px!important;overflow:visible!important;
+    display:inline-block!important;
+    position:relative!important;
+    box-sizing:border-box!important;
+    width:20px!important;
+    min-width:20px!important;
+    height:20px!important;
+    flex:0 0 20px!important;
+    overflow:visible!important;
   }
   body .header-wrapper .vh-header-search__magnifier::before {
-    content:""!important;position:absolute!important;left:1px;top:1px;
-    box-sizing:border-box!important;width:13px;height:13px;
-    border:1.8px solid #bfc2c9!important;border-radius:50%!important;
+    content:""!important;
+    position:absolute!important;
+    left:1px;top:1px;
+    box-sizing:border-box!important;
+    width:13px;height:13px;
+    border:1.8px solid #bfc2c9!important;
+    border-radius:50%!important;
     background:transparent!important;
   }
   body .header-wrapper .vh-header-search__magnifier::after {
-    content:""!important;position:absolute!important;left:13px;top:14px;
-    width:8px;height:1.8px;background:#bfc2c9!important;
+    content:""!important;
+    position:absolute!important;
+    left:13px;top:14px;
+    width:8px;height:1.8px;
+    background:#bfc2c9!important;
     border:0!important;border-radius:3px!important;
-    transform:rotate(45deg)!important;transform-origin:0 50%;
+    transform:rotate(45deg)!important;
+    transform-origin:0 50%;
   }
 
 </style>
@@ -915,13 +840,34 @@
 
     {%- if section.settings.logo_position != 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
+        <div class="header__heading">
       {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-        <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-logo-original-transparente.png?v=1793188281" alt="VIRIATTO" class="viriatto-site-logo" width="682" height="78" loading="eager" fetchpriority="high">
+        {%- if settings.logo != blank -%}
+          <div class="header__heading-logo-wrapper">
+            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+            {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+            {{
+              settings.logo
+              | image_url: width: 600
+              | image_tag:
+                class: 'header__heading-logo motion-reduce',
+                widths: widths,
+                height: logo_height,
+                width: settings.logo_width,
+                alt: logo_alt,
+                sizes: sizes,
+                preload: true
+            }}
+          </div>
+        {%- else -%}
+          <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-logo-original-transparente.png?v=1793188281" alt="VIRIATTO" class="viriatto-site-logo" width="682" height="78" style="display:block;width:190px;max-width:100%;height:auto;max-height:47px;object-fit:contain" loading="eager" fetchpriority="high">
+        {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
-        </h1>
+        </div>
       {%- endif -%}
     {%- endif -%}
 
@@ -937,30 +883,47 @@
 
     {%- if section.settings.logo_position == 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
+        <div class="header__heading">
       {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-        <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-logo-original-transparente.png?v=1793188281" alt="VIRIATTO" class="viriatto-site-logo" width="682" height="78" loading="eager" fetchpriority="high">
+        {%- if settings.logo != blank -%}
+          <div class="header__heading-logo-wrapper">
+            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+            {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
+            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+            {{
+              settings.logo
+              | image_url: width: 600
+              | image_tag:
+                class: 'header__heading-logo',
+                widths: widths,
+                height: logo_height,
+                width: settings.logo_width,
+                alt: logo_alt,
+                sizes: sizes,
+                preload: true
+            }}
+          </div>
+        {%- else -%}
+          <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-logo-original-transparente.png?v=1793188281" alt="VIRIATTO" class="viriatto-site-logo" width="682" height="78" style="display:block;width:190px;max-width:100%;height:auto;max-height:47px;object-fit:contain" loading="eager" fetchpriority="high">
+        {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
-        </h1>
+        </div>
       {%- endif -%}
     {%- endif -%}
 
-    {%- comment -%}Consistent searchable header on every VIRIATTO storefront page.{%- endcomment -%}
-      <form class="vh-header-search" data-vs-open action="{{ routes.search_url }}" method="get" role="search" aria-haspopup="dialog" aria-controls="ViriattoSearchDialog">
+      <form class="vh-header-search" action="{{ routes.search_url }}" method="get" role="search">
         <label class="vh-header-search__form">
           <span class="visually-hidden">{{ 'general.search.search' | t }}</span>
           <span class="vh-header-search__magnifier" aria-hidden="true"></span>
-          <input type="search" data-vs-home-input name="q" placeholder="{% assign vh_header_lang = request.locale.iso_code | slice: 0, 2 %}{% case vh_header_lang %}{% when 'en' %}Search products, brands...{% when 'es' %}Buscar productos, marcas...{% else %}Pesquisar produtos, marcas...{% endcase %}" autocomplete="off">
+          <input type="search" name="q" placeholder="{% assign vh_header_lang = request.locale.iso_code | slice: 0, 2 %}{% case vh_header_lang %}{% when 'en' %}Search products, brands...{% when 'es' %}Buscar productos, marcas...{% else %}Pesquisar produtos, marcas...{% endcase %}" autocomplete="off">
           <input type="hidden" name="options[prefix]" value="last">
         </label>
       </form>
 
     <div class="header__icons{% if section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
-      <button type="button" class="header__icon vs-header-search-trigger link focus-inset" data-vs-open aria-label="{{ 'general.search.search' | t }}">
-        <span class="svg-wrapper"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.7" cy="10.7" r="6.5"></circle><path d="m16 16 5 5"></path></svg></span>
-      </button>
       <div class="desktop-localization-wrapper">
         {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
           <localization-form class="small-hide medium-hide" data-prevent-hide>
@@ -974,9 +937,16 @@
         {%- endif -%}
       </div>
 
+      {% render 'header-search', input_id: 'Boxeup-Header-Search' %}
       {%- if shop.customer_accounts_enabled -%}
         {%- if customer -%}
-          {% render 'viriatto-account-session', customer: customer, section_id: section.id %}
+          <shopify-account
+            menu="{{ settings.customer_account_menu | default: 'customer-account-main-menu' }}"
+            class="header__icon header__icon--account link focus-inset"
+          >
+            <span slot="signed-out-avatar" class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
+            <span slot="signed-out-avatar" class="visually-hidden">{{ 'customer.log_in' | t }}</span>
+          </shopify-account>
         {%- else -%}
           <button
             type="button"
@@ -999,50 +969,7 @@
         {%- endcase -%}
       {%- endfor -%}
 
-      {%- liquid
-        assign bx_cart_language = request.locale.iso_code | slice: 0, 2
-        case bx_cart_language
-          when 'en'
-            assign bx_cart_preview_label = 'Shopping cart'
-            assign bx_cart_subtotal_label = 'Subtotal'
-            assign bx_cart_view_label = 'View cart'
-            assign bx_cart_checkout_label = 'Checkout'
-            assign bx_cart_empty_label = 'Your cart is empty.'
-            assign bx_cart_product_count = 'items'
-            assign bx_cart_loading = 'Loading cart…'
-            assign bx_cart_remove = 'Remove item'
-            assign bx_cart_update_error = 'Could not update your cart.'
-          when 'es'
-            assign bx_cart_preview_label = 'Carrito de compras'
-            assign bx_cart_subtotal_label = 'Subtotal'
-            assign bx_cart_view_label = 'Ver carrito'
-            assign bx_cart_checkout_label = 'Finalizar compra'
-            assign bx_cart_empty_label = 'Tu carrito está vacío.'
-            assign bx_cart_product_count = 'artículos'
-            assign bx_cart_loading = 'Cargando carrito…'
-            assign bx_cart_remove = 'Eliminar artículo'
-            assign bx_cart_update_error = 'No se ha podido actualizar el carrito.'
-          else
-            assign bx_cart_preview_label = 'Carrinho de compras'
-            assign bx_cart_subtotal_label = 'Subtotal'
-            assign bx_cart_view_label = 'Ver carrinho'
-            assign bx_cart_checkout_label = 'Finalizar a compra'
-            assign bx_cart_empty_label = 'O teu carrinho está vazio.'
-            assign bx_cart_product_count = 'artigos'
-            assign bx_cart_loading = 'A carregar carrinho…'
-            assign bx_cart_remove = 'Remover artigo'
-            assign bx_cart_update_error = 'Não foi possível atualizar o carrinho.'
-        endcase
-      -%}
-      <div class="bx-cart-hover" data-bx-cart-hover
-        data-bx-json-url="{{ routes.root_url }}cart.js"
-        data-bx-change-url="{{ routes.root_url }}cart/change.js"
-        data-bx-currency="{{ cart.currency.iso_code | default: shop.currency }}"
-        data-bx-locale="{{ request.locale.iso_code }}"
-        data-bx-remove="{{ bx_cart_remove | escape }}"
-        data-bx-error="{{ bx_cart_update_error | escape }}"
-        data-bx-items="{{ bx_cart_product_count | escape }}">
-        <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble" data-bx-cart-direct aria-describedby="BxCartPreviewLabel">
+      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         <span class="svg-wrapper">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon {% if cart == empty %}icon-cart-empty{% else %}icon-cart{% endif %}" viewBox="1.5 1 21 21" role="img" aria-label="{{ 'templates.cart.cart' | t | escape }}" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 8.5h14l1 11.5H4L5 8.5Z" />
@@ -1059,24 +986,6 @@
           </div>
         {%- endif -%}
       </a>
-        <div class="bx-cart-preview" data-bx-cart-preview aria-hidden="true">
-          <div class="bx-cart-preview__head">
-            <div><strong id="BxCartPreviewLabel">{{ bx_cart_preview_label }}</strong><small data-bx-cart-count>{{ cart.item_count }} {{ bx_cart_product_count }}</small></div>
-          </div>
-          <div class="bx-cart-preview__items" data-bx-cart-items>
-            <p class="bx-cart-preview__status">{{ bx_cart_loading }}</p>
-          </div>
-          <div class="bx-cart-preview__bottom">
-            <div class="bx-cart-preview__subtotal"><span>{{ bx_cart_subtotal_label }}</span><strong data-bx-cart-total>{{ cart.total_price | money_with_currency }}</strong></div>
-            <div class="bx-cart-preview__buttons">
-              <a href="{{ routes.cart_url }}" class="bx-cart-preview__view">{{ bx_cart_view_label }}</a>
-              <a href="/checkout" class="bx-cart-preview__checkout">{{ bx_cart_checkout_label }} <span aria-hidden="true">→</span></a>
-            </div>
-          </div>
-          <p class="bx-cart-preview__sr-status visually-hidden" data-bx-cart-status aria-live="polite"></p>
-          <template data-bx-cart-empty>{{ bx_cart_empty_label }}</template>
-        </div>
-      </div>
     </div>
   </header>
 </{{ header_tag }}>
@@ -1086,8 +995,6 @@
     {% render 'viriatto-account-modal' %}
   {%- endunless -%}
 {%- endif -%}
-
-{%- render 'viriatto-live-search' -%}
 
 {%- if settings.cart_type == 'notification' -%}
   {%- render 'cart-notification',
@@ -1211,9 +1118,7 @@
   }
 
   // The account `open` event is composed but does not bubble, so listen during capture.
-  // Anchor the dialog to the bottom of the account button itself. The header group can be
-  // much taller than the button's row (for example, a top-left logo pushes the menu to a
-  // second row), so anchoring to the section bottom drops the dialog too low.
+  // Anchor the account sheet below the full header, including the second navigation row.
   document.addEventListener(
     'open',
     (event) => {
@@ -1456,3 +1361,4 @@
   ]
 }
 {% endschema %}
+

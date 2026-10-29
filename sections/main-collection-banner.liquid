@@ -9,65 +9,22 @@
   }
 {%- endstyle -%}
 
-{%- liquid
-  assign vc_language = request.locale.iso_code | slice: 0, 2
-  assign vc_title = collection.title
-  case vc_language
-    when 'en'
-      assign vc_home = 'Home'
-      assign vc_kicker = 'VIRIATTO / COMBAT EQUIPMENT'
-      assign vc_all_title = 'Catalogue'
-      assign vc_description = 'Find the right equipment for your next session.'
-      assign vc_item_label = 'products'
-      assign vc_browse = 'Explore products'
-      assign vc_breadcrumb = 'Navigation'
-    when 'es'
-      assign vc_home = 'Inicio'
-      assign vc_kicker = 'VIRIATTO / EQUIPAMIENTO DE COMBATE'
-      assign vc_all_title = 'Catálogo'
-      assign vc_description = 'Encuentra el equipo adecuado para tu próximo entrenamiento.'
-      assign vc_item_label = 'productos'
-      assign vc_browse = 'Ver productos'
-      assign vc_breadcrumb = 'Navegación'
-    else
-      assign vc_home = 'Início'
-      assign vc_kicker = 'VIRIATTO / EQUIPAMENTO DE COMBATE'
-      assign vc_all_title = 'Catálogo'
-      assign vc_description = 'Encontra o equipamento certo para o próximo treino.'
-      assign vc_item_label = 'produtos'
-      assign vc_browse = 'Ver produtos'
-      assign vc_breadcrumb = 'Navegação'
-  endcase
-  if collection.handle == 'all'
-    assign vc_title = vc_all_title
-  endif
--%}
-{{ 'viriatto-collection-intro.css' | asset_url | stylesheet_tag }}
-<div class="collection-hero viri-catalog-intro{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
+<div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
   <div class="collection-hero__inner page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-    <nav class="boxeup-breadcrumb viri-catalog-intro__breadcrumb" aria-label="{{ vc_breadcrumb | escape }}">
-      <a href="{{ routes.root_url }}">{{ vc_home }}</a>
-      <span class="viri-catalog-intro__slash" aria-hidden="true">/</span>
-      <span aria-current="page">{{ vc_title | escape }}</span>
-    </nav>
-    <div class="viri-catalog-intro__row">
-      <div class="collection-hero__text-wrapper viri-catalog-intro__text">
-        <p class="boxeup-collection-kicker viri-catalog-intro__kicker"><span class="viri-catalog-intro__mark" aria-hidden="true"></span>{{ vc_kicker }}</p>
-        <h1 class="collection-hero__title">
-          <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
-          {{- vc_title | escape -}}
-        </h1>
-        {%- if collection.handle == 'all' -%}
-          <p class="viri-catalog-intro__description">{{ vc_description }}</p>
-        {%- elsif section.settings.show_collection_description and collection.description != blank -%}
-          <div class="collection-hero__description rte viri-catalog-intro__description">{{ collection.description }}</div>
-        {%- endif -%}
-      </div>
-      <a class="viri-catalog-intro__browse" href="#ProductGridContainer" aria-label="{{ vc_browse | escape }}">
-        <span class="viri-catalog-intro__browse-label">{{ vc_browse }}</span>
-        <span class="viri-catalog-intro__total">{{ collection.products_count }} {{ vc_item_label }}</span>
-        <span class="viri-catalog-intro__arrow" aria-hidden="true">↓</span>
-      </a>
+    <div class="collection-hero__text-wrapper">
+      <nav class="boxeup-breadcrumb" aria-label="Percurso de navegação">
+        <a href="{{ routes.root_url }}">Início</a><span aria-hidden="true">/</span>
+        <span aria-current="page">{{ collection.title | escape }}</span>
+      </nav>
+      <p class="boxeup-collection-kicker">BOXEUP <span>—</span> EQUIPAMENTO DE COMBATE</p>
+      <h1 class="collection-hero__title">
+        <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+        {{- collection.title | escape -}}
+      </h1>
+
+      {%- if section.settings.show_collection_description -%}
+        <div class="collection-hero__description rte">{{ collection.description }}</div>
+      {%- endif -%}
     </div>
 
     {%- if section.settings.show_collection_image and collection.image -%}

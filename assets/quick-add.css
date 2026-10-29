@@ -669,7 +669,7 @@ quick-add-modal .quick-add-modal__toggle .icon{
     grid-template-columns:1fr!important;gap:11px!important;
   }
   quick-add-modal .bxq-gallery__main{
-    max-height:220px!important;aspect-ratio:unset!important;
+    height:clamp(200px,58vw,250px)!important;max-height:none!important;aspect-ratio:auto!important;
   }
   quick-add-modal .bxq-gallery__thumbs{gap:6px;padding-top:6px}
   quick-add-modal .bxq-gallery__thumb{width:43px;min-width:43px;height:43px}

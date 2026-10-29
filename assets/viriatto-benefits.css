@@ -1,0 +1,149 @@
+/* VIRIATTO | Reassurance strip: balanced desktop row, compact touch layout. */
+#MainContent .section-boxeup-home .vh-home .viri-benefits,
+#MainContent .section-boxeup-home .vh-home .viri-benefits *{
+  box-sizing:border-box;
+}
+#MainContent .section-boxeup-home .vh-home > .viri-benefits{
+  display:block!important;
+  position:relative;
+  clear:both;
+  width:100%!important;
+  max-width:none!important;
+  margin:14px 0 0!important;
+  padding:0!important;
+  border-top:1px solid #303238;
+  border-bottom:1px solid #303238;
+  background:#111215!important;
+}
+#MainContent .section-boxeup-home .vh-home .viri-benefits__grid{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  width:min(1360px,calc(100% - 48px))!important;
+  min-width:0!important;
+  max-width:1360px!important;
+  margin:0 auto!important;
+  padding:13px 0!important;
+  gap:0!important;
+  align-items:stretch!important;
+  justify-items:stretch!important;
+}
+#MainContent .section-boxeup-home .vh-home .viri-benefits__item{
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:center!important;
+  box-sizing:border-box!important;
+  min-width:0!important;
+  width:100%!important;
+  min-height:66px!important;
+  margin:0!important;
+  padding:12px 20px!important;
+  gap:13px!important;
+  border:0!important;
+  border-right:1px solid #33353b!important;
+  border-radius:0!important;
+  background:transparent!important;
+  text-align:left!important;
+}
+#MainContent .section-boxeup-home .vh-home .viri-benefits__item:last-child{
+  border-right:0!important;
+}
+#MainContent .section-boxeup-home .vh-home .viri-benefits__item > svg{
+  display:block!important;
+  flex:0 0 26px!important;
+  width:26px!important;
+  height:26px!important;
+  min-width:26px!important;
+  color:#f5f5f7!important;
+  stroke:currentColor;
+}
+#MainContent .section-boxeup-home .vh-home .viri-benefits__copy{
+  display:flex!important;
+  flex:1 1 auto!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  min-width:0!important;
+  gap:4px!important;
+  margin:0!important;
+  padding:0!important;
+}
+#MainContent .section-boxeup-home .vh-home .viri-benefits__copy strong{
+  display:block!important;
+  margin:0!important;
+  color:#f7f7f8!important;
+  font:750 12px/1.25 var(--font-body-family,Arial,sans-serif)!important;
+  letter-spacing:.005em!important;
+  text-transform:uppercase;
+}
+#MainContent .section-boxeup-home .vh-home .viri-benefits__copy small{
+  display:block!important;
+  margin:0!important;
+  color:#abb0b9!important;
+  font:400 11px/1.4 var(--font-body-family,Arial,sans-serif)!important;
+  overflow-wrap:break-word;
+}
+@media(min-width:990px) and (max-width:1199px){
+  #MainContent .section-boxeup-home .vh-home .viri-benefits__item{
+    justify-content:flex-start!important;
+    padding:12px 14px!important;
+    gap:10px!important;
+  }
+}
+@media(max-width:989px){
+  #MainContent .section-boxeup-home .vh-home .viri-benefits__grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    width:calc(100% - 36px)!important;
+    padding:8px 0!important;
+  }
+  #MainContent .section-boxeup-home .vh-home .viri-benefits__item{
+    justify-content:flex-start!important;
+    min-height:69px!important;
+    padding:13px 15px!important;
+  }
+  #MainContent .section-boxeup-home .vh-home .viri-benefits__item:nth-child(2){
+    border-right:0!important;
+  }
+  #MainContent .section-boxeup-home .vh-home .viri-benefits__item:nth-child(-n+2){
+    border-bottom:1px solid #33353b!important;
+  }
+}
+@media(max-width:749px){
+  #MainContent .section-boxeup-home .vh-home > .viri-benefits{
+    margin-top:11px!important;
+  }
+  #MainContent .section-boxeup-home .vh-home .viri-benefits__grid{
+    width:calc(100% - 24px)!important;
+    padding:5px 0!important;
+  }
+  #MainContent .section-boxeup-home .vh-home .viri-benefits__item{
+    min-height:75px!important;
+    padding:12px 10px!important;
+    gap:9px!important;
+  }
+  #MainContent .section-boxeup-home .vh-home .viri-benefits__item > svg{
+    flex-basis:21px!important;
+    min-width:21px!important;
+    width:21px!important;
+    height:21px!important;
+  }
+  #MainContent .section-boxeup-home .vh-home .viri-benefits__copy strong{
+    font-size:10px!important;
+  }
+  #MainContent .section-boxeup-home .vh-home .viri-benefits__copy small{
+    font-size:9px!important;
+    line-height:1.4!important;
+  }
+}
+@media(max-width:355px){
+  #MainContent .section-boxeup-home .vh-home .viri-benefits__grid{
+    width:calc(100% - 16px)!important;
+  }
+  #MainContent .section-boxeup-home .vh-home .viri-benefits__item{
+    padding:11px 7px!important;
+    gap:7px!important;
+  }
+  #MainContent .section-boxeup-home .vh-home .viri-benefits__copy strong{
+    font-size:9px!important;
+  }
+}

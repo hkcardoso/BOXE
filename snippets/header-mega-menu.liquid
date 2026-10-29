@@ -8,18 +8,6 @@
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
-      {%- liquid
-        assign vi_hide_primary_link = false
-        assign vi_link_label = link.title | downcase | strip
-        if link.url contains '/pages/sobre-a-boxeup' or link.url contains '/pages/contact'
-          assign vi_hide_primary_link = true
-        elsif link.handle == 'sobre-nos' or link.handle == 'sobre-a-boxeup' or link.handle == 'about-us' or link.handle == 'about' or link.handle == 'contactos' or link.handle == 'contacto' or link.handle == 'contact' or link.handle == 'contact-us'
-          assign vi_hide_primary_link = true
-        elsif vi_link_label == 'sobre nós' or vi_link_label == 'about us' or vi_link_label == 'contactos' or vi_link_label == 'contacts' or vi_link_label == 'contact' or vi_link_label == 'contacto'
-          assign vi_hide_primary_link = true
-        endif
-      -%}
-      {%- unless vi_hide_primary_link -%}
       <li>
         {%- if link.links != blank -%}
           <header-menu>
@@ -101,8 +89,6 @@
           </a>
         {%- endif -%}
       </li>
-    {%- endunless -%}
-      {%- endfor -%}
-    {% render 'viriatto-nav-specials', mode: 'desktop' %}
+    {%- endfor -%}
   </ul>
 </nav>

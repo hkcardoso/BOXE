@@ -160,21 +160,26 @@ body #MainContent .boxeup-contact__form-wrap h2 {
   }
 }
 
+/* VIRIATTO — more breathing room for large headings on narrow screens.
+   Benzin requires less negative tracking and a taller line box when it wraps. */
+@media screen and (max-width: 749px) {
+  body #MainContent .collection-hero__title {
+    font-size: clamp(28px, 7.4vw, 36px) !important;
+    letter-spacing: .012em !important;
+    line-height: 1.24 !important;
+    overflow-wrap: break-word;
+  }
 
-/* Benzin priority selectors for multilingual theme. */
-body #MainContent h1,
-body #MainContent h2,
-body #MainContent h3,
-body #MainContent .bxv2-hero h1,
-body #MainContent .bxv2-heading h2,
-body #MainContent .bxv2-editorial__content h2,
-body #MainContent .boxeup-contact__heading h1,
-body #MainContent .boxeup-contact__form-wrap h2,
-body #MainContent .bx-about h1,
-body #MainContent .bx-about h2,
-body #MainContent .product__title h1,
-body #MainContent .collection-hero__title,
-body #MainContent .card__heading,
-body #MainContent .card__heading a {
-  font-family: 'Benzin', Arial, Helvetica, sans-serif !important;
+  body #MainContent .bx-information-page > .main-page-title {
+    font-size: clamp(29px, 7.4vw, 37px) !important;
+    letter-spacing: .014em !important;
+    line-height: 1.3 !important;
+    overflow-wrap: break-word;
+    margin-bottom: 28px !important;
+  }
+
+  body #MainContent .bx-information-page .rte h2 {
+    letter-spacing: .008em !important;
+    line-height: 1.3 !important;
+  }
 }

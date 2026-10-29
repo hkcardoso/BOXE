@@ -1,0 +1,14 @@
+{% paginate collections['all'].products by 250 %}
+<script type="application/json" data-bx-guide-page>{"products":[
+{% assign bx_first = true %}
+{% for item in collections['all'].products %}
+  {% assign bx_vendor = item.vendor | downcase | strip %}
+  {% assign bx_title = item.title | downcase | strip %}
+  {% if item.price == 0 or bx_vendor == 'my store' or item.tags contains 'boxeup:hidden' or bx_title == 'test' or bx_title == 'teste' or bx_title == 'produto de teste' %}{% continue %}{% endif %}
+  {% unless bx_first %},{% endunless %}{% render 'boxeup-product-data', product: item %}{% assign bx_first = false %}
+{% endfor %}
+],"next":{{ paginate.next.url | json }}}</script>
+{% endpaginate %}
+{% schema %}
+{"name":"BOXEUP | Guide data","settings":[]}
+{% endschema %}

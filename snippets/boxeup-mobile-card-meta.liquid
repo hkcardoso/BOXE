@@ -1,0 +1,18 @@
+{% doc %}
+  Renders the compact mobile price row and single-line product name.
+  @param {product} product - Product displayed by the existing card.
+{% enddoc %}
+{%- assign mobile_variant = product.selected_or_first_available_variant -%}
+<a class="bx-mobile-card-meta" href="{{ product.url }}" title="{{ product.title | escape }}">
+  <span class="bx-mobile-card-meta__row">
+    <strong>{{ mobile_variant.price | money }}</strong>
+    {%- if mobile_variant.compare_at_price > mobile_variant.price -%}
+      <del>{{ mobile_variant.compare_at_price | money }}</del>
+      <span class="bx-mobile-card-meta__discount" aria-label="{{ 'products.product.on_sale' | t }}">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M2 2h8l8 8-8 8-8-8V2Zm4 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/></svg>
+        {{ mobile_variant.compare_at_price | minus: mobile_variant.price | times: 100.0 | divided_by: mobile_variant.compare_at_price | round }}%
+      </span>
+    {%- endif -%}
+  </span>
+  <span class="bx-mobile-card-meta__name">{{ product.title | escape }}</span>
+</a>

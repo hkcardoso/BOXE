@@ -1,426 +1,215 @@
-/* BOXEUP Contact — editorial redesign, scoped to this page */
-#MainContent .boxeup-contact.bx-contact {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  background: #0b0c0e !important;
-  color: #f7f7f8 !important;
-  overflow: clip;
-  font-family: var(--font-body-family);
+/* VIRIATTO | Contact: compact two-column form and responsive layout. */
+#MainContent .viri-contact,#MainContent .viri-contact *{box-sizing:border-box}
+#MainContent .viri-contact{
+  background:#101113;color:#f5f5f7;
+  padding:clamp(46px,5.5vw,82px) 0 clamp(57px,6.2vw,96px);
 }
-.bx-contact, .bx-contact * { box-sizing: border-box; }
-.bx-contact__wrap {
-  width: min(1380px, calc(100% - clamp(38px, 10.6vw, 136px)));
-  margin-inline: auto;
+#MainContent .viri-contact__container{width:min(1160px,calc(100% - 64px));margin:0 auto}
+#MainContent .viri-contact__grid{
+  display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+  gap:clamp(38px,7vw,108px);align-items:start;
 }
-.bx-contact__hero {
-  position: relative;
-  isolation: isolate;
-  display: flex;
-  align-items: stretch;
-  min-height: clamp(320px, 31vw, 408px);
-  overflow: hidden;
-  background: #08090b;
-  border-bottom: 1px solid #2a2b30;
+#MainContent .viri-contact__intro{min-width:0;padding-top:14px}
+#MainContent .viri-contact__eyebrow{
+  display:flex;align-items:center;gap:11px;
+  margin:0 0 22px;color:#c4c6cb;
+  font:700 10px/1.3 var(--font-body-family,Arial,sans-serif);letter-spacing:.13em;
 }
-.bx-contact__hero-image {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 44%;
-  filter: grayscale(.9) saturate(.6) contrast(1.08) brightness(.72);
+#MainContent .viri-contact__eyebrow:before{content:"";width:21px;height:2px;background:#ed2437}
+body #MainContent .viri-contact h1{
+  margin:0 0 22px!important;
+  max-width:10ch;color:#f6f6f8!important;
+  font-family:var(--boxeup-display-font,Arial,sans-serif)!important;
+  font-size:clamp(35px,3.6vw,58px)!important;
+  font-weight:800!important;
+  line-height:1.13!important;letter-spacing:-.05em!important;
+  overflow-wrap:normal;
 }
-.bx-contact__hero-overlay {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  background:
-    linear-gradient(90deg,#08090b 0%,rgba(8,9,11,.97) 16%,rgba(8,9,11,.84) 36%,rgba(8,9,11,.40) 65%,rgba(8,9,11,.12) 100%),
-    linear-gradient(0deg,#0b0c0e 0%,rgba(11,12,14,.08) 31%,rgba(11,12,14,.12) 100%);
-  pointer-events: none;
+#MainContent .viri-contact__lead{
+  max-width:34ch;margin:0 0 32px;
+  color:#b9bbc2;
+  font:400 15px/1.7 var(--font-body-family,Arial,sans-serif);
 }
-.bx-contact__hero-inner {
-  padding-block: clamp(29px, 3vw, 42px) clamp(44px, 5vw, 70px);
-  position: relative;
-  z-index: 2;
+#MainContent .viri-contact__details{max-width:370px;border-top:1px solid #32343a}
+#MainContent .viri-contact__detail{display:grid;gap:12px;padding:20px 0;border-bottom:1px solid #32343a}
+#MainContent .viri-contact__detail-title{margin:0;color:#fff;font:700 11px/1.3 var(--font-body-family,Arial,sans-serif);letter-spacing:.06em}
+#MainContent .viri-contact__detail a{
+  display:flex;align-items:center;justify-content:space-between;gap:13px;
+  width:fit-content;max-width:100%;padding:1px 0;
+  color:#bfc1c8!important;
+  text-decoration:none!important;
+  font:500 13px/1.5 var(--font-body-family,Arial,sans-serif);
+  overflow-wrap:anywhere;transition:color .15s ease;
 }
-.bx-contact__breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 11px;
-  line-height: 1.5;
-  color: #96979b;
+#MainContent .viri-contact__detail a:hover{color:#fff!important}
+#MainContent .viri-contact__detail a .viri-link-arrow{
+  display:inline-flex;align-items:center;justify-content:center;
+  flex:0 0 16px;width:16px;height:16px;
+  color:#bdc0c8;line-height:0;
+  transition:color .18s ease,transform .18s ease;
 }
-.bx-contact__breadcrumb a { color: #a8a9ac; text-decoration: none; transition: color .2s ease; }
-.bx-contact__breadcrumb a:hover { color: #fff; }
-.bx-contact__breadcrumb [aria-current="page"] { color: #bdbec1; }
-.bx-contact__headline {
-  margin-top: clamp(40px, 5vw, 74px);
-  max-width: 660px;
+#MainContent .viri-contact__detail a:hover .viri-link-arrow,
+#MainContent .viri-contact__detail a:focus-visible .viri-link-arrow{
+  color:#f0f0f2;transform:translate(2px,-2px);
 }
-.bx-contact__eyebrow {
-  margin: 0 0 14px;
-  color: #ed2437;
-  font-size: 11px;
-  font-weight: 850;
-  line-height: 1.3;
-  text-transform: uppercase;
-  letter-spacing: .15em;
+#MainContent .viri-contact__panel{
+  min-width:0;background:#191b1f;
+  border:1px solid #34373d;border-radius:9px;
+  padding:clamp(25px,3.2vw,43px);
 }
-#MainContent .bx-contact__headline h1 {
-  margin: 0;
-  color: #fff !important;
-  font-family: var(--font-heading-family);
-  font-size: clamp(43px, 5.2vw, 73px) !important;
-  line-height: .98 !important;
-  font-weight: 900 !important;
-  letter-spacing: -.065em !important;
-  text-transform: uppercase;
-  text-wrap: balance;
+body #MainContent .viri-contact__panel h2{
+  margin:0 0 10px!important;
+  color:#f6f6f8!important;
+  font:700 clamp(17px,1.7vw,25px)/1.25 var(--boxeup-display-font,Arial,sans-serif)!important;
+  letter-spacing:-.035em!important;
 }
-.bx-contact__headline h1 span { color: #ed2437; }
-.bx-contact__hero-description {
-  max-width: 540px;
-  margin: 22px 0 0;
-  color: #c4c5cb;
-  font-size: clamp(13px, 1.3vw, 15px);
-  line-height: 1.65;
+#MainContent .viri-contact__form-lead{margin:0 0 26px;color:#aaaeb7;font:400 13px/1.65 var(--font-body-family,Arial,sans-serif)}
+#MainContent .viri-contact__form{margin:0}
+#MainContent .viri-contact__fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px 14px}
+#MainContent .viri-contact__field{display:flex;flex-direction:column;min-width:0;position:relative}
+#MainContent .viri-contact__field--full{grid-column:1/-1}
+#MainContent .viri-contact__field label{
+  display:block;margin:0 0 8px;
+  color:#f3f3f5;
+  font:600 12px/1.35 var(--font-body-family,Arial,sans-serif);
 }
-.bx-contact__body { padding-block: 26px 32px; }
-.bx-contact__grid {
-  display: grid;
-  grid-template-columns: minmax(0, .81fr) minmax(0, 1.19fr);
-  align-items: stretch;
-  gap: 16px;
+#MainContent .viri-contact__field label span{color:#ed4156}
+body #MainContent .viri-contact__field input,
+body #MainContent .viri-contact__field select,
+body #MainContent .viri-contact__field textarea{
+  display:block;box-sizing:border-box;max-width:100%;width:100%;
+  min-width:0;height:auto;min-height:46px;
+  margin:0;padding:11px 13px;
+  border:1px solid #44464d;border-radius:4px;
+  background:#101113;color:#f6f6f8;color-scheme:dark;
+  outline:none;box-shadow:none;
+  font:400 14px/1.5 var(--font-body-family,Arial,sans-serif);
+  transition:border-color .18s ease;
 }
-.bx-contact__sidebar { min-width: 0; display: flex; flex-direction: column; gap: 14px; }
-.bx-contact__quicklinks { display: grid; gap: 11px; }
-.bx-contact__quicklink {
-  appearance: none;
-  display: grid;
-  grid-template-columns: 60px minmax(0, 1fr) 18px;
-  gap: 15px;
-  align-items: center;
-  width: 100%;
-  min-height: 106px;
-  padding: 19px 21px;
-  text-align: left;
-  color: #f5f5f6;
-  background: #121316;
-  border: 1px solid #303137;
-  border-radius: 7px;
-  cursor: pointer;
-  font: inherit;
-  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+body #MainContent .viri-contact__field textarea{min-height:120px;resize:vertical;padding-bottom:24px}
+body #MainContent .viri-contact__field :is(input,select,textarea):focus-visible{border-color:#f0f0f2;outline:2px solid #f0f0f2;outline-offset:1px}
+body #MainContent .viri-contact__field :is(input,textarea)::placeholder{color:#868992;opacity:1}
+#MainContent .viri-contact__counter{position:absolute;right:11px;bottom:9px;color:#8d9199;font-size:10px;line-height:1.1;pointer-events:none}
+#MainContent .viri-contact__form-actions{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;margin-top:23px}
+body #MainContent .viri-contact__submit{
+  display:inline-flex;align-items:center;justify-content:space-between;gap:24px;
+  min-height:46px;min-width:195px;padding:12px 16px;
+  color:#fff;background:#ed2437;border:1px solid #ed2437;border-radius:4px;
+  cursor:pointer;font:700 12px/1.25 var(--font-body-family,Arial,sans-serif);transition:background .15s ease;
 }
-.bx-contact__quicklink:hover,
-.bx-contact__quicklink:focus-visible {
-  border-color: #a12b38;
-  background: #1a171b;
-  transform: translateY(-2px);
+body #MainContent .viri-contact__submit:hover{background:#cf1f31}
+#MainContent .viri-contact__submit .viri-link-arrow{
+  display:inline-flex;align-items:center;justify-content:center;
+  flex:0 0 17px;width:17px;height:17px;color:#fff;line-height:0;
+  transition:transform .18s ease;
 }
-.bx-contact__quicklink:focus-visible,
-.bx-contact__faq-item summary:focus-visible,
-.bx-contact__faq button:focus-visible,
-.bx-contact__faq a:focus-visible { outline: 2px solid #ed2437; outline-offset: 2px; }
-.bx-contact__quicklink-icon {
-  display: grid;
-  place-items: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  color: #ed2437;
-  background: #27141a;
+#MainContent .viri-contact__submit:hover .viri-link-arrow{transform:translate(2px,-2px)}
+#MainContent .viri-contact .viri-link-arrow svg{display:block;width:16px;height:16px;stroke:currentColor}
+#MainContent .viri-contact__form-actions p{margin:0;color:#9699a2;font:400 11px/1.6 var(--font-body-family,Arial,sans-serif)}
+#MainContent .viri-contact__form-actions p a{color:#c5c6ca;text-decoration:underline;text-underline-offset:2px}
+#MainContent .viri-contact__feedback{padding:15px;margin:0 0 20px;border:1px solid #555;border-radius:5px;font:400 13px/1.5 var(--font-body-family,Arial,sans-serif)}
+#MainContent .viri-contact__feedback p{margin:7px 0 0}
+#MainContent .viri-contact__feedback--success{color:#d7eedc;background:#18271c;border-color:#315f3a}
+#MainContent .viri-contact__feedback--error{color:#fbd5d9;background:#321b22;border-color:#834052}
+@media(max-width:980px){
+ #MainContent .viri-contact__grid{gap:32px;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr)}
+ #MainContent .viri-contact__panel{padding:24px}
 }
-.bx-contact__quicklink-icon svg { width: 29px; height: 29px; }
-.bx-contact__quicklink-copy { min-width: 0; display: grid; gap: 6px; }
-.bx-contact__quicklink-copy strong { color: #f6f6f8; font-size: 14px; font-weight: 800; letter-spacing: -.025em; line-height: 1.22; }
-.bx-contact__quicklink-copy small { color: #a9aaaf; font-size: 12px; font-weight: 400; line-height: 1.45; }
-.bx-contact__quicklink-arrow { font-size: 22px; font-weight: 300; line-height: 1; justify-self: end; transition: transform .2s ease; }
-.bx-contact__quicklink:hover .bx-contact__quicklink-arrow { transform: translateX(4px); color: #ed2437; }
-.bx-contact__faq {
-  padding: 24px 23px 18px;
-  border: 1px solid #303137;
-  border-radius: 7px;
-  background: #121316;
-  flex: 1;
+@media(max-width:750px){
+ #MainContent .viri-contact__grid{grid-template-columns:1fr;gap:26px}
+ #MainContent .viri-contact__intro{padding-top:0}
+ #MainContent .viri-contact__lead{max-width:50ch;margin-bottom:20px}
+ #MainContent .viri-contact__details{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:none}
+ #MainContent .viri-contact__detail{padding:15px 0}
 }
-.bx-contact__faq .bx-contact__eyebrow { margin-bottom: 10px; }
-.bx-contact__faq-item { border-bottom: 1px solid #2c2d32; }
-.bx-contact__faq-item summary {
-  list-style: none;
-  display: grid;
-  grid-template-columns: 21px 1fr 18px;
-  gap: 13px;
-  align-items: center;
-  min-height: 48px;
-  color: #e6e7e9;
-  font-size: 12px;
-  cursor: pointer;
-  transition: color .2s ease;
+@media(max-width:600px){
+ #MainContent .viri-contact{padding:36px 0 53px}
+ #MainContent .viri-contact__container{width:calc(100% - 36px)}
+ #MainContent .viri-contact__eyebrow{margin-bottom:16px}
+ body #MainContent .viri-contact h1{max-width:100%;font-size:clamp(29px,8vw,43px)!important;margin-bottom:15px!important}
+ #MainContent .viri-contact__lead{font-size:14px;line-height:1.6}
+ #MainContent .viri-contact__details{grid-template-columns:1fr;gap:0}
+ #MainContent .viri-contact__detail{gap:8px;padding:13px 0}
+ #MainContent .viri-contact__detail a{font-size:13px}
+ #MainContent .viri-contact__panel{padding:22px 17px;border-radius:7px}
+ body #MainContent .viri-contact__panel h2{font-size:clamp(16px,4.8vw,21px)!important;line-height:1.35!important}
+ #MainContent .viri-contact__form-lead{font-size:12px;margin-bottom:19px}
+ #MainContent .viri-contact__fields{grid-template-columns:1fr;gap:14px}
+ #MainContent .viri-contact__field--full{grid-column:1}
+ body #MainContent .viri-contact__field input,
+ body #MainContent .viri-contact__field select,
+ body #MainContent .viri-contact__field textarea{font-size:16px!important;min-height:46px}
+ #MainContent .viri-contact__form-actions{align-items:stretch;flex-direction:column;gap:11px;margin-top:20px}
+ body #MainContent .viri-contact__submit{justify-content:space-between;width:100%;min-width:0;min-height:46px}
 }
-.bx-contact__faq-item summary::-webkit-details-marker { display: none; }
-.bx-contact__faq-item summary::marker { display: none; content: ''; }
-.bx-contact__faq-item summary:hover,
-.bx-contact__faq-item[open] summary { color: #fff; }
-.bx-contact__faq-icon { display: flex; color: #f2f2f3; }
-.bx-contact__faq-icon svg { height: 20px; width: 20px; }
-.bx-contact__faq-chevron {
-  justify-self: end;
-  font-size: 18px;
-  line-height: 1;
-  transition: transform .2s ease;
-}
-.bx-contact__faq-item[open] .bx-contact__faq-chevron { transform: rotate(180deg); color: #ed2437; }
-.bx-contact__faq-answer { padding: 0 22px 15px 34px; color: #b5b6bc; font-size: 12px; line-height: 1.6; }
-.bx-contact__faq-answer p { margin: 0 0 8px; }
-.bx-contact__faq-answer a,
-.bx-contact__faq-answer button {
-  padding: 0;
-  border: 0;
-  color: #fafafa;
-  background: none;
-  font: inherit;
-  font-weight: 750;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
-}
-.bx-contact__faq-all {
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
-  margin-top: 18px;
-  padding: 0;
-  border: 0;
-  color: #f6f6f7;
-  background: none;
-  font: inherit;
-  font-size: 12px;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  cursor: pointer;
-}
-.bx-contact__faq-all:hover { color: #ed2437; }
-#MainContent .boxeup-contact__form-wrap.bx-contact__form-panel {
-  min-width: 0;
-  padding: clamp(26px, 3vw, 46px) clamp(22px, 3vw, 45px);
-  border: 1px solid #37383e !important;
-  border-radius: 7px;
-  background: #141518 !important;
-}
-.bx-contact__form-panel .bx-contact__eyebrow { margin-bottom: 8px; }
-#MainContent .bx-contact__form-panel h2 {
-  color: #fafafa !important;
-  margin: 0 0 10px !important;
-  font-size: clamp(25px, 2.5vw, 36px) !important;
-  line-height: 1.1;
-  letter-spacing: -.045em;
-  font-weight: 850;
-}
-.bx-contact__form-intro {
-  max-width: 480px;
-  margin: 0 0 28px;
-  color: #aeb0b6;
-  font-size: 13px;
-  line-height: 1.65;
-}
-.bx-contact__fields {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px 18px;
-}
-.bx-contact__field {
-  position: relative;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-}
-.bx-contact__field--wide { grid-column: 1 / -1; }
-.bx-contact__field label {
-  display: block;
-  margin-bottom: 9px;
-  color: #fafafa;
-  font-size: 12px;
-  font-weight: 750;
-}
-.bx-contact__field label span { color: #ed2437; }
-#MainContent .bx-contact .bx-contact__field input,
-#MainContent .bx-contact .bx-contact__field select,
-#MainContent .bx-contact .bx-contact__field textarea {
-  appearance: none;
-  width: 100%;
-  min-height: 45px;
-  padding: 12px 14px;
-  background: #25262a !important;
-  border: 1px solid #404147 !important;
-  border-radius: 4px !important;
-  color: #f6f6f7 !important;
-  box-shadow: none !important;
-  font: inherit;
-  font-size: 12px;
-  line-height: 1.45;
-  transition: border-color .2s ease, background .2s ease;
-}
-#MainContent .bx-contact .bx-contact__field input::placeholder,
-#MainContent .bx-contact .bx-contact__field textarea::placeholder { color: #9da0a6; opacity: 1; }
-#MainContent .bx-contact .bx-contact__field select {
-  padding-right: 45px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='m1 1 6 6 6-6' fill='none' stroke='%23d1d2d5' stroke-width='1.5'/%3E%3C/svg%3E") !important;
-  background-repeat: no-repeat !important;
-  background-position: right 16px center !important;
-  cursor: pointer;
-}
-.bx-contact__field select option { background: #25262a; color: #fff; }
-#MainContent .bx-contact .bx-contact__field textarea {
-  min-height: 150px;
-  height: auto;
-  resize: vertical;
-  padding-bottom: 30px;
-}
-#MainContent .bx-contact .bx-contact__field :is(input,select,textarea):focus-visible {
-  outline: 2px solid #ed2437 !important;
-  outline-offset: 1px;
-  border-color: #ed2437 !important;
-}
-.bx-contact__field small { font-size: 11px; color: #ff8591; margin-top: 5px; }
-.bx-contact__counter {
-  position: absolute;
-  right: 12px;
-  bottom: 10px;
-  color: #9b9da3;
-  font-size: 11px;
-  line-height: 1;
-  pointer-events: none;
-}
-#MainContent .bx-contact .bx-contact__submit {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  min-height: 50px;
-  margin-top: 26px;
-  padding: 13px 20px;
-  color: white;
-  background: #ed2437;
-  border: 1px solid #ed2437;
-  border-radius: 4px;
-  font: inherit;
-  font-size: 13px;
-  font-weight: 800;
-  text-align: left;
-  cursor: pointer;
-  transition: background .2s ease, border-color .2s ease, transform .2s ease;
-}
-#MainContent .bx-contact .bx-contact__submit:hover {
-  background: #d31f32;
-  border-color: #d31f32;
-  transform: translateY(-1px);
-}
-#MainContent .bx-contact .bx-contact__submit:focus-visible { outline: 2px solid white; outline-offset: 3px; }
-.bx-contact__submit span { font-size: 20px; font-weight: 300; line-height: 1; }
-.bx-contact__form-note {
-  color: #92949a;
-  margin: 14px 0 0;
-  font-size: 11px;
-  line-height: 1.5;
-}
-.bx-contact__form-note a { color: #d4d5d8; text-decoration: underline; text-underline-offset: 2px; }
-.bx-contact__feedback { margin: 0 0 22px; padding: 16px; font-size: 13px; border: 1px solid #4c5058; border-radius: 4px; }
-.bx-contact__feedback p { margin: 8px 0 0; }
-.bx-contact__feedback--success { background: #192a20; color: #c5efcd; border-color: #2d6a42; }
-.bx-contact__feedback--error { background: #301b20; color: #ffd8dc; border-color: #943443; }
-.bx-contact__benefits {
-  border-top: 1px solid #303137;
-  border-bottom: 1px solid #303137;
-  background: #0e0f11;
-}
-.bx-contact__benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  padding-block: 30px;
-}
-.bx-contact__benefit {
-  min-width: 0;
-  display: flex;
-  align-items: flex-start;
-  gap: 18px;
-  padding: 4px 24px;
-  border-right: 1px solid #2e3035;
-}
-.bx-contact__benefit:first-child { padding-left: 0; }
-.bx-contact__benefit:last-child { border-right: 0; padding-right: 0; }
-.bx-contact__benefit > svg {
-  flex: 0 0 30px;
-  height: 32px;
-  width: 30px;
-  color: #ed2437;
-}
-.bx-contact__benefit > span { display: grid; gap: 6px; }
-.bx-contact__benefit strong { font-size: 12px; line-height: 1.3; color: #f6f6f7; font-weight: 800; }
-.bx-contact__benefit small { font-size: 11px; line-height: 1.45; color: #a0a1a6; }
-@media (max-width: 1050px) {
-  .bx-contact__quicklink { padding: 15px; grid-template-columns: 48px minmax(0,1fr) 15px; gap: 12px; }
-  .bx-contact__quicklink-icon { width: 46px; height: 46px; }
-  .bx-contact__quicklink-icon svg { width: 25px; height: 25px; }
-  .bx-contact__quicklink-copy strong { font-size: 13px; }
-  .bx-contact__quicklink-copy small { font-size: 11px; }
-  .bx-contact__benefit { padding-inline: 12px; gap: 11px; }
-}
-@media (max-width: 850px) {
-  .bx-contact__grid { grid-template-columns: 1fr; gap: 18px; }
-  .bx-contact__sidebar { display: grid; grid-template-columns: 1fr; gap: 12px; }
-  .bx-contact__quicklinks { grid-template-columns: repeat(3,minmax(0,1fr)); }
-  .bx-contact__quicklink { grid-template-columns: 1fr auto; grid-template-rows: auto auto; align-content: start; min-height: 156px; }
-  .bx-contact__quicklink-icon { grid-column: 1; grid-row: 1; }
-  .bx-contact__quicklink-copy { grid-column: 1/-1; grid-row: 2; }
-  .bx-contact__quicklink-arrow { grid-column: 2; grid-row: 1; }
-  .bx-contact__faq { padding: 20px; }
-  .bx-contact__benefits-grid { grid-template-columns: repeat(2,minmax(0,1fr)); row-gap: 20px; }
-  .bx-contact__benefit:nth-child(2) { border-right: 0; }
-  .bx-contact__benefit:nth-child(3), .bx-contact__benefit:nth-child(4) { border-top: 1px solid #2e3035; padding-top: 20px; }
-}
-@media (max-width: 600px) {
-  .bx-contact__wrap { width: calc(100% - 38px); }
-  .bx-contact__hero { min-height: 420px; }
-  .bx-contact__hero-image { object-position: 62% center; filter: grayscale(.95) brightness(.65); }
-  .bx-contact__hero-overlay {
-    background:
-      linear-gradient(0deg,rgba(8,9,11,.98) 0%,rgba(8,9,11,.83) 35%,rgba(8,9,11,.27) 100%),
-      linear-gradient(90deg,rgba(8,9,11,.82),rgba(8,9,11,.20));
+@media(prefers-reduced-motion:reduce){#MainContent .viri-contact .viri-link-arrow,#MainContent .viri-contact__detail a,body #MainContent .viri-contact__submit,body #MainContent .viri-contact__field input,body #MainContent .viri-contact__field select,body #MainContent .viri-contact__field textarea{transition:none}}
+
+/* VIRIATTO | Compact desktop contact layout, without changing mobile form flow. */
+@media(min-width:981px){
+  #MainContent .viri-contact{padding:35px 0 49px!important}
+  #MainContent .viri-contact__container{
+    width:min(1080px,calc(100% - 72px))!important;
   }
-  .bx-contact__hero-inner { padding-block: 22px 43px; display: flex; flex-direction: column; justify-content: space-between; }
-  .bx-contact__headline { margin-top: 105px; }
-  #MainContent .bx-contact__headline h1 { font-size: clamp(40px, 10vw, 55px) !important; }
-  .bx-contact__hero-description { font-size: 13px; line-height: 1.55; margin-top: 19px; }
-  .bx-contact__body { padding-block: 17px 25px; }
-  .bx-contact__quicklinks { grid-template-columns: 1fr; gap: 9px; }
-  .bx-contact__quicklink { min-height: 91px; padding: 14px; grid-template-columns: 48px minmax(0,1fr) 18px; grid-template-rows: auto; align-items: center; }
-  .bx-contact__quicklink-icon { grid-column: 1; grid-row: 1; }
-  .bx-contact__quicklink-copy { grid-column: 2; grid-row: 1; }
-  .bx-contact__quicklink-arrow { grid-column: 3; grid-row: 1; }
-  .bx-contact__faq { padding: 20px 18px; }
-  #MainContent .boxeup-contact__form-wrap.bx-contact__form-panel { padding: 25px 19px; }
-  #MainContent .bx-contact__form-panel h2 { font-size: 27px !important; }
-  .bx-contact__form-intro { margin-bottom: 23px; }
-  .bx-contact__fields { grid-template-columns: 1fr; gap: 19px; }
-  .bx-contact__field--wide { grid-column: 1; }
-  .bx-contact__benefits-grid { padding-block: 22px; gap: 0; }
-  .bx-contact__benefit { padding: 14px 9px; gap: 10px; }
-  .bx-contact__benefit:nth-child(-n+2) { border-bottom: 1px solid #2e3035; }
-  .bx-contact__benefit:nth-child(3), .bx-contact__benefit:nth-child(4) { border-top: 0; padding-top: 14px; }
-  .bx-contact__benefit:nth-child(odd) { padding-left: 0; }
-  .bx-contact__benefit:nth-child(even) { padding-right: 0; border-right: 0; }
-  .bx-contact__benefit > svg { flex-basis: 24px; height: 26px; width: 24px; }
-  .bx-contact__benefit strong { font-size: 11px; }
-  .bx-contact__benefit small { font-size: 10px; }
+  #MainContent .viri-contact__grid{
+    grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;
+    align-items:start!important;
+    gap:clamp(28px,3.3vw,48px)!important;
+  }
+  #MainContent .viri-contact__intro{padding-top:4px!important}
+  #MainContent .viri-contact__eyebrow{margin-bottom:13px!important}
+  body #MainContent .viri-contact h1{
+    max-width:none!important;
+    margin-bottom:14px!important;
+    font-size:clamp(35px,3vw,44px)!important;
+    line-height:1.12!important;
+  }
+  #MainContent .viri-contact__lead{
+    max-width:42ch!important;
+    margin-bottom:22px!important;
+    font-size:14px!important;
+    line-height:1.6!important;
+  }
+  #MainContent .viri-contact__details{max-width:100%!important}
+  #MainContent .viri-contact__detail{
+    gap:8px!important;
+    padding:14px 0!important;
+  }
+  #MainContent .viri-contact__panel{
+    padding:24px 27px!important;
+    border-radius:7px!important;
+  }
+  body #MainContent .viri-contact__panel h2{
+    margin-bottom:8px!important;
+    font-size:clamp(18px,1.65vw,23px)!important;
+  }
+  #MainContent .viri-contact__form-lead{
+    margin-bottom:17px!important;
+    line-height:1.5!important;
+  }
+  #MainContent .viri-contact__fields{gap:13px 12px!important}
+  #MainContent .viri-contact__field label{margin-bottom:6px!important}
+  body #MainContent .viri-contact__field :is(input,select){
+    min-height:43px!important;
+    padding:9px 12px!important;
+  }
+  body #MainContent .viri-contact__field textarea{
+    min-height:102px!important;
+    padding:10px 12px 23px!important;
+  }
+  #MainContent .viri-contact__form-actions{
+    gap:12px!important;
+    margin-top:16px!important;
+  }
+  body #MainContent .viri-contact__submit{min-height:43px!important}
 }
-@media (prefers-reduced-motion: reduce) {
-  .bx-contact__quicklink,.bx-contact__quicklink-arrow,.bx-contact__submit,.bx-contact__faq-chevron { transition: none !important; }
+@media(min-width:751px) and (max-width:980px){
+  #MainContent .viri-contact{padding:32px 0 44px!important}
+  #MainContent .viri-contact__grid{
+    grid-template-columns:minmax(0,.83fr) minmax(0,1.17fr)!important;
+    gap:25px!important;
+  }
+  #MainContent .viri-contact__lead{margin-bottom:18px!important}
+  #MainContent .viri-contact__panel{padding:21px!important}
+  #MainContent .viri-contact__detail{padding:14px 0!important}
+  #MainContent .viri-contact__form-lead{margin-bottom:16px!important}
 }

@@ -641,10 +641,12 @@
    Only active on the Shopify product template. */
 body.boxeup-product-view{
   --bxp-gutter:clamp(22px,4.3vw,104px);
+  /* Desktop content rails gain about 10%; mobile and tablet stay unchanged. */
   --bxp-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
   --bxp-ui:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 @media(min-width:990px){
+  body.boxeup-product-view{--bxp-gutter:clamp(24px,4.75vw,114px)}
   body.boxeup-product-view .header-wrapper .header{
     width:100%!important;
     max-width:var(--boxeup-content-max)!important;

@@ -19,19 +19,20 @@ body.boxeup-page-catalog #MainContent .viri-catalog-intro__breadcrumb {
   display:flex;
   align-items:center;
   gap:12px;
-  margin:0 0 clamp(26px,3vw,41px)!important;
-  color:#8b8e95!important;
-  font-size:11px!important;
+  margin:0 0 clamp(28px,3vw,44px)!important;
+  color:#d0d2d8!important;
+  font-size:12px!important;
   line-height:1.4!important;
   letter-spacing:.012em;
 }
 body.boxeup-page-catalog #MainContent .viri-catalog-intro__breadcrumb a {
-  color:#aaaeb7!important;
+  color:#d1d3dc!important;
   text-decoration:none!important;
   transition:color .15s ease;
 }
 body.boxeup-page-catalog #MainContent .viri-catalog-intro__breadcrumb a:hover {color:#fff!important}
-body.boxeup-page-catalog #MainContent .viri-catalog-intro__slash {color:#53565e}
+body.boxeup-page-catalog #MainContent .viri-catalog-intro__slash {color:#93969f!important}
+body.boxeup-page-catalog #MainContent .viri-catalog-intro__breadcrumb [aria-current="page"]{color:#f0f0f3!important;opacity:1!important;font-weight:600!important;}
 body.boxeup-page-catalog #MainContent .viri-catalog-intro__row {
   display:flex;
   align-items:flex-end;
@@ -64,10 +65,10 @@ body.boxeup-page-catalog #MainContent .viri-catalog-intro__mark{
 }
 body.boxeup-page-catalog #MainContent .viri-catalog-intro .collection-hero__title {
   font-family:'Viriatto Info Benzin','Benzin',var(--font-heading-family),Arial,sans-serif!important;
-  font-size:clamp(34px,3.8vw,56px)!important;
+  font-size:clamp(36px,3.8vw,60px)!important;
   font-weight:700!important;
   line-height:1.04!important;
-  letter-spacing:-.056em!important;
+  letter-spacing:.012em!important;
   color:#fff!important;
   text-transform:none!important;
   margin:0!important;
@@ -77,7 +78,7 @@ body.boxeup-page-catalog #MainContent .viri-catalog-intro .collection-hero__titl
 }
 body.boxeup-page-catalog #MainContent .viri-catalog-intro__description {
   display:block;
-  margin:14px 0 0!important;
+  margin:17px 0 0!important;
   color:#aeb1b8!important;
   font-size:13px!important;
   line-height:1.55!important;
@@ -160,6 +161,7 @@ body.boxeup-page-catalog #MainContent .viri-catalog-intro__browse:focus-visible 
   }
   body.boxeup-page-catalog #MainContent .viri-catalog-intro .collection-hero__title {
     font-size:clamp(30px,7.5vw,40px)!important;
+    letter-spacing:0!important;
   }
   body.boxeup-page-catalog #MainContent .viri-catalog-intro__description{
     font-size:12px!important;

@@ -38,7 +38,7 @@
     display:block;width:17px;height:17px;flex:0 0 17px;
   }
   body #MainContent .viri-brands__trigger:focus-visible{
-    outline:2px solid #ed2437!important;outline-offset:3px!important;
+    outline:2px solid #858892!important;outline-offset:3px!important;
   }
   body #MainContent .viri-brands__dialog[open]{
     display:flex!important;flex-direction:column!important;

@@ -125,7 +125,7 @@ body .cart-notification a,body .cart-drawer a,body .cart-drawer .totals,body .ca
 #MainContent .template-search__search .field,#MainContent .search__input{background:#26272b!important;color:#fff!important}
 #MainContent .main-page-title+.rte p,#MainContent .main-page-title+.rte li{color:#c1c1c6}
 #MainContent .rte a{color:#fff;text-decoration-color:var(--bx-red);text-underline-offset:3px}
-#MainContent input:focus-visible,#MainContent select:focus-visible,#MainContent textarea:focus-visible{outline:1px solid #858892!important;outline-offset:2px}
+#MainContent input:is(:focus,:focus-visible),#MainContent select:is(:focus,:focus-visible),#MainContent textarea:is(:focus,:focus-visible){outline:1px solid #858892!important;outline-offset:2px;box-shadow:none!important}
 #MainContent .rich-text,#MainContent .multicolumn,#MainContent .image-with-text{background:#111214!important;color:#f4f4f4!important}
 #MainContent .collapsible-content__heading,#MainContent .rich-text__heading,#MainContent .image-with-text__heading{color:#fff!important}
 #MainContent .slideshow__text-wrapper,#MainContent .banner__box{background:#1a1b1e;color:#fff}

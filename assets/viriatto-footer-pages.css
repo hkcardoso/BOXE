@@ -108,7 +108,7 @@
 }
 .vi-support-page__nav a:focus-visible,
 .vi-support-page__article-footer a:focus-visible {
-  outline:2px solid var(--vi-red);
+  outline:2px solid #858892;
   outline-offset:2px;
 }
 .vi-support-page__article{min-width:0;color:#cacbd0}

@@ -8,7 +8,6 @@
     {%- for block in section.blocks -%}{% render block %}{%- endfor -%}
   {%- elsif section.settings.show_demo -%}
     <div data-vpr-demo>
-      <p class="vpr-preview-note">{{ 'viriatto_product.demo_notice' | t }}</p>
       <div class="vpr-layout">
         <aside aria-label="{{ 'viriatto_product.demo_summary' | t }}">
           <p class="vpr-score">4,6<span style="font-size:18px"> / 5</span></p>

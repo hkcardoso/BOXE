@@ -330,7 +330,7 @@ body.viriatto-info-page #MainContent .vi-min-contact #BoxeupContactSubject{
 }
 body.viriatto-info-page #MainContent .vi-min-contact #BoxeupContactSubject:invalid{color:#a3a4aa!important}
 body.viriatto-info-page #MainContent .vi-min-contact #BoxeupContactSubject option{background:#191a1f!important;color:#f4f4f5!important}
-body.viriatto-info-page #MainContent .vi-min-contact .bx-contact__field :is(input,select,textarea):focus-visible{border-color:#858892!important;outline:1px solid #858892!important}
+body.viriatto-info-page #MainContent .vi-min-contact .bx-contact__field :is(input,select,textarea):is(:focus,:focus-visible){border-color:#858892!important;outline:1px solid #858892!important;outline-offset:2px!important;box-shadow:none!important}
 body.viriatto-info-page #MainContent .vi-min-contact .bx-contact__submit{transition:background .2s,border-color .2s,transform .2s}
 body.viriatto-info-page #MainContent .vi-min-contact .bx-contact__submit:hover{background:#ec3449!important;border-color:#ec3449!important;color:#fff!important;transform:translateY(-1px)}
 @media(max-width:749px){
@@ -339,3 +339,18 @@ body.viriatto-info-page #MainContent .vi-min-contact .bx-contact__submit:hover{b
  body.viriatto-info-page #MainContent .vi-min-contact__form h2{font-size:clamp(16px,4.2vw,20px)!important}
 }
 @media(prefers-reduced-motion:reduce){body.viriatto-info-page #MainContent .vi-min-about__step{transition:none!important;transform:none!important}}
+
+/* VIRIATTO — neutral focus for every form field, including mouse focus.
+   Overrides older red rings as well as inherited outline/box-shadow. */
+body #MainContent :is(input:not([type="radio"]):not([type="checkbox"]), select, textarea):is(:focus, :focus-visible) {
+  outline: 1px solid #858892 !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}
+body #MainContent .bx-contact .bx-contact__field :is(input, select, textarea):is(:focus, :focus-visible),
+body.viriatto-info-page #MainContent .vi-min-contact .bx-contact__field :is(input, select, textarea):is(:focus, :focus-visible) {
+  border-color: #858892 !important;
+  outline: 1px solid #858892 !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}

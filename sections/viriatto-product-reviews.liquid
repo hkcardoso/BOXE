@@ -33,6 +33,7 @@
           </div>
           {%- assign names = 'Miguel R.,Joana S.,Tiago M.,Rita F.,André C.,Inês P.,Pedro A.,Sofia L.,Bruno T.,Mariana G.,Diogo N.,Catarina B.,Rui V.,Ana D.,Nuno E.' | split: ',' -%}
           {%- assign ratings = '5,5,4,5,5,4,5,5,3,5,4,5,5,4,5' | split: ',' -%}
+          <div id="vpr-list-{{ section.id }}" data-vpr-list>
           {%- for index in (1..15) -%}
             {%- liquid
               assign offset = index | minus: 1
@@ -42,13 +43,14 @@
               assign body_key = review_key | append: '.body'
             -%}
             <article class="vpr-review" data-vpr-review data-rating="{{ rating }}"{% if index > 5 %} hidden{% endif %}>
-              <div><span class="vpr-stars" aria-label="{{ rating }} / 5">{% for star in (1..5) %}{% if star <= rating %}★{% else %}☆{% endif %}{% endfor %}</span><span class="vpr-demo-badge">{{ 'viriatto_product.demo_badge' | t }}</span></div>
+              <div><span class="vpr-stars" aria-label="{{ rating }} / 5">{% for star in (1..5) %}{% if star <= rating %}★{% else %}☆{% endif %}{% endfor %}</span></div>
               <h3>{{ title_key | t }}</h3>
               <p>{{ body_key | t }}</p>
-              <footer>{{ names[offset] | escape }} · {{ 'viriatto_product.fictional_profile' | t }}</footer>
+              <footer>{{ names[offset] | escape }}</footer>
             </article>
           {%- endfor -%}
-          <button type="button" class="vpr-more" data-vpr-more>{{ 'viriatto_product.more_reviews' | t }}</button>
+          </div>
+          <button type="button" class="vpr-more" data-vpr-more data-more-label="{{ 'viriatto_product.more_reviews' | t | escape }}" data-less-label="{{ 'viriatto_product.less_reviews' | t | escape }}" aria-controls="vpr-list-{{ section.id }}" aria-expanded="false">{{ 'viriatto_product.more_reviews' | t }}</button>
         </div>
       </div>
     </div>
@@ -65,20 +67,21 @@
       const more = root.querySelector('[data-vpr-more]');
       const status = root.querySelector('[data-vpr-count]');
       const reviews = [...root.querySelectorAll('[data-vpr-review]')];
-      let limit = 5;
+      let expanded = false;
       const update = () => {
         const matching = reviews.filter((review) => filter.value === 'all' || review.dataset.rating === filter.value);
-        reviews.forEach((review) => { review.hidden = !matching.includes(review) || matching.indexOf(review) >= limit; });
-        more.hidden = limit >= matching.length;
-        status.textContent = `${Math.min(limit, matching.length)} / ${matching.length}`;
+        const visibleCount = expanded ? matching.length : Math.min(5, matching.length);
+        reviews.forEach((review) => {
+          const matchingIndex = matching.indexOf(review);
+          review.hidden = matchingIndex === -1 || matchingIndex >= visibleCount;
+        });
+        more.hidden = matching.length <= 5;
+        more.textContent = expanded ? more.dataset.lessLabel : more.dataset.moreLabel;
+        more.setAttribute('aria-expanded', String(expanded));
+        status.textContent = `${visibleCount} / ${matching.length}`;
       };
-      filter.addEventListener('change', () => { limit = 5; update(); });
-      more.addEventListener('click', () => {
-        const firstNew = reviews.filter((review) => filter.value === 'all' || review.dataset.rating === filter.value)[limit];
-        limit += 5;
-        update();
-        if (firstNew) { firstNew.tabIndex = -1; firstNew.focus(); }
-      });
+      filter.addEventListener('change', () => { expanded = false; update(); });
+      more.addEventListener('click', () => { expanded = !expanded; update(); });
       update();
     });
   }

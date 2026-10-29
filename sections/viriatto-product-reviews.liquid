@@ -6,7 +6,7 @@
   </header>
   {%- if section.blocks.size > 0 -%}
     {%- for block in section.blocks -%}{% render block %}{%- endfor -%}
-  {%- elsif request.design_mode and section.settings.show_demo -%}
+  {%- elsif section.settings.show_demo -%}
     <div data-vpr-demo>
       <p class="vpr-preview-note">{{ 'viriatto_product.demo_notice' | t }}</p>
       <div class="vpr-layout">
@@ -91,7 +91,7 @@
   "tag": "section",
   "enabled_on": { "templates": ["product"] },
   "settings": [
-    { "type": "checkbox", "id": "show_demo", "label": "Mostrar 15 exemplos no editor", "default": true, "info": "Exemplos fictícios apenas no editor. Para avaliações reais, adiciona aqui o bloco da tua aplicação de avaliações." }
+    { "type": "checkbox", "id": "show_demo", "label": "Mostrar 15 avaliações de demonstração", "default": true, "info": "Exemplos fictícios visíveis na loja e identificados como demonstração. Desativa esta opção quando terminares a revisão. Para avaliações reais, adiciona um bloco da tua aplicação." }
   ],
   "blocks": [{ "type": "@app" }],
   "presets": [{ "name": "VIRIATTO | Avaliações" }]

@@ -1,7 +1,7 @@
 {% doc %}
   Renders curated product copy with the merchant description as a fallback.
   @param {product} product - Current product
-  @param {string} mode - intro, description, features, technical, fit or care
+  @param {string} mode - intro, description, features, benefits, technical, fit or care
 {% enddoc %}
 {%- liquid
   assign copy_handles = 'charlie-bat-x-luvas-de-treino,charlie-gel-metallic-luvas-de-boxe,fairtex-bgv9-heavy-hitter-luvas-de-boxe,everlast-powerlock-2r-luvas-de-treino,twins-special-bgvl-3-luvas-de-muay-thai,cleto-reyes-luvas-de-treino-em-pele,fairtex-bgv1-luvas-de-boxe-e-muay-thai,rival-rhg2-capacete-hibrido,twins-special-sgl-10-caneleiras-de-muay-thai,fairtex-sp5-caneleiras-de-competicao,venum-challenger-boqueira-com-caixa,fairtex-mg3-boqueira-de-gel,venum-challenger-pro-evo-mochila-22-5-l,fluory-calcoes-de-muay-thai-vermelho-e-preto,mens-rash-guard,all-over-print-gym-bag,minimalist-backpack,unisex-organic-cotton-creator-2-0-t-shirt' | split: ','
@@ -26,6 +26,21 @@
     {%- if has_copy -%}
       {%- assign features = copy_text | split: '|' -%}
       <ul class="vpd-feature-list" role="list">{%- for feature in features -%}<li>{{ feature | escape }}</li>{%- endfor -%}</ul>
+    {%- else -%}
+      <p>{{ 'viriatto_product.features_fallback' | t }}</p>
+    {%- endif -%}
+  {%- when 'benefits' -%}
+    {%- if has_copy -%}
+      {%- assign benefits = copy_text | split: '||' -%}
+      <div class="vpd-benefits">
+        {%- for benefit in benefits -%}
+          {%- assign parts = benefit | split: '::' -%}
+          <article class="vpd-benefit">
+            {% render 'viriatto-product-icon', name: parts[0] %}
+            <div><h4>{{ parts[1] | escape }}</h4><p>{{ parts[2] | escape }}</p></div>
+          </article>
+        {%- endfor -%}
+      </div>
     {%- else -%}
       <p>{{ 'viriatto_product.features_fallback' | t }}</p>
     {%- endif -%}

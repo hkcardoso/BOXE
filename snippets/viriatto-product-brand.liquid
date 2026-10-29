@@ -1,0 +1,64 @@
+{% doc %}
+  Renders the current product brand with its existing logo and catalogue link.
+  @param {product} product - Current product
+{% enddoc %}
+{%- liquid
+  assign brand_handle = product.vendor | handleize
+  assign brand_name = product.vendor
+  assign brand_logo = ''
+  assign brand_copy = 'generic'
+  case brand_handle
+    when 'charlie', 'charlie-boxing'
+      assign brand_copy = 'charlie'
+      assign brand_logo = 'boxeup-logo-charlie-white.png?v=1793040801'
+    when 'fairtex'
+      assign brand_copy = 'fairtex'
+      assign brand_logo = 'boxeup-logo-fairtex-white.png?v=1793040787'
+    when 'venum'
+      assign brand_copy = 'venum'
+      assign brand_logo = 'boxeup-logo-venum-white.png?v=1793040818'
+    when 'everlast'
+      assign brand_copy = 'everlast'
+      assign brand_logo = 'boxeup-logo-everlast-white.png?v=1793040849'
+    when 'cleto-reyes'
+      assign brand_copy = 'cleto-reyes'
+      assign brand_logo = 'boxeup-logo-reyes-white.png?v=1793040826'
+    when 'rival'
+      assign brand_copy = 'rival'
+      assign brand_logo = 'boxeup-logo-rival-white.png?v=1793040835'
+    when 'twins', 'twins-special'
+      assign brand_copy = 'twins'
+      assign brand_name = 'Twins Special'
+      assign brand_logo = 'boxeup-logo-twins-white.png?v=1793040843'
+    when 'leone-1947'
+      assign brand_copy = 'generic'
+      assign brand_logo = 'viriatto-leone-1947-logo-white.png?v=1793191434'
+    when 'rdx'
+      assign brand_logo = 'viriatto-rdx-logo-white.png?v=1793191429'
+    when 'buddha', 'buddha-fight-wear'
+      assign brand_asset = 'boxeup-brand-buddha.svg'
+    when 'fluory'
+      assign brand_copy = 'fluory'
+    when 'boxeup', 'viriatto'
+      assign brand_copy = 'viriatto'
+      assign brand_name = 'VIRIATTO'
+      assign brand_logo = 'viriatto-logo-original-transparente.png?v=1793188281'
+  endcase
+  assign brand_title_key = 'viriatto_brands.' | append: brand_copy | append: '.title'
+  assign brand_body_key = 'viriatto_brands.' | append: brand_copy | append: '.body'
+-%}
+{%- if product.vendor != blank -%}
+  <aside class="vpd-brand-card" aria-label="{{ 'viriatto_product.about_brand' | t }}">
+    <div class="vpd-brand-card__logo">
+      {%- if brand_logo != blank -%}
+        <img src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/{{ brand_logo }}" width="180" height="68" loading="lazy" alt="{{ brand_name | escape }}">
+      {%- elsif brand_asset != blank -%}
+        <img src="{{ brand_asset | asset_url }}" width="180" height="68" loading="lazy" alt="{{ brand_name | escape }}">
+      {%- else -%}<span>{{ brand_name | escape }}</span>{%- endif -%}
+    </div>
+    <p class="vpd-eyebrow">{{ 'viriatto_product.about_brand' | t }} · {{ brand_name | escape }}</p>
+    <h3>{{ brand_title_key | t }}</h3>
+    <p>{{ brand_body_key | t }}</p>
+    <a href="{{ routes.all_products_collection_url }}?filter.p.vendor={{ product.vendor | url_encode }}">{{ 'viriatto_product.explore_brand' | t }} <span aria-hidden="true">→</span></a>
+  </aside>
+{%- endif -%}

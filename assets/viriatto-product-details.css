@@ -12,8 +12,8 @@ body.boxeup-product-view #MainContent .vpd-accordion { border-top: 1px solid #30
 body.boxeup-product-view #MainContent .vpd-accordion:last-child { border-bottom: 1px solid #303136; }
 body.boxeup-product-view #MainContent .vpd-accordion > summary { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 23px 0; cursor: pointer; color: #fff; font-weight: 700; font-size: 15px; list-style: none; }
 body.boxeup-product-view #MainContent .vpd-accordion > summary::-webkit-details-marker { display: none; }
-body.boxeup-product-view #MainContent .vpd-accordion > summary span { font-size: 22px; font-weight: 400; transition: transform .2s; }
-body.boxeup-product-view #MainContent .vpd-accordion[open] > summary span { transform: rotate(45deg); }
+body.boxeup-product-view #MainContent .vpd-accordion > summary .vpd-toggle { font-size: 22px; font-weight: 400; transition: transform .2s; }
+body.boxeup-product-view #MainContent .vpd-accordion[open] > summary .vpd-toggle { transform: rotate(45deg); }
 body.boxeup-product-view #MainContent .vpd-overview { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(24px, 5vw, 72px); padding-bottom: 36px; align-items: start; }
 body.boxeup-product-view #MainContent .vpd-copy { max-width: 720px; min-width: 0; }
 body.boxeup-product-view #MainContent .vpd-copy h3 { color: #fff; font: 700 18px/1.4 var(--bxp-ui, sans-serif); margin: 0 0 16px; }
@@ -75,4 +75,27 @@ body.boxeup-product-view #MainContent .vpr-empty { padding: 24px 0 0; color: #af
   body.boxeup-product-view #MainContent .vpr-layout { grid-template-columns: 1fr; gap: 24px; }
   body.boxeup-product-view #MainContent .vpr-review { padding: 18px; }
 }
-@media (prefers-reduced-motion: reduce) { .vpd-accordion > summary span, .vpc-card { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { .vpd-accordion > summary .vpd-toggle, .vpc-card { transition: none !important; } }
+body.boxeup-product-view #MainContent .vpd-accordion__label { display: inline-flex; align-items: center; gap: 12px; }
+body.boxeup-product-view #MainContent .vpd-icon { flex: 0 0 auto; display: block; width: 22px; height: 22px; color: #adb0b9; }
+body.boxeup-product-view #MainContent .vpd-accordion > summary .vpd-icon { width: 18px; height: 18px; }
+body.boxeup-product-view #MainContent .vpd-accordion[data-state="closing"] > summary .vpd-toggle { transform: rotate(0deg); }
+body.boxeup-product-view #MainContent .vpd-accordion__body { display: flow-root; }
+body.boxeup-product-view #MainContent .vpd-benefits { display: grid; gap: 22px; margin-top: 20px; }
+body.boxeup-product-view #MainContent .vpd-benefit { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 13px; align-items: start; }
+body.boxeup-product-view #MainContent .vpd-benefit > .vpd-icon { margin-top: 2px; }
+body.boxeup-product-view #MainContent .vpd-benefit h4 { font: 700 14px/1.5 var(--bxp-ui, sans-serif); color: #f3f3f5; margin: 0 0 6px; }
+body.boxeup-product-view #MainContent .vpd-benefit p { font-size: 13px; line-height: 1.75; color: #b7bac3; margin: 0; }
+body.boxeup-product-view #MainContent .vpd-brand-card { margin-top: 32px; padding: 28px 30px; border: 1px solid #303238; border-radius: 6px; background: #15171b; }
+body.boxeup-product-view #MainContent .vpd-brand-card__logo { display: flex; justify-content: center; align-items: center; min-height: 68px; margin-bottom: 26px; }
+body.boxeup-product-view #MainContent .vpd-brand-card__logo img { width: 160px; height: 62px; object-fit: contain; }
+body.boxeup-product-view #MainContent .vpd-brand-card__logo span { color: #fff; font: 800 28px/1.1 var(--bxp-display, sans-serif); letter-spacing: .04em; }
+body.boxeup-product-view #MainContent .vpd-brand-card h3 { font: 700 17px/1.5 var(--bxp-ui, sans-serif); color: #fff; margin: 0 0 12px; }
+body.boxeup-product-view #MainContent .vpd-brand-card > p:not(.vpd-eyebrow) { max-width: 1000px; font-size: 13px; color: #b7bac3; margin: 0; }
+body.boxeup-product-view #MainContent .vpd-brand-card a { display: inline-flex; align-items: center; gap: 12px; color: #f2f2f5; font-size: 12px; text-underline-offset: 4px; margin-top: 18px; }
+@media (max-width: 749px) {
+  body.boxeup-product-view #MainContent .vpd-benefits { gap: 20px; }
+  body.boxeup-product-view #MainContent .vpd-benefit { grid-template-columns: 20px minmax(0, 1fr); gap: 11px; }
+  body.boxeup-product-view #MainContent .vpd-benefit .vpd-icon { width: 20px; height: 20px; }
+  body.boxeup-product-view #MainContent .vpd-brand-card { padding: 24px 20px; }
+}

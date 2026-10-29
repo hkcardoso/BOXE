@@ -6,20 +6,21 @@
     assign model = model_parts.first
   endif
 -%}
-<section class="vpd-section" aria-labelledby="vpd-title-{{ section.id }}">
+<section class="vpd-section" data-vpd-accordions aria-labelledby="vpd-title-{{ section.id }}">
   <header class="vpd-header">
     <p class="vpd-eyebrow">{{ product.vendor | escape }}</p>
     <h2 id="vpd-title-{{ section.id }}">{{ 'viriatto_product.details' | t }}</h2>
     <p>{{ 'viriatto_product.details_intro' | t }}</p>
   </header>
   <details class="vpd-accordion" open>
-    <summary>{{ 'viriatto_product.description' | t }}<span aria-hidden="true">+</span></summary>
+    <summary><span class="vpd-accordion__label">{% render 'viriatto-product-icon', name: 'info' %}{{ 'viriatto_product.description' | t }}</span><span class="vpd-toggle" aria-hidden="true">+</span></summary>
+    <div class="vpd-accordion__body">
     <div class="vpd-overview">
       <div class="vpd-copy">
         <h3>{{ model | escape }}</h3>
         {% render 'viriatto-product-copy', product: product, mode: 'description' %}
         <h3>{{ 'viriatto_product.highlights' | t }}</h3>
-        {% render 'viriatto-product-copy', product: product, mode: 'features' %}
+        {% render 'viriatto-product-copy', product: product, mode: 'benefits' %}
       </div>
       {%- assign detail_image = product.images[1] | default: product.featured_image -%}
       {%- if section.settings.show_detail_image and detail_image != blank -%}
@@ -29,9 +30,11 @@
         </figure>
       {%- endif -%}
     </div>
+    </div>
   </details>
   <details class="vpd-accordion" open>
-    <summary>{{ 'viriatto_product.technical' | t }}<span aria-hidden="true">+</span></summary>
+    <summary><span class="vpd-accordion__label">{% render 'viriatto-product-icon', name: 'layers' %}{{ 'viriatto_product.technical' | t }}</span><span class="vpd-toggle" aria-hidden="true">+</span></summary>
+    <div class="vpd-accordion__body">
     <div class="vpd-technical">
       <table>
         <caption class="visually-hidden">{{ 'viriatto_product.technical' | t }} — {{ product.title | escape }}</caption>
@@ -51,25 +54,85 @@
         </tbody>
       </table>
     </div>
+    </div>
   </details>
   <details class="vpd-accordion" open>
-    <summary>{{ 'viriatto_product.fit' | t }}<span aria-hidden="true">+</span></summary>
+    <summary><span class="vpd-accordion__label">{% render 'viriatto-product-icon', name: 'fit' %}{{ 'viriatto_product.fit' | t }}</span><span class="vpd-toggle" aria-hidden="true">+</span></summary>
+    <div class="vpd-accordion__body">
     <div class="vpd-prose">{% render 'viriatto-product-copy', product: product, mode: 'fit' %}</div>
+    </div>
   </details>
   <details class="vpd-accordion">
-    <summary>{{ 'viriatto_product.care' | t }}<span aria-hidden="true">+</span></summary>
+    <summary><span class="vpd-accordion__label">{% render 'viriatto-product-icon', name: 'care' %}{{ 'viriatto_product.care' | t }}</span><span class="vpd-toggle" aria-hidden="true">+</span></summary>
+    <div class="vpd-accordion__body">
     <div class="vpd-prose">{% render 'viriatto-product-copy', product: product, mode: 'care' %}</div>
+    </div>
   </details>
   <details class="vpd-accordion">
-    <summary>{{ 'boxeup_sections.story_shipping' | t }}<span aria-hidden="true">+</span></summary>
+    <summary><span class="vpd-accordion__label">{% render 'viriatto-product-icon', name: 'bag' %}{{ 'boxeup_sections.story_shipping' | t }}</span><span class="vpd-toggle" aria-hidden="true">+</span></summary>
+    <div class="vpd-accordion__body">
     <div class="vpd-prose">
       <p>{{ 'boxeup_sections.story_shipping_terms' | t }}</p>
       {%- if shop.shipping_policy.body != blank -%}<p><a href="{{ shop.shipping_policy.url }}">{{ 'boxeup_sections.story_shipping_policy' | t }}</a></p>{%- endif -%}
       {%- if shop.refund_policy.body != blank -%}<p><a href="{{ shop.refund_policy.url }}">{{ 'boxeup_sections.story_returns_policy' | t }}</a></p>{%- endif -%}
       <p><a href="{{ routes.root_url }}pages/contactos">{{ 'boxeup_sections.story_contacts' | t }}</a></p>
     </div>
+    </div>
   </details>
+  {% render 'viriatto-product-brand', product: product %}
 </section>
+{% javascript %}
+  function initViriattoAccordions(scope) {
+    scope.querySelectorAll('[data-vpd-accordions]').forEach((root) => {
+      if (root.dataset.accordionsReady) return;
+      root.dataset.accordionsReady = 'true';
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      root.querySelectorAll('.vpd-accordion').forEach((details) => {
+        const summary = details.querySelector('summary');
+        const body = details.querySelector('.vpd-accordion__body');
+        if (!summary || !body) return;
+        let animation;
+        let contentAnimation;
+        summary.addEventListener('click', (event) => {
+          event.preventDefault();
+          const expanding = !details.open || details.dataset.state === 'closing';
+          const startHeight = details.getBoundingClientRect().height;
+          if (animation) animation.cancel();
+          if (contentAnimation) contentAnimation.cancel();
+          if (reducedMotion.matches || typeof details.animate !== 'function') {
+            details.open = expanding;
+            details.style.overflow = '';
+            delete details.dataset.state;
+            return;
+          }
+          details.open = true;
+          details.dataset.state = expanding ? 'opening' : 'closing';
+          details.style.overflow = 'hidden';
+          const endHeight = expanding ? details.scrollHeight + 1 : summary.getBoundingClientRect().height + 1;
+          animation = details.animate(
+            { height: [`${startHeight}px`, `${endHeight}px`] },
+            { duration: 280, easing: 'cubic-bezier(.22,1,.36,1)' }
+          );
+          contentAnimation = body.animate(
+            expanding ? { opacity: [.25, 1], transform: ['translateY(-5px)', 'translateY(0)'] } : { opacity: [1, 0] },
+            { duration: expanding ? 250 : 160, easing: 'ease-out', fill: 'forwards' }
+          );
+          animation.onfinish = () => {
+            details.open = expanding;
+            details.style.overflow = '';
+            delete details.dataset.state;
+            if (contentAnimation) contentAnimation.cancel();
+            contentAnimation = undefined;
+            animation = undefined;
+          };
+        });
+      });
+    });
+  }
+  initViriattoAccordions(document);
+  document.addEventListener('shopify:section:load', (event) => initViriattoAccordions(event.target));
+
+{% endjavascript %}
 {% schema %}
 {
   "name": "VIRIATTO | Produto",

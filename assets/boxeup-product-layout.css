@@ -937,20 +937,6 @@ body.boxeup-product-view .header-wrapper .header__inline-menu .header__menu-item
 #MainContent[data-template="product"] .related-products .card-wrapper .quick-add__submit{
   border-radius:5px!important;min-height:40px!important;
 }
-body.boxeup-product-view .footer{
-  background:
-    linear-gradient(90deg,rgba(7,8,10,.97) 0%,rgba(7,8,10,.86) 53%,rgba(7,8,10,.81) 100%),
-    url("https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-training-editorial-2026.jpg?v=1793013824")
-    center 37%/cover no-repeat!important;
-  border-top:1px solid #303137!important;
-}
-body.boxeup-product-view .footer .boxeup-footer-brand,
-body.boxeup-product-view .footer .footer__content-top,
-body.boxeup-product-view .footer .footer__content-bottom{
-  max-width:none!important;
-  padding-left:var(--bxp-gutter)!important;
-  padding-right:var(--bxp-gutter)!important;
-}
 @media(min-width:1800px){
   #MainContent[data-template="product"] .product.bxp-product-grid{
     grid-template-columns:minmax(0,1.35fr) minmax(480px,1fr)!important;
@@ -1039,15 +1025,6 @@ body.boxeup-product-view .footer .footer__content-bottom{
 #MainContent[data-template="product"] .bxp-story__inner,
 #MainContent[data-template="product"] .bxp-details,
 #MainContent[data-template="product"] .related-products{
-  box-sizing:border-box!important;
-  width:100%!important;max-width:var(--boxeup-content-max)!important;
-  margin-left:auto!important;margin-right:auto!important;
-  padding-left:var(--boxeup-content-gutter)!important;
-  padding-right:var(--boxeup-content-gutter)!important;
-}
-body.boxeup-product-view .footer .boxeup-footer-brand.page-width,
-body.boxeup-product-view .footer .footer__content-top.page-width,
-body.boxeup-product-view .footer .footer__content-bottom-wrapper.page-width{
   box-sizing:border-box!important;
   width:100%!important;max-width:var(--boxeup-content-max)!important;
   margin-left:auto!important;margin-right:auto!important;

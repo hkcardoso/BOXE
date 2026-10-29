@@ -47,7 +47,7 @@ body.boxeup-product-view #MainContent .vpc-card small { display: block; color: #
 body.boxeup-product-view #MainContent .vpc-card__price { display: block; margin-top: 10px; font-size: 13px; font-weight: 700; }
 body.boxeup-product-view #MainContent .vpc-card__link { display: inline-block; margin-top: 7px; font-size: 11px; color: #babcc3; text-decoration: underline; text-underline-offset: 3px; }
 body.boxeup-product-view #MainContent .vpr-section { border-top: 1px solid #303136; }
-body.boxeup-product-view #MainContent .vpr-preview-note { border: 1px dashed #79705a; padding: 14px 18px; border-radius: 4px; color: #e0d1ad; margin: 24px 0; }
+body.boxeup-product-view #MainContent .vpr-preview-note { padding: 0; margin: 10px 0 0; color: #898c95; font-size: 11px; line-height: 1.5; letter-spacing: .01em; }
 body.boxeup-product-view #MainContent .vpr-layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 48px; margin-top: 28px; align-items: start; }
 body.boxeup-product-view #MainContent .vpr-score { font: 700 48px/1 var(--bxp-display, sans-serif); color: #fff; margin: 0 0 10px; }
 body.boxeup-product-view #MainContent .vpr-stars { color: #f0c979; letter-spacing: 2px; }
@@ -61,8 +61,10 @@ body.boxeup-product-view #MainContent .vpr-review[hidden] { display: none; }
 body.boxeup-product-view #MainContent .vpr-review h3 { font: 700 15px/1.5 var(--bxp-ui, sans-serif); color: #fff; margin: 12px 0 8px; }
 body.boxeup-product-view #MainContent .vpr-review p { margin: 0 0 12px; }
 body.boxeup-product-view #MainContent .vpr-review footer { font-size: 11px; color: #aeb0b6; }
-body.boxeup-product-view #MainContent .vpr-demo-badge { display: inline-block; margin-left: 10px; color: #e0d1ad; font-size: 10px; border: 1px solid #605741; padding: 2px 7px; border-radius: 3px; }
-body.boxeup-product-view #MainContent .vpr-more { padding: 12px 24px; font: 700 12px var(--bxp-ui, sans-serif); background: #fff; color: #111; border: 0; border-radius: 3px; cursor: pointer; margin-top: 8px; }
+body.boxeup-product-view #MainContent .vpr-more { padding: 12px 24px; font: 700 12px var(--bxp-ui, sans-serif); background: #fff; color: #111; border: 0; border-radius: 3px; cursor: pointer; margin-top: 8px; transition: background-color .2s ease, transform .2s ease; }
+body.boxeup-product-view #MainContent .vpr-more:hover { background: #e7e7e9; }
+body.boxeup-product-view #MainContent .vpr-more:active { transform: translateY(1px); }
+body.boxeup-product-view #MainContent .vpr-more[hidden] { display: none; }
 body.boxeup-product-view #MainContent .vpr-empty { padding: 24px 0 0; color: #afb0b8; }
 @media (max-width: 989px) {
   body.boxeup-product-view #MainContent :is(.vpd-section, .vpc-section, .vpr-section) { padding: 32px 18px; font-size: 13px; }

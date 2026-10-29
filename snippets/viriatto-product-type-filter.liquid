@@ -43,7 +43,7 @@
   </li>
   {%- for vpt_handle in vpt_handles -%}
     {%- assign vpt_collection = collections[vpt_handle] -%}
-    {%- if vpt_collection != blank and vpt_collection.products_count > 0 -%}
+    {%- if vpt_collection != blank -%}
       {%- case forloop.index -%}
         {%- when 1 -%}{%- assign vpt_label = vpt_gloves -%}
         {%- when 2 -%}{%- assign vpt_label = vpt_shins -%}

@@ -471,7 +471,7 @@
  .bx-mobile-shared-nav .boxeup-nav-modalities__link--disabled{opacity:.5}
  .bx-mobile-shared-nav .boxeup-nav-modalities__badge{font-size:10px}
  .bx-mobile-shared-nav .boxeup-nav-modalities__divider{height:1px;background:#ffffff14;margin:6px 12px}
- .bx-mobile-shared-nav a:focus-visible,.bx-mobile-shared-nav button:focus-visible{outline:2px solid #ed4156;outline-offset:-2px}
+ .bx-mobile-shared-nav a:focus-visible,.bx-mobile-shared-nav button:focus-visible{outline:2px solid #858892;outline-offset:-2px}
  body .header-wrapper #menu-drawer .menu-drawer__localization .localization-form__select{color:#fff!important}
 }
 

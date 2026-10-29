@@ -909,7 +909,7 @@
     </facet-filters-form>
   {%- endif -%}
   <div
-    class="product-count light{% if filter_type == 'vertical' or filter_type == 'horizontal' %} medium-hide large-up-hide{% endif %}"
+    class="product-count light{% if filter_type == 'vertical' or filter_type == 'horizontal' %} medium-hide large-up-hide{% endif %}{% if template.name == 'collection' %} small-hide{% endif %}"
     role="status"
   >
     <h2 class="product-count__text text-body">

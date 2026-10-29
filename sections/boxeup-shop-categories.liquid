@@ -31,10 +31,14 @@
       margin:5px 0 0!important;
       padding:0!important;
     }
-    body #MainContent #boxeup-catalog-filters .bx-text-button{
-      min-height:34px!important;
-      padding-block:6px!important;
-      font-size:11px!important;
+    /* Mobile catalogue: keep only category chips and the native filter/brand controls. */
+    body #MainContent #boxeup-catalog-filters .bx-tools-row{
+      display:none!important;
+    }
+    /* Keep ProductCount available for Dawn's AJAX facet updates, but do not show it. */
+    body #MainContent[data-template="collection"] #main-collection-filters .facets-container > .product-count,
+    body #MainContent[data-template="collection"] #main-collection-filters .facets-container #ProductCount{
+      display:none!important;
     }
   }
 </style>

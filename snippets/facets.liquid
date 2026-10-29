@@ -20,6 +20,13 @@
   assign sort_by = results.sort_by | default: results.default_sort_by
   assign total_active_values = 0
   assign default_presentation = 'text'
+  assign vpt_has_native_filter = false
+  for vpt_filter in results.filters
+    if vpt_filter.param_name == 'filter.p.product_type'
+      assign vpt_has_native_filter = true
+      break
+    endif
+  endfor
   assign bx_filter_language = request.locale.iso_code | slice: 0, 2
   assign bx_filter_mobile_label = 'Filtros'
   assign bx_filter_close_label = 'Fechar filtros'
@@ -132,6 +139,9 @@
               </div>
             {%- endif -%}
 
+            {%- if template.name == 'collection' and enable_filtering and vpt_has_native_filter == false -%}
+              {% render 'viriatto-product-type-filter', variant: 'desktop' %}
+            {%- endif -%}
             <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
             {% comment %} Filters for both horizontal and vertical filter {% endcomment %}
             {%- for filter in results.filters -%}
@@ -517,6 +527,9 @@
             >
               {%- if template.name == 'collection' -%}
                 {% render 'boxeup-modality-filter', variant: 'mobile' %}
+              {%- endif -%}
+              {%- if template.name == 'collection' and enable_filtering and vpt_has_native_filter == false -%}
+                {% render 'viriatto-product-type-filter', variant: 'mobile' %}
               {%- endif -%}
               {%- if enable_filtering -%}
                 {%- for filter in results.filters -%}

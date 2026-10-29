@@ -1,0 +1,83 @@
+{%- comment -%}
+  Product-category fallback for stores where Shopify Search & Discovery has not
+  activated the native Product type filter. Links use existing Shopify collections
+  and preserve native filtering/sorting inside the chosen category.
+  variant: desktop | mobile
+{%- endcomment -%}
+{%- liquid
+  assign vpt_locale = request.locale.iso_code | slice: 0, 2
+  assign vpt_title = 'Tipo de produto'
+  assign vpt_all = 'Todos os produtos'
+  assign vpt_gloves = 'Luvas'
+  assign vpt_shins = 'Caneleiras'
+  assign vpt_clothing = 'Roupa e rashguards'
+  assign vpt_shorts = 'Calções'
+  assign vpt_mouthguards = 'Boqueiras e proteção'
+  assign vpt_bags = 'Mochilas e sacos'
+  if vpt_locale == 'en'
+    assign vpt_title = 'Product type'
+    assign vpt_all = 'All products'
+    assign vpt_gloves = 'Gloves'
+    assign vpt_shins = 'Shin guards'
+    assign vpt_clothing = 'Clothing and rashguards'
+    assign vpt_shorts = 'Shorts'
+    assign vpt_mouthguards = 'Mouthguards and protection'
+    assign vpt_bags = 'Backpacks and bags'
+  elsif vpt_locale == 'es'
+    assign vpt_title = 'Tipo de producto'
+    assign vpt_all = 'Todos los productos'
+    assign vpt_gloves = 'Guantes'
+    assign vpt_shins = 'Espinilleras'
+    assign vpt_clothing = 'Ropa y rashguards'
+    assign vpt_shorts = 'Pantalones cortos'
+    assign vpt_mouthguards = 'Protectores bucales'
+    assign vpt_bags = 'Mochilas y bolsas'
+  endif
+  assign vpt_handles = 'luvas-de-boxe-e-muay-thai,caneleiras-de-muay-thai-e-kickboxing,vestuario-e-fightwear,calcoes-e-roupa-de-combate,boqueiras-e-protecoes,mochilas-e-sacos-de-treino-1' | split: ','
+-%}
+{%- capture vpt_links -%}
+  <li class="vpt-filter__item">
+    <a href="{{ routes.all_products_collection_url }}" class="vpt-filter__link"{% if collection.handle == 'all' %} aria-current="page"{% endif %}>
+      {{- vpt_all | escape -}}
+    </a>
+  </li>
+  {%- for vpt_handle in vpt_handles -%}
+    {%- assign vpt_collection = collections[vpt_handle] -%}
+    {%- if vpt_collection != blank and vpt_collection.products_count > 0 -%}
+      {%- case forloop.index -%}
+        {%- when 1 -%}{%- assign vpt_label = vpt_gloves -%}
+        {%- when 2 -%}{%- assign vpt_label = vpt_shins -%}
+        {%- when 3 -%}{%- assign vpt_label = vpt_clothing -%}
+        {%- when 4 -%}{%- assign vpt_label = vpt_shorts -%}
+        {%- when 5 -%}{%- assign vpt_label = vpt_mouthguards -%}
+        {%- when 6 -%}{%- assign vpt_label = vpt_bags -%}
+      {%- endcase -%}
+      <li class="vpt-filter__item">
+        <a href="{{ vpt_collection.url }}" class="vpt-filter__link"{% if collection.handle == vpt_handle %} aria-current="page"{% endif %}>
+          {{- vpt_label | escape -}}
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if variant == 'mobile' -%}
+  <details class="vpt-filter vpt-filter--mobile">
+    <summary class="vpt-filter__mobile-trigger">
+      <span>{{ vpt_title | escape }}</span>
+      {{- 'icon-caret.svg' | inline_asset_content -}}
+    </summary>
+    <ul class="vpt-filter__list list-unstyled" role="list">{{ vpt_links }}</ul>
+  </details>
+{%- else -%}
+  <details class="disclosure-has-popup facets__disclosure vpt-filter vpt-filter--desktop">
+    <summary class="facets__summary caption-large focus-offset">
+      <div>
+        <span class="facets__summary-label">{{ vpt_title | escape }}</span>
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </div>
+    </summary>
+    <div class="facets__display vpt-filter__popover">
+      <ul class="vpt-filter__list list-unstyled" role="list">{{ vpt_links }}</ul>
+    </div>
+  </details>
+{%- endif -%}

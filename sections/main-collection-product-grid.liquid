@@ -116,6 +116,7 @@
       <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
         {{ 'component-facets.css' | asset_url | stylesheet_tag }}
         {{ 'viri-mobile-filter-sheet.css' | asset_url | stylesheet_tag }}
+        {{ 'viriatto-product-type-filter.css' | asset_url | stylesheet_tag }}
         <style>
           /* VIRIATTO desktop: aligned native facets, without duplicate metadata. */
           @media(min-width:990px){

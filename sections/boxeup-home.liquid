@@ -1,6 +1,9 @@
 {{ 'quick-add.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'quick-add.js' | asset_url }}" defer></script>
 <script src="{{ 'product-form.js' | asset_url }}" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
 {%- liquid
   assign vh_locale = request.locale.iso_code | slice: 0, 2
@@ -766,14 +769,14 @@
 
   /* VIRIATTO — condensed hero supporting copy (Barlow Condensed + Inter) */
   .vh-home .vh-hero__copy .vh-eyebrow {
-    font-family: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif !important;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700 !important;
     letter-spacing: .19em;
     line-height: 1.15;
     margin: 0 0 6px;
     color: #eeeef0;
-    text-transform: uppercase;
+    text-transform: uppercase !important;
   }
   .vh-home .vh-hero__copy .vh-intro {
     font-family: 'Inter', Arial, Helvetica, sans-serif;

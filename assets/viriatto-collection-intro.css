@@ -182,6 +182,28 @@ body.boxeup-page-catalog #MainContent .viri-catalog-intro__browse:focus-visible 
     width:29px;
   }
 }
+/* VIRIATTO: give the catalogue title breathing room without affecting mobile. */
+@media (min-width:990px) {
+  body.boxeup-page-catalog #MainContent .viri-catalog-intro .collection-hero__inner.page-width{
+    padding-top:clamp(31px,3vw,46px)!important;
+    padding-bottom:clamp(27px,2.6vw,38px)!important;
+  }
+  body.boxeup-page-catalog #MainContent .viri-catalog-intro__breadcrumb{
+    margin-bottom:clamp(24px,2.5vw,34px)!important;
+  }
+  body.boxeup-page-catalog #MainContent .viri-catalog-intro .collection-hero__title{
+    font-size:clamp(37px,3.5vw,55px)!important;
+    line-height:1.16!important;
+    letter-spacing:.025em!important;
+    overflow:visible!important;
+  }
+  body.boxeup-page-catalog #MainContent .viri-catalog-intro__description{
+    margin-top:14px!important;
+  }
+  body.boxeup-page-catalog #MainContent .viri-catalog-intro__browse{
+    align-self:center;
+  }
+}
 @media(prefers-reduced-motion:reduce) {
   body.boxeup-page-catalog #MainContent .viri-catalog-intro__arrow{transition:none}
 }

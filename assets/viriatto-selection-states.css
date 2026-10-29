@@ -1,0 +1,91 @@
+/*
+ * VIRIATTO | Shared selection states
+ * Selected navigation options use one quiet slate treatment throughout the
+ * storefront. Red is reserved for primary actions, offers and promotions.
+ */
+:root {
+  --viri-selected-bg: #303239;
+  --viri-selected-border: #626671;
+  --viri-selected-fg: #f7f8fa;
+}
+
+/* Dropdown links: discipline, product type and filter category. */
+body #MainContent[data-template="collection"] a.boxeup-facet-modalities__link[aria-current="page"],
+body #MainContent[data-template="collection"] .vpt-filter__link[aria-current="page"] {
+  background: var(--viri-selected-bg) !important;
+  color: var(--viri-selected-fg) !important;
+  box-shadow: none !important;
+  border-left: 0 !important;
+  font-weight: 700 !important;
+}
+body #MainContent[data-template="collection"] .boxeup-facet-modalities__selected {
+  color: #d9dce2 !important;
+}
+
+/* Compact option chips and the mobile modality picker. */
+body #MainContent .boxeup-chip[aria-current="page"],
+body #MainContent .boxeup-shop-categories__link[aria-current="page"],
+body #MainContent[data-template="collection"] .boxeup-mobile-modality-filter__links a[aria-current="page"] {
+  background: var(--viri-selected-bg) !important;
+  color: var(--viri-selected-fg) !important;
+  border-color: var(--viri-selected-border) !important;
+  box-shadow: none !important;
+  font-weight: 700 !important;
+}
+
+/* Brand cards: same slate background and neutral one-pixel outline. */
+body #MainContent .boxeup-brand-card[aria-current="page"],
+body #MainContent .bx-mobile-brand-strip > a[aria-current="page"],
+body #MainContent .viri-filters__brand-grid a[aria-current="page"],
+body #MainContent .bx-brand-directory > nav > a[aria-current="page"] {
+  background: var(--viri-selected-bg) !important;
+  border-color: var(--viri-selected-border) !important;
+  box-shadow: none !important;
+}
+
+/* Selected size/variant options in product details and the quick-view popup. */
+body #MainContent .product-form__input input[type="radio"]:checked + label,
+body #MainContent[data-template="product"] .product.bxp-product-grid .product-form__input input[type="radio"]:checked + label,
+body quick-add-modal .bxq-product .product-form__input input[type="radio"]:checked + label {
+  background: var(--viri-selected-bg) !important;
+  border-color: var(--viri-selected-border) !important;
+  color: var(--viri-selected-fg) !important;
+  box-shadow: none !important;
+}
+
+/* Product details, image thumbnails and pagination. */
+body #MainContent[data-template="product"] .bxp-details__tab[aria-selected="true"] {
+  color: var(--viri-selected-fg) !important;
+  border-bottom-color: var(--viri-selected-border) !important;
+}
+body #MainContent[data-template="product"] .thumbnail[aria-current="true"] {
+  border-color: var(--viri-selected-border) !important;
+  box-shadow: none !important;
+}
+body #MainContent .pagination__item--current {
+  color: var(--viri-selected-fg) !important;
+}
+
+/* Support navigation and the site's active submenu items. */
+body .vi-support-page__nav a[aria-current="page"] {
+  color: var(--viri-selected-fg) !important;
+  background: var(--viri-selected-bg) !important;
+  border-left: 0 !important;
+  box-shadow: none !important;
+}
+body .header-wrapper .header__submenu a[aria-current="page"],
+body .header-wrapper .header__submenu .list-menu__item--active {
+  background: var(--viri-selected-bg) !important;
+  color: var(--viri-selected-fg) !important;
+  box-shadow: none !important;
+}
+
+/* Preserve keyboard indication as a visible, neutral focus ring. */
+body #MainContent .boxeup-facet-modalities__link:focus-visible,
+body #MainContent .vpt-filter__link:focus-visible,
+body #MainContent .boxeup-chip:focus-visible,
+body #MainContent .boxeup-brand-card:focus-visible,
+body #MainContent .boxeup-mobile-modality-filter__links a:focus-visible {
+  outline: 2px solid #c2c6cf !important;
+  outline-offset: 2px !important;
+}

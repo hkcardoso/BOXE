@@ -642,7 +642,7 @@ body .header-wrapper #cart-icon-bubble .icon-cart-empty {
 /* BOXEUP | Discipline selector next to Shopify's availability/price facets. */
 #MainContent[data-template="collection"] .boxeup-facet-modalities{position:relative;margin-right:3.5rem}
 #MainContent[data-template="collection"] .boxeup-facet-modalities[open]{z-index:20}
-#MainContent[data-template="collection"] .boxeup-facet-modalities__selected{color:#ef465a;font-weight:650}
+#MainContent[data-template="collection"] .boxeup-facet-modalities__selected{color:#d9dce2;font-weight:650}
 #MainContent[data-template="collection"] .boxeup-facet-modalities__panel{
   position:absolute;top:calc(100% + 4px);left:-13px;z-index:21;
   width:min(290px,82vw);padding:7px;border:1px solid #3f4149;
@@ -657,7 +657,7 @@ body .header-wrapper #cart-icon-bubble .icon-cart-empty {
 #MainContent[data-template="collection"] a.boxeup-facet-modalities__link:hover,
 #MainContent[data-template="collection"] a.boxeup-facet-modalities__link:focus-visible{background:#303138;outline-offset:-2px}
 #MainContent[data-template="collection"] .boxeup-facet-modalities__link[aria-current="page"]{
-  background:#332127!important;color:#fff!important;box-shadow:inset 3px 0 #ed2437
+  background:#303239!important;color:#fff!important;box-shadow:none!important;
 }
 #MainContent[data-template="collection"] .boxeup-facet-modalities__link--disabled{opacity:.47;cursor:default}
 #MainContent[data-template="collection"] .boxeup-facet-modalities__link small{font-size:11px;font-weight:500;white-space:nowrap}
@@ -674,7 +674,7 @@ body .header-wrapper #cart-icon-bubble .icon-cart-empty {
   font-size:12px;line-height:1.3;text-decoration:none!important
 }
 #MainContent[data-template="collection"] .boxeup-mobile-modality-filter__links a[aria-current="page"]{
-  border-color:#ed2437;background:#3c2026
+  border-color:#626671;background:#303239
 }
 #MainContent[data-template="collection"] .boxeup-mobile-modality-filter__links span[aria-disabled="true"]{opacity:.46}
 @media(max-width:749px){

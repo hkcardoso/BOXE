@@ -1021,16 +1021,15 @@
         <a class="vh-products__all" href="{{ routes.all_products_collection_url }}?sort_by=created-descending">{{ vh_all }} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
       </div>
       <div class="vh-grid">
+        {%- comment -%} Two hand-picked new arrivals; existing product tile and quick-add remain unchanged. {%- endcomment -%}
+        {%- assign vh_new_handles = 'baby-short-sleeve-one-piece,minimalist-backpack' | split: ',' -%}
         {%- assign vh_new_count = 0 -%}
-        {%- for product in vh_latest_products -%}
-          {%- assign vh_vendor = product.vendor | downcase | strip -%}
-          {%- assign vh_product_title = product.title | downcase | strip -%}
-          {%- if product.price == 0 or vh_vendor == 'my store' or product.tags contains 'boxeup:hidden' or vh_product_title == 'test' or vh_product_title == 'teste' -%}{%- continue -%}{%- endif -%}
-          {%- capture vh_id_marker -%}|{{ product.id }}|{%- endcapture -%}
-          {%- if vh_featured_ids contains vh_id_marker -%}{%- continue -%}{%- endif -%}
-          {% render 'boxeup-home-card', product: product, section_id: section.id %}
-          {%- assign vh_new_count = vh_new_count | plus: 1 -%}
-          {%- if vh_new_count >= 8 -%}{%- break -%}{%- endif -%}
+        {%- for vh_new_handle in vh_new_handles -%}
+          {%- assign product = all_products[vh_new_handle] -%}
+          {%- if product != blank -%}
+            {% render 'boxeup-home-card', product: product, section_id: section.id %}
+            {%- assign vh_new_count = vh_new_count | plus: 1 -%}
+          {%- endif -%}
         {%- endfor -%}
       </div>
       {%- if vh_new_count == 0 -%}<p class="vh-empty">{{ 'boxeup_sections.home_empty' | t }}</p>{%- endif -%}

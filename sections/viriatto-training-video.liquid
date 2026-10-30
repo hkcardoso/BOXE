@@ -59,8 +59,8 @@
         <div class="vt__guide"><span class="vt__number">03</span><div><strong>{{ vt_three }}</strong><span>{{ vt_three_desc }}</span></div></div>
       </div>
       <div class="vt__actions">
-        <a class="vt__link vt__link--primary" href="{{ vt_modalities_url }}">{{ vt_cta }} <span aria-hidden="true">↗</span></a>
-        <a class="vt__link vt__link--secondary" href="{{ routes.all_products_collection_url }}">{{ vt_secondary }} <span aria-hidden="true">→</span></a>
+        <a class="vt__link vt__link--primary" href="{{ vt_modalities_url }}">{{ vt_cta }} <span aria-hidden="true">{% render 'viri-arrow-icon', diagonal: true %}</span></a>
+        <a class="vt__link vt__link--secondary" href="{{ routes.all_products_collection_url }}">{{ vt_secondary }} <span aria-hidden="true">{% render 'viri-arrow-icon' %}</span></a>
       </div>
     </div>
   </div>

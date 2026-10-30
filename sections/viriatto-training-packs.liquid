@@ -27,7 +27,7 @@
           <p class="vp__subtitle">{{ block.settings.subtitle | escape }}</p>
           <div class="vp__bottom">
             <div class="vp__prices"><span class="vp__separate">{{ 'viriatto_packs.separate' | t }} <s>{{ total | money }}</s></span><strong>{{ selected.price | money }}</strong>{% if saving > 0 %}<span class="vp__saving">{{ 'viriatto_packs.save' | t: amount: saving_money }}</span>{% endif %}</div>
-            <button class="vp__choose" type="button" data-open="Pack-{{ section.id }}-{{ block.id }}" aria-haspopup="dialog">{{ 'viriatto_packs.choose' | t }} <span aria-hidden="true">↗</span></button>
+            <button class="vp__choose" type="button" data-open="Pack-{{ section.id }}-{{ block.id }}" aria-haspopup="dialog">{{ 'viriatto_packs.choose' | t }} <span aria-hidden="true">{% render 'viri-arrow-icon', diagonal: true %}</span></button>
           </div>
           <noscript><a href="{{ pack.url }}">{{ 'viriatto_packs.details' | t }}</a></noscript>
           <dialog class="vp__dialog" id="Pack-{{ section.id }}-{{ block.id }}" aria-labelledby="PackTitle-{{ section.id }}-{{ block.id }}">
@@ -42,7 +42,7 @@
               <p class="vp__note">{{ 'viriatto_packs.note' | t }}</p>
               <button class="vp__submit" type="submit"{% unless selected.available %} disabled{% endunless %}>{% if selected.available %}{{ 'viriatto_packs.add' | t }}{% else %}{{ 'viriatto_packs.unavailable' | t }}{% endif %}</button>
               <p class="vp__status" role="status" aria-live="polite"></p>
-              <a class="vp__cart" href="{{ routes.cart_url }}" hidden>{{ 'viriatto_packs.cart' | t }} →</a>
+              <a class="vp__cart" href="{{ routes.cart_url }}" hidden>{{ 'viriatto_packs.cart' | t }} {% render 'viri-arrow-icon' %}</a>
               <script type="application/json" data-variants>{{ pack.variants | json }}</script>
             </form>
           </dialog>

@@ -36,7 +36,7 @@
           {{ section.settings.heading }}
         </h2>
         <a class="bxp-related-all" href="{{ routes.all_products_collection_url }}">
-          {% if request.locale.iso_code == 'en' %}View all products{% else %}Ver todos os produtos{% endif %} <span aria-hidden="true">→</span>
+          {% if request.locale.iso_code == 'en' %}View all products{% else %}Ver todos os produtos{% endif %} <span aria-hidden="true">{% render 'viri-arrow-icon' %}</span>
         </a>
       </div>
       <ul

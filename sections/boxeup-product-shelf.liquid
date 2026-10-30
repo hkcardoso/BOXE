@@ -3,7 +3,7 @@
 <section class="boxeup-shelf page-width" data-boxeup-shelf aria-labelledby="ShelfTitle-{{ section.id }}">
   <div class="boxeup-section-heading">
     <div><p class="boxeup-kicker">{{ section.settings.eyebrow | escape }}</p><h2 id="ShelfTitle-{{ section.id }}">{{ section.settings.title | escape }}</h2></div>
-    <a class="boxeup-text-link" href="{{ section.settings.collection.url | default: routes.all_products_collection_url }}">{{ 'boxeup_v4.view_all' | t }} <span aria-hidden="true">↗</span></a>
+    <a class="boxeup-text-link" href="{{ section.settings.collection.url | default: routes.all_products_collection_url }}">{{ 'boxeup_v4.view_all' | t }} <span aria-hidden="true">{% render 'viri-arrow-icon', diagonal: true %}</span></a>
   </div>
   {% if section.settings.filters %}
     <div class="boxeup-shelf-filters boxeup-chip-list" aria-label="{{ 'boxeup_navigation.categories' | t }}" hidden>

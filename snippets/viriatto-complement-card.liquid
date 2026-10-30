@@ -10,6 +10,6 @@
     <small>{{ item.vendor | escape }}</small>
     <strong>{{ item.title | escape }}</strong>
     <span class="vpc-card__price">{% if item.price_varies %}{{ 'viriatto_product.from' | t }} {% endif %}{{ item.price | money }}</span>
-    <span class="vpc-card__link">{{ 'viriatto_product.view_product' | t }} <span aria-hidden="true">→</span></span>
+    <span class="vpc-card__link">{{ 'viriatto_product.view_product' | t }} <span aria-hidden="true">{% render 'viri-arrow-icon' %}</span></span>
   </span>
 </a>

@@ -59,6 +59,6 @@
     <p class="vpd-eyebrow">{{ 'viriatto_product.about_brand' | t }} · {{ brand_name | escape }}</p>
     <h3>{{ brand_title_key | t }}</h3>
     <p>{{ brand_body_key | t }}</p>
-    <a href="{{ routes.all_products_collection_url }}?filter.p.vendor={{ product.vendor | url_encode }}">{{ 'viriatto_product.explore_brand' | t }} <span aria-hidden="true">→</span></a>
+    <a href="{{ routes.all_products_collection_url }}?filter.p.vendor={{ product.vendor | url_encode }}">{{ 'viriatto_product.explore_brand' | t }} <span aria-hidden="true">{% render 'viri-arrow-icon' %}</span></a>
   </aside>
 {%- endif -%}

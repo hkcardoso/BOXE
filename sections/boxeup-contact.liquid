@@ -63,8 +63,8 @@
         <div><strong>{{ vi_contact }}:</strong><a href="mailto:business@boxeup.com">business@boxeup.com</a></div>
       </div>
       <nav class="vi-min-contact__links" aria-label="{{ vi_contact }}">
-        <a href="{{ pages['envios-e-entregas'].url | default: '/pages/envios-e-entregas' }}">{{ vi_faq_shipping }} <span aria-hidden="true">→</span></a>
-        <a href="{{ pages['devolucoes-e-garantias'].url | default: '/pages/devolucoes-e-garantias' }}">{{ vi_faq_returns }} <span aria-hidden="true">→</span></a>
+        <a href="{{ pages['envios-e-entregas'].url | default: '/pages/envios-e-entregas' }}">{{ vi_faq_shipping }} <span aria-hidden="true">{% render 'viri-arrow-icon' %}</span></a>
+        <a href="{{ pages['devolucoes-e-garantias'].url | default: '/pages/devolucoes-e-garantias' }}">{{ vi_faq_returns }} <span aria-hidden="true">{% render 'viri-arrow-icon' %}</span></a>
       </nav>
     </aside>
     <div class="vi-min-contact__form" id="BxContactFormPanel">
@@ -109,7 +109,7 @@
               <output class="bx-contact__counter" for="BoxeupContactBody" aria-live="off"><span data-bx-contact-count>0</span> / 1000</output>
             </div>
           </div>
-          <button type="submit" class="bx-contact__submit">{{ 'boxeup_sections.contact_send_message' | t }} <span aria-hidden="true">→</span></button>
+          <button type="submit" class="bx-contact__submit">{{ 'boxeup_sections.contact_send_message' | t }} <span aria-hidden="true">{% render 'viri-arrow-icon' %}</span></button>
           <p class="bx-contact__form-note">{{ 'boxeup_sections.contact_required' | t }}
             {% if shop.privacy_policy != blank %} · <a href="{{ shop.privacy_policy.url }}">{{ 'boxeup_sections.contact_policy' | t }}</a>{% endif %}
           </p>

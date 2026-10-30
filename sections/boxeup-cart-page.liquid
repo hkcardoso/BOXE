@@ -131,7 +131,7 @@
               <button type="submit">{{ bx_coupon_apply }}</button>
             </form>
           </div>
-          <a class="bx-cart-page__continue" href="{{ routes.all_products_collection_url }}">{{ bx_continue }} →</a>
+          <a class="bx-cart-page__continue" href="{{ routes.all_products_collection_url }}">{{ bx_continue }} {% render 'viri-arrow-icon' %}</a>
         </div>
         <aside class="bx-cart-page__aside">
           <div class="bx-cart-page__card">
@@ -162,7 +162,7 @@
       <div class="bx-cart-page__empty">
         <h2>{{ bx_empty_title }}</h2>
         <p>{{ bx_empty_desc }}</p>
-        <a href="{{ routes.all_products_collection_url }}">{{ bx_continue }} →</a>
+        <a href="{{ routes.all_products_collection_url }}">{{ bx_continue }} {% render 'viri-arrow-icon' %}</a>
       </div>
     {% endif %}
   </div>

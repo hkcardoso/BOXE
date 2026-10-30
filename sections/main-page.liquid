@@ -56,11 +56,11 @@
       <aside class="vi-support-page__sidebar" aria-label="{{ info_navigation | escape }}">
         <p>{{ info_navigation }}</p>
         <nav class="vi-support-page__nav">
-          <a href="{{ pages['envios-e-entregas'].url | default: '/pages/envios-e-entregas' }}"{% if page.handle == 'envios-e-entregas' %} aria-current="page"{% endif %}>{{ info_shipping }} <span aria-hidden="true">↗</span></a>
-          <a href="{{ pages['devolucoes-e-garantias'].url | default: '/pages/devolucoes-e-garantias' }}"{% if page.handle == 'devolucoes-e-garantias' %} aria-current="page"{% endif %}>{{ info_returns }} <span aria-hidden="true">↗</span></a>
-          <a href="{{ pages['condicoes-gerais-de-venda'].url | default: '/pages/condicoes-gerais-de-venda' }}"{% if page.handle == 'condicoes-gerais-de-venda' %} aria-current="page"{% endif %}>{{ info_terms }} <span aria-hidden="true">↗</span></a>
-          <a href="{{ pages['politica-de-privacidade'].url | default: '/pages/politica-de-privacidade' }}"{% if page.handle == 'politica-de-privacidade' %} aria-current="page"{% endif %}>{{ info_privacy }} <span aria-hidden="true">↗</span></a>
-          <a href="{{ pages['contact'].url | default: '/pages/contact' }}">{{ info_contact }} <span aria-hidden="true">↗</span></a>
+          <a href="{{ pages['envios-e-entregas'].url | default: '/pages/envios-e-entregas' }}"{% if page.handle == 'envios-e-entregas' %} aria-current="page"{% endif %}>{{ info_shipping }} <span aria-hidden="true">{% render 'viri-arrow-icon', diagonal: true %}</span></a>
+          <a href="{{ pages['devolucoes-e-garantias'].url | default: '/pages/devolucoes-e-garantias' }}"{% if page.handle == 'devolucoes-e-garantias' %} aria-current="page"{% endif %}>{{ info_returns }} <span aria-hidden="true">{% render 'viri-arrow-icon', diagonal: true %}</span></a>
+          <a href="{{ pages['condicoes-gerais-de-venda'].url | default: '/pages/condicoes-gerais-de-venda' }}"{% if page.handle == 'condicoes-gerais-de-venda' %} aria-current="page"{% endif %}>{{ info_terms }} <span aria-hidden="true">{% render 'viri-arrow-icon', diagonal: true %}</span></a>
+          <a href="{{ pages['politica-de-privacidade'].url | default: '/pages/politica-de-privacidade' }}"{% if page.handle == 'politica-de-privacidade' %} aria-current="page"{% endif %}>{{ info_privacy }} <span aria-hidden="true">{% render 'viri-arrow-icon', diagonal: true %}</span></a>
+          <a href="{{ pages['contact'].url | default: '/pages/contact' }}">{{ info_contact }} <span aria-hidden="true">{% render 'viri-arrow-icon', diagonal: true %}</span></a>
         </nav>
       </aside>
       <article class="vi-support-page__article">
@@ -68,8 +68,8 @@
           {{ page.content }}
         </div>
         <footer class="vi-support-page__article-footer">
-          <a href="{{ routes.all_products_collection_url }}">{{ info_back }} <span aria-hidden="true">→</span></a>
-          <a href="{{ pages['contact'].url | default: '/pages/contact' }}">{{ info_contact }} <span aria-hidden="true">→</span></a>
+          <a href="{{ routes.all_products_collection_url }}">{{ info_back }} <span aria-hidden="true">{% render 'viri-arrow-icon' %}</span></a>
+          <a href="{{ pages['contact'].url | default: '/pages/contact' }}">{{ info_contact }} <span aria-hidden="true">{% render 'viri-arrow-icon' %}</span></a>
         </footer>
       </article>
     </div>

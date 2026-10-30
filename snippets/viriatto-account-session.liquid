@@ -41,12 +41,12 @@
       <a href="{{ routes.account_url }}" class="viri-account-session__link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg>
         <span>{{ va_orders }}</span>
-        <span class="viri-account-session__arrow" aria-hidden="true">→</span>
+        <span class="viri-account-session__arrow" aria-hidden="true">{% render 'viri-arrow-icon' %}</span>
       </a>
       <a href="{{ routes.account_profile_url }}" class="viri-account-session__link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="9" r="3"/><path d="M6.5 19c.8-3.2 3-4.8 5.5-4.8s4.7 1.6 5.5 4.8"/></svg>
         <span>{{ va_profile }}</span>
-        <span class="viri-account-session__arrow" aria-hidden="true">→</span>
+        <span class="viri-account-session__arrow" aria-hidden="true">{% render 'viri-arrow-icon' %}</span>
       </a>
     </nav>
     <a class="viri-account-session__logout" href="{{ routes.account_logout_url }}" rel="nofollow">

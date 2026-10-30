@@ -1070,7 +1070,7 @@
             <div class="bx-cart-preview__subtotal"><span>{{ bx_cart_subtotal_label }}</span><strong data-bx-cart-total>{{ cart.total_price | money_with_currency }}</strong></div>
             <div class="bx-cart-preview__buttons">
               <a href="{{ routes.cart_url }}" class="bx-cart-preview__view">{{ bx_cart_view_label }}</a>
-              <a href="/checkout" class="bx-cart-preview__checkout">{{ bx_cart_checkout_label }} <span aria-hidden="true">→</span></a>
+              <a href="/checkout" class="bx-cart-preview__checkout">{{ bx_cart_checkout_label }} <span aria-hidden="true">{% render 'viri-arrow-icon' %}</span></a>
             </div>
           </div>
           <p class="bx-cart-preview__sr-status visually-hidden" data-bx-cart-status aria-live="polite"></p>

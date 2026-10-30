@@ -1,4 +1,4 @@
-{%- if page.handle == 'sobre-a-boxeup' -%}
+{%- if page.handle == 'sobre-a-viriatto' or page.handle == 'sobre-a-boxeup' -%}
   {% render 'boxeup-about-content' %}
 {%- else -%}
   {{ 'viriatto-footer-pages.css' | asset_url | stylesheet_tag }}

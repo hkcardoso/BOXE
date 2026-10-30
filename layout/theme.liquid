@@ -410,7 +410,7 @@
     </script>
   </head>
 
-  <body class="gradient viri-layout-unified{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}{% if request.page_type == 'index' %} boxeup-page-home{% endif %}{% if request.page_type == 'collection' %} boxeup-page-catalog{% endif %}{% if request.page_type == 'page' %}{% if page.handle == 'sobre-a-boxeup' or page.template_suffix == 'contact' %} viriatto-info-page{% endif %}{% endif %}{% if request.page_type == 'product' %} boxeup-product-view{% endif %}">
+  <body class="gradient viri-layout-unified{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}{% if request.page_type == 'index' %} boxeup-page-home{% endif %}{% if request.page_type == 'collection' %} boxeup-page-catalog{% endif %}{% if request.page_type == 'page' %}{% if page.handle == 'sobre-a-viriatto' or page.handle == 'sobre-a-boxeup' or page.template_suffix == 'contact' %} viriatto-info-page{% endif %}{% endif %}{% if request.page_type == 'product' %} boxeup-product-view{% endif %}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>

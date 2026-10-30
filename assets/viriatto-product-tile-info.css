@@ -1,0 +1,186 @@
+/* VIRIATTO — product information below imagery (home and catalogue).
+   Keep the native quick-add modal and secondary image hover in place. */
+:is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below{
+  display:flex!important;
+  flex-direction:column!important;
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:0!important;
+  overflow:visible!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  position:relative!important
+}
+:is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__media{
+  display:block!important;
+  position:relative!important;
+  flex:none!important;
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:1/1.04!important;
+  min-height:0!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:15px!important;
+  overflow:hidden!important;
+  background:#202226!important
+}
+:is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__info{
+  position:static!important;
+  display:flex!important;
+  flex:1 1 auto!important;
+  flex-direction:column!important;
+  width:100%!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:11px 3px 4px!important;
+  text-decoration:none!important;
+  color:#f5f5f5!important;
+  background:transparent!important;
+  outline-offset:3px!important
+}
+:is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__price-line{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:6px!important;
+  width:100%!important;
+  min-width:0!important
+}
+:is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__prices{
+  display:flex!important;
+  position:static!important;
+  inset:auto!important;
+  flex:1 1 auto!important;
+  flex-direction:row!important;
+  flex-wrap:wrap!important;
+  align-items:baseline!important;
+  justify-content:flex-start!important;
+  gap:4px 8px!important;
+  width:auto!important;
+  max-width:100%!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:left!important;
+  text-shadow:none!important;
+  pointer-events:auto!important;
+  transform:none!important
+}
+:is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__prices strong{
+  color:#f6f6f7!important;
+  font-size:clamp(14px,1.25vw,18px)!important;
+  line-height:1.25!important;
+  font-weight:750!important;
+  letter-spacing:-.025em!important;
+  white-space:nowrap!important
+}
+:is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__prices del{
+  color:#989ba2!important;
+  font-size:clamp(11px,.95vw,14px)!important;
+  line-height:1.25!important;
+  font-weight:400!important;
+  white-space:nowrap!important;
+  text-decoration:line-through!important
+}
+:is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__discount{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:4px!important;
+  position:static!important;
+  inset:auto!important;
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-height:26px!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:5px 9px!important;
+  border:0!important;
+  border-radius:99px!important;
+  background:#565a60!important;
+  color:#fff!important;
+  font-size:11px!important;
+  font-weight:750!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+  text-shadow:none!important;
+  transform:none!important
+}
+:is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__discount svg{display:block!important;width:13px!important;height:13px!important;flex:none!important}
+:is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__name{
+  display:-webkit-box!important;
+  position:static!important;
+  inset:auto!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  min-height:2.65em!important;
+  margin:7px 0 0!important;
+  padding:0!important;
+  font-family:var(--font-body-family,Arial,sans-serif)!important;
+  font-size:clamp(13px,1vw,16px)!important;
+  font-weight:500!important;
+  line-height:1.35!important;
+  letter-spacing:0!important;
+  text-align:left!important;
+  white-space:normal!important;
+  overflow:hidden!important;
+  overflow-wrap:anywhere!important;
+  text-overflow:clip!important;
+  -webkit-box-orient:vertical!important;
+  -webkit-line-clamp:2!important;
+  color:#e6e7e9!important;
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+  text-shadow:none!important;
+  pointer-events:auto!important;
+  transition:none!important
+}
+:is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__opener{
+  position:absolute!important;
+  z-index:5!important;
+  top:8px!important;
+  left:8px!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:40px!important;
+  height:40px!important;
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+  pointer-events:auto!important
+}
+:is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__plus{
+  width:40px!important;
+  height:40px!important;
+  min-height:40px!important;
+  padding:0!important;
+  border:1px solid rgba(255,255,255,.3)!important;
+  border-radius:50%!important;
+  background:rgba(13,14,17,.62)!important;
+  color:#fff!important
+}
+:is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__plus-icon{font-size:26px!important;color:#fff!important;text-shadow:none!important}
+@media(max-width:749px){
+  :is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__media{aspect-ratio:1/1.07!important;border-radius:12px!important}
+  :is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__info{padding:9px 2px 2px!important}
+  :is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__prices{gap:3px 6px!important}
+  :is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__prices strong{font-size:clamp(13px,3.7vw,16px)!important}
+  :is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__prices del{font-size:11px!important}
+  :is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__discount{font-size:10px!important;min-height:23px!important;padding:4px 6px!important;gap:3px!important}
+  :is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__discount svg{width:11px!important;height:11px!important}
+  :is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__name{font-size:clamp(12px,3.2vw,14px)!important;margin-top:6px!important;min-height:2.7em!important}
+  :is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__opener{top:6px!important;left:6px!important;width:34px!important;height:34px!important}
+  :is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__plus{width:34px!important;height:34px!important;min-height:34px!important}
+  :is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below .vh-tile__plus-icon{font-size:23px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  :is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below *{transition:none!important}
+}

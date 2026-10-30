@@ -1009,5 +1009,27 @@
       "title": "Descobre a seleção desta marca.",
       "body": "Consulta os produtos disponíveis desta marca e compara as características de cada modelo. A escolha deve ter em conta o tipo de utilização, o ajuste e as recomendações do fabricante."
     }
+  },
+  "viriatto_packs": {
+    "eyebrow": "Três essenciais. Um pack.",
+    "heading": "Pronto para o treino.",
+    "intro": "Escolhe os tamanhos. Poupa 10% no conjunto.",
+    "choose": "Escolher tamanhos",
+    "add": "Adicionar pack ao carrinho",
+    "adding": "A adicionar…",
+    "added": "Pack adicionado ao carrinho.",
+    "cart": "Ver carrinho",
+    "close": "Fechar",
+    "separate": "Artigos em separado",
+    "save": "Poupa {{ amount }}",
+    "unavailable": "De momento indisponível",
+    "error": "Não foi possível adicionar o pack. Tenta novamente.",
+    "pause": "Pausar vídeo",
+    "play": "Reproduzir vídeo",
+    "includes": "Incluído no pack",
+    "price": "Preço do pack",
+    "note": "Uma unidade de cada artigo. A poupança já está incluída no preço do pack.",
+    "video_credit": "Vídeo: Tima Miroshnichenko / Pexels",
+    "details": "Ver pack"
   }
 }

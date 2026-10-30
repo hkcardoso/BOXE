@@ -1664,5 +1664,27 @@
       "title": "Explore this brand’s selection.",
       "body": "Browse this brand’s available products and compare each model’s features. Choose according to intended use, fit and the manufacturer’s recommendations."
     }
+  },
+  "viriatto_packs": {
+    "eyebrow": "Three essentials. One pack.",
+    "heading": "Ready for training.",
+    "intro": "Choose your sizes. Save 10% on the set.",
+    "choose": "Choose sizes",
+    "add": "Add pack to cart",
+    "adding": "Adding…",
+    "added": "Pack added to cart.",
+    "cart": "View cart",
+    "close": "Close",
+    "separate": "Bought separately",
+    "save": "Save {{ amount }}",
+    "unavailable": "Currently unavailable",
+    "error": "Could not add the pack. Please try again.",
+    "pause": "Pause video",
+    "play": "Play video",
+    "includes": "Included in the pack",
+    "price": "Pack price",
+    "note": "One of each item. The pack price already includes the saving.",
+    "video_credit": "Video: Tima Miroshnichenko / Pexels",
+    "details": "View pack"
   }
 }

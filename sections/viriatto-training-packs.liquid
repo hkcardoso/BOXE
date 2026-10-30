@@ -1,0 +1,61 @@
+{{ 'viriatto-training-packs.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'viriatto-training-packs.js' | asset_url }}" defer></script>
+<viriatto-training-packs class="vp" data-currency="{{ cart.currency.iso_code }}" data-added="{{ 'viriatto_packs.added' | t | escape }}" data-error="{{ 'viriatto_packs.error' | t | escape }}" data-unavailable="{{ 'viriatto_packs.unavailable' | t | escape }}" data-add="{{ 'viriatto_packs.add' | t | escape }}" data-adding="{{ 'viriatto_packs.adding' | t | escape }}">
+  <div class="vp__film">
+    <video class="vp__video" muted loop playsinline preload="none" poster="{{ 'viriatto-pack-training.jpg' | asset_url }}" aria-hidden="true" tabindex="-1" data-src="{{ 'viriatto-pack-training.mp4' | asset_url }}"></video>
+    <div class="vp__frame vp__intro">
+      <p class="vp__eyebrow">{{ 'viriatto_packs.eyebrow' | t }}</p>
+      <h2>{{ 'viriatto_packs.heading' | t }}</h2>
+      <p>{{ 'viriatto_packs.intro' | t }}</p>
+    </div>
+    <button class="vp__video-toggle" type="button" data-pause="{{ 'viriatto_packs.pause' | t | escape }}" data-play="{{ 'viriatto_packs.play' | t | escape }}" aria-label="{{ 'viriatto_packs.play' | t }}" hidden>▶</button>
+    <a class="vp__credit" href="https://www.pexels.com/video/a-boxer-training-with-the-punching-bag-5752072/" target="_blank" rel="noopener">{{ 'viriatto_packs.video_credit' | t }}</a>
+  </div>
+  <div class="vp__frame vp__grid">
+    {% for block in section.blocks %}
+      {% assign pack = block.settings.product %}
+      {% if pack != blank %}
+        {% assign selected = pack.selected_or_first_available_variant %}
+        {% assign total = block.settings.product_1.price | plus: block.settings.product_2.price | plus: block.settings.product_3.price %}
+        {% assign saving = total | minus: selected.price %}
+        {% assign saving_money = saving | money %}
+        {% assign percentage = saving | times: 100.0 | divided_by: total | round %}
+        <article class="vp__card" {{ block.shopify_attributes }}>
+          <div class="vp__card-head"><h3>{{ block.settings.title | escape }}</h3>{% if saving > 0 %}<span class="vp__badge">−{{ percentage }}%</span>{% endif %}</div>
+          <div class="vp__composition">
+            {% for i in (1..3) %}
+              {% assign key = 'product_' | append: i %}{% assign component = block.settings[key] %}
+              <a href="{{ component.url }}" class="vp__product vp__product--{{ i }}" title="{{ component.title | escape }}">{{ component.featured_image | image_url: width: 540 | image_tag: loading: 'lazy', widths: '180,360,540', sizes: '(max-width: 749px) 30vw, 18vw', alt: component.title }}</a>
+              {% unless forloop.last %}<span class="vp__plus" aria-hidden="true">+</span>{% endunless %}
+            {% endfor %}
+          </div>
+          <p class="vp__subtitle">{{ block.settings.subtitle | escape }}</p>
+          <div class="vp__bottom">
+            <div class="vp__prices"><span class="vp__separate">{{ 'viriatto_packs.separate' | t }} <s>{{ total | money }}</s></span><strong>{{ selected.price | money }}</strong>{% if saving > 0 %}<span class="vp__saving">{{ 'viriatto_packs.save' | t: amount: saving_money }}</span>{% endif %}</div>
+            <button class="vp__choose" type="button" data-open="Pack-{{ section.id }}-{{ block.id }}" aria-haspopup="dialog">{{ 'viriatto_packs.choose' | t }} <span aria-hidden="true">↗</span></button>
+          </div>
+          <noscript><a href="{{ pack.url }}">{{ 'viriatto_packs.details' | t }}</a></noscript>
+          <dialog class="vp__dialog" id="Pack-{{ section.id }}-{{ block.id }}" aria-labelledby="PackTitle-{{ section.id }}-{{ block.id }}">
+            <button class="vp__close" type="button" data-close aria-label="{{ 'viriatto_packs.close' | t }}">×</button>
+            <p class="vp__eyebrow">{{ 'viriatto_packs.includes' | t }}</p>
+            <h3 id="PackTitle-{{ section.id }}-{{ block.id }}">{{ block.settings.title | escape }}</h3>
+            <ul class="vp__components">{% for i in (1..3) %}{% assign key = 'product_' | append: i %}{% assign component = block.settings[key] %}<li>{{ component.featured_image | image_url: width: 120 | image_tag: loading: 'lazy', alt: '' }}<a href="{{ component.url }}">{{ component.title | escape }}</a></li>{% endfor %}</ul>
+            <form action="{{ routes.cart_add_url }}" method="post" data-pack-form>
+              <input type="hidden" name="id" value="{{ selected.id }}"><input type="hidden" name="quantity" value="1">
+              <div class="vp__options">{% for option in pack.options_with_values %}<label for="PackOption-{{ section.id }}-{{ block.id }}-{{ forloop.index }}">{{ option.name | escape }}<select id="PackOption-{{ section.id }}-{{ block.id }}-{{ forloop.index }}" data-option>{% assign option_index = forloop.index0 %}{% for value in option.values %}<option value="{{ value | escape }}"{% if selected.options[option_index] == value %} selected{% endif %}>{{ value | escape }}</option>{% endfor %}</select></label>{% endfor %}</div>
+              <div class="vp__dialog-price"><span>{{ 'viriatto_packs.price' | t }}</span><strong data-price>{{ selected.price | money }}</strong></div>
+              <p class="vp__note">{{ 'viriatto_packs.note' | t }}</p>
+              <button class="vp__submit" type="submit"{% unless selected.available %} disabled{% endunless %}>{% if selected.available %}{{ 'viriatto_packs.add' | t }}{% else %}{{ 'viriatto_packs.unavailable' | t }}{% endif %}</button>
+              <p class="vp__status" role="status" aria-live="polite"></p>
+              <a class="vp__cart" href="{{ routes.cart_url }}" hidden>{{ 'viriatto_packs.cart' | t }} →</a>
+              <script type="application/json" data-variants>{{ pack.variants | json }}</script>
+            </form>
+          </dialog>
+        </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</viriatto-training-packs>
+{% schema %}
+{"name":"VIRIATTO | Packs","tag":"section","class":"section-viriatto-packs","max_blocks":2,"settings":[],"blocks":[{"type":"pack","name":"Pack","settings":[{"type":"text","id":"title","label":"Título","default":"Boxe"},{"type":"text","id":"subtitle","label":"Artigos incluídos"},{"type":"product","id":"product","label":"Produto bundle (pack)"},{"type":"product","id":"product_1","label":"Artigo 1"},{"type":"product","id":"product_2","label":"Artigo 2"},{"type":"product","id":"product_3","label":"Artigo 3"}]}],"presets":[{"name":"VIRIATTO | Packs"}]}
+{% endschema %}

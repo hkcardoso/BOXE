@@ -708,5 +708,27 @@
     "photo_boxing": "Entrenamiento de boxeo",
     "photo_athlete": "Deportista durante un entrenamiento de boxeo",
     "home_boxing": "BOXEO"
+  },
+  "viriatto_packs": {
+    "eyebrow": "Tres esenciales. Un pack.",
+    "heading": "Listo para entrenar.",
+    "intro": "Elige tus tallas. Ahorra un 10% en el conjunto.",
+    "choose": "Elegir tallas",
+    "add": "Añadir pack al carrito",
+    "adding": "Añadiendo…",
+    "added": "Pack añadido al carrito.",
+    "cart": "Ver carrito",
+    "close": "Cerrar",
+    "separate": "Artículos por separado",
+    "save": "Ahorra {{ amount }}",
+    "unavailable": "Actualmente no disponible",
+    "error": "No se pudo añadir el pack. Inténtalo de nuevo.",
+    "pause": "Pausar vídeo",
+    "play": "Reproducir vídeo",
+    "includes": "Incluido en el pack",
+    "price": "Precio del pack",
+    "note": "Una unidad de cada artículo. El ahorro ya está incluido en el precio del pack.",
+    "video_credit": "Vídeo: Tima Miroshnichenko / Pexels",
+    "details": "Ver pack"
   }
 }

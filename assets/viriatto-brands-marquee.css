@@ -1,0 +1,76 @@
+/* VIRIATTO — continuously moving, clickable brand rail. */
+.vh-home .vh-brands{overflow:hidden}
+.vh-home .vh-brands__shell{display:block!important;min-width:0!important}
+.vh-home .vh-brands__viewport{
+  display:flex!important;
+  width:100%!important;
+  min-width:0!important;
+  gap:clamp(20px,2.4vw,38px)!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  scrollbar-width:none!important;
+  -ms-overflow-style:none;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;
+  touch-action:pan-x pan-y;
+  cursor:grab;
+  mask-image:linear-gradient(90deg,transparent 0%,#000 3%,#000 97%,transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 3%,#000 97%,transparent 100%)
+}
+.vh-home .vh-brands__viewport::-webkit-scrollbar{display:none}
+.vh-home .vh-brands__viewport.is-dragging{cursor:grabbing;user-select:none;-webkit-user-select:none}
+.vh-home .vh-brands__viewport .vh-brands__inner.vh-brands__group{
+  display:flex!important;
+  flex:0 0 auto!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:clamp(20px,2.4vw,38px)!important;
+  width:max-content!important;
+  min-width:max-content!important;
+  max-width:none!important;
+  min-height:91px!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:visible!important;
+  grid-template-columns:none!important
+}
+.vh-home .vh-brands__viewport .vh-brand{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex:0 0 122px!important;
+  width:122px!important;
+  min-width:122px!important;
+  min-height:70px!important;
+  text-decoration:none!important;
+  opacity:.83;
+  transition:opacity .2s ease,transform .2s ease
+}
+.vh-home .vh-brands__viewport .vh-brand:hover,
+.vh-home .vh-brands__viewport .vh-brand:focus-visible{
+  opacity:1!important;
+  transform:translateY(-2px)
+}
+.vh-home .vh-brands__viewport .vh-brand img{
+  display:block;
+  width:100%!important;
+  max-width:108px!important;
+  height:52px!important;
+  max-height:52px!important;
+  object-fit:contain!important
+}
+.vh-home .vh-brands__viewport .vh-brand--leone-1947 img{height:40px!important;max-height:40px!important}
+.vh-home .vh-brands__viewport .vh-brand--rdx img{height:39px!important;max-height:39px!important}
+.vh-home .vh-brands__viewport .vh-brand:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media(max-width:989px){
+  .vh-home .vh-brands__viewport .vh-brands__inner.vh-brands__group{min-height:78px!important;gap:24px!important}
+  .vh-home .vh-brands__viewport .vh-brand{flex:0 0 106px!important;width:106px!important;min-width:106px!important;min-height:65px!important}
+}
+@media(max-width:749px){
+  .vh-home .vh-brands__viewport{gap:24px!important}
+  .vh-home .vh-brands__viewport .vh-brand{flex:0 0 100px!important;width:100px!important;min-width:100px!important}
+  .vh-home .vh-brands__viewport .vh-brands__inner.vh-brands__group{gap:24px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .vh-home .vh-brands__viewport .vh-brand{transition:none!important}
+}

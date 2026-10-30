@@ -899,6 +899,8 @@
 </style>
 <link rel="stylesheet" href="{{ 'viriatto-mobile-recovered-core.css' | asset_url }}" media="(max-width: 989px)">
 <link rel="stylesheet" href="{{ 'viriatto-mobile-recovered-home.css' | asset_url }}" media="(max-width: 989px)">
+{{ 'viriatto-brands-marquee.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'viriatto-brands-marquee.js' | asset_url }}" defer></script>
 {{ 'viriatto-product-tile-info.css' | asset_url | stylesheet_tag }}
 
 
@@ -954,7 +956,9 @@
   </div>
 
   <nav class="vh-brands" id="VHomeBrands" aria-label="{{ vh_brands }}">
-    <div class="vh-frame vh-brands__inner">
+    <div class="vh-frame vh-brands__shell">
+      <viriatto-brand-marquee class="vh-brands__viewport" aria-label="{{ vh_brands }}" data-speed="28">
+        <div class="vh-brands__inner vh-brands__group" data-brand-original>
       {%- assign vh_brand_handles = 'fairtex,venum,everlast,leone-1947,charlie,rdx,cleto-reyes,rival,twins' | split: ',' -%}
       {%- for vh_brand_handle in vh_brand_handles -%}
         {%- assign vh_brand_collection = collections[vh_brand_handle] -%}
@@ -976,6 +980,8 @@
           {%- else -%}<span class="vh-brand__word">{{ vh_brand_name }}</span>{%- endif -%}
         </a>
       {%- endfor -%}
+        </div>
+      </viriatto-brand-marquee>
     </div>
   </nav>
 

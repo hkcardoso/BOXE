@@ -1,0 +1,72 @@
+{{ 'viriatto-training-video.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'viriatto-training-video.js' | asset_url }}" defer></script>
+{%- liquid
+  assign vt_lang = request.locale.iso_code | slice: 0, 2
+  assign vt_eyebrow = 'DENTRO DO TREINO'
+  assign vt_heading = 'CADA ROUND CONTA.'
+  assign vt_desc = 'O progresso constrói-se com técnica, repetição e controlo. Três ideias para levares para a próxima sessão.'
+  assign vt_one = 'TÉCNICA'
+  assign vt_one_desc = 'Volta à guarda depois de cada combinação.'
+  assign vt_two = 'RITMO'
+  assign vt_two_desc = 'Trabalha por rounds e respeita os intervalos.'
+  assign vt_three = 'CONTROLO'
+  assign vt_three_desc = 'No sparring, a precisão vale mais do que a força.'
+  assign vt_cta = 'EXPLORAR MODALIDADES'
+  assign vt_secondary = 'VER EQUIPAMENTO'
+  assign vt_play = 'Reproduzir vídeo'
+  assign vt_pause = 'Pausar vídeo'
+  if vt_lang == 'en'
+    assign vt_eyebrow = 'INSIDE THE TRAINING'
+    assign vt_heading = 'EVERY ROUND COUNTS.'
+    assign vt_desc = 'Progress comes from technique, repetition and control. Three things to take into your next session.'
+    assign vt_one = 'TECHNIQUE'
+    assign vt_one_desc = 'Return to guard after every combination.'
+    assign vt_two = 'PACE'
+    assign vt_two_desc = 'Train in rounds and respect your rest intervals.'
+    assign vt_three = 'CONTROL'
+    assign vt_three_desc = 'In sparring, accuracy matters more than power.'
+    assign vt_cta = 'EXPLORE DISCIPLINES'
+    assign vt_secondary = 'SHOP EQUIPMENT'
+    assign vt_play = 'Play video'
+    assign vt_pause = 'Pause video'
+  elsif vt_lang == 'es'
+    assign vt_eyebrow = 'DENTRO DEL ENTRENAMIENTO'
+    assign vt_heading = 'CADA ASALTO CUENTA.'
+    assign vt_desc = 'El progreso nace de la técnica, la repetición y el control. Tres ideas para tu próxima sesión.'
+    assign vt_one = 'TÉCNICA'
+    assign vt_one_desc = 'Vuelve a la guardia después de cada combinación.'
+    assign vt_two = 'RITMO'
+    assign vt_two_desc = 'Entrena por asaltos y respeta los descansos.'
+    assign vt_three = 'CONTROL'
+    assign vt_three_desc = 'En el sparring, la precisión importa más que la fuerza.'
+    assign vt_cta = 'EXPLORAR MODALIDADES'
+    assign vt_secondary = 'VER EQUIPAMIENTO'
+    assign vt_play = 'Reproducir vídeo'
+    assign vt_pause = 'Pausar vídeo'
+  endif
+  assign vt_modalities_url = pages['modalidades'].url | default: routes.all_products_collection_url
+-%}
+<viriatto-training-video class="vt" data-play="{{ vt_play | escape }}" data-pause="{{ vt_pause | escape }}">
+  <video class="vt__video" muted loop playsinline preload="none" poster="{{ 'viriatto-pack-training.jpg' | asset_url }}" data-src="{{ 'viriatto-pack-training-full.mp4' | asset_url }}" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
+  <div class="vt__frame">
+    <div class="vt__content">
+      <p class="vt__eyebrow">{{ vt_eyebrow }}</p>
+      <h2 class="vt__heading">{{ vt_heading }}</h2>
+      <p class="vt__description">{{ vt_desc }}</p>
+      <div class="vt__guides">
+        <div class="vt__guide"><span class="vt__number">01</span><div><strong>{{ vt_one }}</strong><span>{{ vt_one_desc }}</span></div></div>
+        <div class="vt__guide"><span class="vt__number">02</span><div><strong>{{ vt_two }}</strong><span>{{ vt_two_desc }}</span></div></div>
+        <div class="vt__guide"><span class="vt__number">03</span><div><strong>{{ vt_three }}</strong><span>{{ vt_three_desc }}</span></div></div>
+      </div>
+      <div class="vt__actions">
+        <a class="vt__link vt__link--primary" href="{{ vt_modalities_url }}">{{ vt_cta }} <span aria-hidden="true">↗</span></a>
+        <a class="vt__link vt__link--secondary" href="{{ routes.all_products_collection_url }}">{{ vt_secondary }} <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+  <button class="vt__toggle" type="button" data-video-toggle aria-label="{{ vt_play | escape }}" hidden>▶</button>
+  <a class="vt__credit" href="https://www.pexels.com/video/a-boxer-training-with-the-punching-bag-5752072/" target="_blank" rel="noopener noreferrer">Vídeo: Tima Miroshnichenko / Pexels</a>
+</viriatto-training-video>
+{% schema %}
+{"name":"VIRIATTO | Vídeo","tag":"section","class":"section-viriatto-training-video","settings":[],"presets":[{"name":"VIRIATTO | Vídeo"}]}
+{% endschema %}

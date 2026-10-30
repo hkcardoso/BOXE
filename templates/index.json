@@ -81,10 +81,15 @@
         "muaythai"
       ],
       "settings": {}
+    },
+    "viriatto_training_video": {
+      "type": "viriatto-training-video",
+      "settings": {}
     }
   },
   "order": [
     "boxeup_home",
-    "viriatto_packs"
+    "viriatto_packs",
+    "viriatto_training_video"
   ]
 }

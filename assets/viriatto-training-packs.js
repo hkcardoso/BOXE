@@ -52,20 +52,8 @@ if (!customElements.get('viriatto-training-packs')) {
           finally {busy=false;selects.forEach(select => select.disabled=false);update();}
         }, {signal});
       });
-      const video=this.querySelector('video');
-      const toggle=this.querySelector('.vp__video-toggle');
-      const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-      let manualPause=reduced.matches || !!navigator.connection?.saveData;
-      const load=()=>{if (!video.src) {video.src=video.dataset.src;video.load();}};
-      const play=()=>{load();video.play().catch(()=>{});};
-      toggle.hidden=false;
-      const updateToggle=()=>{toggle.textContent=video.paused?'▶':'Ⅱ';toggle.setAttribute('aria-label',video.paused?toggle.dataset.play:toggle.dataset.pause);};
-      video.addEventListener('play',updateToggle,{signal});video.addEventListener('pause',updateToggle,{signal});
-      toggle.addEventListener('click',()=>{if(video.paused){manualPause=false;play();}else{manualPause=true;video.pause();}}, {signal});
-      this.observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting&&!manualPause)play();else video.pause();}}, {threshold:.15});
-      this.observer.observe(video);
-      document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();}, {signal});
+
     }
-    disconnectedCallback(){this.controller?.abort();this.observer?.disconnect();this.querySelector('video')?.pause();this.initialized=false;}
+    disconnectedCallback(){this.controller?.abort();this.initialized=false;}
   });
 }

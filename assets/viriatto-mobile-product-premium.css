@@ -1,0 +1,335 @@
+/* VIRIATTO / Mobile product — refined purchase hierarchy.
+   Mobile only; native product variants, add-to-cart, zoom and gallery are preserved. */
+.bxp-product-after-buy{display:none}
+@media (max-width:749px) {
+  body.boxeup-product-view #MainContent[data-template="product"] {
+    --viri-premium-fg:#f3f3f4;
+    --viri-premium-muted:#a4a7ae;
+    --viri-premium-border:rgba(255,255,255,.13);
+    --viri-premium-surface:#1a1c20;
+    --viri-premium-cta:#ed2437;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent[data-template="product"] {
+    --viri-premium-fg:#1d2025;
+    --viri-premium-muted:#747982;
+    --viri-premium-border:rgba(27,31,37,.13);
+    --viri-premium-surface:#fff;
+  }
+  /* No second image strip: keep the native thumbnails in the DOM for
+     Shopify's variant/media syncing, but use touch swipe on the full photo. */
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid media-gallery > slider-component[id^="GalleryThumbnails-"],
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid media-gallery .viri-thumb-rail,
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid media-gallery .thumbnail-slider {
+    display:none!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__media-wrapper {
+    margin-bottom:0!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__media-list {
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scroll-snap-type:x mandatory!important;
+    scroll-behavior:auto!important;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-x pan-y!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__media-list .product__media-item{
+    scroll-snap-align:start!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid viriatto-image-zoom .vzoom-toggle:not([aria-pressed="true"]) {
+    touch-action:pan-x pan-y!important;
+  }
+  /* More compact purchase surface below the photograph. */
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid{
+    gap:16px!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__info-wrapper{
+    min-width:0!important;
+    padding-top:0!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__info-container {
+    padding:0 2px!important;
+    color:var(--viri-premium-fg)!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__info-container > * + * {
+    margin-top:9px!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__text.caption-with-letter-spacing{
+    margin:0 0 5px!important;
+    font-size:10px!important;
+    font-weight:800!important;
+    line-height:1.4!important;
+    letter-spacing:.18em!important;
+    color:#ed2437!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__title{
+    margin:0 0 12px!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__title h1{
+    margin:0!important;
+    font-family:var(--bxp-display,"Barlow Condensed",Arial,sans-serif)!important;
+    font-size:clamp(28px,7.1vw,35px)!important;
+    line-height:1.06!important;
+    font-weight:750!important;
+    letter-spacing:-.018em!important;
+    text-shadow:none!important;
+    color:var(--viri-premium-fg)!important;
+    -webkit-text-fill-color:var(--viri-premium-fg)!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .bxp-product-category{
+    margin:5px 0 0!important;
+    font-family:var(--bxp-ui,Arial,sans-serif)!important;
+    font-size:13px!important;
+    line-height:1.4!important;
+    font-weight:450!important;
+    color:var(--viri-premium-muted)!important;
+    -webkit-text-fill-color:var(--viri-premium-muted)!important;
+  }
+  /* Make the actual price easy to read without dominating the screen. */
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__info-container [id^="price-"]{
+    display:inline-flex!important;
+    align-items:baseline!important;
+    vertical-align:baseline!important;
+    max-width:100%!important;
+    margin-top:5px!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__info-container [id^="price-"] .price-item,
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__info-container [id^="price-"] .price-item--sale{
+    font-family:var(--bxp-ui,Arial,sans-serif)!important;
+    font-size:clamp(19px,5.1vw,23px)!important;
+    line-height:1.3!important;
+    font-weight:740!important;
+    letter-spacing:-.035em!important;
+    color:var(--viri-premium-fg)!important;
+    -webkit-text-fill-color:var(--viri-premium-fg)!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__info-container [id^="price-"] s.price-item,
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__info-container [id^="price-"] .price__sale .price-item--regular,
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__info-container [id^="price-"] .price-item--regular{
+    font-size:13px!important;
+    font-weight:450!important;
+    color:var(--viri-premium-muted)!important;
+    -webkit-text-fill-color:var(--viri-premium-muted)!important;
+    text-decoration-color:var(--viri-premium-muted)!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__tax {
+    display:inline-block!important;
+    vertical-align:baseline!important;
+    margin:0 0 0 9px!important;
+    font-size:10px!important;
+    line-height:1.4!important;
+    color:var(--viri-premium-muted)!important;
+    -webkit-text-fill-color:var(--viri-premium-muted)!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product__tax a{
+    color:inherit!important;
+  }
+  /* Move the existing intro below the add-to-cart button, only on mobile. */
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .bxp-product-intro--before-buy{display:none!important}
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .bxp-product-after-buy{
+    display:block!important;
+    margin:22px 0 0!important;
+    padding:19px 0 1px!important;
+    border-top:1px solid var(--viri-premium-border)!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .bxp-product-after-buy__label {
+    margin:0 0 8px!important;
+    color:var(--viri-premium-fg)!important;
+    -webkit-text-fill-color:var(--viri-premium-fg)!important;
+    font-family:var(--bxp-ui,Arial,sans-serif)!important;
+    font-weight:700!important;
+    font-size:11px!important;
+    letter-spacing:.08em!important;
+    text-transform:uppercase!important;
+    line-height:1.5!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .bxp-product-intro--after-buy {
+    display:block!important;
+    margin:0!important;
+    max-width:none!important;
+    font-family:var(--bxp-ui,Arial,sans-serif)!important;
+    color:var(--viri-premium-muted)!important;
+    -webkit-text-fill-color:var(--viri-premium-muted)!important;
+    font-size:13px!important;
+    font-weight:400!important;
+    line-height:1.7!important;
+    letter-spacing:0!important;
+  }
+  /* Available sizes: compact, finger-friendly and deliberate. */
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product-form__input{
+    margin:17px 0 9px!important;
+    max-width:100%!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product-form__input .form__label{
+    display:block!important;
+    margin:0 0 11px!important;
+    color:var(--viri-premium-fg)!important;
+    -webkit-text-fill-color:var(--viri-premium-fg)!important;
+    font-family:var(--bxp-ui,Arial,sans-serif)!important;
+    font-size:11px!important;
+    font-weight:750!important;
+    line-height:1.3!important;
+    letter-spacing:.07em!important;
+    text-transform:uppercase!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product-form__input input[type=radio]+label{
+    box-sizing:border-box!important;
+    min-width:62px!important;
+    min-height:43px!important;
+    margin:0 6px 7px 0!important;
+    padding:9px 12px!important;
+    font-size:12px!important;
+    font-weight:700!important;
+    line-height:1.25!important;
+    letter-spacing:0!important;
+    border-radius:9px!important;
+    box-shadow:none!important;
+    background:var(--viri-premium-surface)!important;
+    border-color:var(--viri-premium-border)!important;
+    color:var(--viri-premium-fg)!important;
+    -webkit-text-fill-color:var(--viri-premium-fg)!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product-form__input input[type=radio]:checked+label{
+    background:#ed2437!important;
+    border-color:#ed2437!important;
+    color:#fff!important;
+    -webkit-text-fill-color:#fff!important;
+    box-shadow:0 4px 14px rgba(237,36,55,.12)!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .quantity{
+    min-height:42px!important;
+    max-width:120px!important;
+    border-radius:9px!important;
+    border:1px solid var(--viri-premium-border)!important;
+    background:var(--viri-premium-surface)!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid :is(.quantity__button,.quantity__input){
+    min-height:40px!important;
+    color:var(--viri-premium-fg)!important;
+    background:transparent!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .quantity__label{
+    color:var(--viri-premium-fg)!important;
+    -webkit-text-fill-color:var(--viri-premium-fg)!important;
+    font-size:11px!important;
+  }
+  /* One strong CTA, quiet radii, no visual gimmicks. */
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product-form__submit {
+    min-height:53px!important;
+    border-radius:11px!important;
+    font-family:var(--bxp-ui,Arial,sans-serif)!important;
+    font-size:14px!important;
+    font-weight:730!important;
+    line-height:1.25!important;
+    letter-spacing:.01em!important;
+    text-transform:none!important;
+    background:var(--viri-premium-cta)!important;
+    color:#fff!important;
+    box-shadow:0 8px 22px rgba(201,27,48,.12)!important;
+    transform:none!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product-form__submit:before,
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .product-form__submit:after{
+    border-radius:11px!important;
+    box-shadow:none!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid .shopify-payment-button__button {
+    border-radius:11px!important;
+    min-height:48px!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .bxp-product-advantages{
+    margin-top:20px!important;
+    padding-top:15px!important;
+    border-top:1px solid var(--viri-premium-border)!important;
+  }
+
+  /* Small, neutral photo indicators; light mode gets light frosted glass. */
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid media-gallery .viri-gallery-dots{
+    bottom:12px!important;
+    min-height:24px!important;
+    max-width:calc(100% - 36px)!important;
+    gap:5px!important;
+    padding:5px 8px!important;
+    background:rgba(13,14,17,.57)!important;
+    border:1px solid rgba(255,255,255,.16)!important;
+    border-radius:99px!important;
+    box-shadow:0 2px 10px rgba(0,0,0,.13)!important;
+    -webkit-backdrop-filter:blur(10px)!important;
+    backdrop-filter:blur(10px)!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid media-gallery .viri-gallery-dot{
+    flex:0 0 6px!important;
+    width:6px!important;
+    min-width:6px!important;
+    height:6px!important;
+    min-height:6px!important;
+    background:rgba(255,255,255,.7)!important;
+    opacity:.7!important;
+    box-shadow:none!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid media-gallery .viri-gallery-dot[aria-current="true"]{
+    flex-basis:19px!important;
+    width:19px!important;
+    background:#fff!important;
+    opacity:1!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view
+    #MainContent[data-template="product"] .product.bxp-product-grid media-gallery .viri-gallery-dots{
+    background:rgba(248,247,245,.75)!important;
+    border-color:rgba(30,33,37,.12)!important;
+    box-shadow:0 2px 12px rgba(0,0,0,.07)!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view
+    #MainContent[data-template="product"] .product.bxp-product-grid media-gallery .viri-gallery-dot,
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view
+    #MainContent[data-template="product"] .product.bxp-product-grid media-gallery .viri-gallery-dot[aria-current="true"]{
+    background:#30343a!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body.boxeup-product-view #MainContent[data-template="product"] .viri-gallery-dot{
+    transition:none!important;
+  }
+}

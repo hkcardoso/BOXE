@@ -16,8 +16,6 @@
   {{ 'boxeup-product-layout.css' | asset_url | stylesheet_tag }}
   {{ 'viriatto-product-gallery-dots.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'viriatto-product-gallery-dots.js' | asset_url }}" defer="defer"></script>
-  {{ 'viriatto-thumbnail-marquee.css' | asset_url | stylesheet_tag }}
-  <script src="{{ 'viriatto-thumbnail-marquee.js' | asset_url }}" defer="defer"></script>
   {{ 'viriatto-image-zoom.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'viriatto-image-zoom.js' | asset_url }}" defer="defer"></script>
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
@@ -49,6 +47,7 @@
     }
   {%- endstyle -%}
   <link rel="stylesheet" href="{{ 'viriatto-mobile-recovered-core.css' | asset_url }}" media="(max-width: 989px)">
+  {{ 'viriatto-mobile-product-premium.css' | asset_url | stylesheet_tag }}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -506,7 +505,7 @@
                   -%}
                 {%- when 'variant_picker' -%}
                   {%- if product.description != blank -%}
-                    <p class="bxp-product-intro">{% render 'viriatto-product-copy', product: product, mode: 'intro' %}</p>
+                    <p class="bxp-product-intro bxp-product-intro--before-buy">{% render 'viriatto-product-copy', product: product, mode: 'intro' %}</p>
                   {%- endif -%}
                   {% render 'product-variant-picker',
                     product: product,
@@ -521,6 +520,15 @@
                     section_id: section.id,
                     show_pickup_availability: true
                   -%}
+                  {%- if product.description != blank -%}
+                    <div class="bxp-product-after-buy">
+                      <p class="bxp-product-after-buy__label">
+                        {%- assign viri_info_language = request.locale.iso_code | slice: 0, 2 -%}
+                        {%- if viri_info_language == 'en' -%}About this product{%- elsif viri_info_language == 'es' -%}Sobre el producto{%- else -%}Sobre o produto{%- endif -%}
+                      </p>
+                      <p class="bxp-product-intro bxp-product-intro--after-buy">{% render 'viriatto-product-copy', product: product, mode: 'intro' %}</p>
+                    </div>
+                  {%- endif -%}
                 {%- when 'rating' -%}
                   {%- if product.metafields.reviews.rating.value != blank -%}
                     <div class="rating-wrapper">

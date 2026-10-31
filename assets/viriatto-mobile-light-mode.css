@@ -9,6 +9,7 @@
     --viri-light-text:#181a1d;
     --viri-light-muted:#666a71;
     --viri-light-border:#d8dade;
+    --viri-product-breadcrumb:#656b72;
   }
   /* Page canvas only; do not wipe backgrounds of banners, images and dialogs. */
   html[data-viri-mobile-theme="light"] body,

@@ -367,3 +367,45 @@ body:is(.boxeup-page-catalog,.viriatto-info-page) #MainContent collection-compon
     color:#f5f5f6 !important;
   }
 }
+
+
+/* Light mobile catalogue — high-specificity dark defaults are replaced here. */
+@media(max-width:989px){
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent .collection-hero,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent .collection-hero__inner,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent .section-boxeup-shop-categories,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent .boxeup-catalog-controls.page-width,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent .boxeup-brands-always-open{
+    background:#f6f6f5!important;
+    border-color:#d6d9dd!important;
+    color:#1e2228!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent
+    :is(.collection-hero__title,.collection-hero__description,.boxeup-collection-kicker,.boxeup-breadcrumb,.boxeup-breadcrumb a){
+    color:#1d2127!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent
+    .facets__wrapper .viriatto-filter-title,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent .viriatto-filter-title--mobile{
+    color:#1c2025!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent .boxeup-brand-card{
+    background:#fff!important;border-color:#d6d9dd!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent
+    :is(.boxeup-brand-card__name,.boxeup-brand-card__title,.facets__heading,.facets__summary,.facets__label,.facet-filters__label,.facets__selected,.mobile-facets__open,.mobile-facets__heading,.mobile-facets__label,.mobile-facets__summary){
+    color:#25292f!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent
+    :is(.facets__display,.mobile-facets__inner,.mobile-facets__header,.mobile-facets__footer,.mobile-facets__submenu){
+    background:#fff!important;color:#22262b!important;border-color:#d6d9dd!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent
+    :is(.mobile-facets__close-button,.mobile-facets__clear,.mobile-facets__sort select,.mobile-facets__sort label,.facets__display label){
+    color:#22262b!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent
+    :is(.facet-filters__sort,.mobile-facets__sort select,.facets__summary){
+    background:#fff!important;border-color:#d1d5d9!important;
+  }
+}

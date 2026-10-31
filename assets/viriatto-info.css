@@ -354,3 +354,43 @@ body.viriatto-info-page #MainContent .vi-min-contact .bx-contact__field :is(inpu
   outline-offset: 2px !important;
   box-shadow: none !important;
 }
+
+
+/* Mobile light mode: informative pages and contact form, without white-on-white. */
+@media(max-width:989px){
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent,
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent :is(.vi-min-about,.vi-min-contact,.vi-min-about__inner,.vi-min-contact__layout){
+    background:#f6f6f5!important;color:#1e2226!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    :is(.vi-min-about,.vi-min-contact) :is(h1,h2,h3){
+    color:#202328!important;-webkit-text-fill-color:#202328!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    :is(.vi-min-about__intro>p,.vi-min-about__bottom,.vi-min-about__bottom a,.vi-min-about__step p,.vi-min-contact__details,.vi-min-contact__intro,.vi-min-contact__info){
+    color:#40444b!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    :is(.vi-min-about__step,.vi-min-contact__form-wrap,.bx-contact__form-wrap){
+    background:#fff!important;border-color:#d5d9de!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-about__step h3{
+    color:#22262a!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact :is(.bx-contact__field label,.bx-contact__field label span,.bx-contact__field small,.bx-contact__form-note,.bx-contact__form-note a){
+    color:#32373e!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact :is(input,textarea,select){
+    color:#22262a!important;background:#fff!important;border-color:#bfc4cb!important;
+    -webkit-text-fill-color:#22262a!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent .vi-min-contact :is(input,textarea,select)::placeholder{
+    color:#727981!important;-webkit-text-fill-color:#727981!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent .vi-min-contact .bx-contact__submit{
+    background:#21252a!important;color:#fff!important;border-color:#21252a!important;
+  }
+}

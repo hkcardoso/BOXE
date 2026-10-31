@@ -184,3 +184,51 @@
 @media(prefers-reduced-motion:reduce){
   :is(#MainContent[data-template="index"] .section-boxeup-home .vh-home,body.boxeup-page-catalog #MainContent .vcat-card-grid) .vh-tile.vh-tile--info-below *{transition:none!important}
 }
+
+
+/* Mobile light appearance: same card component, correct contrast after section CSS loads.
+   Keep photo, discount and quick navigation intact. */
+@media (max-width:989px) {
+  html[data-viri-mobile-theme="light"] body.boxeup-page-home
+    #MainContent[data-template="index"] .section-boxeup-home .vh-home
+    .vh-tile.vh-tile--info-below .vh-tile__info,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog
+    #MainContent .vcat-card-grid .vh-tile.vh-tile--info-below .vh-tile__info{
+    color:#171a1f!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-page-home
+    #MainContent[data-template="index"] .section-boxeup-home .vh-home
+    .vh-tile.vh-tile--info-below .vh-tile__prices strong,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog
+    #MainContent .vcat-card-grid .vh-tile.vh-tile--info-below .vh-tile__prices strong{
+    color:#191b1f!important;
+    -webkit-text-fill-color:#191b1f!important;
+    opacity:1!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-page-home
+    #MainContent[data-template="index"] .section-boxeup-home .vh-home
+    .vh-tile.vh-tile--info-below .vh-tile__name,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog
+    #MainContent .vcat-card-grid .vh-tile.vh-tile--info-below .vh-tile__name{
+    color:#272a30!important;
+    -webkit-text-fill-color:#272a30!important;
+    text-shadow:none!important;
+    opacity:1!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-page-home
+    #MainContent[data-template="index"] .section-boxeup-home .vh-home
+    .vh-tile.vh-tile--info-below .vh-tile__prices del,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog
+    #MainContent .vcat-card-grid .vh-tile.vh-tile--info-below .vh-tile__prices del{
+    color:#777b83!important;
+    -webkit-text-fill-color:#777b83!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-page-home
+    #MainContent[data-template="index"] .section-boxeup-home .vh-home
+    .vh-tile.vh-tile--info-below .vh-tile__discount,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog
+    #MainContent .vcat-card-grid .vh-tile.vh-tile--info-below .vh-tile__discount{
+    background:#555a62!important;color:#fff!important;
+    -webkit-text-fill-color:#fff!important;
+  }
+}

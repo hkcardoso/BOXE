@@ -1,0 +1,201 @@
+/* VIRIATTO — opt-in mobile light appearance experiment.
+   Desktop and the default dark theme remain unchanged. */
+@media screen and (max-width: 989px) {
+  html[data-viri-mobile-theme="light"] {
+    color-scheme:light;
+    --viri-light-bg:#f6f6f5;
+    --viri-light-card:#ffffff;
+    --viri-light-soft:#ededed;
+    --viri-light-text:#181a1d;
+    --viri-light-muted:#666a71;
+    --viri-light-border:#d8dade;
+  }
+  html[data-viri-mobile-theme="light"] body,
+  html[data-viri-mobile-theme="light"] body.gradient,
+  html[data-viri-mobile-theme="light"] body #MainContent,
+  html[data-viri-mobile-theme="light"] body #MainContent .gradient,
+  html[data-viri-mobile-theme="light"] body #MainContent .color-background-1,
+  html[data-viri-mobile-theme="light"] body #MainContent .color-background-2,
+  html[data-viri-mobile-theme="light"] body #MainContent .shopify-section{
+    background:var(--viri-light-bg)!important;
+    background-color:var(--viri-light-bg)!important;
+    color:var(--viri-light-text)!important;
+  }
+  html[data-viri-mobile-theme="light"] body {
+    --color-background:246,246,245;
+    --color-foreground:24,26,29;
+    --gradient-background:#f6f6f5;
+  }
+  /* Header, controls and logo. */
+  html[data-viri-mobile-theme="light"] body .header-wrapper,
+  html[data-viri-mobile-theme="light"] body .header-wrapper .header,
+  html[data-viri-mobile-theme="light"] body .shopify-section-header-sticky,
+  html[data-viri-mobile-theme="light"] body .section-header {
+    background:#fff!important;
+    background-color:#fff!important;
+    color:#17191c!important;
+  }
+  html[data-viri-mobile-theme="light"] body .header-wrapper {border-bottom:1px solid var(--viri-light-border)!important}
+  html[data-viri-mobile-theme="light"] body .header-wrapper .header__icon,
+  html[data-viri-mobile-theme="light"] body .header-wrapper .header__icon .icon,
+  html[data-viri-mobile-theme="light"] body .header-wrapper .header__icon svg,
+  html[data-viri-mobile-theme="light"] body .header-wrapper .header__heading-link {
+    color:#17191c!important;
+    stroke:currentColor;
+  }
+  html[data-viri-mobile-theme="light"] body .header-wrapper .viriatto-site-logo {filter:brightness(0)!important}
+  html[data-viri-mobile-theme="light"] body .header-wrapper .vh-header-search__form,
+  html[data-viri-mobile-theme="light"] body .header-wrapper .vh-header-search,
+  html[data-viri-mobile-theme="light"] body .header-wrapper .search-modal,
+  html[data-viri-mobile-theme="light"] body .header-wrapper .search-modal__content,
+  html[data-viri-mobile-theme="light"] body .header-wrapper .predictive-search {
+    background:#f0f0f0!important;
+    border-color:var(--viri-light-border)!important;
+    color:#222429!important;
+  }
+  html[data-viri-mobile-theme="light"] body .header-wrapper .vh-header-search__form input,
+  html[data-viri-mobile-theme="light"] body .header-wrapper .vh-header-search__form svg,
+  html[data-viri-mobile-theme="light"] body .header-wrapper .search__input,
+  html[data-viri-mobile-theme="light"] body .header-wrapper .field__input {
+    color:#212328!important;
+    stroke:currentColor;
+  }
+  html[data-viri-mobile-theme="light"] body .header-wrapper .vh-header-search__form input::placeholder,
+  html[data-viri-mobile-theme="light"] body .header-wrapper input::placeholder {color:#7b7e84!important;opacity:1}
+  /* Mobile drawer — keep the menu and all submenu links legible. */
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer,
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer .menu-drawer__inner-container,
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer .menu-drawer__navigation-container,
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer .menu-drawer__submenu,
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer .menu-drawer__utility-links {
+    background:#fff!important;color:#212327!important;border-color:var(--viri-light-border)!important;
+  }
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer .bx-mobile-shared-nav,
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer .bx-mobile-shared-nav :is(a,span),
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer .bx-mobile-shared-nav .header__menu-item,
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer .boxeup-nav-modalities__link,
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer .menu-drawer__menu-item,
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer .menu-drawer__close-button {
+    color:#212327!important;
+  }
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer .bx-mobile-shared-nav>.list-menu>li{border-bottom-color:var(--viri-light-border)!important}
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer .bx-nav-expanded,
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer .boxeup-nav-modalities__dropdown,
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer .menu-drawer__menu-item--active{
+    background:#f2f2f2!important;
+  }
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer :is(button,.header__menu-item):focus-visible{outline-color:#111!important}
+  /* Homepage; leave photography/video hero dark for contrast and identity. */
+  html[data-viri-mobile-theme="light"] body #MainContent .section-boxeup-home,
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home,
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-products,
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-trust {
+    background:var(--viri-light-bg)!important;color:var(--viri-light-text)!important;
+  }
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-products__heading h2,
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-products__all,
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-empty,
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-trust__item strong {
+    color:#191b20!important;
+  }
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-trust__item small{color:#666a70!important}
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-trust{border-color:var(--viri-light-border)!important}
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-trust svg{stroke:#212327!important}
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-brands{background:#f0f1f1!important;border-color:var(--viri-light-border)!important}
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-brand img{filter:brightness(0)!important}
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-brand__word{color:#17191c!important}
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-tile__media,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent .vcat-card-grid .vh-tile__media {background:#e8e9eb!important}
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-tile.vh-tile--info-below,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent .vh-tile.vh-tile--info-below {background:transparent!important}
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-tile__prices strong,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent .vh-tile__prices strong,
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-tile__name,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent .vh-tile__name {
+    color:#181a1d!important;text-shadow:none!important;
+  }
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-tile__prices del,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent .vh-tile__prices del {color:#7a7e85!important}
+  html[data-viri-mobile-theme="light"] body #MainContent .vh-home .vh-tile__info,
+  html[data-viri-mobile-theme="light"] body.boxeup-page-catalog #MainContent .vh-tile__info{color:#181a1d!important}
+  /* Catalogue, search results, filters and product pages. */
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.collection-hero,.collection-hero__inner,.boxeup-catalog-controls,.facets-container,.facets__wrapper,.product-grid-container,.boxeup-product-view,.product,.product__info-wrapper,.template-search,.boxeup-shop-categories,.boxeup-catalog-filters) {
+    background:var(--viri-light-bg)!important;color:#191b20!important;
+  }
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.collection-hero__title,.collection-hero__description,.product__title h1,.product__info-wrapper h2,.boxeup-collection-kicker,.viriatto-filter-title,.facets__heading,.mobile-facets__heading,.mobile-facets__label,.facets__label,.product__text,.price__regular,.price-item,.pagination__item) {color:#202226!important}
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.boxeup-brand-card,.mobile-facets__inner,.facets__display,.facets__disclosure,.boxeup-catalog-message,.vpc-card,.card-wrapper,.card__inner) {
+    background:#fff!important;border-color:var(--viri-light-border)!important;
+  }
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.boxeup-brand-card__title,.card__heading,.card__heading a,.full-unstyled-link,.product__description,.product__description *,.product-form__input label,.product__tax,.product__inventory,.facets__summary,.mobile-facets__sort .select__select){color:#202226!important}
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.facets__summary,.mobile-facets__open,.mobile-facets__close,.facet-filters__label,.facets__selected,.product-form__input input,.product-form__input select,.quantity,.quantity__input,.quantity__button){color:#25272a!important}
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.product-form__input select,.quantity,.field__input,.select__select,.mobile-facets__inner,.facets__display){background:#fff!important;border-color:var(--viri-light-border)!important}
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.boxeup-brand-card__logo,.boxeup-brand-grid img){filter:brightness(.1)}
+  /* Packs and variant selection. */
+  html[data-viri-mobile-theme="light"] body #MainContent .section-viriatto-packs,
+  html[data-viri-mobile-theme="light"] body #MainContent .vp{background:var(--viri-light-bg)!important;color:#17191c!important}
+  html[data-viri-mobile-theme="light"] body #MainContent .vp__card,
+  html[data-viri-mobile-theme="light"] body #MainContent .vp__dialog{
+    background:#fff!important;color:#17191c!important;border-color:var(--viri-light-border)!important;
+  }
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.vp__intro h2,.vp__card-head h3,.vp__dialog h3,.vp__prices strong,.vp__dialog-price strong){color:#17191c!important}
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.vp__eyebrow,.vp__subtitle,.vp__separate,.vp__note,.vp__intro>p:last-child,.vp__saving,.vp__components a){color:#666a70!important}
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.vp__bottom,.vp__components li){border-color:var(--viri-light-border)!important}
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.vp__choose,.vp__submit){background:#1d2024!important;color:#fff!important}
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.vp__options select){background:#f8f8f8!important;color:#16181b!important;border-color:var(--viri-light-border)!important}
+  html[data-viri-mobile-theme="light"] body #MainContent .vp__close{color:#111!important}
+  /* Light sections for editorial/video: keep film overlay and white over video. */
+  html[data-viri-mobile-theme="light"] body #MainContent .section-viriatto-training-video{background:var(--viri-light-bg)!important}
+  html[data-viri-mobile-theme="light"] body #MainContent .vt{background:#18191b!important;color:#fff!important}
+  html[data-viri-mobile-theme="light"] body #MainContent .vt :is(h2,p,span,strong,a){color:inherit}
+  /* Informational pages and contact form. */
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent :is(.vi-min-about,.vi-min-contact,.vi-min-contact__form,.vi-min-about__inner){
+    background:var(--viri-light-bg)!important;color:#191b20!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent :is(.vi-min-about,.vi-min-contact) :is(h1,h2,h3){color:#191b20!important}
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent :is(.vi-min-about__step,.vi-min-contact__form-wrap,.bx-contact__form-wrap){background:#fff!important;border-color:var(--viri-light-border)!important}
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent :is(.vi-min-about__intro>p,.vi-min-about__step p,.vi-min-about__bottom a,.vi-min-contact__form-note,.vi-min-contact__form h2){color:#36393e!important}
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent .vi-min-contact :is(input,select,textarea){background:#fff!important;color:#181a1d!important;border-color:#bfc2c7!important}
+  /* Cart, drawer and product description panels. */
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.bx-cart-page,.cart-items,.cart__footer,.vpc-section,.vpr-section){background:var(--viri-light-bg)!important;color:#17191c!important}
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.bx-cart-page__line,.bx-cart-page__aside,.bx-cart-page__summary,.bx-cart-page__totals,.vpd-detail-image,.vpc-card,.vpr-card){background:#fff!important;border-color:var(--viri-light-border)!important}
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.bx-cart-page__header h1,.bx-cart-page__product-name,.bx-cart-page__qty,.bx-cart-page__price,.bx-cart-page__total,.vpd-header h2,.vpd-accordion>summary,.vpd-copy h3,.vpc-header h2,.vpr-header h2){color:#17191c!important}
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.bx-cart-page__variant,.bx-cart-page__header p,.vpd-copy p,.vpd-header p,.vpc-header p,.vpr-header p){color:#5f646b!important}
+  html[data-viri-mobile-theme="light"] body cart-drawer :is(.drawer__inner,.drawer__header,.drawer__footer){background:#fff!important;color:#1b1d20!important}
+  html[data-viri-mobile-theme="light"] body cart-drawer :is(h2,h3,a,.totals__total-value,.cart-item__name){color:#1b1d20!important}
+  /* Global non-media text; fixed accent red and real photography untouched. */
+  html[data-viri-mobile-theme="light"] body #MainContent :is(.rte,.rte p,.rte h1,.rte h2,.rte h3,.main-page-title,.title-wrapper h2,.collection-hero__title){color:#202327!important}
+  html[data-viri-mobile-theme="light"] body :is(.footer,.footer__content-top,.footer__content-bottom){background:#fff!important;color:#222429!important;border-color:var(--viri-light-border)!important}
+  html[data-viri-mobile-theme="light"] body .footer :is(a,p,span,h2,small,.footer-block__heading,.copyright__content){color:#373a40!important}
+  html[data-viri-mobile-theme="light"] body .footer :is(.boxeup-footer-brand img,.viriatto-site-logo){filter:brightness(0)!important}
+  html[data-viri-mobile-theme="light"] body .footer .list-social__link{color:#26282d!important}
+  /* Accessible switch, always available in mobile drawer. */
+  .viri-theme-picker{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    margin:14px 18px 4px;padding:13px 14px;min-height:70px;
+    border:1px solid #393d43;border-radius:10px;background:#1e2024;color:#fff;
+  }
+  .viri-theme-picker__intro{display:flex;flex-direction:column;gap:4px;min-width:0}
+  .viri-theme-picker__eyebrow{font-size:12px;font-weight:750;line-height:1.2;letter-spacing:.015em}
+  .viri-theme-picker__hint{font-size:10px;line-height:1.3;color:#a6a9b0}
+  .viri-theme-picker__switch{
+    display:flex;align-items:center;justify-content:flex-end;gap:7px;flex:none;
+    border:0;border-radius:8px;background:transparent;color:#fff;
+    font:600 11px/1.2 var(--font-body-family,Arial,sans-serif);
+    min-height:44px;padding:6px;cursor:pointer;
+  }
+  .viri-theme-picker__switch svg{height:18px;width:18px;flex:none;stroke:currentColor}
+  .viri-theme-picker__sun{display:none}
+  .viri-theme-picker__label{white-space:nowrap}
+  .viri-theme-picker__track{width:39px;height:23px;border-radius:30px;border:1px solid #666a70;background:#45484e;padding:2px;display:flex;align-items:center;flex:none;transition:background .2s}
+  .viri-theme-picker__thumb{height:17px;width:17px;border-radius:50%;background:#fff;display:block;transition:transform .2s}
+  .viri-theme-picker__switch:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+  html[data-viri-mobile-theme="light"] .viri-theme-picker{background:#f0f0ef;color:#1b1d20;border-color:var(--viri-light-border)}
+  html[data-viri-mobile-theme="light"] .viri-theme-picker__hint{color:#6f7278}
+  html[data-viri-mobile-theme="light"] .viri-theme-picker__switch{color:#1b1d20}
+  html[data-viri-mobile-theme="light"] .viri-theme-picker__moon{display:none}
+  html[data-viri-mobile-theme="light"] .viri-theme-picker__sun{display:block}
+  html[data-viri-mobile-theme="light"] .viri-theme-picker__track{background:#1d2024;border-color:#1d2024}
+  html[data-viri-mobile-theme="light"] .viri-theme-picker__thumb{transform:translateX(16px)}
+}
+@media screen and (min-width:990px){.viri-theme-picker{display:none!important}}
+@media(prefers-reduced-motion:reduce){.viri-theme-picker__thumb,.viri-theme-picker__track{transition:none!important}}

@@ -1,138 +1,256 @@
-/* Product-photo pagination for mobile. Uses the existing media-gallery API:
-   never replaces or resizes the main photo, zoom or original thumbnails. */
+/* VIRIATTO / Product photo pagination.
+   The moving capsule follows the actual gallery scroll, including finger drag.
+   The Shopify media gallery, zoom, variants and normal controls remain untouched. */
 (() => {
   if (window.__viriProductGalleryDots) return;
   window.__viriProductGalleryDots = true;
 
   const mobile = window.matchMedia('(max-width: 749px)');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const mounted = new Map();
-  const lang = (document.documentElement.lang || 'pt').slice(0, 2);
-  const description = lang === 'en' ? 'Photo' : lang === 'es' ? 'Foto' : 'Fotografia';
-  const galleryLabel = lang === 'en' ? 'Product photo navigation'
-    : lang === 'es' ? 'Navegación de fotos del producto'
+  const locale = (document.documentElement.lang || 'pt').slice(0, 2);
+  const name = locale === 'en' ? 'Photo' : locale === 'es' ? 'Foto' : 'Fotografia';
+  const galleryLabel = locale === 'en' ? 'Product photo navigation'
+    : locale === 'es' ? 'Navegación de fotos del producto'
     : 'Navegação das fotografias do produto';
 
   function mount(gallery) {
     if (!mobile.matches || mounted.has(gallery)) return;
     const viewer = gallery.querySelector('slider-component[id^="GalleryViewer-"]');
-    const list = viewer && viewer.querySelector('.product__media-list');
-    if (!viewer || !list) return;
+    const slider = viewer?.querySelector('.product__media-list');
+    if (!slider) return;
 
     const dots = document.createElement('div');
     dots.className = 'viri-gallery-dots';
     dots.setAttribute('role', 'group');
     dots.setAttribute('aria-label', galleryLabel);
-    // A separate indicator slides between fixed-size dots without changing their layout.
+
+    const track = document.createElement('div');
+    track.className = 'viri-gallery-dots__track';
     const indicator = document.createElement('span');
     indicator.className = 'viri-gallery-dots__indicator';
     indicator.setAttribute('aria-hidden', 'true');
+    dots.appendChild(track);
 
     const ctrl = new AbortController();
-    let items = [];
-    let activeId = null;
-    let refreshFrame = 0;
-    let disposed = false;
     const signal = ctrl.signal;
+    let items = [];
+    let buttons = [];
+    let activeId = '';
+    let raf = 0;
+    let idle = 0;
+    let animatingTap = false;
+    let tracking = false;
+    let disposed = false;
 
-    const mediaItems = () => Array.from(list.querySelectorAll(':scope > li[data-media-id]'));
-    const setActive = id => {
-      if (!id || !items.some(item => item.dataset.mediaId === id)) return;
-      activeId = id;
-      dots.querySelectorAll('button[data-media-id]').forEach(button => {
-        const selected = button.dataset.mediaId === id;
-        if (selected) button.setAttribute('aria-current', 'true');
+    const getItems = () => Array.from(slider.querySelectorAll(':scope > li[data-media-id]'));
+    const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+    function setSelected(index) {
+      const i = clamp(Math.round(index), 0, Math.max(0, items.length - 1));
+      if (!items[i]) return;
+      activeId = items[i].dataset.mediaId;
+      buttons.forEach((button, n) => {
+        if (n === i) button.setAttribute('aria-current', 'true');
         else button.removeAttribute('aria-current');
       });
-      // Keep the current indicator visible for products with many photos.
-      const current = dots.querySelector('button[data-media-id="' + id + '"]');
-      if (current) {
-        // Stable 18px slots make the animation slide smoothly, with no layout shifts.
-        const left = current.offsetLeft + (current.offsetWidth - 16) / 2;
-        dots.style.setProperty('--viri-active-left', left + 'px');
-        if (dots.scrollWidth > dots.clientWidth) {
-          const target = current.offsetLeft - (dots.clientWidth - current.offsetWidth) / 2;
-          dots.scrollLeft = Math.max(0, target);
-        }
-        if (!dots.classList.contains('viri-gallery-dots--ready')) {
-          requestAnimationFrame(() => dots.classList.add('viri-gallery-dots--ready'));
+    }
+
+    function renderPosition(progress) {
+      if (!buttons.length) return;
+      const p = clamp(progress, 0, buttons.length - 1);
+      const leftIndex = Math.floor(p);
+      const rightIndex = Math.min(leftIndex + 1, buttons.length - 1);
+      const fraction = p - leftIndex;
+      const a = buttons[leftIndex];
+      const b = buttons[rightIndex];
+      if (!a || !b) return;
+
+      const centerA = a.offsetLeft + a.offsetWidth / 2;
+      const centerB = b.offsetLeft + b.offsetWidth / 2;
+      // The capsule gently stretches mid-swipe and settles at each dot.
+      const width = reduced.matches ? 19 : 19 + 6 * Math.sin(Math.PI * fraction);
+      const center = centerA + (centerB - centerA) * fraction;
+      indicator.style.width = width.toFixed(2) + 'px';
+      indicator.style.transform = 'translate3d(' + (center - width / 2).toFixed(2) + 'px,-50%,0)';
+    }
+
+    function scrollProgress() {
+      if (!items.length) return 0;
+      const origin = items[0].offsetLeft;
+      const position = slider.scrollLeft + origin;
+      let i = 0;
+      for (; i < items.length - 1; i++) {
+        const left = items[i].offsetLeft;
+        const right = items[i + 1].offsetLeft;
+        if (position <= right || i === items.length - 2) {
+          const size = Math.max(1, right - left);
+          return clamp(i + (position - left) / size, 0, items.length - 1);
         }
       }
-    };
+      return items.length - 1;
+    }
 
-    const updateFromMedia = () => {
-      const active = list.querySelector(':scope > li.is-active[data-media-id]');
-      setActive(active?.dataset.mediaId || activeId || items[0]?.dataset.mediaId);
-    };
+    function followScroll() {
+      raf = 0;
+      const progress = scrollProgress();
+      renderPosition(progress);
+      setSelected(progress);
+    }
 
-    const rebuild = () => {
-      const next = mediaItems();
-      if (next.length === items.length &&
-          next.every((item, index) => item.dataset.mediaId === items[index]?.dataset.mediaId)) {
-        updateFromMedia();
+    function scheduleScroll() {
+      if (!raf) raf = requestAnimationFrame(followScroll);
+    }
+
+    function snapToItem(index, smooth = true) {
+      if (!buttons[index]) return;
+      dots.classList.toggle('viri-gallery-dots--tracking', !smooth || reduced.matches);
+      renderPosition(index);
+      setSelected(index);
+    }
+
+    function rebuild() {
+      const next = getItems();
+      const same = next.length === items.length && next.every((item, i) => item === items[i]);
+      if (same) {
+        if (!tracking && !animatingTap) {
+          const index = items.findIndex(item => item.classList.contains('is-active'));
+          if (index >= 0 && items[index].dataset.mediaId !== activeId) snapToItem(index);
+        }
         return;
       }
+
       items = next;
-      const nodes = items.map((item, index) => {
+      buttons = items.map((item, index) => {
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'viri-gallery-dot';
         button.dataset.mediaId = item.dataset.mediaId;
-        button.setAttribute('aria-label', description + ' ' + (index + 1) + ' / ' + items.length);
+        button.setAttribute('aria-label', name + ' ' + (index + 1) + ' / ' + items.length);
         return button;
       });
-      dots.classList.remove('viri-gallery-dots--ready');
-      dots.replaceChildren(...nodes, indicator);
+      track.replaceChildren(...buttons, indicator);
       dots.hidden = items.length < 2;
-      setActive(items.find(item => item.classList.contains('is-active'))?.dataset.mediaId ||
-        (items.some(item => item.dataset.mediaId === activeId) ? activeId : items[0]?.dataset.mediaId));
-    };
 
-    const scheduleRefresh = () => {
-      if (refreshFrame) return;
-      refreshFrame = requestAnimationFrame(() => {
-        refreshFrame = 0;
-        rebuild();
+      // Initial placement must not animate in from the edge.
+      dots.classList.add('viri-gallery-dots--tracking');
+      const selected = items.findIndex(item => item.dataset.mediaId === activeId);
+      const active = items.findIndex(item => item.classList.contains('is-active'));
+      const initial = selected >= 0 ? selected : active >= 0 ? active : 0;
+      requestAnimationFrame(() => {
+        if (disposed) return;
+        renderPosition(initial);
+        setSelected(initial);
+        requestAnimationFrame(() => {
+          if (!disposed && !tracking) dots.classList.remove('viri-gallery-dots--tracking');
+        });
       });
+    }
+
+    const finishScroll = () => {
+      clearTimeout(idle);
+      idle = setTimeout(() => {
+        tracking = false;
+        animatingTap = false;
+        slider.classList.remove('viri-gallery-slide-smooth');
+        scheduleScroll();
+        dots.classList.remove('viri-gallery-dots--tracking');
+      }, 140);
     };
 
     dots.addEventListener('click', event => {
       const button = event.target.closest('button[data-media-id]');
       if (!button) return;
-      const id = button.dataset.mediaId;
-      if (!items.some(item => item.dataset.mediaId === id)) return;
-      setActive(id);
-      gallery.setActiveMedia?.(id, false);
+      const index = buttons.indexOf(button);
+      if (index < 0 || !items[index]) return;
+      tracking = false;
+      animatingTap = true;
+      dots.classList.remove('viri-gallery-dots--tracking');
+      snapToItem(index);
+      if (!reduced.matches) slider.classList.add('viri-gallery-slide-smooth');
+      gallery.setActiveMedia?.(items[index].dataset.mediaId, false);
+      finishScroll();
     }, {signal});
 
-    // Shopify's slider fires this for swipes; clicking native thumbnails changes
-    // is-active, and changing a variant can add or reorder media items.
+    slider.addEventListener('touchstart', () => {
+      animatingTap = false;
+      tracking = true;
+      dots.classList.add('viri-gallery-dots--tracking');
+      clearTimeout(idle);
+    }, {signal, passive:true});
+
+    // Re-enable transitions when a touch/pointer ends without actual scrolling.
+    slider.addEventListener('touchend', finishScroll, {signal,passive:true});
+    slider.addEventListener('touchcancel', finishScroll, {signal,passive:true});
+    slider.addEventListener('pointerup', finishScroll, {signal,passive:true});
+    slider.addEventListener('pointercancel', finishScroll, {signal,passive:true});
+
+    slider.addEventListener('pointerdown', event => {
+      if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
+      animatingTap = false;
+      tracking = true;
+      dots.classList.add('viri-gallery-dots--tracking');
+      clearTimeout(idle);
+    }, {signal, passive:true});
+
+    slider.addEventListener('scroll', () => {
+      if (!animatingTap) {
+        tracking = true;
+        dots.classList.add('viri-gallery-dots--tracking');
+      }
+      scheduleScroll();
+      finishScroll();
+    }, {signal, passive:true});
+
     viewer.addEventListener('slideChanged', event => {
-      setActive(event.detail?.currentElement?.dataset.mediaId);
+      const id = event.detail?.currentElement?.dataset.mediaId;
+      const index = items.findIndex(item => item.dataset.mediaId === id);
+      if (index >= 0) {
+        setSelected(index);
+        if (!tracking) snapToItem(index);
+      }
     }, {signal});
+
     const observer = new MutationObserver(records => {
-      // Ignore class changes inside media (zoom/spinner): they are not slide changes.
-      if (records.some(record =>
-        (record.type === 'childList' && record.target === list) ||
-        (record.type === 'attributes' && record.target.matches?.('li[data-media-id]'))
-      )) scheduleRefresh();
+      if (records.some(record => record.type === 'childList' && record.target === slider)) {
+        rebuild();
+        return;
+      }
+      if (records.some(record => record.type === 'attributes' &&
+          record.target.matches?.('li[data-media-id]')) && !tracking && !animatingTap) {
+        rebuild();
+      }
     });
-    observer.observe(list, {childList:true, subtree:true, attributes:true, attributeFilter:['class']});
+    observer.observe(slider, {subtree:true,childList:true,attributes:true,attributeFilter:['class']});
 
     viewer.appendChild(dots);
     rebuild();
-    const dispose = () => {
+
+    const onResize = () => {
+      if (disposed) return;
+      // Position is geometry-based: recalculate after orientation/viewport changes.
+      dots.classList.add('viri-gallery-dots--tracking');
+      followScroll();
+      requestAnimationFrame(() => {
+        if (!disposed && !tracking) dots.classList.remove('viri-gallery-dots--tracking');
+      });
+    };
+    window.addEventListener('resize', onResize, {signal,passive:true});
+
+    function dispose() {
       if (disposed) return;
       disposed = true;
-      observer.disconnect();
       ctrl.abort();
-      cancelAnimationFrame(refreshFrame);
+      observer.disconnect();
+      clearTimeout(idle);
+      cancelAnimationFrame(raf);
       dots.remove();
       mounted.delete(gallery);
-    };
+    }
     mounted.set(gallery, dispose);
   }
 
-  const scan = () => {
+  function scan() {
     if (!mobile.matches) {
       Array.from(mounted.values()).forEach(dispose => dispose());
       return;
@@ -141,9 +259,8 @@
       if (!gallery.isConnected) dispose();
     }
     document.querySelectorAll('#MainContent[data-template="product"] media-gallery').forEach(mount);
-  };
-
-  const start = () => {
+  }
+  function start() {
     scan();
     mobile.addEventListener('change', scan);
     document.addEventListener('shopify:section:load', scan);
@@ -151,8 +268,7 @@
     window.addEventListener('pagehide', () => {
       Array.from(mounted.values()).forEach(dispose => dispose());
     });
-  };
-
+  }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, {once:true});
   else start();
 })();

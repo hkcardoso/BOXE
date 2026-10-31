@@ -102,3 +102,140 @@ body.boxeup-product-view #MainContent .vpd-brand-card a { display: inline-flex; 
   body.boxeup-product-view #MainContent .vpd-benefit .vpd-icon { width: 20px; height: 20px; }
   body.boxeup-product-view #MainContent .vpd-brand-card { padding: 24px 20px; }
 }
+
+
+/* Mobile light: product reviews, complementary items and information sections.
+   These components otherwise keep dark-card colours with text inherited from the page. */
+@media(max-width:989px) {
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent :is(.vpd-section,.vpc-section,.vpr-section) {
+    background:#f6f6f5!important;color:#292c32!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent :is(.vpd-header,.vpc-header,.vpr-header) h2{
+    color:#171a1e!important;-webkit-text-fill-color:#171a1e!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent :is(.vpd-header,.vpc-header,.vpr-header) p{
+    color:#60666e!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent :is(.vpd-accordion,.vpc-section,.vpr-section,.vpd-technical th,.vpd-technical td){
+    border-color:#d5d9de!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent :is(.vpd-accordion>summary,.vpd-copy h3,.vpd-benefit h4,.vpd-brand-card h3){
+    color:#21252b!important;-webkit-text-fill-color:#21252b!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent :is(.vpd-copy p,.vpd-prose p,.vpd-feature-list li,.vpd-benefit p,.vpd-technical td,.vpd-brand-card>p:not(.vpd-eyebrow)){
+    color:#424850!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent :is(.vpd-brand-card,.vpd-detail-image,.vpc-card,.vpr-review) {
+    background:#fff!important;color:#22262b!important;border-color:#d5d9df!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .vpd-brand-card :is(h3,a,.vpd-brand-card__logo span){
+    color:#23262c!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .vpc-card :is(strong,.vpc-card__price,.vpc-card__link){
+    color:#21252a!important;-webkit-text-fill-color:#21252a!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .vpc-card small{
+    color:#6a7078!important;-webkit-text-fill-color:#6a7078!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .vpr-review h3{
+    color:#202429!important;-webkit-text-fill-color:#202429!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .vpr-review p{
+    color:#454a51!important;-webkit-text-fill-color:#454a51!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .vpr-review footer,
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent :is(.vpr-preview-note,.vpr-bar,.vpr-controls label){
+    color:#6a7078!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .vpr-score{
+    color:#202429!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .vpr-filter{
+    background:#fff!important;color:#202429!important;border-color:#cbd0d6!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .vpr-more {
+    background:#202429!important;color:#fff!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .vpr-more:hover{
+    background:#393d43!important;
+  }
+  /* Relevant products: do not leave a black block between the reviews and footer. */
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .related-products,
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .related-products .bxp-related-heading,
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .related-products .vrelated-grid{
+    background:#f6f6f5!important;color:#1b1f25!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .related-products :is(.related-products__heading,.bxp-related-all){
+    color:#1c2025!important;-webkit-text-fill-color:#1c2025!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .related-products .vrelated-grid .vh-tile{
+    background:transparent!important;
+  }
+}
+/* Related products share the existing image and below-image metadata with catalog cards.
+   This applies to both themes, instead of reverting to the old photo overlay. */
+@media(max-width:749px) {
+  body.boxeup-product-view #MainContent .vrelated-grid .vh-tile.vh-tile--info-below {
+    display:flex!important;flex-direction:column!important;width:100%!important;height:100%!important;
+    background:transparent!important;border:0!important;border-radius:0!important;
+    overflow:visible!important;box-shadow:none!important;
+  }
+  body.boxeup-product-view #MainContent .vrelated-grid .vh-tile.vh-tile--info-below .vh-tile__media {
+    display:block!important;position:relative!important;flex:none!important;
+    width:100%!important;aspect-ratio:1/1.07!important;
+    margin:0!important;padding:0!important;
+    border-radius:12px!important;overflow:hidden!important;
+  }
+  body.boxeup-product-view #MainContent .vrelated-grid .vh-tile.vh-tile--info-below .vh-tile__info{
+    display:flex!important;flex-direction:column!important;position:static!important;
+    width:100%!important;min-width:0!important;margin:0!important;
+    padding:9px 2px 4px!important;text-decoration:none!important;
+    background:transparent!important;
+  }
+  body.boxeup-product-view #MainContent .vrelated-grid .vh-tile.vh-tile--info-below .vh-tile__price-line{
+    display:flex!important;justify-content:space-between!important;align-items:center!important;
+    gap:6px!important;width:100%!important;
+  }
+  body.boxeup-product-view #MainContent .vrelated-grid .vh-tile.vh-tile--info-below .vh-tile__prices{
+    display:flex!important;position:static!important;flex-direction:row!important;
+    align-items:baseline!important;flex-wrap:wrap!important;
+    gap:5px!important;min-width:0!important;max-width:100%!important;
+    margin:0!important;padding:0!important;
+    text-align:left!important;text-shadow:none!important;
+    pointer-events:auto!important;
+  }
+  body.boxeup-product-view #MainContent .vrelated-grid .vh-tile.vh-tile--info-below .vh-tile__name{
+    display:-webkit-box!important;position:static!important;
+    width:100%!important;max-width:100%!important;min-height:2.6em!important;
+    margin:6px 0 0!important;padding:0!important;
+    font:500 13px/1.35 var(--font-body-family,Arial,sans-serif)!important;
+    color:#e7e8ea!important;opacity:1!important;visibility:visible!important;
+    text-shadow:none!important;text-align:left!important;
+    white-space:normal!important;overflow:hidden!important;
+    -webkit-box-orient:vertical!important;-webkit-line-clamp:2!important;
+    pointer-events:auto!important;
+  }
+  body.boxeup-product-view #MainContent .vrelated-grid .vh-tile.vh-tile--info-below .vh-tile__prices strong{
+    color:#f5f5f6!important;font-size:14px!important;font-weight:700!important;
+  }
+  body.boxeup-product-view #MainContent .vrelated-grid .vh-tile.vh-tile--info-below .vh-tile__prices del{
+    color:#999ca3!important;font-size:11px!important;
+  }
+  body.boxeup-product-view #MainContent .vrelated-grid .vh-tile.vh-tile--info-below .vh-tile__discount{
+    display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    gap:3px!important;position:static!important;flex:0 0 auto!important;
+    min-height:23px!important;padding:4px 6px!important;margin:0!important;
+    border-radius:99px!important;background:#555a62!important;color:#fff!important;
+    font-size:10px!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .vrelated-grid .vh-tile__name,
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .vrelated-grid .vh-tile__prices strong{
+    color:#202429!important;-webkit-text-fill-color:#202429!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .vrelated-grid .vh-tile__prices del{
+    color:#777d86!important;
+  }
+  html[data-viri-mobile-theme="light"] body.boxeup-product-view #MainContent .vrelated-grid .vh-tile__discount{
+    color:#fff!important;-webkit-text-fill-color:#fff!important;
+  }
+}

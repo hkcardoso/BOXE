@@ -1224,11 +1224,20 @@ body.boxeup-product-view .header-wrapper .header__inline-menu .header__menu-item
     padding:0!important;
     scroll-snap-align:start!important;
   }
-  body.boxeup-product-view #MainContent[data-template="product"] .product.bxp-product-grid .product__media-container,
+  body.boxeup-product-view #MainContent[data-template="product"] .product.bxp-product-grid .product__media-container {
+    width:100%!important;max-width:100%!important;
+    margin:0!important;padding:0!important;
+    border-left:0!important;border-right:0!important;
+    border-radius:0!important;
+  }
+  /* Shopify's image height comes from padding-top:var(--ratio-percent).
+     Do not reset that padding: it collapses the entire main photograph. */
   body.boxeup-product-view #MainContent[data-template="product"] .product.bxp-product-grid .product__media-list .product__media,
   body.boxeup-product-view #MainContent[data-template="product"] .product.bxp-product-grid .product__media-list .media {
     width:100%!important;max-width:100%!important;
-    margin:0!important;padding:0!important;
+    margin:0!important;
+    padding-top:var(--ratio-percent)!important;
+    padding-right:0!important;padding-bottom:0!important;padding-left:0!important;
     border-left:0!important;border-right:0!important;
     border-radius:0!important;
   }

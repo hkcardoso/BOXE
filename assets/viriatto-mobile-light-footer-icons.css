@@ -1,0 +1,196 @@
+/* VIRIATTO — mobile light mode: footer controls + header icon consistency.
+   Only applies when the user opts into light appearance; dark and desktop untouched. */
+@media screen and (max-width:989px){
+  /* Footer should read as one neutral, high-contrast surface. */
+  html[data-viri-mobile-theme="light"] body .footer,
+  html[data-viri-mobile-theme="light"] body .footer .footer__content-top,
+  html[data-viri-mobile-theme="light"] body .footer .footer__content-bottom,
+  html[data-viri-mobile-theme="light"] body .footer .footer-block--newsletter,
+  html[data-viri-mobile-theme="light"] body .footer .footer-block__newsletter{
+    background:#e3e6ea!important;
+    background-image:none!important;
+    color:#242a31!important;
+    border-color:#c4cbd3!important;
+    box-shadow:none!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer :is(
+    .footer-block__heading,.footer-block__details-content,.footer-block__details-content p,
+    .footer-block__details-content a,.footer-block__details-content li,
+    .footer-block__newsletter h2,.footer__copyright,.copyright__content){
+    color:#303741!important;
+    -webkit-text-fill-color:#303741!important;
+    opacity:1!important;
+  }
+  /* Native Shopify newsletter remains functional; reset dark filled input
+     and its floating label, including on focus and when an address is entered. */
+  html[data-viri-mobile-theme="light"] body .footer .newsletter-form__field-wrapper .field{
+    background:#f5f6f7!important;
+    border:1px solid #b7c0ca!important;
+    border-radius:8px!important;
+    box-shadow:none!important;
+    min-height:48px!important;
+    overflow:hidden!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .newsletter-form__field-wrapper .field::before,
+  html[data-viri-mobile-theme="light"] body .footer .newsletter-form__field-wrapper .field::after{
+    box-shadow:none!important;
+    border:0!important;
+    content:none!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .newsletter-form__field-wrapper .field__input,
+  html[data-viri-mobile-theme="light"] body .footer .newsletter-form__field-wrapper .field__input:is(:focus,:active,:hover){
+    background:#f5f6f7!important;
+    background-color:#f5f6f7!important;
+    color:#252c34!important;
+    -webkit-text-fill-color:#252c34!important;
+    border:0!important;
+    outline:0!important;
+    box-shadow:none!important;
+    border-radius:8px!important;
+    min-height:46px!important;
+    font-size:16px!important; /* no iOS form-field auto zoom */
+    caret-color:#252c34!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .newsletter-form__field-wrapper .field__input::placeholder{
+    color:#717a86!important;
+    -webkit-text-fill-color:#717a86!important;
+    opacity:1!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .newsletter-form__field-wrapper .field__label{
+    color:#606b77!important;
+    -webkit-text-fill-color:#606b77!important;
+    opacity:1!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .newsletter-form__field-wrapper .field:focus-within{
+    border-color:#657383!important;
+    outline:1px solid #657383!important;
+    outline-offset:2px!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .newsletter-form__button,
+  html[data-viri-mobile-theme="light"] body .footer .newsletter-form__button .icon{
+    color:#262c34!important;
+    stroke:#262c34!important;
+    fill:none!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    opacity:1!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .newsletter-form__message{
+    color:#303741!important;
+    -webkit-text-fill-color:#303741!important;
+  }
+
+  /* Footer country and language: same quiet light control treatment. */
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization,
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization form.localization-form,
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization .disclosure{
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization h2.caption-large{
+    color:#333b45!important;
+    -webkit-text-fill-color:#333b45!important;
+    opacity:1!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization
+    button.disclosure__button.localization-form__select,
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization
+    .boxeup-language-disclosure .boxeup-lang-trigger{
+    color:#252b34!important;
+    -webkit-text-fill-color:#252b34!important;
+    background:#f4f5f7!important;
+    background-color:#f4f5f7!important;
+    border:1px solid #b9c1cb!important;
+    box-shadow:none!important;
+    border-radius:8px!important;
+    opacity:1!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization
+    button.disclosure__button.localization-form__select:hover,
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization
+    button.disclosure__button.localization-form__select[aria-expanded="true"]{
+    background:#e9ecef!important;
+    border-color:#929eab!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization
+    .boxeup-lang-code,
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization
+    .localization-form__select .icon-caret{
+    color:#28303a!important;
+    -webkit-text-fill-color:#28303a!important;
+    stroke:currentColor!important;
+    opacity:1!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization
+    .disclosure__list-wrapper,
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization
+    .country-filter{
+    background:#f5f6f7!important;
+    border-color:#bac2cc!important;
+    color:#28313b!important;
+    box-shadow:0 9px 24px rgba(19,28,39,.12)!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization
+    .disclosure__link{
+    background:transparent!important;
+    color:#29333d!important;
+    -webkit-text-fill-color:#29333d!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization
+    .disclosure__link:is(:hover,:focus-visible){
+    background:#e4e8ed!important;
+    color:#1f252c!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization
+    .country-filter__input{
+    background:#fff!important;
+    color:#29313b!important;
+    -webkit-text-fill-color:#29313b!important;
+    border-color:#b9c0ca!important;
+    font-size:16px!important;
+  }
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization
+    .country-filter .field__label,
+  html[data-viri-mobile-theme="light"] body .footer .footer__localization
+    .country-selector__close-button{
+    color:#303943!important;
+  }
+
+  /* Iconography: three 24px outline systems, with matching 1.7px strokes.
+     The old account icon is a filled shape, so replace only its picture in
+     light mode; button, accessible label, sessions and click actions stay. */
+  html[data-viri-mobile-theme="light"] body .header-wrapper .header
+    .vs-header-search-trigger .svg-wrapper svg{
+    width:23px!important;
+    height:23px!important;
+    stroke-width:1.7!important;
+    stroke-linecap:round!important;
+    stroke-linejoin:round!important;
+    fill:none!important;
+  }
+  html[data-viri-mobile-theme="light"] body .header-wrapper .header
+    #cart-icon-bubble .svg-wrapper svg{
+    width:23px!important;
+    min-width:23px!important;
+    height:23px!important;
+    min-height:23px!important;
+    stroke-width:1.7!important;
+    stroke-linecap:round!important;
+    stroke-linejoin:round!important;
+    fill:none!important;
+  }
+  html[data-viri-mobile-theme="light"] body .header-wrapper .header
+    .header__icon--account .svg-wrapper .icon-account{
+    display:none!important;
+  }
+  html[data-viri-mobile-theme="light"] body .header-wrapper .header
+    .header__icon--account .svg-wrapper::after{
+    content:""!important;
+    display:block!important;
+    box-sizing:border-box!important;
+    flex:0 0 23px!important;
+    width:23px!important;
+    height:23px!important;
+    background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23262b32' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='7.5' r='3.7'/%3E%3Cpath d='M4.4 20v-2.1a7.6 7.6 0 0 1 15.2 0V20H4.4Z'/%3E%3C/svg%3E") no-repeat center / contain!important;
+  }
+}

@@ -262,3 +262,203 @@
     border-color:#cbd0d7!important;
   }
 }
+
+
+/* VIRIATTO — About/Contact mobile light: explicit contrast and safe widths.
+   These pages still contain old dark-theme rules with ID-level specificity. */
+@media (max-width: 989px) {
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page {
+    overflow-x:clip!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent {
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:clip!important;
+    background:#e9ebee!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    :is(.vi-min-about,.vi-min-contact,.vi-min-about__inner,.vi-min-contact__layout){
+    box-sizing:border-box!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    margin-inline:auto!important;
+    background:#e9ebee!important;
+    color:#252a31!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-info-rail{
+    box-sizing:border-box!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    padding-inline:clamp(16px,4.4vw,40px)!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    :is(.vi-min-about__intro,.vi-min-about__process,.vi-min-about__bottom,.vi-min-contact__details,.vi-min-contact__form,.vi-min-contact__info){
+    min-width:0!important;
+    max-width:100%!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-about__intro h1{
+    max-width:100%!important;
+    overflow-wrap:break-word!important;
+    word-break:normal!important;
+    color:#20242a!important;
+    -webkit-text-fill-color:#20242a!important;
+    text-shadow:none!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-about__intro h1 span{
+    color:#d52f46!important;
+    -webkit-text-fill-color:#d52f46!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    :is(.vi-min-about__intro>p:not(.vi-min-eyebrow),.vi-min-about__bottom,.vi-min-about__bottom>span,
+        .vi-min-about__bottom a,.vi-min-contact__intro,.vi-min-contact__links a,
+        .vi-min-contact__info span,.vi-min-contact__info a){
+    color:#424952!important;
+    -webkit-text-fill-color:#424952!important;
+    opacity:1!important;
+    overflow-wrap:anywhere;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    :is(.vi-min-contact__info strong,.vi-min-contact__details .vi-min-eyebrow,
+        .vi-min-about__step h3,.vi-min-about__process h2,
+        .vi-min-contact__form h2,.vi-min-contact__details h1){
+    color:#252a31!important;
+    -webkit-text-fill-color:#252a31!important;
+    opacity:1!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-eyebrow{
+    color:#646c76!important;
+    -webkit-text-fill-color:#646c76!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-about__step{
+    background:#f5f6f7!important;
+    border:1px solid #cdd2d9!important;
+    border-top:2px solid #bdc4cd!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-about__step p{
+    color:#434b55!important;
+    -webkit-text-fill-color:#434b55!important;
+    opacity:1!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-about__bottom{
+    border-top:1px solid #bec5ce!important;
+  }
+  /* Contact details remain readable, including old strong/link selectors. */
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact__info > div{
+    min-width:0!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact__form{
+    background:transparent!important;
+    color:#252a31!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact .bx-contact__field label,
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact .bx-contact__field label span{
+    color:#333a43!important;
+    -webkit-text-fill-color:#333a43!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact .bx-contact__field :is(input,select,textarea){
+    box-sizing:border-box!important;
+    min-width:0!important;
+    max-width:100%!important;
+    background-color:#f6f7f8!important;
+    color:#292f36!important;
+    -webkit-text-fill-color:#292f36!important;
+    border:1px solid #bfc6cf!important;
+    border-radius:5px!important;
+    box-shadow:none!important;
+    font-size:16px!important; /* prevents iOS zoom when a form field gains focus */
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact #BoxeupContactSubject{
+    background-color:#f6f7f8!important;
+    color:#292f36!important;
+    -webkit-text-fill-color:#292f36!important;
+    border-color:#bfc6cf!important;
+    border-radius:5px!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact #BoxeupContactSubject:invalid{
+    color:#737b86!important;
+    -webkit-text-fill-color:#737b86!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact #BoxeupContactSubject option{
+    background:#f6f7f8!important;
+    color:#242a31!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact .bx-contact__field :is(input,textarea)::placeholder{
+    color:#7b838d!important;
+    -webkit-text-fill-color:#7b838d!important;
+    opacity:1!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact .bx-contact__counter{
+    color:#747c86!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact .bx-contact__submit{
+    color:#fff!important;
+    -webkit-text-fill-color:#fff!important;
+    background:#22262c!important;
+    border-color:#22262c!important;
+    border-radius:5px!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact :is(.bx-contact__form-note,.bx-contact__form-note a){
+    color:#515963!important;
+    -webkit-text-fill-color:#515963!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact .bx-contact__feedback{
+    background:#f2f4f5!important;
+    color:#292e35!important;
+    border-color:#c2c9d1!important;
+  }
+}
+@media (max-width:749px) {
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-about__intro h1{
+    font-size:clamp(21px,5.5vw,29px)!important;
+    line-height:1.25!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact__layout{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:26px!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-contact__info{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:12px!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    :is(.vi-min-about__process,.vi-min-about__grid){
+    width:100%!important;
+    min-width:0!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-about__grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:8px!important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent
+    .vi-min-about__step{
+    min-width:0!important;
+    padding:17px 10px!important;
+  }
+}

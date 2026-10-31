@@ -22,6 +22,10 @@
     dots.className = 'viri-gallery-dots';
     dots.setAttribute('role', 'group');
     dots.setAttribute('aria-label', galleryLabel);
+    // A separate indicator slides between fixed-size dots without changing their layout.
+    const indicator = document.createElement('span');
+    indicator.className = 'viri-gallery-dots__indicator';
+    indicator.setAttribute('aria-hidden', 'true');
 
     const ctrl = new AbortController();
     let items = [];
@@ -40,11 +44,18 @@
         else button.removeAttribute('aria-current');
       });
       // Keep the current indicator visible for products with many photos.
-      const current = Array.from(dots.children).find(button => button.dataset.mediaId === id);
-      if (current && dots.scrollWidth > dots.clientWidth) {
-        const start = current.offsetLeft - dots.offsetLeft;
-        const target = start - (dots.clientWidth - current.offsetWidth) / 2;
-        dots.scrollLeft = Math.max(0, target);
+      const current = dots.querySelector('button[data-media-id="' + id + '"]');
+      if (current) {
+        // Stable 18px slots make the animation slide smoothly, with no layout shifts.
+        const left = current.offsetLeft + (current.offsetWidth - 16) / 2;
+        dots.style.setProperty('--viri-active-left', left + 'px');
+        if (dots.scrollWidth > dots.clientWidth) {
+          const target = current.offsetLeft - (dots.clientWidth - current.offsetWidth) / 2;
+          dots.scrollLeft = Math.max(0, target);
+        }
+        if (!dots.classList.contains('viri-gallery-dots--ready')) {
+          requestAnimationFrame(() => dots.classList.add('viri-gallery-dots--ready'));
+        }
       }
     };
 
@@ -69,7 +80,8 @@
         button.setAttribute('aria-label', description + ' ' + (index + 1) + ' / ' + items.length);
         return button;
       });
-      dots.replaceChildren(...nodes);
+      dots.classList.remove('viri-gallery-dots--ready');
+      dots.replaceChildren(...nodes, indicator);
       dots.hidden = items.length < 2;
       setActive(items.find(item => item.classList.contains('is-active'))?.dataset.mediaId ||
         (items.some(item => item.dataset.mediaId === activeId) ? activeId : items[0]?.dataset.mediaId));

@@ -81,6 +81,15 @@
   .vh-home .vh-brands__viewport .vh-brand{flex-basis:106px!important;width:106px!important;min-width:106px!important;min-height:65px!important}
 }
 @media(max-width:749px){
+  /* Full-bleed mobile brand strip: no side gutters from the shared .vh-frame. */
+  .vh-home .vh-brands .vh-frame.vh-brands__shell{
+    box-sizing:border-box!important;
+    width:100%!important;
+    max-width:none!important;
+    padding-inline:0!important;
+    margin-inline:0!important;
+  }
+  .vh-home .vh-brands__viewport{width:100%!important;margin-inline:0!important}
   .vh-home .vh-brands__viewport .vh-brand{flex-basis:100px!important;width:100px!important;min-width:100px!important}
 }
 @media(prefers-reduced-motion:reduce){

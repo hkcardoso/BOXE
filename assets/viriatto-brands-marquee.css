@@ -14,8 +14,6 @@
   overscroll-behavior-x:contain;
   touch-action:pan-x pan-y;
   cursor:grab;
-  mask-image:linear-gradient(90deg,transparent 0%,#000 3%,#000 97%,transparent 100%);
-  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 3%,#000 97%,transparent 100%)
 }
 .vh-home .vh-brands__viewport::-webkit-scrollbar{display:none}
 .vh-home .vh-brands__viewport.is-dragging{cursor:grabbing;user-select:none;-webkit-user-select:none}

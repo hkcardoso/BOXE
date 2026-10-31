@@ -435,7 +435,7 @@ class MenuDrawer extends HTMLElement {
       summary.addEventListener('click', this.onSummaryClick.bind(this))
     );
     this.querySelectorAll(
-      'button:not(.localization-selector):not(.country-selector__close-button):not(.country-filter__reset-button):not([data-viri-theme-toggle])'
+      'button:not(.localization-selector):not(.country-selector__close-button):not(.country-filter__reset-button):not([data-viri-theme-toggle]):not([data-bx-nav-toggle])'
     ).forEach((button) => button.addEventListener('click', this.onCloseButtonClick.bind(this)));
   }
 

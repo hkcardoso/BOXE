@@ -1,0 +1,183 @@
+/* VIRIATTO — premium mobile drawer motion and stacked preferences.
+   Only mobile/tablet navigation; desktop menus stay unchanged. */
+@keyframes viri-menu-link-arrive {
+  from { opacity:0; transform:translate3d(-11px,7px,0); }
+  to   { opacity:1; transform:translate3d(0,0,0); }
+}
+@keyframes viri-menu-child-arrive {
+  from { opacity:0; transform:translate3d(0,-6px,0); }
+  to   { opacity:1; transform:translate3d(0,0,0); }
+}
+@keyframes viri-lang-pop {
+  from { opacity:0; transform:translate3d(0,6px,0); }
+  to   { opacity:1; transform:translate3d(0,0,0); }
+}
+@media (max-width:989px) {
+  /* Language selector on top; appearance button directly below, aligned. */
+  body .header-wrapper #menu-drawer .viri-menu-preferences {
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    justify-content:flex-start!important;
+    width:fit-content!important;
+    max-width:100%!important;
+    gap:9px!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  body .header-wrapper #menu-drawer .viri-menu-preferences__language {
+    display:block!important;
+    flex:0 0 auto!important;
+    width:108px!important;
+    max-width:100%!important;
+  }
+  body .header-wrapper #menu-drawer .viri-menu-preferences .boxeup-language-disclosure>.boxeup-lang-trigger {
+    display:inline-grid!important;
+    grid-template-columns:21px 20px!important;
+    justify-content:start!important;
+    align-items:center!important;
+    column-gap:9px!important;
+    box-sizing:border-box!important;
+    width:108px!important;
+    min-width:108px!important;
+    height:40px!important;
+    min-height:40px!important;
+    padding:0 14px!important;
+    border-radius:8px!important;
+    transition:background-color .22s ease,border-color .22s ease,transform .22s ease!important;
+  }
+  body .header-wrapper #menu-drawer .viri-menu-preferences .viri-theme-picker__switch {
+    display:inline-flex!important;
+    justify-content:flex-start!important;
+    align-items:center!important;
+    flex:0 0 auto!important;
+    box-sizing:border-box!important;
+    width:108px!important;
+    min-width:108px!important;
+    height:40px!important;
+    min-height:40px!important;
+    gap:9px!important;
+    margin:0!important;
+    padding:0 14px!important;
+    border-radius:8px!important;
+    transition:background-color .22s ease,border-color .22s ease,transform .22s ease!important;
+  }
+  body .header-wrapper #menu-drawer .viri-menu-preferences .viri-theme-picker__switch:active,
+  body .header-wrapper #menu-drawer .viri-menu-preferences .boxeup-lang-trigger:active{
+    transform:scale(.97)!important;
+  }
+  body .header-wrapper #menu-drawer .viri-menu-preferences .boxeup-lang-panel:not([hidden]){
+    width:108px!important;
+    min-width:108px!important;
+    max-width:108px!important;
+    border-radius:8px!important;
+    animation:viri-lang-pop .22s cubic-bezier(.22,1,.36,1) both;
+  }
+  /* Remove excess empty space in the old country/language footer. */
+  body .header-wrapper #menu-drawer .menu-drawer__utility-links{
+    box-sizing:border-box!important;
+    padding:17px 24px calc(19px + env(safe-area-inset-bottom))!important;
+  }
+  body .header-wrapper #menu-drawer .menu-drawer__localization{
+    margin:0!important;padding:0!important;
+  }
+
+  /* Native Dawn drawer continues to control open/close and focus trap. */
+  .js body .header-wrapper header-drawer > details[open] > #menu-drawer{
+    transition:transform .38s cubic-bezier(.22,1,.36,1),visibility .38s ease!important;
+    will-change:transform;
+  }
+  body .header-wrapper header-drawer > details[open] > summary::before{
+    transition:opacity .34s ease,visibility .34s ease!important;
+  }
+  /* Links enter in a light stagger each time the drawer opens. */
+  body .header-wrapper #Details-menu-drawer-container.menu-opening
+    #menu-drawer .bx-mobile-shared-nav > .list-menu > li{
+    animation:viri-menu-link-arrive .39s cubic-bezier(.22,1,.36,1) both;
+  }
+  body .header-wrapper #Details-menu-drawer-container.menu-opening
+    #menu-drawer .bx-mobile-shared-nav > .list-menu > li:nth-child(1){animation-delay:.025s}
+  body .header-wrapper #Details-menu-drawer-container.menu-opening
+    #menu-drawer .bx-mobile-shared-nav > .list-menu > li:nth-child(2){animation-delay:.055s}
+  body .header-wrapper #Details-menu-drawer-container.menu-opening
+    #menu-drawer .bx-mobile-shared-nav > .list-menu > li:nth-child(3){animation-delay:.085s}
+  body .header-wrapper #Details-menu-drawer-container.menu-opening
+    #menu-drawer .bx-mobile-shared-nav > .list-menu > li:nth-child(4){animation-delay:.115s}
+  body .header-wrapper #Details-menu-drawer-container.menu-opening
+    #menu-drawer .bx-mobile-shared-nav > .list-menu > li:nth-child(5){animation-delay:.145s}
+  body .header-wrapper #Details-menu-drawer-container.menu-opening
+    #menu-drawer .bx-mobile-shared-nav > .list-menu > li:nth-child(6){animation-delay:.175s}
+  body .header-wrapper #Details-menu-drawer-container.menu-opening
+    #menu-drawer .bx-mobile-shared-nav > .list-menu > li:nth-child(n+7){animation-delay:.205s}
+
+  /* Accordion dimensions are measured in JS: no cut-off for long brand lists. */
+  body .header-wrapper #menu-drawer .bx-mobile-shared-nav.viri-nav-motion-ready
+    .boxeup-nav-modalities > .boxeup-nav-modalities__dropdown{
+    display:block!important;
+    box-sizing:border-box!important;
+    height:0;
+    overflow:hidden!important;
+    visibility:hidden!important;
+    opacity:0!important;
+    transform:translate3d(0,-7px,0)!important;
+    pointer-events:none!important;
+    padding:0 0 0 12px!important;
+    margin:0!important;
+    transition:height .31s cubic-bezier(.22,1,.36,1),
+      opacity .22s ease, transform .31s cubic-bezier(.22,1,.36,1),
+      visibility 0s linear .31s!important;
+  }
+  body .header-wrapper #menu-drawer .bx-mobile-shared-nav.viri-nav-motion-ready
+    .boxeup-nav-modalities.bx-nav-expanded > .boxeup-nav-modalities__dropdown{
+    visibility:visible!important;
+    opacity:1!important;
+    transform:translate3d(0,0,0)!important;
+    pointer-events:auto!important;
+    transition:height .31s cubic-bezier(.22,1,.36,1),
+      opacity .23s ease,transform .31s cubic-bezier(.22,1,.36,1),
+      visibility 0s!important;
+  }
+  body .header-wrapper #menu-drawer .bx-mobile-shared-nav
+    .bx-mobile-shared-nav__toggle svg{
+    transition:transform .32s cubic-bezier(.22,1,.36,1),color .18s ease!important;
+  }
+  body .header-wrapper #menu-drawer .bx-mobile-shared-nav
+    .bx-mobile-shared-nav__toggle[aria-expanded="true"] svg{
+    transform:rotate(180deg)!important;
+    color:#f1f1f2!important;
+  }
+  body .header-wrapper #menu-drawer .bx-mobile-shared-nav
+    .boxeup-nav-modalities__link{
+    transition:background-color .18s ease,color .18s ease,transform .22s cubic-bezier(.22,1,.36,1)!important;
+    border-radius:6px!important;
+  }
+  body .header-wrapper #menu-drawer .bx-mobile-shared-nav
+    .bx-nav-expanded > .boxeup-nav-modalities__dropdown > li{
+    animation:viri-menu-child-arrive .28s ease both;
+  }
+  body .header-wrapper #menu-drawer .bx-mobile-shared-nav
+    .bx-nav-expanded > .boxeup-nav-modalities__dropdown > li:nth-child(2){animation-delay:.025s}
+  body .header-wrapper #menu-drawer .bx-mobile-shared-nav
+    .bx-nav-expanded > .boxeup-nav-modalities__dropdown > li:nth-child(3){animation-delay:.05s}
+  body .header-wrapper #menu-drawer .bx-mobile-shared-nav
+    .bx-nav-expanded > .boxeup-nav-modalities__dropdown > li:nth-child(n+4){animation-delay:.07s}
+  body .header-wrapper #menu-drawer .bx-mobile-shared-nav
+    .header__menu-item{
+    transition:color .18s ease,background-color .2s ease!important;
+  }
+
+  html[data-viri-mobile-theme="light"] body .header-wrapper #menu-drawer
+    .bx-mobile-shared-nav .bx-nav-expanded > .bx-mobile-shared-nav__toggle svg{
+    color:#2e3137!important;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  body .header-wrapper #menu-drawer .bx-mobile-shared-nav *,
+  body .header-wrapper #menu-drawer .viri-menu-preferences *,
+  body .header-wrapper #menu-drawer .viri-menu-preferences,
+  body .header-wrapper #Details-menu-drawer-container #menu-drawer {
+    animation:none!important;
+    transition:none!important;
+  }
+}

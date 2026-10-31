@@ -26,19 +26,6 @@
           {% render 'viriatto-mobile-shared-nav', mobile: true %}
           <div class="menu-drawer__utility-links">
               <div class="menu-drawer__localization header-localization">
-                {%- if show_country_selector -%}
-                  <localization-form>
-                    {%- form 'localization', id: 'HeaderCountryMobileForm', class: 'localization-form' -%}
-                      <div>
-                        <h2 class="visually-hidden" id="HeaderCountryMobileLabel">
-                          {{ 'localization.country_label' | t }}
-                        </h2>
-                        {%- render 'country-localization', localPosition: 'HeaderCountryMobile' -%}
-                      </div>
-                    {%- endform -%}
-                  </localization-form>
-                {% endif %}
-
                 <div class="viri-menu-preferences">
                   {%- if show_language_selector -%}
                     <localization-form class="viri-menu-preferences__language">

@@ -10,13 +10,10 @@
     --viri-light-muted:#666a71;
     --viri-light-border:#d8dade;
   }
+  /* Page canvas only; do not wipe backgrounds of banners, images and dialogs. */
   html[data-viri-mobile-theme="light"] body,
   html[data-viri-mobile-theme="light"] body.gradient,
-  html[data-viri-mobile-theme="light"] body #MainContent,
-  html[data-viri-mobile-theme="light"] body #MainContent .gradient,
-  html[data-viri-mobile-theme="light"] body #MainContent .color-background-1,
-  html[data-viri-mobile-theme="light"] body #MainContent .color-background-2,
-  html[data-viri-mobile-theme="light"] body #MainContent .shopify-section{
+  html[data-viri-mobile-theme="light"] body #MainContent{
     background:var(--viri-light-bg)!important;
     background-color:var(--viri-light-bg)!important;
     color:var(--viri-light-text)!important;
@@ -168,34 +165,5 @@
   html[data-viri-mobile-theme="light"] body .footer :is(a,p,span,h2,small,.footer-block__heading,.copyright__content){color:#373a40!important}
   html[data-viri-mobile-theme="light"] body .footer :is(.boxeup-footer-brand img,.viriatto-site-logo){filter:brightness(0)!important}
   html[data-viri-mobile-theme="light"] body .footer .list-social__link{color:#26282d!important}
-  /* Accessible switch, always available in mobile drawer. */
-  .viri-theme-picker{
-    display:flex;align-items:center;justify-content:space-between;gap:12px;
-    margin:14px 18px 4px;padding:13px 14px;min-height:70px;
-    border:1px solid #393d43;border-radius:10px;background:#1e2024;color:#fff;
-  }
-  .viri-theme-picker__intro{display:flex;flex-direction:column;gap:4px;min-width:0}
-  .viri-theme-picker__eyebrow{font-size:12px;font-weight:750;line-height:1.2;letter-spacing:.015em}
-  .viri-theme-picker__hint{font-size:10px;line-height:1.3;color:#a6a9b0}
-  .viri-theme-picker__switch{
-    display:flex;align-items:center;justify-content:flex-end;gap:7px;flex:none;
-    border:0;border-radius:8px;background:transparent;color:#fff;
-    font:600 11px/1.2 var(--font-body-family,Arial,sans-serif);
-    min-height:44px;padding:6px;cursor:pointer;
-  }
-  .viri-theme-picker__switch svg{height:18px;width:18px;flex:none;stroke:currentColor}
-  .viri-theme-picker__sun{display:none}
-  .viri-theme-picker__label{white-space:nowrap}
-  .viri-theme-picker__track{width:39px;height:23px;border-radius:30px;border:1px solid #666a70;background:#45484e;padding:2px;display:flex;align-items:center;flex:none;transition:background .2s}
-  .viri-theme-picker__thumb{height:17px;width:17px;border-radius:50%;background:#fff;display:block;transition:transform .2s}
-  .viri-theme-picker__switch:focus-visible{outline:2px solid currentColor;outline-offset:3px}
-  html[data-viri-mobile-theme="light"] .viri-theme-picker{background:#f0f0ef;color:#1b1d20;border-color:var(--viri-light-border)}
-  html[data-viri-mobile-theme="light"] .viri-theme-picker__hint{color:#6f7278}
-  html[data-viri-mobile-theme="light"] .viri-theme-picker__switch{color:#1b1d20}
-  html[data-viri-mobile-theme="light"] .viri-theme-picker__moon{display:none}
-  html[data-viri-mobile-theme="light"] .viri-theme-picker__sun{display:block}
-  html[data-viri-mobile-theme="light"] .viri-theme-picker__track{background:#1d2024;border-color:#1d2024}
-  html[data-viri-mobile-theme="light"] .viri-theme-picker__thumb{transform:translateX(16px)}
+
 }
-@media screen and (min-width:990px){.viri-theme-picker{display:none!important}}
-@media(prefers-reduced-motion:reduce){.viri-theme-picker__thumb,.viri-theme-picker__track{transition:none!important}}

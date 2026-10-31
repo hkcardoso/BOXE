@@ -159,16 +159,20 @@ if (!customElements.get('localization-form')) {
           'aria-expanded',
           (this.elements.button.getAttribute('aria-expanded') === 'false').toString()
         );
-        if (!document.body.classList.contains('overflow-hidden-tablet')) {
-          document.body.classList.add('overflow-hidden-mobile');
+        // Switching languages inside the existing mobile drawer must not lock
+        // body scrolling or trigger the full-screen country selector overlay.
+        if (!this.languageDisclosure) {
+          if (!document.body.classList.contains('overflow-hidden-tablet')) {
+            document.body.classList.add('overflow-hidden-mobile');
+          }
+          document.querySelector('.menu-drawer')?.classList.add('country-selector-open');
         }
         if (this.elements.search && this.mql.matches) {
           this.elements.search.focus();
         }
-        if (this.hasAttribute('data-prevent-hide')) {
+        if (this.hasAttribute('data-prevent-hide') && this.header) {
           this.header.preventHide = true;
         }
-        document.querySelector('.menu-drawer').classList.add('country-selector-open');
       }
 
       closeSelector(event) {

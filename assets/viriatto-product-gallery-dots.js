@@ -68,8 +68,8 @@
 
       const centerA = a.offsetLeft + a.offsetWidth / 2;
       const centerB = b.offsetLeft + b.offsetWidth / 2;
-      // The capsule gently stretches mid-swipe and settles at each dot.
-      const width = reduced.matches ? 19 : 19 + 6 * Math.sin(Math.PI * fraction);
+      // Resting dot (7px); a 23px capsule appears only while moving between photos.
+      const width = reduced.matches ? 7 : 7 + 16 * Math.sin(Math.PI * fraction);
       const center = centerA + (centerB - centerA) * fraction;
       indicator.style.width = width.toFixed(2) + 'px';
       indicator.style.transform = 'translate3d(' + (center - width / 2).toFixed(2) + 'px,-50%,0)';
@@ -153,7 +153,10 @@
         tracking = false;
         animatingTap = false;
         slider.classList.remove('viri-gallery-slide-smooth');
-        scheduleScroll();
+        // Once the image settles, return to a round dot at its final position.
+        const settled = Math.round(scrollProgress());
+        renderPosition(settled);
+        setSelected(settled);
         dots.classList.remove('viri-gallery-dots--tracking');
       }, 140);
     };
@@ -165,8 +168,8 @@
       if (index < 0 || !items[index]) return;
       tracking = false;
       animatingTap = true;
-      dots.classList.remove('viri-gallery-dots--tracking');
-      snapToItem(index);
+      dots.classList.add('viri-gallery-dots--tracking');
+      // Follow the gallery scroll instead of jumping the indicator ahead.
       if (!reduced.matches) slider.classList.add('viri-gallery-slide-smooth');
       gallery.setActiveMedia?.(items[index].dataset.mediaId, false);
       finishScroll();

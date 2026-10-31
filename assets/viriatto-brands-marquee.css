@@ -1,14 +1,14 @@
-/* VIRIATTO — continuously moving, clickable brand rail. */
+/* Brand logos: CSS drives the marquee even when JavaScript is unavailable. */
 .vh-home .vh-brands{overflow:hidden}
 .vh-home .vh-brands__shell{display:block!important;min-width:0!important}
 .vh-home .vh-brands__viewport{
-  display:flex!important;
-  width:100%!important;
-  min-width:0!important;
-  gap:clamp(20px,2.4vw,38px)!important;
+  --vb-gap:clamp(20px,2.4vw,38px);
+  width:100%;
+  display:block!important;
+  position:relative;
   overflow-x:auto!important;
   overflow-y:hidden!important;
-  scrollbar-width:none!important;
+  scrollbar-width:none;
   -ms-overflow-style:none;
   -webkit-overflow-scrolling:touch;
   overscroll-behavior-x:contain;
@@ -19,40 +19,46 @@
 }
 .vh-home .vh-brands__viewport::-webkit-scrollbar{display:none}
 .vh-home .vh-brands__viewport.is-dragging{cursor:grabbing;user-select:none;-webkit-user-select:none}
-.vh-home .vh-brands__viewport .vh-brands__inner.vh-brands__group{
+.vh-home .vh-brands__track{
+  display:flex!important;
+  width:max-content!important;
+  max-width:none!important;
+  flex-wrap:nowrap!important;
+  align-items:center;
+  gap:0!important;
+  will-change:transform;
+  animation:viriatto-brand-scroll 33s linear infinite!important
+}
+.vh-home .vh-brands__group{
   display:flex!important;
   flex:0 0 auto!important;
   align-items:center!important;
   justify-content:flex-start!important;
-  gap:clamp(20px,2.4vw,38px)!important;
+  gap:var(--vb-gap)!important;
   width:max-content!important;
   min-width:max-content!important;
   max-width:none!important;
   min-height:91px!important;
   margin:0!important;
-  padding:0!important;
-  overflow:visible!important;
-  grid-template-columns:none!important
+  padding:0 var(--vb-gap) 0 0!important;
+  overflow:visible!important
 }
 .vh-home .vh-brands__viewport .vh-brand{
   display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
   flex:0 0 122px!important;
   width:122px!important;
   min-width:122px!important;
   min-height:70px!important;
+  align-items:center!important;
+  justify-content:center!important;
   text-decoration:none!important;
   opacity:.83;
   transition:opacity .2s ease,transform .2s ease
 }
 .vh-home .vh-brands__viewport .vh-brand:hover,
-.vh-home .vh-brands__viewport .vh-brand:focus-visible{
-  opacity:1!important;
-  transform:translateY(-2px)
-}
+.vh-home .vh-brands__viewport .vh-brand:focus-visible{opacity:1!important;transform:translateY(-2px)}
 .vh-home .vh-brands__viewport .vh-brand img{
-  display:block;
+  display:block!important;
   width:100%!important;
   max-width:108px!important;
   height:52px!important;
@@ -62,15 +68,24 @@
 .vh-home .vh-brands__viewport .vh-brand--leone-1947 img{height:40px!important;max-height:40px!important}
 .vh-home .vh-brands__viewport .vh-brand--rdx img{height:39px!important;max-height:39px!important}
 .vh-home .vh-brands__viewport .vh-brand:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@keyframes viriatto-brand-scroll{
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(-33.333333333%,0,0)}
+}
+@media(hover:hover) and (pointer:fine){
+  .vh-home .vh-brands__viewport:hover .vh-brands__track{animation-play-state:paused!important}
+}
+.vh-home .vh-brands__viewport:focus-within .vh-brands__track,
+.vh-home .vh-brands__viewport.is-interacting .vh-brands__track{animation-play-state:paused!important}
 @media(max-width:989px){
-  .vh-home .vh-brands__viewport .vh-brands__inner.vh-brands__group{min-height:78px!important;gap:24px!important}
-  .vh-home .vh-brands__viewport .vh-brand{flex:0 0 106px!important;width:106px!important;min-width:106px!important;min-height:65px!important}
+  .vh-home .vh-brands__viewport{--vb-gap:24px}
+  .vh-home .vh-brands__group{min-height:78px!important}
+  .vh-home .vh-brands__viewport .vh-brand{flex-basis:106px!important;width:106px!important;min-width:106px!important;min-height:65px!important}
 }
 @media(max-width:749px){
-  .vh-home .vh-brands__viewport{gap:24px!important}
-  .vh-home .vh-brands__viewport .vh-brand{flex:0 0 100px!important;width:100px!important;min-width:100px!important}
-  .vh-home .vh-brands__viewport .vh-brands__inner.vh-brands__group{gap:24px!important}
+  .vh-home .vh-brands__viewport .vh-brand{flex-basis:100px!important;width:100px!important;min-width:100px!important}
 }
 @media(prefers-reduced-motion:reduce){
+  .vh-home .vh-brands__track{animation:none!important;will-change:auto}
   .vh-home .vh-brands__viewport .vh-brand{transition:none!important}
 }

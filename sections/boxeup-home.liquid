@@ -957,9 +957,11 @@
 
   <nav class="vh-brands" id="VHomeBrands" aria-label="{{ vh_brands }}">
     <div class="vh-frame vh-brands__shell">
-      <viriatto-brand-marquee class="vh-brands__viewport" aria-label="{{ vh_brands }}" data-speed="28">
-        <div class="vh-brands__inner vh-brands__group" data-brand-original>
-      {%- assign vh_brand_handles = 'fairtex,venum,everlast,leone-1947,charlie,rdx,cleto-reyes,rival,twins' | split: ',' -%}
+      <div class="vh-brands__viewport" data-viriatto-brand-rail>
+        <div class="vh-brands__track">
+          {%- for vh_brand_copy in (1..3) -%}
+            <div class="vh-brands__group"{% if vh_brand_copy != 1 %} aria-hidden="true"{% endif %}>
+          {%- assign vh_brand_handles = 'fairtex,venum,everlast,leone-1947,charlie,rdx,cleto-reyes,rival,twins' | split: ',' -%}
       {%- for vh_brand_handle in vh_brand_handles -%}
         {%- assign vh_brand_collection = collections[vh_brand_handle] -%}
         {%- assign vh_brand_name = vh_brand_handle | replace: '-', ' ' | capitalize -%}
@@ -975,13 +977,15 @@
           {%- when 'rival' -%}{%- assign vh_brand_name = 'Rival' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-rival-white.png?v=1793040835' -%}
           {%- when 'twins' -%}{%- assign vh_brand_name = 'Twins' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-twins-white.png?v=1793040843' -%}
         {%- endcase -%}
-        <a class="vh-brand vh-brand--{{ vh_brand_handle }}" href="{% if vh_brand_collection != blank %}{{ vh_brand_collection.url }}{% else %}{{ routes.search_url }}?q={{ vh_brand_name | url_encode }}{% endif %}" aria-label="{{ vh_brand_name | escape }}">
+        <a class="vh-brand vh-brand--{{ vh_brand_handle }}" {% if vh_brand_copy != 1 %}tabindex="-1"{% endif %} href="{% if vh_brand_collection != blank %}{{ vh_brand_collection.url }}{% else %}{{ routes.search_url }}?q={{ vh_brand_name | url_encode }}{% endif %}" aria-label="{{ vh_brand_name | escape }}">
           {%- if vh_brand_logo != blank -%}<img src="{{ vh_brand_logo }}" alt="{{ vh_brand_name | escape }}" width="120" height="50" loading="lazy">
           {%- else -%}<span class="vh-brand__word">{{ vh_brand_name }}</span>{%- endif -%}
         </a>
       {%- endfor -%}
+            </div>
+          {%- endfor -%}
         </div>
-      </viriatto-brand-marquee>
+      </div>
     </div>
   </nav>
 

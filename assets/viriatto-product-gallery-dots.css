@@ -1,0 +1,85 @@
+/* Mobile product gallery: compact image indicators, like the reference.
+   Overlay only; photo height, zoom and Shopify thumbnail controls stay intact. */
+.viri-gallery-dots{display:none}
+@media(max-width:749px){
+  body.boxeup-product-view #MainContent[data-template="product"] .boxeup-breadcrumb--product{
+    display:none!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid media-gallery > slider-component[id^="GalleryViewer-"]{
+    position:relative!important;
+    isolation:isolate;
+  }
+  /* Replace the stock slider's leftover chevrons and counter on mobile. */
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid media-gallery > slider-component[id^="GalleryViewer-"] > .slider-buttons{
+    display:none!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid media-gallery .viri-gallery-dots{
+    display:flex!important;
+    box-sizing:border-box!important;
+    position:absolute!important;
+    z-index:12!important;
+    left:50%!important;
+    bottom:16px!important;
+    transform:translateX(-50%)!important;
+    width:max-content!important;
+    max-width:calc(100% - 32px)!important;
+    min-width:0!important;
+    min-height:32px!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:6px!important;
+    margin:0!important;
+    padding:6px 9px!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scrollbar-width:none!important;
+    scroll-behavior:smooth;
+    border:0!important;
+    border-radius:999px!important;
+    background:rgba(242,233,221,.84)!important;
+    -webkit-backdrop-filter:blur(7px);
+    backdrop-filter:blur(7px);
+    box-shadow:0 1px 8px rgba(0,0,0,.12)!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"] .viri-gallery-dots::-webkit-scrollbar{display:none}
+  body.boxeup-product-view #MainContent[data-template="product"] .viri-gallery-dots[hidden]{display:none!important}
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid media-gallery .viri-gallery-dot{
+    box-sizing:border-box!important;
+    display:block!important;
+    flex:0 0 12px!important;
+    width:12px!important;
+    min-width:12px!important;
+    height:12px!important;
+    min-height:12px!important;
+    padding:0!important;
+    margin:0!important;
+    border:0!important;
+    border-radius:100px!important;
+    outline-offset:2px!important;
+    background:#303237!important;
+    opacity:.82!important;
+    box-shadow:none!important;
+    cursor:pointer!important;
+    appearance:none!important;
+    -webkit-appearance:none!important;
+    transition:width .18s ease,flex-basis .18s ease,opacity .18s ease!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"]
+    .product.bxp-product-grid media-gallery .viri-gallery-dot[aria-current="true"]{
+    flex-basis:31px!important;
+    width:31px!important;
+    opacity:1!important;
+    background:#282b30!important;
+  }
+  body.boxeup-product-view #MainContent[data-template="product"] .viri-gallery-dot:focus-visible{
+    outline:2px solid #17181b!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .viri-gallery-dot{transition:none!important}
+  .viri-gallery-dots{scroll-behavior:auto!important}
+}

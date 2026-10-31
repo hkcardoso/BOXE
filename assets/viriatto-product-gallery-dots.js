@@ -68,8 +68,8 @@
 
       const centerA = a.offsetLeft + a.offsetWidth / 2;
       const centerB = b.offsetLeft + b.offsetWidth / 2;
-      // Resting dot (7px); a 23px capsule appears only while moving between photos.
-      const width = reduced.matches ? 7 : 7 + 16 * Math.sin(Math.PI * fraction);
+      // Resting active dot is 10px (larger than other 5px dots); only stretches to 24px during motion.
+      const width = reduced.matches ? 10 : 10 + 14 * Math.sin(Math.PI * fraction);
       const center = centerA + (centerB - centerA) * fraction;
       indicator.style.width = width.toFixed(2) + 'px';
       indicator.style.transform = 'translate3d(' + (center - width / 2).toFixed(2) + 'px,-50%,0)';

@@ -3,12 +3,12 @@
 @media screen and (max-width: 989px) {
   html[data-viri-mobile-theme="light"] {
     color-scheme:light;
-    --viri-light-bg:#f6f6f5;
-    --viri-light-card:#ffffff;
-    --viri-light-soft:#ededed;
-    --viri-light-text:#181a1d;
-    --viri-light-muted:#666a71;
-    --viri-light-border:#d8dade;
+    --viri-light-bg:#e9ebee;
+    --viri-light-card:#f5f6f7;
+    --viri-light-soft:#e2e5e9;
+    --viri-light-text:#20242b;
+    --viri-light-muted:#606772;
+    --viri-light-border:#cdd2d8;
     --viri-product-breadcrumb:#656b72;
   }
   /* Page canvas only; do not wipe backgrounds of banners, images and dialogs. */
@@ -20,9 +20,9 @@
     color:var(--viri-light-text)!important;
   }
   html[data-viri-mobile-theme="light"] body {
-    --color-background:246,246,245;
+    --color-background:233,235,238;
     --color-foreground:24,26,29;
-    --gradient-background:#f6f6f5;
+    --gradient-background:#e9ebee;
   }
   /* Header, controls and logo. */
   html[data-viri-mobile-theme="light"] body .header-wrapper,

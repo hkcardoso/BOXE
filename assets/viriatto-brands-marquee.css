@@ -70,6 +70,20 @@
   from{transform:translate3d(0,0,0)}
   to{transform:translate3d(-33.333333333%,0,0)}
 }
+/* Desktop: a static, centered and clickable brand rail. The two cloned
+   groups exist only for the mobile loop, so hide them on desktop. */
+@media(min-width:990px){
+  .vh-home .vh-brands__track{
+    animation:none!important;
+    transform:none!important;
+    will-change:auto!important;
+    min-width:100%!important;
+  }
+  .vh-home .vh-brands__group:not(:first-child){display:none!important}
+  .vh-home .vh-brands__group:first-child{
+    margin-inline:auto!important;
+  }
+}
 @media(hover:hover) and (pointer:fine){
   .vh-home .vh-brands__viewport:hover .vh-brands__track{animation-play-state:paused!important}
 }

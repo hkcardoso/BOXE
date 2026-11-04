@@ -1,0 +1,20 @@
+/* VIRIATTO | Fotografia provisória de catálogo Charlie. Não altera produtos com imagens. */
+.viriatto-charlie-placeholder {
+  display:flex!important;align-items:center;justify-content:center;
+  width:100%;height:100%;min-height:100%;background:#202125;
+  border:1px solid #34363b;box-sizing:border-box;
+}
+.viriatto-charlie-placeholder__mark{
+  display:block;color:#777b83;font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(4rem,9vw,9rem);font-weight:300;line-height:1;user-select:none;
+}
+.viriatto-charlie-placeholder-card{position:absolute;inset:0}
+.viriatto-charlie-placeholder-card .viriatto-charlie-placeholder{position:absolute;inset:0}
+.viriatto-charlie-placeholder--product{
+  min-height:320px;aspect-ratio:1 / 1;border-radius:6px;
+}
+.viriatto-charlie-placeholder--product .viriatto-charlie-placeholder__mark{font-size:clamp(8rem,19vw,17rem)}
+@media(max-width:749px){
+  .viriatto-charlie-placeholder--product{min-height:250px}
+  .viriatto-charlie-placeholder-card .viriatto-charlie-placeholder__mark{font-size:clamp(4rem,16vw,7rem)}
+}

@@ -90,9 +90,15 @@
         <a href="{{ routes.all_products_collection_url }}">Catálogo</a><span aria-hidden="true">/</span>
         <span aria-current="page" class="boxeup-breadcrumb__current" style="color:var(--viri-product-breadcrumb,#f3f4f6)!important;-webkit-text-fill-color:var(--viri-product-breadcrumb,#f3f4f6)!important;opacity:1!important;text-shadow:none!important;">{{ product.title | escape }}</span>
       </nav>
-      <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} bxp-product-grid grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+      <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} bxp-product-grid grid grid--1-col {% if product.media.size > 0 or product.vendor == 'Charlie' %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
         <div class="grid__item product__media-wrapper">
-          {% render 'product-media-gallery', variant_images: variant_images %}
+          {% if product.vendor == 'Charlie' and product.media.size == 0 %}
+            <div class="viriatto-charlie-placeholder viriatto-charlie-placeholder--product" role="img" aria-label="Fotografia por adicionar">
+              <span class="viriatto-charlie-placeholder__mark" aria-hidden="true">?</span>
+            </div>
+          {% else %}
+            {% render 'product-media-gallery', variant_images: variant_images %}
+          {% endif %}
         </div>
         <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           <section

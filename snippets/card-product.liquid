@@ -46,7 +46,7 @@
       <div
         class="
           card card--{{ settings.card_style }}
-          {% if card_product.featured_media %} card--media{% else %} card--text{% endif %}
+          {% if card_product.featured_media or card_product.vendor == 'Charlie' %} card--media{% else %} card--text{% endif %}
           {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
           {% if image_shape and image_shape != 'default' %} card--shape{% endif %}
           {% if extend_height %} card--extend-height{% endif %}
@@ -56,7 +56,7 @@
         style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
       >
         <div
-          class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
+          class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or card_product.vendor == 'Charlie' or settings.card_style == 'standard' %} ratio{% endif %}"
           style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
         >
           {%- if card_product.featured_media -%}
@@ -105,6 +105,12 @@
                     height="{{ card_product.media[1].height }}"
                   >
                 {%- endif -%}
+              </div>
+            </div>
+          {%- elsif card_product.vendor == 'Charlie' -%}
+            <div class="card__media viriatto-charlie-placeholder-card" aria-label="Fotografia indisponível">
+              <div class="media media--transparent viriatto-charlie-placeholder" role="img" aria-label="Fotografia por adicionar">
+                <span class="viriatto-charlie-placeholder__mark" aria-hidden="true">?</span>
               </div>
             </div>
           {%- endif -%}

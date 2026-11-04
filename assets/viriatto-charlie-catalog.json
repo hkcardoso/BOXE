@@ -1,0 +1,1363 @@
+{
+  "source": "Charlie – Tarifa de precios confidencial 2026-2027 (apenas PVP público; preços CLUB omitidos)",
+  "currency": "EUR",
+  "note": "Os PVP são recomendações do catálogo. Stock, cores e fotografias por confirmar.",
+  "products": [
+    {
+      "id": 0,
+      "name": "Danger",
+      "type": "Luvas de Boxe",
+      "pvp": 71
+    },
+    {
+      "id": 1,
+      "name": "No Remorse",
+      "type": "Luvas de Boxe",
+      "pvp": 71
+    },
+    {
+      "id": 2,
+      "name": "Amateur / Sniper",
+      "type": "Luvas de Boxe",
+      "pvp": 61
+    },
+    {
+      "id": 3,
+      "name": "Tijuana (Cordões)",
+      "type": "Luvas de Boxe",
+      "pvp": 77
+    },
+    {
+      "id": 4,
+      "name": "New Mex (Cordões)",
+      "type": "Luvas de Boxe",
+      "pvp": 91
+    },
+    {
+      "id": 5,
+      "name": "Retro",
+      "type": "Luvas de Boxe",
+      "pvp": 101
+    },
+    {
+      "id": 6,
+      "name": "Gel",
+      "type": "Luvas de Boxe",
+      "pvp": 80
+    },
+    {
+      "id": 7,
+      "name": "Bat-X",
+      "type": "Luvas de Boxe",
+      "pvp": 69
+    },
+    {
+      "id": 8,
+      "name": "M",
+      "type": "Luvas de Boxe",
+      "pvp": 75
+    },
+    {
+      "id": 9,
+      "name": "New Mex (Velcro)",
+      "type": "Luvas de Boxe",
+      "pvp": 80
+    },
+    {
+      "id": 10,
+      "name": "Aircool",
+      "type": "Luvas de Boxe",
+      "pvp": 66
+    },
+    {
+      "id": 11,
+      "name": "Bat-Z",
+      "type": "Luvas de Boxe",
+      "pvp": 70
+    },
+    {
+      "id": 12,
+      "name": "Outlaw",
+      "type": "Luvas de Boxe",
+      "pvp": 61
+    },
+    {
+      "id": 13,
+      "name": "Kaos",
+      "type": "Luvas de Boxe",
+      "pvp": 47
+    },
+    {
+      "id": 14,
+      "name": "Blast",
+      "type": "Luvas de Boxe",
+      "pvp": 45
+    },
+    {
+      "id": 15,
+      "name": "Belial",
+      "type": "Capacetes de Boxe",
+      "pvp": 61
+    },
+    {
+      "id": 16,
+      "name": "Sniper",
+      "type": "Capacetes de Boxe",
+      "pvp": 61
+    },
+    {
+      "id": 17,
+      "name": "Satán",
+      "type": "Capacetes de Boxe",
+      "pvp": 65
+    },
+    {
+      "id": 18,
+      "name": "Leviatán",
+      "type": "Capacetes de Boxe",
+      "pvp": 68
+    },
+    {
+      "id": 19,
+      "name": "Gel",
+      "type": "Capacetes de Boxe",
+      "pvp": 68
+    },
+    {
+      "id": 20,
+      "name": "Poseidón",
+      "type": "Capacetes de Boxe",
+      "pvp": 73
+    },
+    {
+      "id": 21,
+      "name": "Barra M",
+      "type": "Capacetes de Boxe",
+      "pvp": 85
+    },
+    {
+      "id": 22,
+      "name": "Barra H",
+      "type": "Capacetes de Boxe",
+      "pvp": 85
+    },
+    {
+      "id": 23,
+      "name": "Monk",
+      "type": "Luvas de MMA",
+      "pvp": 46
+    },
+    {
+      "id": 24,
+      "name": "Raider",
+      "type": "Luvas de MMA",
+      "pvp": 40
+    },
+    {
+      "id": 25,
+      "name": "MMA Gel Sparring y Profesional",
+      "type": "Luvas de MMA",
+      "pvp": 46
+    },
+    {
+      "id": 26,
+      "name": "MMA Sparring y Profesional",
+      "type": "Luvas de MMA",
+      "pvp": 46
+    },
+    {
+      "id": 27,
+      "name": "MMA Júpiter",
+      "type": "Luvas de MMA",
+      "pvp": 44
+    },
+    {
+      "id": 28,
+      "name": "Botín Ful Fast Foot",
+      "type": "Proteções",
+      "pvp": 32
+    },
+    {
+      "id": 29,
+      "name": "Espinillera Blast y Gold",
+      "type": "Proteções",
+      "pvp": 47
+    },
+    {
+      "id": 30,
+      "name": "Espinillera Gel",
+      "type": "Proteções",
+      "pvp": 57
+    },
+    {
+      "id": 31,
+      "name": "Espinillera Shocker MMA",
+      "type": "Proteções",
+      "pvp": 57
+    },
+    {
+      "id": 32,
+      "name": "Espinillera Meguro TF",
+      "type": "Proteções",
+      "pvp": 57
+    },
+    {
+      "id": 33,
+      "name": "Espinillera M",
+      "type": "Proteções",
+      "pvp": 57
+    },
+    {
+      "id": 34,
+      "name": "Espinillera Tubular",
+      "type": "Proteções",
+      "pvp": 27
+    },
+    {
+      "id": 35,
+      "name": "Bucal Hervible Tricolor",
+      "type": "Proteções",
+      "pvp": 10
+    },
+    {
+      "id": 36,
+      "name": "Bucal Hervible Simples",
+      "type": "Proteções",
+      "pvp": 10
+    },
+    {
+      "id": 37,
+      "name": "Bucal Hervible Doble",
+      "type": "Proteções",
+      "pvp": 12
+    },
+    {
+      "id": 38,
+      "name": "Bucal Colmillos",
+      "type": "Proteções",
+      "pvp": 17
+    },
+    {
+      "id": 39,
+      "name": "Bucal Logo",
+      "type": "Proteções",
+      "pvp": 17
+    },
+    {
+      "id": 40,
+      "name": "Bucal Molar",
+      "type": "Proteções",
+      "pvp": 18
+    },
+    {
+      "id": 41,
+      "name": "Bucal Jaws",
+      "type": "Proteções",
+      "pvp": 20
+    },
+    {
+      "id": 42,
+      "name": "Coquilla Profesional Femenina",
+      "type": "Proteções",
+      "pvp": 51
+    },
+    {
+      "id": 43,
+      "name": "Coquilla Elastica Femenina",
+      "type": "Proteções",
+      "pvp": 19
+    },
+    {
+      "id": 44,
+      "name": "Protector Pectoral",
+      "type": "Proteções",
+      "pvp": 30
+    },
+    {
+      "id": 45,
+      "name": "Coquilla Masculina Multitalla",
+      "type": "Proteções",
+      "pvp": 60
+    },
+    {
+      "id": 46,
+      "name": "Coquilla Masculina Cuero",
+      "type": "Proteções",
+      "pvp": 51
+    },
+    {
+      "id": 47,
+      "name": "Coquilla Cover Gun",
+      "type": "Proteções",
+      "pvp": 55
+    },
+    {
+      "id": 48,
+      "name": "Coquilla Vinilo",
+      "type": "Proteções",
+      "pvp": 35
+    },
+    {
+      "id": 49,
+      "name": "Protector de Orejas",
+      "type": "Proteções",
+      "pvp": 30
+    },
+    {
+      "id": 50,
+      "name": "Arnés de Cabeza",
+      "type": "Proteções",
+      "pvp": 19
+    },
+    {
+      "id": 51,
+      "name": "Venda Algodón",
+      "type": "Proteções",
+      "pvp": 12
+    },
+    {
+      "id": 52,
+      "name": "Venda Elástica",
+      "type": "Proteções",
+      "pvp": 12
+    },
+    {
+      "id": 53,
+      "name": "Venda Skull",
+      "type": "Proteções",
+      "pvp": 23
+    },
+    {
+      "id": 54,
+      "name": "Protector de Nudillos Crack",
+      "type": "Proteções",
+      "pvp": 25
+    },
+    {
+      "id": 55,
+      "name": "Protector de Nudillos Gel",
+      "type": "Proteções",
+      "pvp": 19
+    },
+    {
+      "id": 56,
+      "name": "Protector de Nudillos Corto",
+      "type": "Proteções",
+      "pvp": 25
+    },
+    {
+      "id": 57,
+      "name": "Vendaje Pro",
+      "type": "Proteções",
+      "pvp": 25
+    },
+    {
+      "id": 58,
+      "name": "Tobillera Elástica",
+      "type": "Proteções",
+      "pvp": 14
+    },
+    {
+      "id": 59,
+      "name": "Rodillera y Codera",
+      "type": "Proteções",
+      "pvp": 19
+    },
+    {
+      "id": 60,
+      "name": "Reductor de Golpes",
+      "type": "Proteções",
+      "pvp": 26
+    },
+    {
+      "id": 61,
+      "name": "Reductor de Golpes con Depósito",
+      "type": "Proteções",
+      "pvp": 36
+    },
+    {
+      "id": 62,
+      "name": "Tijeras",
+      "type": "Proteções",
+      "pvp": 21
+    },
+    {
+      "id": 63,
+      "name": "Botella Dosificador",
+      "type": "Equipamento de Treino",
+      "pvp": 11
+    },
+    {
+      "id": 64,
+      "name": "Botella Aluminio",
+      "type": "Equipamento de Treino",
+      "pvp": 17
+    },
+    {
+      "id": 65,
+      "name": "Toalla",
+      "type": "Equipamento de Treino",
+      "pvp": 25
+    },
+    {
+      "id": 66,
+      "name": "Soporte Angular X de Pared",
+      "type": "Equipamento de Treino",
+      "pvp": 102
+    },
+    {
+      "id": 67,
+      "name": "Soporte Angular de Pared",
+      "type": "Equipamento de Treino",
+      "pvp": 92
+    },
+    {
+      "id": 68,
+      "name": "Plataforma de Pera Fija",
+      "type": "Equipamento de Treino",
+      "pvp": 122
+    },
+    {
+      "id": 69,
+      "name": "Plataforma de Pera Cuadrada Fija",
+      "type": "Equipamento de Treino",
+      "pvp": 132
+    },
+    {
+      "id": 70,
+      "name": "Plataforma de Pera Regulable",
+      "type": "Equipamento de Treino",
+      "pvp": 157
+    },
+    {
+      "id": 71,
+      "name": "Rodamiento de Lujo",
+      "type": "Equipamento de Treino",
+      "pvp": 32
+    },
+    {
+      "id": 72,
+      "name": "Gancho de Techo",
+      "type": "Equipamento de Treino",
+      "pvp": 37
+    },
+    {
+      "id": 73,
+      "name": "Pera Profesional",
+      "type": "Equipamento de Treino",
+      "pvp": 57
+    },
+    {
+      "id": 74,
+      "name": "Punching Gomas",
+      "type": "Equipamento de Treino",
+      "pvp": 57
+    },
+    {
+      "id": 75,
+      "name": "Punching Gomas Pera",
+      "type": "Equipamento de Treino",
+      "pvp": 57
+    },
+    {
+      "id": 76,
+      "name": "Punching Gomas Rugby",
+      "type": "Equipamento de Treino",
+      "pvp": 57
+    },
+    {
+      "id": 77,
+      "name": "Punching Gomas Doble",
+      "type": "Equipamento de Treino",
+      "pvp": 67
+    },
+    {
+      "id": 78,
+      "name": "Reloj 3X1",
+      "type": "Equipamento de Treino",
+      "pvp": 241
+    },
+    {
+      "id": 79,
+      "name": "Reloj LCD",
+      "type": "Equipamento de Treino",
+      "pvp": 201
+    },
+    {
+      "id": 80,
+      "name": "Esquineros de Ring X",
+      "type": "Equipamento de Treino",
+      "pvp": 207
+    },
+    {
+      "id": 81,
+      "name": "Esquineros de Ring",
+      "type": "Equipamento de Treino",
+      "pvp": 232
+    },
+    {
+      "id": 82,
+      "name": "Cubrecu erdas de Ring",
+      "type": "Equipamento de Treino",
+      "pvp": 192
+    },
+    {
+      "id": 83,
+      "name": "Cintas de Ring",
+      "type": "Equipamento de Treino",
+      "pvp": 67
+    },
+    {
+      "id": 84,
+      "name": "Escudo CH",
+      "type": "Equipamento de Treino",
+      "pvp": 72
+    },
+    {
+      "id": 85,
+      "name": "Escudo Plano",
+      "type": "Equipamento de Treino",
+      "pvp": 67
+    },
+    {
+      "id": 86,
+      "name": "Escudo Curvo",
+      "type": "Equipamento de Treino",
+      "pvp": 67
+    },
+    {
+      "id": 87,
+      "name": "Escudo Curvo Gel",
+      "type": "Equipamento de Treino",
+      "pvp": 72
+    },
+    {
+      "id": 88,
+      "name": "Ventral",
+      "type": "Equipamento de Treino",
+      "pvp": 57
+    },
+    {
+      "id": 89,
+      "name": "Ventral Golden",
+      "type": "Equipamento de Treino",
+      "pvp": 67
+    },
+    {
+      "id": 90,
+      "name": "Ventral Gel",
+      "type": "Equipamento de Treino",
+      "pvp": 77
+    },
+    {
+      "id": 91,
+      "name": "Pao Vietnam",
+      "type": "Equipamento de Treino",
+      "pvp": 61
+    },
+    {
+      "id": 92,
+      "name": "Pao X",
+      "type": "Equipamento de Treino",
+      "pvp": 71
+    },
+    {
+      "id": 93,
+      "name": "Pao H Meguro",
+      "type": "Equipamento de Treino",
+      "pvp": 61
+    },
+    {
+      "id": 94,
+      "name": "Manoplas Curva",
+      "type": "Equipamento de Treino",
+      "pvp": 63
+    },
+    {
+      "id": 95,
+      "name": "Manoplas Curva Gel",
+      "type": "Equipamento de Treino",
+      "pvp": 67
+    },
+    {
+      "id": 96,
+      "name": "Manoplas Hybrid",
+      "type": "Equipamento de Treino",
+      "pvp": 67
+    },
+    {
+      "id": 97,
+      "name": "Manoplas Min Focus",
+      "type": "Equipamento de Treino",
+      "pvp": 62
+    },
+    {
+      "id": 98,
+      "name": "Manoplas Mini Speed",
+      "type": "Equipamento de Treino",
+      "pvp": 47
+    },
+    {
+      "id": 99,
+      "name": "Manoplas Mini Golden",
+      "type": "Equipamento de Treino",
+      "pvp": 61
+    },
+    {
+      "id": 100,
+      "name": "Manoplas Mini Amateur",
+      "type": "Equipamento de Treino",
+      "pvp": 61
+    },
+    {
+      "id": 101,
+      "name": "Manoplas Big Shock",
+      "type": "Equipamento de Treino",
+      "pvp": 47
+    },
+    {
+      "id": 102,
+      "name": "Stick Training",
+      "type": "Equipamento de Treino",
+      "pvp": 45
+    },
+    {
+      "id": 103,
+      "name": "Stick Jab Training",
+      "type": "Equipamento de Treino",
+      "pvp": 50
+    },
+    {
+      "id": 104,
+      "name": "Cinturón Sparring",
+      "type": "Equipamento de Treino",
+      "pvp": 61
+    },
+    {
+      "id": 105,
+      "name": "Guante de Entrenador",
+      "type": "Equipamento de Treino",
+      "pvp": 46
+    },
+    {
+      "id": 106,
+      "name": "Guanteleta",
+      "type": "Equipamento de Treino",
+      "pvp": 46
+    },
+    {
+      "id": 107,
+      "name": "Gobernadora",
+      "type": "Equipamento de Treino",
+      "pvp": 67
+    },
+    {
+      "id": 108,
+      "name": "Gobernadora Mini",
+      "type": "Equipamento de Treino",
+      "pvp": 67
+    },
+    {
+      "id": 109,
+      "name": "Paddel",
+      "type": "Equipamento de Treino",
+      "pvp": 42
+    },
+    {
+      "id": 110,
+      "name": "Paddel X",
+      "type": "Equipamento de Treino",
+      "pvp": 52
+    },
+    {
+      "id": 111,
+      "name": "Peto Gel y Training",
+      "type": "Equipamento de Treino",
+      "pvp": 90
+    },
+    {
+      "id": 112,
+      "name": "Saco Big Bag",
+      "type": "Equipamento de Treino",
+      "pvp": 277
+    },
+    {
+      "id": 113,
+      "name": "Saco Heavy Bag (Cheio)",
+      "type": "Equipamento de Treino",
+      "pvp": 237
+    },
+    {
+      "id": 114,
+      "name": "Saco Heavy Bag (Vazio)",
+      "type": "Equipamento de Treino",
+      "pvp": 157
+    },
+    {
+      "id": 115,
+      "name": "Saco Tricolor",
+      "type": "Equipamento de Treino",
+      "pvp": 227
+    },
+    {
+      "id": 116,
+      "name": "Pera de Maiz",
+      "type": "Equipamento de Treino",
+      "pvp": 117
+    },
+    {
+      "id": 117,
+      "name": "Sacos de Agua",
+      "type": "Equipamento de Treino",
+      "pvp": 117
+    },
+    {
+      "id": 118,
+      "name": "Punching Hombre X",
+      "type": "Equipamento de Treino",
+      "pvp": 377
+    },
+    {
+      "id": 119,
+      "name": "Punching de Piel X",
+      "type": "Equipamento de Treino",
+      "pvp": 137
+    },
+    {
+      "id": 120,
+      "name": "Saco Suelo X",
+      "type": "Equipamento de Treino",
+      "pvp": 401
+    },
+    {
+      "id": 121,
+      "name": "Soporte de Esquivas de Pared",
+      "type": "Equipamento de Treino",
+      "pvp": 222
+    },
+    {
+      "id": 122,
+      "name": "Saco Económico",
+      "type": "Equipamento de Treino",
+      "pvp": 92
+    },
+    {
+      "id": 123,
+      "name": "Soporte Uppercut",
+      "type": "Equipamento de Treino",
+      "pvp": 261
+    },
+    {
+      "id": 124,
+      "name": "Soporte Human",
+      "type": "Equipamento de Treino",
+      "pvp": 281
+    },
+    {
+      "id": 125,
+      "name": "Punching Gomas Reflex",
+      "type": "Equipamento de Treino",
+      "pvp": 20
+    },
+    {
+      "id": 126,
+      "name": "Saco Big CL",
+      "type": "Linha Cabron",
+      "pvp": 327
+    },
+    {
+      "id": 127,
+      "name": "Saco Heavy CL",
+      "type": "Linha Cabron",
+      "pvp": 252
+    },
+    {
+      "id": 128,
+      "name": "Saco Norton CL",
+      "type": "Linha Cabron",
+      "pvp": 327
+    },
+    {
+      "id": 129,
+      "name": "Saco Upper Kick CL",
+      "type": "Linha Cabron",
+      "pvp": 327
+    },
+    {
+      "id": 130,
+      "name": "Saco Demolition Ball",
+      "type": "Linha Cabron",
+      "pvp": 187
+    },
+    {
+      "id": 131,
+      "name": "Peto CL",
+      "type": "Linha Cabron",
+      "pvp": 112
+    },
+    {
+      "id": 132,
+      "name": "Punching y Pera CL",
+      "type": "Linha Cabron",
+      "pvp": 60
+    },
+    {
+      "id": 133,
+      "name": "Espinillera Blast Junior",
+      "type": "Júnior",
+      "pvp": 36
+    },
+    {
+      "id": 134,
+      "name": "Guantes Kid",
+      "type": "Júnior",
+      "pvp": 34
+    },
+    {
+      "id": 135,
+      "name": "Venda Junior",
+      "type": "Júnior",
+      "pvp": 7
+    },
+    {
+      "id": 136,
+      "name": "Bucal Colmillos Junior",
+      "type": "Júnior",
+      "pvp": 13
+    },
+    {
+      "id": 137,
+      "name": "Casco Barra H Junior",
+      "type": "Júnior",
+      "pvp": 61
+    },
+    {
+      "id": 138,
+      "name": "Peto School Boys and Girls",
+      "type": "Júnior",
+      "pvp": 51
+    },
+    {
+      "id": 139,
+      "name": "Casco Belial y Guante Sniper Junior",
+      "type": "Júnior",
+      "pvp": 50
+    },
+    {
+      "id": 140,
+      "name": "Comba Profesional",
+      "type": "Cordas de Saltar",
+      "pvp": 23
+    },
+    {
+      "id": 141,
+      "name": "Comba Profesional Lastrada",
+      "type": "Cordas de Saltar",
+      "pvp": 28
+    },
+    {
+      "id": 142,
+      "name": "Comba Speed",
+      "type": "Cordas de Saltar",
+      "pvp": 9
+    },
+    {
+      "id": 143,
+      "name": "Comba Speed M",
+      "type": "Cordas de Saltar",
+      "pvp": 11
+    },
+    {
+      "id": 144,
+      "name": "Comba Speed Pro",
+      "type": "Cordas de Saltar",
+      "pvp": 13
+    },
+    {
+      "id": 145,
+      "name": "Bota Wing Verde",
+      "type": "Calçado",
+      "pvp": 80
+    },
+    {
+      "id": 146,
+      "name": "Bota Champion",
+      "type": "Calçado",
+      "pvp": 70
+    },
+    {
+      "id": 147,
+      "name": "Bota Legend",
+      "type": "Calçado",
+      "pvp": 50
+    },
+    {
+      "id": 148,
+      "name": "Botín Pro",
+      "type": "Calçado",
+      "pvp": 60
+    },
+    {
+      "id": 149,
+      "name": "Zapatilla Piel",
+      "type": "Calçado",
+      "pvp": 46
+    },
+    {
+      "id": 150,
+      "name": "Zapatilla de Tatami",
+      "type": "Calçado",
+      "pvp": 31
+    },
+    {
+      "id": 151,
+      "name": "Kyu",
+      "type": "Karate",
+      "pvp": 31
+    },
+    {
+      "id": 152,
+      "name": "Men in Black",
+      "type": "Karate",
+      "pvp": 35
+    },
+    {
+      "id": 153,
+      "name": "Cinturón Karate",
+      "type": "Karate",
+      "pvp": 9
+    },
+    {
+      "id": 154,
+      "name": "Bolsa Golden",
+      "type": "Mochilas e Sacos",
+      "pvp": 50
+    },
+    {
+      "id": 155,
+      "name": "Sport Black Bag",
+      "type": "Mochilas e Sacos",
+      "pvp": 47
+    },
+    {
+      "id": 156,
+      "name": "Multibolsillos",
+      "type": "Mochilas e Sacos",
+      "pvp": 47
+    },
+    {
+      "id": 157,
+      "name": "Bolsa Mediana",
+      "type": "Mochilas e Sacos",
+      "pvp": 46
+    },
+    {
+      "id": 158,
+      "name": "Bike",
+      "type": "Mochilas e Sacos",
+      "pvp": 50
+    },
+    {
+      "id": 159,
+      "name": "Mochila",
+      "type": "Mochilas e Sacos",
+      "pvp": 30
+    },
+    {
+      "id": 160,
+      "name": "Bolso Vintage",
+      "type": "Mochilas e Sacos",
+      "pvp": 28
+    },
+    {
+      "id": 161,
+      "name": "Bolso Vintage Mini",
+      "type": "Mochilas e Sacos",
+      "pvp": 20
+    },
+    {
+      "id": 162,
+      "name": "Riñonera",
+      "type": "Mochilas e Sacos",
+      "pvp": 20
+    },
+    {
+      "id": 163,
+      "name": "TSS Kick Boxing",
+      "type": "Calções Muay Thai",
+      "pvp": 36
+    },
+    {
+      "id": 164,
+      "name": "TSS Muay Thai",
+      "type": "Calções Muay Thai",
+      "pvp": 36
+    },
+    {
+      "id": 165,
+      "name": "TSS Thai Negro",
+      "type": "Calções Muay Thai",
+      "pvp": 36
+    },
+    {
+      "id": 166,
+      "name": "TSS Fluo",
+      "type": "Calções Muay Thai",
+      "pvp": 36
+    },
+    {
+      "id": 167,
+      "name": "Bulldog",
+      "type": "Calções Muay Thai",
+      "pvp": 31
+    },
+    {
+      "id": 168,
+      "name": "TSS 13",
+      "type": "Calções Muay Thai",
+      "pvp": 31
+    },
+    {
+      "id": 169,
+      "name": "Liquidación",
+      "type": "Calções Muay Thai",
+      "pvp": 20
+    },
+    {
+      "id": 170,
+      "name": "Meguro",
+      "type": "Vestuário de Combate",
+      "pvp": 49
+    },
+    {
+      "id": 171,
+      "name": "Liso Boxeo",
+      "type": "Vestuário de Combate",
+      "pvp": 26
+    },
+    {
+      "id": 172,
+      "name": "Boxeo X",
+      "type": "Vestuário de Combate",
+      "pvp": 31
+    },
+    {
+      "id": 173,
+      "name": "Set Amateur X",
+      "type": "Vestuário de Combate",
+      "pvp": 36
+    },
+    {
+      "id": 174,
+      "name": "Set Amateur Reversible",
+      "type": "Vestuário de Combate",
+      "pvp": 46
+    },
+    {
+      "id": 175,
+      "name": "Set Amateur de Mujer",
+      "type": "Vestuário de Combate",
+      "pvp": 36
+    },
+    {
+      "id": 176,
+      "name": "Sauna Entera",
+      "type": "Vestuário de Combate",
+      "pvp": 42
+    },
+    {
+      "id": 177,
+      "name": "Sauna Corta",
+      "type": "Vestuário de Combate",
+      "pvp": 36
+    },
+    {
+      "id": 178,
+      "name": "Pantalón Corto de Chándal",
+      "type": "Vestuário de Combate",
+      "pvp": 26
+    },
+    {
+      "id": 179,
+      "name": "Pantalón Corto Training",
+      "type": "Vestuário de Combate",
+      "pvp": 25
+    },
+    {
+      "id": 180,
+      "name": "Chándal Microfibra",
+      "type": "Vestuário de Combate",
+      "pvp": 52
+    },
+    {
+      "id": 181,
+      "name": "Chándal Elegance",
+      "type": "Vestuário de Combate",
+      "pvp": 80
+    },
+    {
+      "id": 182,
+      "name": "Chubasquero La Motta",
+      "type": "Vestuário de Combate",
+      "pvp": 51
+    },
+    {
+      "id": 183,
+      "name": "Chaqueta de Entrenador",
+      "type": "Vestuário de Combate",
+      "pvp": 36
+    },
+    {
+      "id": 184,
+      "name": "Bata de Boxeo",
+      "type": "Vestuário de Combate",
+      "pvp": 41
+    },
+    {
+      "id": 185,
+      "name": "Chaleco Pro Fighting",
+      "type": "Vestuário de Combate",
+      "pvp": 31
+    },
+    {
+      "id": 186,
+      "name": "Camiseta Amateur",
+      "type": "Vestuário de Combate",
+      "pvp": 21
+    },
+    {
+      "id": 187,
+      "name": "Camiseta Amateur Mujer",
+      "type": "Vestuário de Combate",
+      "pvp": 21
+    },
+    {
+      "id": 188,
+      "name": "Pantalón Black Training",
+      "type": "Vestuário de Combate",
+      "pvp": 31
+    },
+    {
+      "id": 189,
+      "name": "Camiseta Hexagon",
+      "type": "Fitness",
+      "pvp": 40
+    },
+    {
+      "id": 190,
+      "name": "Pantalón Hexagon",
+      "type": "Fitness",
+      "pvp": 33
+    },
+    {
+      "id": 191,
+      "name": "Camiseta Training",
+      "type": "Fitness",
+      "pvp": 26
+    },
+    {
+      "id": 192,
+      "name": "Pantalón Training",
+      "type": "Fitness",
+      "pvp": 31
+    },
+    {
+      "id": 193,
+      "name": "Top Fitness",
+      "type": "Fitness",
+      "pvp": 26
+    },
+    {
+      "id": 194,
+      "name": "Short Fitness",
+      "type": "Fitness",
+      "pvp": 26
+    },
+    {
+      "id": 195,
+      "name": "Camiseta Diamond",
+      "type": "Fitness",
+      "pvp": 36
+    },
+    {
+      "id": 196,
+      "name": "Top Diamond",
+      "type": "Fitness",
+      "pvp": 31
+    },
+    {
+      "id": 197,
+      "name": "Short Diamond",
+      "type": "Fitness",
+      "pvp": 33
+    },
+    {
+      "id": 198,
+      "name": "Camisetas Fray, Gold, Jamaica, Hooligans, Black",
+      "type": "Moda Kanalla",
+      "pvp": 20
+    },
+    {
+      "id": 199,
+      "name": "Camisetas Ali, Eskeleto, Infierno, Made in Hell, Silver",
+      "type": "Moda Kanalla",
+      "pvp": 20
+    },
+    {
+      "id": 200,
+      "name": "Camisetas Don't Wait, Guantes Colgados, Ring, Cansao, Meguro, Basquet",
+      "type": "Moda Kanalla",
+      "pvp": 20
+    },
+    {
+      "id": 201,
+      "name": "Camisetas Gamberra, Gold, Mala, Pantera Rosa",
+      "type": "Moda Kanalla",
+      "pvp": 15
+    },
+    {
+      "id": 202,
+      "name": "Gorra Béisbol y Trucker",
+      "type": "Moda Kanalla",
+      "pvp": 15
+    },
+    {
+      "id": 203,
+      "name": "Sudadera Carter",
+      "type": "Moda Kanalla",
+      "pvp": 46
+    },
+    {
+      "id": 204,
+      "name": "Sudadera Liston",
+      "type": "Moda Kanalla",
+      "pvp": 46
+    },
+    {
+      "id": 205,
+      "name": "Pantalón Puño",
+      "type": "Moda Kanalla",
+      "pvp": 36
+    },
+    {
+      "id": 206,
+      "name": "Sudadera Silicon",
+      "type": "Moda Kanalla",
+      "pvp": 46
+    },
+    {
+      "id": 207,
+      "name": "Sudadera Puff",
+      "type": "Moda Kanalla",
+      "pvp": 46
+    },
+    {
+      "id": 208,
+      "name": "Sudadera Jungle",
+      "type": "Moda Kanalla",
+      "pvp": 46
+    },
+    {
+      "id": 209,
+      "name": "Pantalón Jungle",
+      "type": "Moda Kanalla",
+      "pvp": 36
+    },
+    {
+      "id": 210,
+      "name": "Sudadera New Hell City",
+      "type": "Moda Kanalla",
+      "pvp": 46
+    },
+    {
+      "id": 211,
+      "name": "Torera",
+      "type": "Moda Kanalla",
+      "pvp": 36
+    },
+    {
+      "id": 212,
+      "name": "Anorak Black Rain",
+      "type": "Moda Kanalla",
+      "pvp": 62
+    },
+    {
+      "id": 213,
+      "name": "Buzo Wild Heat",
+      "type": "Moda Kanalla",
+      "pvp": 52
+    },
+    {
+      "id": 214,
+      "name": "Beisbolera",
+      "type": "Moda Kanalla",
+      "pvp": 62
+    },
+    {
+      "id": 215,
+      "name": "Cazadora Black Fighter",
+      "type": "Moda Kanalla",
+      "pvp": 62
+    },
+    {
+      "id": 216,
+      "name": "Anorak Kangaroo",
+      "type": "Moda Kanalla",
+      "pvp": 70
+    },
+    {
+      "id": 217,
+      "name": "Jumbo",
+      "type": "Bazar e Acessórios",
+      "pvp": 52
+    },
+    {
+      "id": 218,
+      "name": "Kit Infantil",
+      "type": "Bazar e Acessórios",
+      "pvp": 36
+    },
+    {
+      "id": 219,
+      "name": "Guantecito Piel y Saquito",
+      "type": "Bazar e Acessórios",
+      "pvp": 10
+    },
+    {
+      "id": 220,
+      "name": "Llavero Piel",
+      "type": "Bazar e Acessórios",
+      "pvp": 8
+    },
+    {
+      "id": 221,
+      "name": "Colgante Metal Piel",
+      "type": "Bazar e Acessórios",
+      "pvp": 13
+    },
+    {
+      "id": 222,
+      "name": "Pulsera Metal Piel",
+      "type": "Bazar e Acessórios",
+      "pvp": 11
+    },
+    {
+      "id": 223,
+      "name": "Llavero Metal y Metal Piel",
+      "type": "Bazar e Acessórios",
+      "pvp": 10
+    },
+    {
+      "id": 224,
+      "name": "Guante de Pesas",
+      "type": "Bazar e Acessórios",
+      "pvp": 16
+    },
+    {
+      "id": 225,
+      "name": "Parche Térmico",
+      "type": "Bazar e Acessórios",
+      "pvp": 6
+    }
+  ]
+}

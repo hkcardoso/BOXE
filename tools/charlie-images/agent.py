@@ -8,10 +8,31 @@ from PIL import Image, ImageFilter, ImageOps
 
 OUT=Path("charlie-image-output")
 API="2026-10"
-CATS={"Luvas de Boxe":("guantes",),"Luvas de MMA":("guantillas","mma"),
-      "Capacetes de Boxe":("casco","proteccion"),
-      "Caneleiras":("espinilleras","proteccion"),
-      "Proteções":("proteccion","botin")}
+CATS={
+ "Luvas de Boxe":("guantes",),
+ "Luvas de MMA":("guantillas","mma"),
+ "Capacetes de Boxe":("casco","proteccion"),
+ "Caneleiras":("espinilleras","proteccion"),
+ "Proteções":("proteccion","botin","coquilla"),
+ "Boqueiras":("bucal","proteccion"),
+ "Luvas Infantis":("guantes","junior"),
+ "Garrafas de Treino":("equipamiento","botella","gimnasio"),
+ "Ligaduras":("venda","proteccion"),
+ "Equipamento de Treino":("equipamiento","gimnasio","entrenamiento"),
+ "Linha Cabron":("cabron","saco"),
+ "Júnior":("junior","infantil"),
+ "Cordas de Saltar":("comba","entrenamiento"),
+ "Calçado":("calzado","bota","zapatilla"),
+ "Karate":("karate","kimono","cinturon"),
+ "Mochilas e Sacos":("bolsa","bolso","mochila"),
+ "Calções Muay Thai":("muay","short","kick"),
+ "Vestuário de Combate":("boxeo","mma","ropa"),
+ "Fitness":("fitness",),
+ "Moda Kanalla":("kanalla","moda","camiseta"),
+ "Bazar e Acessórios":("bazar","accesorio"),
+ "Equipamento Infantil":("junior","infantil"),
+ "Sacos e Mochilas":("bolsa","mochila","saco")
+}
 
 def norm(s):
     s=unicodedata.normalize("NFKD",str(s).lower())

@@ -40,7 +40,11 @@ jobs:
           python-version: '3.12'
           cache: pip
           cache-dependency-path: tools/charlie-images/requirements.txt
-      - run: pip install -r tools/charlie-images/requirements.txt
+      - name: Validate Python syntax
+        run: python -m py_compile tools/charlie-images/agent.py
+      - name: Install agent dependencies
+        if: env.SHOPIFY_SHOP != '' && (env.SHOPIFY_ADMIN_ACCESS_TOKEN != '' || (env.SHOPIFY_CLIENT_ID != '' && env.SHOPIFY_CLIENT_SECRET != ''))
+        run: pip install -r tools/charlie-images/requirements.txt
       - name: Scan, prepare or publish Charlie photos
         if: env.SHOPIFY_SHOP != '' && (env.SHOPIFY_ADMIN_ACCESS_TOKEN != '' || (env.SHOPIFY_CLIENT_ID != '' && env.SHOPIFY_CLIENT_SECRET != ''))
         run: python tools/charlie-images/agent.py --mode "${{ github.event_name == 'workflow_dispatch' && inputs.mode || vars.CHARLIE_IMAGE_MODE || 'scan' }}" --limit "${{ github.event_name == 'workflow_dispatch' && inputs.limit || vars.CHARLIE_IMAGE_LIMIT || '20' }}"

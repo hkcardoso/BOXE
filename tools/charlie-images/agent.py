@@ -80,7 +80,7 @@ def source(p):
     if not hints:
         raise ValueError("categoria sem regra de correspondência")
     res=requests.get("https://charlie.es/wp-json/wc/store/v1/products",
-        params={"search":re.split(r"\s+-\s*",re.sub(r"^Charlie\\s+","",p["title"].split(" — ")[0],flags=re.I))[0],"per_page":50},timeout=40,
+        params={"search":p["title"].split(" — ")[0].removeprefix("Charlie ").split(" - ")[0],"per_page":50},timeout=40,
         headers={"User-Agent":"VIRIATTO-Image-Agent/1.0"})
     res.raise_for_status()
     catalog=res.json()

@@ -1,5 +1,10 @@
 name: Charlie product images
 on:
+  push:
+    branches: [boxeup-shopify-sync]
+    paths:
+      - 'tools/charlie-images/**'
+      - '.github/workflows/charlie-images.yml'
   workflow_dispatch:
     inputs:
       mode:
@@ -21,6 +26,13 @@ jobs:
   images:
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    env:
+      SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+      SHOPIFY_ADMIN_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ADMIN_ACCESS_TOKEN }}
+      SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+      SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_IMAGE_MODEL: gpt-image-2.5-flare
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -30,15 +42,11 @@ jobs:
           cache-dependency-path: tools/charlie-images/requirements.txt
       - run: pip install -r tools/charlie-images/requirements.txt
       - name: Scan, prepare or publish Charlie photos
-        env:
-          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
-          SHOPIFY_ADMIN_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ADMIN_ACCESS_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_IMAGE_MODEL: gpt-image-2.5-flare
-        run: python tools/charlie-images/agent.py --mode "${{ inputs.mode }}" --limit "${{ inputs.limit }}"
+        if: env.SHOPIFY_SHOP != '' && (env.SHOPIFY_ADMIN_ACCESS_TOKEN != '' || (env.SHOPIFY_CLIENT_ID != '' && env.SHOPIFY_CLIENT_SECRET != ''))
+        run: python tools/charlie-images/agent.py --mode "${{ github.event_name == 'workflow_dispatch' && inputs.mode || vars.CHARLIE_IMAGE_MODE || 'scan' }}" --limit "${{ github.event_name == 'workflow_dispatch' && inputs.limit || vars.CHARLIE_IMAGE_LIMIT || '20' }}"
       - if: always()
         uses: actions/upload-artifact@v4
         with:
           name: charlie-images-report
           path: charlie-image-output/
-          if-no-files-found: warn
+          if-no-files-found: ignore

@@ -18,13 +18,31 @@ def norm(s):
     s="".join(c for c in s if not unicodedata.combining(c))
     return " ".join(re.findall(r"[a-z0-9]+",s))
 
+_AUTH_CACHE={"token":None,"expiry":0}
+def access_token(shop):
+    token=os.getenv("SHOPIFY_ADMIN_ACCESS_TOKEN")
+    if token:
+        return token
+    if _AUTH_CACHE["token"] and time.time()<_AUTH_CACHE["expiry"]:
+        return _AUTH_CACHE["token"]
+    client_id=os.environ["SHOPIFY_CLIENT_ID"]
+    client_secret=os.environ["SHOPIFY_CLIENT_SECRET"]
+    r=requests.post("https://"+shop+"/admin/oauth/access_token",
+        data={"grant_type":"client_credentials",
+              "client_id":client_id,"client_secret":client_secret},timeout=35)
+    r.raise_for_status()
+    result=r.json()
+    _AUTH_CACHE["token"]=result["access_token"]
+    _AUTH_CACHE["expiry"]=time.time()+max(60,int(result.get("expires_in",3600))-180)
+    return _AUTH_CACHE["token"]
+
 def shopify(q,vars=None):
     shop=os.environ["SHOPIFY_SHOP"].strip().lower()
     if not re.fullmatch(r"[a-z0-9][a-z0-9.-]*\.myshopify\.com",shop):
         raise ValueError("SHOPIFY_SHOP inválido: usar *.myshopify.com")
     r=requests.post("https://"+shop+"/admin/api/"+API+"/graphql.json",
         json={"query":q,"variables":vars or {}},
-        headers={"X-Shopify-Access-Token":os.environ["SHOPIFY_ADMIN_ACCESS_TOKEN"]},
+        headers={"X-Shopify-Access-Token":access_token(shop)},
         timeout=45)
     r.raise_for_status()
     obj=r.json()
@@ -62,7 +80,7 @@ def source(p):
     if not hints:
         raise ValueError("categoria sem regra de correspondência")
     res=requests.get("https://charlie.es/wp-json/wc/store/v1/products",
-        params={"search":name,"per_page":50},timeout=40,
+        params={"search":re.split(r"\s+-\s*",re.sub(r"^Charlie\\s+","",p["title"].split(" — ")[0],flags=re.I))[0],"per_page":50},timeout=40,
         headers={"User-Agent":"VIRIATTO-Image-Agent/1.0"})
     res.raise_for_status()
     catalog=res.json()

@@ -1,0 +1,4 @@
+requests>=2.32,<3
+Pillow>=11,<13
+rembg[cpu]>=2.0.67,<3
+openai>=2,<4

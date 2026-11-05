@@ -1,0 +1,44 @@
+name: Charlie product images
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "scan / prepare / publish"
+        required: true
+        type: choice
+        default: scan
+        options: [scan, prepare, publish]
+      limit:
+        description: "Maximum number of products"
+        type: number
+        default: 20
+permissions:
+  contents: read
+concurrency:
+  group: charlie-images
+  cancel-in-progress: false
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: tools/charlie-images/requirements.txt
+      - run: pip install -r tools/charlie-images/requirements.txt
+      - name: Scan, prepare or publish Charlie photos
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_ADMIN_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ADMIN_ACCESS_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_IMAGE_MODEL: gpt-image-2.5-flare
+        run: python tools/charlie-images/agent.py --mode "${{ inputs.mode }}" --limit "${{ inputs.limit }}"
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: charlie-images-report
+          path: charlie-image-output/
+          if-no-files-found: warn

@@ -319,8 +319,52 @@
                   {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}
                 "
               >
+                {%- comment -%}
+                  No catálogo geral, fixar primeiro os produtos com fotografia,
+                  mesmo que o sort do Shopify coloque artigos sem imagem nas
+                  primeiras páginas. Não alterar a ordenação com filtros ou
+                  quando o cliente escolhe outra ordenação.
+                {%- endcomment -%}
+                {%- assign vcat_image_first = false -%}
+                {%- if collection.handle == 'all' and collection.sort_by == blank -%}
+                  {%- assign vcat_image_first = true -%}
+                  {%- for vcat_filter in collection.filters -%}
+                    {%- if vcat_filter.active_values.size > 0 or vcat_filter.min_value.value != blank or vcat_filter.max_value.value != blank -%}
+                      {%- assign vcat_image_first = false -%}
+                      {%- break -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endif -%}
+                {%- assign vcat_pinned_ids = '|' -%}
+                {%- if vcat_image_first -%}
+                  {%- for vcat_photo_product in section.settings.image_priority_products -%}
+                    {%- assign vcat_vendor = vcat_photo_product.vendor | downcase | strip -%}
+                    {%- assign vcat_title = vcat_photo_product.title | downcase | strip -%}
+                    {%- if vcat_photo_product.featured_image == blank or vcat_photo_product.price == 0 or vcat_vendor == 'my store' or vcat_photo_product.tags contains 'boxeup:hidden' or vcat_title == 'test' or vcat_title == 'teste' -%}{%- continue -%}{%- endif -%}
+                    {%- assign vcat_pinned_ids = vcat_pinned_ids | append: vcat_photo_product.id | append: '|' -%}
+                    {%- if paginate.current_page == 1 -%}
+                      <li class="grid__item">
+                        {% render 'boxeup-home-card', product: vcat_photo_product, section_id: section.id %}
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endif -%}
                 {% assign skip_card_product_styles = false %}
+                {%- comment -%} Primeiro os produtos com fotografia na página atual. {%- endcomment -%}
+                {%- if vcat_image_first -%}
+                  {%- for product in collection.products -%}
+                    {%- capture vcat_id_marker -%}|{{ product.id }}|{%- endcapture -%}
+                    {%- if vcat_pinned_ids contains vcat_id_marker or product.featured_image == blank -%}{%- continue -%}{%- endif -%}
+                    <li class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                      {% render 'boxeup-home-card', product: product, section_id: section.id %}
+                    </li>
+                  {%- endfor -%}
+                {%- endif -%}
                 {%- for product in collection.products -%}
+                  {%- capture vcat_id_marker -%}|{{ product.id }}|{%- endcapture -%}
+                  {%- if vcat_image_first -%}
+                    {%- if vcat_pinned_ids contains vcat_id_marker or product.featured_image != blank -%}{%- continue -%}{%- endif -%}
+                  {%- endif -%}
                   {% assign lazy_load = false %}
                   {%- if forloop.index > 2 -%}
                     {%- assign lazy_load = true -%}
@@ -357,6 +401,7 @@
   "name": "t:sections.main-collection-product-grid.name",
   "class": "section",
   "settings": [
+    {"type":"product_list","id":"image_priority_products","label":"Artigos com fotografia no início do catálogo","limit":20},
     {
       "type": "range",
       "id": "products_per_page",

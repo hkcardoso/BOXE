@@ -47,7 +47,29 @@
         "jiujitsu"
       ],
       "settings": {
-        "hero_video": "shopify://files/videos/8745106-uhd_4096_2160_25fps.mp4"
+        "hero_video": "shopify://files/videos/8745106-uhd_4096_2160_25fps.mp4",
+        "featured_products": [
+          "charlie-bat-x-luvas-de-treino",
+          "fairtex-bgv1-luvas-de-boxe-e-muay-thai",
+          "twins-special-bgvl-3-luvas-de-muay-thai",
+          "cleto-reyes-luvas-de-treino-em-pele",
+          "everlast-powerlock-2r-luvas-de-treino",
+          "fairtex-bgv9-heavy-hitter-luvas-de-boxe",
+          "rival-rhg2-capacete-hibrido",
+          "charlie-gel-metallic-luvas-de-boxe"
+        ],
+        "latest_products": [
+          "fairtex-sp5-caneleiras-de-competicao",
+          "twins-special-sgl-10-caneleiras-de-muay-thai",
+          "venum-challenger-boqueira-com-caixa",
+          "fairtex-mg3-boqueira-de-gel",
+          "venum-challenger-pro-evo-mochila-22-5-l",
+          "fluory-calcoes-de-muay-thai-vermelho-e-preto",
+          "mens-rash-guard",
+          "all-over-print-gym-bag",
+          "minimalist-backpack",
+          "unisex-organic-cotton-creator-2-0-t-shirt"
+        ]
       }
     },
     "viriatto_packs": {

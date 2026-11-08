@@ -348,6 +348,19 @@
                       </li>
                     {%- endif -%}
                   {%- endfor -%}
+                  {%- if section.settings.image_priority_products == blank -%}
+                    {%- assign vcat_photo_handles = 'charlie-bat-x-luvas-de-treino,fairtex-bgv1-luvas-de-boxe-e-muay-thai,twins-special-bgvl-3-luvas-de-muay-thai,cleto-reyes-luvas-de-treino-em-pele,everlast-powerlock-2r-luvas-de-treino,fairtex-bgv9-heavy-hitter-luvas-de-boxe,rival-rhg2-capacete-hibrido,charlie-gel-metallic-luvas-de-boxe,fairtex-sp5-caneleiras-de-competicao,twins-special-sgl-10-caneleiras-de-muay-thai,venum-challenger-boqueira-com-caixa,fairtex-mg3-boqueira-de-gel,venum-challenger-pro-evo-mochila-22-5-l,fluory-calcoes-de-muay-thai-vermelho-e-preto,mens-rash-guard,all-over-print-gym-bag,minimalist-backpack,unisex-organic-cotton-creator-2-0-t-shirt' | split: ',' -%}
+                    {%- for vcat_photo_handle in vcat_photo_handles -%}
+                      {%- assign vcat_photo_product = all_products[vcat_photo_handle] -%}
+                      {%- if vcat_photo_product == blank or vcat_photo_product.featured_image == blank or vcat_photo_product.price == 0 or vcat_photo_product.tags contains 'boxeup:hidden' -%}{%- continue -%}{%- endif -%}
+                      {%- assign vcat_pinned_ids = vcat_pinned_ids | append: vcat_photo_product.id | append: '|' -%}
+                      {%- if paginate.current_page == 1 -%}
+                        <li class="grid__item">
+                          {% render 'boxeup-home-card', product: vcat_photo_product, section_id: section.id %}
+                        </li>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  {%- endif -%}
                 {%- endif -%}
                 {% assign skip_card_product_styles = false %}
                 {%- comment -%} Primeiro os produtos com fotografia na página atual. {%- endcomment -%}

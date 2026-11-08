@@ -353,6 +353,8 @@
                     {%- for vcat_photo_handle in vcat_photo_handles -%}
                       {%- assign vcat_photo_product = all_products[vcat_photo_handle] -%}
                       {%- if vcat_photo_product == blank or vcat_photo_product.featured_image == blank or vcat_photo_product.price == 0 or vcat_photo_product.tags contains 'boxeup:hidden' -%}{%- continue -%}{%- endif -%}
+                      {%- capture vcat_photo_id -%}|{{ vcat_photo_product.id }}|{%- endcapture -%}
+                      {%- if vcat_pinned_ids contains vcat_photo_id -%}{%- continue -%}{%- endif -%}
                       {%- assign vcat_pinned_ids = vcat_pinned_ids | append: vcat_photo_product.id | append: '|' -%}
                       {%- if paginate.current_page == 1 -%}
                         <li class="grid__item">

@@ -25,7 +25,7 @@
         {%- when 'twins' -%}{%- assign bx_brand_name = 'Twins' -%}{%- assign bx_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-twins-white.png?v=1793040843' -%}
       {%- endcase -%}
       <a href="{% if bx_brand_handle == 'viriatto' %}{{ routes.root_url }}collections/viriatto{% elsif bx_brand_collection != blank %}{{ bx_brand_collection.url }}{% else %}{{ routes.search_url }}?q={{ bx_brand_name | url_encode }}{% endif %}"
-         {% if bx_brand_collection != blank %}data-boxeup-catalog{% endif %}
+         {% if bx_brand_handle == 'viriatto' or bx_brand_collection != blank %}data-boxeup-catalog{% endif %}
          aria-label="{{ bx_brand_name | escape }}"
          {% if collection.handle == bx_brand_handle %}aria-current="page"{% endif %}>
         <img src="{{ bx_brand_logo }}" alt="{{ bx_brand_name | escape }}" loading="lazy" width="110" height="38">

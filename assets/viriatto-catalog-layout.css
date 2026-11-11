@@ -209,7 +209,7 @@ body:is(.boxeup-page-catalog,.viriatto-info-page) #MainContent .boxeup-catalog-c
 }
 body:is(.boxeup-page-catalog,.viriatto-info-page) #MainContent .boxeup-brands-always-open { margin:0 !important; }
 body:is(.boxeup-page-catalog,.viriatto-info-page) #MainContent .boxeup-brand-grid {
-  grid-template-columns:repeat(8,minmax(0,1fr));
+  grid-template-columns:repeat(9,minmax(0,1fr));
   gap:10px;
 }
 body:is(.boxeup-page-catalog,.viriatto-info-page) #MainContent .boxeup-brand-card {

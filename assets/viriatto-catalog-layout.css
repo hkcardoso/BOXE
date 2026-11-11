@@ -1,3 +1,4 @@
+/* Includes nine brand stores; VIRIATTO links to the main shop. */
 /* VIRIATTO — catalogue layout consistent with the homepage.
    Scope all changes to collection pages; filters and 5-column product grids remain active. */
 body:is(.boxeup-page-catalog,.viriatto-info-page) {

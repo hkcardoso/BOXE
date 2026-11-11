@@ -56,6 +56,12 @@
     gap:9px;
     margin:0;
   }
+  /* Keep nine brand stores aligned on desktop, including VIRIATTO. */
+  @media (min-width: 990px) {
+    body.boxeup-page-catalog #MainContent .boxeup-brand-grid {
+      grid-template-columns: repeat(9, minmax(0, 1fr)) !important;
+    }
+  }
   #MainContent .boxeup-brand-card {
     display:flex;
     align-items:center;

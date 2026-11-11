@@ -1,121 +1,121 @@
 {
-  "sections": {
-    "boxeup_home": {
-      "type": "boxeup-home",
-      "blocks": {
-        "boxe": {
-          "type": "category",
-          "settings": {
-            "title": "Boxe",
-            "subtitle": "Luvas, proteção e treino",
-            "search_term": "boxe",
-            "image": "shopify://shop_images/boxeup-boxe.jpg"
-          }
+    "sections": {
+        "boxeup_home": {
+            "type": "boxeup-home",
+            "blocks": {
+                "boxe": {
+                    "type": "category",
+                    "settings": {
+                        "title": "Boxe",
+                        "subtitle": "Luvas, proteção e treino",
+                        "search_term": "boxe",
+                        "image": "shopify://shop_images/boxeup-boxe.jpg"
+                    }
+                },
+                "muaythai": {
+                    "type": "category",
+                    "settings": {
+                        "title": "Muay Thai",
+                        "subtitle": "Técnica e potência",
+                        "search_term": "muay thai",
+                        "image": "shopify://shop_images/boxeup-muay-thai.jpg"
+                    }
+                },
+                "mma": {
+                    "type": "category",
+                    "settings": {
+                        "title": "MMA",
+                        "subtitle": "Preparação e combate",
+                        "search_term": "mma",
+                        "image": "shopify://shop_images/boxeup-mma.jpg"
+                    }
+                },
+                "jiujitsu": {
+                    "type": "category",
+                    "settings": {
+                        "title": "Jiu-Jitsu",
+                        "subtitle": "Equipamento de tatami",
+                        "search_term": "jiu jitsu",
+                        "image": "shopify://shop_images/boxeup-jiu-jitsu.jpg"
+                    }
+                }
+            },
+            "block_order": [
+                "boxe",
+                "muaythai",
+                "mma",
+                "jiujitsu"
+            ],
+            "settings": {
+                "hero_video": "shopify://files/videos/8745106-uhd_4096_2160_25fps.mp4",
+                "featured_products": [
+                    "charlie-danger-luvas-profissionais",
+                    "pack-muay-thai-pronto-para-o-treino",
+                    "pack-boxe-primeiro-round",
+                    "charlie-gel-metallic-luvas-de-boxe",
+                    "fairtex-bgv9-heavy-hitter-luvas-de-boxe",
+                    "rival-rhg2-capacete-hibrido",
+                    "everlast-powerlock-2r-luvas-de-treino",
+                    "twins-special-bgvl-3-luvas-de-muay-thai",
+                    "cleto-reyes-luvas-de-treino-em-pele",
+                    "charlie-bat-x-luvas-de-treino",
+                    "fairtex-bgv1-luvas-de-boxe-e-muay-thai"
+                ],
+                "latest_products": [
+                    "fluory-calcoes-de-muay-thai-vermelho-e-preto",
+                    "venum-challenger-pro-evo-mochila-22-5-l",
+                    "venum-challenger-boqueira-com-caixa",
+                    "fairtex-mg3-boqueira-de-gel",
+                    "twins-special-sgl-10-caneleiras-de-muay-thai",
+                    "fairtex-sp5-caneleiras-de-competicao",
+                    "mens-rash-guard",
+                    "all-over-print-gym-bag",
+                    "baby-short-sleeve-one-piece",
+                    "minimalist-backpack",
+                    "unisex-organic-cotton-creator-2-0-t-shirt"
+                ]
+            }
         },
-        "muaythai": {
-          "type": "category",
-          "settings": {
-            "title": "Muay Thai",
-            "subtitle": "Técnica e potência",
-            "search_term": "muay thai",
-            "image": "shopify://shop_images/boxeup-muay-thai.jpg"
-          }
+        "viriatto_packs": {
+            "type": "viriatto-training-packs",
+            "blocks": {
+                "boxe": {
+                    "type": "pack",
+                    "settings": {
+                        "product": "pack-boxe-primeiro-round",
+                        "product_1": "charlie-bat-x-luvas-de-treino",
+                        "product_2": "venum-challenger-boqueira-com-caixa",
+                        "product_3": "all-over-print-gym-bag",
+                        "title": "Boxe",
+                        "subtitle": "Charlie Bat-X + Venum Challenger + saco 30 L"
+                    }
+                },
+                "muaythai": {
+                    "type": "pack",
+                    "settings": {
+                        "product": "pack-muay-thai-pronto-para-o-treino",
+                        "product_1": "fairtex-bgv1-luvas-de-boxe-e-muay-thai",
+                        "product_2": "fairtex-sp5-caneleiras-de-competicao",
+                        "product_3": "fairtex-mg3-boqueira-de-gel",
+                        "title": "Muay Thai",
+                        "subtitle": "Fairtex BGV1 + SP5 + MG3"
+                    }
+                }
+            },
+            "block_order": [
+                "boxe",
+                "muaythai"
+            ],
+            "settings": {}
         },
-        "mma": {
-          "type": "category",
-          "settings": {
-            "title": "MMA",
-            "subtitle": "Preparação e combate",
-            "search_term": "mma",
-            "image": "shopify://shop_images/boxeup-mma.jpg"
-          }
-        },
-        "jiujitsu": {
-          "type": "category",
-          "settings": {
-            "title": "Jiu-Jitsu",
-            "subtitle": "Equipamento de tatami",
-            "search_term": "jiu jitsu",
-            "image": "shopify://shop_images/boxeup-jiu-jitsu.jpg"
-          }
+        "viriatto_training_video": {
+            "type": "viriatto-training-video",
+            "settings": {}
         }
-      },
-      "block_order": [
-        "boxe",
-        "muaythai",
-        "mma",
-        "jiujitsu"
-      ],
-      "settings": {
-        "hero_video": "shopify://files/videos/8745106-uhd_4096_2160_25fps.mp4",
-        "featured_products": [
-          "charlie-danger-luvas-profissionais",
-          "pack-muay-thai-pronto-para-o-treino",
-          "pack-boxe-primeiro-round",
-          "charlie-gel-metallic-luvas-de-boxe",
-          "fairtex-bgv9-heavy-hitter-luvas-de-boxe",
-          "rival-rhg2-capacete-hibrido",
-          "everlast-powerlock-2r-luvas-de-treino",
-          "twins-special-bgvl-3-luvas-de-muay-thai",
-          "cleto-reyes-luvas-de-treino-em-pele",
-          "charlie-bat-x-luvas-de-treino",
-          "fairtex-bgv1-luvas-de-boxe-e-muay-thai"
-        ],
-        "latest_products": [
-          "fluory-calcoes-de-muay-thai-vermelho-e-preto",
-          "venum-challenger-pro-evo-mochila-22-5-l",
-          "venum-challenger-boqueira-com-caixa",
-          "fairtex-mg3-boqueira-de-gel",
-          "twins-special-sgl-10-caneleiras-de-muay-thai",
-          "fairtex-sp5-caneleiras-de-competicao",
-          "mens-rash-guard",
-          "all-over-print-gym-bag",
-          "baby-short-sleeve-one-piece",
-          "minimalist-backpack",
-          "unisex-organic-cotton-creator-2-0-t-shirt"
-        ]
-      }
     },
-    "viriatto_packs": {
-      "type": "viriatto-training-packs",
-      "blocks": {
-        "boxe": {
-          "type": "pack",
-          "settings": {
-            "product": "pack-boxe-primeiro-round",
-            "product_1": "charlie-bat-x-luvas-de-treino",
-            "product_2": "venum-challenger-boqueira-com-caixa",
-            "product_3": "all-over-print-gym-bag",
-            "title": "Boxe",
-            "subtitle": "Charlie Bat-X + Venum Challenger + saco 30 L"
-          }
-        },
-        "muaythai": {
-          "type": "pack",
-          "settings": {
-            "product": "pack-muay-thai-pronto-para-o-treino",
-            "product_1": "fairtex-bgv1-luvas-de-boxe-e-muay-thai",
-            "product_2": "fairtex-sp5-caneleiras-de-competicao",
-            "product_3": "fairtex-mg3-boqueira-de-gel",
-            "title": "Muay Thai",
-            "subtitle": "Fairtex BGV1 + SP5 + MG3"
-          }
-        }
-      },
-      "block_order": [
-        "boxe",
-        "muaythai"
-      ],
-      "settings": {}
-    },
-    "viriatto_training_video": {
-      "type": "viriatto-training-video",
-      "settings": {}
-    }
-  },
-  "order": [
-    "boxeup_home",
-    "viriatto_packs",
-    "viriatto_training_video"
-  ]
+    "order": [
+        "boxeup_home",
+        "viriatto_packs",
+        "viriatto_training_video"
+    ]
 }

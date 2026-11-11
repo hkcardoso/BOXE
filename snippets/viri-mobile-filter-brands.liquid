@@ -1,4 +1,4 @@
-{%- comment -%} VIRIATTO points to the shop homepage until a public brand collection exists. {%- endcomment -%}
+{%- comment -%} VIRIATTO points to its own Printful merchandise collection. {%- endcomment -%}
 {%- assign bx_mobile_brand_nav_label = 'Marcas' -%}
 {%- assign bx_mobile_locale = request.locale.iso_code | slice: 0, 2 -%}
 {%- if bx_mobile_locale == 'en' -%}{%- assign bx_mobile_brand_nav_label = 'Brands' -%}{%- elsif bx_mobile_locale == 'es' -%}{%- assign bx_mobile_brand_nav_label = 'Marcas' -%}{%- endif -%}

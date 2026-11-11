@@ -49,6 +49,7 @@
             "settings": {
                 "hero_video": "shopify://files/videos/8745106-uhd_4096_2160_25fps.mp4",
                 "featured_products": [
+                    "charlie-bat-x-luvas-de-treino",
                     "charlie-danger-luvas-profissionais",
                     "pack-muay-thai-pronto-para-o-treino",
                     "pack-boxe-primeiro-round",
@@ -58,7 +59,6 @@
                     "everlast-powerlock-2r-luvas-de-treino",
                     "twins-special-bgvl-3-luvas-de-muay-thai",
                     "cleto-reyes-luvas-de-treino-em-pele",
-                    "charlie-bat-x-luvas-de-treino",
                     "fairtex-bgv1-luvas-de-boxe-e-muay-thai"
                 ],
                 "latest_products": [

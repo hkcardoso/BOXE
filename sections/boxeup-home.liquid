@@ -963,7 +963,7 @@
         <div class="vh-brands__track">
           {%- for vh_brand_copy in (1..3) -%}
             <div class="vh-brands__group"{% if vh_brand_copy != 1 %} aria-hidden="true"{% endif %}>
-          {%- assign vh_brand_handles = 'viriatto,charlie' | split: ',' -%}
+          {%- assign vh_brand_handles = 'viriatto,fairtex,venum,everlast,leone-1947,charlie,rdx,cleto-reyes,rival,twins' | split: ',' -%}
       {%- for vh_brand_handle in vh_brand_handles -%}
         {%- assign vh_brand_collection = collections[vh_brand_handle] -%}
         {%- assign vh_brand_name = vh_brand_handle | replace: '-', ' ' | capitalize -%}

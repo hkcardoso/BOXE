@@ -56,6 +56,8 @@
           class="product-variant-id"
         >
 
+        {%- render 'viriatto-charlie-color-picker', product: product, product_form_id: product_form_id -%}
+
         {%- if gift_card_recipient_feature_active -%}
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}

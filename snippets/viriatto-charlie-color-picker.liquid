@@ -1,0 +1,16 @@
+{% comment %}
+  Mostra as cores do catálogo oficial Charlie 2026–2027 como propriedade de linha.
+  Não altera variantes, preços ou inventário. A cor escolhida é enviada no carrinho.
+{% endcomment %}
+{%- if product.vendor == 'Charlie' -%}
+  {{ 'viriatto-charlie-colors.css' | asset_url | stylesheet_tag }}
+  <div class="vt-charlie-colors" data-vt-charlie-colors data-charlie-handle="{{ product.handle | escape }}" data-section-id="{{ section.id | escape }}" hidden>
+    <fieldset class="vt-charlie-colors__fieldset">
+      <legend class="vt-charlie-colors__legend">Cor: <span class="vt-charlie-colors__selected" data-vt-color-current></span></legend>
+      <div class="vt-charlie-colors__choices" data-vt-color-choices></div>
+    </fieldset>
+    <p class="vt-charlie-colors__note">Cores do catálogo Charlie 2026–2027. Disponibilidade por cor e peso sujeita a confirmação.</p>
+    <p class="vt-charlie-colors__error" data-vt-color-error role="alert" hidden>Seleciona uma cor antes de adicionar ao carrinho.</p>
+  </div>
+  <script src="{{ 'viriatto-charlie-colors.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}

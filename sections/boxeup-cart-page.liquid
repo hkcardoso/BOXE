@@ -76,6 +76,29 @@
       assign bx_qplus = 'Aumentar quantidade'
   endcase
 %}
+{% comment %}O prazo Charlie refere-se ao transporte após expedição, não ao processamento.{% endcomment %}
+{% assign bx_only_charlie = true %}
+{% for item in cart.items %}
+  {% unless item.vendor == 'Charlie' %}
+    {% assign bx_only_charlie = false %}
+    {% break %}
+  {% endunless %}
+{% endfor %}
+{% if cart.item_count > 0 and bx_only_charlie %}
+  {% if bx_lang == 'en' %}
+    {% assign bx_delivery_text = 'Charlie: estimated transit time of 48–72 hours after dispatch to Portugal.' %}
+    {% assign bx_shipping_value = 'Free in Portugal' %}
+    {% assign bx_help = 'Shipping outside Portugal and applicable taxes are confirmed at checkout.' %}
+  {% elsif bx_lang == 'es' %}
+    {% assign bx_delivery_text = 'Charlie: transporte estimado de 48 a 72 horas tras el envío a Portugal.' %}
+    {% assign bx_shipping_value = 'Gratis en Portugal' %}
+    {% assign bx_help = 'El envío fuera de Portugal y los impuestos aplicables se confirman al pagar.' %}
+  {% else %}
+    {% assign bx_delivery_text = 'Charlie: transporte estimado de 48 a 72 horas após a expedição para Portugal.' %}
+    {% assign bx_shipping_value = 'Grátis em Portugal' %}
+    {% assign bx_help = 'Os portes para fora de Portugal e os impostos aplicáveis são confirmados no checkout.' %}
+  {% endif %}
+{% endif %}
 <section class="bx-cart-page" data-bx-cart-page data-bx-cart-url="{{ routes.cart_url }}" data-bx-error="{{ bx_error | escape }}" aria-labelledby="BxCartPageTitle">
   <div class="bx-cart-page__wrap">
     <header class="bx-cart-page__header">

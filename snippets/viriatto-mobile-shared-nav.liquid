@@ -67,6 +67,9 @@
               </button>
             {%- endif -%}
             <ul id="{{ bx_nav_prefix }}-MenuList-{{ forloop.index }}" class="boxeup-nav-modalities__dropdown" role="list" aria-label="{{ link.title | escape }}">
+              {%- if link.handle == 'marcas' -%}
+                <li><a id="{{ bx_nav_prefix }}-marcas-viriatto" class="boxeup-nav-modalities__link focus-inset" href="{{ collections['viriatto'].url | default: '/collections/viriatto' }}">VIRIATTO</a></li>
+              {%- endif -%}
               {%- for childlink in link.links -%}
                 {%- assign vc_child_handle = childlink.url | split: '/collections/' | last | split: '?' | first | split: '#' | first -%}
                 {%- if link.handle == 'marcas' -%}

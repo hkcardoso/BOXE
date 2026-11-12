@@ -70,9 +70,7 @@
               {%- endif -%}
               {%- for childlink in link.links -%}
                 {%- assign vc_child_handle = childlink.url | split: '/collections/' | last | split: '?' | first | split: '#' | first -%}
-                {%- if link.handle == 'marcas' -%}
-                  {%- unless vc_child_handle == 'charlie' or vc_child_handle == 'viriatto' -%}{%- continue -%}{%- endunless -%}
-                {%- endif -%}
+                {%- if link.handle == 'marcas' and vc_child_handle == 'buddha' -%}{%- continue -%}{%- endif -%}
                 {%- if link.handle == 'catalogo' -%}
                   {%- if vc_child_handle == 'boxe' or vc_child_handle == 'muay-thai-e-kickboxing' -%}{%- continue -%}{%- endif -%}
                   {%- if vc_child_handle == 'boqueiras-e-protecoes' -%}

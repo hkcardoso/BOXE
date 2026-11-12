@@ -20,14 +20,14 @@
 -%}
 {% if mode == 'mobile' %}
   <li>
-    <a id="HeaderDrawer-ViriNew" href="{{ collections['novidades-viriatto'].url | default: '/collections/novidades-viriatto' }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset viri-nav-special viri-nav-special--new">{{ vi_nav_new }}</a>
+    <a id="HeaderDrawer-ViriNew" href="{{ collections['novidades-viriatto-selecao-atual'].url | default: '/collections/novidades-viriatto-selecao-atual' }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset viri-nav-special viri-nav-special--new">{{ vi_nav_new }}</a>
   </li>
   <li>
     <a id="HeaderDrawer-ViriSale" href="{{ vi_nav_sale_url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset viri-nav-special viri-nav-special--promo">{{ vi_nav_sale }}</a>
   </li>
 {% else %}
   <li>
-    <a id="HeaderMenu-ViriNew" href="{{ collections['novidades-viriatto'].url | default: '/collections/novidades-viriatto' }}" class="header__menu-item list-menu__item link link--text focus-inset viri-nav-special viri-nav-special--new"><span>{{ vi_nav_new }}</span></a>
+    <a id="HeaderMenu-ViriNew" href="{{ collections['novidades-viriatto-selecao-atual'].url | default: '/collections/novidades-viriatto-selecao-atual' }}" class="header__menu-item list-menu__item link link--text focus-inset viri-nav-special viri-nav-special--new"><span>{{ vi_nav_new }}</span></a>
   </li>
   <li>
     <a id="HeaderMenu-ViriSale" href="{{ vi_nav_sale_url }}" class="header__menu-item list-menu__item link link--text focus-inset viri-nav-special viri-nav-special--promo"><span>{{ vi_nav_sale }}</span></a>

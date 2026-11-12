@@ -57,7 +57,7 @@
           <div class="boxeup-nav-modalities">
             <a
               id="HeaderMenu-{{ link.handle }}"
-              href="{% if link.handle == 'catalogo' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}{% elsif link.handle == 'marcas' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}#BxBrands{% elsif link.handle == 'novidades' %}{{ collections['novidades-viriatto'].url | default: '/collections/novidades-viriatto' }}{% else %}{{ link.url }}{% endif %}"
+              href="{% if link.handle == 'catalogo' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}{% elsif link.handle == 'marcas' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}#BxBrands{% elsif link.handle == 'novidades' %}{{ collections['novidades-viriatto-selecao-atual'].url | default: '/collections/novidades-viriatto-selecao-atual' }}{% else %}{{ link.url }}{% endif %}"
               class="header__menu-item list-menu__item link link--text focus-inset boxeup-nav-modalities__trigger"
               {% if link.current %}aria-current="page"{% endif %}
             >
@@ -111,7 +111,7 @@
         {%- else -%}
           <a
             id="HeaderMenu-{{ link.handle }}"
-            href="{% if link.handle == 'catalogo' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}{% elsif link.handle == 'marcas' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}#BxBrands{% elsif link.handle == 'novidades' %}{{ collections['novidades-viriatto'].url | default: '/collections/novidades-viriatto' }}{% else %}{{ link.url }}{% endif %}"
+            href="{% if link.handle == 'catalogo' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}{% elsif link.handle == 'marcas' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}#BxBrands{% elsif link.handle == 'novidades' %}{{ collections['novidades-viriatto-selecao-atual'].url | default: '/collections/novidades-viriatto-selecao-atual' }}{% else %}{{ link.url }}{% endif %}"
             class="header__menu-item list-menu__item link link--text focus-inset"
             {% if link.current %}
               aria-current="page"

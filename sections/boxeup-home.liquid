@@ -63,8 +63,8 @@
   endif
   # Produtos destas duas zonas definidos manualmente em templates/index.json.
   # Evita rotação automática e mantém a ordem escolhida.
-  assign vh_featured_products = collections['destaques-viriatto'].products
-  assign vh_new_curated_products = collections['novidades-viriatto'].products
+  assign vh_featured_products = collections['destaques-viriatto-selecao-atual'].products
+  assign vh_new_curated_products = collections['novidades-viriatto-selecao-atual'].products
 -%}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -996,7 +996,7 @@
     <section class="vh-products" id="VHomeFeatured" aria-labelledby="VHomeFeaturedTitle">
       <div class="vh-products__heading">
         <h2 id="VHomeFeaturedTitle">{{ vh_featured }}</h2>
-        <a class="vh-products__all" href="{{ collections['destaques-viriatto'].url | default: '/collections/destaques-viriatto' }}">{{ vh_all }} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+        <a class="vh-products__all" href="{{ collections['destaques-viriatto-selecao-atual'].url | default: '/collections/destaques-viriatto-selecao-atual' }}">{{ vh_all }} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
       </div>
       <div class="vh-grid">
         {%- assign vh_featured_ids = '|' -%}
@@ -1019,7 +1019,7 @@
     <section class="vh-products" id="VHomeNew" aria-labelledby="VHomeNewTitle">
       <div class="vh-products__heading">
         <h2 id="VHomeNewTitle">{{ vh_new }}</h2>
-        <a class="vh-products__all" href="{{ collections['novidades-viriatto'].url | default: '/collections/novidades-viriatto' }}">{{ vh_all }} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+        <a class="vh-products__all" href="{{ collections['novidades-viriatto-selecao-atual'].url | default: '/collections/novidades-viriatto-selecao-atual' }}">{{ vh_all }} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
       </div>
       <div class="vh-grid">
         {%- assign vh_new_ids = '|' -%}

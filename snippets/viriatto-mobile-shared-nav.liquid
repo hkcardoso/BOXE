@@ -54,7 +54,7 @@
           <div class="boxeup-nav-modalities">
             <a
               id="{{ bx_nav_prefix }}-{{ link.handle }}"
-              href="{% if link.handle == 'marcas' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}#BxBrands{% elsif link.handle == 'catalogo' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}{% elsif link.handle == 'novidades' %}{{ collections['novidades-viriatto'].url | default: '/collections/novidades-viriatto' }}{% else %}{{ link.url }}{% endif %}"
+              href="{% if link.handle == 'marcas' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}#BxBrands{% elsif link.handle == 'catalogo' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}{% elsif link.handle == 'novidades' %}{{ collections['novidades-viriatto-selecao-atual'].url | default: '/collections/novidades-viriatto-selecao-atual' }}{% else %}{{ link.url }}{% endif %}"
               class="header__menu-item list-menu__item link link--text focus-inset boxeup-nav-modalities__trigger"
               {% if link.current %}aria-current="page"{% endif %}
             >
@@ -118,7 +118,7 @@
         {%- else -%}
           <a
             id="{{ bx_nav_prefix }}-{{ link.handle }}"
-            href="{% if link.handle == 'marcas' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}#BxBrands{% elsif link.handle == 'catalogo' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}{% elsif link.handle == 'novidades' %}{{ collections['novidades-viriatto'].url | default: '/collections/novidades-viriatto' }}{% else %}{{ link.url }}{% endif %}"
+            href="{% if link.handle == 'marcas' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}#BxBrands{% elsif link.handle == 'catalogo' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}{% elsif link.handle == 'novidades' %}{{ collections['novidades-viriatto-selecao-atual'].url | default: '/collections/novidades-viriatto-selecao-atual' }}{% else %}{{ link.url }}{% endif %}"
             class="header__menu-item list-menu__item link link--text focus-inset"
             {% if link.current %}
               aria-current="page"
@@ -138,7 +138,7 @@
     {%- if mobile -%}
       {%- unless bx_nav_has_news -%}
         <li class="bx-mobile-shared-nav__shortcut">
-          <a id="HeaderDrawer-novidades" href="{{ collections['novidades-viriatto'].url | default: '/collections/novidades-viriatto' }}" class="header__menu-item list-menu__item link link--text focus-inset">
+          <a id="HeaderDrawer-novidades" href="{{ collections['novidades-viriatto-selecao-atual'].url | default: '/collections/novidades-viriatto-selecao-atual' }}" class="header__menu-item list-menu__item link link--text focus-inset">
             <span>{% if bx_nav_language == 'en' %}New arrivals{% elsif bx_nav_language == 'es' %}Novedades{% else %}Novidades{% endif %}</span>
           </a>
         </li>

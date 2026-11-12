@@ -1,17 +1,17 @@
 {%- if request.page_type == 'index' -%}
   {%- liquid
     assign vh_lang = request.locale.iso_code | slice: 0, 2
-    assign vh_announcement_1 = 'PORTES GRÁTIS EM ENCOMENDAS SUPERIORES A 79 €'
+    assign vh_announcement_1 = 'PORTES GRÁTIS EM EQUIPAMENTO PARA PORTUGAL'
     assign vh_announcement_2 = 'EQUIPAMENTO DAS MELHORES MARCAS'
-    assign vh_announcement_3 = 'ENTREGA 1-3 DIAS ÚTEIS'
+    assign vh_announcement_3 = 'CHARLIE: ENTREGA 48–72H APÓS ENVIO'
     if vh_lang == 'en'
-      assign vh_announcement_1 = 'FREE SHIPPING ON ORDERS OVER €79'
+      assign vh_announcement_1 = 'FREE SHIPPING ON GEAR TO PORTUGAL'
       assign vh_announcement_2 = 'GEAR FROM LEADING BRANDS'
-      assign vh_announcement_3 = '1-3 WORKING DAY DELIVERY'
+      assign vh_announcement_3 = 'CHARLIE: 48–72H AFTER DISPATCH'
     elsif vh_lang == 'es'
-      assign vh_announcement_1 = 'ENVÍO GRATIS EN PEDIDOS SUPERIORES A 79 €'
+      assign vh_announcement_1 = 'ENVÍO GRATIS DE EQUIPAMIENTO A PORTUGAL'
       assign vh_announcement_2 = 'EQUIPO DE LAS MEJORES MARCAS'
-      assign vh_announcement_3 = 'ENTREGA EN 1-3 DÍAS LABORABLES'
+      assign vh_announcement_3 = 'CHARLIE: ENTREGA 48–72H TRAS ENVÍO'
     endif
   -%}
   <style>

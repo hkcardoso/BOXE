@@ -1,129 +1,165 @@
 {%- liquid
-  assign vp_gloves = section.settings.gloves | default: all_products['charlie-bat-x-luvas-de-treino']
-  assign vp_wraps = section.settings.wraps | default: all_products['charlie-catalogo-2026-051-venda-algodon']
-  assign vp_shorts = section.settings.shorts | default: all_products['charlie-catalogo-2026-172-boxeo-x']
-  assign vp_ready = false
-  if vp_gloves != blank and vp_wraps != blank and vp_shorts != blank
-    assign vp_ready = true
-  endif
   assign vp_language = request.locale.iso_code | slice: 0, 2
-  assign vp_eyebrow = 'PACK DE TREINO'
-  assign vp_heading = 'O TEU PRÓXIMO ROUND.'
-  assign vp_description = 'Três essenciais Charlie num único pack. Escolhe as onças das luvas e o tamanho dos calções.'
-  assign vp_name = 'PACK CHARLIE VERMELHO'
-  assign vp_sizes = 'Tamanho dos calções'
+  assign vp_eyebrow = 'PACKS DE TREINO'
+  assign vp_heading = 'ESCOLHE O TEU PACK.'
+  assign vp_intro = 'Três artigos Charlie em cada pack, com 10% de desconto.'
   assign vp_ounces = 'Onças das luvas'
   assign vp_add = 'ADICIONAR O PACK'
   assign vp_adding = 'A ADICIONAR...'
   assign vp_unavailable = 'INDISPONÍVEL'
   assign vp_error = 'Não foi possível adicionar o pack. Tenta novamente.'
   assign vp_savings = 'Poupa'
-  assign vp_separately = 'Os 3 artigos em separado'
-  assign vp_discount_note = 'Desconto de 10% aplicado automaticamente através do código do pack no carrinho.'
+  assign vp_separately = 'Artigos em separado'
+  assign vp_discount_note = 'O desconto de 10% é aplicado ao abrir o carrinho através do código do pack.'
   if vp_language == 'en'
-    assign vp_eyebrow = 'TRAINING PACK'
-    assign vp_heading = 'YOUR NEXT ROUND.'
-    assign vp_description = 'Three Charlie essentials in one pack. Choose your gloves and shorts sizes.'
-    assign vp_name = 'CHARLIE RED PACK'
-    assign vp_sizes = 'Shorts size'
+    assign vp_eyebrow = 'TRAINING PACKS'
+    assign vp_heading = 'CHOOSE YOUR PACK.'
+    assign vp_intro = 'Three Charlie essentials per pack, with 10% off.'
     assign vp_ounces = 'Glove size'
     assign vp_add = 'ADD THE PACK'
     assign vp_adding = 'ADDING...'
     assign vp_unavailable = 'UNAVAILABLE'
     assign vp_error = 'Could not add the pack. Please try again.'
     assign vp_savings = 'Save'
-    assign vp_separately = 'Three items separately'
-    assign vp_discount_note = 'The 10% pack discount code is applied when you open your cart.'
+    assign vp_separately = 'Items separately'
+    assign vp_discount_note = 'Your 10% discount is applied when you open the cart using the pack code.'
   elsif vp_language == 'es'
-    assign vp_eyebrow = 'PACK DE ENTRENAMIENTO'
-    assign vp_heading = 'TU PRÓXIMO ASALTO.'
-    assign vp_description = 'Tres básicos Charlie en un solo pack. Elige el tamaño de los guantes y del pantalón.'
-    assign vp_name = 'PACK CHARLIE ROJO'
-    assign vp_sizes = 'Talla del pantalón'
+    assign vp_eyebrow = 'PACKS DE ENTRENAMIENTO'
+    assign vp_heading = 'ELIGE TU PACK.'
+    assign vp_intro = 'Tres artículos Charlie por pack con un 10% de descuento.'
     assign vp_ounces = 'Onzas de los guantes'
     assign vp_add = 'AÑADIR PACK'
     assign vp_adding = 'AÑADIENDO...'
     assign vp_unavailable = 'NO DISPONIBLE'
     assign vp_error = 'No se pudo añadir el pack. Inténtalo de nuevo.'
     assign vp_savings = 'Ahorra'
-    assign vp_separately = 'Los 3 artículos por separado'
-    assign vp_discount_note = 'El descuento del 10% se aplica mediante el código del pack al abrir el carrito.'
+    assign vp_separately = 'Artículos por separado'
+    assign vp_discount_note = 'El descuento del 10% se aplica al abrir el carrito mediante el código del pack.'
   endif
 -%}
-{%- if vp_ready -%}
-  {%- assign vp_total = vp_gloves.price | plus: vp_wraps.price | plus: vp_shorts.price -%}
-  {%- assign vp_sale = vp_total | times: 0.9 | round -%}
-  {%- assign vp_saved = vp_total | minus: vp_sale -%}
-  {{ 'viriatto-training-packs.css' | asset_url | stylesheet_tag }}
-  <script src="{{ 'viriatto-training-packs.js' | asset_url }}" defer></script>
-  <section class="vp" id="ViriattoCharliePack" aria-labelledby="ViriattoCharliePackTitle">
-    <div class="vp__frame">
-      <div class="vp__intro">
-        <p class="vp__eyebrow">{{ vp_eyebrow }}</p>
-        <h2 id="ViriattoCharliePackTitle">{{ vp_heading }}</h2>
-        <p>{{ vp_description }}</p>
-      </div>
-      <viriatto-charlie-pack class="vp__card" data-discount-code="PACKCHARLIE10" data-adding="{{ vp_adding | escape }}" data-add="{{ vp_add | escape }}" data-unavailable="{{ vp_unavailable | escape }}" data-error="{{ vp_error | escape }}">
-        <div class="vp__image">
-          {%- if section.settings.pack_image != blank -%}
-            {{ section.settings.pack_image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '450,750,1000,1600', sizes: '(min-width: 900px) 49vw, 100vw', alt: vp_name, class: 'vp__photo' }}
-          {%- else -%}
-            <img class="vp__photo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-pack-charlie-vermelho-batx-boxeox-ligaduras.webp?v=1794476581" width="1200" height="1200" loading="lazy" alt="{{ vp_name | escape }}: Charlie Bat-X, ligaduras e calções Boxeo X">
-          {%- endif -%}
-        </div>
-        <div class="vp__details">
-          <div class="vp__headline"><span class="vp__badge">−10%</span><span class="vp__edition">CHARLIE × VIRIATTO</span></div>
-          <h3>{{ vp_name }}</h3>
-          <p class="vp__description">{{ vp_description }}</p>
-          <ul class="vp__included">
-            <li><span class="vp__number">01</span><a href="{{ vp_gloves.url }}">{{ vp_gloves.title | escape }}</a></li>
-            <li><span class="vp__number">02</span><a href="{{ vp_wraps.url }}">{{ vp_wraps.title | escape }}</a></li>
-            <li><span class="vp__number">03</span><a href="{{ vp_shorts.url }}">{{ vp_shorts.title | escape }}</a></li>
-          </ul>
-          <form class="vp__form" data-pack-form novalidate>
-            <div class="vp__options">
-              <label for="VpGloves-{{ section.id }}">{{ vp_ounces }}
-                <select id="VpGloves-{{ section.id }}" name="gloves" data-pack-gloves required>
-                  {%- for variant in vp_gloves.variants -%}
-                    <option value="{{ variant.id }}" data-available="{{ variant.available }}" {% if variant.id == vp_gloves.selected_or_first_available_variant.id %}selected{% endif %}{% unless variant.available %} disabled{% endunless %}>{{ variant.title | escape }}{% unless variant.available %} — {{ vp_unavailable }}{% endunless %}</option>
-                  {%- endfor -%}
-                </select>
-              </label>
-              <label for="VpShorts-{{ section.id }}">{{ vp_sizes }}
-                <select id="VpShorts-{{ section.id }}" name="shorts" data-pack-shorts required>
-                  {%- for variant in vp_shorts.variants -%}
-                    <option value="{{ variant.id }}" data-available="{{ variant.available }}" {% if variant.id == vp_shorts.selected_or_first_available_variant.id %}selected{% endif %}{% unless variant.available %} disabled{% endunless %}>{{ variant.title | escape }}{% unless variant.available %} — {{ vp_unavailable }}{% endunless %}</option>
-                  {%- endfor -%}
-                </select>
-              </label>
-            </div>
-            <input type="hidden" data-pack-wraps value="{{ vp_wraps.selected_or_first_available_variant.id }}" data-available="{{ vp_wraps.available }}">
-            <div class="vp__bottom">
-              <div class="vp__pricing">
-                <span class="vp__separate">{{ vp_separately }} <s>{{ vp_total | money }}</s></span>
-                <div class="vp__price"><strong>{{ vp_sale | money }}</strong><span>{{ vp_savings }} {{ vp_saved | money }}</span></div>
-              </div>
-              <button class="vp__submit" type="submit" data-pack-submit{% unless vp_gloves.available and vp_shorts.available and vp_wraps.available %} disabled{% endunless %}>{{ vp_add }} <span aria-hidden="true">↗</span></button>
-            </div>
-            <p class="vp__note">{{ vp_discount_note }}</p>
-            <p class="vp__status" role="status" aria-live="polite" data-pack-status></p>
-          </form>
-        </div>
-      </viriatto-charlie-pack>
+{{ 'viriatto-training-packs.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'viriatto-training-packs.js' | asset_url }}" defer></script>
+<section class="vp" id="ViriattoCharliePacks" aria-labelledby="ViriattoCharliePacksTitle">
+  <div class="vp__frame">
+    <div class="vp__intro">
+      <p class="vp__eyebrow">{{ vp_eyebrow }}</p>
+      <h2 id="ViriattoCharliePacksTitle">{{ vp_heading }}</h2>
+      <p>{{ vp_intro }}</p>
     </div>
-  </section>
-{%- endif -%}
+    <div class="vp__grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign vp_gloves = block.settings.gloves
+          assign vp_accessory = block.settings.accessory
+          assign vp_garment = block.settings.garment
+          assign vp_title = block.settings.title
+          assign vp_description = block.settings.description
+          assign vp_garment_label = block.settings.garment_label
+          assign vp_total = 0
+          if vp_gloves != blank and vp_accessory != blank and vp_garment != blank
+            assign vp_total = vp_gloves.price | plus: vp_accessory.price | plus: vp_garment.price
+          endif
+          assign vp_sale = vp_total | times: 0.9 | round
+          assign vp_saved = vp_total | minus: vp_sale
+        -%}
+        {%- if vp_total > 0 -%}
+          <viriatto-charlie-pack
+            class="vp__card"
+            {{ block.shopify_attributes }}
+            data-discount-code="{{ block.settings.discount_code | escape }}"
+            data-add="{{ vp_add | escape }}"
+            data-adding="{{ vp_adding | escape }}"
+            data-unavailable="{{ vp_unavailable | escape }}"
+            data-error="{{ vp_error | escape }}"
+          >
+            <div class="vp__image">
+              {%- if block.settings.pack_image != blank -%}
+                {{ block.settings.pack_image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '440,720,1050,1400', sizes: '(min-width: 990px) 47vw, 94vw', alt: vp_title, class: 'vp__photo' }}
+              {%- elsif block.settings.image_url != blank -%}
+                <img
+                  class="vp__photo"
+                  src="{{ block.settings.image_url | escape }}"
+                  width="1200"
+                  height="1200"
+                  loading="lazy"
+                  alt="{{ vp_title | escape }}"
+                >
+              {%- endif -%}
+            </div>
+            <div class="vp__details">
+              <div class="vp__headline">
+                <span class="vp__badge">−10%</span>
+                <span class="vp__edition">CHARLIE × VIRIATTO</span>
+              </div>
+              <h3>{{ vp_title | escape }}</h3>
+              <p class="vp__description">{{ vp_description | escape }}</p>
+              <ul class="vp__included">
+                <li><span class="vp__number">01</span><a href="{{ vp_gloves.url }}">{{ vp_gloves.title | escape }}</a></li>
+                <li><span class="vp__number">02</span><a href="{{ vp_accessory.url }}">{{ vp_accessory.title | escape }}</a></li>
+                <li><span class="vp__number">03</span><a href="{{ vp_garment.url }}">{{ vp_garment.title | escape }}</a></li>
+              </ul>
+              <form class="vp__form" data-pack-form novalidate>
+                <div class="vp__options">
+                  <label for="VpGloves-{{ section.id }}-{{ block.id }}">{{ vp_ounces }}
+                    <select id="VpGloves-{{ section.id }}-{{ block.id }}" name="gloves" data-pack-gloves required>
+                      {%- for variant in vp_gloves.variants -%}
+                        <option value="{{ variant.id }}" data-available="{{ variant.available }}"{% if variant.id == vp_gloves.selected_or_first_available_variant.id %} selected{% endif %}{% unless variant.available %} disabled{% endunless %}>{{ variant.title | escape }}{% unless variant.available %} — {{ vp_unavailable }}{% endunless %}</option>
+                      {%- endfor -%}
+                    </select>
+                  </label>
+                  <label for="VpGarment-{{ section.id }}-{{ block.id }}">{{ vp_garment_label | escape }}
+                    <select id="VpGarment-{{ section.id }}-{{ block.id }}" name="garment" data-pack-garment required>
+                      {%- for variant in vp_garment.variants -%}
+                        <option value="{{ variant.id }}" data-available="{{ variant.available }}"{% if variant.id == vp_garment.selected_or_first_available_variant.id %} selected{% endif %}{% unless variant.available %} disabled{% endunless %}>{{ variant.title | escape }}{% unless variant.available %} — {{ vp_unavailable }}{% endunless %}</option>
+                      {%- endfor -%}
+                    </select>
+                  </label>
+                </div>
+                <input type="hidden" data-pack-accessory value="{{ vp_accessory.selected_or_first_available_variant.id }}" data-available="{{ vp_accessory.available }}">
+                <div class="vp__bottom">
+                  <div class="vp__pricing">
+                    <span class="vp__separate">{{ vp_separately }} <s>{{ vp_total | money }}</s></span>
+                    <div class="vp__price">
+                      <strong>{{ vp_sale | money }}</strong>
+                      <span>{{ vp_savings }} {{ vp_saved | money }}</span>
+                    </div>
+                  </div>
+                  <button class="vp__submit" data-pack-submit type="submit"{% unless vp_gloves.available and vp_accessory.available and vp_garment.available %} disabled{% endunless %}>{{ vp_add }} <span aria-hidden="true">↗</span></button>
+                </div>
+                <p class="vp__note">{{ vp_discount_note }}</p>
+                <p class="vp__status" data-pack-status role="status" aria-live="polite"></p>
+              </form>
+            </div>
+          </viriatto-charlie-pack>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
 {% schema %}
 {
-  "name": "VIRIATTO | Pack Charlie",
+  "name": "VIRIATTO | Packs Charlie",
   "tag": "section",
   "class": "section-viriatto-packs",
-  "settings": [
-    {"type":"image_picker","id":"pack_image","label":"Fotografia do pack (opcional)"},
-    {"type":"product","id":"gloves","label":"Luvas Charlie Bat-X"},
-    {"type":"product","id":"wraps","label":"Ligaduras Charlie"},
-    {"type":"product","id":"shorts","label":"Calções Charlie Boxeo X"}
+  "max_blocks": 2,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "pack",
+      "name": "Pack Charlie",
+      "settings": [
+        {"type":"text","id":"title","label":"Nome do pack","default":"PACK CHARLIE"},
+        {"type":"textarea","id":"description","label":"Descrição","default":"Três artigos Charlie com 10% de desconto."},
+        {"type":"image_picker","id":"pack_image","label":"Imagem do pack (opcional)"},
+        {"type":"url","id":"image_url","label":"URL da imagem alternativa"},
+        {"type":"product","id":"gloves","label":"Luvas"},
+        {"type":"product","id":"accessory","label":"Ligaduras ou boqueira"},
+        {"type":"product","id":"garment","label":"Calções ou casaco"},
+        {"type":"text","id":"garment_label","label":"Etiqueta do tamanho","default":"Tamanho"},
+        {"type":"text","id":"discount_code","label":"Código de desconto"}
+      ]
+    }
   ],
-  "presets":[{"name":"VIRIATTO | Pack Charlie"}]
+  "presets": [{"name":"VIRIATTO | Packs Charlie"}]
 }
 {% endschema %}

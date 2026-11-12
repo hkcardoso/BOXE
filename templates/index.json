@@ -81,11 +81,39 @@
         },
         "viriatto_packs": {
             "type": "viriatto-training-packs",
-            "settings": {
-                "gloves": "charlie-bat-x-luvas-de-treino",
-                "wraps": "charlie-catalogo-2026-051-venda-algodon",
-                "shorts": "charlie-catalogo-2026-172-boxeo-x"
-            }
+            "blocks": {
+                "charlie_red": {
+                    "type": "pack",
+                    "settings": {
+                        "title": "PACK CHARLIE VERMELHO",
+                        "description": "Bat-X, ligaduras e calções Boxeo X. Escolhe as onças e o tamanho.",
+                        "image_url": "https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-pack-charlie-vermelho-batx-boxeox-ligaduras.webp?v=1794476581",
+                        "gloves": "charlie-bat-x-luvas-de-treino",
+                        "accessory": "charlie-catalogo-2026-051-venda-algodon",
+                        "garment": "charlie-catalogo-2026-172-boxeo-x",
+                        "garment_label": "Tamanho dos calções",
+                        "discount_code": "PACKCHARLIE10"
+                    }
+                },
+                "charlie_blue": {
+                    "type": "pack",
+                    "settings": {
+                        "title": "PACK CHARLIE AZUL",
+                        "description": "Luvas Gel Metallic, casaco Black Fighter e boqueira Molar. Escolhe as onças e o tamanho.",
+                        "image_url": "https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-pack-charlie-azul-gel-metallic-black-fighter-molar.webp?v=1794477153",
+                        "gloves": "charlie-gel-metallic-luvas-de-boxe",
+                        "accessory": "charlie-catalogo-2026-040-bucal-molar",
+                        "garment": "charlie-catalogo-2026-215-cazadora-black-fighter",
+                        "garment_label": "Tamanho do casaco",
+                        "discount_code": "PACKCHARLIEAZUL10"
+                    }
+                }
+            },
+            "block_order": [
+                "charlie_red",
+                "charlie_blue"
+            ],
+            "settings": {}
         },
         "viriatto_training_video": {
             "type": "viriatto-training-video",

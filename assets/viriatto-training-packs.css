@@ -44,33 +44,58 @@
 @media(prefers-reduced-motion:reduce){.vp__submit{transition:none}}
 
 
-/* Red and blue packs: full images to the left, product details to the right. */
+/* Packs: square product images and specifications side by side.
+   The purchase area spans the entire card width, so no empty space sits below the photo. */
 .vp__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:stretch}
-.vp__grid .vp__card{display:grid;grid-template-columns:minmax(0,44%) minmax(0,56%);min-width:0;height:100%;align-items:start}
-.vp__grid .vp__image{display:block;width:100%;height:auto;min-width:0;min-height:0;overflow:hidden;aspect-ratio:1 / 1;align-self:start;background:#141518}
+.vp__grid .vp__card{display:block;min-width:0;height:100%;overflow:hidden}
+.vp__grid .vp__form{display:flex;flex-direction:column;height:100%;min-width:0}
+.vp__grid .vp__top{display:grid;grid-template-columns:minmax(0,46%) minmax(0,54%);align-items:start;min-width:0}
+.vp__grid .vp__image{display:block;position:relative;width:100%;height:auto;aspect-ratio:1 / 1;min-width:0;min-height:0;overflow:hidden;background:#141518}
 .vp__grid .vp__photo{display:block;width:100%;height:100%;max-width:none;max-height:none;min-height:0;aspect-ratio:1 / 1;object-fit:contain;object-position:center}
-.vp__grid .vp__details{padding:clamp(17px,1.9vw,28px);display:flex;flex-direction:column;justify-content:center;min-width:0}
-.vp__grid .vp__details h3{font-size:clamp(20px,1.75vw,26px);overflow-wrap:break-word}
-.vp__grid .vp__description{margin-bottom:13px}
-.vp__grid .vp__included{margin-bottom:15px}
-.vp__grid .vp__bottom{display:flex;flex-direction:column;align-items:stretch;gap:12px;margin-top:4px;padding-top:14px}
-.vp__grid .vp__submit{width:100%}
-.vp__grid .vp__options{margin-bottom:10px;gap:9px}
-.vp__grid .vp__options select{padding-inline:8px}
+.vp__grid .vp__details{min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:0;padding:clamp(13px,1.35vw,22px)}
+.vp__grid .vp__headline{margin-bottom:8px;gap:8px}
+.vp__grid .vp__badge{padding:6px 8px}
+.vp__grid .vp__edition{font-size:9px;letter-spacing:.12em}
+.vp__grid .vp__details h3{font-size:clamp(17px,1.45vw,23px);line-height:1.16;margin-bottom:8px;overflow-wrap:break-word}
+.vp__grid .vp__description{font-size:11px;line-height:1.45;margin:0 0 10px}
+.vp__grid .vp__included{margin:0 0 12px}
+.vp__grid .vp__included li{font-size:10px;gap:8px;padding:6px 0;line-height:1.4}
+.vp__grid .vp__number{flex-basis:18px;font-size:9px}
+.vp__grid .vp__options{margin:0;gap:8px}
+.vp__grid .vp__options label{font-size:10px}
+.vp__grid .vp__options select{height:38px;min-height:38px;padding:7px 8px;margin-top:5px;font-size:12px}
+.vp__grid .vp__footer{margin-top:auto;padding:16px clamp(17px,2vw,27px) 14px;border-top:1px solid #35373e;background:#17181b}
+.vp__grid .vp__bottom{display:flex;flex-direction:row;justify-content:space-between;align-items:center;gap:14px;margin:0;padding:0}
+.vp__grid .vp__price strong{font-size:clamp(25px,2.2vw,33px)}
+.vp__grid .vp__pricing{flex:1;min-width:0}
+.vp__grid .vp__submit{flex:0 0 auto;min-width:185px;width:auto;padding:13px 16px}
+.vp__grid .vp__note{margin:11px 0 0;font-size:10px}
+.vp__grid .vp__status{margin-top:9px}
 .vp__grid .vp__card:nth-child(2) .vp__badge{background:#2452ac}
+@media(max-width:1399px) and (min-width:1200px){
+  .vp__grid .vp__top{grid-template-columns:minmax(0,43%) minmax(0,57%)}
+  .vp__grid .vp__details{padding:12px}
+  .vp__grid .vp__details h3{font-size:18px}
+  .vp__grid .vp__included li{padding:4px 0}
+  .vp__grid .vp__submit{min-width:160px;font-size:10px}
+}
 @media(max-width:1199px){
   .vp__grid{grid-template-columns:1fr;gap:18px}
-  .vp__grid .vp__card{grid-template-columns:minmax(0,46%) minmax(0,54%)}
-  .vp__grid .vp__details{padding:clamp(22px,3vw,38px)}
-  .vp__grid .vp__details h3{font-size:clamp(24px,2.6vw,31px)}
-  .vp__grid .vp__bottom{margin-top:12px}
+  .vp__grid .vp__top{grid-template-columns:minmax(0,45%) minmax(0,55%)}
+  .vp__grid .vp__details{padding:clamp(20px,3vw,35px)}
+  .vp__grid .vp__details h3{font-size:clamp(22px,2.5vw,29px)}
+  .vp__grid .vp__description{font-size:13px}
+  .vp__grid .vp__included li{font-size:12px;padding:9px 0}
+  .vp__grid .vp__options select{height:44px}
 }
 @media(max-width:749px){
-  .vp__grid{grid-template-columns:1fr;gap:16px}
-  .vp__grid .vp__card{display:flex;flex-direction:column}
-  .vp__grid .vp__image{aspect-ratio:1 / 1;min-height:0;align-self:stretch}
+  .vp__grid{grid-template-columns:1fr;gap:15px}
+  .vp__grid .vp__top{display:flex;flex-direction:column}
+  .vp__grid .vp__image{aspect-ratio:1 / 1;min-height:0;width:100%}
   .vp__grid .vp__photo{width:100%;height:100%;max-height:none;min-height:0;aspect-ratio:1 / 1;object-fit:contain}
-  .vp__grid .vp__details{padding:22px 19px 25px}
-  .vp__grid .vp__details h3{font-size:25px}
-  .vp__grid .vp__bottom{margin-top:5px}
+  .vp__grid .vp__details{padding:20px 19px 23px;width:100%}
+  .vp__grid .vp__details h3{font-size:24px}
+  .vp__grid .vp__footer{padding:16px 19px}
+  .vp__grid .vp__bottom{flex-direction:column;align-items:stretch;gap:14px}
+  .vp__grid .vp__submit{width:100%;min-width:0}
 }

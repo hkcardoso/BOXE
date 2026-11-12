@@ -72,7 +72,9 @@
             data-unavailable="{{ vp_unavailable | escape }}"
             data-error="{{ vp_error | escape }}"
           >
-            <div class="vp__image">
+            <form class="vp__form" data-pack-form novalidate>
+              <div class="vp__top">
+                <div class="vp__image">
               {%- if block.settings.pack_image != blank -%}
                 {{ block.settings.pack_image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '440,720,1050,1400', sizes: '(min-width: 990px) 47vw, 94vw', alt: vp_title, class: 'vp__photo' }}
               {%- elsif block.settings.image_url != blank -%}
@@ -86,7 +88,7 @@
                 >
               {%- endif -%}
             </div>
-            <div class="vp__details">
+                <div class="vp__details">
               <div class="vp__headline">
                 <span class="vp__badge">−10%</span>
                 <span class="vp__edition">CHARLIE × VIRIATTO</span>
@@ -98,8 +100,7 @@
                 <li><span class="vp__number">02</span><a href="{{ vp_accessory.url }}">{{ vp_accessory.title | escape }}</a></li>
                 <li><span class="vp__number">03</span><a href="{{ vp_garment.url }}">{{ vp_garment.title | escape }}</a></li>
               </ul>
-              <form class="vp__form" data-pack-form novalidate>
-                <div class="vp__options">
+                  <div class="vp__options">
                   <label for="VpGloves-{{ section.id }}-{{ block.id }}">{{ vp_ounces }}
                     <select id="VpGloves-{{ section.id }}-{{ block.id }}" name="gloves" data-pack-gloves required>
                       {%- for variant in vp_gloves.variants -%}
@@ -115,7 +116,10 @@
                     </select>
                   </label>
                 </div>
-                <input type="hidden" data-pack-accessory value="{{ vp_accessory.selected_or_first_available_variant.id }}" data-available="{{ vp_accessory.available }}">
+                  <input type="hidden" data-pack-accessory value="{{ vp_accessory.selected_or_first_available_variant.id }}" data-available="{{ vp_accessory.available }}">
+                </div>
+              </div>
+              <div class="vp__footer">
                 <div class="vp__bottom">
                   <div class="vp__pricing">
                     <span class="vp__separate">{{ vp_separately }} <s>{{ vp_total | money }}</s></span>
@@ -128,8 +132,8 @@
                 </div>
                 <p class="vp__note">{{ vp_discount_note }}</p>
                 <p class="vp__status" data-pack-status role="status" aria-live="polite"></p>
-              </form>
-            </div>
+              </div>
+            </form>
           </viriatto-charlie-pack>
         {%- endif -%}
       {%- endfor -%}

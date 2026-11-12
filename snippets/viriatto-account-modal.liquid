@@ -10,42 +10,41 @@
   assign viri_intro = 'Acede às tuas encomendas e aos teus dados.'
   assign viri_email_label = 'E-mail'
   assign viri_email_placeholder = 'O teu endereço de e-mail'
-  assign viri_email_continue = 'Continuar com e-mail'
+  assign viri_email_continue = 'Registar com e-mail'
   assign viri_or = 'ou'
   assign viri_google = 'Continuar com Google'
   assign viri_shop = 'Continuar com Shop'
   assign viri_google_note = 'A seleção de Google é feita na página segura da Shopify.'
   assign viri_orders = 'Encomendas'
-  assign viri_profile = 'Perfil'
+
   assign viri_close = 'Fechar'
   if viri_lang == 'en'
     assign viri_heading = 'Sign in or create an account'
     assign viri_intro = 'Access your orders and account details.'
     assign viri_email_label = 'Email'
     assign viri_email_placeholder = 'Your email address'
-    assign viri_email_continue = 'Continue with email'
+    assign viri_email_continue = 'Register with email'
     assign viri_or = 'or'
     assign viri_google = 'Continue with Google'
     assign viri_shop = 'Continue with Shop'
     assign viri_google_note = 'Select Google on Shopify’s secure sign-in page.'
     assign viri_orders = 'Orders'
-    assign viri_profile = 'Profile'
+
     assign viri_close = 'Close'
   elsif viri_lang == 'es'
     assign viri_heading = 'Iniciar sesión o crear una cuenta'
     assign viri_intro = 'Accede a tus pedidos y datos.'
     assign viri_email_label = 'Correo electrónico'
     assign viri_email_placeholder = 'Tu correo electrónico'
-    assign viri_email_continue = 'Continuar con correo'
+    assign viri_email_continue = 'Registrarse con correo'
     assign viri_or = 'o'
     assign viri_google = 'Continuar con Google'
     assign viri_shop = 'Continuar con Shop'
     assign viri_google_note = 'Selecciona Google en la página segura de Shopify.'
     assign viri_orders = 'Pedidos'
-    assign viri_profile = 'Perfil'
+
     assign viri_close = 'Cerrar'
   endif
-  assign viri_account_parts = routes.account_url | split: '?'
 -%}
 <div
   id="ViriattoAuthDialog-{{ section.id }}"
@@ -109,10 +108,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="6" width="16" height="15" rx="2"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
         {{ viri_orders }}
       </a>
-      <a href="{{ viri_account_parts.first }}/profile{% if viri_account_parts.size > 1 %}?{{ viri_account_parts.last }}{% endif %}">
-        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="9" r="3"/><path d="M6.5 19c.8-3.2 3-4.8 5.5-4.8s4.7 1.6 5.5 4.8"/></svg>
-        {{ viri_profile }}
-      </a>
+
     </div>
   </div>
 </div>
@@ -231,7 +227,7 @@
     max-width:100%!important;
     cursor:pointer;
   }
-  .viriatto-auth__links{display:grid;grid-template-columns:1fr 1fr;gap:11px;border-top:1px solid #36383d;margin-top:22px;padding-top:22px}
+  .viriatto-auth__links{display:grid;grid-template-columns:1fr;gap:11px;border-top:1px solid #36383d;margin-top:22px;padding-top:22px}
   .viriatto-auth__links a{display:flex;align-items:center;justify-content:center;gap:9px;min-height:41px;border:1px solid #484b51;border-radius:10px;text-decoration:none!important;color:#f4f4f5!important;font-weight:550;font-size:11px;transition:background .2s}
   .viriatto-auth__links a:hover{background:#282a2e}
   .viriatto-auth__links svg{width:17px;height:17px}

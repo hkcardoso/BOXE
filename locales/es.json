@@ -230,6 +230,10 @@
     }
   },
   "templates": {
+    "404": {
+      "title": "Página no encontrada",
+      "subtext": "404"
+    },
     "search": {
       "no_results": "No se encontraron resultados para “{{ terms }}” Revisa la ortografía o usa una palabra o frase diferente.",
       "results_with_count": {
@@ -278,10 +282,6 @@
         "error_heading": "Por favor, ajusta lo siguiente:",
         "title": "Formulario de contacto"
       }
-    },
-    "404": {
-      "title": "Página no encontrada",
-      "subtext": "404"
     }
   },
   "sections": {
@@ -730,5 +730,162 @@
     "note": "Una unidad de cada artículo. El ahorro ya está incluido en el precio del pack.",
     "video_credit": "Vídeo: Tima Miroshnichenko / Pexels",
     "details": "Ver pack"
+  },
+  "viriatto_product": {
+    "details": "Conoce el producto",
+    "details_intro": "Características, ajuste y cuidados para elegir con confianza.",
+    "description": "Descripción",
+    "highlights": "Características principales",
+    "technical": "Datos técnicos",
+    "model": "Modelo",
+    "fit": "Cómo elegir y ajustar",
+    "care": "Cuidados y mantenimiento",
+    "empty_description": "¿Necesitas más información sobre este producto? Contacta con nosotros antes de comprar.",
+    "features_fallback": "Consulta la descripción y los datos técnicos del producto. Contacta con nosotros para confirmar cualquier característica.",
+    "fit_fallback": "Consulta las opciones y confirma las medidas con el fabricante antes de elegir. Contacta con nosotros si necesitas ayuda.",
+    "care_fallback": "Sigue las instrucciones de la etiqueta y las recomendaciones del fabricante para conservar el producto.",
+    "complements": "Combina bien con",
+    "complements_intro": "Completa tu equipamiento con productos para la misma rutina de entrenamiento.",
+    "view_product": "Ver producto",
+    "reviews": "Opiniones",
+    "demo_notice": "Opiniones de ejemplo · no corresponden a clientes reales.",
+    "demo_summary": "Resumen de opiniones de ejemplo",
+    "demo_count": "15 opiniones de ejemplo",
+    "demo_badge": "Demostración",
+    "fictional_profile": "Perfil ficticio",
+    "filter_rating": "Filtrar por valoración",
+    "all_ratings": "Todas las valoraciones",
+    "more_reviews": "Ver más opiniones",
+    "less_reviews": "Ver menos opiniones",
+    "no_reviews": "Todavía no hay opiniones publicadas para este producto.",
+    "from": "Desde",
+    "about_brand": "Sobre la marca",
+    "explore_brand": "Ver productos de la marca",
+    "zoom_in": "Ampliar imagen dentro del recuadro",
+    "zoom_out": "Reducir imagen"
+  },
+  "viriatto_product_copy": {
+    "charlie-bat-x-luvas-de-treino": {
+      "intro": "Piel de búfalo natural, cierre ancho de velcro y la identidad clásica de Charlie. Las Bat-X acompañan tus entrenamientos de boxeo, Muay Thai y kickboxing.",
+      "description": "Las Charlie Bat-X combinan una construcción en piel de búfalo natural con una correa ancha de velcro en la muñeca, que permite regular el ajuste entre ejercicios.||Este modelo está pensado para entrenamientos habituales de boxeo, Muay Thai y kickboxing. El logotipo Charlie en la muñeca y los detalles Bat-X en relieve completan su diseño. Consulta las imágenes de cada variante para comprobar colores y acabados.",
+      "features": "Piel de búfalo natural|Correa ancha de velcro en la muñeca|Detalles Charlie y Bat-X en relieve|Para entrenamientos de boxeo, Muay Thai y kickboxing",
+      "fit": "Las onzas indican el peso del guante, no la talla de la mano. Elige según tu peso, tipo de entrenamiento y recomendaciones del entrenador. Prueba el ajuste con vendas; para hacer sparring, confirma las onzas exigidas por tu gimnasio.",
+      "care": "Después de entrenar, limpia el exterior con un paño ligeramente húmedo y deja los guantes abiertos en un lugar ventilado. Evita la lavadora, el calor directo y la exposición prolongada al sol. Guárdalos cuando estén secos.",
+      "technical": "Material::Piel de búfalo natural||Cierre::Correa ancha de velcro||Disciplinas::Boxeo, Muay Thai y kickboxing",
+      "benefits": "layers::Piel de búfalo natural::La piel de búfalo aporta estructura a las Bat-X. Deja los guantes abiertos después de entrenar para que el interior se seque.||adjust::Correa ancha en la muñeca::El velcro permite regular el ajuste y quitar los guantes entre ejercicios. Comprueba el ajuste con las vendas que utilizas habitualmente.||target::Un modelo para diferentes sesiones::Boxeo, Muay Thai o kickboxing: elige las onzas en función del entrenamiento. Para sparring, confirma siempre el peso exigido por tu entrenador."
+    },
+    "charlie-gel-metallic-luvas-de-boxe": {
+      "intro": "Guantes de boxeo Charlie en piel de búfalo, con acabado metalizado Navy Blue y cierre de velcro.",
+      "description": "Las Charlie Gel Metallic combinan piel de búfalo con un acabado metalizado Navy Blue. Son una alternativa para quienes buscan una estética diferente a los acabados clásicos.||El cierre de velcro permite ajustar la muñeca antes de cada sesión. Elige el peso según el tipo de entrenamiento y las recomendaciones de tu entrenador.",
+      "features": "Construcción en piel de búfalo|Acabado metalizado|Color Navy Blue|Cierre de velcro|Diferentes pesos en onzas",
+      "fit": "Las onzas indican el peso del guante, no la talla de la mano. Elige según tu peso, tipo de entrenamiento y recomendaciones del entrenador. Comprueba el ajuste con vendas; para sparring, confirma las onzas exigidas por tu gimnasio.",
+      "care": "Limpia el exterior con un paño ligeramente húmedo después de entrenar y deja que los guantes se aireen. Evita la lavadora, el calor directo y el sol. Guárdalos solo cuando estén secos.",
+      "technical": "Material::Piel de búfalo||Cierre::Velcro||Acabado::Metalizado||Color de esta versión::Navy Blue",
+      "benefits": "layers::Piel de búfalo::La construcción en piel de búfalo se combina con el acabado metalizado de esta versión. Limpia la superficie y ventila los guantes después de entrenar.||adjust::Cierre de velcro::Regula el ajuste de la muñeca antes de cada sesión. Resulta práctico para los descansos y los cambios de ejercicio.||target::Acabado Navy Blue::El acabado metalizado distingue esta versión de los guantes de colores lisos. Elige las onzas según la sesión y las indicaciones de tu entrenador."
+    }
+  },
+  "viriatto_brands": {
+    "charlie": {
+      "title": "La identidad del boxeo está en los detalles.",
+      "body": "La selección Charlie Boxing de VIRIATTO incluye guantes Bat-X y Gel Metallic, con cierre de velcro, construcción en piel de búfalo y acabados diferentes. Compara las opciones y elige el peso adecuado a tu entrenamiento."
+    },
+    "fairtex": {
+      "title": "Equipamiento para cada fase del entrenamiento.",
+      "body": "En la selección Fairtex encontrarás guantes, espinilleras y protectores bucales para boxeo y Muay Thai. Compara BGV1, BGV9, SP5 y MG3 según sus características, ajuste y tipo de sesión."
+    },
+    "venum": {
+      "title": "Del equipo de contacto a la bolsa de entrenamiento.",
+      "body": "VIRIATTO ofrece productos Venum como el protector bucal Challenger y la mochila Challenger Pro Evo, para entrenar y transportar tus accesorios."
+    },
+    "everlast": {
+      "title": "El entrenamiento de boxeo como punto de partida.",
+      "body": "Las Everlast Powerlock 2R forman parte de nuestra selección para trabajo de saco, manoplas y entrenamiento general. Consulta el ajuste, el cierre y los pesos disponibles."
+    },
+    "cleto-reyes": {
+      "title": "Construcción mexicana para entrenar boxeo.",
+      "body": "Los guantes Cleto Reyes combinan piel y cierre de velcro, con diseño de tradición mexicana. Elige el peso según la sesión y el consejo del entrenador."
+    },
+    "rival": {
+      "title": "Protección y detalles para el entrenamiento de contacto.",
+      "body": "Rival está presente con el casco híbrido RHG2, de diseño compacto y protección de pómulos. Comprueba las medidas y el ajuste antes de utilizarlo."
+    },
+    "twins": {
+      "title": "Modelos clásicos de Muay Thai.",
+      "body": "La selección Twins Special incluye guantes BGVL-3 y espinilleras SGL-10. Compara los materiales, las zonas acolchadas y el ajuste de cada modelo."
+    },
+    "fluory": {
+      "title": "La estética del Muay Thai en tu equipamiento.",
+      "body": "Los pantalones cortos FLUORY destacan por sus gráficos en rojo, negro y dorado y su cintura elástica ancha. Comprueba el tejido y las medidas antes de comprar."
+    },
+    "viriatto": {
+      "title": "Para tu rutina dentro y fuera del gimnasio.",
+      "body": "VIRIATTO reúne ropa y accesorios para entrenar y desplazarte al gimnasio: camisetas, rashguards, mochilas y bolsas. Consulta los detalles de cada producto."
+    },
+    "generic": {
+      "title": "Descubre los productos de esta marca.",
+      "body": "Compara los modelos según sus características, uso, ajuste y recomendaciones del fabricante."
+    }
+  },
+  "viriatto_review_demo": {
+    "item_1": {
+      "title": "Buen primer entrenamiento",
+      "body": "El producto llegó como esperaba. Lo probé en una sesión y la primera impresión fue buena."
+    },
+    "item_2": {
+      "title": "Aspecto igual que en las fotos",
+      "body": "El color y los detalles coinciden con las imágenes. Era una de las cosas que quería comprobar."
+    },
+    "item_3": {
+      "title": "Comprueba el ajuste",
+      "body": "Me gustó el producto, pero tuve que ajustar bien su colocación antes de entrenar."
+    },
+    "item_4": {
+      "title": "Fácil de usar",
+      "body": "Me resultó fácil entender cómo usarlo. Para mi rutina cumple lo que necesitaba."
+    },
+    "item_5": {
+      "title": "Buena presentación",
+      "body": "Buenos acabados y sin marcas al recibirlo. Veré cómo responde tras más usos."
+    },
+    "item_6": {
+      "title": "Necesitaba comparar opciones",
+      "body": "Dudaba entre dos opciones. Elegí después de confirmar las medidas y acerté."
+    },
+    "item_7": {
+      "title": "Primera impresión positiva",
+      "body": "Ya lo he usado varias veces y por ahora estoy satisfecho. Es pronto para hablar de durabilidad."
+    },
+    "item_8": {
+      "title": "Coincide con la descripción",
+      "body": "Recibí el modelo que elegí y los detalles coinciden con su ficha."
+    },
+    "item_9": {
+      "title": "Esperaba otro ajuste",
+      "body": "El producto está bien presentado, pero el ajuste no era exactamente lo que imaginaba. Conviene comprobarlo antes de comprar."
+    },
+    "item_10": {
+      "title": "Me acompaña al entrenamiento",
+      "body": "Ya forma parte de mi bolsa del gimnasio. Me alegro de haberlo elegido para el uso que le doy."
+    },
+    "item_11": {
+      "title": "Buena elección con una salvedad",
+      "body": "En general me gustó. Tuve que probarlo con calma hasta encontrar la forma más cómoda de utilizarlo."
+    },
+    "item_12": {
+      "title": "Era el modelo que buscaba",
+      "body": "Ya conocía el modelo y por eso lo elegí. Su presentación era la esperada."
+    },
+    "item_13": {
+      "title": "Detalles bien resueltos",
+      "body": "Me gustó especialmente el acabado. Las fotos de detalle me ayudaron a elegir."
+    },
+    "item_14": {
+      "title": "Satisfecho por ahora",
+      "body": "Ha cumplido en los primeros usos. Prefiero valorarlo de nuevo después de varias semanas."
+    },
+    "item_15": {
+      "title": "Lo volvería a elegir",
+      "body": "Por ahora se ajusta a lo que necesitaba. Comprobé la opción antes de pedirla y salió bien."
+    }
   }
 }

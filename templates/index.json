@@ -81,36 +81,11 @@
         },
         "viriatto_packs": {
             "type": "viriatto-training-packs",
-            "blocks": {
-                "boxe": {
-                    "type": "pack",
-                    "settings": {
-                        "product": "pack-boxe-primeiro-round",
-                        "product_1": "charlie-bat-x-luvas-de-treino",
-                        "product_2": "venum-challenger-boqueira-com-caixa",
-                        "product_3": "all-over-print-gym-bag",
-                        "title": "Boxe",
-                        "subtitle": "Charlie Bat-X + Venum Challenger + saco 30 L"
-                    }
-                },
-                "muaythai": {
-                    "type": "pack",
-                    "settings": {
-                        "product": "pack-muay-thai-pronto-para-o-treino",
-                        "product_1": "fairtex-bgv1-luvas-de-boxe-e-muay-thai",
-                        "product_2": "fairtex-sp5-caneleiras-de-competicao",
-                        "product_3": "fairtex-mg3-boqueira-de-gel",
-                        "title": "Muay Thai",
-                        "subtitle": "Fairtex BGV1 + SP5 + MG3"
-                    }
-                }
-            },
-            "block_order": [
-                "boxe",
-                "muaythai"
-            ],
-            "settings": {},
-            "disabled": true
+            "settings": {
+                "gloves": "charlie-bat-x-luvas-de-treino",
+                "wraps": "charlie-catalogo-2026-051-venda-algodon",
+                "shorts": "charlie-catalogo-2026-172-boxeo-x"
+            }
         },
         "viriatto_training_video": {
             "type": "viriatto-training-video",

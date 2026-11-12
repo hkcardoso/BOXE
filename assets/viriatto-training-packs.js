@@ -1,59 +1,62 @@
-if (!customElements.get('viriatto-training-packs')) {
-  customElements.define('viriatto-training-packs', class extends HTMLElement {
+if (!customElements.get('viriatto-charlie-pack')) {
+  customElements.define('viriatto-charlie-pack', class extends HTMLElement {
     connectedCallback() {
       if (this.initialized) return;
       this.initialized = true;
+      const form = this.querySelector('[data-pack-form]');
+      if (!form) return;
       this.controller = new AbortController();
       const signal = this.controller.signal;
-      const root = window.Shopify?.routes?.root || '/';
-      const money = value => new Intl.NumberFormat(document.documentElement.lang || 'pt-PT', {style:'currency', currency:this.dataset.currency || 'EUR'}).format(value / 100);
-      this.querySelectorAll('[data-open]').forEach(button => button.addEventListener('click', () => {
-        const dialog = document.getElementById(button.dataset.open);
-        dialog.showModal();
-        dialog.addEventListener('close', () => button.focus(), {once:true});
-      }, {signal}));
-      this.querySelectorAll('dialog').forEach(dialog => {
-        dialog.querySelector('[data-close]').addEventListener('click', () => dialog.close(), {signal});
-        dialog.addEventListener('click', event => {
-          if (event.target !== dialog) return;
-          const box = dialog.getBoundingClientRect();
-          if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close();
-        }, {signal});
-        const form = dialog.querySelector('form');
-        const variants = JSON.parse(form.querySelector('[data-variants]').textContent);
-        const selects = [...form.querySelectorAll('[data-option]')];
-        const submit = form.querySelector('[type=submit]');
-        const status = form.querySelector('[role=status]');
-        let busy = false;
-        const current = () => variants.find(v => v.options.every((value,i) => value === selects[i].value));
-        const update = () => {
-          const variant = current();
-          form.elements.id.value = variant?.id || '';
-          form.querySelector('[data-price]').textContent = variant ? money(variant.price) : '—';
-          submit.disabled = busy || !variant?.available;
-          submit.textContent = busy ? this.dataset.adding : variant?.available ? this.dataset.add : this.dataset.unavailable;
-        };
-        selects.forEach(select => select.addEventListener('change', () => {status.textContent='';update();}, {signal}));
+      const gloves = form.querySelector('[data-pack-gloves]');
+      const shorts = form.querySelector('[data-pack-shorts]');
+      const wraps = form.querySelector('[data-pack-wraps]');
+      const button = form.querySelector('[data-pack-submit]');
+      const status = form.querySelector('[data-pack-status]');
+      const root = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+      let busy = false;
+      const selectedIsAvailable = select => Boolean(select && select.selectedOptions.length && select.selectedOptions[0].dataset.available === 'true');
+      const available = () => selectedIsAvailable(gloves) && selectedIsAvailable(shorts) && wraps.dataset.available === 'true';
+      const update = () => {
+        button.disabled = busy || !available();
+        button.firstChild.textContent = busy ? this.dataset.adding + ' ' : available() ? this.dataset.add + ' ' : this.dataset.unavailable + ' ';
+      };
+      gloves.addEventListener('change', () => { status.textContent=''; update(); }, { signal });
+      shorts.addEventListener('change', () => { status.textContent=''; update(); }, { signal });
+      update();
+      form.addEventListener('submit', async event => {
+        event.preventDefault();
+        if (busy || !available()) return;
+        busy = true;
+        status.textContent = '';
         update();
-        form.addEventListener('submit', async event => {
-          event.preventDefault();
-          if (busy || !current()?.available) return;
-          busy=true;status.textContent='';update();
-          selects.forEach(select => select.disabled=true);
-          try {
-            const response = await fetch(root+'cart/add.js', {method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({items:[{id:Number(form.elements.id.value),quantity:1}]})});
-            const result = await response.json();
-            if (!response.ok || result.status) throw new Error(result.description || this.dataset.error);
-            status.textContent=this.dataset.added;
-            form.querySelector('.vp__cart').hidden=false;
-            document.dispatchEvent(new CustomEvent('bx:cart:refresh'));
-            if (typeof publish === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') publish(PUB_SUB_EVENTS.cartUpdate, {source:'viriatto-packs'});
-          } catch (error) {status.textContent=error.message || this.dataset.error;}
-          finally {busy=false;selects.forEach(select => select.disabled=false);update();}
-        }, {signal});
-      });
-
+        try {
+          const items = [
+            { id: Number(gloves.value), quantity: 1 },
+            { id: Number(wraps.value), quantity: 1 },
+            { id: Number(shorts.value), quantity: 1 }
+          ];
+          if (items.some(item => !Number.isSafeInteger(item.id))) throw new Error(this.dataset.error);
+          const response = await fetch(root + 'cart/add.js', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ items })
+          });
+          const result = await response.json();
+          if (!response.ok || result.status) throw new Error(result.description || this.dataset.error);
+          const redirect = root + 'cart';
+          const discount = this.dataset.discountCode;
+          window.location.assign(root + 'discount/' + encodeURIComponent(discount) + '?redirect=' + encodeURIComponent(redirect));
+        } catch (error) {
+          status.textContent = error.message || this.dataset.error;
+          busy = false;
+          update();
+        }
+      }, { signal });
     }
-    disconnectedCallback(){this.controller?.abort();this.initialized=false;}
+    disconnectedCallback() {
+      if (this.controller) this.controller.abort();
+      this.initialized = false;
+    }
   });
 }

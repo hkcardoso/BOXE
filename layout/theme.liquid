@@ -30,11 +30,11 @@
       if request.page_type == 'index'
         case viriatto_lang
           when 'en'
-            assign viriatto_page_title = 'Boxing Gloves, Muay Thai, MMA & Fitness | VIRIATTO'
+            assign viriatto_page_title = 'VIRIATTO | Boxing Gloves, Muay Thai, MMA & Fitness'
           when 'es'
-            assign viriatto_page_title = 'Guantes de Boxeo, Muay Thai, MMA y Fitness | VIRIATTO'
+            assign viriatto_page_title = 'VIRIATTO | Guantes de Boxeo, Muay Thai, MMA y Fitness'
           else
-            assign viriatto_page_title = 'Luvas de Boxe, Muay Thai, MMA e Fitness | VIRIATTO'
+            assign viriatto_page_title = 'VIRIATTO | Luvas de Boxe, Muay Thai, MMA e Fitness'
         endcase
       endif
 
@@ -44,11 +44,11 @@
           when 'index'
             case viriatto_lang
               when 'en'
-                assign viriatto_meta_description = 'Explore boxing gloves, shin guards, protective gear and training equipment for boxing, Muay Thai, MMA and fitness. Discover VIRIATTO.'
+                assign viriatto_meta_description = 'Explore boxing gloves, shin guards, protective gear and training clothing for boxing, Muay Thai, MMA and fitness at VIRIATTO, an online store in Portugal.'
               when 'es'
-                assign viriatto_meta_description = 'Descubre guantes de boxeo, espinilleras, protecciones y equipamiento para boxeo, Muay Thai, MMA y fitness en VIRIATTO.'
+                assign viriatto_meta_description = 'Descubre guantes de boxeo, espinilleras, protecciones y ropa de entrenamiento para boxeo, Muay Thai, MMA y fitness en VIRIATTO, tienda online en Portugal.'
               else
-                assign viriatto_meta_description = 'Explora luvas de boxe, caneleiras, proteções e equipamento para boxe, Muay Thai, MMA e fitness. Descobre a VIRIATTO em Portugal.'
+                assign viriatto_meta_description = 'Luvas de boxe, caneleiras, proteções e roupa de treino para Boxe, Muay Thai, MMA e fitness. Descobre o equipamento da VIRIATTO, loja online em Portugal.'
             endcase
           when 'collection'
             if collection.description != blank
@@ -89,10 +89,12 @@
     {%- endif -%}
     {%- if request.page_type == 'search' or request.page_type == '404' -%}
       <meta name="robots" content="noindex,follow">
+    {%- else -%}
+      <meta name="robots" content="max-image-preview:large">
     {%- endif -%}
 
     {% render 'meta-tags', seo_title: viriatto_page_title, seo_description: viriatto_meta_description %}
-    {% render 'viriatto-seo-structured-data' %}
+    {% render 'viriatto-seo-structured-data', seo_title: viriatto_page_title %}
 
     <script type="module">
       import * as StandardEvents from 'https://cdn.shopify.com/storefront/standard-events.js';

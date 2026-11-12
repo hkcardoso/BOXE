@@ -15,6 +15,8 @@
           "url": {{ request.origin | append: routes.root_url | json }}
           {%- if settings.logo != blank -%},
           "logo": {{ settings.logo | image_url: width: 600 | prepend: 'https:' | json }}
+          {%- else -%},
+          "logo": "https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-v-favicon-512_ed2fad25-efd9-4e92-bf04-9bdf1191b02a.png?v=1794449408"
           {%- endif %}
         },
         {
@@ -24,6 +26,15 @@
           "name": "VIRIATTO",
           "inLanguage": {{ request.locale.iso_code | json }},
           "publisher": { "@id": {{ request.origin | append: '/#organization' | json }} }
+        },
+        {
+          "@type": "WebPage",
+          "@id": {{ canonical_url | append: '#webpage' | json }},
+          "url": {{ canonical_url | json }},
+          "name": {{ seo_title | default: page_title | json }},
+          "inLanguage": {{ request.locale.iso_code | json }},
+          "isPartOf": { "@id": {{ request.origin | append: '/#website' | json }} },
+          "primaryImageOfPage": {{ 'viriatto-pack-training.jpg' | asset_url | prepend: 'https:' | json }}
         }
       ]
     }

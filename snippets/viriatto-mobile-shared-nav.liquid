@@ -7,6 +7,15 @@
 {%- assign bx_nav_has_news = false -%}
 {%- assign bx_nav_has_sale = false -%}
 {%- assign bx_nav_language = request.locale.iso_code | slice: 0, 2 -%}
+{%- assign vc_caps = 'Capacetes' -%}
+{%- assign vc_shorts = 'Calções' -%}
+{%- assign vc_clothing = 'Roupa' -%}
+{%- if bx_nav_language == 'en' -%}
+  {%- assign vc_caps = 'Headguards' -%}{%- assign vc_shorts = 'Shorts' -%}{%- assign vc_clothing = 'Clothing' -%}
+{%- elsif bx_nav_language == 'es' -%}
+  {%- assign vc_caps = 'Cascos' -%}{%- assign vc_shorts = 'Pantalones cortos' -%}{%- assign vc_clothing = 'Ropa' -%}
+{%- endif -%}
+
 
 <nav class="{% if mobile %}bx-mobile-shared-nav{% else %}header__inline-menu{% endif %}">
   <ul class="list-menu list-menu--inline" role="list">
@@ -45,7 +54,7 @@
           <div class="boxeup-nav-modalities">
             <a
               id="{{ bx_nav_prefix }}-{{ link.handle }}"
-              href="{% if link.handle == 'marcas' %}{{ routes.all_products_collection_url }}#BxBrands{% else %}{{ link.url }}{% endif %}"
+              href="{% if link.handle == 'marcas' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}#BxBrands{% elsif link.handle == 'catalogo' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}{% elsif link.handle == 'novidades' %}{{ collections['novidades-viriatto'].url | default: '/collections/novidades-viriatto' }}{% else %}{{ link.url }}{% endif %}"
               class="header__menu-item list-menu__item link link--text focus-inset boxeup-nav-modalities__trigger"
               {% if link.current %}aria-current="page"{% endif %}
             >
@@ -59,6 +68,22 @@
             {%- endif -%}
             <ul id="{{ bx_nav_prefix }}-MenuList-{{ forloop.index }}" class="boxeup-nav-modalities__dropdown" role="list" aria-label="{{ link.title | escape }}">
               {%- for childlink in link.links -%}
+                {%- assign vc_child_handle = childlink.url | split: '/collections/' | last | split: '?' | first | split: '#' | first -%}
+                {%- if link.handle == 'marcas' -%}
+                  {%- unless vc_child_handle == 'charlie' or vc_child_handle == 'viriatto' -%}{%- continue -%}{%- endunless -%}
+                {%- endif -%}
+                {%- if link.handle == 'catalogo' -%}
+                  {%- if vc_child_handle == 'boxe' or vc_child_handle == 'muay-thai-e-kickboxing' -%}{%- continue -%}{%- endif -%}
+                  {%- if vc_child_handle == 'boqueiras-e-protecoes' -%}
+                    <li><a id="{{ bx_nav_prefix }}-catalogo-capacetes" class="boxeup-nav-modalities__link focus-inset" href="{{ collections['capacetes-de-boxe'].url | default: '/collections/capacetes-de-boxe' }}">{{ vc_caps }}</a></li>
+                  {%- endif -%}
+                  {%- if vc_child_handle == 'calcoes-e-roupa-de-combate' -%}
+                    <li><a id="{{ bx_nav_prefix }}-catalogo-calcoes" class="boxeup-nav-modalities__link focus-inset" href="{{ collections['calcoes-de-combate'].url | default: '/collections/calcoes-de-combate' }}">{{ vc_shorts }}</a></li>
+                    <li><a id="{{ bx_nav_prefix }}-catalogo-roupa" class="boxeup-nav-modalities__link focus-inset" href="{{ collections['roupa-e-fightwear'].url | default: '/collections/roupa-e-fightwear' }}">{{ vc_clothing }}</a></li>
+                    {%- continue -%}
+                  {%- endif -%}
+                {%- endif -%}
+
               {% if link.handle == 'marcas' %}
                 {% assign bx_brand_visible = false %}
                 {% assign bx_link_handle = childlink.url | split: '/collections/' | last | split: '?' | first | split: '#' | first %}{% assign bx_menu_collection = childlink.object | default: collections[bx_link_handle] %}{% for bx_item in bx_menu_collection.products %}{% assign bx_vendor = bx_item.vendor | downcase %}{% unless bx_item.price == 0 or bx_item.tags contains 'boxeup:hidden' or bx_vendor == 'my store' %}{% assign bx_brand_visible = true %}{% break %}{% endunless %}{% endfor %}
@@ -67,7 +92,7 @@
                 <li>
                   <a
                     id="{{ bx_nav_prefix }}-{{ link.handle }}-{{ childlink.handle }}"
-                    href="{{ childlink.url }}"
+                    href="{% if link.handle == 'catalogo' and vc_child_handle == 'all' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}{% else %}{{ childlink.url }}{% endif %}"
                     class="boxeup-nav-modalities__link focus-inset"
                     {% if childlink.current %}aria-current="page"{% endif %}
                   >{{ childlink.title | escape }}</a>
@@ -92,7 +117,7 @@
         {%- else -%}
           <a
             id="{{ bx_nav_prefix }}-{{ link.handle }}"
-            href="{% if link.handle == 'marcas' %}{{ routes.all_products_collection_url }}#BxBrands{% else %}{{ link.url }}{% endif %}"
+            href="{% if link.handle == 'marcas' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}#BxBrands{% elsif link.handle == 'catalogo' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}{% elsif link.handle == 'novidades' %}{{ collections['novidades-viriatto'].url | default: '/collections/novidades-viriatto' }}{% else %}{{ link.url }}{% endif %}"
             class="header__menu-item list-menu__item link link--text focus-inset"
             {% if link.current %}
               aria-current="page"
@@ -112,7 +137,7 @@
     {%- if mobile -%}
       {%- unless bx_nav_has_news -%}
         <li class="bx-mobile-shared-nav__shortcut">
-          <a id="HeaderDrawer-novidades" href="{{ routes.all_products_collection_url }}?sort_by=created-descending" class="header__menu-item list-menu__item link link--text focus-inset">
+          <a id="HeaderDrawer-novidades" href="{{ collections['novidades-viriatto'].url | default: '/collections/novidades-viriatto' }}" class="header__menu-item list-menu__item link link--text focus-inset">
             <span>{% if bx_nav_language == 'en' %}New arrivals{% elsif bx_nav_language == 'es' %}Novedades{% else %}Novidades{% endif %}</span>
           </a>
         </li>

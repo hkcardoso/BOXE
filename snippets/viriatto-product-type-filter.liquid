@@ -10,6 +10,7 @@
   assign vpt_all = 'Todos os produtos'
   assign vpt_gloves = 'Luvas'
   assign vpt_shins = 'Caneleiras'
+  assign vpt_helmets = 'Capacetes'
   assign vpt_clothing = 'Roupa e rashguards'
   assign vpt_shorts = 'Calções'
   assign vpt_mouthguards = 'Boqueiras e proteção'
@@ -19,6 +20,7 @@
     assign vpt_all = 'All products'
     assign vpt_gloves = 'Gloves'
     assign vpt_shins = 'Shin guards'
+    assign vpt_helmets = 'Headguards'
     assign vpt_clothing = 'Clothing and rashguards'
     assign vpt_shorts = 'Shorts'
     assign vpt_mouthguards = 'Mouthguards and protection'
@@ -28,16 +30,17 @@
     assign vpt_all = 'Todos los productos'
     assign vpt_gloves = 'Guantes'
     assign vpt_shins = 'Espinilleras'
+    assign vpt_helmets = 'Cascos'
     assign vpt_clothing = 'Ropa y rashguards'
     assign vpt_shorts = 'Pantalones cortos'
     assign vpt_mouthguards = 'Protectores bucales'
     assign vpt_bags = 'Mochilas y bolsas'
   endif
-  assign vpt_handles = 'luvas-de-boxe-e-muay-thai,caneleiras-de-muay-thai-e-kickboxing,vestuario-e-fightwear,calcoes-e-roupa-de-combate,boqueiras-e-protecoes,mochilas-e-sacos-de-treino-1' | split: ','
+  assign vpt_handles = 'luvas-de-boxe-e-muay-thai,caneleiras-de-muay-thai-e-kickboxing,capacetes-de-boxe,roupa-e-fightwear,calcoes-de-combate,boqueiras-e-protecoes,mochilas-e-sacos-de-treino-1' | split: ','
 -%}
 {%- capture vpt_links -%}
   <li class="vpt-filter__item">
-    <a href="{{ routes.all_products_collection_url }}" class="vpt-filter__link"{% if collection.handle == 'all' %} aria-current="page"{% endif %}>
+    <a href="{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}" class="vpt-filter__link"{% if collection.handle == 'catalogo-viriatto' %} aria-current="page"{% endif %}>
       {{- vpt_all | escape -}}
     </a>
   </li>
@@ -47,10 +50,11 @@
       {%- case forloop.index -%}
         {%- when 1 -%}{%- assign vpt_label = vpt_gloves -%}
         {%- when 2 -%}{%- assign vpt_label = vpt_shins -%}
-        {%- when 3 -%}{%- assign vpt_label = vpt_clothing -%}
-        {%- when 4 -%}{%- assign vpt_label = vpt_shorts -%}
-        {%- when 5 -%}{%- assign vpt_label = vpt_mouthguards -%}
-        {%- when 6 -%}{%- assign vpt_label = vpt_bags -%}
+        {%- when 3 -%}{%- assign vpt_label = vpt_helmets -%}
+        {%- when 4 -%}{%- assign vpt_label = vpt_clothing -%}
+        {%- when 5 -%}{%- assign vpt_label = vpt_shorts -%}
+        {%- when 6 -%}{%- assign vpt_label = vpt_mouthguards -%}
+        {%- when 7 -%}{%- assign vpt_label = vpt_bags -%}
       {%- endcase -%}
       <li class="vpt-filter__item">
         <a href="{{ vpt_collection.url }}" class="vpt-filter__link"{% if collection.handle == vpt_handle %} aria-current="page"{% endif %}>

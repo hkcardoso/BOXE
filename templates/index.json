@@ -50,28 +50,33 @@
                 "hero_video": "shopify://files/videos/8745106-uhd_4096_2160_25fps.mp4",
                 "featured_products": [
                     "charlie-bat-x-luvas-de-treino",
-                    "charlie-danger-luvas-profissionais",
-                    "pack-muay-thai-pronto-para-o-treino",
-                    "pack-boxe-primeiro-round",
                     "charlie-gel-metallic-luvas-de-boxe",
-                    "fairtex-bgv9-heavy-hitter-luvas-de-boxe",
-                    "rival-rhg2-capacete-hibrido",
-                    "everlast-powerlock-2r-luvas-de-treino",
-                    "twins-special-bgvl-3-luvas-de-muay-thai",
-                    "cleto-reyes-luvas-de-treino-em-pele",
-                    "fairtex-bgv1-luvas-de-boxe-e-muay-thai"
+                    "charlie-m-luvas-de-boxe",
+                    "charlie-belial-capacetes-de-boxe",
+                    "charlie-catalogo-2026-038-bucal-colmillos",
+                    "charlie-catalogo-2026-154-bolsa-golden",
+                    "charlie-catalogo-2026-021-barra-m",
+                    "charlie-catalogo-2026-064-botella-aluminio",
+                    "mens-rash-guard",
+                    "minimalist-backpack",
+                    "unisex-organic-cotton-creator-2-0-t-shirt",
+                    "charlie-catalogo-2026-216-anorak-kangaroo"
                 ],
                 "latest_products": [
                     "fluory-calcoes-de-muay-thai-vermelho-e-preto",
-                    "venum-challenger-pro-evo-mochila-22-5-l",
-                    "fairtex-mg3-boqueira-de-gel",
-                    "twins-special-sgl-10-caneleiras-de-muay-thai",
-                    "fairtex-sp5-caneleiras-de-competicao",
-                    "mens-rash-guard",
-                    "all-over-print-gym-bag",
-                    "baby-short-sleeve-one-piece",
-                    "unisex-organic-cotton-creator-2-0-t-shirt"
-                ]
+                    "charlie-catalogo-2026-050-arnes-de-cabeza",
+                    "charlie-catalogo-2026-215-cazadora-black-fighter",
+                    "charlie-catalogo-2026-051-venda-algodon",
+                    "charlie-catalogo-2026-185-chaleco-pro-fighting",
+                    "charlie-catalogo-2026-184-bata-de-boxeo",
+                    "charlie-catalogo-2026-028-botin-ful-fast-foot",
+                    "charlie-catalogo-2026-214-beisbolera",
+                    "charlie-catalogo-2026-195-camiseta-diamond",
+                    "charlie-catalogo-2026-157-bolsa-mediana",
+                    "charlie-catalogo-2026-039-bucal-logo",
+                    "charlie-catalogo-2026-212-anorak-black-rain"
+                ],
+                "featured_collection": "destaques-viriatto"
             }
         },
         "viriatto_packs": {
@@ -113,7 +118,6 @@
     },
     "order": [
         "boxeup_home",
-        "viriatto_packs",
         "viriatto_training_video"
     ]
 }

@@ -52,14 +52,14 @@
   }
   #MainContent .boxeup-brand-grid {
     display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
+    grid-template-columns:repeat(8,minmax(0,1fr));
     gap:9px;
     margin:0;
   }
-  /* Focus the catalogue on the two active brands. */
+  /* Eight brand logos on one desktop row; adapt to narrower screens below. */
   @media (min-width: 990px) {
     body.boxeup-page-catalog #MainContent .boxeup-brand-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      grid-template-columns: repeat(8, minmax(0, 1fr)) !important;
     }
   }
   #MainContent .boxeup-brand-card {
@@ -116,7 +116,7 @@
     #MainContent .boxeup-brand-card:hover {transform:none}
   }
 
-  #MainContent .boxeup-brand-grid {max-width:980px;margin-inline:auto}
+  #MainContent .boxeup-brand-grid {max-width:1440px;margin-inline:auto}
   #MainContent .viri-catalog-types {display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;margin:20px 0 4px}
   #MainContent .viri-catalog-types__link {display:inline-flex;align-items:center;min-height:38px;padding:8px 13px;text-decoration:none;color:#e4e5e8;border:1px solid #34363c;border-radius:5px;background:#191a1e;font-size:12px;font-weight:650;white-space:nowrap;transition:background .15s,border-color .15s}
   #MainContent .viri-catalog-types__link:hover {background:#24262b;border-color:#737680;color:#fff}

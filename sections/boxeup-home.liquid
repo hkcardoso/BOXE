@@ -63,8 +63,8 @@
   endif
   # Produtos destas duas zonas definidos manualmente em templates/index.json.
   # Evita rotação automática e mantém a ordem escolhida.
-  assign vh_featured_products = section.settings.featured_products
-  assign vh_new_curated_products = section.settings.latest_products
+  assign vh_featured_products = collections['destaques-viriatto'].products
+  assign vh_new_curated_products = collections['novidades-viriatto'].products
 -%}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">

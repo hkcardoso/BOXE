@@ -1,7 +1,22 @@
 {%- liquid
   assign vp_visible_packs = 0
   for block in section.blocks
-    if block.settings.product != blank and block.settings.product_1.featured_image != blank and block.settings.product_2.featured_image != blank and block.settings.product_3.featured_image != blank
+    assign vp_vendor_1 = block.settings.product_1.vendor | downcase | strip
+    assign vp_vendor_2 = block.settings.product_2.vendor | downcase | strip
+    assign vp_vendor_3 = block.settings.product_3.vendor | downcase | strip
+    assign vp_allowed_1 = false
+    assign vp_allowed_2 = false
+    assign vp_allowed_3 = false
+    if vp_vendor_1 == 'charlie' or vp_vendor_1 == 'boxeup'
+      assign vp_allowed_1 = true
+    endif
+    if vp_vendor_2 == 'charlie' or vp_vendor_2 == 'boxeup'
+      assign vp_allowed_2 = true
+    endif
+    if vp_vendor_3 == 'charlie' or vp_vendor_3 == 'boxeup'
+      assign vp_allowed_3 = true
+    endif
+    if block.settings.product != blank and vp_allowed_1 and vp_allowed_2 and vp_allowed_3 and block.settings.product_1.available and block.settings.product_2.available and block.settings.product_3.available
       assign vp_visible_packs = vp_visible_packs | plus: 1
     endif
   endfor
@@ -18,7 +33,14 @@
   <div class="vp__frame vp__grid">
     {% for block in section.blocks %}
       {% assign pack = block.settings.product %}
-      {% if pack != blank and block.settings.product_1.featured_image != blank and block.settings.product_2.featured_image != blank and block.settings.product_3.featured_image != blank %}
+      {% assign vp_vendor_1 = block.settings.product_1.vendor | downcase | strip %}
+      {% assign vp_vendor_2 = block.settings.product_2.vendor | downcase | strip %}
+      {% assign vp_vendor_3 = block.settings.product_3.vendor | downcase | strip %}
+      {% assign vp_allowed_1 = false %}{% assign vp_allowed_2 = false %}{% assign vp_allowed_3 = false %}
+      {% if vp_vendor_1 == 'charlie' or vp_vendor_1 == 'boxeup' %}{% assign vp_allowed_1 = true %}{% endif %}
+      {% if vp_vendor_2 == 'charlie' or vp_vendor_2 == 'boxeup' %}{% assign vp_allowed_2 = true %}{% endif %}
+      {% if vp_vendor_3 == 'charlie' or vp_vendor_3 == 'boxeup' %}{% assign vp_allowed_3 = true %}{% endif %}
+      {% if pack != blank and vp_allowed_1 and vp_allowed_2 and vp_allowed_3 and block.settings.product_1.available and block.settings.product_2.available and block.settings.product_3.available %}
         {% assign selected = pack.selected_or_first_available_variant %}
         {% assign total = block.settings.product_1.price | plus: block.settings.product_2.price | plus: block.settings.product_3.price %}
         {% assign saving = total | minus: selected.price %}

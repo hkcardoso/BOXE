@@ -49,6 +49,20 @@
 <link rel="stylesheet" href="{{ 'viriatto-mobile-recovered-core.css' | asset_url }}" media="(max-width: 989px)">
 {{ 'viriatto-product-tile-info.css' | asset_url | stylesheet_tag }}
 
+{%- if collection.handle == 'luvas-de-boxe-e-muay-thai' and current_page == 1 -%}
+  {%- assign glove_intro_lang = request.locale.iso_code | slice: 0, 2 -%}
+  <div class="page-width" style="padding-top:20px;padding-bottom:8px">
+    {%- case glove_intro_lang -%}
+      {%- when 'en' -%}
+        <p style="margin:0;color:#c2c3ca;font-size:14px;line-height:1.65">Explore boxing gloves for bag work, pads and Muay Thai. Compare training gloves from Charlie, Fairtex and Everlast, and choose the weight that suits your training.</p>
+      {%- when 'es' -%}
+        <p style="margin:0;color:#c2c3ca;font-size:14px;line-height:1.65">Descubre guantes de boxeo para saco, manoplas y Muay Thai. Compara modelos Charlie, Fairtex y Everlast y elige el peso adecuado para tu entrenamiento.</p>
+      {%- else -%}
+        <p style="margin:0;color:#c2c3ca;font-size:14px;line-height:1.65">Explora luvas de boxe para treino de saco, manoplas e Muay Thai. Compara modelos Charlie, Fairtex e Everlast e escolhe o peso mais indicado para o teu treino.</p>
+    {%- endcase -%}
+  </div>
+{%- endif -%}
+
 <collection-component
   view-event-payload="{{ collection | standard_event_data: 'view' | escape }}"
   data-collection-id="{{ collection.id }}"

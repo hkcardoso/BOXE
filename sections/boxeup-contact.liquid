@@ -6,7 +6,7 @@
   assign vi_location = 'LOCALIZAÇÃO'
   assign vi_location_value = 'Portugal · Loja online'
   assign vi_contact = 'CONTACTO'
-  assign vi_phone_label = 'TELEFONE'
+  assign vi_phone_label = 'WHATSAPP'
   assign vi_form_title = 'DIZ-NOS O QUE PRECISAS.'
   assign vi_faq_shipping = 'Envios e entregas'
   assign vi_faq_returns = 'Devoluções e garantias'
@@ -24,7 +24,7 @@
     assign vi_location = 'LOCATION'
     assign vi_location_value = 'Portugal · Online store'
     assign vi_contact = 'CONTACT'
-    assign vi_phone_label = 'PHONE'
+    assign vi_phone_label = 'WHATSAPP'
     assign vi_form_title = 'TELL US WHAT YOU NEED.'
     assign vi_faq_shipping = 'Shipping and delivery'
     assign vi_faq_returns = 'Returns and warranty'
@@ -42,7 +42,7 @@
     assign vi_location = 'UBICACIÓN'
     assign vi_location_value = 'Portugal · Tienda online'
     assign vi_contact = 'CONTACTO'
-    assign vi_phone_label = 'TELÉFONO'
+    assign vi_phone_label = 'WHATSAPP'
     assign vi_form_title = 'CUÉNTANOS QUÉ NECESITAS.'
     assign vi_faq_shipping = 'Envíos y entregas'
     assign vi_faq_returns = 'Devoluciones y garantías'
@@ -64,7 +64,7 @@
       <div class="vi-min-contact__info">
         <div><strong>{{ vi_location }}:</strong><span>{{ vi_location_value }}</span></div>
         <div><strong>{{ vi_contact }}:</strong><a href="mailto:business@boxeup.com">business@boxeup.com</a></div>
-        <div><strong>{{ vi_phone_label }}:</strong><a href="tel:+351910073534">+351 910 073 534</a></div>
+        <div><strong>{{ vi_phone_label }}:</strong><a href="https://wa.me/351910073534?s=p" target="_blank" rel="noopener noreferrer">+351 910 073 534</a></div>
       </div>
       <nav class="vi-min-contact__links" aria-label="{{ vi_contact }}">
         <a href="{{ pages['envios-e-entregas'].url | default: '/pages/envios-e-entregas' }}">{{ vi_faq_shipping }} <span aria-hidden="true">{% render 'viri-arrow-icon' %}</span></a>

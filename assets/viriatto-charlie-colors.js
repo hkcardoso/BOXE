@@ -164,35 +164,74 @@
     const step = 100 / shades.length;
     return "linear-gradient(110deg," + shades.map((v, i) => v + " " + (i * step) + "%," + v + " " + ((i + 1) * step) + "%").join(",") + ")";
   }
-  // Cada cor ativa a respetiva fotografia já existente na galeria Shopify.
-  // Para outros produtos Charlie, basta associar aqui os nomes dos ficheiros.
+  // Fotografias reais já associadas aos produtos no Shopify.
+  // A selecção altera a galeria, sem modificar variantes, stock ou carrinho.
   const mediaFilesByColor = {
     34: {
       "Vermelho": "charlie_protecoes_vermelhas",
       "Azul": "charlie_protecoes_azuis",
       "Preto": "charlie_protecoes_pretas"
+    },
+    39: {
+      "Verde": "protecao_bucal_charlie_verde",
+      "Preto": "Charlie_Bucal_Logo_Negro_Studio",
+      "Branco": "protecao_bucal_charlie_branca",
+      "Amarelo": "protecao_bucal_charlie_amarela",
+      "Azul": "charlie_protetor_bucal_azul"
     }
   };
 
-  function activateColorMedia(root, productId, color) {
-    const filename = mediaFilesByColor[productId]?.[color];
-    if (!filename) return;
+  // Outros produtos Charlie também funcionam automaticamente quando o nome
+  // do ficheiro ou o texto alternativo identifica claramente a cor.
+  const mediaColorNames = {
+    "preto": ["preto", "preta", "pretos", "pretas", "black", "negro", "negra"],
+    "branco": ["branco", "branca", "brancos", "brancas", "white", "blanco"],
+    "azul": ["azul", "azuis", "blue"],
+    "vermelho": ["vermelho", "vermelha", "vermelhos", "vermelhas", "red", "rojo", "roja"],
+    "verde": ["verde", "verdes", "green"],
+    "amarelo": ["amarelo", "amarela", "amarelos", "amarelas", "yellow", "amarillo"],
+    "rosa": ["rosa", "pink"],
+    "cinzento": ["cinzento", "cinzenta", "grey", "gray"],
+    "dourado": ["dourado", "dourada", "gold", "golden"],
+    "laranja": ["laranja", "orange"],
+    "roxo": ["roxo", "roxa", "purple"],
+    "castanho": ["castanho", "castanha", "brown"]
+  };
 
+  function normalizedWords(value) {
+    return String(value || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .split(/[^a-z0-9]+/)
+      .filter(Boolean);
+  }
+
+  function slideSources(slide) {
+    return Array.from(slide.querySelectorAll("img")).flatMap(image => [
+      image.getAttribute("src"), image.getAttribute("srcset"),
+      image.currentSrc, image.alt
+    ]).filter(Boolean);
+  }
+
+  function slideMatchesColor(slide, color) {
+    const parts = color.replace(/\s*\([^)]*\)/g, "").toLowerCase().split("/").map(part => part.trim());
+    const words = new Set(slideSources(slide).flatMap(normalizedWords));
+    return parts.every(part => {
+      const normalized = normalizedWords(part).join("-");
+      const possibleNames = mediaColorNames[normalized] || [normalized];
+      return possibleNames.some(word => words.has(word));
+    });
+  }
+
+  function activateColorMedia(root, productId, color) {
     const gallery = root.closest(".product")?.querySelector("media-gallery");
     if (!gallery || typeof gallery.setActiveMedia !== "function") return;
 
-    const slides = gallery.querySelectorAll(".product__media-list > .product__media-item[data-media-id]");
-    const target = Array.from(slides).find(slide => {
-      return Array.from(slide.querySelectorAll("img")).some(image => {
-        const sources = [
-          image.getAttribute("src"),
-          image.getAttribute("srcset"),
-          image.currentSrc,
-          image.alt
-        ];
-        return sources.some(source => typeof source === "string" && source.includes(filename));
-      });
-    });
+    const slides = Array.from(gallery.querySelectorAll(".product__media-list > .product__media-item[data-media-id]"));
+    const filename = mediaFilesByColor[productId]?.[color];
+    const target = (filename && slides.find(slide => slideSources(slide).some(source => source.includes(filename))))
+      || slides.find(slide => slideMatchesColor(slide, color));
 
     if (target) gallery.setActiveMedia(target.dataset.mediaId, false);
   }

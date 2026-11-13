@@ -1,0 +1,106 @@
+/* VIRIATTO — founder portrait and story on Sobre Nós. */
+body.viriatto-info-page #MainContent .vi-min-about__founder {
+  display: grid;
+  grid-template-columns: minmax(190px, 305px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 78px);
+  width: min(100%, 980px);
+  margin: clamp(40px, 5.2vw, 75px) auto 0;
+  padding: clamp(24px, 3.4vw, 44px);
+  border: 1px solid #34363b;
+  border-radius: 6px;
+  background: #17191c;
+  text-align: left;
+}
+body.viriatto-info-page #MainContent .vi-min-about__founder-photo {
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  border-radius: 3px;
+  background: #26282c;
+}
+body.viriatto-info-page #MainContent .vi-min-about__founder-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: grayscale(1);
+}
+body.viriatto-info-page #MainContent .vi-min-about__founder-copy {
+  min-width: 0;
+}
+body.viriatto-info-page #MainContent .vi-min-about__founder-eyebrow {
+  margin: 0 0 12px;
+  color: #a2a5aa;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+body.viriatto-info-page #MainContent .vi-min-about__founder h2 {
+  margin: 0 !important;
+  color: #f6f6f7 !important;
+  font-size: clamp(26px, 2.65vw, 37px) !important;
+  font-weight: 750 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -.04em !important;
+}
+body.viriatto-info-page #MainContent .vi-min-about__founder-role {
+  margin: 7px 0 24px;
+  color: #aeb0b6;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+body.viriatto-info-page #MainContent .vi-min-about__founder-copy > p:not(.vi-min-about__founder-eyebrow):not(.vi-min-about__founder-role) {
+  margin: 0 0 14px;
+  max-width: 545px;
+  color: #d0d1d4;
+  font-size: clamp(13px, 1.05vw, 15px);
+  line-height: 1.75;
+}
+body.viriatto-info-page #MainContent .vi-min-about__founder-copy > p:last-child {
+  margin-bottom: 0 !important;
+}
+@media (max-width: 749px) {
+  body.viriatto-info-page #MainContent .vi-min-about__founder {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    width: 100%;
+    padding: 16px 16px 22px;
+    margin-top: 33px;
+  }
+  body.viriatto-info-page #MainContent .vi-min-about__founder-photo {
+    width: 100%;
+    max-height: 370px;
+    aspect-ratio: 4 / 3;
+  }
+  body.viriatto-info-page #MainContent .vi-min-about__founder h2 {
+    font-size: 27px !important;
+  }
+  body.viriatto-info-page #MainContent .vi-min-about__founder-role {
+    margin-bottom: 16px;
+  }
+  body.viriatto-info-page #MainContent .vi-min-about__founder-copy > p:not(.vi-min-about__founder-eyebrow):not(.vi-min-about__founder-role) {
+    font-size: 13px;
+  }
+}
+@media (max-width: 989px) {
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent .vi-min-about__founder {
+    background: #fff !important;
+    border-color: #d5d9de !important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent .vi-min-about__founder h2 {
+    color: #22262a !important;
+    -webkit-text-fill-color: #22262a !important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent .vi-min-about__founder-eyebrow,
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent .vi-min-about__founder-role {
+    color: #60656d !important;
+  }
+  html[data-viri-mobile-theme="light"] body.viriatto-info-page #MainContent .vi-min-about__founder-copy > p:not(.vi-min-about__founder-eyebrow):not(.vi-min-about__founder-role) {
+    color: #40444b !important;
+  }
+}

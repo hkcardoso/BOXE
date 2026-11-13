@@ -16,6 +16,12 @@
   assign vi_s4 = 'Treina'
   assign vi_s4d = 'Prepara o próximo treino com o teu equipamento.'
   assign vi_contact = 'CONTACTOS'
+  assign vi_founder_label = 'POR DETRÁS DA VIRIATTO'
+  assign vi_founder_name = 'Henrique Cardoso'
+  assign vi_founder_role = 'Fundador da VIRIATTO'
+  assign vi_founder_paragraph_1 = 'Sou o Henrique Cardoso, fundador da VIRIATTO. Pratico Muay Thai e já competi, por isso sei como é importante escolher bem o equipamento.'
+  assign vi_founder_paragraph_2 = 'Criei este projeto de raiz, da identidade da marca ao site, com um objetivo simples: reunir equipamento de várias marcas e facilitar a escolha de quem treina.'
+  assign vi_founder_image_alt = 'Henrique Cardoso, fundador da VIRIATTO, num retrato a preto e branco'
   assign vi_catalog = 'Ver catálogo'
   if vi_lang == 'en'
     assign vi_tagline = 'ABOUT US'
@@ -34,6 +40,12 @@
     assign vi_s4 = 'Train'
     assign vi_s4d = 'Get ready for your next session.'
     assign vi_contact = 'CONTACT'
+    assign vi_founder_label = 'BEHIND VIRIATTO'
+    assign vi_founder_name = 'Henrique Cardoso'
+    assign vi_founder_role = 'Founder of VIRIATTO'
+    assign vi_founder_paragraph_1 = 'I am Henrique Cardoso, founder of VIRIATTO. I train Muay Thai and have competed, so I know how important it is to choose the right equipment.'
+    assign vi_founder_paragraph_2 = 'I built this project from the ground up, from the brand identity to the website, with a simple goal: bring together equipment from different brands and make it easier for fighters to choose.'
+    assign vi_founder_image_alt = 'Black-and-white portrait of Henrique Cardoso, founder of VIRIATTO'
     assign vi_catalog = 'Shop catalogue'
   elsif vi_lang == 'es'
     assign vi_tagline = 'SOBRE NOSOTROS'
@@ -52,9 +64,16 @@
     assign vi_s4 = 'Entrena'
     assign vi_s4d = 'Prepárate para tu próximo entrenamiento.'
     assign vi_contact = 'CONTACTO'
+    assign vi_founder_label = 'DETRÁS DE VIRIATTO'
+    assign vi_founder_name = 'Henrique Cardoso'
+    assign vi_founder_role = 'Fundador de VIRIATTO'
+    assign vi_founder_paragraph_1 = 'Soy Henrique Cardoso, fundador de VIRIATTO. Practico Muay Thai y he competido, así que sé lo importante que es elegir bien el equipamiento.'
+    assign vi_founder_paragraph_2 = 'He creado este proyecto desde cero, desde la identidad de marca hasta la web, con un objetivo sencillo: reunir equipamiento de diferentes marcas y facilitar la elección de quienes entrenan.'
+    assign vi_founder_image_alt = 'Retrato en blanco y negro de Henrique Cardoso, fundador de VIRIATTO'
     assign vi_catalog = 'Ver catálogo'
   endif
 -%}
+{{ 'viriatto-founder.css' | asset_url | stylesheet_tag }}
 <section class="vi-min-about" aria-labelledby="ViAboutTitle">
   <div class="vi-min-about__inner vi-info-rail">
     <header class="vi-min-about__intro">
@@ -64,6 +83,25 @@
       <p>{{ vi_paragraph_2 }}</p>
       <p>{{ vi_paragraph_3 }}</p>
     </header>
+    <section class="vi-min-about__founder" aria-labelledby="ViFounderHeading">
+      <div class="vi-min-about__founder-photo">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-henrique-cardoso-fundador-preto-branco.png?v=1794574109"
+          alt="{{ vi_founder_image_alt | escape }}"
+          width="1086"
+          height="1448"
+          loading="lazy"
+          decoding="async"
+        >
+      </div>
+      <div class="vi-min-about__founder-copy">
+        <p class="vi-min-about__founder-eyebrow">{{ vi_founder_label }}</p>
+        <h2 id="ViFounderHeading">{{ vi_founder_name }}</h2>
+        <p class="vi-min-about__founder-role">{{ vi_founder_role }}</p>
+        <p>{{ vi_founder_paragraph_1 }}</p>
+        <p>{{ vi_founder_paragraph_2 }}</p>
+      </div>
+    </section>
     <div class="vi-min-about__process">
       <h2>{{ vi_steps }}</h2>
       <div class="vi-min-about__grid">

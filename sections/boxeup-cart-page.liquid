@@ -18,13 +18,13 @@
       assign bx_subtotal = 'Subtotal'
       assign bx_discount = 'Discounts'
       assign bx_shipping = 'Shipping'
-      assign bx_shipping_value = 'Calculated at checkout'
+      assign bx_shipping_value = 'Free in Portugal'
       assign bx_total = 'Total'
       assign bx_checkout = 'Checkout'
       assign bx_continue = 'Continue shopping'
       assign bx_empty_title = 'Your cart is empty'
       assign bx_empty_desc = 'Browse the catalogue and find equipment for your next training session.'
-      assign bx_help = 'Final shipping charges and taxes, where applicable, are confirmed at checkout.'
+      assign bx_help = 'Free shipping in Portugal. Shipping outside Portugal and applicable taxes are confirmed at checkout.'
       assign bx_error = 'Your cart could not be updated. Please try again.'
       assign bx_qminus = 'Decrease quantity'
       assign bx_qplus = 'Increase quantity'
@@ -41,13 +41,13 @@
       assign bx_subtotal = 'Subtotal'
       assign bx_discount = 'Descuentos'
       assign bx_shipping = 'Envío'
-      assign bx_shipping_value = 'Calculado al pagar'
+      assign bx_shipping_value = 'Gratis en Portugal'
       assign bx_total = 'Total'
       assign bx_checkout = 'Finalizar compra'
       assign bx_continue = 'Seguir comprando'
       assign bx_empty_title = 'Tu carrito está vacío'
       assign bx_empty_desc = 'Explora el catálogo y encuentra el equipamiento para tu próximo entrenamiento.'
-      assign bx_help = 'Los gastos de envío y los impuestos aplicables se confirman al pagar.'
+      assign bx_help = 'Envío gratis en Portugal. Fuera de Portugal, los gastos de envío y los impuestos se confirman al pagar.'
       assign bx_error = 'No se ha podido actualizar el carrito. Vuelve a intentarlo.'
       assign bx_qminus = 'Reducir cantidad'
       assign bx_qplus = 'Aumentar cantidad'
@@ -64,13 +64,13 @@
       assign bx_subtotal = 'Subtotal'
       assign bx_discount = 'Descontos'
       assign bx_shipping = 'Envio'
-      assign bx_shipping_value = 'Calculado no checkout'
+      assign bx_shipping_value = 'Grátis em Portugal'
       assign bx_total = 'Total'
       assign bx_checkout = 'Finalizar a compra'
       assign bx_continue = 'Continuar a comprar'
       assign bx_empty_title = 'O teu carrinho está vazio'
       assign bx_empty_desc = 'Explora o catálogo e encontra o equipamento para o teu próximo treino.'
-      assign bx_help = 'Os portes e os impostos aplicáveis são confirmados no checkout.'
+      assign bx_help = 'Portes grátis em Portugal. Fora de Portugal, os portes e os impostos aplicáveis são confirmados no checkout.'
       assign bx_error = 'Não foi possível atualizar o carrinho. Tenta novamente.'
       assign bx_qminus = 'Reduzir quantidade'
       assign bx_qplus = 'Aumentar quantidade'
@@ -87,16 +87,10 @@
 {% if cart.item_count > 0 and bx_only_charlie %}
   {% if bx_lang == 'en' %}
     {% assign bx_delivery_text = 'Charlie: estimated transit time of 48–72 hours after dispatch to Portugal.' %}
-    {% assign bx_shipping_value = 'Free in Portugal' %}
-    {% assign bx_help = 'Shipping outside Portugal and applicable taxes are confirmed at checkout.' %}
   {% elsif bx_lang == 'es' %}
     {% assign bx_delivery_text = 'Charlie: transporte estimado de 48–72 horas tras el envío a Portugal.' %}
-    {% assign bx_shipping_value = 'Gratis en Portugal' %}
-    {% assign bx_help = 'El envío fuera de Portugal y los impuestos aplicables se confirman al pagar.' %}
   {% else %}
     {% assign bx_delivery_text = 'Charlie: transporte estimado de 48–72 horas após a expedição para Portugal.' %}
-    {% assign bx_shipping_value = 'Grátis em Portugal' %}
-    {% assign bx_help = 'Os portes para fora de Portugal e os impostos aplicáveis são confirmados no checkout.' %}
   {% endif %}
 {% endif %}
 <section class="bx-cart-page" data-bx-cart-page data-bx-cart-url="{{ routes.cart_url }}" data-bx-error="{{ bx_error | escape }}" aria-labelledby="BxCartPageTitle">

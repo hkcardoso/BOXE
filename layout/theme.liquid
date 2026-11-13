@@ -436,6 +436,7 @@
     {{ 'viriatto-mobile-menu-motion.css' | asset_url | stylesheet_tag }}
     {{ 'viriatto-mobile-light-refinement.css' | asset_url | stylesheet_tag }}
     {{ 'viriatto-mobile-light-footer-icons.css' | asset_url | stylesheet_tag }}
+    {{ 'viriatto-whatsapp-support.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'viriatto-mobile-theme.js' | asset_url }}" defer></script>
     <script>
       if (Shopify.designMode) {
@@ -466,6 +467,7 @@
     </main>
 
     {% sections 'footer-group' %}
+    {%- render 'viriatto-whatsapp-support' -%}
 
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>

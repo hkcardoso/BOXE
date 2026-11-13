@@ -1,0 +1,118 @@
+/* VIRIATTO — floating WhatsApp customer support, neutral monochrome theme. */
+.viri-whatsapp-support {
+  position: fixed;
+  right: clamp(18px, 2.4vw, 36px);
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  z-index: 70;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 62px;
+  padding: 9px 19px 9px 12px;
+  border: 1px solid #44474b;
+  border-radius: 999px;
+  background: #191b1e;
+  color: #fff;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, .26);
+  text-decoration: none;
+  font-family: inherit;
+  text-align: left;
+  line-height: 1.25;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.viri-whatsapp-support:visited,
+.viri-whatsapp-support:hover,
+.viri-whatsapp-support:active {
+  color: #fff;
+  text-decoration: none;
+}
+
+.viri-whatsapp-support:hover {
+  background: #292c30;
+  border-color: #777b80;
+  box-shadow: 0 12px 38px rgba(0, 0, 0, .34);
+  transform: translateY(-2px);
+}
+
+.viri-whatsapp-support:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.viri-whatsapp-support__icon {
+  display: grid;
+  width: 39px;
+  height: 39px;
+  flex: 0 0 39px;
+  place-items: center;
+  border: 1px solid #56595e;
+  border-radius: 50%;
+  background: #24272b;
+  color: #fff;
+}
+
+.viri-whatsapp-support__icon svg {
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+
+.viri-whatsapp-support__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  white-space: nowrap;
+}
+
+.viri-whatsapp-support__copy strong {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .015em;
+  line-height: 1.2;
+}
+
+.viri-whatsapp-support__copy > span {
+  color: #c6c8cb;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+@media (max-width: 749px) {
+  .viri-whatsapp-support {
+    right: 16px;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    width: 58px;
+    height: 58px;
+    min-height: 58px;
+    gap: 0;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  .viri-whatsapp-support__icon {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+    border: 0;
+    background: transparent;
+  }
+
+  .viri-whatsapp-support__icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .viri-whatsapp-support__copy {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viri-whatsapp-support { transition: none; }
+  .viri-whatsapp-support:hover { transform: none; }
+}

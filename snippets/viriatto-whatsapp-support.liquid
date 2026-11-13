@@ -1,0 +1,38 @@
+{%- comment -%}
+  VIRIATTO customer support — direct WhatsApp contact.
+  The link is always customer-initiated; no availability promise is shown.
+{%- endcomment -%}
+{%- liquid
+  assign vi_whatsapp_language = request.locale.iso_code | slice: 0, 2
+  assign vi_whatsapp_title = 'Apoio ao cliente'
+  assign vi_whatsapp_subtitle = 'Falar no WhatsApp'
+  assign vi_whatsapp_label = 'Contactar a VIRIATTO pelo WhatsApp'
+  if vi_whatsapp_language == 'en'
+    assign vi_whatsapp_title = 'Customer support'
+    assign vi_whatsapp_subtitle = 'Chat on WhatsApp'
+    assign vi_whatsapp_label = 'Contact VIRIATTO on WhatsApp'
+  elsif vi_whatsapp_language == 'es'
+    assign vi_whatsapp_title = 'Atención al cliente'
+    assign vi_whatsapp_subtitle = 'Hablar por WhatsApp'
+    assign vi_whatsapp_label = 'Contactar con VIRIATTO por WhatsApp'
+  endif
+-%}
+<a
+  class="viri-whatsapp-support"
+  href="https://wa.me/351910073534?s=p"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="{{ vi_whatsapp_label | escape }}"
+  title="{{ vi_whatsapp_label | escape }}"
+>
+  <span class="viri-whatsapp-support__icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+      <path d="M20.3 11.6a8.4 8.4 0 0 1-12.6 7.2L3 20l1.3-4.6a8.4 8.4 0 1 1 16-3.8Z" />
+      <path d="m8.4 8 1.2-.5 1.5 2.5-1 1a7.1 7.1 0 0 0 3 3l1-1 2.5 1.5-.6 1.2c-.4.8-1.5 1.1-2.3.8a10.2 10.2 0 0 1-6.2-6.2c-.3-.8.1-1.8.9-2.3Z" />
+    </svg>
+  </span>
+  <span class="viri-whatsapp-support__copy" aria-hidden="true">
+    <strong>{{ vi_whatsapp_title }}</strong>
+    <span>{{ vi_whatsapp_subtitle }}</span>
+  </span>
+</a>

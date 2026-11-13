@@ -472,6 +472,35 @@
             {%- endfor -%}
           </ul>
         {%- endif -%}
+        {%- comment -%}Public store and Google Merchant Center policy links.{%- endcomment -%}
+        {%- liquid
+          assign legal_lang = request.locale.iso_code | slice: 0, 2
+          assign legal_terms_label = 'Termos de Serviço'
+          assign legal_returns_label = 'Devoluções e Reembolsos'
+          assign legal_shipping_label = 'Envios e Entregas'
+          assign legal_contact_label = 'Contactos'
+          assign legal_privacy_label = 'Privacidade'
+          if legal_lang == 'en'
+            assign legal_terms_label = 'Terms of Service'
+            assign legal_returns_label = 'Returns and Refunds'
+            assign legal_shipping_label = 'Shipping and Delivery'
+            assign legal_contact_label = 'Contact'
+            assign legal_privacy_label = 'Privacy'
+          elsif legal_lang == 'es'
+            assign legal_terms_label = 'Términos del servicio'
+            assign legal_returns_label = 'Devoluciones y Reembolsos'
+            assign legal_shipping_label = 'Envíos y Entregas'
+            assign legal_contact_label = 'Contacto'
+            assign legal_privacy_label = 'Privacidad'
+          endif
+        -%}
+        <nav class="viri-footer-legal-links" aria-label="{{ legal_terms_label | escape }}" style="display:flex;flex-wrap:wrap;gap:8px 17px;margin-top:12px;align-items:center">
+          <a class="copyright__content" href="{{ pages['condicoes-gerais-de-venda'].url | default: '/pages/condicoes-gerais-de-venda' }}">{{ legal_terms_label | escape }}</a>
+          <a class="copyright__content" href="{{ shop.refund_policy.url | default: '/pages/devolucoes-e-garantias' }}">{{ legal_returns_label | escape }}</a>
+          <a class="copyright__content" href="{{ pages['envios-e-entregas'].url | default: '/pages/envios-e-entregas' }}">{{ legal_shipping_label | escape }}</a>
+          <a class="copyright__content" href="{{ pages['contact'].url | default: '/pages/contact' }}">{{ legal_contact_label | escape }}</a>
+          <a class="copyright__content" href="{{ shop.privacy_policy.url | default: '/pages/politica-de-privacidade' }}">{{ legal_privacy_label | escape }}</a>
+        </nav>
         {%- if request.page_type == 'product' -%}
           <small class="copyright__content vpr-footer-note">{{ 'viriatto_product.demo_notice' | t }}</small>
         {%- endif -%}

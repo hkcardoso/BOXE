@@ -38,6 +38,17 @@
         endcase
       endif
 
+      if request.page_type == 'collection' and collection.handle == 'luvas-de-boxe-e-muay-thai'
+        case viriatto_lang
+          when 'en'
+            assign viriatto_page_title = 'Boxing Gloves for Training and Muay Thai | VIRIATTO'
+          when 'es'
+            assign viriatto_page_title = 'Guantes de Boxeo y Muay Thai | VIRIATTO'
+          else
+            assign viriatto_page_title = 'Luvas de Boxe para Treino e Muay Thai | VIRIATTO'
+        endcase
+      endif
+
       assign viriatto_meta_description = page_description | replace: 'BOXEUP', 'VIRIATTO' | replace: 'BoxeUp', 'VIRIATTO' | replace: 'Boxeup', 'VIRIATTO'
       if viriatto_meta_description == blank or request.page_type == 'index'
         case request.page_type
@@ -73,6 +84,16 @@
             assign viriatto_meta_description = page.content | strip_html | strip | truncate: 155
           when 'article'
             assign viriatto_meta_description = article.excerpt_or_content | strip_html | strip | truncate: 155
+        endcase
+      endif
+      if request.page_type == 'collection' and collection.handle == 'luvas-de-boxe-e-muay-thai'
+        case viriatto_lang
+          when 'en'
+            assign viriatto_meta_description = 'Explore boxing gloves for training, bag work and Muay Thai. Compare Charlie, Fairtex, Everlast and more at VIRIATTO.'
+          when 'es'
+            assign viriatto_meta_description = 'Descubre guantes de boxeo para entrenamiento y Muay Thai. Explora modelos Charlie, Fairtex, Everlast y más en VIRIATTO.'
+          else
+            assign viriatto_meta_description = 'Luvas de boxe para treino, saco, sparring e Muay Thai. Explora modelos Charlie, Fairtex, Everlast e outras marcas na VIRIATTO Portugal.'
         endcase
       endif
       assign viriatto_meta_description = viriatto_meta_description | strip | truncate: 160

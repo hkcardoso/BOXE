@@ -46,7 +46,7 @@
           "type": "text",
           "settings": {
             "heading": "Contactos",
-            "subtext": "<p><a href=\"mailto:business@boxeup.com\">business@boxeup.com</a></p><p>Para apoio a encomendas e propostas de parceria.</p>"
+            "subtext": "<p><a href=\"mailto:business@boxeup.com\">business@boxeup.com</a></p><p><a href=\"tel:+351910073534\">+351 910 073 534</a></p><p>Para apoio a encomendas e propostas de parceria.</p>"
           }
         }
       },

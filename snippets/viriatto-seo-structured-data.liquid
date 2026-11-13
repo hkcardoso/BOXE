@@ -12,7 +12,8 @@
           "@type": "Organization",
           "@id": {{ request.origin | append: '/#organization' | json }},
           "name": "VIRIATTO",
-          "url": {{ request.origin | append: routes.root_url | json }}
+          "url": {{ request.origin | append: routes.root_url | json }},
+          "telephone": "+351 910 073 534"
           {%- if settings.logo != blank -%},
           "logo": {{ settings.logo | image_url: width: 600 | prepend: 'https:' | json }}
           {%- else -%},

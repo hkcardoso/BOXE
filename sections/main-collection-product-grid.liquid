@@ -411,6 +411,48 @@
   </div>
 </collection-component>
 
+{%- if collection.handle == 'luvas-de-boxe-e-muay-thai' and current_page == 1 -%}
+  {%- assign glove_guide_lang = request.locale.iso_code | slice: 0, 2 -%}
+  <style>
+    .viri-gloves-guide{max-width:1180px;margin:0 auto;padding:36px 20px 56px;color:#e4e4e8}
+    .viri-gloves-guide h2{margin:0 0 14px;font-size:clamp(21px,2.4vw,30px);line-height:1.3;letter-spacing:-.02em}
+    .viri-gloves-guide p{margin:0 0 14px;color:#bfc0c6;font-size:14px;line-height:1.7}
+    .viri-gloves-guide__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:23px}
+    .viri-gloves-guide__item{padding:20px;border:1px solid #33363e;border-radius:6px;background:#1a1b1f}
+    .viri-gloves-guide h3{margin:0 0 9px;color:#f0f0f2;font-size:15px;font-weight:700}
+    .viri-gloves-guide a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+    @media(max-width:749px){.viri-gloves-guide{padding:26px 20px 44px}.viri-gloves-guide__grid{grid-template-columns:1fr;gap:10px}.viri-gloves-guide__item{padding:16px}}
+  </style>
+  <section class="viri-gloves-guide" aria-labelledby="viri-gloves-guide-title">
+    {%- case glove_guide_lang -%}
+      {%- when 'en' -%}
+        <h2 id="viri-gloves-guide-title">How to choose boxing gloves</h2>
+        <p>Boxing gloves differ in weight, padding, closure and intended training use. Compare the details of each model before choosing gloves for boxing or Muay Thai.</p>
+        <div class="viri-gloves-guide__grid">
+          <div class="viri-gloves-guide__item"><h3>What does oz mean?</h3><p>Ounces (oz) indicate glove weight, not hand size. The right weight depends on your training and your coach’s advice.</p></div>
+          <div class="viri-gloves-guide__item"><h3>Bag work or sparring?</h3><p>Different sessions require different protection. Ask your coach which glove weight and type are appropriate for sparring.</p></div>
+          <div class="viri-gloves-guide__item"><h3>Boxing and Muay Thai</h3><p>Check the closure, wrist support and mobility. Browse the <a href="/products/charlie-bat-x-luvas-de-treino">Charlie Bat-X gloves</a> or the <a href="/products/fairtex-bgv1-luvas-de-boxe-e-muay-thai">Fairtex BGV1 gloves</a>.</p></div>
+        </div>
+      {%- when 'es' -%}
+        <h2 id="viri-gloves-guide-title">Cómo elegir guantes de boxeo</h2>
+        <p>Los guantes de boxeo varían según su peso, acolchado, cierre y tipo de entrenamiento. Compara los modelos para boxeo y Muay Thai.</p>
+        <div class="viri-gloves-guide__grid">
+          <div class="viri-gloves-guide__item"><h3>¿Qué significan las oz?</h3><p>Las onzas (oz) indican el peso del guante, no la talla de la mano. Consulta con tu entrenador qué peso necesitas.</p></div>
+          <div class="viri-gloves-guide__item"><h3>¿Saco o sparring?</h3><p>La protección adecuada depende del entrenamiento. Confirma con tu entrenador los guantes indicados para sparring.</p></div>
+          <div class="viri-gloves-guide__item"><h3>Boxeo y Muay Thai</h3><p>Compara el cierre, la sujeción de la muñeca y la movilidad. Descubre los <a href="/products/charlie-bat-x-luvas-de-treino">Charlie Bat-X</a> y los <a href="/products/fairtex-bgv1-luvas-de-boxe-e-muay-thai">Fairtex BGV1</a>.</p></div>
+        </div>
+      {%- else -%}
+        <h2 id="viri-gloves-guide-title">Como escolher luvas de boxe?</h2>
+        <p>As luvas de boxe variam no peso, acolchoamento, fecho e tipo de utilização. Antes de escolheres, compara os modelos para treino de saco, manoplas, boxe e Muay Thai.</p>
+        <div class="viri-gloves-guide__grid">
+          <div class="viri-gloves-guide__item"><h3>O que significa oz?</h3><p>As onças (oz) indicam o peso das luvas, não o tamanho da mão. O peso mais indicado depende do treino e da orientação do treinador.</p></div>
+          <div class="viri-gloves-guide__item"><h3>Saco, manoplas ou sparring?</h3><p>O tipo de treino influencia a proteção necessária. Para sparring, confirma com o treinador o peso e o modelo adequados.</p></div>
+          <div class="viri-gloves-guide__item"><h3>Boxe e Muay Thai</h3><p>Compara o fecho, o apoio do pulso e a mobilidade. Conhece as <a href="/products/charlie-bat-x-luvas-de-treino">luvas Charlie Bat-X</a> e as <a href="/products/fairtex-bgv1-luvas-de-boxe-e-muay-thai">luvas Fairtex BGV1</a>.</p></div>
+        </div>
+    {%- endcase -%}
+  </section>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "t:sections.main-collection-product-grid.name",

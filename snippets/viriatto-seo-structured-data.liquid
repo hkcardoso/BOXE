@@ -69,4 +69,23 @@
       ]
     }
   </script>
+  {%- if request.page_type == 'product' and product.featured_image != blank -%}
+    {%- comment -%} Point search engines to the actual first product photo, not the brand logo. {%- endcomment -%}
+    {%- assign viriatto_primary_product_image = product.featured_image | image_url: width: 1600 | prepend: 'https:' -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": {{ canonical_url | append: '#webpage' | json }},
+        "url": {{ canonical_url | json }},
+        "name": {{ product.title | json }},
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": {{ viriatto_primary_product_image | json }},
+          "contentUrl": {{ viriatto_primary_product_image | json }},
+          "caption": {{ product.title | json }}
+        }
+      }
+    </script>
+  {%- endif -%}
 {%- endif -%}

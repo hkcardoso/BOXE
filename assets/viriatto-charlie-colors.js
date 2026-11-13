@@ -164,6 +164,39 @@
     const step = 100 / shades.length;
     return "linear-gradient(110deg," + shades.map((v, i) => v + " " + (i * step) + "%," + v + " " + ((i + 1) * step) + "%").join(",") + ")";
   }
+  // Cada cor ativa a respetiva fotografia já existente na galeria Shopify.
+  // Para outros produtos Charlie, basta associar aqui os nomes dos ficheiros.
+  const mediaFilesByColor = {
+    34: {
+      "Vermelho": "charlie_protecoes_vermelhas",
+      "Azul": "charlie_protecoes_azuis",
+      "Preto": "charlie_protecoes_pretas"
+    }
+  };
+
+  function activateColorMedia(root, productId, color) {
+    const filename = mediaFilesByColor[productId]?.[color];
+    if (!filename) return;
+
+    const gallery = root.closest(".product")?.querySelector("media-gallery");
+    if (!gallery || typeof gallery.setActiveMedia !== "function") return;
+
+    const slides = gallery.querySelectorAll(".product__media-list > .product__media-item[data-media-id]");
+    const target = Array.from(slides).find(slide => {
+      return Array.from(slide.querySelectorAll("img")).some(image => {
+        const sources = [
+          image.getAttribute("src"),
+          image.getAttribute("srcset"),
+          image.currentSrc,
+          image.alt
+        ];
+        return sources.some(source => typeof source === "string" && source.includes(filename));
+      });
+    });
+
+    if (target) gallery.setActiveMedia(target.dataset.mediaId, false);
+  }
+
   function init(root) {
     if (root.dataset.vtColorReady) return;
     root.dataset.vtColorReady = "1";
@@ -203,6 +236,7 @@
       choices.append(input, label);
       input.addEventListener("change", () => {
         current.textContent = name;
+        activateColorMedia(root, productId, name);
         if (error) error.hidden = true;
       });
     });

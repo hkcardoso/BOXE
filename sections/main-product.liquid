@@ -106,7 +106,7 @@
     #MainContent[data-template="product"] .product.bxp-product-grid .bxp-product-advantages {
       margin-top: 18px !important; padding-top: 16px !important;
     }
-/* VIRIATTO: keep the purchase area simple and the real sale price prominent. */
+    /* VIRIATTO: keep the purchase area simple and the real sale price prominent. */
     #MainContent[data-template="product"] .product.bxp-product-grid [id^="price-"] .price__container {
       display: inline-flex !important;
       align-items: baseline !important;
@@ -160,9 +160,9 @@
   <script>
     /* Hide obsolete supplier-catalogue disclaimer without changing product data. */
     document.addEventListener('DOMContentLoaded', function () {
-      var root = document.getElementById('MainProduct-{{ section.id }}');
+      var root = document.querySelector('#MainContent[data-template="product"]') || document.getElementById('MainProduct-{{ section.id }}');
       if (!root) return;
-      var disclaimer = /Cores do cat[aá]logo Charlie 2026[–-]2027\\.?\\s*Disponibilidade por cor e peso sujeita a confirma[cç][aã]o\\.?/gi;
+      var disclaimer = /Cores do cat[aá]logo Charlie 2026[–-]2027\.?\s*Disponibilidade por cor e peso sujeita a confirma[cç][aã]o\.?/gi;
       var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
       var nodes = [];
       while (walker.nextNode()) {

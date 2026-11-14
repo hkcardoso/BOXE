@@ -6,17 +6,26 @@
 {%- if product.vendor == 'Charlie' -%}
   {{ 'viriatto-charlie-colors.css' | asset_url | stylesheet_tag }}
   <style>
-    /* Charlie product balance: match the purchase column to its photograph. */
+    /* Charlie product balance: center the purchase panel alongside the photo. */
     .vt-charlie-colors__note { display: none !important; }
     @media (min-width: 950px) {
       #MainContent[data-template="product"] .product.bxp-product-grid {
-        grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr) !important;
-        gap: clamp(30px, 3.3vw, 52px) !important;
-        align-items: center !important;
+        grid-template-columns: minmax(0, 1.06fr) minmax(0, .94fr) !important;
+        gap: clamp(28px, 3vw, 48px) !important;
+        align-items: stretch !important;
       }
       #MainContent[data-template="product"] .product.bxp-product-grid > .product__info-wrapper {
-        align-self: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-self: stretch !important;
+        width: 100% !important;
+        max-width: none !important;
+      }
+      #MainContent[data-template="product"] .product.bxp-product-grid .product__info-container {
+        width: 100% !important;
         max-width: 610px !important;
+        margin: 0 auto !important;
       }
       #MainContent[data-template="product"] .product.bxp-product-grid .product__info-container > * + * {
         margin-top: 11px !important;

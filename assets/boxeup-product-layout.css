@@ -1291,22 +1291,29 @@ body.boxeup-product-view .header-wrapper .header__inline-menu .header__menu-item
   }
 }
 
-/* VIRIATTO product desktop balance: align product photo and purchase panel. */
+/* VIRIATTO product desktop balance: align the buying panel to the image. */
 @media (min-width: 950px) {
   #MainContent[data-template="product"] .product.bxp-product-grid {
-    grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr) !important;
-    column-gap: clamp(30px, 3.3vw, 52px) !important;
-    align-items: center !important;
+    grid-template-columns: minmax(0, 1.06fr) minmax(0, .94fr) !important;
+    column-gap: clamp(28px, 3vw, 48px) !important;
+    align-items: stretch !important;
   }
   #MainContent[data-template="product"] .product.bxp-product-grid > .product__info-wrapper {
-    align-self: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-self: stretch !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+  #MainContent[data-template="product"] .product.bxp-product-grid .product__info-container {
     width: 100% !important;
     max-width: 610px !important;
+    margin: 0 auto !important;
   }
-  #MainContent[data-template="product"] .product.bxp-product-grid .bxp-product-intro--before-buy {
-    max-width: 550px !important;
-    margin-top: 10px !important;
-    margin-bottom: 15px !important;
+  #MainContent[data-template="product"] .product.bxp-product-grid .bxp-product-intro--before-buy,
+  #MainContent[data-template="product"] .product.bxp-product-grid .bxp-product-intro--after-buy {
+    max-width: 560px !important;
   }
   #MainContent[data-template="product"] .product.bxp-product-grid .product__info-container > * + * {
     margin-top: 11px !important;

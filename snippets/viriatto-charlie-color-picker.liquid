@@ -5,6 +5,24 @@
 {% endcomment %}
 {%- if product.vendor == 'Charlie' -%}
   {{ 'viriatto-charlie-colors.css' | asset_url | stylesheet_tag }}
+  <style>
+    /* Charlie product balance: match the purchase column to its photograph. */
+    .vt-charlie-colors__note { display: none !important; }
+    @media (min-width: 950px) {
+      #MainContent[data-template="product"] .product.bxp-product-grid {
+        grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr) !important;
+        gap: clamp(30px, 3.3vw, 52px) !important;
+        align-items: center !important;
+      }
+      #MainContent[data-template="product"] .product.bxp-product-grid > .product__info-wrapper {
+        align-self: center !important;
+        max-width: 610px !important;
+      }
+      #MainContent[data-template="product"] .product.bxp-product-grid .product__info-container > * + * {
+        margin-top: 11px !important;
+      }
+    }
+  </style>
   <div class="vt-charlie-colors" data-vt-charlie-colors data-charlie-handle="{{ product.handle | escape }}" data-section-id="{{ section.id | escape }}" hidden>
     <fieldset class="vt-charlie-colors__fieldset">
       <legend class="vt-charlie-colors__legend">Cor: <span class="vt-charlie-colors__selected" data-vt-color-current></span></legend>

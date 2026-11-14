@@ -1290,3 +1290,25 @@ body.boxeup-product-view .header-wrapper .header__inline-menu .header__menu-item
     object-fit:cover!important;
   }
 }
+
+/* VIRIATTO product desktop balance: photo and purchase panel share the viewport. */
+@media (min-width: 950px) {
+  #MainContent[data-template="product"] .product.bxp-product-grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr) !important;
+    column-gap: clamp(30px, 3.3vw, 52px) !important;
+    align-items: center !important;
+  }
+  #MainContent[data-template="product"] .product.bxp-product-grid > .product__info-wrapper {
+    align-self: center !important;
+    width: 100% !important;
+    max-width: 610px !important;
+  }
+  #MainContent[data-template="product"] .product.bxp-product-grid .bxp-product-intro--before-buy {
+    max-width: 550px !important;
+    margin-top: 10px !important;
+    margin-bottom: 15px !important;
+  }
+  #MainContent[data-template="product"] .product.bxp-product-grid .product__info-container > * + * {
+    margin-top: 11px !important;
+  }
+}

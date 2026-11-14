@@ -1,6 +1,7 @@
 {% comment %}
   Mostra as cores do catálogo oficial Charlie 2026–2027 como propriedade de linha.
-  Não altera variantes, preços ou inventário. A cor escolhida é enviada no carrinho.
+  A escolha de cor é enviada no carrinho, sem alterar variantes, preços ou inventário.
+  Informação de catálogo e disponibilidade não deve aparecer na área de compra.
 {% endcomment %}
 {%- if product.vendor == 'Charlie' -%}
   {{ 'viriatto-charlie-colors.css' | asset_url | stylesheet_tag }}

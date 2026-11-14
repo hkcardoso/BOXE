@@ -48,6 +48,29 @@
   {%- endstyle -%}
   <link rel="stylesheet" href="{{ 'viriatto-mobile-recovered-core.css' | asset_url }}" media="(max-width: 989px)">
   {{ 'viriatto-mobile-product-premium.css' | asset_url | stylesheet_tag }}
+  <style>
+    /* Cleaner product purchase area; sale status stays visible and centered. */
+    #MainContent[data-template="product"] .product.bxp-product-grid .price--on-sale {
+      display: inline-flex; align-items: center; flex-wrap: wrap; gap: 8px 12px;
+    }
+    #MainContent[data-template="product"] .product.bxp-product-grid .price--on-sale .price__container {
+      margin: 0; vertical-align: middle;
+    }
+    #MainContent[data-template="product"] .product.bxp-product-grid .price--on-sale .price__badge-sale {
+      display: inline-flex; align-items: center; justify-content: center;
+      text-align: center; margin: 0; min-height: 30px; padding: 5px 12px;
+      line-height: 1.2; white-space: nowrap;
+    }
+    #MainContent[data-template="product"] .product.bxp-product-grid .product__title {
+      margin-bottom: 10px;
+    }
+    #MainContent[data-template="product"] .product.bxp-product-grid .bxp-product-intro {
+      margin: 14px 0 18px !important;
+    }
+    #MainContent[data-template="product"] .product.bxp-product-grid .bxp-product-advantages {
+      margin-top: 18px !important; padding-top: 16px !important;
+    }
+  </style>
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -142,20 +165,6 @@
                   {%- if product.quantity_price_breaks_configured? -%}
                     <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
                       <span>{{ 'products.product.volume_pricing.note' | t }}</span>
-                    </div>
-                  {%- endif -%}
-                  {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
-                    <div class="product__tax caption rte">
-                      {%- if cart.duties_included and cart.taxes_included -%}
-                        {{ 'products.product.duties_and_taxes_included' | t }}
-                      {%- elsif cart.taxes_included -%}
-                        {{ 'products.product.taxes_included' | t }}
-                      {%- elsif cart.duties_included -%}
-                        {{ 'products.product.duties_included' | t }}
-                      {%- endif -%}
-                      {%- if shop.shipping_policy.body != blank -%}
-                        {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                      {%- endif -%}
                     </div>
                   {%- endif -%}
                   <div {{ block.shopify_attributes }}>

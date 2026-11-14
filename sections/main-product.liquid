@@ -61,6 +61,42 @@
       text-align: center; margin: 0; min-height: 30px; padding: 5px 12px;
       line-height: 1.2; white-space: nowrap;
     }
+    /* Product-only price: current value first, old value crossed out to the right. */
+    #MainContent[data-template="product"] .product.bxp-product-grid [id^="price-"] .price--on-sale {
+      display: inline-flex !important; align-items: baseline !important;
+      gap: 0 !important;
+    }
+    #MainContent[data-template="product"] .product.bxp-product-grid [id^="price-"] .price--on-sale .price__sale {
+      display: flex !important; flex-wrap: wrap; align-items: baseline;
+      column-gap: 15px; row-gap: 3px;
+    }
+    #MainContent[data-template="product"] .product.bxp-product-grid [id^="price-"] .price__sale > span {
+      order: 2; margin: 0 !important;
+    }
+    #MainContent[data-template="product"] .product.bxp-product-grid [id^="price-"] .price__sale > .price-item--sale {
+      order: 1; font-size: clamp(28px, 2.35vw, 38px) !important;
+      font-weight: 800 !important; line-height: 1.15 !important;
+      letter-spacing: -.035em !important;
+    }
+    #MainContent[data-template="product"] .product.bxp-product-grid [id^="price-"] .price__sale s.price-item--regular {
+      font-size: clamp(18px, 1.5vw, 24px) !important;
+      font-weight: 450 !important; color: #8f9094 !important;
+      -webkit-text-fill-color: #8f9094 !important;
+      text-decoration: line-through !important;
+      text-decoration-thickness: 1.5px !important;
+    }
+    /* Discount is already conveyed by the crossed-out price; keep sold-out notice. */
+    #MainContent[data-template="product"] .product.bxp-product-grid [id^="price-"] .price__badge-sale {
+      display: none !important;
+    }
+    @media (max-width: 749px) {
+      body.boxeup-product-view #MainContent[data-template="product"] .product.bxp-product-grid [id^="price-"] .price__sale > .price-item--sale {
+        font-size: clamp(24px, 6vw, 29px) !important;
+      }
+      body.boxeup-product-view #MainContent[data-template="product"] .product.bxp-product-grid [id^="price-"] .price__sale s.price-item--regular {
+        font-size: 17px !important;
+      }
+    }
     #MainContent[data-template="product"] .product.bxp-product-grid .product__title {
       margin-bottom: 10px;
     }
@@ -159,6 +195,7 @@
                       product: product,
                       use_variant: true,
                       show_badges: true,
+                      minimal_product_price: true,
                       price_class: 'price--large'
                     -%}
                   </div>

@@ -1026,7 +1026,7 @@
         {%- assign vh_new_count = 0 -%}
         {%- for product in vh_new_curated_products -%}
           {%- assign vh_vendor = product.vendor | downcase | strip -%}
-          {%- unless vh_vendor == 'charlie' or vh_vendor == 'boxeup' or vh_vendor == 'fluory' -%}{%- continue -%}{%- endunless -%}
+          {%- unless vh_vendor == 'charlie' or vh_vendor == 'boxeup' or vh_vendor == 'fluory' or vh_vendor == 'viriatto' -%}{%- continue -%}{%- endunless -%}
           {%- assign vh_product_title = product.title | downcase | strip -%}
           {%- if product.featured_image == blank or product.price == 0 or vh_vendor == 'my store' or product.tags contains 'boxeup:hidden' or vh_product_title == 'test' or vh_product_title == 'teste' -%}{%- continue -%}{%- endif -%}
           {%- capture vh_id_marker -%}|{{ product.id }}|{%- endcapture -%}

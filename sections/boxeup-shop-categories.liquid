@@ -139,7 +139,7 @@
     </nav>
     {%- liquid
       assign viri_catalog_lang = request.locale.iso_code | slice: 0, 2
-      assign viri_catalog_handles = 'luvas-de-boxe-e-muay-thai,caneleiras-de-muay-thai-e-kickboxing,capacetes-de-boxe,boqueiras-e-protecoes,calcoes-de-combate,roupa-e-fightwear,mochilas-e-sacos-de-treino-1,equipamento-de-treino' | split: ','
+      assign viri_catalog_handles = 'luvas-de-boxe-e-muay-thai,caneleiras-de-muay-thai-e-kickboxing,capacetes-de-boxe,boqueiras-e-protecoes,calcoes-de-combate,vestuario-e-fightwear,mochilas-e-sacos-de-treino-1,equipamento-de-treino' | split: ','
       assign viri_catalog_labels = 'Luvas de boxe,Caneleiras,Capacetes,Boqueiras e proteções,Calções,Roupa,Mochilas e sacos,Equipamento de treino' | split: ','
       if viri_catalog_lang == 'en'
         assign viri_catalog_labels = 'Boxing gloves,Shin guards,Headguards,Mouthguards and protection,Shorts,Clothing,Bags and backpacks,Training equipment' | split: ','

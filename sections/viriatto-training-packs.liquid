@@ -37,6 +37,7 @@
     assign vp_discount_note = 'El descuento del 10% se aplica al abrir el carrito mediante el código del pack.'
   endif
 -%}
+{% if section.settings.show_packs %}
 {{ 'viriatto-training-packs.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'viriatto-training-packs.js' | asset_url }}" defer></script>
 <section class="vp" id="ViriattoCharliePacks" aria-labelledby="ViriattoCharliePacksTitle">
@@ -140,13 +141,14 @@
     </div>
   </div>
 </section>
+{% endif %}
 {% schema %}
 {
   "name": "VIRIATTO | Packs Charlie",
   "tag": "section",
   "class": "section-viriatto-packs",
   "max_blocks": 2,
-  "settings": [],
+  "settings": [{ "type": "checkbox", "id": "show_packs", "label": "Mostrar packs Charlie na homepage", "default": false }],
   "blocks": [
     {
       "type": "pack",

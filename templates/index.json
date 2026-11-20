@@ -110,7 +110,8 @@
                 "charlie_red",
                 "charlie_blue"
             ],
-            "settings": {}
+            "settings": {},
+            "disabled": true
         },
         "viriatto_training_video": {
             "type": "viriatto-training-video",
@@ -119,6 +120,7 @@
     },
     "order": [
         "boxeup_home",
+        "viriatto_packs",
         "viriatto_training_video"
     ]
 }

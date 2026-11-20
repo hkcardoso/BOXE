@@ -49,22 +49,20 @@
             "settings": {
                 "hero_video": "shopify://files/videos/8745106-uhd_4096_2160_25fps.mp4",
                 "featured_products": [
-                    "charlie-bat-x-luvas-de-treino",
-                    "charlie-gel-metallic-luvas-de-boxe"
+                    "short-sleeve-t-shirt",
+                    "viriatto-essential-hoodie-unissexo",
+                    "viriatto-essential-sweatshirt-unissexo",
+                    "viriatto-essential-cap-bone-unissexo"
                 ],
                 "latest_products": [
+                    "fairtex-bgv1-luvas-de-boxe-e-muay-thai",
+                    "cleto-reyes-luvas-de-treino-em-pele",
+                    "twins-special-bgvl-3-luvas-de-muay-thai",
+                    "everlast-powerlock-2r-luvas-de-treino",
+                    "rival-rhg2-capacete-hibrido",
+                    "fairtex-sp5-caneleiras-de-competicao",
                     "fluory-calcoes-de-muay-thai-vermelho-e-preto",
-                    "charlie-catalogo-2026-050-arnes-de-cabeza",
-                    "charlie-catalogo-2026-215-cazadora-black-fighter",
-                    "charlie-catalogo-2026-051-venda-algodon",
-                    "charlie-catalogo-2026-040-bucal-molar",
-                    "charlie-catalogo-2026-172-boxeo-x",
-                    "charlie-catalogo-2026-147-bota-legend",
-                    "charlie-catalogo-2026-137-casco-barra-h-junior",
-                    "charlie-catalogo-2026-187-camiseta-amateur-mujer",
-                    "charlie-catalogo-2026-157-bolsa-mediana",
-                    "charlie-catalogo-2026-039-bucal-logo",
-                    "charlie-catalogo-2026-212-anorak-black-rain"
+                    "charlie-bat-x-luvas-de-treino"
                 ],
                 "featured_collection": "destaques-viriatto-selecao-atual"
             }

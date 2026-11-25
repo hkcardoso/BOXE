@@ -907,7 +907,25 @@
 
 {{ 'viriatto-product-tile-info.css' | asset_url | stylesheet_tag }}
 {{ 'viriatto-values-marquee.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'viriatto-values-marquee.js' | asset_url }}" defer></script>
+<style>
+  .vh-home .viri-values-marquee__group {
+    min-height:46px;
+    font-size:clamp(13px,1.2vw,19px);
+    gap:clamp(16px,2.1vw,30px);
+    padding-inline-end:clamp(16px,2.1vw,30px);
+    letter-spacing:-.025em;
+  }
+  .vh-home .viri-values-marquee__cross {
+    display:block;flex:0 0 auto;width:.86em;height:.86em;color:#fff;
+  }
+  .vh-home .viri-values-marquee__track {animation-duration:120s}
+  .vh-home .viri-values-marquee__viewport:focus-visible {outline:2px solid #fff;outline-offset:-3px}
+  @media(max-width:749px) {
+    .vh-home .viri-values-marquee__group {min-height:38px;font-size:13px;gap:15px;padding-inline-end:15px}
+    .vh-home .viri-values-marquee__track {animation-duration:90s}
+  }
+</style>
+
 
 
 <section class="vh-home" aria-label="{{ 'boxeup_sections.aria_home' | t }}">
@@ -973,21 +991,23 @@
 
 
   <div class="viri-values-marquee" role="group" aria-label="Discipline, Respect, Resilience, VIRIATTO">
-    <div class="viri-values-marquee__viewport" aria-hidden="true">
-      <div class="viri-values-marquee__track">
+    {%- capture viri_values_cross -%}
+      <svg class="viri-values-marquee__cross" viewBox="0 0 100 100" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M21 0H79Q57.3 25 57.3 42.7Q75 42.7 100 21V79Q75 57.3 57.3 57.3Q57.3 75 79 100H21Q42.7 75 42.7 57.3Q25 57.3 0 79V21Q25 42.7 42.7 42.7Q42.7 25 21 0Z"/></svg>
+    {%- endcapture -%}
+    <div class="viri-values-marquee__viewport" tabindex="0" aria-label="{% if vh_locale == 'en' %}Focus to pause animation{% elsif vh_locale == 'es' %}Enfocar para pausar animación{% else %}Selecionar para pausar a animação{% endif %}">
+      <div class="viri-values-marquee__track" aria-hidden="true">
         {%- for viri_values_group in (1..2) -%}
           <div class="viri-values-marquee__group">
-            {%- for viri_values_repeat in (1..4) -%}
-              <span>DISCIPLINE</span><span class="viri-values-marquee__star">✦</span>
-              <span>RESPECT</span><span class="viri-values-marquee__star">✦</span>
-              <span>RESILIENCE</span><span class="viri-values-marquee__star">✦</span>
-              <span>VIRIATTO</span><span class="viri-values-marquee__star">✦</span>
+            {%- for viri_values_repeat in (1..6) -%}
+              {{ viri_values_cross }}<span>DISCIPLINE</span>
+              {{ viri_values_cross }}<span>RESPECT</span>
+              {{ viri_values_cross }}<span>RESILIENCE</span>
+              {{ viri_values_cross }}<span>VIRIATTO</span>
             {%- endfor -%}
           </div>
         {%- endfor -%}
       </div>
     </div>
-    <button class="viri-values-marquee__pause" type="button" aria-label="{% if vh_locale == 'en' %}Pause animation{% elsif vh_locale == 'es' %}Pausar animación{% else %}Pausar animação{% endif %}" aria-pressed="false" hidden><span aria-hidden="true">Ⅱ</span></button>
   </div>
 
   <div class="vh-frame">

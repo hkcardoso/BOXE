@@ -991,11 +991,11 @@
 
 
   {%- liquid
-    assign viri_values_words = 'DISCIPLINA,RESPEITO,RESILIÊNCIA,VIRIATTO'
+    assign viri_values_words = 'DISCIPLINA,RESILIÊNCIA,LUSITANO,RESPEITO,VENCER,VIRIATTO'
     if vh_locale == 'en'
-      assign viri_values_words = 'DISCIPLINE,RESPECT,RESILIENCE,VIRIATTO'
+      assign viri_values_words = 'DISCIPLINE,RESILIENCE,LUSITANIAN,RESPECT,WIN,VIRIATTO'
     elsif vh_locale == 'es'
-      assign viri_values_words = 'DISCIPLINA,RESPETO,RESILIENCIA,VIRIATTO'
+      assign viri_values_words = 'DISCIPLINA,RESILIENCIA,LUSITANO,RESPETO,VENCER,VIRIATTO'
     endif
     assign viri_values_items = viri_values_words | split: ','
   -%}

@@ -916,12 +916,12 @@
     letter-spacing:-.025em;
   }
   .vh-home .viri-values-marquee__cross {
-    display:block;flex:0 0 auto;width:.86em;height:.86em;color:#fff;
+    display:block;flex:0 0 auto;width:.86em;height:.86em;color:#ca2438;
   }
   .vh-home .viri-values-marquee__track {animation-duration:120s}
   .vh-home .viri-values-marquee__viewport:focus-visible {outline:2px solid #fff;outline-offset:-3px}
   @media(max-width:749px) {
-    .vh-home .viri-values-marquee__group {min-height:38px;font-size:13px;gap:15px;padding-inline-end:15px}
+    .vh-home .viri-values-marquee__group {min-height:30px;font-size:10px;gap:10px;padding-inline-end:10px}
     .vh-home .viri-values-marquee__track {animation-duration:90s}
   }
 </style>
@@ -990,7 +990,16 @@
   </div>
 
 
-  <div class="viri-values-marquee" role="group" aria-label="Discipline, Respect, Resilience, VIRIATTO">
+  {%- liquid
+    assign viri_values_words = 'DISCIPLINA,RESPEITO,RESILIÊNCIA,VIRIATTO'
+    if vh_locale == 'en'
+      assign viri_values_words = 'DISCIPLINE,RESPECT,RESILIENCE,VIRIATTO'
+    elsif vh_locale == 'es'
+      assign viri_values_words = 'DISCIPLINA,RESPETO,RESILIENCIA,VIRIATTO'
+    endif
+    assign viri_values_items = viri_values_words | split: ','
+  -%}
+  <div class="viri-values-marquee" role="group" aria-label="{{ viri_values_items | join: ', ' | escape }}">
     {%- capture viri_values_cross -%}
       <svg class="viri-values-marquee__cross" viewBox="0 0 100 100" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M21 0H79Q57.3 25 57.3 42.7Q75 42.7 100 21V79Q75 57.3 57.3 57.3Q57.3 75 79 100H21Q42.7 75 42.7 57.3Q25 57.3 0 79V21Q25 42.7 42.7 42.7Q42.7 25 21 0Z"/></svg>
     {%- endcapture -%}
@@ -999,10 +1008,9 @@
         {%- for viri_values_group in (1..2) -%}
           <div class="viri-values-marquee__group">
             {%- for viri_values_repeat in (1..6) -%}
-              {{ viri_values_cross }}<span>DISCIPLINE</span>
-              {{ viri_values_cross }}<span>RESPECT</span>
-              {{ viri_values_cross }}<span>RESILIENCE</span>
-              {{ viri_values_cross }}<span>VIRIATTO</span>
+              {%- for viri_values_word in viri_values_items -%}
+                {{ viri_values_cross }}<span>{{ viri_values_word | escape }}</span>
+              {%- endfor -%}
             {%- endfor -%}
           </div>
         {%- endfor -%}

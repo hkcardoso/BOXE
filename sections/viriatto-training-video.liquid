@@ -47,6 +47,7 @@
   assign vt_modalities_url = pages['modalidades'].url | default: routes.all_products_collection_url
 -%}
 <viriatto-training-video class="vt" data-play="{{ vt_play | escape }}" data-pause="{{ vt_pause | escape }}">
+  <img class="vt__poster" src="{{ 'viriatto-pack-training.jpg' | asset_url }}" alt="" loading="lazy" decoding="async" aria-hidden="true">
   <video class="vt__video" muted loop playsinline preload="none" poster="{{ 'viriatto-pack-training.jpg' | asset_url }}" data-src="{{ 'viriatto-pack-training-full.mp4' | asset_url }}" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
   <div class="vt__frame">
     <div class="vt__content">

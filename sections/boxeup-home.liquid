@@ -727,7 +727,9 @@
     z-index: -2;
     display: block;
     pointer-events: none;
+    opacity: 0;
   }
+  .vh-home .vh-hero__video.viri-video-playing { opacity: 1; }
   @media (max-width: 749px) {
     .vh-home .vh-hero__video { object-position: 66% center; }
   }
@@ -908,7 +910,17 @@
 
 <section class="vh-home" aria-label="{{ 'boxeup_sections.aria_home' | t }}">
   <div class="vh-hero">
-    {%- if section.settings.hero_image != blank -%}
+    {%- liquid
+      assign vh_poster_url = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300'
+      if section.settings.hero_video.preview_image != blank
+        assign vh_poster_url = section.settings.hero_video.preview_image | image_url: width: 2200
+      elsif section.settings.hero_image != blank
+        assign vh_poster_url = section.settings.hero_image | image_url: width: 2200
+      endif
+    -%}
+    {%- if section.settings.hero_video.preview_image != blank -%}
+      {{ section.settings.hero_video.preview_image | image_url: width: 2200 | image_tag: class: 'vh-hero__image', widths: '800,1200,1600,2200', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: '' }}
+    {%- elsif section.settings.hero_image != blank -%}
       {{ section.settings.hero_image | image_url: width: 2200 | image_tag: class: 'vh-hero__image', widths: '800,1200,1600,2200', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: '' }}
     {%- else -%}
       <img class="vh-hero__image" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" alt="" width="1920" height="1080" loading="eager" fetchpriority="high">
@@ -935,7 +947,7 @@
         assign vh_video_mobile = vh_video_mobile | default: vh_video_desktop
       -%}
       {%- if vh_video_desktop != blank -%}
-        <video class="vh-hero__video" autoplay muted loop playsinline preload="metadata" poster="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-hero-video-poster.jpg?v=1793029300" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+        <video class="vh-hero__video" autoplay muted loop playsinline preload="metadata" poster="{{ vh_poster_url | escape }}" aria-hidden="true" tabindex="-1" disablepictureinpicture>
           <source src="{{ vh_video_mobile | escape }}" media="(max-width: 749px)" type="video/mp4">
           <source src="{{ vh_video_desktop | escape }}" type="video/mp4">
         </video>

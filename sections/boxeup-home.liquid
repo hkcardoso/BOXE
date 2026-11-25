@@ -972,7 +972,7 @@
   </div>
 
 
-  <div class="viri-values-marquee" aria-label="Discipline, Respect, Resilience, VIRIATTO">
+  <div class="viri-values-marquee" role="group" aria-label="Discipline, Respect, Resilience, VIRIATTO">
     <div class="viri-values-marquee__viewport" aria-hidden="true">
       <div class="viri-values-marquee__track">
         {%- for viri_values_group in (1..2) -%}
@@ -987,7 +987,7 @@
         {%- endfor -%}
       </div>
     </div>
-    <button class="viri-values-marquee__pause" type="button" aria-label="{% case request.locale.iso_code | slice: 0, 2 %}{% when 'en' %}Pause animation{% when 'es' %}Pausar animación{% else %}Pausar animação{% endcase %}" aria-pressed="false" hidden><span aria-hidden="true">Ⅱ</span></button>
+    <button class="viri-values-marquee__pause" type="button" aria-label="{% if vh_locale == 'en' %}Pause animation{% elsif vh_locale == 'es' %}Pausar animación{% else %}Pausar animação{% endif %}" aria-pressed="false" hidden><span aria-hidden="true">Ⅱ</span></button>
   </div>
 
   <div class="vh-frame">

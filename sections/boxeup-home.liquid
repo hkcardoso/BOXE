@@ -1019,6 +1019,16 @@
       <div class="vh-grid">
         {%- assign vh_featured_ids = '|' -%}
         {%- assign vh_featured_count = 0 -%}
+        {%- assign vh_priority_handles = 'short-sleeve-t-shirt,mens-rash-guard,minimalist-backpack,all-over-print-gym-bag,baby-short-sleeve-one-piece' | split: ',' -%}
+        {%- for vh_handle in vh_priority_handles -%}
+          {%- assign product = all_products[vh_handle] -%}
+          {%- if product == blank or product.featured_image == blank or product.price == 0 or product.tags contains 'boxeup:hidden' -%}{%- continue -%}{%- endif -%}
+          {%- assign vh_vendor = product.vendor | downcase | strip -%}
+          {%- if vh_vendor != 'viriatto' -%}{%- continue -%}{%- endif -%}
+          {% render 'boxeup-home-card', product: product, section_id: section.id %}
+          {%- assign vh_featured_ids = vh_featured_ids | append: product.id | append: '|' -%}
+          {%- assign vh_featured_count = vh_featured_count | plus: 1 -%}
+        {%- endfor -%}
         {%- for product in vh_featured_products -%}
           {%- assign vh_vendor = product.vendor | downcase | strip -%}
           {%- comment -%}Linha VIRIATTO: seleção editorial de produtos da marca própria.{%- endcomment -%}

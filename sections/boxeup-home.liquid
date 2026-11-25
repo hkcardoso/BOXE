@@ -906,6 +906,8 @@
 
 
 {{ 'viriatto-product-tile-info.css' | asset_url | stylesheet_tag }}
+{{ 'viriatto-values-marquee.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'viriatto-values-marquee.js' | asset_url }}" defer></script>
 
 
 <section class="vh-home" aria-label="{{ 'boxeup_sections.aria_home' | t }}">
@@ -969,6 +971,24 @@
     
   </div>
 
+
+  <div class="viri-values-marquee" aria-label="Discipline, Respect, Resilience, VIRIATTO">
+    <div class="viri-values-marquee__viewport" aria-hidden="true">
+      <div class="viri-values-marquee__track">
+        {%- for viri_values_group in (1..2) -%}
+          <div class="viri-values-marquee__group">
+            {%- for viri_values_repeat in (1..4) -%}
+              <span>DISCIPLINE</span><span class="viri-values-marquee__star">✦</span>
+              <span>RESPECT</span><span class="viri-values-marquee__star">✦</span>
+              <span>RESILIENCE</span><span class="viri-values-marquee__star">✦</span>
+              <span>VIRIATTO</span><span class="viri-values-marquee__star">✦</span>
+            {%- endfor -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    <button class="viri-values-marquee__pause" type="button" aria-label="{% case request.locale.iso_code | slice: 0, 2 %}{% when 'en' %}Pause animation{% when 'es' %}Pausar animación{% else %}Pausar animação{% endcase %}" aria-pressed="false" hidden><span aria-hidden="true">Ⅱ</span></button>
+  </div>
 
   <div class="vh-frame">
     <section class="vh-products" id="VHomeFeatured" aria-labelledby="VHomeFeaturedTitle">

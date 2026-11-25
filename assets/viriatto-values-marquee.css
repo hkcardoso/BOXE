@@ -1,0 +1,74 @@
+/* VIRIATTO own-brand values strip — uses the hero's existing Benzin Bold face. */
+.vh-home .viri-values-marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #0b0c0e;
+  color: #fff;
+  border-block: 1px solid #292b30;
+}
+.vh-home .viri-values-marquee__viewport {
+  width: 100%;
+  overflow: hidden;
+}
+.vh-home .viri-values-marquee__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: viri-values-scroll 95s linear infinite;
+  will-change: transform;
+}
+.vh-home .viri-values-marquee__group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: clamp(22px, 3.5vw, 56px);
+  padding-inline-end: clamp(22px, 3.5vw, 56px);
+  min-height: 62px;
+  font-family: 'Viriatto Hero Benzin', Arial, Helvetica, sans-serif;
+  font-size: clamp(15px, 1.65vw, 25px);
+  font-weight: 700;
+  letter-spacing: .015em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.vh-home .viri-values-marquee__star {
+  font-family: Arial, sans-serif;
+  font-size: .8em;
+  color: #ddd;
+}
+@keyframes viri-values-scroll {
+  from { transform: translate3d(0,0,0); }
+  to { transform: translate3d(-50%,0,0); }
+}
+.vh-home .viri-values-marquee__pause {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border: 1px solid #555;
+  border-radius: 3px;
+  background: #0b0c0e;
+  color: #fff;
+  font: 14px Arial, sans-serif;
+  cursor: pointer;
+}
+.vh-home .viri-values-marquee__pause[hidden] { display: none !important; }
+.vh-home .viri-values-marquee__pause:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.vh-home .viri-values-marquee.is-paused .viri-values-marquee__track,
+.vh-home .viri-values-marquee:focus-within .viri-values-marquee__track { animation-play-state: paused; }
+@media (hover:hover) {
+  .vh-home .viri-values-marquee:hover .viri-values-marquee__track { animation-play-state: paused; }
+}
+@media (max-width:749px) {
+  .vh-home .viri-values-marquee__group { min-height: 48px; font-size: 15px; gap: 24px; padding-inline-end: 24px; }
+  .vh-home .viri-values-marquee__track { animation-duration: 75s; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .vh-home .viri-values-marquee__track { animation:none; transform:none; will-change:auto; }
+  .vh-home .viri-values-marquee__viewport { overflow-x:auto; }
+  .vh-home .viri-values-marquee__pause { display:none !important; }
+}

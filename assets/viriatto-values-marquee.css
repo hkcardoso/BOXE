@@ -60,9 +60,6 @@
 .vh-home .viri-values-marquee__pause:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .vh-home .viri-values-marquee.is-paused .viri-values-marquee__track,
 .vh-home .viri-values-marquee:focus-within .viri-values-marquee__track { animation-play-state: paused; }
-@media (hover:hover) {
-  .vh-home .viri-values-marquee:hover .viri-values-marquee__track { animation-play-state: paused; }
-}
 @media (max-width:749px) {
   .vh-home .viri-values-marquee__group { min-height: 48px; font-size: 15px; gap: 24px; padding-inline-end: 24px; }
   .vh-home .viri-values-marquee__track { animation-duration: 75s; }

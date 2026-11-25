@@ -8,6 +8,7 @@
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
+      {%- if link.handle == 'marcas' or link.handle == 'brands' or link.handle == 'modalidades' -%}{%- continue -%}{%- endif -%}
       {%- liquid
         assign vi_hide_primary_link = false
         assign vi_link_label = link.title | downcase | strip
@@ -21,7 +22,7 @@
       -%}
       {%- unless vi_hide_primary_link -%}
       <li>
-        {%- if link.links != blank -%}
+        {%- if link.links != blank and link.handle != 'catalogo' -%}
           <header-menu>
             <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
               <summary

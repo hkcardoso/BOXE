@@ -10,61 +10,61 @@
   assign vh_eyebrow = 'FEITO PARA'
   assign vh_title_a = 'QUEM'
   assign vh_title_b = 'TREINA.'
-  assign vh_intro = 'Luvas de boxe, proteções e equipamento para Muay Thai, MMA e fitness. Tudo para o teu próximo treino.'
-  assign vh_shop = 'VER EQUIPAMENTO'
-  assign vh_brands = 'VER MARCAS'
+  assign vh_intro = 'Vestuário e acessórios VIRIATTO, inspirados na disciplina e na cultura dos desportos de combate.'
+  assign vh_shop = 'VER COLEÇÃO'
+
   assign vh_featured = 'LINHA VIRIATTO'
-  assign vh_new = 'MARCAS SELECIONADAS'
+
   assign vh_all = 'VER TODOS'
   assign vh_delivery = 'ENTREGA EM PORTUGAL'
-  assign vh_delivery_desc = 'Charlie: 48–72 h após expedição'
+  assign vh_delivery_desc = 'Consulta os prazos de entrega'
   assign vh_returns = 'DEVOLUÇÕES'
   assign vh_returns_desc = 'Consulta as condições'
   assign vh_support = 'APOIO AO CLIENTE'
   assign vh_support_desc = 'Estamos aqui para ajudar'
-  assign vh_shipping = 'PORTES GRÁTIS'
+  assign vh_shipping = 'ENVIOS'
   assign vh_shipping_desc = 'Equipamento entregue em Portugal'
   if vh_locale == 'en'
     assign vh_eyebrow = 'MADE FOR'
     assign vh_title_a = 'THOSE WHO'
     assign vh_title_b = 'TRAIN.'
-    assign vh_intro = 'Boxing gloves, protective gear and equipment for Muay Thai, MMA and fitness. Everything for your next training session.'
-    assign vh_shop = 'SHOP EQUIPMENT'
-    assign vh_brands = 'VIEW BRANDS'
+    assign vh_intro = 'VIRIATTO clothing and accessories, inspired by the discipline and culture of combat sports.'
+    assign vh_shop = 'SHOP COLLECTION'
+
     assign vh_featured = 'VIRIATTO COLLECTION'
-    assign vh_new = 'SELECTED BRANDS'
+
     assign vh_all = 'VIEW ALL'
     assign vh_delivery = 'DELIVERY IN PORTUGAL'
-    assign vh_delivery_desc = 'Charlie: 48–72 h after dispatch'
+    assign vh_delivery_desc = 'See delivery estimates'
     assign vh_returns = 'RETURNS'
     assign vh_returns_desc = 'See our policy'
     assign vh_support = 'CUSTOMER SUPPORT'
     assign vh_support_desc = 'Here to help'
-    assign vh_shipping = 'FREE SHIPPING'
+    assign vh_shipping = 'SHIPPING'
     assign vh_shipping_desc = 'Equipment delivered in Portugal'
   elsif vh_locale == 'es'
     assign vh_eyebrow = 'HECHO PARA'
     assign vh_title_a = 'QUIENES'
     assign vh_title_b = 'ENTRENAN.'
-    assign vh_intro = 'Guantes de boxeo, protecciones y equipamiento para Muay Thai, MMA y fitness. Todo para tu próximo entrenamiento.'
+    assign vh_intro = 'Ropa y accesorios VIRIATTO, inspirados en la disciplina y la cultura de los deportes de combate.'
     assign vh_shop = 'VER EQUIPAMIENTO'
-    assign vh_brands = 'VER MARCAS'
+
     assign vh_featured = 'LÍNEA VIRIATTO'
-    assign vh_new = 'MARCAS SELECCIONADAS'
+
     assign vh_all = 'VER TODOS'
     assign vh_delivery = 'ENTREGAS EN PORTUGAL'
-    assign vh_delivery_desc = 'Charlie: 48–72 h tras el envío'
+    assign vh_delivery_desc = 'Consulta los plazos de entrega'
     assign vh_returns = 'DEVOLUCIONES'
     assign vh_returns_desc = 'Consulta las condiciones'
     assign vh_support = 'ATENCIÓN AL CLIENTE'
     assign vh_support_desc = 'Estamos para ayudarte'
-    assign vh_shipping = 'ENVÍO GRATIS'
+    assign vh_shipping = 'ENVÍOS'
     assign vh_shipping_desc = 'Equipamiento enviado a Portugal'
   endif
   # As duas listas são coleções manuais Shopify, para permitir a edição dos artigos
   # e respetiva ordem sem depender da sincronização do ficheiro index.json.
-  assign vh_featured_products = collections['linha-viriatto'].products
-  assign vh_new_curated_products = collections['marcas-selecionadas'].products
+  assign vh_featured_products = collections['all'].products
+
 -%}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -901,8 +901,8 @@
 </style>
 <link rel="stylesheet" href="{{ 'viriatto-mobile-recovered-core.css' | asset_url }}" media="(max-width: 989px)">
 <link rel="stylesheet" href="{{ 'viriatto-mobile-recovered-home.css' | asset_url }}" media="(max-width: 989px)">
-{{ 'viriatto-brands-marquee.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'viriatto-brands-marquee.js' | asset_url }}" defer></script>
+
+
 {{ 'viriatto-product-tile-info.css' | asset_url | stylesheet_tag }}
 
 
@@ -949,54 +949,20 @@
         <h1 class="vh-title">{{ vh_title_a }}<br>{{ vh_title_b }}</h1>
         <p class="vh-intro">{{ vh_intro }}</p>
         <div class="vh-actions">
-          <a class="vh-button vh-button--primary" href="{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}">{{ vh_shop }} <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
-          <a class="vh-button vh-button--secondary" href="#VHomeBrands">{{ vh_brands }}</a>
+          <a class="vh-button vh-button--primary" href="{{ routes.all_products_collection_url }}">{{ vh_shop }} <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+
         </div>
       </div>
     </div>
     
   </div>
 
-  <nav class="vh-brands" id="VHomeBrands" aria-label="{{ vh_brands }}">
-    <div class="vh-frame vh-brands__shell">
-      <div class="vh-brands__viewport" data-viriatto-brand-rail>
-        <div class="vh-brands__track">
-          {%- for vh_brand_copy in (1..3) -%}
-            <div class="vh-brands__group"{% if vh_brand_copy != 1 %} aria-hidden="true"{% endif %}>
-          {%- assign vh_brand_handles = 'viriatto,fairtex,venum,everlast,leone-1947,charlie,rdx,cleto-reyes,rival,twins' | split: ',' -%}
-      {%- for vh_brand_handle in vh_brand_handles -%}
-        {%- assign vh_brand_collection = collections[vh_brand_handle] -%}
-        {%- assign vh_brand_name = vh_brand_handle | replace: '-', ' ' | capitalize -%}
-        {%- assign vh_brand_logo = '' -%}
-        {%- case vh_brand_handle -%}
-          {%- when 'viriatto' -%}{%- assign vh_brand_name = 'VIRIATTO' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-logo-original-transparente.png?v=1793188281' -%}
-          {%- when 'fairtex' -%}{%- assign vh_brand_name = 'Fairtex' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-fairtex-white.png?v=1793040787' -%}
-          {%- when 'venum' -%}{%- assign vh_brand_name = 'Venum' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-venum-white.png?v=1793040818' -%}
-          {%- when 'everlast' -%}{%- assign vh_brand_name = 'Everlast' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-everlast-white.png?v=1793040849' -%}
-          {%- when 'leone-1947' -%}{%- assign vh_brand_name = 'Leone 1947' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-leone-1947-logo-white.png?v=1793191434' -%}
-          {%- when 'charlie' -%}{%- assign vh_brand_name = 'Charlie' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-charlie-white.png?v=1793040801' -%}
-          {%- when 'rdx' -%}{%- assign vh_brand_name = 'RDX' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-rdx-logo-white.png?v=1793191429' -%}
-          {%- when 'cleto-reyes' -%}{%- assign vh_brand_name = 'Cleto Reyes' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-reyes-white.png?v=1793040826' -%}
-          {%- when 'rival' -%}{%- assign vh_brand_name = 'Rival' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-rival-white.png?v=1793040835' -%}
-          {%- when 'twins' -%}{%- assign vh_brand_name = 'Twins' -%}{%- assign vh_brand_logo = 'https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-twins-white.png?v=1793040843' -%}
-        {%- endcase -%}
-        <a class="vh-brand vh-brand--{{ vh_brand_handle }}" {% if vh_brand_copy != 1 %}tabindex="-1"{% endif %} href="{% if vh_brand_handle == 'viriatto' %}{{ routes.root_url }}collections/viriatto{% elsif vh_brand_collection != blank %}{{ vh_brand_collection.url }}{% else %}{{ routes.search_url }}?q={{ vh_brand_name | url_encode }}{% endif %}" aria-label="{{ vh_brand_name | escape }}">
-          {%- if vh_brand_logo != blank -%}<img src="{{ vh_brand_logo }}" alt="{{ vh_brand_name | escape }}" width="120" height="50" loading="lazy">
-          {%- else -%}<span class="vh-brand__word">{{ vh_brand_name }}</span>{%- endif -%}
-        </a>
-      {%- endfor -%}
-            </div>
-          {%- endfor -%}
-        </div>
-      </div>
-    </div>
-  </nav>
 
   <div class="vh-frame">
     <section class="vh-products" id="VHomeFeatured" aria-labelledby="VHomeFeaturedTitle">
       <div class="vh-products__heading">
         <h2 id="VHomeFeaturedTitle">{{ vh_featured }}</h2>
-        <a class="vh-products__all" href="{{ collections['linha-viriatto'].url | default: '/collections/linha-viriatto' }}">{{ vh_all }} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+        <a class="vh-products__all" href="{{ routes.all_products_collection_url }}">{{ vh_all }} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
       </div>
       <div class="vh-grid">
         {%- assign vh_featured_ids = '|' -%}
@@ -1005,7 +971,7 @@
           {%- assign vh_vendor = product.vendor | downcase | strip -%}
           {%- comment -%}Linha VIRIATTO: seleção editorial de produtos da marca própria.{%- endcomment -%}
           {%- assign vh_product_title = product.title | downcase | strip -%}
-          {%- if product.featured_image == blank or product.price == 0 or vh_vendor == 'my store' or product.tags contains 'boxeup:hidden' or vh_product_title == 'test' or vh_product_title == 'teste' -%}{%- continue -%}{%- endif -%}
+          {%- if product.featured_image == blank or product.price == 0 or vh_vendor != 'viriatto' or product.tags contains 'boxeup:hidden' or vh_product_title == 'test' or vh_product_title == 'teste' -%}{%- continue -%}{%- endif -%}
           {%- capture vh_id_marker -%}|{{ product.id }}|{%- endcapture -%}
           {%- if vh_featured_ids contains vh_id_marker -%}{%- continue -%}{%- endif -%}
           {% render 'boxeup-home-card', product: product, section_id: section.id %}
@@ -1016,27 +982,6 @@
       {%- if vh_featured_count == 0 -%}<p class="vh-empty">{{ 'boxeup_sections.home_empty' | t }}</p>{%- endif -%}
     </section>
 
-    <section class="vh-products" id="VHomeNew" aria-labelledby="VHomeNewTitle">
-      <div class="vh-products__heading">
-        <h2 id="VHomeNewTitle">{{ vh_new }}</h2>
-        <a class="vh-products__all" href="{{ collections['marcas-selecionadas'].url | default: '/collections/marcas-selecionadas' }}">{{ vh_all }} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
-      </div>
-      <div class="vh-grid">
-        {%- assign vh_new_ids = '|' -%}
-        {%- assign vh_new_count = 0 -%}
-        {%- for product in vh_new_curated_products -%}
-          {%- assign vh_vendor = product.vendor | downcase | strip -%}
-          {%- assign vh_product_title = product.title | downcase | strip -%}
-          {%- if product.featured_image == blank or product.price == 0 or vh_vendor == 'my store' or product.tags contains 'boxeup:hidden' or vh_product_title == 'test' or vh_product_title == 'teste' -%}{%- continue -%}{%- endif -%}
-          {%- capture vh_id_marker -%}|{{ product.id }}|{%- endcapture -%}
-          {%- if vh_new_ids contains vh_id_marker -%}{%- continue -%}{%- endif -%}
-          {% render 'boxeup-home-card', product: product, section_id: section.id %}
-          {%- assign vh_new_ids = vh_new_ids | append: product.id | append: '|' -%}
-          {%- assign vh_new_count = vh_new_count | plus: 1 -%}
-        {%- endfor -%}
-            </div>
-      {%- if vh_new_count == 0 -%}<p class="vh-empty">{{ 'boxeup_sections.home_empty' | t }}</p>{%- endif -%}
-    </section>
   </div>
 
   <div class="vh-trust">
@@ -1056,7 +1001,7 @@
   "class": "section-boxeup-home",
   "settings": [
     {"type":"product_list","id":"featured_products","label":"Linha VIRIATTO — produtos","limit":15},
-    {"type":"product_list","id":"latest_products","label":"Marcas selecionadas — produtos","limit":15},
+    {"type":"product_list","id":"latest_products","label":"Produtos adicionais (inativo)","limit":15},
     {"type":"collection","id":"featured_collection","label":"Coleção de produtos em destaque"},
     {"type":"image_picker","id":"hero_image","label":"Fotografia do hero (recomendado)","info":"Imagem horizontal com atleta à direita e espaço para texto à esquerda."},
     {"type":"video","id":"hero_video","label":"Vídeo do destaque (Shopify)","info":"Opcional. Por defeito, é apresentada uma animação otimizada do vídeo enviado."},

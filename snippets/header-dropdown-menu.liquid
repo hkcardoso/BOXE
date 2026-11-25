@@ -18,6 +18,7 @@
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
+      {%- if link.handle == 'marcas' or link.handle == 'brands' or link.handle == 'modalidades' -%}{%- continue -%}{%- endif -%}
       {%- liquid
         assign vi_hide_primary_link = false
         assign vi_link_label = link.title | downcase | strip
@@ -49,7 +50,7 @@
               <li><span class="boxeup-nav-modalities__link boxeup-nav-modalities__link--disabled" aria-disabled="true">Jiu-Jitsu <small class="boxeup-nav-modalities__badge">{{ 'boxeup_navigation.coming_soon' | t }}</small></span></li>
             </ul>
           </div>
-        {%- elsif link.links != blank -%}
+        {%- elsif link.links != blank and link.handle != 'catalogo' -%}
           {% comment %}
             BOXEUP: same hover/focus menu surface and animation as Modalidades.
             Preserve the existing Shopify menu links, including third-level entries.
@@ -57,7 +58,7 @@
           <div class="boxeup-nav-modalities">
             <a
               id="HeaderMenu-{{ link.handle }}"
-              href="{% if link.handle == 'catalogo' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}{% elsif link.handle == 'marcas' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}#BxBrands{% elsif link.handle == 'novidades' %}{{ collections['novidades-viriatto-selecao-atual'].url | default: '/collections/novidades-viriatto-selecao-atual' }}{% else %}{{ link.url }}{% endif %}"
+              href="{% if link.handle == 'catalogo' %}{{ routes.all_products_collection_url }}{% elsif link.handle == 'marcas' %}{{ routes.all_products_collection_url }}#BxBrands{% elsif link.handle == 'novidades' %}{{ routes.all_products_collection_url }}?sort_by=created-descending{% else %}{{ link.url }}{% endif %}"
               class="header__menu-item list-menu__item link link--text focus-inset boxeup-nav-modalities__trigger"
               {% if link.current %}aria-current="page"{% endif %}
             >
@@ -86,7 +87,7 @@
                 <li>
                   <a
                     id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                    href="{% if link.handle == 'catalogo' and vc_child_handle == 'all' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}{% else %}{{ childlink.url }}{% endif %}"
+                    href="{% if link.handle == 'catalogo' and vc_child_handle == 'all' %}{{ routes.all_products_collection_url }}{% else %}{{ childlink.url }}{% endif %}"
                     class="boxeup-nav-modalities__link focus-inset"
                     {% if childlink.current %}aria-current="page"{% endif %}
                   >{{ childlink.title | escape }}</a>
@@ -111,7 +112,7 @@
         {%- else -%}
           <a
             id="HeaderMenu-{{ link.handle }}"
-            href="{% if link.handle == 'catalogo' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}{% elsif link.handle == 'marcas' %}{{ collections['catalogo-viriatto'].url | default: '/collections/catalogo-viriatto' }}#BxBrands{% elsif link.handle == 'novidades' %}{{ collections['novidades-viriatto-selecao-atual'].url | default: '/collections/novidades-viriatto-selecao-atual' }}{% else %}{{ link.url }}{% endif %}"
+            href="{% if link.handle == 'catalogo' %}{{ routes.all_products_collection_url }}{% elsif link.handle == 'marcas' %}{{ routes.all_products_collection_url }}#BxBrands{% elsif link.handle == 'novidades' %}{{ routes.all_products_collection_url }}?sort_by=created-descending{% else %}{{ link.url }}{% endif %}"
             class="header__menu-item list-menu__item link link--text focus-inset"
             {% if link.current %}
               aria-current="page"

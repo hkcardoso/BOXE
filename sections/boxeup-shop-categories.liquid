@@ -127,16 +127,6 @@
 </style>
 <section id="boxeup-catalog-filters" class="boxeup-catalog-controls page-width" aria-label="{{ 'boxeup_navigation.categories' | t }}">
   <div class="boxeup-brands-always-open">
-    <nav class="boxeup-brand-grid" aria-label="{{ 'boxeup_navigation.brands' | t }}">
-      <a class="boxeup-brand-card" data-boxeup-catalog href="{{ collections['viriatto'].url | default: '/collections/viriatto' }}" aria-label="VIRIATTO"{% if collection.handle == 'viriatto' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-logo-original-transparente.png?v=1793188281" alt="VIRIATTO" loading="lazy" width="140" height="72"></a>
-      <a class="boxeup-brand-card" data-boxeup-catalog href="{{ collections['charlie'].url | default: '/collections/charlie' }}" aria-label="Charlie"{% if collection.handle == 'charlie' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-charlie-white.png?v=1793040801" alt="Charlie" loading="lazy" width="140" height="72"></a>
-      <a class="boxeup-brand-card" data-boxeup-catalog href="{{ collections['fairtex'].url | default: '/collections/fairtex' }}" aria-label="Fairtex"{% if collection.handle == 'fairtex' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-fairtex-white.png?v=1793040787" alt="Fairtex" loading="lazy" width="140" height="72"></a>
-      <a class="boxeup-brand-card" data-boxeup-catalog href="{{ collections['venum'].url | default: '/collections/venum' }}" aria-label="Venum"{% if collection.handle == 'venum' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-venum-white.png?v=1793040818" alt="Venum" loading="lazy" width="140" height="72"></a>
-      <a class="boxeup-brand-card" data-boxeup-catalog href="{{ collections['cleto-reyes'].url | default: '/collections/cleto-reyes' }}" aria-label="Cleto Reyes"{% if collection.handle == 'cleto-reyes' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-reyes-white.png?v=1793040826" alt="Cleto Reyes" loading="lazy" width="140" height="72"></a>
-      <a class="boxeup-brand-card" data-boxeup-catalog href="{{ collections['rival'].url | default: '/collections/rival' }}" aria-label="Rival"{% if collection.handle == 'rival' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-rival-white.png?v=1793040835" alt="Rival" loading="lazy" width="140" height="72"></a>
-      <a class="boxeup-brand-card" data-boxeup-catalog href="{{ collections['twins'].url | default: '/collections/twins' }}" aria-label="Twins"{% if collection.handle == 'twins' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-twins-white.png?v=1793040843" alt="Twins" loading="lazy" width="140" height="72"></a>
-      <a class="boxeup-brand-card" data-boxeup-catalog href="{{ collections['everlast'].url | default: '/collections/everlast' }}" aria-label="Everlast"{% if collection.handle == 'everlast' %} aria-current="page"{% endif %}><img class="boxeup-brand-card__logo" src="https://cdn.shopify.com/s/files/1/0944/3937/5184/files/boxeup-logo-everlast-white.png?v=1793040849" alt="Everlast" loading="lazy" width="140" height="72"></a>
-    </nav>
     {%- liquid
       assign viri_catalog_lang = request.locale.iso_code | slice: 0, 2
       assign viri_catalog_handles = 'luvas-de-boxe-e-muay-thai,caneleiras-de-muay-thai-e-kickboxing,capacetes-de-boxe,boqueiras-e-protecoes,calcoes-de-combate,vestuario-e-fightwear,mochilas-e-sacos-de-treino-1,equipamento-de-treino' | split: ','
@@ -150,7 +140,7 @@
     <nav class="viri-catalog-types" aria-label="{{ 'boxeup_navigation.categories' | t }}">
       {%- for viri_handle in viri_catalog_handles -%}
         {%- assign viri_category = collections[viri_handle] -%}
-        {%- if viri_category != blank -%}
+        {%- if viri_category != blank and viri_category.products_count > 0 -%}
           <a class="viri-catalog-types__link" href="{{ viri_category.url }}"{% if collection.handle == viri_handle %} aria-current="page"{% endif %}>{{ viri_catalog_labels[forloop.index0] | escape }}</a>
         {%- endif -%}
       {%- endfor -%}

@@ -105,6 +105,7 @@
                   </facet-remove>
                 </div>
                 {%- for filter in results.filters -%}
+                  {%- if filter.param_name == 'filter.p.vendor' -%}{%- continue -%}{%- endif -%}
                   {%- for value in filter.active_values -%}
                     <facet-remove>
                       <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
@@ -145,6 +146,7 @@
             <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
             {% comment %} Filters for both horizontal and vertical filter {% endcomment %}
             {%- for filter in results.filters -%}
+                  {%- if filter.param_name == 'filter.p.vendor' -%}{%- continue -%}{%- endif -%}
               {% liquid
                 assign total_active_values = total_active_values | plus: filter.active_values.size
                 assign presentation = filter.presentation | default: default_presentation
@@ -377,6 +379,7 @@
           {%- if filter_type == 'horizontal' -%}
             <div class="active-facets active-facets-desktop">
               {%- for filter in results.filters -%}
+                  {%- if filter.param_name == 'filter.p.vendor' -%}{%- continue -%}{%- endif -%}
                 {%- for value in filter.active_values -%}
                   <facet-remove>
                     <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
@@ -533,6 +536,7 @@
               {%- endif -%}
               {%- if enable_filtering -%}
                 {%- for filter in results.filters -%}
+                  {%- if filter.param_name == 'filter.p.vendor' -%}{%- continue -%}{%- endif -%}
                   {%- if template.name == 'collection' and filter.param_name == 'filter.p.vendor' -%}
                     {%- continue -%}
                   {%- endif -%}
@@ -809,40 +813,11 @@
     </details>
   </menu-drawer>
 
-  {%- if template.name == 'collection' -%}
-    <button
-      type="button"
-      class="viri-brands__trigger medium-hide large-up-hide"
-      aria-haspopup="dialog"
-      aria-controls="ViriBrandDialog-{{ section.id }}"
-      onclick="document.getElementById('ViriBrandDialog-{{ section.id }}').showModal()"
-    >
-      <svg class="viri-brands__trigger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M3 7.5V4h8l10 10-7 7L3 10.5v-3Z"></path>
-        <circle cx="7.5" cy="8" r="1"></circle>
-      </svg>
-      <span>{{ bx_mobile_brand_label | escape }}</span>
-    </button>
-    <dialog
-      class="viri-brands__dialog"
-      id="ViriBrandDialog-{{ section.id }}"
-      aria-labelledby="ViriBrandDialogTitle-{{ section.id }}"
-      onclick="if(event.target === this) this.close()"
-    >
-      <div class="viri-brands__header">
-        <h2 id="ViriBrandDialogTitle-{{ section.id }}">{{ bx_mobile_brand_label | escape }}</h2>
-        <button type="button" class="viri-brands__close" aria-label="{{ bx_brand_close_label | escape }}" onclick="this.closest('dialog').close()">
-          {{- 'icon-close.svg' | inline_asset_content -}}
-        </button>
-      </div>
-      <div class="viri-brands__body">
-        {% render 'viri-mobile-filter-brands' %}
-      </div>
-    </dialog>
-  {%- endif -%}
+
 
   <div class="active-facets active-facets-mobile medium-hide large-up-hide">
     {%- for filter in results.filters -%}
+                  {%- if filter.param_name == 'filter.p.vendor' -%}{%- continue -%}{%- endif -%}
       {%- for value in filter.active_values -%}
         <facet-remove>
           <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
@@ -956,6 +931,7 @@
       <form id="FacetFiltersPillsForm" class="facets__form">
         <div class="active-facets active-facets-desktop">
           {%- for filter in results.filters -%}
+                  {%- if filter.param_name == 'filter.p.vendor' -%}{%- continue -%}{%- endif -%}
             {%- for value in filter.active_values -%}
               <facet-remove>
                 <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">

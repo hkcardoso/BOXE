@@ -952,7 +952,7 @@
         <label class="vh-header-search__form">
           <span class="visually-hidden">{{ 'general.search.search' | t }}</span>
           <span class="vh-header-search__magnifier" aria-hidden="true"></span>
-          <input type="search" data-vs-home-input name="q" placeholder="{% assign vh_header_lang = request.locale.iso_code | slice: 0, 2 %}{% case vh_header_lang %}{% when 'en' %}Search products, brands...{% when 'es' %}Buscar productos, marcas...{% else %}Pesquisar produtos, marcas...{% endcase %}" autocomplete="off">
+          <input type="search" data-vs-home-input name="q" placeholder="{% assign vh_header_lang = request.locale.iso_code | slice: 0, 2 %}{% case vh_header_lang %}{% when 'en' %}Search products...{% when 'es' %}Buscar productos...{% else %}Pesquisar produtos...{% endcase %}" autocomplete="off">
           <input type="hidden" name="options[prefix]" value="last">
         </label>
       </form>

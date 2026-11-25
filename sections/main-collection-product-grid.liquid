@@ -54,11 +54,11 @@
   <div class="page-width" style="padding-top:20px;padding-bottom:8px">
     {%- case glove_intro_lang -%}
       {%- when 'en' -%}
-        <p style="margin:0;color:#c2c3ca;font-size:14px;line-height:1.65">Explore boxing gloves for bag work, pads and Muay Thai. Compare training gloves from Charlie, Fairtex and Everlast, and choose the weight that suits your training.</p>
+        <p style="margin:0;color:#c2c3ca;font-size:14px;line-height:1.65">Explore boxing gloves for bag work, pads and Muay Thai. Choose the weight that suits your training.</p>
       {%- when 'es' -%}
-        <p style="margin:0;color:#c2c3ca;font-size:14px;line-height:1.65">Descubre guantes de boxeo para saco, manoplas y Muay Thai. Compara modelos Charlie, Fairtex y Everlast y elige el peso adecuado para tu entrenamiento.</p>
+        <p style="margin:0;color:#c2c3ca;font-size:14px;line-height:1.65">Descubre guantes de boxeo para saco, manoplas y Muay Thai. Elige el peso adecuado para tu entrenamiento.</p>
       {%- else -%}
-        <p style="margin:0;color:#c2c3ca;font-size:14px;line-height:1.65">Explora luvas de boxe para treino de saco, manoplas e Muay Thai. Compara modelos Charlie, Fairtex e Everlast e escolhe o peso mais indicado para o teu treino.</p>
+        <p style="margin:0;color:#c2c3ca;font-size:14px;line-height:1.65">Explora luvas de boxe para treino de saco, manoplas e Muay Thai. Escolhe o peso mais indicado para o teu treino.</p>
     {%- endcase -%}
   </div>
 {%- endif -%}
@@ -354,7 +354,7 @@
                   {%- for vcat_photo_product in section.settings.image_priority_products -%}
                     {%- assign vcat_vendor = vcat_photo_product.vendor | downcase | strip -%}
                     {%- assign vcat_title = vcat_photo_product.title | downcase | strip -%}
-                    {%- if vcat_photo_product.featured_image == blank or vcat_photo_product.price == 0 or vcat_vendor == 'my store' or vcat_photo_product.tags contains 'boxeup:hidden' or vcat_title == 'test' or vcat_title == 'teste' -%}{%- continue -%}{%- endif -%}
+                    {%- if vcat_photo_product.featured_image == blank or vcat_photo_product.price == 0 or vcat_vendor != 'viriatto' or vcat_photo_product.tags contains 'boxeup:hidden' or vcat_title == 'test' or vcat_title == 'teste' -%}{%- continue -%}{%- endif -%}
                     {%- assign vcat_pinned_ids = vcat_pinned_ids | append: vcat_photo_product.id | append: '|' -%}
                     {%- if paginate.current_page == 1 -%}
                       <li class="grid__item">
@@ -363,7 +363,7 @@
                     {%- endif -%}
                   {%- endfor -%}
                   {%- if section.settings.image_priority_products == blank -%}
-                    {%- assign vcat_photo_handles = 'charlie-bat-x-luvas-de-treino,fairtex-bgv1-luvas-de-boxe-e-muay-thai,twins-special-bgvl-3-luvas-de-muay-thai,cleto-reyes-luvas-de-treino-em-pele,everlast-powerlock-2r-luvas-de-treino,fairtex-bgv9-heavy-hitter-luvas-de-boxe,rival-rhg2-capacete-hibrido,charlie-gel-metallic-luvas-de-boxe,fairtex-sp5-caneleiras-de-competicao,twins-special-sgl-10-caneleiras-de-muay-thai,venum-challenger-boqueira-com-caixa,fairtex-mg3-boqueira-de-gel,venum-challenger-pro-evo-mochila-22-5-l,fluory-calcoes-de-muay-thai-vermelho-e-preto,mens-rash-guard,all-over-print-gym-bag,minimalist-backpack,unisex-organic-cotton-creator-2-0-t-shirt' | split: ',' -%}
+                    {%- assign vcat_photo_handles = 'short-sleeve-t-shirt,viriatto-essential-hoodie-unissexo,viriatto-essential-sweatshirt-unissexo,viriatto-essential-cap-bone-unissexo,dad-hat' | split: ',' -%}
                     {%- for vcat_photo_handle in vcat_photo_handles -%}
                       {%- assign vcat_photo_product = all_products[vcat_photo_handle] -%}
                       {%- if vcat_photo_product == blank or vcat_photo_product.featured_image == blank or vcat_photo_product.price == 0 or vcat_photo_product.tags contains 'boxeup:hidden' -%}{%- continue -%}{%- endif -%}
@@ -445,7 +445,7 @@
         <div class="viri-gloves-guide__grid">
           <div class="viri-gloves-guide__item"><h3>What does oz mean?</h3><p>Ounces (oz) indicate glove weight, not hand size. The right weight depends on your training and your coach’s advice.</p></div>
           <div class="viri-gloves-guide__item"><h3>Bag work or sparring?</h3><p>Different sessions require different protection. Ask your coach which glove weight and type are appropriate for sparring.</p></div>
-          <div class="viri-gloves-guide__item"><h3>Boxing and Muay Thai</h3><p>Check the closure, wrist support and mobility. Browse the <a href="/products/charlie-bat-x-luvas-de-treino">Charlie Bat-X gloves</a> or the <a href="/products/fairtex-bgv1-luvas-de-boxe-e-muay-thai">Fairtex BGV1 gloves</a>.</p></div>
+          <div class="viri-gloves-guide__item"><h3>Boxing and Muay Thai</h3><p>Check the closure, wrist support and mobility.</p></div>
         </div>
       {%- when 'es' -%}
         <h2 id="viri-gloves-guide-title">Cómo elegir guantes de boxeo</h2>
@@ -453,7 +453,7 @@
         <div class="viri-gloves-guide__grid">
           <div class="viri-gloves-guide__item"><h3>¿Qué significan las oz?</h3><p>Las onzas (oz) indican el peso del guante, no la talla de la mano. Consulta con tu entrenador qué peso necesitas.</p></div>
           <div class="viri-gloves-guide__item"><h3>¿Saco o sparring?</h3><p>La protección adecuada depende del entrenamiento. Confirma con tu entrenador los guantes indicados para sparring.</p></div>
-          <div class="viri-gloves-guide__item"><h3>Boxeo y Muay Thai</h3><p>Compara el cierre, la sujeción de la muñeca y la movilidad. Descubre los <a href="/products/charlie-bat-x-luvas-de-treino">Charlie Bat-X</a> y los <a href="/products/fairtex-bgv1-luvas-de-boxe-e-muay-thai">Fairtex BGV1</a>.</p></div>
+          <div class="viri-gloves-guide__item"><h3>Boxeo y Muay Thai</h3><p>Compara el cierre, la sujeción de la muñeca y la movilidad.</p></div>
         </div>
       {%- else -%}
         <h2 id="viri-gloves-guide-title">Como escolher luvas de boxe?</h2>
@@ -461,7 +461,7 @@
         <div class="viri-gloves-guide__grid">
           <div class="viri-gloves-guide__item"><h3>O que significa oz?</h3><p>As onças (oz) indicam o peso das luvas, não o tamanho da mão. O peso mais indicado depende do treino e da orientação do treinador.</p></div>
           <div class="viri-gloves-guide__item"><h3>Saco, manoplas ou sparring?</h3><p>O tipo de treino influencia a proteção necessária. Para sparring, confirma com o treinador o peso e o modelo adequados.</p></div>
-          <div class="viri-gloves-guide__item"><h3>Boxe e Muay Thai</h3><p>Compara o fecho, o apoio do pulso e a mobilidade. Conhece as <a href="/products/charlie-bat-x-luvas-de-treino">luvas Charlie Bat-X</a> e as <a href="/products/fairtex-bgv1-luvas-de-boxe-e-muay-thai">luvas Fairtex BGV1</a>.</p></div>
+          <div class="viri-gloves-guide__item"><h3>Boxe e Muay Thai</h3><p>Compara o fecho, o apoio do pulso e a mobilidade.</p></div>
         </div>
     {%- endcase -%}
   </section>

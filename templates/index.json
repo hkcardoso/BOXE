@@ -8,119 +8,71 @@
  * ------------------------------------------------------------
  */
 {
-    "sections": {
-        "boxeup_home": {
-            "type": "boxeup-home",
-            "blocks": {
-                "boxe": {
-                    "type": "category",
-                    "settings": {
-                        "title": "Boxe",
-                        "subtitle": "Luvas, proteção e treino",
-                        "search_term": "boxe",
-                        "image": "shopify://shop_images/boxeup-boxe.jpg"
-                    }
-                },
-                "muaythai": {
-                    "type": "category",
-                    "settings": {
-                        "title": "Muay Thai",
-                        "subtitle": "Técnica e potência",
-                        "search_term": "muay thai",
-                        "image": "shopify://shop_images/boxeup-muay-thai.jpg"
-                    }
-                },
-                "mma": {
-                    "type": "category",
-                    "settings": {
-                        "title": "MMA",
-                        "subtitle": "Preparação e combate",
-                        "search_term": "mma",
-                        "image": "shopify://shop_images/boxeup-mma.jpg"
-                    }
-                },
-                "jiujitsu": {
-                    "type": "category",
-                    "settings": {
-                        "title": "Jiu-Jitsu",
-                        "subtitle": "Equipamento de tatami",
-                        "search_term": "jiu jitsu",
-                        "image": "shopify://shop_images/boxeup-jiu-jitsu.jpg"
-                    }
-                }
-            },
-            "block_order": [
-                "boxe",
-                "muaythai",
-                "mma",
-                "jiujitsu"
-            ],
-            "settings": {
-                "hero_video": "shopify://files/videos/8745106-uhd_4096_2160_25fps.mp4",
-                "featured_products": [
-                    "short-sleeve-t-shirt",
-                    "viriatto-essential-hoodie-unissexo",
-                    "viriatto-essential-sweatshirt-unissexo",
-                    "viriatto-essential-cap-bone-unissexo"
-                ],
-                "latest_products": [
-                    "fairtex-bgv1-luvas-de-boxe-e-muay-thai",
-                    "cleto-reyes-luvas-de-treino-em-pele",
-                    "twins-special-bgvl-3-luvas-de-muay-thai",
-                    "everlast-powerlock-2r-luvas-de-treino",
-                    "rival-rhg2-capacete-hibrido",
-                    "fairtex-sp5-caneleiras-de-competicao",
-                    "fluory-calcoes-de-muay-thai-vermelho-e-preto",
-                    "charlie-bat-x-luvas-de-treino"
-                ],
-                "featured_collection": "destaques-viriatto-selecao-atual"
-            }
+  "sections": {
+    "boxeup_home": {
+      "type": "boxeup-home",
+      "blocks": {
+        "boxe": {
+          "type": "category",
+          "settings": {
+            "title": "Boxe",
+            "subtitle": "Luvas, proteção e treino",
+            "search_term": "boxe",
+            "image": "shopify://shop_images/boxeup-boxe.jpg"
+          }
         },
-        "viriatto_packs": {
-            "type": "viriatto-training-packs",
-            "blocks": {
-                "charlie_red": {
-                    "type": "pack",
-                    "settings": {
-                        "title": "PACK CHARLIE VERMELHO",
-                        "description": "Bat-X, ligaduras e calções Boxeo X. Escolhe as onças e o tamanho.",
-                        "image_url": "https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-pack-charlie-vermelho-batx-boxeox-ligaduras.webp?v=1794476581",
-                        "gloves": "charlie-bat-x-luvas-de-treino",
-                        "accessory": "charlie-catalogo-2026-051-venda-algodon",
-                        "garment": "charlie-catalogo-2026-172-boxeo-x",
-                        "garment_label": "Tamanho dos calções",
-                        "discount_code": "PACKCHARLIE10"
-                    }
-                },
-                "charlie_blue": {
-                    "type": "pack",
-                    "settings": {
-                        "title": "PACK CHARLIE AZUL",
-                        "description": "Luvas Gel Metallic, casaco Black Fighter e boqueira Molar. Escolhe as onças e o tamanho.",
-                        "image_url": "https://cdn.shopify.com/s/files/1/0944/3937/5184/files/viriatto-pack-charlie-azul-gel-metallic-black-fighter-molar.webp?v=1794477153",
-                        "gloves": "charlie-gel-metallic-luvas-de-boxe",
-                        "accessory": "charlie-catalogo-2026-040-bucal-molar",
-                        "garment": "charlie-catalogo-2026-215-cazadora-black-fighter",
-                        "garment_label": "Tamanho do casaco",
-                        "discount_code": "PACKCHARLIEAZUL10"
-                    }
-                }
-            },
-            "block_order": [
-                "charlie_red",
-                "charlie_blue"
-            ],
-            "settings": {},
-            "disabled": true
+        "muaythai": {
+          "type": "category",
+          "settings": {
+            "title": "Muay Thai",
+            "subtitle": "Técnica e potência",
+            "search_term": "muay thai",
+            "image": "shopify://shop_images/boxeup-muay-thai.jpg"
+          }
         },
-        "viriatto_training_video": {
-            "type": "viriatto-training-video",
-            "settings": {}
+        "mma": {
+          "type": "category",
+          "settings": {
+            "title": "MMA",
+            "subtitle": "Preparação e combate",
+            "search_term": "mma",
+            "image": "shopify://shop_images/boxeup-mma.jpg"
+          }
+        },
+        "jiujitsu": {
+          "type": "category",
+          "settings": {
+            "title": "Jiu-Jitsu",
+            "subtitle": "Equipamento de tatami",
+            "search_term": "jiu jitsu",
+            "image": "shopify://shop_images/boxeup-jiu-jitsu.jpg"
+          }
         }
+      },
+      "block_order": [
+        "boxe",
+        "muaythai",
+        "mma",
+        "jiujitsu"
+      ],
+      "settings": {
+        "hero_video": "shopify://files/videos/8745106-uhd_4096_2160_25fps.mp4",
+        "featured_products": [
+          "short-sleeve-t-shirt",
+          "viriatto-essential-hoodie-unissexo",
+          "viriatto-essential-sweatshirt-unissexo",
+          "viriatto-essential-cap-bone-unissexo"
+        ],
+        "featured_collection": "destaques-viriatto-selecao-atual"
+      }
     },
-    "order": [
-        "boxeup_home",
-        "viriatto_packs",
-        "viriatto_training_video"
-    ]
+    "viriatto_training_video": {
+      "type": "viriatto-training-video",
+      "settings": {}
+    }
+  },
+  "order": [
+    "boxeup_home",
+    "viriatto_training_video"
+  ]
 }
